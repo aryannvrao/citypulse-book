@@ -1,0 +1,1295 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 2 — Linux and the command line · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D02" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 2 · Days 1–5 · Tools and teamwork</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a class="cur" href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 2 · Days 1–5 · Tools and teamwork</p><h1>Day 2 — Linux and the command line</h1><p class="sub">You will be able to find, inspect, filter and count sensor readings from a terminal, lock down a secret file, and rebuild the same logic as a Python function.</p><p class="meta">85 min read · practice quiz · 3 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D02.mp4?v=1794464512"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>The CityPulse sensors write their readings to CSV files, and those files land on a Linux server. You cannot scroll through thousands of rows to check that every station reported, so you ask questions by typing commands. Think of the terminal as a counter at a records office: you hand the clerk a short written request such as "count the PM2.5 rows", and the clerk hands back one answer.</p>
+<p>Today you learn to find files, look inside them, filter them, count them, lock them down, and chain small tools into one line that answers a real question. These are the skills behind the course tickets Y2-T03 (a 20-task scavenger hunt) and Y2-T04 (a setup document a teammate must follow cold).</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Terminal.</strong> A window where you type text commands and read text replies. It is not a special kind of computer. It is only a text window onto one.</p>
+<p><strong>Shell.</strong> The program inside the terminal that reads what you type and runs it. The shell used in this course is called Bash. Bash is the common shell on Linux.</p>
+<p><strong>Prompt.</strong> The short text the shell prints when it is waiting for you, for example <code>city@server:~$</code>. In this book, a line that starts with <code>$</code> is something you type. The <code>$</code> is the prompt, not part of the command.</p>
+<p><strong>Command.</strong> A program name, followed by optional flags and arguments. In <code>ls -lh /data/readings</code> the program is <code>ls</code>, <code>-lh</code> is a flag and <code>/data/readings</code> is an argument.</p>
+<p><strong>Flag (option).</strong> A switch that changes how a command behaves. Flags usually start with a dash. A single dash can carry several letters: <code>-lh</code> means <code>-l</code> and <code>-h</code>.</p>
+<p><strong>Argument.</strong> The thing a command works on, such as a file name or a directory name.</p>
+<p><strong>File.</strong> A named block of data stored on disk. A CSV file is a plain-text file in which each line is one row and commas separate the columns.</p>
+<p><strong>Directory.</strong> A container that holds files and other directories. Most people call it a folder.</p>
+<p><strong>Filesystem.</strong> The whole organised set of files and directories on one machine. Linux presents all of it as one tree that starts at a single top point called the root, written <code>/</code>.</p>
+<p><strong>Path.</strong> The address of a file or directory, written as names separated by <code>/</code>. An <strong>absolute path</strong> starts at the root, for example <code>/data/readings/jan.csv</code>. A <strong>relative path</strong> starts from wherever you currently are, for example <code>raw/jan.csv</code>. Two special names exist in every directory: <code>.</code> means "this directory" and <code>..</code> means "the directory above".</p>
+<p><strong>Working directory.</strong> The directory you are currently in. Relative paths are measured from it.</p>
+<p><strong>Server.</strong> A computer that provides a service to other computers. The CityPulse lab server stores the raw sensor files, and several students use it at the same time.</p>
+<p><strong>Header row.</strong> The first line of a CSV file, which names the columns instead of holding a reading. In the sensor files it is <code>station_id,ts,pollutant,value</code>.</p>
+<p><strong>Field.</strong> One value inside a row, for example <code>ST-01</code> or <code>53.3</code>. A field is one column in one row.</p>
+<p><strong>Process.</strong> A program that is running right now. Every process has a number, its process ID (PID).</p>
+<p><strong>Function.</strong> A named piece of code that takes inputs, does work and gives back a result. You will write your own functions in the graded-lab section.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="moving-around-and-listing-files-pwd-cd-ls">Moving around and listing files: pwd, cd, ls</h3>
+<p>Your first three commands answer three questions: where am I, where can I go, and what is here.</p>
+<div class="hl"><pre><span></span><code><span class="nb">pwd</span>
+<span class="nb">cd</span><span class="w"> </span>/data/readings
+ls<span class="w"> </span>-lh
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>pwd</code> stands for "print working directory". It prints the absolute path of the directory you are in. Expect output such as <code>/home/city</code>.</li>
+<li><code>cd /data/readings</code> changes directory. <code>cd</code> is short for "change directory". The path is absolute, so it works from anywhere. Nothing is printed when <code>cd</code> succeeds.</li>
+<li><code>ls -lh</code> lists the contents of the current directory. <code>ls</code> is short for "list". The <code>-l</code> flag asks for a long listing, with one line per file. The <code>-h</code> flag asks for human-readable sizes, so 140K is printed instead of 143360.</li>
+</ul>
+<p>A long-listing line looks like this:</p>
+<div class="hl"><pre><span></span><code>-rw-r--r-- 1 city city 140K Nov 11 09:14 jan.csv
+</code></pre></div>
+
+<p>The first column, <code>-rw-r--r--</code>, holds the permissions, explained below. The number <code>1</code> is the count of hard links, which you can ignore for now. <code>city city</code> are the owner and the group. <code>140K</code> is the size. The date and time show the last change, and <code>jan.csv</code> is the name.</p>
+<p>Two more flags matter. <code>-a</code> shows hidden files, which are files whose names start with a dot, such as <code>.env</code>. <code>ls</code> alone hides them. You combine flags as <code>ls -la</code>.</p>
+<h3 id="finding-files-and-text-find-and-grep">Finding files and text: find and grep</h3>
+<p><code>find</code> searches the file tree by name, type, size or date. <code>grep</code> searches the contents of files for a piece of text.</p>
+<div class="hl"><pre><span></span><code>find<span class="w"> </span>/srv/hunt<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.log&#39;</span><span class="w"> </span>-size<span class="w"> </span>+1k
+grep<span class="w"> </span>-rn<span class="w"> </span><span class="s1">&#39;pm2_5&#39;</span><span class="w"> </span>/srv/hunt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+man<span class="w"> </span>find<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
+
+<p>Line by line, first command:</p>
+<ul>
+<li><code>find</code> is the program.</li>
+<li><code>/srv/hunt</code> is the starting directory. <code>find</code> searches it and everything below it.</li>
+<li><code>-type f</code> keeps only regular files. <code>f</code> means file. <code>d</code> would mean directory.</li>
+<li><code>-name '*.log'</code> keeps names that match the pattern. The quotes stop the shell from changing <code>*</code> before <code>find</code> sees it. You will meet this trap in the quiz section.</li>
+<li><code>-size +1k</code> keeps files larger than one kilobyte. The plus sign means "larger than".</li>
+</ul>
+<p>Second command:</p>
+<ul>
+<li><code>grep</code> prints every line that contains the text you give it.</li>
+<li><code>-r</code> searches recursively, which means it goes into every subdirectory.</li>
+<li><code>-n</code> prints the line number next to each match.</li>
+<li><code>'pm2_5'</code> is the text to find. Quotes keep the command clear and protect characters the shell would otherwise interpret.</li>
+<li><code>/srv/hunt</code> is where to search.</li>
+<li><code>| head -5</code> sends the output into <code>head</code>, which keeps only the first five lines. The vertical bar is explained in the redirection section below.</li>
+</ul>
+<p>Expect output such as <code>/srv/hunt/site3/notes.txt:12:pm2_5 sensor offline</code>. The text before the first colon is the file, the number is the line, and the rest is the line itself.</p>
+<p>Third command: <code>man</code> opens the manual page for a command. Press <code>q</code> to leave it. Piping it into <code>head -20</code> shows only the first twenty lines, which is useful when a manual page is long.</p>
+<h3 id="reading-parts-of-a-file-head-tail-and-wc">Reading parts of a file: head, tail and wc</h3>
+<p>A 140 KB file is too big to read in an editor, and you rarely need all of it. These three tools let you look at the parts you need.</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>jan.csv
+wc<span class="w"> </span>-l<span class="w"> </span>jan.csv
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>jan.csv
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>head -n 2 jan.csv</code> prints the first two lines of the file. <code>-n 2</code> means "two lines". The first line is the header and the second is the first reading, so you see the column layout. Expect:</li>
+</ul>
+<div class="hl"><pre><span></span><code>station_id,ts,pollutant,value
+ST-01,2025-01-01T00:00:00,PM2.5,53.3
+</code></pre></div>
+
+<ul>
+<li><code>wc -l jan.csv</code> counts lines. <code>wc</code> means "word count", and <code>-l</code> restricts it to lines. Expect a number and the file name, such as <code>4033 jan.csv</code>.</li>
+<li><code>tail -n +2 jan.csv</code> prints the file starting at line 2. The plus sign is the important part. <code>tail -n 2</code> would mean "the last two lines", which is a different thing.</li>
+</ul>
+<p>The count includes the header. A file with 4,033 lines has 4,032 readings.</p>
+<h3 id="redirection-and-pipes">Redirection and pipes</h3>
+<p>Every command has three default streams. Standard input (number 0) is where it reads from, which is normally the keyboard. Standard output (number 1) is where normal results go, which is normally the screen. Standard error (number 2) is where error messages go, also the screen by default.</p>
+<p>You can redirect these streams to files or to other programs:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span>&gt;<span class="w"> </span>pm25.csv
+grep<span class="w"> </span><span class="s1">&#39;,NO2,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span>&gt;&gt;<span class="w"> </span>pm25.csv
+sort<span class="w"> </span>&lt;<span class="w"> </span>pm25.csv
+ls<span class="w"> </span>/no/such/place<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors.txt
+grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>&gt;</code> sends standard output into a file. It creates the file, or replaces the file if it already exists. The result goes into <code>pm25.csv</code> and nothing appears on screen.</li>
+<li><code>&gt;&gt;</code> sends output into a file and adds it at the end. The NO2 rows are appended after the PM2.5 rows.</li>
+<li><code>&lt;</code> feeds a file into a command as standard input. <code>sort &lt; pm25.csv</code> sorts the lines of that file.</li>
+<li><code>2&gt;</code> sends standard error into a file. Here the "no such file" message goes into <code>errors.txt</code>, so the screen stays clean.</li>
+<li><code>|</code> is the pipe. It sends the standard output of the command on the left into the standard input of the command on the right. Here, <code>grep</code> finds the PM2.5 rows and <code>wc -l</code> counts them. Expect a single number such as <code>1008</code>.</li>
+</ul>
+<p>A pipe lets small tools cooperate. Each tool does one job, and the pipeline does the whole task.</p>
+<h3 id="permissions-ls-l-chmod">Permissions: ls -l, chmod</h3>
+<p>Every file has an owner, a group and a set of permissions. Permissions say who may read the file (<code>r</code>), change it (<code>w</code>) or run it as a program (<code>x</code>). The permission string has ten characters:</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>File type. <code>-</code> is a normal file, <code>d</code> is a directory.</td>
+</tr>
+<tr>
+<td>2–4</td>
+<td>What the owner may do: read, write, execute.</td>
+</tr>
+<tr>
+<td>5–7</td>
+<td>What members of the group may do.</td>
+</tr>
+<tr>
+<td>8–10</td>
+<td>What everyone else may do.</td>
+</tr>
+</tbody>
+</table>
+<p>So <code>-rw-r--r--</code> means a normal file that the owner can read and write, the group can read, and everyone else can read.</p>
+<p><code>chmod</code> changes permissions. It is short for "change mode". You can use symbols or numbers. Numbers are the faster way to remember:</p>
+<ul>
+<li><code>r</code> is 4, <code>w</code> is 2 and <code>x</code> is 1.</li>
+<li>You add the numbers for each group. Owner, group and others each get one digit.</li>
+</ul>
+<p>So <code>600</code> means owner gets 4+2 = read and write, group gets 0, others get 0.</p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>.env
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.env
+ls<span class="w"> </span>-l<span class="w"> </span>.env
+chmod<span class="w"> </span>+x<span class="w"> </span>scripts/fetch_once.sh
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>ls -l .env</code> shows the current permissions of the file <code>.env</code>, which holds API keys.</li>
+<li><code>chmod 600 .env</code> sets the permissions to owner read and write, and nothing for anyone else. <code>chmod</code> takes the mode first and the file second.</li>
+<li>The second <code>ls -l .env</code> shows the change.</li>
+<li><code>chmod +x scripts/fetch_once.sh</code> adds the execute permission for everyone. <code>+x</code> means "add execute". Without this, <code>./fetch_once.sh</code> fails with "Permission denied".</li>
+</ul>
+<p>Expected output before and after:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ls -l .env&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;-rw-r--r-- 1 city city 22 Nov 11 09:14 .env&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;chmod 600 .env&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ls -l .env&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;-rw------- 1 city city 22 Nov 11 09:14 .env&quot;}]}"></div>
+
+<p>The first line of the output shows <code>-rw-r--r--</code> and the second shows <code>-rw-------</code>. Your size and date will differ. The change in the permission string is what matters.</p>
+<h3 id="cutting-columns-sorting-and-counting-cut-sort-uniq">Cutting columns, sorting and counting: cut, sort, uniq</h3>
+<p>These three tools together are the shell's version of "group by". They are the most-used pipeline in data work.</p>
+<div class="hl"><pre><span></span><code>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>jan.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>tail -n +2 jan.csv</code> starts from line 2, which skips the header.</li>
+<li><code>cut -d, -f1</code> keeps only field 1. <code>-d,</code> sets the delimiter to a comma. <code>-f1</code> means field 1.</li>
+<li><code>sort</code> puts the lines in alphabetical order. Identical lines end up next to each other.</li>
+<li><code>uniq -c</code> collapses runs of identical adjacent lines into one line, and <code>-c</code> puts the count in front.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>    672 ST-01
+    672 ST-02
+    672 ST-03
+    672 ST-04
+    672 ST-05
+    672 ST-06
+</code></pre></div>
+
+<p>The counts are padded with spaces, so the numbers line up. Each station reports 672 rows in the course data.</p>
+<p>The pipeline below shows how each stage hands its output to the next.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One pipeline, four stages&quot;, &quot;nodes&quot;: [&quot;grep&quot;, &quot;cut&quot;, &quot;sort&quot;, &quot;uniq -c&quot;, &quot;Terminal output&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;matching lines&quot;, &quot;note&quot;: &quot;grep keeps only the rows that contain ,PM2.5, and passes them on.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;one column each&quot;, &quot;note&quot;: &quot;cut keeps the station id from each row, so each line is now just an id.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;ids in order&quot;, &quot;note&quot;: &quot;sort puts identical ids next to each other, which uniq needs.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;label&quot;: &quot;counts per id&quot;, &quot;note&quot;: &quot;uniq -c writes one line per id with its count, and the result appears on screen.&quot;}]}"></div>
+
+<p>Two rules follow from this. <code>uniq</code> only merges lines that are next to each other, so you must <code>sort</code> first. And <code>cut</code> splits on the delimiter you name, so a wrong delimiter gives you the wrong column without any error message.</p>
+<h3 id="disk-space-df">Disk space: df</h3>
+<p><code>df</code> reports how full each disk is. <code>df -h</code> prints sizes in human-readable units.</p>
+<div class="hl"><pre><span></span><code>df<span class="w"> </span>-h<span class="w"> </span>/data
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>df</code> is short for "disk free".</li>
+<li><code>-h</code> prints sizes as K, M, G.</li>
+<li><code>/data</code> asks about the filesystem that holds the directory <code>/data</code>. Without a path, <code>df</code> lists every mounted filesystem.</li>
+</ul>
+<p>Expect a table with the columns Filesystem, Size, Used, Avail, Use% and Mounted on. The row whose last column is <code>/data</code> tells you how much room is left. <code>Avail</code> is the free space you can use. <code>Use%</code> is how full the disk is as a percentage.</p>
+<p><code>df</code> reports whole disks. To ask how large a directory is, use <code>du</code>. The two answer different questions.</p>
+<h3 id="processes-and-packages-jobs-ps-kill-which-apt">Processes and packages: &amp;, jobs, ps, kill, which, apt</h3>
+<p>A process is a running program. Some processes run in the foreground, so the prompt waits for them. A command followed by <code>&amp;</code> runs in the background, and the prompt returns at once. Background work is how cron jobs and long-running tasks behave on a server.</p>
+<div class="hl"><pre><span></span><code>sleep<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="nb">jobs</span>
+ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;[s]leep 600&#39;</span>
+<span class="nb">kill</span><span class="w"> </span>%1
+<span class="nb">jobs</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>sleep 600 &amp;</code> starts the program <code>sleep</code>, which does nothing for 600 seconds. The <code>&amp;</code> at the end sends it to the background. The shell prints a job number and a PID, and you get your prompt back.</li>
+<li><code>jobs</code> lists the background jobs started from this shell. Expect a line such as <code>[1]+  Running    sleep 600 &amp;</code>.</li>
+<li><code>ps aux</code> lists all processes. The <code>a</code> flag includes other users' processes, <code>u</code> uses the readable column layout, and <code>x</code> includes processes that have no terminal. The <code>grep '[s]leep 600'</code> part keeps only the line you care about. The square brackets are a trick. The pattern <code>[s]leep 600</code> matches the text "sleep 600", but the command that grep itself is running contains "[s]leep 600", and that text does not match the pattern. So grep does not match its own process.</li>
+<li><code>kill %1</code> sends a stop signal to job number 1. The <code>%</code> marks a job number rather than a PID. By default, <code>kill</code> sends the TERM signal, which asks a program to finish cleanly.</li>
+<li>The last <code>jobs</code> prints nothing, which shows the job has stopped.</li>
+</ul>
+<p>Two more commands complete the picture:</p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+which<span class="w"> </span>python3<span class="w"> </span>jq<span class="w"> </span>curl
+dpkg<span class="w"> </span>-s<span class="w"> </span>jq<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;^Status&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>echo "$PATH"</code> prints the value of the shell variable <code>PATH</code>. A variable is a named container for a value, and <code>$PATH</code> reads it. <code>PATH</code> is a colon-separated list of folders. When you type <code>python3</code>, the shell searches those folders in order and runs the first match.</li>
+<li><code>which python3 jq curl</code> prints the full path of the program each name resolves to. If a name prints nothing, the shell cannot find it.</li>
+<li><code>dpkg -s jq</code> asks the package system whether <code>jq</code> is installed. <code>grep '^Status'</code> keeps the status line. Expect <code>Status: install ok installed</code> if it is present.</li>
+</ul>
+<p>If a tool is missing and you are allowed to install it on the lab, the course uses:</p>
+<div class="hl"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq
+</code></pre></div>
+
+<p><code>sudo</code> runs the command with administrator rights. <code>apt-get</code> is the package manager on Ubuntu. <code>install</code> names the action, <code>-y</code> answers "yes" to the confirmation question, and <code>jq</code> is the package. Use <code>sudo</code> only for system tools, never for Python packages.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using kill -9 first</div><p><code>kill -9</code> uses the KILL signal, which the program cannot catch. It stops at once and skips any cleanup code, so files may be left half-written. Send the plain <code>kill</code> first. Use <code>kill -9</code> only when the process has not stopped after a reasonable wait.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Grepping ps and matching yourself</div><p><code>ps aux | grep sleep</code> always shows one extra line, which is grep itself. Use the <code>[s]leep</code> trick above, or <code>pgrep -a sleep</code>.</p></div>
+
+<h3 id="python-venv-and-pip">Python venv and pip</h3>
+<p>A <strong>virtual environment</strong> (venv) is a private copy of Python and its package installer, kept inside one project folder. <strong>pip</strong> is the Python package installer. It downloads libraries such as <code>requests</code> from the internet. CityPulse uses both so that every teammate gets the same library versions.</p>
+<p>The setup block below is the one in the course document. Read it in order.</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+which<span class="w"> </span>python
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import requests; print(requests.__version__)&#39;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;.venv/\n.env\n&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>check-ignore<span class="w"> </span>.venv<span class="w"> </span>.env
+deactivate
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>python3 -m venv .venv</code> runs the Python module <code>venv</code> and creates a folder called <code>.venv</code>. The <code>-m</code> flag means "run this module as a program". The name <code>.venv</code> starts with a dot, so <code>ls</code> hides it by default.</li>
+<li><code>source .venv/bin/activate</code> loads the activation script. It puts <code>.venv/bin</code> at the front of <code>PATH</code>, so <code>python</code> and <code>pip</code> now refer to the copies inside <code>.venv</code>. <code>source</code> runs the file in the current shell.</li>
+<li><code>which python</code> should print a path that ends in <code>.venv/bin/python</code>. If it prints <code>/usr/bin/python</code>, the environment is not active.</li>
+<li><code>python -m pip install --upgrade pip</code> updates pip inside the environment. Running pip as <code>python -m pip</code> guarantees that you use the pip that matches the active Python.</li>
+<li><code>python -m pip install -r requirements.txt</code> installs every package listed in <code>requirements.txt</code>. <code>-r</code> means "read the list from this file". The file pins versions, for example <code>requests==2.32.3</code>.</li>
+<li><code>python -c '...'</code> runs a short piece of Python passed on the command line. <code>-c</code> means "command". The code imports <code>requests</code> and prints its version. A silent success followed by the version number means the import works.</li>
+<li><code>printf '.venv/\n.env\n' &gt;&gt; .gitignore</code> appends two lines to <code>.gitignore</code>, which tells Git to ignore those files. <code>\n</code> is a new line. The <code>&gt;&gt;</code> appends rather than replaces.</li>
+<li><code>git check-ignore .venv .env</code> prints the paths that Git ignores. Both should appear.</li>
+<li><code>deactivate</code> leaves the environment and restores the normal <code>PATH</code>.</li>
+</ul>
+<p>Expected output from the version check is a number such as <code>2.32.3</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting to activate</div><p>If you skip <code>source .venv/bin/activate</code>, pip installs the packages into the system Python. The import then fails later, in a different terminal. Run <code>which python</code> before any install.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Committing the .venv folder</div><p>A <code>.venv</code> folder holds thousands of files. Add <code>.venv/</code> to <code>.gitignore</code> before your first <code>git add</code>.</p></div>
+
+<h3 id="saving-a-recipe-as-a-script">Saving a recipe as a script</h3>
+<p>A script is a text file that contains commands, which the shell runs in order. You run it by name. The course script for the lab looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">## flag.sh — flag stations over the 55 ug/m3 PM2.5 limit</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nv">file</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">jan</span><span class="p">.csv</span><span class="si">}</span>
+grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;{s[$1]+=$4; n[$1]++} END{for(k in s) printf &quot;%s %.1f\n&quot;, k, s[k]/n[k]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span>-nr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;$2&gt;55 {print $1, $2, &quot;BREACH&quot;}&#39;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the first line, called the shebang. It tells the system to run this file with Bash. <code>env</code> finds Bash on the current PATH.</li>
+<li><code># flag.sh — ...</code> is a comment. The shell ignores any line starting with <code>#</code> (apart from the shebang).</li>
+<li><code>set -euo pipefail</code> sets three safety rules. <code>-e</code> stops the script when a command fails. <code>-u</code> treats an unset variable as an error. <code>-o pipefail</code> makes a pipeline fail if any stage fails, not only the last one. Without these, a broken <code>grep</code> could pass silently.</li>
+<li><code>file=${1:-jan.csv}</code> stores the first argument in <code>file</code>. <code>$1</code> means argument number 1. The <code>:-jan.csv</code> part is a default: if no argument is given, use <code>jan.csv</code>.</li>
+<li>The <code>grep</code> line keeps the PM2.5 rows from <code>"$file"</code>. The quotes around <code>$file</code> keep the value safe even if the name contains spaces.</li>
+<li>The <code>awk</code> line adds up the value column per station and prints each station's average. <code>-F,</code> splits on commas. <code>$1</code> is the station, <code>$4</code> is the value. <code>s[$1]</code> is a total for each station and <code>n[$1]</code> counts its rows. <code>END{...}</code> runs once after the last line.</li>
+<li><code>sort -k2 -nr</code> sorts on the second field, which is the average, numerically and in reverse. Highest first.</li>
+<li>The last <code>awk</code> prints a line only when the second field is greater than 55, and labels it <code>BREACH</code>.</li>
+</ul>
+<p>Running the script requires the execute permission from the permissions section, plus a path to it:</p>
+<div class="hl"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>flag.sh
+./flag.sh<span class="w"> </span>jan.csv
+</code></pre></div>
+
+<p>Expected output is one line per station over the limit, such as <code>ST-04 56.1 BREACH</code>.</p>
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook's example asks one question: which stations had the worst PM2.5 readings in January? You will rebuild the answer one step at a time. The data file is <code>jan.csv</code> and its header is <code>station_id,ts,pollutant,value</code>.</p>
+<p><strong>Goal.</strong> Look at the file, check it is complete, compute the average PM2.5, rank the stations, and save the result as a script.</p>
+<p><strong>Step 1. Go to the data and list it.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/data/readings
+<span class="nb">pwd</span>
+ls<span class="w"> </span>-lh
+</code></pre></div>
+
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>/data/readings
+-rw-r--r-- 1 city city 140K jan.csv
+</code></pre></div>
+
+<p><code>cd</code> moves into the drop zone, <code>pwd</code> confirms the location, and <code>ls -lh</code> shows that one file, <code>jan.csv</code>, is present at 140 KB. Checking the location first matters because a relative path run from the wrong directory will fail or, worse, find the wrong file.</p>
+<p><strong>Step 2. Look at the header and count the lines.</strong></p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>jan.csv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>jan.csv
+</code></pre></div>
+
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>station_id,ts,pollutant,value
+ST-01,2025-01-01T00:00:00,PM2.5,53.3
+4033 jan.csv
+</code></pre></div>
+
+<p><code>&amp;&amp;</code> runs the second command only if the first one succeeds. The header shows four columns. The count of 4,033 means 4,032 readings plus the header.</p>
+<p><strong>Step 3. Count the PM2.5 rows.</strong></p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<p>Output: <code>1008</code></p>
+<p>The pattern includes the commas on both sides. That stops <code>grep</code> matching a value such as <code>PM2.5X</code> in some other column. <code>wc -l</code> counts the matching lines, and the header is not counted because it contains the word <code>pollutant</code>, not <code>PM2.5</code>.</p>
+<p><strong>Step 4. Tally the readings per station.</strong></p>
+<div class="hl"><pre><span></span><code>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>jan.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+
+<p>Output: six lines, each <code>672 ST-0n</code> for <code>n</code> from 1 to 6.</p>
+<p>Every station reported 672 rows, so coverage is complete. An uneven count would point to a sensor that has gone quiet.</p>
+<p><strong>Step 5. Average the PM2.5 values with awk.</strong></p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;{s+=$4; n++} END{printf &quot;PM2.5 avg over %d readings: %.1f ug/m3\n&quot;, n, s/n}&#39;</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>PM2.5 avg over 1008 readings: 54.9 ug/m3
+</code></pre></div>
+
+<p>The backslash at the end of the first line tells Bash that the command continues on the next line. <code>awk</code> is a small programming language for working on columns. <code>-F,</code> sets the field separator to a comma. In the braces before <code>END</code>, <code>s+=$4</code> adds the fourth field (the value) to <code>s</code>, and <code>n++</code> adds one to <code>n</code> for each line. The <code>END</code> block runs once, after the last line, and <code>printf</code> prints the result. <code>%d</code> prints an integer, <code>%.1f</code> prints a decimal with one place after the point, and <code>\n</code> ends the line. The unit <code>ug/m3</code> means micrograms per cubic metre.</p>
+<p><strong>Step 6. Rank the stations by their average.</strong></p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;{s[$1]+=$4; n[$1]++} END{for(k in s) printf &quot;%s %.1f\n&quot;, k, s[k]/n[k]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span>-nr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>ST-04 56.1
+ST-02 55.3
+ST-05 54.9
+</code></pre></div>
+
+<p>This time <code>s</code> and <code>n</code> are arrays, which work like the dictionaries you will meet in Python. <code>s[$1]</code> is a total per station, keyed by the station id. <code>for(k in s)</code> loops over the keys, and the averages come out in no particular order. That is why the <code>sort -k2 -nr</code> stage is needed. <code>head -n 3</code> keeps the three highest.</p>
+<p><strong>Step 7. Save the recipe as a script.</strong></p>
+<p>The <code>flag.sh</code> script shown earlier does step 6 and then flags any station above 55 ug/m3. Run it with <code>bash flag.sh jan.csv</code>. Output:</p>
+<div class="hl"><pre><span></span><code>ST-04 56.1 BREACH
+ST-02 55.3 BREACH
+</code></pre></div>
+
+<p>Running it as <code>bash flag.sh</code> avoids needing the execute bit, but the course lab uses <code>chmod +x</code> and <code>./flag.sh</code>, which is what you should learn.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The lab uses a small sample file that you create yourself, so you can check every answer. Work in a new, empty directory. Create it with <code>mkdir lab2</code> and move into it with <code>cd lab2</code>.</p>
+<h3 id="step-1-find-your-bearings">Step 1. Find your bearings</h3>
+<p><strong>What you do.</strong> Confirm where you are, then list what is there.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">pwd</span>
+ls<span class="w"> </span>-la
+</code></pre></div>
+
+<p><strong>You should see.</strong> An absolute path ending in <code>lab2</code>, and a listing that contains only the entries <code>.</code> and <code>..</code>, because the directory is new.</p>
+<p><strong>How you know it worked.</strong> The path from <code>pwd</code> ends in <code>/lab2</code>. If it does not, run <code>cd</code> to the directory you created before going on.</p>
+<h3 id="step-2-create-a-sample-readings-file">Step 2. Create a sample readings file</h3>
+<p><strong>What you do.</strong> Write a small CSV file called <code>sample.csv</code>. The <code>printf</code> command prints the text you give it. The <code>&gt;</code> sends that text into the file.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;station_id,ts,pollutant,value\nST-01,2025-01-01T00:00:00,PM2.5,53.3\nST-01,2025-01-01T01:00:00,NO2,21.0\nST-02,2025-01-01T00:00:00,PM2.5,58.9\nST-02,2025-01-01T01:00:00,PM2.5,48.1\nST-03,2025-01-01T00:00:00,PM2.5,61.4\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>sample.csv
+</code></pre></div>
+
+<p><code>printf</code> interprets <code>\n</code> as a new line, so one long string becomes six lines. The single quotes stop Bash from reading the commas or the dots as anything special.</p>
+<p><strong>You should see.</strong> No output, because the text went into the file.</p>
+<p><strong>How you know it worked.</strong> Run <code>wc -l sample.csv</code>. The answer must be <code>6</code>: one header and five readings.</p>
+<h3 id="step-3-inspect-without-opening-an-editor">Step 3. Inspect without opening an editor</h3>
+<p><strong>What you do.</strong> Look at the header and the first row, then count the lines.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>sample.csv
+wc<span class="w"> </span>-l<span class="w"> </span>sample.csv
+</code></pre></div>
+
+<p><strong>You should see.</strong></p>
+<div class="hl"><pre><span></span><code>station_id,ts,pollutant,value
+ST-01,2025-01-01T00:00:00,PM2.5,53.3
+6 sample.csv
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> The count is 6 and the header has four names. If the count is off, your <code>printf</code> text was mistyped. Recreate the file with the same command.</p>
+<h3 id="step-4-filter-rows-that-matter">Step 4. Filter rows that matter</h3>
+<p><strong>What you do.</strong> Keep only the PM2.5 rows and count them.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>sample.csv
+grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>sample.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<p><strong>You should see.</strong> Four rows, for ST-01, ST-02 (twice) and ST-03. The count is <code>4</code>. The NO2 row is excluded.</p>
+<p><strong>How you know it worked.</strong> The count is 4. If you see 5, the NO2 row has been included, which means the pattern is wrong. Check it has commas on both sides.</p>
+<h3 id="step-5-pull-out-a-single-column">Step 5. Pull out a single column</h3>
+<p><strong>What you do.</strong> Print the station column and tally it, skipping the header.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>sample.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+
+<p><strong>You should see.</strong></p>
+<div class="hl"><pre><span></span><code>      2 ST-01
+      2 ST-02
+      1 ST-03
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> The three counts add up to 5, which is the number of data rows. If the header appears as a row, you left out <code>+2</code> in <code>tail</code>.</p>
+<h3 id="step-6-build-a-pipeline-that-answers-a-question">Step 6. Build a pipeline that answers a question</h3>
+<p><strong>What you do.</strong> Answer the question "which two stations have the highest average PM2.5?"</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>sample.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;{s[$1]+=$4; n[$1]++} END{for(k in s) printf &quot;%s %.1f\n&quot;, k, s[k]/n[k]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span>-nr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+
+<p><strong>You should see.</strong></p>
+<div class="hl"><pre><span></span><code>ST-03 61.4
+ST-02 53.5
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> ST-02 averages 58.9 and 48.1, which is 53.5. ST-01 has only one PM2.5 row, at 53.3, so it is third and is cut off by <code>head -n 2</code>. If your answer lists the stations in the wrong order, check that <code>sort</code> has <code>-nr</code>. Without <code>-n</code>, sort compares text, and "61.4" would be ranked below "9.0".</p>
+<h3 id="step-7-save-the-result-and-lock-it-down">Step 7. Save the result and lock it down</h3>
+<p><strong>What you do.</strong> Write the flagging script, make it executable, run it on the sample, save the output to a file, and restrict that file so only you can read it.</p>
+<p><strong>Type.</strong> Create <code>flag.sh</code> with the editor <code>nano</code>, which is a text editor that runs inside the terminal:</p>
+<div class="hl"><pre><span></span><code>nano<span class="w"> </span>flag.sh
+</code></pre></div>
+
+<p>Type in the script exactly as it appears in the worked example, then save with Ctrl+O, press Enter, and leave with Ctrl+X. Then run:</p>
+<div class="hl"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>flag.sh
+./flag.sh<span class="w"> </span>sample.csv<span class="w"> </span>&gt;<span class="w"> </span>breaches.txt
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>breaches.txt
+ls<span class="w"> </span>-l<span class="w"> </span>breaches.txt
+cat<span class="w"> </span>breaches.txt
+</code></pre></div>
+
+<p>Line by line, the new parts:</p>
+<ul>
+<li><code>chmod +x flag.sh</code> lets the script run.</li>
+<li><code>./flag.sh sample.csv</code> runs it. The <code>./</code> tells the shell to use the file in this directory, because the current directory is not on <code>PATH</code>.</li>
+<li><code>&gt; breaches.txt</code> saves the output.</li>
+<li><code>chmod 600 breaches.txt</code> makes the report readable and writable by you only.</li>
+<li><code>ls -l breaches.txt</code> confirms the permissions start with <code>-rw-------</code>.</li>
+<li><code>cat breaches.txt</code> prints the file. <code>cat</code> means "concatenate", and with one file it prints its contents.</li>
+</ul>
+<p><strong>You should see.</strong> The <code>ls -l</code> line starts with <code>-rw-------</code>. The file contents are:</p>
+<div class="hl"><pre><span></span><code>ST-03 61.4 BREACH
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> Only ST-03 is above 55, and the permission string shows owner-only access. If you get <code>Permission denied</code> when running <code>./flag.sh</code>, you skipped <code>chmod +x</code>.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Reimplement a grep</td>
+<td>cut</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>grep keeps only pm25 rows</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>cut extracts the station_id column</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>sort</td>
+<td>uniq -c as sorted (item, count) tuples</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Full pipeline for pm25</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 62 of the 100 points. The other 38 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K02.html#y2-t04-add-docssetupmd-reproducible-in-10-min-submit-bridge-plan">Y2-T04 · Add docs/setup.md reproducible in ≤10 min; submit bridge plan</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day 2 quiz has ten case-study multiple-choice questions, one for each topic below, in the same order. The pass mark is 70%, which means seven correct answers. Only your first attempt counts, because the skill score keeps that first attempt and a second try does not replace it. The questions in this section are practice questions of your own, written for these topics. They are not the platform questions, so do not expect the same wording.</p>
+<p>Every case-study question describes a short CityPulse situation: a team, a symptom or a limit. Use the same method each time.</p>
+<ol>
+<li>Read the last line first. It tells you what is being asked, such as the command to run, the likely cause or the safest choice.</li>
+<li>Underline the facts in the scenario that matter. A file name, a permission, a line count or a process that ignores a signal is often the whole answer.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. Many wrong options are good commands used in the wrong place.</li>
+<li>Watch three words. "Most" asks for the strongest answer among several sensible ones. "First" asks for the step that comes before the others. "Best" asks for the option that is safest or simplest, not just one that works.</li>
+</ol>
+<p>Each topic below explains the tool from zero, shows it in a scenario, warns you about one trap and then gives you three practice questions. Read the explanation before you try the questions. The section ends with a harder self-test that mixes all ten topics.</p>
+<h3 id="listing-files-with-ls-and-wildcards">Listing files with ls and wildcards</h3>
+<p><strong>What it is.</strong> <code>ls</code> lists the names in a directory. A wildcard is a symbol that stands for other characters. <code>*</code> matches any run of characters, including none. <code>?</code> matches exactly one character, and <code>[ab]</code> matches one character from the list. The shell does the matching before the command runs. It replaces the pattern with the matching names in the current directory, and then <code>ls</code> receives those names. Wildcards look only at the current directory, not at subdirectories. Names that start with a dot are not matched by <code>*</code>.</p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span>*.csv
+</code></pre></div>
+
+<p>If the folder holds <code>jan.csv</code> and <code>feb.csv</code>, the shell turns the command into <code>ls -lh feb.csv jan.csv</code> (the names come in alphabetical order), and you see one long line per file, with sizes in K or M. If no file matches, the shell passes the pattern through unchanged, and <code>ls</code> reports that it cannot access it.</p>
+<p><strong>How it shows up in a case study.</strong> A data team keeps raw drops in <code>/data/readings</code>. The folder holds <code>jan.csv</code>, <code>feb.csv</code>, a <code>.env</code> file with API keys and <code>notes.txt</code>. A new engineer wants a quick size check of the drops only. A pattern selects names by their shape, not by their contents, so <code>*.csv</code> picks the drops and leaves the secrets and the notes out. One line, <code>ls -lh *.csv</code>, does the job and opens no file.</p>
+<div class="box box-trap"><div class="box-h">Trap: Leaving the pattern unquoted in find</div><p>Writing <code>find /data -name *.csv</code> without quotes lets the shell expand the pattern in the current folder first. <code>find</code> then receives a list of file names, not a pattern to search for. Quote it: <code>find /data -name '*.csv'</code>.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The raw drop folder holds jan.csv, feb.csv, a .env file and notes.txt. Your lead wants the sizes of the CSV drops only, in human units, from the current folder. Which command does this?&quot;, &quot;opts&quot;: [&quot;ls -lh csv&quot;, &quot;ls -lh *.csv&quot;, &quot;ls -lh .env&quot;, &quot;cat *.csv&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The shell replaces *.csv with the matching names before ls runs, so only jan.csv and feb.csv are listed. The tempting wrong answer is cat *.csv, which prints the contents of the files instead of listing their names and sizes.&quot;}, {&quot;q&quot;: &quot;A folder holds app.log and web.log. A teammate types find /srv/hunt -name *.log and gets an error saying that paths must precede the expression. What is the cause and the fix?&quot;, &quot;opts&quot;: [&quot;find cannot use -name with a wildcard, so use -iname instead&quot;, &quot;find must be started from /srv/hunt, so run cd first&quot;, &quot;The shell expanded *.log into app.log and web.log before find ran, so quote the pattern as &#x27;*.log&#x27;&quot;, &quot;The error means the log files are empty, so find has nothing to read&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;With two matches the shell passes find two names, and find treats web.log as a second starting path after the test, which it rejects. Quotes stop the expansion. The tempting wrong answer is -iname, which changes only the letter case and leaves the expansion problem in place.&quot;}, {&quot;q&quot;: &quot;In a folder with no .txt files, ls *.txt prints \&quot;cannot access &#x27;*.txt&#x27;: No such file or directory\&quot;. Which statement explains this?&quot;, &quot;opts&quot;: [&quot;ls cannot read hidden files, and every .txt file is hidden&quot;, &quot;The folder is locked, so the shell refuses to list it&quot;, &quot;The shell searches every subfolder for .txt files and finds none&quot;, &quot;When a wildcard matches nothing, the shell passes the pattern through unchanged, so ls looks for a file literally named *.txt&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The message names the pattern itself, which shows that the shell found no match and handed the text over unchanged. The tempting wrong answer is that the folder is locked, but the problem is the missing match, not a permission.&quot;}]}"></div>
+
+<h3 id="reading-the-start-and-end-of-a-file">Reading the start and end of a file</h3>
+<p><strong>What it is.</strong> <code>head -n N</code> prints the first N lines of a file, and <code>tail -n N</code> prints the last N lines. <code>tail -n +N</code> is different. The plus sign means "start at line N and print to the end". In a CSV file, <code>tail -n +2</code> skips the header in line 1. If you ask for more lines than the file holds, <code>head</code> and <code>tail</code> print the whole file and report no error.</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>readings.csv
+tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>readings.csv
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>readings.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+
+<p>Assume the file has four lines: a header, then three readings. The output is:</p>
+<div class="hl"><pre><span></span><code>station_id,ts,pollutant,value
+ST-01,2025-01-01T00:00:00,PM2.5,53.3
+ST-03,2025-01-01T02:00:00,PM2.5,47.9
+ST-01,2025-01-01T00:00:00,PM2.5,53.3
+</code></pre></div>
+
+<p>The first command shows the header and the first reading. The second shows the last line. The third starts at line 2 and keeps only the first row of what follows.</p>
+<p><strong>How it shows up in a case study.</strong> An on-call engineer wants a sample of the newest rows from <code>readings.csv</code>, which is 10,000 lines long. The ingest job appends to the end of the file, so the newest rows are at the bottom. The newest rows are at the end, so the right tool is <code>tail</code>, and the number after <code>-n</code> is how many rows you want. <code>head</code> would show the oldest rows, which were written first.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading tail -n 2 as &quot;skip the first two lines&quot;</div><p>Typing <code>tail -n 2</code> to skip a header is a mistake. It prints the last two lines of the file, so almost every reading is missing. <code>tail -n +2</code> is the form that starts at line 2.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The ingest job appends to readings.csv, which is 10,000 lines long. The on-call engineer needs the five most recent rows to check the ingest. Which command prints them?&quot;, &quot;opts&quot;: [&quot;head -n 5 readings.csv&quot;, &quot;tail -n 5 readings.csv&quot;, &quot;tail -n +5 readings.csv&quot;, &quot;wc -l readings.csv&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;tail -n 5 prints the last five lines, which are the newest rows. head prints the oldest rows. tail -n +5 prints from line 5 to the end, which is nearly the whole file.&quot;}, {&quot;q&quot;: &quot;A teammate needs every row of feb.csv except the header, to pass into a sort. Which command does this?&quot;, &quot;opts&quot;: [&quot;tail -n 1 feb.csv&quot;, &quot;head -n 2 feb.csv&quot;, &quot;tail -n +2 feb.csv&quot;, &quot;tail -n 2 feb.csv&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;tail -n +2 starts at line 2 and prints to the end. The tempting wrong answer is tail -n 2, which prints only the last two lines, not the rows after the header.&quot;}, {&quot;q&quot;: &quot;A file has 12 lines, and somebody runs head -n 20 on it. What does the command print?&quot;, &quot;opts&quot;: [&quot;An error, because 20 is larger than the number of lines&quot;, &quot;Only the first 10 lines, because head always prints ten&quot;, &quot;Nothing, because the count must match the length of the file&quot;, &quot;All 12 lines, because head stops at the end of the file without reporting an error&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;head stops when it reaches the end of the file, and a larger count is not an error. The tempting wrong answer is that head always prints ten lines, which is true only when you leave out -n.&quot;}]}"></div>
+
+<h3 id="counting-lines-with-wc">Counting lines with wc</h3>
+<p><strong>What it is.</strong> <code>wc</code> stands for "word count". With <code>-l</code> it counts lines. It counts the newline characters, the invisible marks that end each line, so a last line that has no newline is not counted. Without a flag, <code>wc</code> prints lines, words and bytes together.</p>
+<div class="hl"><pre><span></span><code>wc<span class="w"> </span>-l<span class="w"> </span>jan.csv
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>jan.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<p>The output is:</p>
+<div class="hl"><pre><span></span><code>4033 jan.csv
+4032
+</code></pre></div>
+
+<p>The first count includes the header. The second skips it, so it is the number of readings.</p>
+<p><strong>How it shows up in a case study.</strong> A teammate counted the readings for one station by running <code>wc -l</code> on an export that has a header line. The summary sheet shows one more row than the station really has. The header is a line of text, not a reading, so one line must come off the count. The check is simple: count with <code>tail -n +2</code>, or subtract one.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reporting the raw wc figure as the reading count</div><p>Writing 4,033 as the number of readings because <code>wc -l</code> printed it. The header is one of those 4,033 lines. The right figure is 4,032.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A station file holds a header line and 2,500 readings, one reading per line. A teammate reports 2,501 readings from wc -l. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;2,500 readings, because the header is one of the 2,501 lines counted by wc -l&quot;, &quot;2,501 readings, because wc -l counts only the readings&quot;, &quot;2,502 readings, because wc adds one for the header&quot;, &quot;5,002 readings, because each reading takes two lines&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;wc -l counts every line, and the header is one of them, so it must come off the count. The tempting wrong answer is 2,501, which assumes wc -l skips the header.&quot;}, {&quot;q&quot;: &quot;A pipeline counts rows with wc -l, but the last reading of the file is not followed by a newline character. Compared with the number of lines a person sees on screen, what does wc -l report?&quot;, &quot;opts&quot;: [&quot;One more than the visible lines, because wc counts the end of the file&quot;, &quot;The same number in every case, because wc counts characters&quot;, &quot;One fewer than the visible lines, because wc -l counts newline characters and the last line has none&quot;, &quot;Zero, because wc -l needs a blank line at the end&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;wc -l counts newline characters, so an unfinished last line is missed. The tempting wrong answer is one more, which assumes that the end of the file counts as a line.&quot;}, {&quot;q&quot;: &quot;A team runs grep &#x27;,PM2.5,&#x27; jan.csv | wc -l and gets 1008 for a file that has a header. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The header is counted, so there are 1007 PM2.5 readings&quot;, &quot;The header is not counted, because its text does not contain ,PM2.5, so 1008 is the number of matching rows&quot;, &quot;The count includes NO2 rows, because wc does not filter&quot;, &quot;The result is a size in bytes, because wc -l always counts bytes&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;grep filters the rows before wc counts them, so the header never reaches wc. The tempting wrong answer is the first option, which assumes the header is always included.&quot;}]}"></div>
+
+<h3 id="searching-text-with-grep">Searching text with grep</h3>
+<p><strong>What it is.</strong> <code>grep</code> prints every line that contains the text you give it. <code>-r</code> searches all subfolders, <code>-n</code> shows line numbers, <code>-i</code> ignores letter case, <code>-l</code> prints only the names of files that match, and <code>-c</code> counts matching lines. The pattern is a regular expression, and in a regular expression a dot matches any single character. So <code>PM2.5</code> also matches <code>PM205</code>. Put the pattern in single quotes so the shell does not change it.</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-rin<span class="w"> </span><span class="s1">&#39;pm2_5&#39;</span><span class="w"> </span>/srv/hunt
+grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;,PM2.5,&#39;</span><span class="w"> </span>jan.csv
+</code></pre></div>
+
+<p>A match looks like <code>/srv/hunt/site3/notes.txt:12:PM2_5 sensor offline</code>. The text before the first colon is the file, the number is the line, and the rest is the line itself. The second command prints one number, the count of matching rows, which might be 1008 for a month of data.</p>
+<p><strong>How it shows up in a case study.</strong> An engineer must find every note under <code>/srv/hunt</code> that mentions a sensor fault, however the words are capitalised. The notes sit in several folders, so one file is not enough. Recursion is needed to reach every folder, and ignoring case matches <code>PM2_5</code>, <code>pm2_5</code> and <code>Pm2_5</code> in one search. The reasoning picks the flags first and the pattern second.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting grep to search a whole folder by default</div><p>Running <code>grep 'pm2_5' /srv/hunt</code> without <code>-r</code> prints <code>grep: /srv/hunt: Is a directory</code> and searches nothing. Without <code>-r</code>, grep reads one file at a time.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An engineer must find every line under /srv/hunt that mentions PM2.5 in any capitalisation, with its line number. Her first try, grep -n &#x27;PM2.5&#x27; /srv/hunt, prints an error and no matches. Which command does the job?&quot;, &quot;opts&quot;: [&quot;grep -n &#x27;PM2.5&#x27; /srv/hunt, which searches only one file&quot;, &quot;grep -rn &#x27;PM2.5&#x27; /srv/hunt, which searches folders but keeps case&quot;, &quot;grep -rin &#x27;PM2.5&#x27; /srv/hunt, which searches folders, ignores case and shows line numbers&quot;, &quot;find /srv/hunt -i &#x27;PM2.5&#x27;, which lists file names only&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-r, -i and -n together cover all three needs. The tempting wrong answer is grep -rn, which searches folders but is case-sensitive, so it misses pm2.5 written in lower case.&quot;}, {&quot;q&quot;: &quot;A search for &#x27;PM2.5&#x27; returns a line that reads \&quot;PM205 sensor offline\&quot;, which nobody expected. Which explanation fits best?&quot;, &quot;opts&quot;: [&quot;The pattern is read as PM25, so the dot is removed before the search&quot;, &quot;In a regular expression the dot matches any single character, so PM2.5 also matches PM205&quot;, &quot;The line is in lower case, and grep ignores case by default&quot;, &quot;grep counts characters, so it printed the wrong line&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The dot is a wildcard for one character, so the 0 in PM205 satisfies it. The tempting wrong answer is the case explanation, but grep is case-sensitive by default, so case does not explain a match.&quot;}, {&quot;q&quot;: &quot;A teammate runs grep -n &#x27;pm2_5&#x27; /srv/hunt and sees \&quot;grep: /srv/hunt: Is a directory\&quot;. What should they do?&quot;, &quot;opts&quot;: [&quot;Use cat /srv/hunt, which prints the contents of the directory&quot;, &quot;Use ls -lh /srv/hunt and read the names by eye&quot;, &quot;Use sudo, because the directory must be locked&quot;, &quot;Add -r, so grep descends into the directory tree and searches the files inside it&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-r tells grep to search the files inside folders. The tempting wrong answer is sudo, but the message is not a permission error.&quot;}]}"></div>
+
+<h3 id="redirecting-input-and-output">Redirecting input and output</h3>
+<p><strong>What it is.</strong> Every program has three streams. Standard input (0) is where it reads, standard output (1) is where normal results go, and standard error (2) is where error messages go. <code>&gt;</code> sends standard output to a file and replaces the file. <code>&gt;&gt;</code> adds to the end of the file. <code>&lt;</code> feeds a file in as input. <code>2&gt;</code> sends standard error to a file, and <code>|</code> sends standard output to the next program. A stream you do not redirect still appears on the screen.</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span><span class="s1">&#39;,NO2,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span>&gt;<span class="w"> </span>no2.csv
+grep<span class="w"> </span><span class="s1">&#39;,NO2,&#39;</span><span class="w"> </span>jan.csv<span class="w"> </span>&gt;&gt;<span class="w"> </span>all_pollutants.csv
+sort<span class="w"> </span>&lt;<span class="w"> </span>no2.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+ls<span class="w"> </span>/no/such/folder<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors.txt
+</code></pre></div>
+
+<p>The first two commands print nothing to the screen. The third prints the first line in sort order. The fourth prints nothing, because its error message goes into <code>errors.txt</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A nightly job writes one summary line to <code>report.txt</code>, and the team wants each run to add a line and keep the older ones. Another job should save its error messages for later. The reasoning is that <code>&gt;</code> replaces, so the job must use <code>&gt;&gt;</code> to keep its history. Error messages are a separate stream, so they need <code>2&gt;</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting &gt; to capture error messages</div><p>Writing <code>ls /missing &gt; listing.txt</code> and expecting the error to land in <code>listing.txt</code>. Only standard output is redirected. The error still appears on screen, and <code>listing.txt</code> is created empty. Use <code>2&gt;</code> for errors.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A nightly job writes one summary line per run into report.txt, which already holds the earlier runs. The job uses &gt; report.txt. What happens to the earlier lines?&quot;, &quot;opts&quot;: [&quot;They are lost, because &gt; replaces the file, so the job should use &gt;&gt; instead&quot;, &quot;They are kept, because &gt; always adds to the end of a file&quot;, &quot;They move to standard error, because &gt; sends old content there&quot;, &quot;They are sorted, because &gt; runs sort on the file first&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;&gt; empties the file before writing. The tempting wrong answer is that the old lines are kept, which assumes &gt; behaves like &gt;&gt;.&quot;}, {&quot;q&quot;: &quot;A script runs ls /data/missing &gt; listing.txt. The folder does not exist, and the team expects the error to be saved in listing.txt for later. What actually happens?&quot;, &quot;opts&quot;: [&quot;The error is saved in listing.txt, because &gt; captures everything the command prints&quot;, &quot;The command runs silently, because the shell hides errors from redirected commands&quot;, &quot;The error appears on screen, and listing.txt is created empty, because &gt; redirects only standard output&quot;, &quot;The shell refuses to run the command, because it cannot write its error to a file&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Only standard output goes to the file, so the error stays on screen, and the file is created empty before ls runs. The tempting wrong answer is the first option, which treats &gt; as a catch-all.&quot;}, {&quot;q&quot;: &quot;Which pipeline prints the number of PM2.5 rows on screen and saves any error messages from grep in errors.log?&quot;, &quot;opts&quot;: [&quot;grep &#x27;,PM2.5,&#x27; jan.csv | wc -l &gt; errors.log&quot;, &quot;grep &#x27;,PM2.5,&#x27; jan.csv &gt; errors.log | wc -l&quot;, &quot;grep &#x27;,PM2.5,&#x27; jan.csv 2&gt;&amp;1 | wc -l&quot;, &quot;grep &#x27;,PM2.5,&#x27; jan.csv 2&gt; errors.log | wc -l&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;2&gt; sends grep&#x27;s error messages to the file, and the pipe still carries its normal output to wc. Option two sends the rows into the file, so wc counts nothing. Option one sends the count into the file instead of the screen, and option three counts the error messages as lines.&quot;}]}"></div>
+
+<h3 id="setting-permissions-with-chmod">Setting permissions with chmod</h3>
+<p><strong>What it is.</strong> Every file has permissions for three groups of users: the owner, the group and everyone else. Each group has three bits: <code>r</code> for read (value 4), <code>w</code> for write (value 2) and <code>x</code> for execute (value 1). A permission string such as <code>-rw-r-----</code> has ten characters: the file type, then the three groups. <code>chmod</code> changes the bits. A three-digit number sets all three groups at once, and each digit is the sum of its bits. <code>+x</code> adds the execute bit and leaves the others alone.</p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>.env
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.env
+ls<span class="w"> </span>-l<span class="w"> </span>.env
+</code></pre></div>
+
+<p>The output is:</p>
+<div class="hl"><pre><span></span><code>-rw-r--r-- 1 city city 22 Nov 11 09:14 .env
+-rw------- 1 city city 22 Nov 11 09:14 .env
+</code></pre></div>
+
+<p>Only the permission string changes. The owner keeps read and write, and the group and others lose everything.</p>
+<p><strong>How it shows up in a case study.</strong> A new script, <code>fetch_once.sh</code>, fails with "Permission denied" when run as <code>./fetch_once.sh</code>. The same team keeps an API key in <code>.env</code>, which must stay private. The script needs the execute bit, which <code>+x</code> adds and nothing else. The key needs the smallest access, which is <code>600</code>. Opening access to everyone is never the fix.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using chmod 777 to make an error go away</div><p><code>chmod 777</code> makes a file readable, writable and executable by every user on the server, including a file that holds secrets. It stops the error, but it gives away far more access than the fix needs.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate&#x27;s script fails with \&quot;Permission denied\&quot; when run as ./fetch_once.sh, and its permissions are -rw-r--r--. Which change fixes the problem with the least access?&quot;, &quot;opts&quot;: [&quot;chmod 777 fetch_once.sh&quot;, &quot;chmod 600 fetch_once.sh&quot;, &quot;chmod +x fetch_once.sh&quot;, &quot;chmod -w fetch_once.sh&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;+x adds execute and keeps the other bits. The tempting wrong answer is 777, which works but gives every user write access to the script. chmod 600 would remove the read bit for the group and others, and it would still not add execute.&quot;}, {&quot;q&quot;: &quot;The team stores the CityPulse API key in .env, and only the owner should use it. Which mode is most appropriate?&quot;, &quot;opts&quot;: [&quot;777&quot;, &quot;644&quot;, &quot;666&quot;, &quot;600&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;600 gives the owner read and write and nothing to anyone else. The tempting wrong answer is 644, which lets every user on the server read the key.&quot;}, {&quot;q&quot;: &quot;ls -l shows -rwxr-x--- for deploy.sh. Who can run it?&quot;, &quot;opts&quot;: [&quot;The owner and the members of the group, but not other users&quot;, &quot;The owner only, because the group has no execute bit&quot;, &quot;Everyone, because others can read the file&quot;, &quot;Nobody, because a group cannot execute a file&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The owner has rwx and the group has r-x, so both can run the script. The tempting wrong answer is that only the owner can run it, which ignores the group&#x27;s execute bit.&quot;}]}"></div>
+
+<h3 id="grouping-with-cut-sort-and-uniq">Grouping with cut, sort and uniq</h3>
+<p><strong>What it is.</strong> <code>cut -d, -f1</code> keeps field 1 of each comma-separated line. <code>sort</code> puts lines in order. <code>sort -n</code> compares numbers by value, <code>sort -r</code> reverses the order, <code>sort -k2</code> sorts on the second field and <code>sort -rn</code> combines reverse and numeric. <code>uniq -c</code> collapses runs of identical neighbouring lines into one line and writes the count in front. Together, <code>cut | sort | uniq -c</code> counts how often each value appears.</p>
+<div class="hl"><pre><span></span><code><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;b,1\na,2\nb,3\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+
+<p>The output is:</p>
+<div class="hl"><pre><span></span><code>      1 a
+      2 b
+</code></pre></div>
+
+<p><code>printf</code> writes three lines. <code>cut</code> keeps the letters, <code>sort</code> brings the two <code>b</code> lines together, and <code>uniq -c</code> counts each group.</p>
+<p><strong>How it shows up in a case study.</strong> A team wants the readings per station from a day's file, and then the three busiest stations. They count with <code>cut | sort | uniq -c</code>, which puts the count first on each line. The busiest stations need a reverse numeric sort, because a text sort would rank <code>9</code> above <code>672</code>. The reasoning is that <code>sort -rn</code> compares the counts as numbers, and <code>head -n 3</code> keeps the top of the list.</p>
+<div class="box box-trap"><div class="box-h">Trap: Dropping -c from uniq</div><p>Without <code>-c</code>, <code>uniq</code> prints each distinct station once and gives no count, so the tally is lost. Keep <code>-c</code>, and keep the <code>sort</code> before <code>uniq</code> so that identical ids sit next to each other.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate ran cut -d, -f1 jan.csv | uniq -c on an unsorted file and sees ST-01 on several lines, each with a small count. Which change gives one count per station?&quot;, &quot;opts&quot;: [&quot;Replace cut with head&quot;, &quot;Put sort between cut and uniq, so that identical ids sit next to each other&quot;, &quot;Add -n to uniq, so that it sorts the counts&quot;, &quot;Replace uniq -c with wc -l&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;uniq merges only neighbouring duplicates, so the rows must be grouped before it runs. The tempting wrong answer is adding -n to uniq, but uniq has no option that sorts, so the identical ids stay apart.&quot;}, {&quot;q&quot;: &quot;You need the five stations with the most readings, highest first, from lines such as \&quot;672 ST-03\&quot; that an earlier count produced. Which command comes closest?&quot;, &quot;opts&quot;: [&quot;sort | head -n 5&quot;, &quot;sort -k2 | tail -n 5&quot;, &quot;sort -rn | head -n 5&quot;, &quot;uniq -c | wc -l&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-n compares the counts as numbers, -r puts the largest first, and head keeps five. The tempting wrong answer is sort | head -n 5, which sorts the text and returns the first five lines in text order, not the largest counts.&quot;}, {&quot;q&quot;: &quot;Which pipeline gives one line per pollutant, with its count, from a file where the pollutant is the third comma-separated field?&quot;, &quot;opts&quot;: [&quot;cut -d, -f2 jan.csv | sort | uniq -c&quot;, &quot;cut -f3 jan.csv | uniq -c&quot;, &quot;sort -d, -f3 jan.csv | uniq -c&quot;, &quot;cut -d, -f3 jan.csv | sort | uniq -c&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-d, sets the comma as the delimiter and -f3 selects the third field. The tempting wrong answer is -f2, which is the timestamp. cut -f3 without -d splits on tabs, so it returns whole lines.&quot;}]}"></div>
+
+<h3 id="checking-disk-space-with-df">Checking disk space with df</h3>
+<p><strong>What it is.</strong> <code>df</code> stands for "disk free". It reports each filesystem, which is a disk or partition with a set of folders on it. <code>df -h</code> shows sizes in K, M, G and T. Its columns are Size, Used, Avail (the space you can still write to), Use% (how full the disk is) and Mounted on (the folder where that filesystem appears). <code>du</code> answers a different question. <code>du -h</code> adds up the size of the files under a folder. Use <code>df</code> to ask whether a disk is full and <code>du</code> to find which folder is large.</p>
+<div class="hl"><pre><span></span><code>df<span class="w"> </span>-h<span class="w"> </span>/data
+du<span class="w"> </span>-sh<span class="w"> </span>/data/readings
+</code></pre></div>
+
+<p>The output looks like this, with your own sizes:</p>
+<div class="hl"><pre><span></span><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb1       200G  184G   16G  92% /data
+140K    /data/readings
+</code></pre></div>
+
+<p><strong>How it shows up in a case study.</strong> The ingest job fails with "No space left on device" while it writes to <code>/data</code>. The team must decide whether to clear old drops or ask for more disk. The first question is how much space is free on the filesystem that holds <code>/data</code>, which is <code>df</code>. Only then does <code>du</code> help, to find the folders that take the most room.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using du to find free space</div><p><code>du -h /data</code> adds up the files in <code>/data</code>, so it says nothing about the space left on the disk. Use <code>df -h /data</code> for the free space.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The /data disk is full, and the ingest job fails with \&quot;No space left on device\&quot;. Which command shows the free space on the filesystem that holds /data, in human units?&quot;, &quot;opts&quot;: [&quot;free -h&quot;, &quot;df -h /data&quot;, &quot;du -h /data&quot;, &quot;ps aux&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;df -h /data shows Avail and Use% for the disk. free -h reports memory (RAM), and du -h /data measures the size of the folder without giving the free space on the disk.&quot;}, {&quot;q&quot;: &quot;The team wants the folders under /data/readings sorted from the largest to the smallest, with sizes in human units. Which command is best?&quot;, &quot;opts&quot;: [&quot;df -h /data/readings&quot;, &quot;ls -l /data/readings | wc -l&quot;, &quot;which du&quot;, &quot;du -sh /data/readings/* | sort -rh&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;du -sh prints one total per folder, and sort -rh understands K, M and G and puts the largest first. The tempting wrong answer is df -h, which reports the whole disk, not the folders on it.&quot;}, {&quot;q&quot;: &quot;Which statement about df and du is correct?&quot;, &quot;opts&quot;: [&quot;df reports whole filesystems, including the free space, while du adds up the size of the files under one path&quot;, &quot;df measures the size of folders, and du reports the free space on the disk&quot;, &quot;They report the same numbers, so either one answers any disk question&quot;, &quot;du is the memory counter, and df counts running processes&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The tempting wrong answer is the second option, which swaps the two tools. Each one answers a different question.&quot;}]}"></div>
+
+<h3 id="finding-your-location-with-pwd">Finding your location with pwd</h3>
+<p><strong>What it is.</strong> <code>pwd</code> stands for "print working directory". It prints the absolute path of the directory you are in, which starts at the root <code>/</code>. <code>cd</code> changes that directory for the current shell only. A relative path such as <code>raw/jan.csv</code> is measured from the working directory, so the same command can find different files from different folders.</p>
+<div class="hl"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/data/readings
+<span class="nb">pwd</span>
+<span class="nb">cd</span><span class="w"> </span>..
+<span class="nb">pwd</span>
+</code></pre></div>
+
+<p>The output is:</p>
+<div class="hl"><pre><span></span><code>/data/readings
+/data
+</code></pre></div>
+
+<p><code>cd ..</code> moves one level up to the parent directory, so the second <code>pwd</code> shows <code>/data</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A job runs <code>ingest.sh raw/jan.csv</code> from <code>/home/city</code>, and it fails with "No such file or directory". The data is in <code>/data/readings/raw</code>. A relative path is measured from the place where the command starts, and that place is <code>/home/city</code>. The check is <code>pwd</code>, and the fix is either an absolute path or a <code>cd</code> before the run.</p>
+<div class="box box-trap"><div class="box-h">Trap: Thinking a script resolves paths from its own folder</div><p>A relative path inside a script is measured from the folder where the command was started, not from the folder that holds the script. A script started from another folder reads relative paths from there.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your teammate runs head -n 2 jan.csv from /home/city and gets \&quot;No such file or directory\&quot;. The file is in /data/readings. Which first step and fix are right?&quot;, &quot;opts&quot;: [&quot;echo $PATH, then add /data/readings to PATH&quot;, &quot;which jan.csv, then copy the file into /home/city&quot;, &quot;pwd, then cd /data/readings before running the command, or pass the full path to jan.csv&quot;, &quot;ls -la /home/city, then move jan.csv into /home/city&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;pwd shows where the shell is. PATH lists folders for finding programs, not data files, so changing it would not help a data file path. The tempting wrong answer is adding /data/readings to PATH.&quot;}, {&quot;q&quot;: &quot;A script runs find . -name &#x27;*.csv&#x27; and finds nothing, although CSV files are visible in /data/readings. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;find needs -r before it can see files in a folder&quot;, &quot;The CSV files start with a dot, so find hides them&quot;, &quot;The quotes around *.csv stop find from seeing any files&quot;, &quot;The dot in find . means the folder where the script was started, which is not /data/readings&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The dot is a relative path measured from where the command runs. The tempting wrong answer is the quotes, but quoting the pattern is correct here.&quot;}, {&quot;q&quot;: &quot;Which statement about cd and the working directory is correct?&quot;, &quot;opts&quot;: [&quot;cd changes the working directory of the current shell, and a script you run starts in the folder you ran it from&quot;, &quot;cd changes the working directory of every program on the server&quot;, &quot;cd must be typed before each command, or the command fails&quot;, &quot;pwd changes the directory to the one it prints&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The tempting wrong answer is that cd affects every program on the server. It affects only the shell where you typed it.&quot;}]}"></div>
+
+<h3 id="stopping-processes-with-kill">Stopping processes with kill</h3>
+<p><strong>What it is.</strong> A process is a running program, and it has a number called its PID. Adding <code>&amp;</code> to the end of a command starts it in the background, so the prompt comes back at once. <code>jobs</code> lists the background jobs of this shell, and <code>kill %1</code> sends a signal to job number 1. <code>ps aux</code> lists every process on the machine. <code>kill PID</code> sends the TERM signal, which asks a program to stop and run its cleanup. <code>kill -9</code> sends KILL, which the program cannot catch, so it stops without cleanup.</p>
+<div class="hl"><pre><span></span><code>sleep<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="nb">jobs</span>
+<span class="nb">kill</span><span class="w"> </span>%1
+<span class="nb">jobs</span>
+</code></pre></div>
+
+<p>The exact PID and spacing will differ. The first <code>jobs</code> shows the job as Running, and the second shows it as Terminated. If the second <code>jobs</code> still says Running, run it once more, because the shell can take a moment to notice. The <code>kill</code> line itself prints nothing.</p>
+<p><strong>How it shows up in a case study.</strong> An ingest job started in the background is halfway through writing a file, and it must stop. The team wants the program to finish the step it is on and remove its temporary file. TERM lets the program run that cleanup, and KILL does not. The reasoning is to send the plain <code>kill</code> first, check after a short wait, and use <code>-9</code> only if the process is still running.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reaching for kill -9 first</div><p><code>kill -9</code> stops a process, but it skips cleanup and can leave files half-written. Send the plain <code>kill</code> first, and use <code>-9</code> only when the process ignores it.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A fetch script started by cron is stuck on a network call, and its PID is 5510. You want it to stop and clean up. Which command asks it to stop cleanly?&quot;, &quot;opts&quot;: [&quot;kill -9 5510&quot;, &quot;kill 5510&quot;, &quot;chmod -x 5510&quot;, &quot;rm -f 5510&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A plain kill sends TERM, which lets the program clean up. The tempting wrong answer is kill -9, which stops it at once but skips cleanup. chmod and rm do not stop a running process.&quot;}, {&quot;q&quot;: &quot;You started sleep 900 &amp; in this shell and want to stop it. Which sequence is correct?&quot;, &quot;opts&quot;: [&quot;kill -9 %1 at once, with no check&quot;, &quot;ps aux | grep sleep, then chmod -x sleep&quot;, &quot;jobs to confirm the job number, then kill %1&quot;, &quot;Restart the server, which is the only way to end a background job&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;jobs shows the job number, and kill %1 sends TERM. The tempting wrong answer is the first option, which uses -9 without any need.&quot;}, {&quot;q&quot;: &quot;A program ignored TERM and is still running after a reasonable wait. What is the right next step?&quot;, &quot;opts&quot;: [&quot;Run kill -9 on every process owned by the user&quot;, &quot;Run chmod 777 on the program so that it can stop&quot;, &quot;Reboot the server before trying anything else&quot;, &quot;After the wait, send kill -9 to that one PID, after checking that the PID belongs to the right program&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-9 is the fallback after TERM is ignored, and it targets a single PID. The tempting wrong answer is killing every process, which could stop other people&#x27;s work.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>These ten questions mix all the topics, one per topic in the same order, and they are harder than the questions above. Work each one with the four-step method before you look at the answer.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;In /data/readings you see jan.csv, feb.csv and a subfolder archive/ that holds 2024.csv. A colleague says ls *.csv would also list archive/2024.csv, because the shell searches subfolders. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The colleague is right, because the shell searches every subfolder for a match&quot;, &quot;The colleague is wrong, because the wildcard is expanded only against names in the current folder, and archive does not end in .csv&quot;, &quot;The colleague is right, but only if the subfolder has a name that ends in csv&quot;, &quot;Both are wrong, because ls cannot take wildcards at all&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Wildcards match names in the current directory only. The tempting wrong answer is the first, which confuses ls with find, because find -name is the tool that searches subfolders.&quot;}, {&quot;q&quot;: &quot;A nightly export has 48,000 lines, and you need lines 100 to 102 to check a bad record. The header is line 1. Which command prints exactly those three lines?&quot;, &quot;opts&quot;: [&quot;head -n 100 export.csv&quot;, &quot;tail -n +100 export.csv | head -n 2&quot;, &quot;head -n 102 export.csv | tail -n 3&quot;, &quot;tail -n 102 export.csv&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;head -n 102 keeps lines 1 to 102, and tail -n 3 keeps the last three of those, which are lines 100 to 102. The tempting wrong answer is tail -n +100 piped to head -n 2, which stops at line 101.&quot;}, {&quot;q&quot;: &quot;A file has a header line and 672 readings, but its last reading has no newline character at the end. wc -l prints 672. What is the true number of readings?&quot;, &quot;opts&quot;: [&quot;671, because wc -l counted 672 lines including the header&quot;, &quot;673, because wc -l adds one for the header&quot;, &quot;1,344, because each reading takes two lines&quot;, &quot;672, because wc -l counts newline characters, so it misses the unfinished last line, and the file really has 673 lines&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;There are 673 lines in all, the header plus 672 readings. The tempting wrong answer is 671, which assumes wc -l counted the header and subtracts it a second time.&quot;}, {&quot;q&quot;: &quot;A team wants to know how many files under /srv/hunt contain the words sensor offline, without seeing the lines themselves. Which command gives the file names only?&quot;, &quot;opts&quot;: [&quot;grep -rv &#x27;sensor offline&#x27; /srv/hunt&quot;, &quot;grep -rl &#x27;sensor offline&#x27; /srv/hunt&quot;, &quot;grep -rn &#x27;sensor offline&#x27; /srv/hunt | wc -l&quot;, &quot;grep -c &#x27;sensor offline&#x27; /srv/hunt&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;-l prints each file with a match once and no lines. The tempting wrong answer is -c, which here reports \&quot;Is a directory\&quot; and counts nothing useful, because -c needs -r to read the folder.&quot;}, {&quot;q&quot;: &quot;A job runs grep &#x27;,NO2,&#x27; jan.csv &gt; no2.csv 2&gt; errors.log | wc -l. The team expects the count on screen and any error messages saved in errors.log. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The screen shows the count and no2.csv stays empty, because the pipe takes the rows&quot;, &quot;The screen shows nothing, because a pipe cannot be combined with redirection&quot;, &quot;The screen shows 0, because the rows went into no2.csv and wc read an empty pipe, while errors are saved in errors.log&quot;, &quot;The screen shows every NO2 row, and errors.log holds the count&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The &gt; redirection takes standard output before the pipe receives it, so wc reads nothing. The tempting wrong answer is the first option, which assumes the pipe still carries the rows.&quot;}, {&quot;q&quot;: &quot;A key file has mode 640 and belongs to the user ci-bot. Members of the group citypulse can read it, and that must stop, but ci-bot must keep read and write access. Which mode meets this with the least access?&quot;, &quot;opts&quot;: [&quot;644&quot;, &quot;600&quot;, &quot;660&quot;, &quot;777&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;600 gives the owner read and write and removes all group access. The tempting wrong answer is 644, which gives every user on the server read access.&quot;}, {&quot;q&quot;: &quot;A teammate runs cut -d, -f1 jan.csv | sort | uniq -c, and the output includes a line with count 1 for the word station_id next to the station counts. Which change removes that line?&quot;, &quot;opts&quot;: [&quot;Add -n to uniq, so that the header sorts away&quot;, &quot;Replace cut -d, -f1 with cut -f1&quot;, &quot;Start the pipeline with tail -n +2 jan.csv, so that the header line is not in the pipeline&quot;, &quot;Remove sort, because the header always sorts first&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The header is a line like any other, so it is counted unless you skip it. The tempting wrong answer is removing sort, which would scatter the counts without removing the header.&quot;}, {&quot;q&quot;: &quot;The /data disk is 96% full, and the team needs to know whether the ingest can write another 2 GB before the next run. Which command gives the figure they need, and which column do they read?&quot;, &quot;opts&quot;: [&quot;du -sh /data, and read the Size column&quot;, &quot;df -h /data, and read the Avail column&quot;, &quot;free -h, and read the used column&quot;, &quot;ps aux, and read the %MEM column&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Avail is the space a user can still write to. The tempting wrong answer is du, which reports folder sizes and not the free space, and free reports memory.&quot;}, {&quot;q&quot;: &quot;A cron job runs as user city from /home/city and calls ./ingest.sh raw/jan.csv. The file is in /data/readings/raw, not in /home/city. Which fix is the most robust?&quot;, &quot;opts&quot;: [&quot;Run pwd inside the script, so that the path prints correctly&quot;, &quot;Add /data/readings to PATH, so that relative paths resolve there&quot;, &quot;Change the file permissions to 777, so that the job can find the file&quot;, &quot;Give the script an absolute path such as /data/readings/raw/jan.csv, or change into /data/readings before it reads the file&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A relative path is measured from the directory where the job starts, and PATH is used only to find programs. The tempting wrong answer is running pwd, which reports the location but does not change it.&quot;}, {&quot;q&quot;: &quot;An ingest job started with python3 ingest.py &amp; is partway through writing a file, and you want it to stop and clean up its temporary file. Which action is correct, and why not kill -9 first?&quot;, &quot;opts&quot;: [&quot;Send kill with the PID or job number, which sends TERM so the program can clean up, while kill -9 stops at once and skips cleanup&quot;, &quot;Send kill -9, so that the program cannot ignore the signal and skip the write&quot;, &quot;Run chmod -x ingest.py, which stops the running process at once&quot;, &quot;Delete ingest.py, which makes the job stop and clean up its temporary files&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;TERM gives the program a chance to clean up, and KILL does not. The tempting wrong answer is the second option. kill -9 is correct only after TERM has failed.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem. You write small functions, the platform runs the visible tests, and then it runs hidden tests that check the cases the visible tests leave out. This part of the chapter restates the task, teaches the Python ideas you need with examples that have nothing to do with the sensor data, and then gives you a method and a twin problem to practise on.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p>The scenario is the one you met in the cut, sort and uniq section. On a CityPulse ingest box, you pull station counts out of raw sensor lines with a shell pipeline. The pipeline is <code>grep ',pm25,' | cut -d, -f1 | sort | uniq -c</code>. In this lab you rebuild the same logic in Python, so that each step can be unit-tested.</p>
+<p>Each line is CSV with four fields: <code>station_id,ts,pollutant,value</code>. For example, <code>ST3,2026-01-01T00:00,pm25,42.0</code> is a reading from station ST3 for pm25 with the value 42.0. Counting starts at zero, so field 0 is the station, field 1 is the timestamp, field 2 is the pollutant and field 3 is the value.</p>
+<p>You must write four functions with these exact names. Keep the names and the order of the arguments as they are in the starter file.</p>
+<ul>
+<li><code>grep(lines, pollutant)</code> takes a list of lines and a pollutant name. It returns the list of lines whose pollutant field, which is index 2, equals the pollutant you pass. The lines keep their original order. The match is exact: the field must equal the pollutant, not merely contain it.</li>
+<li><code>cut(lines, idx)</code> takes a list of lines and an index. For each comma-delimited line, it returns the field at the 0-based index <code>idx</code>. It works like <code>cut -d, -f</code> with a number one higher, because <code>cut</code> counts fields from 1 and this function counts from 0.</li>
+<li><code>count_sorted(items)</code> takes a list of items, such as the station ids that <code>cut</code> returns. It returns a list of <code>(item, count)</code> tuples, one for each distinct item, sorted by the item in ascending order. This is <code>sort | uniq -c</code>, except that the order is by item and not by count.</li>
+<li><code>station_counts(lines, pollutant)</code> chains the other three. It greps the pollutant, cuts the station id from field 0, and passes the result to <code>count_sorted</code>.</li>
+</ul>
+<p>The statement gives one example. Given the lines <code>ST3,t,pm25,42.0</code>, <code>ST1,t,pm10,30.0</code> and <code>ST3,t,pm25,51.0</code>, the call <code>station_counts(lines, "pm25")</code> returns <code>[('ST3', 2)]</code>. The station ST1 is absent because its only reading is for pm10.</p>
+<p>The limits are 30 seconds of run time and 128 MB of memory for each run. Neither limit should matter for a solution of this size, so you do not need to optimise.</p>
+<p>The scoring has two parts. The visible tests are worth 62 points:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep keeps only pm25 rows</td>
+<td>14</td>
+</tr>
+<tr>
+<td>cut extracts the station_id column</td>
+<td>14</td>
+</tr>
+<tr>
+<td>sort and uniq -c as sorted (item, count) tuples</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Full pipeline for pm25</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>The hidden tests are three tests worth 38 points together. The platform does not show you their inputs. A hidden test is a fixed case that checks behaviour you have not seen, such as an empty input, a pollutant that no line contains, or a line where the pollutant text appears in another column. The hidden tests decide the top marks because they are worth more than a third of the total, and a solution can pass every visible test and still fail them. Treat the visible tests as a first check, not as the finish.</p>
+<p>Every rule in the statement is one that a hidden test could check. Read the statement again after you finish each function, and ask whether your code follows each word of it.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is shown with a small example about fruit, colours or temperatures. Do not try to assemble these examples into the lab's functions. Use them to understand the tools, then build the lab functions yourself.</p>
+<p><strong>Looping and keeping items in order.</strong> A <code>for</code> loop visits each item in turn, and <code>append</code> adds an item to the end of a list. Looping and appending keeps the original order, which <code>grep</code> needs.</p>
+<div class="hl"><pre><span></span><code><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;pear&quot;</span><span class="p">]</span>
+<span class="n">figs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&quot;fig&quot;</span><span class="p">:</span>
+        <span class="n">figs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">figs</span><span class="p">)</span>  <span class="c1"># [&#39;fig&#39;, &#39;fig&#39;]</span>
+</code></pre></div>
+
+<p>The <code>if</code> line keeps only the figs, and the list comes out in the same order it went in.</p>
+<p><strong>Splitting text at a delimiter.</strong> <code>text.split(",")</code> cuts a string at every comma and returns a list of pieces. Each piece is a string, and you pick one with its index.</p>
+<div class="hl"><pre><span></span><code><span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;red,large,12&quot;</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>     <span class="c1"># [&#39;red&#39;, &#39;large&#39;, &#39;12&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># large</span>
+</code></pre></div>
+
+<p>Indexes start at 0, so <code>parts[1]</code> is the second piece. The pieces are still text, even the <code>'12'</code>.</p>
+<p><strong>Indexes past the end.</strong> Asking for an index that does not exist raises an error. <code>len(parts)</code> tells you how many pieces there are, so you can check before you ask for one.</p>
+<div class="hl"><pre><span></span><code><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># red</span>
+</code></pre></div>
+
+<p>Asking for <code>parts[2]</code> would stop the program with an <code>IndexError</code>. A check such as <code>if index &lt; len(parts)</code> prevents it.</p>
+<p><strong>Counting with a dictionary.</strong> A dictionary stores key and value pairs. <code>tally.get(key, 0)</code> returns the stored value, or 0 if the key is new. Adding one to that value counts an item the first time and every time after.</p>
+<div class="hl"><pre><span></span><code><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]</span>
+<span class="n">tally</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">colour</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">:</span>
+    <span class="n">tally</span><span class="p">[</span><span class="n">colour</span><span class="p">]</span> <span class="o">=</span> <span class="n">tally</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">colour</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tally</span><span class="p">)</span>  <span class="c1"># {&#39;red&#39;: 2, &#39;blue&#39;: 1}</span>
+</code></pre></div>
+
+<p><strong>Turning a dictionary into pairs and sorting them.</strong> <code>tally.items()</code> gives the key and value pairs, and <code>list(...)</code> turns them into a list of tuples. <code>.sort(key=...)</code> changes the list in place, and the key function decides what to compare.</p>
+<div class="hl"><pre><span></span><code><span class="n">tally</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;red&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tally</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>  <span class="c1"># [(&#39;red&#39;, 2), (&#39;blue&#39;, 1)]</span>
+<span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>  <span class="c1"># [(&#39;blue&#39;, 1), (&#39;red&#39;, 2)]</span>
+</code></pre></div>
+
+<p>The <code>lambda</code> is a short unnamed function. Here it returns the second item of each pair, so the list is sorted by the count.</p>
+<p><strong>Sorting by two rules at once.</strong> A tuple compares its items one at a time, from the left. A minus sign reverses a number, so a key of <code>(-count, name)</code> puts the largest count first and then sorts names in ascending order.</p>
+<div class="hl"><pre><span></span><code><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;kiwi&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>  <span class="c1"># [(&#39;apple&#39;, 3), (&#39;kiwi&#39;, 3), (&#39;fig&#39;, 1)]</span>
+</code></pre></div>
+
+<p><strong>Text order is not number order.</strong> Strings compare character by character, so <code>"10"</code> comes before <code>"9"</code>. <code>sorted</code> returns a new list in text order.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">]))</span>  <span class="c1"># [&#39;10&#39;, &#39;2&#39;, &#39;9&#39;]</span>
+<span class="nb">print</span><span class="p">((</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Sorting without changing the original.</strong> <code>sorted(items)</code> returns a new list and leaves <code>items</code> alone. <code>items.sort()</code> changes <code>items</code> itself and returns nothing.</p>
+<div class="hl"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">new_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>   <span class="c1"># [3, 1, 2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>  <span class="c1"># [1, 2, 3]</span>
+</code></pre></div>
+
+<p>Use <code>sorted</code> when the caller gave you a list and you should not change it.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table lists the rules from the statement and what a careless solution does with each. The last column gives you a way to check your own code. The statement says nothing about lines with too few fields or about blank lines, so do not invent a rule that changes the output for normal lines.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep: match the pollutant field, index 2</td>
+<td>Tests whether the pollutant text appears anywhere in the line, so a line with pm25 in the station id or value also matches</td>
+<td>Make a line where the pollutant text sits in another field, and check that grep drops it</td>
+</tr>
+<tr>
+<td>grep: the field must equal the pollutant</td>
+<td>Lower-cases both sides, so PM25 matches pm25</td>
+<td>Make a line with PM25 in the pollutant field, and check that a search for pm25 drops it</td>
+</tr>
+<tr>
+<td>grep: the lines keep their original order</td>
+<td>Sorts the output, or collects it in a set, so the order changes</td>
+<td>Feed lines that are not in alphabetical order and check that the output keeps the input order</td>
+</tr>
+<tr>
+<td>cut: the index is 0-based</td>
+<td>Treats idx as a 1-based field number, so the answer is one column too far along</td>
+<td>Check that index 0 returns the first column of every line</td>
+</tr>
+<tr>
+<td>cut: returns the field from each line</td>
+<td>Returns lists of fields, or drops or reorders lines, instead of one string per line</td>
+<td>Check that the result is a list of plain strings, one per input line, in input order</td>
+</tr>
+<tr>
+<td>count_sorted: returns (item, count) tuples</td>
+<td>Returns lists such as <code>[item, count]</code>, or a dictionary</td>
+<td>Compare with a list of tuples. A list such as <code>[["a", 1]]</code> is not equal to <code>[("a", 1)]</code>, so the test catches it</td>
+</tr>
+<tr>
+<td>count_sorted: sorted by item in ascending order</td>
+<td>Sorts by count, or by the number inside the id, so ST10 lands after ST2</td>
+<td>Check that the items come out in plain text order, so ST10 comes before ST2, with each item once</td>
+</tr>
+<tr>
+<td>count_sorted: one entry per distinct item</td>
+<td>Adds one pair per input item, so ST3 appears twice instead of once with count 2</td>
+<td>Check that each distinct item appears once, with the number of times it occurred</td>
+</tr>
+<tr>
+<td>A pollutant that no line contains</td>
+<td>Returns None, or raises an error, when nothing matches</td>
+<td>Check that grep and station_counts return an empty list for a pollutant that is absent</td>
+</tr>
+<tr>
+<td>Empty input</td>
+<td>Crashes on an empty list, or returns None instead of a list</td>
+<td>Check that every function returns an empty list when it is given one</td>
+</tr>
+<tr>
+<td>Types: counts are whole numbers</td>
+<td>Returns counts as floats, such as 2.0</td>
+<td>Check that each count is an int, not a float or a string</td>
+</tr>
+<tr>
+<td>Types: the station id stays text</td>
+<td>Converts ST3 to a number, which fails</td>
+<td>Check that the ids in the output are the same text as in the input</td>
+</tr>
+<tr>
+<td>Not mutating inputs</td>
+<td>Calls sort or pop on the list the caller gave, so the caller's list changes</td>
+<td>Copy the input before the call, run the function, and check that the input is unchanged</td>
+</tr>
+<tr>
+<td>station_counts: uses the three functions in order</td>
+<td>Writes a separate loop that gives the same answer for one test but not for others</td>
+<td>Check that changing one function changes the final result, as the chain requires</td>
+</tr>
+</tbody>
+</table>
+<p>Ties are a special case here. The output of <code>count_sorted</code> has one entry per item, so no two entries have the same item. A solution that sorts by count and then breaks ties would give the wrong order, because the statement sorts by item. Boundaries and rounding do not arise in this statement, because the answers are whole counts.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Note the names, the arguments and the order of the arguments. Do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines first. The statement's example is a good first assert, and it tells you the exact output shape.</li>
+<li>Add your own <code>assert</code> lines for every row of the table above. Each row is a hidden-test risk.</li>
+<li>Implement one function at a time, and run the asserts after each one. A failing assert then points to one function, not to the whole file.</li>
+<li>Check the types and any rounding last. For this lab that means checking that counts are whole numbers and that station ids are still text.</li>
+<li>Run the visible tests once. Read every failure, and compare it with the statement.</li>
+<li>Submit once, when every assert passes and you have read the statement again.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>This twin problem uses web-server log lines, not sensor readings, but it needs the same skills. Read it as a lab task first.</p>
+<p>Each line of a web-server log is CSV with four fields: <code>ip,timestamp,path,status</code>. For example, <code>10.0.0.2,2025-01-01T00:00:00,/home,200</code> is a request from <code>10.0.0.2</code> for <code>/home</code> that returned status 200. Write these five functions.</p>
+<ul>
+<li><code>filter_by_status(lines, status)</code> returns the lines whose fourth field, index 3, equals the status. The status may be given as a number or as text, and the lines keep their order.</li>
+<li><code>extract_column(lines, index)</code> returns the field at the 0-based index from each line, in order. It skips blank lines.</li>
+<li><code>count_items(items)</code> returns a list of <code>(item, count)</code> tuples, one for each distinct item. The list is sorted by count from highest to lowest, and for equal counts by item in ascending text order.</li>
+<li><code>top_pairs(pairs, n)</code> returns the first <code>n</code> pairs. If <code>n</code> is zero or negative, it returns an empty list.</li>
+<li><code>top_ips_for_status(lines, status, n)</code> chains the four functions above and returns the top <code>n</code> <code>(ip, count)</code> pairs for that status.</li>
+</ul>
+<p>This is the same job as <code>grep ',200,' | cut -d, -f1 | sort | uniq -c | sort -rn | head -n 2</code>, written as small functions that you can test one at a time.</p>
+<p>The solution below is complete. Read the task first and try it yourself before you read the code.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_by_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep the lines whose fourth field equals status, in their original order.&quot;&quot;&quot;</span>
+    <span class="n">kept</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">fields</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+            <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kept</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_column</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the field at index from each non-blank line.&quot;&quot;&quot;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">):</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">values</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_items</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return (item, count) pairs, highest count first, then item in ascending order.&quot;&quot;&quot;</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">pairs</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_pairs</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the first n pairs, or an empty list when n is zero or negative.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">pairs</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter by status, take the ip column, count the ips, then keep the top n.&quot;&quot;&quot;</span>
+    <span class="n">kept</span> <span class="o">=</span> <span class="n">filter_by_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+    <span class="n">ips</span> <span class="o">=</span> <span class="n">extract_column</span><span class="p">(</span><span class="n">kept</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">top_pairs</span><span class="p">(</span><span class="n">count_items</span><span class="p">(</span><span class="n">ips</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+
+
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;10.0.0.2,2025-01-01T00:00:00,/home,200&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10.0.0.1,2025-01-01T00:00:01,/home,404&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10.0.0.2,2025-01-01T00:00:02,/api,200&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10.0.0.3,2025-01-01T00:00:03,/api,200&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10.0.0.1,2025-01-01T00:00:04,/home,200&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10.0.0.3,2025-01-01T00:00:05,/api,200&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bad line&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1">## filter_by_status</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">filter_by_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">filter_by_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">filter_by_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;500&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">filter_by_status</span><span class="p">([],</span> <span class="s2">&quot;200&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">filter_by_status</span><span class="p">([</span><span class="s2">&quot;1.1.1.1,t,/x&quot;</span><span class="p">],</span> <span class="s2">&quot;200&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="c1">## extract_column</span>
+<span class="k">assert</span> <span class="n">extract_column</span><span class="p">([</span><span class="s2">&quot;a,b,c&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;d,e,f&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">extract_column</span><span class="p">([</span><span class="s2">&quot;a,b&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">extract_column</span><span class="p">([],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="c1">## count_items</span>
+<span class="k">assert</span> <span class="n">count_items</span><span class="p">([</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">count_items</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">count_items</span><span class="p">([</span><span class="s2">&quot;10.0.0.2&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.10&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;10.0.0.10&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;10.0.0.2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">count_items</span><span class="p">([</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+
+<span class="c1">## top_pairs</span>
+<span class="k">assert</span> <span class="n">top_pairs</span><span class="p">([(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_pairs</span><span class="p">([(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_pairs</span><span class="p">([(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="c1">## the full pipeline</span>
+<span class="k">assert</span> <span class="n">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;10.0.0.2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;10.0.0.3&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;10.0.0.2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;10.0.0.3&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;404&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_ips_for_status</span><span class="p">([],</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="c1">## the input list must not change</span>
+<span class="n">original</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+<span class="n">top_ips_for_status</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">lines</span> <span class="o">==</span> <span class="n">original</span>
+</code></pre></div>
+
+<p><strong>Explanation, line by line.</strong></p>
+<ul>
+<li><code>filter_by_status</code> builds the <code>kept</code> list and then loops over the lines. <code>line.split(",")</code> makes a list of fields. The test <code>len(fields) == 4</code> skips blank lines and malformed lines, because a blank line gives one empty field and <code>"bad line"</code> gives one field. <code>fields[3] == str(status)</code> compares the status as text, so the number <code>200</code> and the text <code>"200"</code> both work. The whole original line is appended, so the output has the same format as the input.</li>
+<li><code>extract_column</code> skips blank lines with <code>line.strip()</code>, which is empty for a blank line. The check <code>index &lt; len(fields)</code> prevents an <code>IndexError</code> when a line is too short. For the input <code>["a,b,c", "", "d,e,f"]</code> with index 1, the function returns <code>["b", "e"]</code>.</li>
+<li><code>count_items</code> counts with a dictionary. <code>counts.get(item, 0) + 1</code> starts a new item at 1 and adds one each time the item comes back. <code>list(counts.items())</code> gives the pairs.</li>
+<li>The sort key <code>(-pair[1], pair[0])</code> is the important line. The minus sign on the count makes larger counts sort first. Equal counts are then compared by the item in ascending text order. For <code>["b", "a", "b", "a"]</code> both items have count 2, so <code>"a"</code> comes first.</li>
+<li><code>top_pairs</code> returns nothing for zero or a negative <code>n</code>. Otherwise <code>pairs[:n]</code> takes at most <code>n</code> pairs. If <code>n</code> is larger than the list, the slice simply returns every pair.</li>
+<li><code>top_ips_for_status</code> is the pipeline. It filters, extracts, counts and cuts, in the same order as the shell pipeline, and each step hands its result to the next.</li>
+<li>The last three lines check that the function does not change its input. The copy <code>original</code> is made first, the function runs, and then the two lists are compared.</li>
+</ul>
+<p>The trace below steps through <code>count_items</code> on the list <code>["x", "y", "x"]</code>. Watch the dictionary grow, and see that the sort at the end keeps the count of 2 first.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting items and sorting the pairs&quot;, &quot;code&quot;: [&quot;counts = {}&quot;, &quot;for item in [\&quot;x\&quot;, \&quot;y\&quot;, \&quot;x\&quot;]:&quot;, &quot;    counts[item] = counts.get(item, 0) + 1&quot;, &quot;pairs = list(counts.items())&quot;, &quot;pairs.sort(key=lambda pair: (-pair[1], pair[0]))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Start with an empty dictionary.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;x\&quot;&quot;], [&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The loop takes the first item, \&quot;x\&quot;.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;x\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;x\&quot;: 1}&quot;]], &quot;note&quot;: &quot;\&quot;x\&quot; is new, so get returns 0, and 0 + 1 is stored.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;y\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;x\&quot;: 1}&quot;]], &quot;note&quot;: &quot;The loop takes the second item, \&quot;y\&quot;.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;y\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;x\&quot;: 1, \&quot;y\&quot;: 1}&quot;]], &quot;note&quot;: &quot;\&quot;y\&quot; is new, so it starts at 1.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;x\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;x\&quot;: 1, \&quot;y\&quot;: 1}&quot;]], &quot;note&quot;: &quot;The third item is \&quot;x\&quot; again.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;x\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;x\&quot;: 2, \&quot;y\&quot;: 1}&quot;]], &quot;note&quot;: &quot;get returns the stored 1, and 1 + 1 is stored.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;counts&quot;, &quot;{\&quot;x\&quot;: 2, \&quot;y\&quot;: 1}&quot;], [&quot;pairs&quot;, &quot;[(\&quot;x\&quot;, 2), (\&quot;y\&quot;, 1)]&quot;]], &quot;note&quot;: &quot;list(counts.items()) turns the dictionary into a list of pairs.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;pairs&quot;, &quot;[(\&quot;x\&quot;, 2), (\&quot;y\&quot;, 1)]&quot;]], &quot;note&quot;: &quot;The sort key puts the larger count first. Here the order was already right.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a new twin problem, with a different domain and different data. A bike-share system records one line per trip, in the form <code>dock,minutes</code>. The dock is the name of the dock where the trip started, and <code>minutes</code> is a whole number of minutes, written as text.</p>
+<p>Write one function, <code>total_minutes(rows)</code>. It takes a list of such lines and returns a list of <code>(dock, total)</code> tuples. Each dock appears once, with the sum of its minutes. The list is sorted by total from highest to lowest, and for equal totals by dock in ascending text order. Blank lines are skipped. An empty list returns an empty list.</p>
+<p>Your function must make these asserts pass:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,10&quot;</span><span class="p">,</span> <span class="s2">&quot;D2,5&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,7&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D2,4&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,4&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,3&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,0&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;A,2&quot;</span><span class="p">,</span> <span class="s2">&quot;B,2&quot;</span><span class="p">,</span> <span class="s2">&quot;B,1&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D9,12&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D9&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,10&quot;</span><span class="p">,</span> <span class="s2">&quot;D10,9&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D10&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>Work out the answer yourself first. The solution is hidden below.</p>
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">total_minutes</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">dock</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">dock</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dock</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">totals</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">pairs</span>
+
+
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,10&quot;</span><span class="p">,</span> <span class="s2">&quot;D2,5&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,7&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D2,4&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,4&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,3&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;D1,0&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;A,2&quot;</span><span class="p">,</span> <span class="s2">&quot;B,2&quot;</span><span class="p">,</span> <span class="s2">&quot;B,1&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D9,12&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D9&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_minutes</span><span class="p">([</span><span class="s2">&quot;D1,10&quot;</span><span class="p">,</span> <span class="s2">&quot;D10,9&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D10&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>The function skips blank rows, splits each row at the comma, converts the minutes to an <code>int</code> and adds them into a dictionary by dock. The final sort uses the same two-part key as the worked twin, so the larger total comes first and ties are ordered by dock name. <code>int("0")</code> gives 0, so the row <code>D1,0</code> adds nothing to the total for D1.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Each function name and argument list matches the starter file exactly.</li>
+<li><code>grep</code> keeps only the rows whose field at index 2 equals the pollutant exactly, and it keeps the original order.</li>
+<li><code>cut</code> uses a 0-based index, and index 0 returns the first column of each line.</li>
+<li><code>count_sorted</code> returns a list of tuples, not lists or dictionaries, and sorts by item in ascending text order, not by count.</li>
+<li><code>station_counts</code> passes the output of each step to the next, and it returns the same type as <code>count_sorted</code>.</li>
+<li>Every function returns an empty list when it is given an empty list, and none of them crashes.</li>
+<li>No function changes the list it was given, so run a copy-and-compare check.</li>
+<li>Counts are whole numbers, and station ids are still text, not numbers.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p>Interviewers and viva examiners ask these questions to see whether you understand the tools or only remember the commands.</p>
+<p><strong>1. What does <code>grep ',PM2.5,' jan.csv | cut -d, -f1 | sort | uniq -c</code> do, and why is <code>sort</code> needed?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The command keeps only the PM2.5 rows, takes the station id from the first column of each row, and counts how many rows each station has. <code>sort</code> is needed because <code>uniq -c</code> only merges lines that sit next to each other. Without sorting, the rows for one station are scattered, so <code>uniq</code> would print many small counts instead of one total per station.</p></details>
+
+<p><strong>2. What is the difference between an absolute and a relative path, and why does it matter for a script?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>An absolute path starts at the root <code>/</code> and means the same place wherever you run from, such as <code>/data/readings/jan.csv</code>. A relative path starts from the current working directory, such as <code>raw/jan.csv</code>, so it points somewhere different if you run the script from another folder. For a script, absolute paths or a check with <code>pwd</code> first make the results repeatable. Relative paths are fine when the script is designed to run from one known location.</p></details>
+
+<p><strong>3. Why set <code>.env</code> to <code>600</code> rather than <code>644</code>?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The <code>.env</code> file holds API keys, which are secrets. Mode <code>600</code> gives read and write to the owner and nothing to the group or to other users. Mode <code>644</code> lets every user on the shared server read the file, and anyone who reads the keys can use them. Permissions are the only thing protecting a file on a multi-user machine, so you grant only what is needed.</p></details>
+
+<p><strong>4. How do you stop a process that is running in the background, and why not <code>kill -9</code> first?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>First find it with <code>jobs</code> for a job started in your shell, or with <code>ps aux</code> and a filtered grep for any process. Then send the plain <code>kill</code> command, which sends the TERM signal and lets the program finish cleanly. <code>kill -9</code> sends KILL, which the program cannot catch, so it stops at once without running cleanup code and may leave files half-written. Use <code>-9</code> only when the program ignores TERM.</p></details>
+
+<p><strong>5. Why use a virtual environment instead of installing packages globally with pip?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A virtual environment keeps each project's packages in its own folder, so two projects can use different versions of the same library without conflict. Global installs share one set of packages, so a change for one project can break another. On the shared lab server, global installs also need administrator rights and change the system Python for everyone. The venv also records exact versions in <code>requirements.txt</code>, so a teammate gets the same setup.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Prints the absolute path of the working directory.</td>
+</tr>
+<tr>
+<td><code>cd PATH</code></td>
+<td>Changes the working directory. Absolute or relative paths both work.</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>Long listing with human-readable sizes.</td>
+</tr>
+<tr>
+<td><code>ls -la</code></td>
+<td>Long listing, including hidden files that start with a dot.</td>
+</tr>
+<tr>
+<td><code>ls *.csv</code></td>
+<td>Lists files matching the pattern. The shell expands the <code>*</code>.</td>
+</tr>
+<tr>
+<td><code>find DIR -type f -name 'PATTERN'</code></td>
+<td>Finds regular files by name. Quote the pattern.</td>
+</tr>
+<tr>
+<td><code>find DIR -size +1k</code></td>
+<td>Finds files larger than one kilobyte.</td>
+</tr>
+<tr>
+<td><code>grep 'TEXT' FILE</code></td>
+<td>Prints lines that contain the text.</td>
+</tr>
+<tr>
+<td><code>grep -r</code></td>
+<td>Searches a directory tree recursively.</td>
+</tr>
+<tr>
+<td><code>grep -n</code></td>
+<td>Shows line numbers.</td>
+</tr>
+<tr>
+<td><code>grep -i</code></td>
+<td>Ignores case.</td>
+</tr>
+<tr>
+<td><code>head -n N FILE</code></td>
+<td>Prints the first N lines.</td>
+</tr>
+<tr>
+<td><code>tail -n N FILE</code></td>
+<td>Prints the last N lines.</td>
+</tr>
+<tr>
+<td><code>tail -n +N FILE</code></td>
+<td>Prints from line N onward. Use <code>+2</code> to skip a header.</td>
+</tr>
+<tr>
+<td><code>wc -l FILE</code></td>
+<td>Counts lines.</td>
+</tr>
+<tr>
+<td><code>&gt; FILE</code></td>
+<td>Writes standard output to a file, replacing it.</td>
+</tr>
+<tr>
+<td><code>&gt;&gt; FILE</code></td>
+<td>Appends standard output to a file.</td>
+</tr>
+<tr>
+<td><code>&lt; FILE</code></td>
+<td>Reads a file as standard input.</td>
+</tr>
+<tr>
+<td><code>2&gt; FILE</code></td>
+<td>Writes standard error to a file.</td>
+</tr>
+<tr>
+<td><code>\|</code></td>
+<td>Pipe: sends standard output into the next command.</td>
+</tr>
+<tr>
+<td><code>cut -d, -f1</code></td>
+<td>Keeps field 1 of each comma-separated line.</td>
+</tr>
+<tr>
+<td><code>sort</code>, <code>sort -n</code>, <code>sort -r</code>, <code>sort -k2</code></td>
+<td>Sorts lines as text, as numbers, reversed, or on field 2.</td>
+</tr>
+<tr>
+<td><code>uniq -c</code></td>
+<td>Counts adjacent identical lines. Sort first.</td>
+</tr>
+<tr>
+<td><code>chmod 600 FILE</code></td>
+<td>Owner read and write only. Use for secrets.</td>
+</tr>
+<tr>
+<td><code>chmod 644 FILE</code></td>
+<td>Owner read and write, everyone else read.</td>
+</tr>
+<tr>
+<td><code>chmod +x FILE</code></td>
+<td>Adds execute permission so <code>./FILE</code> can run.</td>
+</tr>
+<tr>
+<td><code>chmod 777</code></td>
+<td>Never use to fix an error. It gives everyone full access.</td>
+</tr>
+<tr>
+<td><code>df -h PATH</code></td>
+<td>Free and used space of the filesystem that holds PATH.</td>
+</tr>
+<tr>
+<td><code>du -h PATH</code></td>
+<td>Size of a directory.</td>
+</tr>
+<tr>
+<td><code>COMMAND &amp;</code></td>
+<td>Runs a command in the background.</td>
+</tr>
+<tr>
+<td><code>jobs</code></td>
+<td>Lists background jobs in this shell.</td>
+</tr>
+<tr>
+<td><code>ps aux</code></td>
+<td>Lists all processes with their PIDs.</td>
+</tr>
+<tr>
+<td><code>kill PID</code> or <code>kill %N</code></td>
+<td>Sends the TERM signal, a clean stop request.</td>
+</tr>
+<tr>
+<td><code>kill -9</code></td>
+<td>Sends KILL, which cannot be caught. Last resort.</td>
+</tr>
+<tr>
+<td><code>which NAME</code></td>
+<td>Shows which program the name resolves to on PATH.</td>
+</tr>
+<tr>
+<td><code>echo "$PATH"</code></td>
+<td>Shows the list of folders the shell searches for programs.</td>
+</tr>
+<tr>
+<td><code>python3 -m venv .venv</code></td>
+<td>Creates a virtual environment in <code>.venv</code>.</td>
+</tr>
+<tr>
+<td><code>source .venv/bin/activate</code></td>
+<td>Activates the environment for this shell.</td>
+</tr>
+<tr>
+<td><code>python -m pip install -r requirements.txt</code></td>
+<td>Installs the pinned packages.</td>
+</tr>
+<tr>
+<td><code>deactivate</code></td>
+<td>Leaves the virtual environment.</td>
+</tr>
+<tr>
+<td><code>set -euo pipefail</code></td>
+<td>Script safety: stop on error, error on unset variables, fail pipelines on any error.</td>
+</tr>
+<tr>
+<td><code>#!/usr/bin/env bash</code></td>
+<td>First line of a Bash script.</td>
+</tr>
+<tr>
+<td><code>$1</code>, <code>${1:-default}</code></td>
+<td>First script argument, with a default value.</td>
+</tr>
+<tr>
+<td>Quote patterns and paths with spaces</td>
+<td>Stops the shell changing them before the command runs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;absolute path&quot;, &quot;a&quot;: &quot;A path that starts at the root / and points to the same place from anywhere.&quot;}, {&quot;q&quot;: &quot;relative path&quot;, &quot;a&quot;: &quot;A path measured from the working directory, such as raw/jan.csv.&quot;}, {&quot;q&quot;: &quot;pipe |&quot;, &quot;a&quot;: &quot;Sends the standard output of one command into the standard input of the next.&quot;}, {&quot;q&quot;: &quot;uniq -c&quot;, &quot;a&quot;: &quot;Counts runs of identical adjacent lines. It only works after sort.&quot;}, {&quot;q&quot;: &quot;chmod 600&quot;, &quot;a&quot;: &quot;Owner can read and write, and group and others get no access.&quot;}, {&quot;q&quot;: &quot;chmod +x&quot;, &quot;a&quot;: &quot;Adds the execute permission, so a script can be run as ./name.&quot;}, {&quot;q&quot;: &quot;kill&quot;, &quot;a&quot;: &quot;Sends the TERM signal, which asks a process to stop cleanly.&quot;}, {&quot;q&quot;: &quot;kill -9&quot;, &quot;a&quot;: &quot;Sends KILL, which cannot be caught. Use only as a last resort.&quot;}, {&quot;q&quot;: &quot;tail -n +2&quot;, &quot;a&quot;: &quot;Prints from line 2 onward, which skips a CSV header.&quot;}, {&quot;q&quot;: &quot;wc -l&quot;, &quot;a&quot;: &quot;Counts lines, and counts the header too.&quot;}, {&quot;q&quot;: &quot;venv&quot;, &quot;a&quot;: &quot;A private Python environment in one project folder, so packages do not mix.&quot;}, {&quot;q&quot;: &quot;which python&quot;, &quot;a&quot;: &quot;Shows which python program the shell will run.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D01.html"><small>Previous</small>Day 1 — Git, GitHub and secure accounts</a><a class="nx" href="D03.html"><small>Next</small>Day 3 — Talking to APIs: HTTP, curl and jq</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,364 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beating hidden tests and first-attempt marking · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="F4" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 1 · Foundations</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a class="cur" href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 1 · Foundations</p><h1>Beating hidden tests and first-attempt marking</h1><p class="sub">By the end you will be able to turn a problem statement into a list of edge cases, write asserts for them, and check your Python function against all of them before you press submit.</p><p class="meta">29 min read · practice quiz · 2 animations · 1 tested solution</p><video class="vid" controls preload="metadata" src="videos/F4.mp4?v=1794464361"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-your-work-is-marked">How your work is marked</a></li><li><a href="#reading-a-problem-statement">Reading a problem statement</a></li><li><a href="#the-edge-case-catalogue">The edge-case catalogue</a></li><li><a href="#write-your-own-tests-first">Write your own tests first</a></li><li><a href="#a-full-worked-example">A full worked example</a></li><li><a href="#debugging-when-a-test-fails">Debugging when a test fails</a></li><li><a href="#fast-enough">Fast enough</a></li><li><a href="#multiple-choice-technique-for-case-study-questions">Multiple-choice technique for case-study questions</a></li><li><a href="#the-first-attempt-routine">The first-attempt routine</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="how-your-work-is-marked">How your work is marked</h2>
+<p>Each graded lab is a Python problem. The platform gives you a starter file that contains function signatures with docstrings. A function is a named block of code that takes inputs, does some work, and gives back a result. A signature is the first line of the function, and it names the function and lists its inputs. A docstring is the text in triple quotes under the signature, and it describes what the function should do. An input to a function is called a parameter. In this line, <code>values</code> is the parameter:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">average_reading</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</code></pre></div>
+
+<p>The platform gives you a description with one example, and a few visible tests. A test is a check. It calls your function with one input, compares what your function returns with the answer it expects, and reports pass or fail. Visible tests are the checks you can read. Hidden tests are checks you cannot read. They use inputs that the course team chose on purpose, usually the awkward ones.</p>
+<p>The mark split matters. Visible tests carry roughly 50 to 85 per cent of the marks, and hidden tests carry the rest. A function that passes every visible test can still lose a third of the marks or more. Hidden tests are where missed edge cases cost you points.</p>
+<p>The platform also limits how your code runs. The time limit is 30 seconds and the memory limit is 128 MB. Memory is the working space your program uses while it runs. If your solution uses a loop inside another loop over a large input, it can run out of time on the hidden tests even though it gives correct answers on the small visible ones. The section on speed explains how to avoid that.</p>
+<p>Day quizzes are different in format. A day quiz has 10 multiple-choice questions, each about a short case study. The pass mark is 70 per cent, which means you need at least 7 correct answers. The skill score uses your first attempt. If you submit once, learn from the result, and submit again, the second attempt does not replace the first in the skill score. Preparation before the first submission therefore matters more than retrying.</p>
+<div class="box box-trap"><div class="box-h">Trap: Passing the visible tests is not the finish line</div><p>Students often read the visible tests, make the code pass them, and submit. The visible tests tell you the shape of the answer. They do not show the inputs that break it. Write your own checks for the awkward inputs before you submit.</p></div>
+
+<h2 id="reading-a-problem-statement">Reading a problem statement</h2>
+<p>A problem statement is the text that tells you what the function must do. Most lost marks come from a misreading of the statement, not from a Python mistake. Read the statement with the method below. Write the answers on paper or in a comment before you type any code.</p>
+<ol>
+<li><strong>Inputs and their types.</strong> Write down the name of each parameter and the type of the data it holds. A type is the kind of value: <code>int</code> is a whole number such as 7, <code>float</code> is a number with a decimal point such as 7.5, <code>str</code> is text such as "S1", <code>list</code> is an ordered collection in square brackets such as <code>[1, 2, 3]</code>, <code>tuple</code> is a fixed group of values in round brackets such as <code>("S1", 20)</code>, <code>dict</code> is a collection of key and value pairs in curly brackets such as <code>{"S1": 20}</code>, and <code>None</code> is Python's word for "no value".</li>
+<li><strong>Output type and exact shape.</strong> Decide what the function returns and in what form. A list of tuples, such as <code>[("S1", 20.0)]</code>, is not the same as a list of lists, such as <code>[["S1", 20.0]]</code>. A checker that compares the two will fail one of them.</li>
+<li><strong>Ordering.</strong> Does the statement say highest first, lowest first, or in the order the input arrived? If it says nothing, assume the output order matters and ask yourself what the most natural order is.</li>
+<li><strong>Ties.</strong> If two items have the same value, which one comes first? The statement often says "ties broken by name". If it does not say, you cannot guess safely, so look at the example.</li>
+<li><strong>Rounding.</strong> Does the answer need a fixed number of decimal places? Write down how many places and whether you round or truncate.</li>
+<li><strong>Empty input.</strong> What should the function return for an empty list or an empty string? Look for a sentence such as "return None if there are no readings". If there is no sentence, the example may show it. Otherwise, write down your decision and test it.</li>
+<li><strong>Return or print.</strong> Does the function return a value, or does it print one? A function that prints a number returns <code>None</code> to the caller. The grader calls your function and checks the returned value. Printing does not count as returning.</li>
+<li><strong>Changing the caller's data.</strong> Does the statement allow you to change the input? If it does not, assume you must not. The caller may use the same list later. Build a new list instead of changing the old one. To change a list means to alter its contents in place, which Python calls mutating it.</li>
+</ol>
+<div class="box box-tip"><div class="box-h">Tip: Write the answers before the code</div><p>Put the eight answers in a comment at the top of your function. A comment is a line that starts with <code>#</code>, and Python ignores it when it runs. If your code later breaks one of the answers, the comment reminds you which rule it broke.</p></div>
+
+<h2 id="the-edge-case-catalogue">The edge-case catalogue</h2>
+<p>An edge case is an input at the boundary of what a function should handle, such as an empty list, a single item, or a number of zero. Code is often correct for ordinary inputs and wrong at the edges. The table lists the edge cases that appear most often in graded labs. For each one, decide what your function should do and write an assert for it, as explained in the next section.</p>
+<table>
+<thead>
+<tr>
+<th>Edge case</th>
+<th>Input type</th>
+<th>Example</th>
+<th>What it tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty</td>
+<td>list, text, dict</td>
+<td><code>[]</code>, <code>""</code></td>
+<td>Division by zero, index errors, a wrong return for nothing</td>
+</tr>
+<tr>
+<td>One element</td>
+<td>list</td>
+<td><code>[5]</code></td>
+<td>Loops that assume at least two items, averages that need pairs</td>
+</tr>
+<tr>
+<td>Duplicates</td>
+<td>list, tuples</td>
+<td><code>[3, 3, 3]</code></td>
+<td>Whether your code counts or removes repeats correctly</td>
+</tr>
+<tr>
+<td>Ties</td>
+<td>list of pairs</td>
+<td><code>("S1", 20)</code> and <code>("S2", 20)</code></td>
+<td>Whether your sort uses the second rule when the first is equal</td>
+</tr>
+<tr>
+<td>Negative and zero</td>
+<td>numbers</td>
+<td><code>-5</code>, <code>0</code></td>
+<td>Sign errors, division by zero, <code>if value:</code> treating 0 as false</td>
+</tr>
+<tr>
+<td>Missing keys</td>
+<td>dict</td>
+<td>looking up <code>"S9"</code> when it is not there</td>
+<td><code>KeyError</code> crashes; use <code>in</code> or <code>get</code></td>
+</tr>
+<tr>
+<td>None</td>
+<td>any</td>
+<td><code>None</code> inside a list</td>
+<td>Calling <code>.strip()</code> on <code>None</code> crashes</td>
+</tr>
+<tr>
+<td>Wrong type</td>
+<td>any</td>
+<td>a number where text is expected</td>
+<td>Only handle this if the statement asks for it</td>
+</tr>
+<tr>
+<td>Whitespace</td>
+<td>text</td>
+<td><code>"  S1 "</code></td>
+<td>Spaces at the start or end that make <code>"S1"</code> and <code>"  S1 "</code> differ</td>
+</tr>
+<tr>
+<td>Upper and lower case</td>
+<td>text</td>
+<td><code>"s1"</code> and <code>"S1"</code></td>
+<td>Whether the same station is counted twice</td>
+</tr>
+<tr>
+<td>Already sorted</td>
+<td>list</td>
+<td><code>[1, 2, 3]</code></td>
+<td>Code that only works when the input is in a random order</td>
+</tr>
+<tr>
+<td>Very large</td>
+<td>list</td>
+<td>a list of 100,000 items</td>
+<td>Slow loops that pass small tests but time out on hidden tests</td>
+</tr>
+</tbody>
+</table>
+<p>Not every edge case applies to every problem. A problem that says "the input is always a non-empty list" removes the empty-input case from your list. Write down which cases apply and which the statement rules out. A rule in the statement is a fact you can rely on. A case you assume without checking is a guess.</p>
+<div class="box box-key"><div class="box-h">Key fact: Ask what the caller expects, not what you expect</div><p>For each edge case, the question is what the statement says the function should return. Your job is not to make the code run without an error. Your job is to return the value the statement asks for.</p></div>
+
+<h2 id="write-your-own-tests-first">Write your own tests first</h2>
+<p>An assert is a Python statement that checks a condition. If the condition is <code>True</code>, Python continues. If the condition is <code>False</code>, Python stops the program and raises an <code>AssertionError</code>, which is an error that says a check failed. Here is the simplest form:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
+</code></pre></div>
+
+<p>The <code>==</code> symbol means "is equal to". It is a comparison, and it is not the same as <code>=</code>, which stores a value in a name. The line above runs silently because <code>2 + 2 == 4</code> is true. If you wrote <code>assert 2 + 2 == 5</code>, Python would stop with an error.</p>
+<p>Turn the example from the statement into an assert first. Suppose the statement says <code>average_reading([10, 20, 30])</code> should return <code>20.0</code>. Your first assert is:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="o">==</span> <span class="mf">20.0</span>
+</code></pre></div>
+
+<p>Then add one assert for each edge case you chose. Do this before you write the function, so the test is not shaped by your code. A test you write after the code often checks what the code already does, not what the statement asks for.</p>
+<p>Run the asserts against your function. When they all pass, the program ends with no output. If you add <code>print("all tests passed")</code> at the end, you see that line only when every assert passes. Here is what a failed assert looks like when you run the file:</p>
+<div class="hl"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;stations.py&quot;, line 12, in &lt;module&gt;
+    assert average_reading([]) is None
+AssertionError
+</code></pre></div>
+
+<p>The traceback names the file and the line number of the failed assert. Read the line, and then ask what the function returned for that input. You will meet this in the debugging section.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using = instead of ==</div><p><code>assert average_reading([]) = None</code> is a syntax error, because a single <code>=</code> tries to store a value, not compare two values. Use <code>==</code> for equal, and <code>is</code> when you compare with <code>None</code>.</p></div>
+
+<h2 id="a-full-worked-example">A full worked example</h2>
+<p>Here is an original problem in the style of a graded lab. It has three functions. Read the statement first, then the edge-case list, then the asserts, and only then the solution. Do not look at the solution first. The skill being tested is the order of the steps, not the final code.</p>
+<p><strong>The statement.</strong> A city has air-quality sensors at stations with ids such as "S1". Write three functions.</p>
+<ol>
+<li><code>average_reading(values)</code> takes a list of numbers. It returns the average as a float rounded to one decimal place. If the list is empty, it returns <code>None</code>.</li>
+<li><code>top_stations(pairs, n)</code> takes a list of <code>(station_id, value)</code> tuples, and an integer <code>n</code>. For each station it computes the average of its values, using <code>average_reading</code>. It returns a list of <code>(station_id, average)</code> tuples sorted by average, highest first. Ties are ordered by station id, from A to Z. It returns at most <code>n</code> tuples. If <code>n</code> is zero or less, it returns an empty list. It must not change <code>pairs</code>.</li>
+<li><code>clean_ids(ids)</code> takes a list of strings, which may also contain <code>None</code>. It returns a new list. Each id has its surrounding spaces removed and is converted to upper case. Empty ids are dropped, and so are <code>None</code> values. An id that appears again is kept only at its first position. The input list must not change.</li>
+</ol>
+<p><strong>The edge-case checklist.</strong> Work through the list before you write code.</p>
+<ul>
+<li><code>average_reading</code>: an empty list (the statement says <code>None</code>), one value, a list with a negative and a positive value that sum to zero, and a value that needs rounding to one decimal place. The rounding case is <code>[1, 1, 2]</code>, which averages 1.333 and should give 1.3.</li>
+<li><code>top_stations</code>: a tie in average, where the station ids decide the order, and <code>n</code> larger than the number of stations. Also <code>n</code> equal to zero, <code>n</code> negative, an empty input, and a check that the input list is unchanged after the call.</li>
+<li><code>clean_ids</code>: spaces at the start and end, lower-case ids that match upper-case ids, an empty string, a string that is only spaces, a <code>None</code>, a duplicate, an empty input, and a check that the input list is unchanged.</li>
+</ul>
+<p><strong>The asserts.</strong> These are the tests you write before the code.</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="o">==</span> <span class="mf">20.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.5</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.3</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)]</span>
+<span class="n">copy_of_pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">([],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">pairs</span> <span class="o">==</span> <span class="n">copy_of_pairs</span>
+
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">([</span><span class="s2">&quot; s1 &quot;</span><span class="p">,</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;s2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;s3&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="s2">&quot;S3&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; a &quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">raw</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot; a &quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Read the asserts carefully. The line <code>assert pairs == copy_of_pairs</code> checks that <code>top_stations</code> left the caller's list alone. The <code>list(pairs)</code> on the line above it makes a second list with the same contents, so you can compare the two later. The line <code>assert clean_ids([" s1 ", "S1", ...])</code> covers five edge cases at once: a lower-case id, a duplicate after upper-casing, an empty string, a string of spaces, and a <code>None</code>.</p>
+<p><strong>The solution.</strong> Here is the complete code. It is a tested solution, so the build runs it, and the file must pass all the asserts above.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">average_reading</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">by_station</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">station</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">station</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">by_station</span><span class="p">:</span>
+            <span class="n">by_station</span><span class="p">[</span><span class="n">station</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">by_station</span><span class="p">[</span><span class="n">station</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">averages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">station</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">by_station</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">averages</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">station</span><span class="p">,</span> <span class="n">average_reading</span><span class="p">(</span><span class="n">values</span><span class="p">)))</span>
+    <span class="n">averages</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">averages</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_ids</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">raw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">cleaned</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cleaned</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">cleaned</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="o">==</span> <span class="mf">20.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.5</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.3</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_reading</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)]</span>
+<span class="n">copy_of_pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_stations</span><span class="p">([],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">pairs</span> <span class="o">==</span> <span class="n">copy_of_pairs</span>
+
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">([</span><span class="s2">&quot; s1 &quot;</span><span class="p">,</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;s2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;s3&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="s2">&quot;S3&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; a &quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">clean_ids</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">raw</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot; a &quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all tests passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Explanation of the solution, line by line.</strong></p>
+<ul>
+<li><code>def average_reading(values):</code> starts the function. <code>values</code> is the list the caller passes in.</li>
+<li><code>if len(values) == 0:</code> asks the built-in function <code>len</code> how many items the list holds. If that number is zero, the condition is true.</li>
+<li><code>return None</code> ends the function at once and gives back <code>None</code>. This is the edge-case rule from the statement.</li>
+<li><code>return round(sum(values) / len(values), 1)</code> adds the values with <code>sum</code>, divides by the count, and rounds the result to one decimal place. The <code>/</code> operator always gives a float in Python 3, so <code>20.0</code> is returned and not <code>20</code>.</li>
+<li><code>def top_stations(pairs, n):</code> starts the second function. <code>pairs</code> is a list of tuples, and <code>n</code> is the number of results wanted.</li>
+<li><code>if n &lt;= 0:</code> covers the rule for zero and negative <code>n</code>. The symbol <code>&lt;=</code> means "less than or equal to".</li>
+<li><code>by_station = {}</code> creates an empty dictionary. A dictionary stores values under keys, here the station id as the key and a list of readings as the value.</li>
+<li><code>for station, value in pairs:</code> loops over the tuples. Python unpacks each tuple into two names, one for the station and one for the value.</li>
+<li><code>if station not in by_station:</code> checks whether the key is already in the dictionary. If not, <code>by_station[station] = []</code> creates an empty list for it. Without this check, <code>by_station[station]</code> would raise a <code>KeyError</code>, which is the missing-key error from the table.</li>
+<li><code>by_station[station].append(value)</code> adds the value to that station's list. <code>append</code> puts an item at the end of a list.</li>
+<li><code>averages = []</code> starts an empty list for the results.</li>
+<li><code>for station, values in by_station.items():</code> loops over each key and value pair in the dictionary.</li>
+<li><code>averages.append((station, average_reading(values)))</code> calculates the average for the station and stores it as a tuple. Reusing <code>average_reading</code> means the rounding and the empty-list rule are applied in one place.</li>
+<li><code>averages.sort(key=lambda item: (-item[1], item[0]))</code> sorts the list in place. A <code>lambda</code> is a short, unnamed function written on one line. Here it tells <code>sort</code> what to compare for each item. The key is a tuple. Python compares tuples one element at a time. The first element is the negative average, so a larger average comes first. The second element is the station id, which is used only when two averages are equal. The minus sign turns the highest average into the smallest key, which sorts first.</li>
+<li><code>return averages[:n]</code> returns the first <code>n</code> items. The notation <code>[:n]</code> is called a slice. If <code>n</code> is larger than the list, the slice returns the whole list.</li>
+<li><code>def clean_ids(ids):</code> starts the third function.</li>
+<li><code>seen = set()</code> creates an empty set. A set stores each value at most once, and checking whether a value is in a set is fast.</li>
+<li><code>for raw in ids:</code> loops over the input without changing it.</li>
+<li><code>if raw is None: continue</code> skips <code>None</code> values. <code>continue</code> jumps to the next item of the loop.</li>
+<li><code>cleaned = raw.strip().upper()</code> removes the spaces at both ends with <code>strip</code>, then converts the text to upper case with <code>upper</code>. The two methods are chained, so the result of <code>strip</code> is passed to <code>upper</code>.</li>
+<li><code>if cleaned == "" or cleaned in seen: continue</code> skips empty ids and ids already seen. The word <code>or</code> means that either condition can cause the skip.</li>
+<li><code>seen.add(cleaned)</code> remembers the id, and <code>result.append(cleaned)</code> adds it to the new list.</li>
+<li><code>return result</code> gives back the new list. The input list was never changed.</li>
+<li>The asserts at the end check the functions. The final <code>print</code> runs only if every assert passed, and it prints <code>all tests passed</code>.</li>
+</ul>
+<p><strong>Expected output.</strong> Running the file prints one line:</p>
+<div class="hl"><pre><span></span><code>all tests passed
+</code></pre></div>
+
+<p>If any assert fails, you see a traceback and no final line.</p>
+<h2 id="debugging-when-a-test-fails">Debugging when a test fails</h2>
+<p>A failed test is information, not a disaster. Work through the same steps each time, so you do not guess.</p>
+<ol>
+<li><strong>Read the failing line.</strong> The traceback names the line number of the assert. Look at the inputs in that assert, and nothing else.</li>
+<li><strong>Print the inputs and the result.</strong> Put a <code>print</code> line before the assert that shows what the function returns. A <code>print</code> statement shows a value on the screen while the program runs. For example, <code>print(average_reading([]))</code> shows <code>None</code> if the guard works, or an error if it does not.</li>
+<li><strong>Shrink the case.</strong> Replace a large input with the smallest input that still fails. If <code>top_stations</code> fails on ten pairs, try with two. A small case is easier to reason about by hand.</li>
+<li><strong>Check the types.</strong> Ask Python what kind of value it has. <code>print(type(value))</code> shows the type. Many failures come from getting a tuple when you expected a list, or a float when you expected an int.</li>
+<li><strong>Walk through the code by hand.</strong> Write down the variables after each line, as the trace below does. Most bugs show up in the first few lines where the value changes unexpectedly.</li>
+</ol>
+<p>The animation below follows a function on the empty list. Before the guard was added, the same call stopped the program. Here is what that run prints:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python mean_demo.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Traceback (most recent call last):&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  File \&quot;mean_demo.py\&quot;, line 5, in mean&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    return total / len(values)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ZeroDivisionError: division by zero&quot;}]}"></div>
+
+<p>The error happens because <code>len(values)</code> is zero, and dividing by zero is not allowed. The fix is a guard, which is an <code>if</code> check placed before the risky line. The animation below uses the function with the guard added. It shows the empty call returning <code>None</code> at line 3, and the non-empty call passing.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Empty list fails without a guard, passes with one&quot;, &quot;code&quot;: [&quot;def mean(values):&quot;, &quot;    if len(values) == 0:&quot;, &quot;        return None&quot;, &quot;    total = sum(values)&quot;, &quot;    return total / len(values)&quot;, &quot;result = mean([])&quot;, &quot;print(result)&quot;, &quot;result = mean([2, 4])&quot;, &quot;print(result)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 6, &quot;state&quot;: [], &quot;note&quot;: &quot;Line 6 calls mean with an empty list.&quot;}, {&quot;line&quot;: 1, &quot;state&quot;: [[&quot;values&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Python enters mean and binds values to the empty list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;values&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;len(values) is 0, so the test is True.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;values&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The guard returns None. Without line 2, line 5 would divide by zero.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;values&quot;, &quot;[]&quot;], [&quot;result&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;The returned None is stored in result.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;result&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;print shows None on the screen.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;result&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;Second call, this time with a list that has two values.&quot;}, {&quot;line&quot;: 1, &quot;state&quot;: [[&quot;values&quot;, &quot;[2, 4]&quot;]], &quot;note&quot;: &quot;Python enters mean again with a new list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;values&quot;, &quot;[2, 4]&quot;]], &quot;note&quot;: &quot;len is 2, so the test is False and the guard is skipped.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;values&quot;, &quot;[2, 4]&quot;], [&quot;total&quot;, &quot;6&quot;]], &quot;note&quot;: &quot;sum adds 2 and 4.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;values&quot;, &quot;[2, 4]&quot;], [&quot;total&quot;, &quot;6&quot;]], &quot;note&quot;: &quot;6 divided by 2 gives 3.0, which is returned.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;values&quot;, &quot;[2, 4]&quot;], [&quot;result&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;The returned value is stored in result.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;result&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;print shows 3.0. Both the empty and the non-empty call now pass.&quot;}]}"></div>
+
+<div class="box box-key"><div class="box-h">Key fact: A guard is a check, not a patch</div><p>A guard does not hide the problem. It makes the function return the value the statement asks for in a case the arithmetic cannot handle. Always decide what the guard should return, based on the statement, before you add it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Printing instead of returning</div><p>If your function prints the answer and does not return it, the visible tests may show nothing wrong when you run the file yourself, yet every test fails. The grader reads the value from <code>return</code>. Use <code>print</code> only for debugging, and remove it before you submit.</p></div>
+
+<h2 id="fast-enough">Fast enough</h2>
+<p>The 30-second limit means your code must scale. Scaling describes how the work grows when the input grows. Computer scientists write this as O(n), read "big O of n", where n is the number of items. An O(n) function does roughly n steps for n items. Doubling the input roughly doubles the work. An O(n squared) function does roughly n times n steps. Doubling the input roughly quadruples the work.</p>
+<p>In practice, a list of 100 items means 10,000 steps for O(n squared). A list of 100,000 items means about 10,000,000,000 steps. A typical computer runs far fewer steps than that in 30 seconds in Python. The same code with a single loop needs only 100,000 steps for the same list.</p>
+<p>The most common cause of a slow solution is a loop inside another loop over the same list. Here is a check for duplicates written that way:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_duplicate_slow</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">items</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>The outer loop picks each position <code>i</code>. The inner loop checks every other position <code>j</code> against it. The expression <code>range(len(items))</code> makes the numbers 0, 1, 2, and so on up to the last index. The <code>!=</code> symbol means "is not equal to". The function is correct, but it is O(n squared).</p>
+<p>The faster version uses a set. A set answers the question "have I seen this value?" in roughly one step, no matter how big the set is.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_duplicate_fast</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>The loop runs once over the items. For each item, <code>in seen</code> checks the set, and <code>seen.add(item)</code> stores it for later. The work grows in line with n, so this is O(n). Both functions return <code>True</code> for <code>[1, 2, 1]</code> and <code>False</code> for <code>[1, 2, 3]</code>, but only the second one finishes on a 100,000-item hidden test.</p>
+<p>Dictionaries work the same way. A dictionary lookup such as <code>by_station[station]</code> takes about one step, so counting or grouping with a dictionary is much faster than searching a list again for each item.</p>
+<div class="box box-tip"><div class="box-h">Tip: Name the cost before you submit</div><p>Before you press submit, look at each loop in your code and ask how many times it runs. If one loop sits inside another over the same list, look for a set or a dictionary that removes the inner loop.</p></div>
+
+<h2 id="multiple-choice-technique-for-case-study-questions">Multiple-choice technique for case-study questions</h2>
+<p>A case-study question gives you a short scenario and then asks what to do, what happens, or which design is right. The scenario usually contains one constraint that decides the answer. Find that constraint first.</p>
+<p>Read the scenario for the constraint. Words such as "first attempt", "at least", "no more than", "without changing", and "during the test" are constraints. An answer that ignores the constraint may sound sensible and still be wrong.</p>
+<p>Eliminate before you choose. Read all four options, and cross out any that contradict the scenario. Two options are often close. Ask which one fits the constraint exactly, and which one only sounds reasonable.</p>
+<p>Watch for absolute words. Options that use "always", "never", "only", "all", or "every" are often false, because real systems usually have exceptions. Options with "usually", "often", or "may" are more often true. This is a tendency, not a rule, so check the option against the scenario.</p>
+<p>Use two passes. On the first pass, answer every question you can answer quickly, and mark the rest with a note, if the interface allows marking. On the second pass, spend your remaining time on the marked questions. Do not spend a long time on one question at the start of the quiz, because the questions at the end need the same care.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing the option you can explain best</div><p>Students often pick the option that uses the most familiar word. Examiners write a tempting wrong option that uses the right vocabulary but answers a different question. Check that the option answers the question in the scenario, not a neighbouring question.</p></div>
+
+<h2 id="the-first-attempt-routine">The first-attempt routine</h2>
+<p>Use the numbered checklists below. They are short on purpose, so you can run them every time.</p>
+<p><strong>For a graded lab.</strong> Work through these steps before you press submit.</p>
+<ol>
+<li>Read the problem statement with the eight questions from the section on reading statements.</li>
+<li>Write the edge-case list for each function, and note which cases the statement rules out.</li>
+<li>Write the asserts for the examples and the edge cases, before you write the function.</li>
+<li>Write each function, one at a time, and run the asserts after each one.</li>
+<li>Check the speed. Look at each loop, and remove any loop nested inside another over the same data.</li>
+<li>Check that no function prints the answer instead of returning it, and remove leftover <code>print</code> lines that you used for debugging.</li>
+<li>Check that no function changes its input, by running the <code>copy_of_pairs</code> style check for each input list.</li>
+<li>Run the whole file once more, from the top, in a fresh run. A fresh run catches a function that only worked because of an earlier one.</li>
+<li>Only then press submit.</li>
+</ol>
+<p><strong>For a day quiz.</strong> Work through these steps during the quiz.</p>
+<ol>
+<li>Read the first question's scenario and find the constraint before you read the options.</li>
+<li>Eliminate options that contradict the scenario.</li>
+<li>Check the absolute words in the options that remain.</li>
+<li>Choose one answer and move on, or mark the question if you are unsure.</li>
+<li>In the second pass, return to the marked questions and make a final decision.</li>
+<li>Before you press submit, check that every question has an answer. A blank answer is always wrong.</li>
+</ol>
+<div class="box box-key"><div class="box-h">Key fact: The first attempt is the one that counts</div><p>Because the skill score uses the first attempt, the routines above are designed to run before submission. Use the time you have before the first press to reduce the errors you can find yourself.</p></div>
+
+<h2 id="check-yourself">Check yourself</h2>
+<p>Answer each question without looking back at the chapter. The explanation follows each answer, so you can see why the right option is right.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A graded lab has visible tests and hidden tests. Which statement about the marks is correct?&quot;, &quot;opts&quot;: [&quot;Visible tests carry all the marks, so hidden tests do not matter.&quot;, &quot;No, hidden tests carry the remaining marks, so you need edge cases as well as the examples.&quot;, &quot;Hidden tests only check the speed, so they carry no marks.&quot;, &quot;The split changes every time you submit, so it cannot be planned for.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Visible tests carry roughly 50 to 85 per cent of the marks, and hidden tests carry the rest. The first option is tempting because the visible tests look like the whole task, but the rest of the marks sit with the hidden tests.&quot;}, {&quot;q&quot;: &quot;A student&#x27;s function prints the average instead of returning it. Why does this lose marks?&quot;, &quot;opts&quot;: [&quot;Printing is faster, so the grader prefers it.&quot;, &quot;Printed text is saved to a database automatically.&quot;, &quot;The grader does not run the function at all.&quot;, &quot;The grader calls the function and reads the returned value, and print returns None.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A function that only prints gives the caller None, so the check on the returned value fails. Printing is useful for debugging, but it is not how the grader reads the answer.&quot;}, {&quot;q&quot;: &quot;A function must not change the list the caller passes in. Which approach meets this?&quot;, &quot;opts&quot;: [&quot;Build and return a new list, and leave the input list untouched.&quot;, &quot;Call sort on the input list and return it.&quot;, &quot;Remove duplicates from the input list with remove inside a loop over the same list.&quot;, &quot;Change every item to upper case in the input list and return that list.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Methods such as sort and remove change the list in place, so the caller sees the change. The correct approach builds a new list. The sort option is tempting because it returns a sorted list, but it also changes the caller&#x27;s list.&quot;}, {&quot;q&quot;: &quot;The statement says that for an empty list the function must return None. Which guard does this?&quot;, &quot;opts&quot;: [&quot;if len(values) == 0: return 0&quot;, &quot;if values == \&quot;\&quot;: return None&quot;, &quot;if len(values) == 0: return None&quot;, &quot;if values is None: return []&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Checking the length of the list and returning None matches the statement. Returning 0 is the most tempting wrong option, because it sounds like an average of nothing, but the statement asks for None.&quot;}, {&quot;q&quot;: &quot;Which description of an edge case is best?&quot;, &quot;opts&quot;: [&quot;A case the program handles every day without any thought.&quot;, &quot;An unusual input, such as an empty list, a duplicate, or a zero, where code often goes wrong.&quot;, &quot;A test that runs for longer than 30 seconds.&quot;, &quot;A bug that appears only in the terminal.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;An edge case is a boundary input. It is where code tends to fail, so you test it on purpose. The option about time is tempting because the time limit matters, but it describes speed, not an edge case.&quot;}, {&quot;q&quot;: &quot;A function has a loop inside another loop, and both loops run over the same list of 100,000 items. What is the main concern?&quot;, &quot;opts&quot;: [&quot;It uses too little memory to be correct.&quot;, &quot;It always returns the wrong answer for lists of that size.&quot;, &quot;It needs no tests because the loops cancel each other out.&quot;, &quot;It does roughly n times n steps, so it may exceed the 30-second limit on the hidden tests.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A nested loop over the same list is O(n squared), which means about 10 billion steps for 100,000 items. The first option is a distractor about memory, which is not the issue here.&quot;}, {&quot;q&quot;: &quot;You need results sorted by average, highest first, with ties ordered by station id from A to Z. Which sort key is right?&quot;, &quot;opts&quot;: [&quot;key=lambda item: (-item[1], item[0])&quot;, &quot;key=lambda item: (item[1], item[0])&quot;, &quot;key=lambda item: (-item[1], -item[0])&quot;, &quot;key=lambda item: item[0]&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The minus sign on the average puts the highest first. The station id without a minus sign sorts A to Z for the ties. The second option is the most tempting, because it looks almost the same, but it sorts the averages lowest first.&quot;}, {&quot;q&quot;: &quot;You have a lab you could submit now, but you have not checked your edge cases. What is the right use of the first attempt?&quot;, &quot;opts&quot;: [&quot;Submit now to see what happens, then fix the problems.&quot;, &quot;Skip the visible tests and go straight to the hidden tests.&quot;, &quot;Write and run the edge-case checks first, then submit.&quot;, &quot;Submit three times with small changes until the score improves.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The skill score uses your first attempt, and a second attempt does not replace it. Checking edge cases before the first submission is the only way to make that attempt count. The option about submitting now is tempting because it looks like learning, but it uses up the attempt that counts.&quot;}]}"></div>
+
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;visible test&quot;, &quot;a&quot;: &quot;A check you can read. It calls your function, compares the result with the expected value, and reports pass or fail.&quot;}, {&quot;q&quot;: &quot;hidden test&quot;, &quot;a&quot;: &quot;A check you cannot read. It uses inputs the course team chose, often the edge cases, and carries the rest of the marks.&quot;}, {&quot;q&quot;: &quot;assert&quot;, &quot;a&quot;: &quot;A Python statement that stops the program with AssertionError when its condition is false.&quot;}, {&quot;q&quot;: &quot;edge case&quot;, &quot;a&quot;: &quot;An input at the boundary of what a function should handle, such as an empty list, a zero or a duplicate.&quot;}, {&quot;q&quot;: &quot;guard&quot;, &quot;a&quot;: &quot;An if check placed before a risky line, which returns early or handles the bad case first.&quot;}, {&quot;q&quot;: &quot;None&quot;, &quot;a&quot;: &quot;Python&#x27;s word for no value. A function that prints but does not return gives back None.&quot;}, {&quot;q&quot;: &quot;tuple&quot;, &quot;a&quot;: &quot;A fixed group of values in round brackets, such as (\&quot;S1\&quot;, 20.0). Tuples are compared one element at a time.&quot;}, {&quot;q&quot;: &quot;O(n squared)&quot;, &quot;a&quot;: &quot;A running time that grows with the square of the input size. Nested loops over the same list often cause it.&quot;}, {&quot;q&quot;: &quot;set&quot;, &quot;a&quot;: &quot;A collection that stores each value once, and checks membership quickly with the in keyword.&quot;}, {&quot;q&quot;: &quot;first attempt&quot;, &quot;a&quot;: &quot;The submission that counts for the skill score. Preparing before the first submission matters more than retrying.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="F3.html"><small>Previous</small>The graded-lab toolkit: the standard-library moves every lab uses</a><a class="nx" href="D01.html"><small>Next</small>Day 1 — Git, GitHub and secure accounts</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

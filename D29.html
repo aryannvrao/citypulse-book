@@ -1,0 +1,1253 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 29 — Delivering an industry project · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D29" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 7 · Days 26–29 · Shipping it</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a class="cur" href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 7 · Days 26–29 · Shipping it</p><h1>Day 29 — Delivering an industry project</h1><p class="sub">You will be able to rank a backlog with MoSCoW, state a model&#x27;s impact in business units, cut a tagged release with a handover document, and write a tested Python function that plans a sprint.</p><p class="meta">102 min read · practice quiz · 5 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D29.mp4?v=1794464367"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Building a project and delivering it are different jobs. Delivery means that someone who did not write the code can run it, explain it and keep it alive after you leave. Today you practise the four steps that make that possible. You sort your to-do list into what must ship and what waits. You translate your model's error into minutes or rupees that a client can act on. You name the release with a version tag, and you write a handover document that a stranger can follow.</p>
+<p>Think of a cook opening a restaurant. The menu needs an order and prices, the owner needs to know what each dish costs in rupees rather than grams, the kitchen needs a recipe card for each dish, and the restaurant needs a way to go back to last week's menu if tonight's goes wrong.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Project, client and stakeholder.</strong> A project is a piece of work with a goal and an end date. The client is the person or organisation the work is for. A stakeholder is anyone with a stake in the result, such as the client, the mentor who marks the work, or the people who will run it after you.</p>
+<p><strong>Backlog, sprint and story point.</strong> A backlog is a list of work items, often called tickets. A sprint is a fixed period, usually one or two weeks, in which the team commits to some of those items. A story point is a number the team agrees on to compare the effort of two items. It is not an hour count.</p>
+<p><strong>File, folder, terminal and command.</strong> A file is a named piece of stored text or data. A folder (also called a directory) holds files and other folders. The terminal is a text window where you type commands, which are instructions the computer runs when you press Enter. A flag is an option that changes what a command does. In <code>git log --oneline</code>, the word <code>--oneline</code> is a flag.</p>
+<p><strong>Git vocabulary.</strong> Git records the history of a folder of files. A repository (repo) is a folder that Git tracks. A commit is a saved snapshot with a message. A tag is a permanent name attached to one commit. A remote is a copy of the repository on another machine, and <code>origin</code> is the usual name for the main one. To clone is to copy a remote repository to your machine.</p>
+<p><strong>Code vocabulary.</strong> A variable is a name that holds a value, such as <code>remaining = 3</code>. A function is a named block of code that you call with inputs, such as <code>advise(12.0)</code>. A server is a program that waits for requests and sends replies. A port is a numbered door on a machine, such as 8000, where a server listens. An endpoint is one address a server answers, such as <code>/predict</code>. HTTP is the request-and-reply protocol the web uses. A status code is the number in the reply: 200 means success and 422 means the input was rejected. JSON is a text format for structured data, written with braces and square brackets.</p>
+<p><strong>Docker vocabulary.</strong> An image is a packaged copy of an app with everything it needs to run. A container is one running copy of an image. A registry is a shared store where images are kept so that other people can pull them.</p>
+<p><strong>Model vocabulary.</strong> A model is a program that has learned patterns from data. A baseline is the simple rule you compare against, such as "use the median wait time of past patients". MAE (mean absolute error) is the average size of the model's mistake, in the same units as the thing predicted. A holdout is data kept aside during training and used only for testing. Data leakage happens when the model learns from information it would not have at prediction time.</p>
+<p><strong>Bus factor.</strong> The number of people who would have to leave a project before it could no longer be maintained. A bus factor of 1 means one person holds the knowledge.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="moscow-prioritisation">MoSCoW prioritisation</h3>
+<p>MoSCoW sorts every backlog item into one of four buckets: Must have, Should have, Could have, and Won't have (this time). The name is an acronym made from the first letter of each bucket and the vowels added for pronunciation.</p>
+<p>CityPulse uses it because the course gives you a fixed deadline and no usage data. The slides compare three alternatives. RICE scoring gives numeric scores for reach, impact, confidence and effort, but it needs data you will not have in a three-week project. The Kano model is useful for customer delight, but it is heavier than a fixed deadline needs. An unordered to-do list has no overhead, but everything looks equally urgent, so the core chain of work slips. MoSCoW forces an explicit decision about what the product cannot ship without, and it records what you left out, so that scope creep can be seen.</p>
+<p>The rule is simple. For each candidate item, ask: does the product fail without it? Only the items where the answer is yes become Musts, and the course caps them at five. Each Must gets an owner, a one-line acceptance test and a ticket number. Each Won't gets a written reason, so that you can point to it when someone asks again.</p>
+<p>Musts come first, so the sprint is filled with the core work before anything else. The following trace shows the selection loop in a small form. You will write a version of it in the graded lab skill section.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Filling a sprint with a capacity of 3&quot;, &quot;code&quot;: [&quot;remaining = 3&quot;, &quot;selected = []&quot;, &quot;for effort in [2, 3, 1]:&quot;, &quot;    if effort &lt;= remaining:&quot;, &quot;        selected.append(effort)&quot;, &quot;        remaining -= effort&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;remaining&quot;, &quot;3&quot;]], &quot;note&quot;: &quot;Set the free capacity to 3 story points.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;remaining&quot;, &quot;3&quot;], [&quot;selected&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Nothing has been chosen yet.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;effort&quot;, &quot;2&quot;], [&quot;remaining&quot;, &quot;3&quot;], [&quot;selected&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first item, which costs 2.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;effort&quot;, &quot;2&quot;], [&quot;remaining&quot;, &quot;3&quot;], [&quot;selected&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Is 2 at most 3? Yes, so the test passes.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;effort&quot;, &quot;2&quot;], [&quot;remaining&quot;, &quot;3&quot;], [&quot;selected&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;The item is added to the list.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;effort&quot;, &quot;2&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;selected&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;Its effort is taken off the capacity, leaving 1.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;effort&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;selected&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;The next item costs 3.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;effort&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;selected&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;Is 3 at most 1? No, so the item is skipped.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;effort&quot;, &quot;1&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;selected&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;The last item costs 1.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;effort&quot;, &quot;1&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;selected&quot;, &quot;[2, 1]&quot;]], &quot;note&quot;: &quot;1 fits, so it is added.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;effort&quot;, &quot;1&quot;], [&quot;remaining&quot;, &quot;0&quot;], [&quot;selected&quot;, &quot;[2, 1]&quot;]], &quot;note&quot;: &quot;Capacity is now used up.&quot;}]}"></div>
+
+<p>The loop does not stop at the first item that does not fit. It keeps going, so a small item later in the list can still be chosen. This is the behaviour that lets a sprint use its capacity fully.</p>
+<div class="box box-trap"><div class="box-h">Trap: Six or more Musts</div><p>If everything is a Must, nothing is. The slides say that a list of six or more Musts means the list has not been sorted. Move the extras to Should, and keep the Musts to five or fewer.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Vague acceptance lines</div><p>"Works well" cannot be checked, so it cannot be a Must's acceptance line. Write a command or a number that someone else can run. The slides use <code>curl -d @tests/sample.json</code> returns 200.</p></div>
+
+<h3 id="business-metrics-from-ml-metrics">Business metrics from ML metrics</h3>
+<p>An ML metric such as MAE, recall or precision describes how wrong the model is. A client does not decide in those units. A client decides in minutes, cases caught or rupees. Translating the metric means stating the improvement over the current way of working, in those units, with the assumption that connects them.</p>
+<p>The course uses a hospital outpatient (OPD) brief as the example. The model predicts how long a patient will wait. The current rule is the median wait of past patients, which is the baseline. The model's MAE is 12.1 minutes and the baseline's error is 18.4 minutes, so the model is about 6.3 minutes closer per patient on the holdout. That is the sentence the client needs, and the slides want it in the README.</p>
+<p>The slides also require a sensitivity check. You multiply the MAE by 1.10, which models a production model that is 10% worse than the test result. If the worse number still beats the baseline, the claim survives a bad day.</p>
+<p>The code below writes the numbers to <code>metrics.json</code>, so that every slide and report can copy them from one place.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">joblib</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">));</span> <span class="n">base</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;reports/baseline.json&quot;</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/clean/dataset.parquet&quot;</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;date_col&quot;</span><span class="p">]]</span> <span class="o">&gt;=</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;split&quot;</span><span class="p">][</span><span class="s2">&quot;holdout_from&quot;</span><span class="p">]]</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;models/model.joblib&quot;</span><span class="p">),</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target</span><span class="p">])))</span>
+<span class="n">sens</span> <span class="o">=</span> <span class="n">mae</span> <span class="o">*</span> <span class="mf">1.10</span>                                   <span class="c1"># what if production is 10% worse?</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;mae&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">mae</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span> <span class="s2">&quot;baseline&quot;</span><span class="p">:</span> <span class="n">base</span><span class="p">,</span>
+           <span class="s2">&quot;improvement_pct&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">base</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mae</span><span class="p">)</span> <span class="o">/</span> <span class="n">base</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+           <span class="s2">&quot;sensitivity_10pct&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;mae&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">sens</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;beats_baseline&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">sens</span> <span class="o">&lt;</span> <span class="n">base</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])},</span>
+           <span class="s2">&quot;segments_worse_than_baseline&quot;</span><span class="p">:</span> <span class="p">[]}</span>      <span class="c1"># fill from the per-department loop</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;metrics.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wait-time estimates are off by </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min per patient, versus </span><span class="si">{</span><span class="n">base</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min today.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import json, joblib, pandas as pd, yaml</code> loads four libraries. <code>json</code> reads and writes JSON, <code>joblib</code> loads a saved model, <code>pandas</code> handles tables and <code>yaml</code> reads configuration files. <code>as pd</code> gives pandas the short name <code>pd</code>.</li>
+<li><code>from sklearn.metrics import mean_absolute_error</code> loads one function from the scikit-learn library, the function that computes MAE.</li>
+<li><code>cfg = yaml.safe_load(open("config.yaml"))</code> opens the configuration file and turns it into a dictionary, a named collection of values. <code>base = json.load(...)</code> does the same for the baseline's result.</li>
+<li><code>df = pd.read_parquet(...)</code> reads the cleaned dataset into a table called a data frame.</li>
+<li><code>test = df[...]</code> keeps only the rows whose date is on or after the start of the holdout. The condition inside the square brackets is a true-or-false test for each row.</li>
+<li><code>model, target = joblib.load(...), cfg[...]</code> loads the saved model and reads the name of the column to predict.</li>
+<li><code>mae = mean_absolute_error(...)</code> asks the model for predictions on the test rows, with the target column removed (<code>drop</code>), and compares them with the true values.</li>
+<li><code>sens = mae * 1.10</code> is the 10% worse scenario. The comment after <code>#</code> is ignored by Python.</li>
+<li><code>improvement_pct</code> is the gain as a percentage of the baseline. <code>round(..., 1)</code> keeps one decimal place. With the slide numbers, (18.4 − 12.1) / 18.4 × 100 gives 34.2.</li>
+<li><code>beats_baseline</code> is <code>True</code> when the worse scenario is still lower than the baseline. <code>bool(...)</code> turns the result into <code>true</code> or <code>false</code> for the JSON file.</li>
+<li><code>segments_worse_than_baseline</code> is an empty list here. You must fill it with the departments where the model loses.</li>
+<li><code>json.dump(..., indent=2)</code> writes the dictionary to <code>metrics.json</code> with two spaces of indentation, which makes the file easy to read.</li>
+<li>The last <code>print</code> line uses an f-string, a text with <code>{}</code> slots filled by variables. <code>{mae:.1f}</code> shows the MAE with one decimal place.</li>
+</ul>
+<p>With the slide values, the output is <code>Wait-time estimates are off by 12.1 min per patient, versus 18.4 min today.</code></p>
+<div class="box box-trap"><div class="box-h">Trap: Claiming minutes saved</div><p>The model reduces estimate error. It does not save anyone minutes by itself. Write exactly what changes: "wait estimates are closer by 6.3 minutes per patient". Do not write "the hospital saves six hours a day" unless you have measured that.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Improvement over 40 per cent</div><p>A large gain is a warning sign. Check for leakage first, such as a feature that is only known after the outcome. The slides ask you to re-check before you celebrate.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Hiding the segments where the model loses</div><p>If the model is worse than the baseline for one department, list it in <code>segments_worse_than_baseline</code> and in the Known limits section. Leaving it out is an overclaim, and the slides treat that as a failure.</p></div>
+
+<h3 id="handovermd-and-bus-factor">HANDOVER.md and bus factor</h3>
+<p>A HANDOVER.md file gives a newcomer the architecture, a runbook of exact commands, the known issues and the next steps. It is the document that lets a project continue without its original authors. The slides list three alternatives: a README alone is fine for users but does not hold the runbook or the ownership a maintainer needs; a wiki drifts from the code and is not reviewed in pull requests; a recorded video cannot be searched or copied, and commands must be text.</p>
+<p>Bus factor is measured from git history. The question is not "how many commits did each person make?" but "how many distinct people have changed this module?" A module with one author has a bus factor of 1, and the course asks you to assign a non-author as a second owner.</p>
+<p>The following term block shows the basic count for one folder. The command lines start with <code>$</code>. The line below the command is what the terminal prints.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --format=&#x27;%an&#x27; -- api/ | sort -u | wc -l&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1&quot;}]}"></div>
+
+<p>The output means that only one distinct author name appears in the history of <code>api/</code>. The loop below repeats this check for each module and writes a table to a file.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>m<span class="w"> </span><span class="k">in</span><span class="w"> </span>src/ingest<span class="w"> </span>src/train.py<span class="w"> </span>api<span class="w"> </span>ui<span class="w"> </span>tests<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">n</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%an&#39;</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$m</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="w">  </span><span class="nv">flag</span><span class="o">=</span><span class="k">$(</span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$n</span><span class="s2">&quot;</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;BUS FACTOR 1: assign second owner&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;| </span><span class="nv">$m</span><span class="s2"> | </span><span class="nv">$n</span><span class="s2"> authors | </span><span class="nv">$flag</span><span class="s2"> |&quot;</span>
+<span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>docs/module-owners.md
+git<span class="w"> </span>shortlog<span class="w"> </span>-sn<span class="w"> </span>--no-merges<span class="w">                 </span><span class="c1"># commits per person</span>
+git<span class="w"> </span>log<span class="w"> </span>--author<span class="o">=</span><span class="s2">&quot;Asha&quot;</span><span class="w"> </span>--oneline<span class="w"> </span>--<span class="w"> </span>api/<span class="w">    </span><span class="c1"># verify a contribution statement</span>
+gh<span class="w"> </span>pr<span class="w"> </span>list<span class="w"> </span>--state<span class="w"> </span>merged<span class="w"> </span>--author<span class="w"> </span>@me<span class="w"> </span>--json<span class="w"> </span>number,title<span class="w">   </span><span class="c1"># PR links for your statement</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>for m in src/ingest src/train.py api ui tests; do</code> starts a loop. The variable <code>m</code> takes each module path in turn, and the loop ends at <code>done</code>.</li>
+<li><code>n=$(...)</code> runs the commands inside the brackets and stores their output in <code>n</code>. <code>$(...)</code> is command substitution.</li>
+<li>Inside the brackets, <code>git log --format='%an' -- "$m"</code> prints the author name of every commit that touched the path. <code>--format='%an'</code> prints only the author name. The <code>--</code> tells git that what follows is a path, not an option.</li>
+<li><code>sort -u</code> sorts the names and removes duplicates. <code>wc -l</code> counts the lines that remain. The result is the number of distinct authors.</li>
+<li><code>flag=$([ "$n" -lt 2 ] &amp;&amp; echo "...")</code> tests whether <code>n</code> is less than 2 with <code>-lt</code>. If the test is true, <code>echo</code> prints the warning. If it is false, the flag stays empty.</li>
+<li><code>echo "| $m | $n authors | $flag |"</code> prints one table row in Markdown format.</li>
+<li><code>done | tee -a docs/module-owners.md</code> sends the output of the loop into <code>tee</code>, which shows it on the screen and appends it to the file. <code>-a</code> means append, so an earlier table is not overwritten.</li>
+<li><code>git shortlog -sn --no-merges</code> prints commit counts per person. <code>-s</code> shows only the counts, <code>-n</code> sorts them from largest to smallest, and <code>--no-merges</code> leaves out merge commits.</li>
+<li><code>git log --author="Asha" --oneline -- api/</code> lists Asha's commits to <code>api/</code>, one per line. Use it to check a claim before you write it down.</li>
+<li><code>gh pr list --state merged --author @me --json number,title</code> asks GitHub's command-line tool for your merged pull requests and prints their number and title as JSON. <code>@me</code> means the account you are logged in with.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Commit count is not bus factor</div><p>A person with 200 commits and a second person with one commit can still leave a bus factor of 1, if the second person cannot explain or run the module. What counts is whether a second person can explain and run the module. The slides say the test is a second person who can explain and run it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Runbook commands that were never run</div><p>Each command in the runbook must be run on a clean clone before the document is merged. A command that has never been run is a guess.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Contribution statements that overclaim</div><p>Every pull request you list must exist, and it must be yours or one you reviewed. The trainers check statements against <code>git log</code>.</p></div>
+
+<h3 id="git-tags-and-semantic-versions">Git tags and semantic versions</h3>
+<p>A tag is a permanent name for one commit. An annotated tag, made with <code>git tag -a</code>, also stores who made it, when, and a message. The course uses annotated tags with names like <code>v1.0.0</code>. The number follows the semantic versioning pattern of MAJOR.MINOR.PATCH, where a larger number means a bigger change. A tag makes a deploy or a rollback precise. "Deploy the latest" is vague. "Deploy v1.0.0" names one commit that anyone can check out again.</p>
+<p>The flow below shows how the release leaves your laptop. Two things travel: the tag, which goes to GitHub, and the image, which goes to the registry.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Moving a release from your laptop to the team&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Container registry&quot;, &quot;Receiving team&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push origin v1.0.0&quot;, &quot;note&quot;: &quot;The annotated tag travels to GitHub, where it names the commit.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;docker push&quot;, &quot;note&quot;: &quot;The container image travels to the registry.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 1, &quot;label&quot;: &quot;git clone --branch v1.0.0&quot;, &quot;note&quot;: &quot;The team fetches the tagged source.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 2, &quot;label&quot;: &quot;docker pull&quot;, &quot;note&quot;: &quot;The team fetches the exact image you built.&quot;}]}"></div>
+
+<p>The tagging commands from the slides are these.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;CityPulse v1.0.0: ingest, validate, advise&quot;</span>
+git<span class="w"> </span>show<span class="w"> </span>v1.0.0<span class="w"> </span>--no-patch
+git<span class="w"> </span>describe<span class="w"> </span>--tags
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>git tag -a v1.0.0</code> creates an annotated tag called <code>v1.0.0</code> on the current commit. <code>-a</code> makes it annotated.</li>
+<li><code>-m "..."</code> gives the tag its message in double quotes. The message is required for an annotated tag, so the tag records why it was made.</li>
+<li><code>git show v1.0.0 --no-patch</code> displays the tag and the commit it points to. <code>--no-patch</code> hides the list of file changes, so you see only the summary.</li>
+<li><code>git describe --tags</code> prints the nearest tag name for the current commit. Right after tagging, it prints <code>v1.0.0</code>.</li>
+</ul>
+<p>The slide output for the first command shows the tag's tagger, date and message, followed by the commit hash <code>a01db2c...</code>, which is the exact commit the tag pins. Pushing the tag is a separate step. Until you run <code>git push origin v1.0.0</code>, the tag exists only on your machine.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting to push the tag</div><p>A tag created on your laptop is invisible to the team. Check that the tag is on GitHub, not only on your machine, before you announce the release.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Rolling back with a detached HEAD</div><p><code>git checkout v1.0.0</code> shows the old code, but git will say you are in a "detached HEAD" state. Do not commit there unless you create a branch first. To run the old version, rebuild or pull the old image tag instead.</p></div>
+
+<h3 id="docker-images-for-a-release">Docker images for a release</h3>
+<p>Docker packages the service and its pinned dependencies into an image. A dependency is a library your code uses, such as a web framework. Pinned means you fix the exact version, so the same image is produced on every machine. The course gives the reason: handing over an image, not a "works on my machine" setup, removes environment drift, and the receiving team runs the exact bytes you tested.</p>
+<p>The alternative to Docker that the course mentions indirectly is a README that asks the receiver to install everything. That works until one library version differs, and then the service behaves differently. An image does not depend on what is installed on the receiver's machine.</p>
+<p>The Dockerfile is the recipe for the image. Each line adds a step.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;service:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>FROM python:3.11-slim</code> starts from a ready-made base image that has Python 3.11 installed. The <code>slim</code> version is a smaller build.</li>
+<li><code>WORKDIR /app</code> sets <code>/app</code> as the folder that later commands run in. It is created if it does not exist.</li>
+<li><code>COPY requirements.txt .</code> copies the dependency list from your computer into the image's <code>/app</code> folder. The <code>.</code> on the end means "the current folder".</li>
+<li><code>RUN pip install --no-cache-dir -r requirements.txt</code> runs a command while the image is built. <code>pip</code> installs Python packages, <code>-r</code> reads the list from the file, and <code>--no-cache-dir</code> stops pip from keeping a download cache inside the image, which keeps the image smaller.</li>
+<li><code>COPY . .</code> copies the rest of your project into the image. The dependency step comes before this line on purpose. Docker reuses saved steps when nothing above them has changed, so changing only your code does not reinstall every package.</li>
+<li><code>EXPOSE 8000</code> documents that the service listens on port 8000. It does not open the port on its own.</li>
+<li><code>CMD [...]</code> is the command that starts when a container runs. <code>uvicorn</code> is a web server for Python. <code>--host 0.0.0.0</code> makes it listen on all network interfaces inside the container, and <code>--port 8000</code> sets the port.</li>
+</ul>
+<p>The build command and its output are below.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker build -t citypulse:1.0.0 .&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[+] Building 14.2s (10/10) FINISHED&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;=&gt; naming to docker.io/library/citypulse:1.0.0&quot;}]}"></div>
+
+<p>Line by line: <code>docker build</code> creates an image from the Dockerfile in the current folder, which is the final <code>.</code>. <code>-t citypulse:1.0.0</code> gives the image a name, <code>citypulse</code>, and a tag, <code>1.0.0</code>. The first output line says the build finished in 14.2 seconds across 10 steps. The second line confirms the name the image was saved under. The slide output is shortened here, because the full build log is long.</p>
+<div class="box box-trap"><div class="box-h">Trap: Dockerfile and file list do not match</div><p>The slide's Dockerfile starts the server with <code>service:app</code>, which means a file called <code>service.py</code>. The file list in the Step 3 commit example does not include <code>service.py</code>. Before you build, check that the file the <code>CMD</code> line names exists in your repository. This is the kind of mismatch that a stranger finds in the first minute.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Pushing a tag before the image builds</div><p>In the release script shown in the worked example, the tag is pushed before the Docker build runs. If the build then fails, the tag is already on GitHub. Decide the order before you run the script for real.</p></div>
+
+<h3 id="github-pages-portfolios">GitHub Pages portfolios</h3>
+<p>GitHub Pages publishes static files (HTML pages, CSS styling and media) from a GitHub repository as a free website over HTTPS. The course's portfolio uses the repository named <code>&lt;username&gt;.github.io</code>, and the site is published from its <code>main</code> branch. A portfolio must show who you are, what you built, proof that it works, and how to contact you, in a page that a hiring manager can scan in 30 seconds.</p>
+<p>The slides compare the alternatives. Netlify and Vercel offer similar free hosting with previews, but they need another account, and Pages is enough for one page. A LinkedIn profile must be consistent with the portfolio, but it cannot embed demo media or structure case studies well. Drag-and-drop website builders charge for HTTPS on custom domains, and they keep no Git history.</p>
+<p>The publishing commands are below. They create the repository, copy the starter files, compress a demo video, and push.</p>
+<div class="hl"><pre><span></span><code><span class="nv">GH_USER</span><span class="o">=</span><span class="k">$(</span>gh<span class="w"> </span>api<span class="w"> </span>user<span class="w"> </span>--jq<span class="w"> </span>.login<span class="k">)</span>
+gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GH_USER</span><span class="s2">.github.io&quot;</span><span class="w"> </span>--public<span class="w"> </span>--clone<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GH_USER</span><span class="s2">.github.io&quot;</span>
+cp<span class="w"> </span>-r<span class="w"> </span>../portfolio-starter/.<span class="w"> </span>.
+mkdir<span class="w"> </span>-p<span class="w"> </span>assets
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>~/Videos/citypulse-demo.mov<span class="w"> </span>-t<span class="w"> </span><span class="m">45</span><span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=720:-2&quot;</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-crf<span class="w"> </span><span class="m">28</span><span class="w"> </span>-an<span class="w"> </span>-movflags<span class="w"> </span>+faststart<span class="w"> </span>assets/citypulse-demo.mp4
+ls<span class="w"> </span>-lh<span class="w"> </span>assets/citypulse-demo.mp4
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Portfolio: hero, CityPulse case study, demo&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+sleep<span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>-sI<span class="w"> </span><span class="s2">&quot;https://</span><span class="nv">$GH_USER</span><span class="s2">.github.io&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>GH_USER=$(gh api user --jq .login)</code> stores your GitHub username in a variable. <code>gh api user</code> fetches your profile from GitHub, and <code>--jq .login</code> picks out only the <code>login</code> field.</li>
+<li><code>gh repo create "$GH_USER.github.io" --public --clone</code> creates a public repository with that name and copies it to your machine. <code>--public</code> makes it visible to everyone, which Pages needs.</li>
+<li><code>&amp;&amp; cd "$GH_USER.github.io"</code> runs only if the first command succeeded, and then moves into the new folder. <code>cd</code> means change directory.</li>
+<li><code>cp -r ../portfolio-starter/. .</code> copies everything from the starter folder into the current folder. <code>-r</code> copies folders as well as files.</li>
+<li><code>mkdir -p assets</code> creates the <code>assets</code> folder. <code>-p</code> means "create it, and do not fail if it already exists".</li>
+<li><code>ffmpeg -i ~/Videos/citypulse-demo.mov</code> reads the input video. <code>~</code> means your home folder.</li>
+<li><code>-t 45</code> keeps only the first 45 seconds.</li>
+<li><code>-vf "scale=720:-2"</code> is a video filter. It sets the width to 720 pixels and calculates the height to keep the shape, and the <code>-2</code> makes the height an even number, which video codecs need.</li>
+<li><code>-c:v libx264</code> chooses the H.264 video codec, which plays on almost every phone.</li>
+<li><code>-crf 28</code> sets the quality. A higher number gives a smaller, lower-quality file.</li>
+<li><code>-an</code> removes the audio track.</li>
+<li><code>-movflags +faststart</code> moves the file's index to the front, so the video can start playing before it has fully downloaded.</li>
+<li><code>assets/citypulse-demo.mp4</code> is the output file.</li>
+<li><code>ls -lh</code> lists the file with a human-readable size. The slides require it to be under 5 MB. The output is a line such as <code>-rw-r--r-- ... 3.1M ... assets/citypulse-demo.mp4</code>, and the size is the figure you check.</li>
+<li><code>git add . &amp;&amp; git commit -m "..." &amp;&amp; git push -u origin main</code> stages every file, commits it and pushes to GitHub. <code>-u</code> links your local <code>main</code> branch to the remote one, so later pushes need no extra words.</li>
+<li><code>sleep 60</code> waits a minute, because Pages takes a short time to build the site after a push.</li>
+<li><code>curl -sI "https://..." | head -1</code> asks for the headers only (<code>-I</code>), silently (<code>-s</code>), and shows the first line. The expected first line is <code>HTTP/2 200</code>.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Wrong repository name</div><p>The site is published only from a repository named exactly <code>&lt;username&gt;.github.io</code>. A repository with any other name gives a site at a different address.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Video that stalls on a phone</div><p>Recruiters often open links on phones. Keep the demo under 5 MB and test it on a phone before you publish. A video that is fine on your laptop can stall on mobile data.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Numbers that differ across documents</div><p>The résumé, LinkedIn profile and portfolio must show the same numbers. Copy them from <code>metrics.json</code> and keep all three the same.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook's example is the release of CityPulse v1.0.0. The goal is that a stranger can clone the repository, build the image and run the service, with a tag that names the exact tested commit. The full release script is below, with the line breaks that the slide extraction split put back together.</p>
+<div class="hl"><pre><span></span><code>pytest<span class="w"> </span>-q<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;CityPulse v1.0.0&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.0.0
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citypulse:1.0.0<span class="w"> </span>.
+docker<span class="w"> </span>push<span class="w"> </span>registry.example.com/citypulse:1.0.0
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Release v1.0.0 published&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>pytest -q</code> runs the tests in quiet mode. <code>pytest</code> is a Python testing tool that runs every test function in files whose names start with <code>test_</code>.</li>
+<li><code>|| exit 1</code> means "if the command before this failed, stop the script with an error code of 1". The double bar <code>||</code> is the "or" that runs only when the left side fails. If a test fails, no tag or image is created.</li>
+<li><code>git tag -a v1.0.0 -m "..."</code> creates the annotated tag, as explained above.</li>
+<li><code>git push origin v1.0.0</code> sends the tag to the remote called <code>origin</code>.</li>
+<li><code>docker build -t citypulse:1.0.0 .</code> builds the image from the Dockerfile.</li>
+<li><code>docker push registry.example.com/citypulse:1.0.0</code> uploads the image to a registry. <code>registry.example.com</code> is a placeholder from the slides. Replace it with the registry your course gives you.</li>
+<li><code>echo "..."</code> prints a final message, so you know the script reached the end.</li>
+</ul>
+<p>The slide's test file is the first thing that runs. It checks the advisory bands that the service returns for pm2.5 readings. pm2.5 is a measure of fine particles in air, and the bands are the public-health categories built from it.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">advisory</span><span class="w"> </span><span class="kn">import</span> <span class="n">advise</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bands</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">advise</span><span class="p">(</span><span class="mf">12.0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span>
+    <span class="k">assert</span> <span class="n">advise</span><span class="p">(</span><span class="mf">49.7</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;moderate&quot;</span>
+    <span class="k">assert</span> <span class="n">advise</span><span class="p">(</span><span class="mf">75.0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;unhealthy&quot;</span>
+    <span class="k">assert</span> <span class="n">advise</span><span class="p">(</span><span class="mf">140.0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;hazardous&quot;</span>
+</code></pre></div>
+
+<p>Line by line, with the indentation restored: <code>from advisory import advise</code> loads the function <code>advise</code> from the file <code>advisory.py</code>. <code>def test_bands():</code> defines a test function, and pytest finds it because its name starts with <code>test_</code>. Each <code>assert</code> line states something that must be true. If one is false, pytest reports a failure. The four readings 12.0, 49.7, 75.0 and 140.0 are the test values. Only those four results are shown in the slides. The slides do not show <code>advisory.py</code> itself, so the thresholds are not given here.</p>
+<p>Running <code>pytest -q .</code> in the project folder prints <code>1 passed in 0.00s</code>, which means the single test function passed. The <code>.</code> tells pytest to search the current folder.</p>
+<p>The demo script is the last check, and it shows the service doing its job.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">advisory</span><span class="w"> </span><span class="kn">import</span> <span class="n">advise</span>
+<span class="k">for</span> <span class="n">pm25</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">49.7</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">140.0</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pm2.5=</span><span class="si">{</span><span class="n">pm25</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">advise</span><span class="p">(</span><span class="n">pm25</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line: the first line imports the same function. <code>for pm25 in [...]:</code> repeats the body once for each number in the list, and <code>pm25</code> holds the current number. The <code>print</code> line builds a sentence. <code>{pm25:&gt;6}</code> right-aligns the number in a field six characters wide, which makes the arrows line up. <code>{advise(pm25)}</code> calls the function and inserts its answer. The slide extraction lost the spaces, but with this formatting the output is <code>pm2.5=  12.0 -&gt; good</code>, then <code>pm2.5=  49.7 -&gt; moderate</code>, then <code>pm2.5=  75.0 -&gt; unhealthy</code>, then <code>pm2.5= 140.0 -&gt; hazardous</code>. Run <code>python3 demo.py</code> in the project folder to see it for yourself.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The slide deck and the Technology in Action page for this day show the release chain: test, README, commit, tag, image, push, demo and one release script. The lab steps below follow the seven-step plan of the course, which covers running the service as well. The slide material does not contain the exact commands for steps 1, 2, 3, 4 and 5, so the commands here are the standard ones for the tools named. Where your workbook gives a different command, use the workbook's version.</p>
+<h3 id="step-1-compose-the-stack">Step 1: Compose the stack</h3>
+<p><strong>What you do.</strong> Start every container the project needs, the service and its database, from one command.</p>
+<p><strong>Type.</strong> From the project folder, run <code>docker compose up -d --build</code>. <code>docker compose</code> reads the compose file in the folder and starts each service it describes. <code>-d</code> runs them in the background, so your terminal is free again. <code>--build</code> rebuilds the images first, so the code you have now is the code that runs.</p>
+<p><strong>You should see.</strong> One line per service, each saying that it was started or is running.</p>
+<p><strong>You know it worked when.</strong> <code>docker compose ps</code> lists every service with a state of running. The backlog's acceptance line for this step is "healthy in under 3 minutes on a spare laptop", so time it.</p>
+<h3 id="step-2-wait-for-the-database">Step 2: Wait for the database</h3>
+<p><strong>What you do.</strong> Wait until the database accepts connections before you send it any data. A database container can be running while the database inside it is still starting.</p>
+<p><strong>Type.</strong> Run <code>docker compose ps</code> and look at the status column. If the database service has a health check, the status will change from <code>starting</code> to <code>healthy</code>. If it has none, run <code>docker compose logs &lt;service-name&gt;</code> and wait for the line that says the database is ready to accept connections. Replace <code>&lt;service-name&gt;</code> with the name from the compose file.</p>
+<p><strong>You should see.</strong> The database status changes to healthy, or its log says it is ready.</p>
+<p><strong>You know it worked when.</strong> The next step, which connects to the database, succeeds on the first try and not after an error about refused connections.</p>
+<h3 id="step-3-seed-cleaned-readings">Step 3: Seed cleaned readings</h3>
+<p><strong>What you do.</strong> Load the cleaned air-quality readings into the database, so that the service has data to work from.</p>
+<p><strong>Type.</strong> The slides' backlog example names <code>make ingest</code>, which writes dated files into <code>data/raw/</code> and logs the number of rows. Your workbook gives the command that loads the cleaned readings into the database. Run that command from the project folder.</p>
+<p><strong>You should see.</strong> A log line that gives the number of rows loaded. The slides' example logs the row count, so a count of zero is a failure.</p>
+<p><strong>You know it worked when.</strong> The row count you see matches the number of readings in the file you started from.</p>
+<h3 id="step-4-serve-a-prediction-from-stored-data">Step 4: Serve a prediction from stored data</h3>
+<p><strong>What you do.</strong> Send a request to the running service and check that it returns a prediction.</p>
+<p><strong>Type.</strong> Run <code>curl -i -X POST -H "Content-Type: application/json" -d @tests/sample.json http://localhost:8000/predict</code>. <code>curl</code> sends the request, <code>-i</code> shows the reply headers, <code>-X POST</code> sends a POST request, <code>-H</code> sets the content type to JSON, <code>-d @tests/sample.json</code> sends the contents of that file as the body, and the address is the <code>/predict</code> endpoint on port 8000.</p>
+<p><strong>You should see.</strong> A first line of <code>HTTP/1.1 200 OK</code>, followed by JSON that contains the predicted wait in minutes.</p>
+<p><strong>You know it worked when.</strong> The status is 200. The backlog's acceptance line is "returns 200", so a 422 means the sample was rejected and you must fix the input, not the test.</p>
+<h3 id="step-5-end-to-end-smoke-test">Step 5: End-to-end smoke test</h3>
+<p><strong>What you do.</strong> Check the whole chain in one pass: the service runs, the test suite passes, and a request gets a 200.</p>
+<p><strong>Type.</strong> Run <code>pytest -q .</code> and then repeat the request from Step 4. A smoke test is a quick check that the main path works. It is not a full test.</p>
+<p><strong>You should see.</strong> <code>1 passed in 0.00s</code> or the number of tests in your suite, with the word <code>passed</code> and no <code>failed</code>, followed by the 200 status from the request.</p>
+<p><strong>You know it worked when</strong> both checks pass in the same session. If the test suite passes and the request fails, the problem is in the running service, not in the code the tests check.</p>
+<h3 id="step-6-write-the-demo-script">Step 6: Write the demo script</h3>
+<p><strong>What you do.</strong> Write a short script that feeds readings into the advisory function and prints the bands. The script is the proof that the service works.</p>
+<p><strong>Type.</strong> Create <code>demo.py</code> with the four lines from the worked example, then run <code>python3 demo.py</code>.</p>
+<p><strong>You should see.</strong> Four lines, one for each reading, each ending with a band word such as <code>good</code> or <code>hazardous</code>.</p>
+<p><strong>You know it worked when</strong> the output matches the bands in your test file. Use this script when you present, because it shows real readings turning into advisories in seconds.</p>
+<h3 id="step-7-rollback-plan">Step 7: Rollback plan</h3>
+<p><strong>What you do.</strong> Write down how you will return to the last good version if the new release fails after it has been deployed.</p>
+<p><strong>Type.</strong> The plan has two parts. For the source code, check out the previous tag with <code>git checkout v1.0.0</code>. For the running service, start the previous image with <code>docker run -p 8000:8000 citypulse:1.0.0</code>. <code>-p 8000:8000</code> connects port 8000 on your machine to port 8000 in the container.</p>
+<p><strong>You should see.</strong> The plan written in your handover, with the tag name, the image tag, the exact commands, and the trigger, such as "the Step 5 smoke test fails after deploy".</p>
+<p><strong>You know it worked when</strong> someone else can read the plan and carry it out without asking you. The slides' rule is that a rollback is <code>git checkout</code> of a known tag, which is precise and reproducible.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"MoSCoW-prioritise the CityPulse backlog" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Must-have flag wins regardless of ratio</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Ratio 5 -&gt; Should</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Ratio 1.5 -&gt; Could</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Ratio 0.5 -&gt; Wont</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Must first, then by value/effort desc</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Greedy fit within capacity 8</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 85 of the 100 points. The other 15 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K14.html#y2-t49-mini-project-review-1-demo-baseline-moscow-backlog-book-mock">Y2-T49 · Mini-project review 1: demo baseline, MoSCoW backlog, book mock</a></li>
+<li><a href="K14.html#y2-t50-train-industry-model-that-beats-baseline-state-impact-in-minutes">Y2-T50 · Train industry model that beats baseline; state impact in ₹/minutes</a></li>
+<li><a href="K14.html#y2-t51-integrate-mini-project-end-to-end-via-compose-finish-gap-bridge-set">Y2-T51 · Integrate mini-project end-to-end via compose; finish gap-bridge set</a></li>
+<li><a href="K14.html#y2-t52-make-mini-project-handover-ready-handovermd-tests-contributions">Y2-T52 · Make mini-project handover-ready: HANDOVER.md, tests, contributions</a></li>
+<li><a href="K14.html#y2-t53-rehearse-7-minute-client-presentation-ship-slides-video-qa-prep">Y2-T53 · Rehearse 7-minute client presentation; ship slides, video, Q&amp;A prep</a></li>
+<li><a href="K14.html#y2-t54-y2-d07-p10-present-mini-project-for-mentor-sign-off-dsa-sprint">Y2-T54 · Y2-D07 (P10): present mini-project for mentor sign-off + DSA sprint</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic in this section, in the order given here. The pass mark is 70 per cent, so you need at least seven correct. Your skill score keeps your first attempt only, so take the quiz once with care. The practice questions below prepare you for the kind of reasoning the real questions need. They are not copies of the real questions, which you have not seen.</p>
+<p>A case-study question gives you a short scenario about a team, then asks one question about it. Use the same method every time:</p>
+<ol>
+<li>Read the last line first. It tells you what is being asked: the first step, the best reason, the most likely cause or the right owner.</li>
+<li>Go back to the scenario and underline the facts that matter: the deadline, the number of items, who has which role, what is already done and what is still missing.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. "Testing is important" may be true, and still be the wrong answer to a question about the next step.</li>
+<li>Watch the signal words. "Most" asks for the strongest answer among several sensible ones. "First" asks for the step that comes before the others. "Best" asks you to compare each option with the facts you underlined.</li>
+</ol>
+<p>Each topic below has the same parts: what it is, how it shows up in a CityPulse case study, a box that names the most tempting mistake, and three practice questions with a reason for each answer. The section ends with a quick self-test of ten harder questions.</p>
+<h3 id="requirements-prioritisation">Requirements prioritisation</h3>
+<p><strong>What it is.</strong> A requirement is something the product must do or must have, such as "show the latest reading" or "export a report". Prioritising requirements means putting them in order, so that the team builds the most important ones first and can say clearly what waits. The method the course uses is MoSCoW. Must means the product fails without the item. Should means the item is important, but the product still works without it. Could means a useful extra that is built only if there is time. Won't (this time) means the team has decided not to build the item in this project, and it has written down why.</p>
+<p>The test for each item is one question: does the product fail without it? Here is a small example from a dashboard for air-quality readings.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Bucket</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show the latest reading</td>
+<td>Must</td>
+<td>Without it, the dashboard has no content</td>
+</tr>
+<tr>
+<td>Colour each reading by its advisory band</td>
+<td>Should</td>
+<td>Useful, but the readings can still be read without colour</td>
+</tr>
+<tr>
+<td>Export a PDF of last week</td>
+<td>Could</td>
+<td>Build only if time remains</td>
+</tr>
+<tr>
+<td>Dark mode</td>
+<td>Won't (this time)</td>
+<td>Not needed for this project, and the reason is written down</td>
+</tr>
+</tbody>
+</table>
+<p>After sorting, the team can point to one bucket for every row, and each bucket has a reason. That is what prioritisation produces: a decision that someone else can read and check.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse squad has nine candidate items and three weeks. A stakeholder asks for four of them to be Musts because they matter to him. The squad asks the test question for each one. The dashboard cannot show a prediction without the prediction endpoint, so that item is a Must. The four requested items are useful, but the product still runs without them, so they become Should or Could. The team keeps the Musts to five or fewer and writes a reason for each Won't. The reasoning rests on the failure test, not on who asked loudest.</p>
+<div class="box box-trap"><div class="box-h">Trap: Everything is a Must</div><p>Marking every item as a Must because one senior person asked for all of them looks thorough, but it protects nothing. A list with six or more Musts has not been sorted. Move the least essential ones to Should, and keep the Musts to five or fewer.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The CityPulse squad has nine candidate items for a three-week project. A mentor asks the team to mark every item the client requested as a Must. Which decision best fits the MoSCoW method?&quot;, &quot;opts&quot;: [&quot;Mark all nine as Must, so that nothing is dropped&quot;, &quot;Mark the three items the client asked for first as Must and the rest as Won&#x27;t&quot;, &quot;Mark an item as Must only where the product fails without it, and keep the Musts to five or fewer&quot;, &quot;Mark everything as Should, so that the decision can wait&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A Must is an item the product fails without, and the course caps Musts at five. Asking for an item does not make it essential. Nine Musts protects nothing, and marking everything Should avoids the decision rather than making it.&quot;}, {&quot;q&quot;: &quot;After a sprint review the Must list has six items, and two of them depend on a data agreement that has not arrived. The lead asks what to do first. Which action is correct?&quot;, &quot;opts&quot;: [&quot;Move the least essential extra Must to Should, keep five or fewer Musts, and record the data dependency as a risk&quot;, &quot;Keep six Musts and ask the mentor to extend the deadline&quot;, &quot;Move the data-dependent items to Won&#x27;t without writing a reason&quot;, &quot;Delete the data-dependent items from the backlog so the list looks clean&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Six Musts breaks the cap of five, so one item must move. Moving an item without a reason removes the record, and a Won&#x27;t needs a written reason. Deleting the items loses the record entirely, and a deadline extension is not the team&#x27;s decision to make.&quot;}, {&quot;q&quot;: &quot;Three weeks into the project, the Won&#x27;t list is empty. A stakeholder keeps asking for a live link to the hospital database, which the team has no agreement to use. Which action gives the team a defensible answer?&quot;, &quot;opts&quot;: [&quot;Keep answering the request until the stakeholder stops asking&quot;, &quot;Add the database link to the Must list, because it is asked for often&quot;, &quot;Delete the Won&#x27;t list, since a short project does not need one&quot;, &quot;Write the database link on the Won&#x27;t list with its reason, such as no data agreement, so that the team can point to the decision&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A Won&#x27;t with a reason gives the team a documented answer that it can point to. Adding the link to the Musts would commit the team to work it cannot finish without an agreement. Deleting the list removes the record that the request was considered.&quot;}]}"></div>
+
+<h3 id="managing-scope">Managing scope</h3>
+<p><strong>What it is.</strong> Scope is the set of work that a project will deliver. Managing scope means deciding what is in and what is out, and recording each decision so that it can be checked later. Scope creep is the slow growth of work that happens when new requests are accepted without anything being removed. In a sprint, the team has a fixed capacity, measured in story points. Every addition uses some of that capacity, so an addition must displace something or wait for the next sprint.</p>
+<p>Suppose the team has committed 10 story points, which is its whole capacity. A new request is estimated at 3 points. The team has two honest options: name a committed item that moves out to make room, or put the request in the next sprint. A third option, quietly working longer hours, hides the cost rather than managing it.</p>
+<p><strong>How it shows up in a case study.</strong> Midway through a CityPulse sprint, a client's manager sends a message: "Can you add a CSV download? It should be quick." The squad has no spare capacity. The correct first move is to write the request down, estimate it, and ask the product owner which committed item it would displace or whether it waits for the next sprint. Only then does the team answer the client. Whether the download is quick is a claim nobody has checked, so the estimate comes before any promise. The decision is recorded, so the team can explain it at the review.</p>
+<div class="box box-trap"><div class="box-h">Trap: The quick favour</div><p>"It should be quick" sounds harmless, and accepting it feels like good service. But capacity is fixed, so a quick favour is still work, and it pushes out something the team already promised. Estimate first, and make the trade-off visible.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Midway through a sprint, a client&#x27;s manager messages the squad: \&quot;Can you add a CSV download? It should be quick.\&quot; The sprint has 10 story points committed and the team has no spare capacity. What should the squad do first?&quot;, &quot;opts&quot;: [&quot;Build the CSV download in the evening, so the sprint still ends on time&quot;, &quot;Estimate the CSV download, record it in the backlog, and agree with the product owner which committed item it would displace&quot;, &quot;Tell the manager it is quick and add it to the sprint without a check&quot;, &quot;Ignore the message, since the sprint is already committed&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Fixed capacity means any addition displaces something, and the trade-off must be agreed and recorded. Evening work hides the cost. Ignoring the message leaves no record of the request. \&quot;Quick\&quot; is an unchecked estimate, so it cannot be promised.&quot;}, {&quot;q&quot;: &quot;The scope document for a project lists a dashboard, a prediction API and a HANDOVER.md file. A teammate has built a map view that nobody approved, and the mentor asks how to keep scope honest. Which answer is best?&quot;, &quot;opts&quot;: [&quot;Let teammates add anything useful, as long as they finish it before the deadline&quot;, &quot;Remove the scope document, so that nobody can argue about it&quot;, &quot;Accept the map view, because finished work is proof that it was needed&quot;, &quot;Record the map view as a change request with its effort and a decision, and keep it out of the committed work until the team agrees&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Scope control means that each change is written down and its cost is visible. Finished work does not show that the work was planned or agreed. Removing the document removes the thing that makes scope checkable, and accepting finished work by default rewards unapproved additions.&quot;}, {&quot;q&quot;: &quot;A project&#x27;s Won&#x27;t list has four entries, each with a reason. Two months later a new team member proposes one of them again. What does the scope record allow the team to do?&quot;, &quot;opts&quot;: [&quot;Point to the recorded reason, then decide with the product owner whether that reason still holds before reopening the item&quot;, &quot;Accept the proposal at once, because the new member is enthusiastic&quot;, &quot;Hide the old entry, so that the proposal looks new&quot;, &quot;Refuse the proposal without discussion and without writing anything down&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The reason in the Won&#x27;t entry is the evidence for the earlier decision. A reason can stop being true, so reopening is possible, but only through a discussion that checks the reason. Accepting at once ignores the decision, and hiding or silently refusing the proposal loses the record.&quot;}]}"></div>
+
+<h3 id="incremental-delivery">Incremental delivery</h3>
+<p><strong>What it is.</strong> Incremental delivery means building and shipping small pieces that work from one end to the other, one after another. A layered plan does the opposite: it finishes the whole database, then the whole model, then the whole interface. A thin slice is a narrow path through every layer that works. It takes one input, passes it through each part and returns a visible result. Here is a tiny example of a slice written in Python.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ingest</span><span class="p">(</span><span class="n">reading</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="n">reading</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;good&quot;</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;pm25&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">else</span> <span class="s2">&quot;moderate&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">ingest</span><span class="p">(</span><span class="mf">12.0</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>The function <code>ingest</code> wraps the reading in a dictionary, and <code>predict</code> returns a band. The last line passes one value through both. The output is <code>good</code>, because 12.0 is below 50. The slice is small, but it proves that the path from input to answer works. Later, the team widens each part: real storage replaces the dictionary, and a real model replaces the rule. Each step keeps a working path.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team spends its first three weeks building the database layer, with no endpoint and no model. In week four it discovers that the stored format does not match what the model expects. A thin slice in week one would have shown that mismatch while there was still time to change the design. The mentor's advice is to make the first slice run from one reading in to one prediction out, and then widen it each week, checking the end-to-end path after each change.</p>
+<div class="box box-trap"><div class="box-h">Trap: Integrate at the end</div><p>"We will connect the layers in the last week" sounds like a plan, but it hides every integration problem until the time when fixing them is most expensive. Each layer may look finished alone and still fail when it meets the next one.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A squad plans to build the database schema in weeks one and two, the model in weeks three and four and the web page in week five. Integration is planned for week six. A mentor asks what risk this plan carries. Which answer is best?&quot;, &quot;opts&quot;: [&quot;It has no risk, because each layer is finished before the next one begins&quot;, &quot;The layers may not fit together until week six, so integration problems appear late, when they are most costly to fix&quot;, &quot;The schema will be too large to test properly&quot;, &quot;The web page should be built first, because users see it first&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Building one layer at a time hides integration problems until the end. Finishing a layer does not show that it works with the next one. The schema size and the order of the web page are not the risk the plan creates.&quot;}, {&quot;q&quot;: &quot;A team must show a demo at the end of week one, and the data agreement is still pending. Which item is the best thing to show?&quot;, &quot;opts&quot;: [&quot;One sample reading going through ingest, a simple advisory rule and a returned answer&quot;, &quot;The full model with twelve features, trained on the complete dataset&quot;, &quot;A complete design document with every table drawn&quot;, &quot;A set of unit tests for code that has not yet been written&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A thin slice runs from input to a visible output, so it is shown early and proves the path works. The full model needs data the team does not yet have. A design document and tests for code that does not exist prove nothing that runs.&quot;}, {&quot;q&quot;: &quot;After its first thin slice works, the team must widen it. Which order keeps a working version at every step?&quot;, &quot;opts&quot;: [&quot;Add all the remaining endpoints in one commit, then test everything&quot;, &quot;Replace the database with a new one before testing the path&quot;, &quot;Turn off the tests while the slice is widened&quot;, &quot;Widen one step at a time, for example more readings and then real storage, and run the end-to-end check after each step&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Widening in small steps with an end-to-end check after each one keeps a working version at all times, and it shows which change caused a failure. One large commit hides that cause, and turning off the tests removes the check that would catch the failure.&quot;}]}"></div>
+
+<h3 id="managing-risk">Managing risk</h3>
+<p><strong>What it is.</strong> A risk is an event that may happen and would hurt the project if it did. Risk management means recording each risk, judging how likely it is and how much damage it would do, naming an owner, and writing down what will be done about it. A list of these entries is called a risk register. Each entry needs a date on which someone reviews it, because a risk that nobody reviews is simply forgotten.</p>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Impact</th>
+<th>Owner</th>
+<th>Response</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The data agreement may not arrive</td>
+<td>Medium</td>
+<td>High</td>
+<td>Asha</td>
+<td>Switch to the public air-quality dataset if no agreement by 10 April</td>
+<td>Friday stand-up</td>
+</tr>
+</tbody>
+</table>
+<p>The row is useful because someone can act on it. It names the event, the size of the damage, a person, a fallback and a date. A risk with only a description is a worry, not a plan.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse squad's register says only "data may be late". The mentor asks the team to make the entry complete. The squad adds an owner who will chase the agreement, a likelihood and impact rating, a fallback dataset, and a date on which the fallback is switched on if the agreement has not arrived. The entry is now something the team can act on. The reasoning is that a fallback you have not triggered is still a plan, but only once it has a trigger and an owner.</p>
+<div class="box box-trap"><div class="box-h">Trap: The register with no owner</div><p>A register that lists risks with no owner, no response and no review date looks careful, because it is long. It cannot change anything, because nobody is responsible for acting on it.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The risk register says \&quot;the server may be slow\&quot;, with no owner, no rating and no date. The mentor reviews it on Friday. Which change most improves the entry?&quot;, &quot;opts&quot;: [&quot;Add an owner, a likelihood and impact rating, a response such as caching the advice, and a review date&quot;, &quot;Add the word critical to the title, so that people notice it&quot;, &quot;Delete the risk, because a slow server is normal&quot;, &quot;Move the risk to the Won&#x27;t list&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A complete risk has an owner, a rating, a response and a review date. A word like critical adds no information. Deleting the risk removes a real concern, and the Won&#x27;t list records scope decisions, not risks.&quot;}, {&quot;q&quot;: &quot;A risk is rated high impact and medium likelihood. The team has a fallback dataset ready but has not decided when to use it. Which is the most useful next step?&quot;, &quot;opts&quot;: [&quot;Treat the risk as closed, because a fallback exists&quot;, &quot;Wait until the deadline and see what happens&quot;, &quot;Lower the impact rating, because the team is confident in the rest of the plan&quot;, &quot;Set a decision date and name the person who will switch to the fallback if the agreement is late&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A fallback that has no trigger and no owner is not yet a response. Waiting leaves no time to act, and lowering the rating without evidence hides the risk rather than managing it. Closing the risk is premature while the decision is still open.&quot;}, {&quot;q&quot;: &quot;A squad writes the risk \&quot;the client may change their mind\&quot;. Which rewrite turns it into a useful risk entry?&quot;, &quot;opts&quot;: [&quot;The client may be difficult to work with&quot;, &quot;The client is unpredictable, so the team cannot plan anything&quot;, &quot;If the client changes the success measure after week two, the sprint may need re-planning, so the product owner agrees a change process and reviews scope at each sprint review&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A useful risk names a specific event, its effect and a response. Difficult and unpredictable are labels that nobody can assess, and they suggest no response. The correct option names the trigger, the consequence and the action.&quot;}]}"></div>
+
+<h3 id="agile-ceremonies">Agile ceremonies</h3>
+<p><strong>What it is.</strong> A ceremony is a regular meeting with a fixed purpose in an agile team. The four that matter here are sprint planning, the daily stand-up, the sprint review and the retrospective. Each one answers a different question. Sprint planning asks what the team will commit to in the next sprint. The daily stand-up asks whether anything is blocking the work today. The sprint review asks whether the product works and whether stakeholders want to change it. The retrospective asks how the team worked and what it will change.</p>
+<table>
+<thead>
+<tr>
+<th>Ceremony</th>
+<th>When</th>
+<th>Question it answers</th>
+<th>Main audience</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint planning</td>
+<td>Start of the sprint</td>
+<td>What will we commit to, and what is the goal?</td>
+<td>The team</td>
+</tr>
+<tr>
+<td>Daily stand-up</td>
+<td>Every day, about 15 minutes</td>
+<td>What is blocking us today?</td>
+<td>The team</td>
+</tr>
+<tr>
+<td>Sprint review</td>
+<td>End of the sprint</td>
+<td>Does the product work, and is it what stakeholders need?</td>
+<td>The team and stakeholders</td>
+</tr>
+<tr>
+<td>Retrospective</td>
+<td>End of the sprint, after the review</td>
+<td>How did we work, and what will we change?</td>
+<td>The team</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How it shows up in a case study.</strong> A CityPulse squad reaches the end of its sprint. The client's manager attends the demo and gives feedback on the dashboard. A teammate then wants to use the same meeting to discuss how the sprint was run. The mentor separates the two. The feedback on the product belongs to the sprint review, and the discussion of the team's process belongs to the retrospective, which should be held after the review and be blameless. Keeping them apart stops the client from sitting through an internal debate, and it stops the team's process from being judged by a stakeholder.</p>
+<div class="box box-trap"><div class="box-h">Trap: Review and retrospective are the same meeting</div><p>Both happen at the end of a sprint, so they are easy to confuse. The review is about the product and includes stakeholders. The retrospective is about the team's process and is internal. Mixing them means that neither is done properly.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;At the start of a sprint, the squad decides which backlog items it will commit to, and writes down a sprint goal. Which ceremony is this?&quot;, &quot;opts&quot;: [&quot;The daily stand-up&quot;, &quot;Sprint planning&quot;, &quot;The retrospective&quot;, &quot;The sprint review&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Sprint planning chooses the committed work and states the goal. The stand-up is a short daily check, the review shows the product to stakeholders at the end, and the retrospective examines how the team worked.&quot;}, {&quot;q&quot;: &quot;A squad&#x27;s daily stand-up has grown to forty minutes, with people solving problems during the meeting. The scrum master wants it back to its purpose. Which change fits?&quot;, &quot;opts&quot;: [&quot;Add a second stand-up each day for the same purpose&quot;, &quot;Stop the stand-ups and send a weekly email instead&quot;, &quot;Have the product owner give a full status report to the client each day&quot;, &quot;Keep it short, with each person saying what they did, what they will do and what blocks them, and take problem-solving to a separate conversation afterwards&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The stand-up is a short status check, so problems are taken after it, with only the people involved. A second meeting doubles the cost without fixing the cause. A weekly email loses the daily coordination, and a client report is not the purpose of the meeting.&quot;}, {&quot;q&quot;: &quot;A sprint review ends with the team discussing that the stand-ups were too long and that planning took two hours. Which ceremony should have covered this discussion?&quot;, &quot;opts&quot;: [&quot;The retrospective, because it looks at how the team worked&quot;, &quot;The sprint review, because it shows the product to stakeholders&quot;, &quot;The daily stand-up, because it is a short status check&quot;, &quot;Sprint planning, because it chooses the next work&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The retrospective examines the team&#x27;s process, including meeting length and planning time. The review is about the product, and it is the wrong place for an internal discussion. The stand-up and planning are the meetings whose length is being judged, and they do not review themselves.&quot;}]}"></div>
+
+<h3 id="acceptance-criteria">Acceptance criteria</h3>
+<p><strong>What it is.</strong> An acceptance criterion is a condition that must be true before a piece of work counts as done. A good criterion is testable: someone who did not write the work can check it with a command or a number and get a clear yes or no. Here are two examples.</p>
+<table>
+<thead>
+<tr>
+<th>Vague</th>
+<th>Testable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The API works</td>
+<td><code>curl -d @tests/sample.json</code> to <code>/predict</code> returns HTTP 200</td>
+</tr>
+<tr>
+<td>Predictions are fast</td>
+<td>95 per cent of requests on the test laptop finish in under 500 ms</td>
+</tr>
+</tbody>
+</table>
+<p>The vague version cannot fail, so it cannot be checked. Two people can read "works" and disagree about whether it is met. The testable version names the command or measure, so the result is either a 200 status or it is not, and either under 500 ms or not.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse team writes a card for the prediction endpoint that says "the endpoint is reliable". A tester asks how she will know it is done. The mentor asks the team to rewrite the criterion so that it names a sample request, the expected status code and the field the reply must contain. The rewrite also says where the test runs. The reasoning is that a criterion is only as good as the check someone can run from it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Criteria that cannot fail</div><p>"The dashboard is user-friendly" and "the code is clean" are common acceptance lines. They describe a quality, but they give no test and no number, so the work can be called done whatever happens.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A squad&#x27;s card for the prediction endpoint says \&quot;the endpoint is reliable\&quot;. A tester asks how she will know the card is done. Which acceptance criterion is testable?&quot;, &quot;opts&quot;: [&quot;The endpoint is reliable for most users&quot;, &quot;The team is confident that the endpoint is reliable&quot;, &quot;A senior developer has reviewed the endpoint&quot;, &quot;A sample request with a valid body returns HTTP 200, and the reply contains a field named wait_minutes&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A testable criterion gives a command or number and a clear yes or no. Reliable for most users, confidence and review are judgements, and two people could disagree about each one. Only the sample request with its expected status and field can be checked by anyone.&quot;}, {&quot;q&quot;: &quot;A criterion reads \&quot;the report loads quickly on a phone\&quot;. Which rewrite is the most testable?&quot;, &quot;opts&quot;: [&quot;The report page loads in under three seconds on a mid-range phone over a 4G connection, measured in the browser&#x27;s network panel&quot;, &quot;The report page loads faster than the old version&quot;, &quot;The report page looks modern on phones&quot;, &quot;The report page is quick for most users&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The correct rewrite names a number, the conditions and a way to measure. \&quot;Faster than the old version\&quot; has no number, and \&quot;modern\&quot; and \&quot;quick for most users\&quot; are opinions. The tester would still have to ask the author what each one means.&quot;}, {&quot;q&quot;: &quot;A tester is told that the acceptance line for the ingest step is \&quot;ingest works\&quot;. She runs it and loads zero rows. Why did the criterion fail to protect the team?&quot;, &quot;opts&quot;: [&quot;The tester ran it on the wrong laptop&quot;, &quot;The criterion was too long to read easily&quot;, &quot;The team did not write a test file for the ingest step&quot;, &quot;The criterion did not name a count or a check, so a run that loaded zero rows could still be called a success&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Without a number, \&quot;works\&quot; can be claimed when the output is empty. A criterion such as \&quot;the logged row count matches the number of readings in the file\&quot; would fail at zero. The other options do not explain why the criterion allowed a failure to pass.&quot;}]}"></div>
+
+<h3 id="handover-runbooks">Handover runbooks</h3>
+<p><strong>What it is.</strong> A runbook is a document of exact steps for running and looking after a system. Each step gives a command, the output a reader should expect, what to do if the output is different, and how to roll back. A handover runbook is written so that a stranger can keep the system running after the original authors have left. It sits alongside the README and the HANDOVER.md file, and it holds the parts that a README usually leaves out, such as known issues.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Command</th>
+<th>Expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>pytest -q .</code></td>
+<td><code>1 passed in 0.00s</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>docker compose up -d --build</code></td>
+<td>One line per service, each started or running</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>curl -i -X POST -d @tests/sample.json ...</code></td>
+<td>First line <code>HTTP/1.1 200 OK</code></td>
+</tr>
+</tbody>
+</table>
+<p>The table is a runbook in miniature. A newcomer can see the command, the result that means success, and the result that means something has gone wrong.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse project is handed to a client's engineer. On the first run, Step 3 fails with "file not found", although the file exists on the original author's laptop. The runbook was written from memory, and the file is listed in <code>.gitignore</code>, so it never reached the repository. The fix is to run every command on a clean clone of the tagged version before the handover is merged, and to record the expected output beside each command. The new owner then sees the failure in the runbook's own test, not in the first minute of their own work.</p>
+<div class="box box-trap"><div class="box-h">Trap: Commands that were never run</div><p>A runbook command that has never been run from a clean copy is a guess. The first real run then fails in front of the new owner, which is the worst time to find out.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A new owner follows the handover runbook. Step 3 fails with \&quot;file not found\&quot;, although the file is in the author&#x27;s folder. Which change to the runbook prevents this next time?&quot;, &quot;opts&quot;: [&quot;Add a longer introduction about the history of the project&quot;, &quot;Run every command on a clean clone of the tagged version before merging, and write the expected output beside each command&quot;, &quot;Replace the runbook with a recorded video&quot;, &quot;Delete Step 3, since the loader is optional&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A runbook fails when its commands were never run from the state a newcomer starts in. A clean clone and recorded output catch that. A longer history, a video or removing a step does not address the cause, which is an untested assumption about which files exist.&quot;}, {&quot;q&quot;: &quot;A runbook has an accurate list of commands, but it does not say what to do when the service answers the sample request with 422. Which section is missing?&quot;, &quot;opts&quot;: [&quot;The architecture diagram&quot;, &quot;The list of owners in the README&quot;, &quot;The changelog&quot;, &quot;The known issues and troubleshooting section, with the meaning and the fix for each documented failure&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Known issues and troubleshooting tell the newcomer what a failure means and what to do about it. A 422 means the input was rejected, so the fix is in the request, not in the service. A diagram, an owner list and a changelog do not explain a status code.&quot;}, {&quot;q&quot;: &quot;A handover includes the rollback step \&quot;go back to the old version\&quot;. Which rewrite makes the step precise?&quot;, &quot;opts&quot;: [&quot;Go back to the previous version of the code&quot;, &quot;Use whichever version worked last time&quot;, &quot;Check out the tag v1.0.0 for the code, start the image citypulse:1.0.0 for the running service, and do this when the smoke test fails after deploy&quot;, &quot;Contact the original author for help&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A rollback is precise when it names the tag, the image and the trigger. \&quot;The previous version\&quot; and \&quot;whichever worked last time\&quot; are vague. Asking the original author defeats the purpose of a handover, because the new owner must be able to act without them.&quot;}]}"></div>
+
+<h3 id="roles-and-raci">Roles and RACI</h3>
+<p><strong>What it is.</strong> A RACI chart lists each task and says who plays which role in it. R means Responsible, the person who does the work. A means Accountable, the person who signs off the result. C means Consulted, people who give input before the decision. I means Informed, people who hear the outcome afterwards. Each task must have exactly one A. Two As mean that nobody clearly owns the outcome, and no A means that nobody signs it off. Here is a small chart for three tasks.</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Asha</th>
+<th>Ravi</th>
+<th>Neha</th>
+<th>Client</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingest the readings</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Train the model</td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Sign off the release</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<p>Read down a column to see a person's roles, and read across a row to check that a task has exactly one A. The client is marked I because they hear about the release but do not approve it.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse squad fills in a RACI chart for the release of the OPD model. Two people are marked A for the release, and the client is also marked A because it owns the product. The mentor says the chart is invalid. The fix is to keep exactly one A, on the person who signs the release off, and to give the other roles to the people who do the work, consult or inform. The client moves to I, since it hears about the release and does not approve it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Two Accountables, or none</div><p>A chart with two As looks shared, but it means nobody owns the result. A chart with no A looks neutral, but it means nobody can sign off. Both break the rule.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;For the release task, the squad has marked two people as A, one of them also as R. Which correction makes the chart valid under RACI?&quot;, &quot;opts&quot;: [&quot;Put the A on the client, because the client is the final user&quot;, &quot;Mark both people as C, so that neither signs off&quot;, &quot;Remove the A from both and mark the team as a whole as A&quot;, &quot;Keep exactly one A, on the person who signs off the release, and give the other person the role that fits their work, R, C or I&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each task needs exactly one Accountable person. Two As leave the outcome unowned. Marking both as C removes the sign-off altogether, and a team or client cannot be accountable in the RACI sense. The correction is one A and roles that match the work.&quot;}, {&quot;q&quot;: &quot;A roles chart for the handover has no A on the task \&quot;write the runbook section for api/\&quot;. The original author will review and sign off the section, and a non-author will draft it. Which change is correct?&quot;, &quot;opts&quot;: [&quot;Assign the single A to the original author, who signs off the section, and keep the non-author as R&quot;, &quot;Remove the R from the non-author, so that only one person works on it&quot;, &quot;Add a second A, so that both people are accountable&quot;, &quot;Mark the original author as I, so that they only hear about it&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The reviewer who signs off the section is Accountable, so the A belongs to the original author. The drafter remains Responsible. Two As or marking the sign-off person as I breaks the rule. Removing the drafter leaves the section with nobody doing the work.&quot;}, {&quot;q&quot;: &quot;A client receives a note about the release and attends the review, but does not approve the release. Which RACI letter fits the client?&quot;, &quot;opts&quot;: [&quot;R&quot;, &quot;A&quot;, &quot;C&quot;, &quot;I&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Informed means the person hears the outcome and takes no part in the decision. Consulted means the person gives input before the decision, which the client did not do here. Responsible and Accountable both imply doing the work or signing it off, and the client does neither in this case.&quot;}]}"></div>
+
+<h3 id="retrospectives">Retrospectives</h3>
+<p><strong>What it is.</strong> A retrospective is a short meeting at the end of a sprint. The team asks three questions: what went well, what did not go well, and what it will change next time. Each change needs an owner and a date for the next sprint, or it will not happen. The meeting should be blameless, which means it examines the process rather than looking for the person who made a mistake. A useful retrospective produces a few specific changes, not a list of complaints.</p>
+<table>
+<thead>
+<tr>
+<th>Went well</th>
+<th>Did not go well</th>
+<th>Change</th>
+<th>Owner</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The stand-ups were short</td>
+<td>The demo data was loaded on the morning of the review</td>
+<td>Load and check the demo data the day before each review</td>
+<td>Asha</td>
+<td>Next sprint retrospective</td>
+</tr>
+</tbody>
+</table>
+<p>The row shows the three parts of a good output: what happened, what will change, and who will check it by when.</p>
+<p><strong>How it shows up in a case study.</strong> At the end of a CityPulse sprint, the sprint review failed because the demo data was not loaded in time. At the retrospective, someone suggests that one teammate should be more careful. The mentor asks the team to turn the problem into a process change: check and load the demo data the day before, give the job to one named owner, and review the result at the next retrospective. The reasoning is that blaming a person does not stop the next failure, but a changed process can.</p>
+<div class="box box-trap"><div class="box-h">Trap: A list of complaints</div><p>A retrospective that ends with a long list of complaints and no actions feels honest, but nothing changes. Each complaint should become a change with an owner and a date, and the team should pick the few that matter most.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;At a retrospective the team agrees that the sprint review failed because the demo data was loaded on the morning of the review. Someone proposes that one teammate should be more careful next time. What is the best retrospective output?&quot;, &quot;opts&quot;: [&quot;The teammate should be more careful next time&quot;, &quot;The team should work longer hours before each review&quot;, &quot;Nothing needs to change, because the demo worked in the end&quot;, &quot;Load and check the demo data the day before each review, with Asha as the owner, and check the result at the next retrospective&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A useful output is a specific change with an owner and a check date. Blaming one person is not blameless and does not change the process. Longer hours and \&quot;nothing needs to change\&quot; do not address the cause of the failure.&quot;}, {&quot;q&quot;: &quot;A retrospective produces eight complaints and no actions. The mentor asks what the team should do next. Which step is best?&quot;, &quot;opts&quot;: [&quot;Choose the two or three complaints that hurt most, and write each one as a change with an owner and a date&quot;, &quot;Accept all eight complaints as they are and move on&quot;, &quot;Write a letter to the module leader about the complaints&quot;, &quot;Delete the complaints so that the meeting ends on a positive note&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Choosing a few changes keeps the work manageable, and an owner and a date make each change real. Accepting the complaints changes nothing. A letter goes outside the purpose of the meeting, and deleting the complaints throws away real problems.&quot;}, {&quot;q&quot;: &quot;A sprint review shows the client that the model is ready. The team then holds its retrospective, with the client gone, to discuss how the sprint was run. Which statement about the two meetings is correct?&quot;, &quot;opts&quot;: [&quot;The retrospective is for the client, and the review is for the team&quot;, &quot;They are the same meeting, held twice in one afternoon&quot;, &quot;The review decides which items to commit to next, and the retrospective sets the stand-up time&quot;, &quot;The review shows the product to stakeholders for feedback, and the retrospective looks at how the team worked and what it will change&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The review is about the product and includes stakeholders. The retrospective is internal and is about process. The first option swaps their audiences, the second merges two different purposes, and the third gives the work of sprint planning to the review.&quot;}]}"></div>
+
+<h3 id="the-project-charter">The project charter</h3>
+<p><strong>What it is.</strong> A project charter is a short document that starts a project. It states the purpose, which is why the project exists. It names the sponsor, who authorises the work. It lists the success measures, which show when the project has succeeded. It records the main constraints, such as the deadline or the data available, and the main risks. The charter changes rarely. A sprint plan is different. It lists the work for the next few weeks in detail, and it changes at each sprint.</p>
+<table>
+<thead>
+<tr>
+<th>Charter field</th>
+<th>Example for CityPulse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Tell hospital operations staff how long each outpatient wait is likely to be</td>
+</tr>
+<tr>
+<td>Sponsor</td>
+<td>The client's operations manager, who approves the project</td>
+</tr>
+<tr>
+<td>Success measures</td>
+<td>The model beats the current median rule on the holdout data</td>
+</tr>
+<tr>
+<td>Constraints</td>
+<td>Three weeks, the data available by 10 April, no paid hosting</td>
+</tr>
+<tr>
+<td>Main risks</td>
+<td>The data agreement may not arrive</td>
+</tr>
+</tbody>
+</table>
+<p>The field list answers why the project exists and how it will be judged. A day-by-day task list does not belong in it, because that list will be out of date within a week.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse squad is asked for its charter before the work starts. Its document is a list of tasks for each of the next three weeks, with names and hours beside each task. The mentor asks for the charter to be rebuilt. The purpose, the sponsor, the success measures and the constraints must come first, and the task list moves to the sprint plan where it can change. The reasoning is that a charter tells the reader why the work matters and who decided it, while a plan tells them what the team will do this week.</p>
+<div class="box box-trap"><div class="box-h">Trap: A plan called a charter</div><p>A day-by-day plan looks like a serious document, so it is easy to mistake it for a charter. But it leaves out why the project exists and who approved it, and those are the two things a charter must answer.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The squad is asked to produce the charter for the CityPulse project. Its document lists the sprint tasks for each of the next three weeks, with names and hours. Which section is missing?&quot;, &quot;opts&quot;: [&quot;The date of the sprint review&quot;, &quot;The purpose, the sponsor, the success measures and the constraints&quot;, &quot;The retrospective notes from the last sprint&quot;, &quot;The list of pull requests planned for the sprint&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A charter states why the project exists, who authorised it, how success is measured and what limits it. Sprint review dates and task lists belong in the sprint plan, and retrospective notes and pull request lists are outputs that come later.&quot;}, {&quot;q&quot;: &quot;The client changes the target from a prediction to a monthly report, and the sponsor asks whether the charter still holds. Which part of the charter must be checked first?&quot;, &quot;opts&quot;: [&quot;The list of Must-haves for this week&quot;, &quot;The names of the team members&quot;, &quot;The name of the repository&quot;, &quot;The purpose and the success measures, because a change of target changes what the project is for&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The purpose and the success measures describe why the project exists and how it is judged. A weekly list changes every sprint, and the names of people and repositories do not decide what the project is for.&quot;}, {&quot;q&quot;: &quot;The charter lists the risk that the data agreement might not arrive, and the three-week deadline as a constraint. A teammate wants to add the day-by-day plan to the charter as well. What should the squad do?&quot;, &quot;opts&quot;: [&quot;Keep the day-by-day plan in the sprint plan, and keep the charter to its purpose, sponsor, success measures, constraints and main risks&quot;, &quot;Add the plan to the charter, so that one document covers everything&quot;, &quot;Remove the risk, because a charter should sound positive&quot;, &quot;Move the constraints into the retrospective notes&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The charter stays short and stable, while the plan changes each sprint. Putting the plan in the charter mixes two documents with different lifetimes. Removing the risk hides a real threat, and constraints belong in the charter, not in the retrospective.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The self-test mixes all ten topics, one question each. The questions are harder than the ones above, because each one needs two steps: find the rule, then apply it to a detail in the scenario.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A squad has seven candidate Musts and a client who will accept only what the product cannot work without. Which combination is correct under the MoSCoW method?&quot;, &quot;opts&quot;: [&quot;Keep all seven, because the client asked for each of them&quot;, &quot;Keep the seven and add an eighth, because the client would reject the product otherwise&quot;, &quot;Cut the Musts to five or fewer, move the others to Should or Could with an owner and an acceptance line each, and write a reason for each Won&#x27;t&quot;, &quot;Turn all seven into Won&#x27;ts and start the list again&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The Must rule is that a product fails without the item, and the course caps Musts at five. Moving the extra items to Should or Could keeps them in the plan with owners and tests. Adding an eighth Must or making everything a Won&#x27;t ignores the rules in opposite directions.&quot;}, {&quot;q&quot;: &quot;The sprint has 10 story points committed, and a stakeholder asks for a 4-point item in the middle of it. Which response is correct?&quot;, &quot;opts&quot;: [&quot;Add it without an estimate, because the stakeholder is senior&quot;, &quot;Estimate it, agree which committed items it displaces or whether it waits for the next sprint, and record the decision&quot;, &quot;Refuse it without recording the request, to avoid an argument&quot;, &quot;Add it to the committed work and quietly drop the sprint goal&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Capacity is fixed at 10 points, so the 4 points must come from somewhere. An estimate and a recorded decision make the trade-off visible. Adding it without an estimate, refusing it silently and dropping the sprint goal each hide the cost or the decision.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s first thin slice works from input to output, but it returns a hard-coded answer. The mentor asks what to do next. Which step is most correct?&quot;, &quot;opts&quot;: [&quot;Replace the whole slice with a full model before showing it to anyone&quot;, &quot;Stop building and write documentation for three weeks&quot;, &quot;Remove the endpoint, because the answer is not real yet&quot;, &quot;Replace the hard-coded answer with the real function step by step, keeping the path working and checked after each change&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The slice already proves the path, so the next step keeps the path working while each part becomes real. A full model before any check repeats the layered mistake. Stopping work or removing the endpoint throws away a working path that can be widened.&quot;}, {&quot;q&quot;: &quot;A risk in the register has low likelihood and high impact, an owner, and a named fallback, but no review date. Which change is the best next step?&quot;, &quot;opts&quot;: [&quot;Add a review date, so that the owner must confirm the risk and the fallback at a set point&quot;, &quot;Lower the impact to medium, so that the risk looks smaller&quot;, &quot;Close the risk, because its likelihood is low&quot;, &quot;Remove the owner, because low-likelihood risks belong to everyone&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The entry is nearly complete, and its gap is the review date. Lowering the impact without evidence hides a high-impact risk. Closing a risk because it is unlikely removes the response the team still needs, and removing the owner leaves nobody responsible.&quot;}, {&quot;q&quot;: &quot;A retrospective is held with the client present, and most of the time is spent on missing product features. What is the most likely fault?&quot;, &quot;opts&quot;: [&quot;The sprint planning was too short&quot;, &quot;The daily stand-up was run by the client&quot;, &quot;The sprint review and the retrospective were combined, so the team&#x27;s process was not examined&quot;, &quot;The team did not set a sprint goal at the start&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Product feedback belongs to the sprint review, and process examination belongs to the retrospective, which is internal. Holding both together with the client present means that neither is done properly. The stand-up and planning cannot cause a product-feature discussion in a retrospective.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s advisory function turns a pm25 reading into a band, using cut-offs invented for this question: good below 25, moderate below 50, unhealthy below 100, hazardous from 100 up. The team writes the acceptance line \&quot;the advisory works for all readings\&quot;. Which rewrite is testable and covers the bands?&quot;, &quot;opts&quot;: [&quot;The advisory works for typical readings&quot;, &quot;For the readings 12.0, 49.7, 75.0 and 140.0, the function returns good, moderate, unhealthy and hazardous&quot;, &quot;The advisory is correct as far as the team knows&quot;, &quot;The advisory is accurate for every city district&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A testable line names specific inputs and the expected outputs, so a tester can run them and get a yes or no. Typical readings and \&quot;as far as we know\&quot; have no fixed test. Accuracy for every district names no check that anyone can run.&quot;}, {&quot;q&quot;: &quot;A runbook step says \&quot;run the tests\&quot;. The tests pass on the author&#x27;s machine but fail on a clean clone, because a needed file is listed in .gitignore. What is the root cause?&quot;, &quot;opts&quot;: [&quot;The tests are too slow to run in a handover&quot;, &quot;The author did not write enough tests&quot;, &quot;The runbook is written in Markdown rather than video&quot;, &quot;The runbook was not run on a clean clone, so a file that was never committed was not noticed&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The fault is in the process: the runbook was never run from the state a newcomer starts in. A clean clone reveals files that exist only on one machine. Speed, test count and file format do not explain a test that passes on one machine and fails on another.&quot;}, {&quot;q&quot;: &quot;A RACI chart for a task has two people marked R, one marked A, and nobody marked C or I. Is the chart valid?&quot;, &quot;opts&quot;: [&quot;Yes, because the task has exactly one A, and the C and I roles may be empty&quot;, &quot;No, because each task needs at least one C&quot;, &quot;No, because a task needs two As for a review&quot;, &quot;No, because R can appear only once on a task&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The rule is exactly one A. C and I may be empty, and more than one person can be R. The distractors invent rules that the chart does not need to follow.&quot;}, {&quot;q&quot;: &quot;A retrospective produces the single action \&quot;communicate better\&quot;. What is wrong, and what should change?&quot;, &quot;opts&quot;: [&quot;Nothing is wrong, since communication is always important&quot;, &quot;The action should be given to the client to deal with&quot;, &quot;The action is too vague to check, so it should name a specific change, an owner and a date&quot;, &quot;The action should be dropped, because retrospectives produce complaints&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A retrospective action must be something the team can check. \&quot;Communicate better\&quot; has no measure and no owner. A specific change, such as a daily check at ten o&#x27;clock by a named person, can be reviewed at the next retrospective.&quot;}, {&quot;q&quot;: &quot;A client wants a monthly report and has a three-week deadline. Which entry is the strongest for the project charter?&quot;, &quot;opts&quot;: [&quot;A day-by-day plan for all three weeks&quot;, &quot;A list of the tools the team will install&quot;, &quot;A named sponsor, a success measure such as the report being used by the client&#x27;s manager in two consecutive months, and the three-week constraint&quot;, &quot;A promise to deliver everything the client asks for&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The charter needs the sponsor, the success measure and the constraint, stated so that someone can check them. A day-by-day plan and a tool list are plans, not charter content. A promise to deliver everything is the scope creep that the charter should prevent.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a short Python task with a time limit of 30 seconds and a memory limit of 128 MB. It is marked by visible tests, which you can run yourself, and by hidden tests, which you cannot see. The visible tests are worth 85 points and the hidden tests are worth 15 points. Hidden tests check the edge cases and rules that the visible tests do not cover, so they decide whether you reach full marks. This section restates the task, explains the Python ideas it needs, lists the rules that careless solutions break, gives a method, and works through a different problem that uses the same skills.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse team has a fixed sprint capacity. It must decide which backlog items to commit to, using each item's value, its effort and whether it is a Must. Your job is to write three functions that make those decisions for the backlog.</p>
+<p>Each backlog item is a dictionary with four keys: <code>id</code>, which is text; <code>value</code>, which is a whole number; <code>effort</code>, which is a whole number; and <code>must</code>, which is True or False. A dictionary is a collection of named values, written in braces. The starter file gives you a module-level dictionary called <code>RANK</code> and three functions. The rules for each function are these.</p>
+<ul>
+<li><code>moscow_bucket(item) -&gt; str</code> takes one item and returns one of four text values: "Must", "Should", "Could" or "Wont".</li>
+<li>If <code>item["must"]</code> is truthy, return "Must". In Python, a value is truthy if it counts as True in an <code>if</code> test. Most values are truthy, but 0, False, None and the empty string are not.</li>
+<li>Otherwise, compute the ratio <code>value / effort</code>. If the ratio is 3 or more, return "Should". If it is 1.5 or more, return "Could". Otherwise return "Wont". "3 or more" includes exactly 3, and "1.5 or more" includes exactly 1.5.</li>
+<li><code>prioritise(items) -&gt; list[str]</code> takes a list of items and returns the list of their ids, in priority order.</li>
+<li>Sort by three things, in this order: the bucket rank, where Must comes before Should, Should before Could, and Could before Wont; then the ratio <code>value / effort</code>, highest first; then the <code>id</code>, A to Z, to break any tie.</li>
+<li>The bucket rank is looked up in <code>RANK</code>, which maps each bucket name to a number from 0 to 3.</li>
+<li><code>fit_capacity(items, capacity) -&gt; list[str]</code> walks the items in the priority order that <code>prioritise</code> gives. For each item, it keeps the item if its effort still fits in the capacity that remains, and then takes that effort off the remaining capacity. It returns the chosen ids in the order they were taken. It does not stop when an item does not fit.</li>
+</ul>
+<p>The statement gives one worked example. An item with value 10 and effort 2 has a ratio of 5, and its bucket is "Should" if it is not a Must. With a backlog of A (10 over 2), E (8 over 2), D (a Must), B (3 over 2) and C (1 over 2), and a capacity of 8, <code>prioritise</code> returns D, A, E, B, C, and <code>fit_capacity</code> returns D, A, E.</p>
+<p><strong>The scoring table.</strong> Each visible test is worth the points shown below. The total is 85.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Must-have flag wins regardless of ratio</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Ratio 5 gives Should</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Ratio 1.5 gives Could</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Ratio 0.5 gives Wont</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Must first, then by value/effort descending</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Greedy fit within capacity 8</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The hidden tests.</strong> There are two hidden tests, worth 15 points between them. You cannot see them, and they are not described one by one. They are the reason you must test your own edge cases. A solution that passes every visible test can still lose the 15 points if it gets an edge case wrong, such as a ratio exactly on a boundary, a tie in the sort, an empty list or an input that has been changed.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that uses different data, such as exam marks or a shopping list. Do not use these examples as parts of your solution. Their job is to show you the idea, so that you can apply it to the lab's data yourself.</p>
+<p><strong>Truthiness and <code>if</code>.</strong> An <code>if</code> statement runs its block when the test after it is truthy. Python treats <code>0</code>, <code>False</code>, <code>None</code>, <code>""</code> and an empty list as false, and most other values as true.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">answer</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>0 False</code>, then <code>'no' True</code>, then <code>'' False</code>. The string "no" is not empty, so it is truthy, even though its meaning is negative. If the statement says "truthy", test the value with <code>if</code>, not with <code>== True</code>.</p>
+<p><strong>Comparisons at a boundary.</strong> A comparison with <code>&gt;=</code> includes the boundary, and a comparison with <code>&gt;</code> excludes it. Use the one the statement names.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grade</span><span class="p">(</span><span class="n">mark</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mark</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Distinction&quot;</span>
+    <span class="k">if</span> <span class="n">mark</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Pass&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;Fail&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">grade</span><span class="p">(</span><span class="mi">70</span><span class="p">),</span> <span class="n">grade</span><span class="p">(</span><span class="mf">69.9</span><span class="p">),</span> <span class="n">grade</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>Distinction Pass Pass</code>. A mark of exactly 70 is a Distinction, because the test includes 70. A mark of 69.9 is not, so it falls to the next test.</p>
+<p><strong>Division and rounding.</strong> In Python 3, <code>/</code> gives a decimal result, and <code>//</code> drops the decimal part. Round only once, at the end of a calculation, and only if the task asks for it.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>3.5 3 3.33</code>. The <code>//</code> operator gives 3, which would be wrong for any comparison that needs the decimal part. Rounding <code>10 / 3</code> early to a whole number would also change the answer that a boundary test sees.</p>
+<p><strong>Numbers and <code>bool</code>.</strong> A <code>bool</code> is a special kind of integer. <code>True</code> counts as 1 and <code>False</code> as 0, so <code>isinstance(True, int)</code> is True. This matters when a check must distinguish a flag from a number.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">bool</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>True True int</code>. If a check must reject flags but accept numbers, test for <code>bool</code> first, because a plain <code>int</code> test accepts True as well.</p>
+<p><strong>Reading dictionary values.</strong> <code>d["key"]</code> returns the value for <code>key</code>, and fails with a <code>KeyError</code> if the key is missing. <code>d.get("key", default)</code> returns the default instead.</p>
+<div class="hl"><pre><span></span><code><span class="n">member</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mira&quot;</span><span class="p">,</span> <span class="s2">&quot;paid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">member</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">member</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;discount&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>Mira 0</code>. Use <code>[]</code> for keys that must exist, and <code>.get</code> only for keys that are optional.</p>
+<p><strong>Sorting with a key.</strong> <code>sorted(items, key=f)</code> returns a new list in the order of the value <code>f</code> gives for each item. The original list is left unchanged. A key can be a tuple, and tuples compare one position at a time from the left.</p>
+<div class="hl"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">w</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>The output is <code>['apple', 'kiwi', 'pear', 'fig']</code>. The number of letters is negated, so longer words come first. Words of the same length are then ordered A to Z. Sorting text places capital letters before lower-case ones, so <code>sorted(["b", "A", "a"])</code> gives <code>['A', 'a', 'b']</code>.</p>
+<p><strong>Reversing only one part of a key.</strong> <code>reverse=True</code> flips the whole ordering, including any part of the key you wanted to keep ascending. To make one part descending and another ascending, negate the number that should be descending, and leave the text part alone.</p>
+<p><strong>Dictionary lookup for a rank.</strong> A dictionary can map a name to a rank, and sorting by that rank puts the groups in the order you want.</p>
+<div class="hl"><pre><span></span><code><span class="n">ORDER</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;low&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">lv</span><span class="p">:</span> <span class="n">ORDER</span><span class="p">[</span><span class="n">lv</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>The output is <code>['low', 'medium', 'high']</code>. The lookup <code>ORDER[lv]</code> fails with a <code>KeyError</code> if a name is missing from the dictionary, which is a useful signal that the data is wrong.</p>
+<p><strong>The greedy loop with <code>continue</code>.</strong> A greedy loop takes the best available option at each step and does not look back. The <code>continue</code> statement skips the rest of the current pass through a loop and moves to the next item. A loop that uses <code>continue</code> for a skipped item keeps checking the items after it.</p>
+<div class="hl"><pre><span></span><code><span class="n">budget</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">picked</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">cost</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">cost</span> <span class="o">&gt;</span> <span class="n">budget</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">picked</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+    <span class="n">budget</span> <span class="o">-=</span> <span class="n">cost</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">picked</span><span class="p">,</span> <span class="n">budget</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>[4, 1] 0</code>. The cost 2 is skipped because it is more than the 1 that is left, and the loop still checks the cost 1 after it. A <code>break</code> in that place would have stopped the loop and given <code>[4]</code>.</p>
+<p><strong>Returning a list.</strong> A function returns a value with <code>return</code>, and a test can compare that value. Build the list in the loop with <code>.append</code>, and return it at the end. Do not <code>print</code> the result, because the tests check returned values.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table below lists the rules from the statement that a careless solution is most likely to break. Each row says what the wrong version does, and how you can check your own version.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Must if <code>must</code> is truthy</td>
+<td>Tests <code>item["must"] is True</code>, so a truthy value such as 1 is not treated as a Must</td>
+<td>Call <code>moscow_bucket</code> with <code>"must": 1</code> and an effort that gives a ratio of 0.5, and expect "Must"</td>
+</tr>
+<tr>
+<td>The Must rule comes first</td>
+<td>Calculates the ratio first and ignores <code>must</code> when the ratio is low</td>
+<td>A Must with a ratio of 0.5 returns "Must"</td>
+</tr>
+<tr>
+<td>Ratio 3 or more gives Should</td>
+<td>Uses <code>&gt;</code> instead of <code>&gt;=</code></td>
+<td>An item with value 3 and effort 1 returns "Should"</td>
+</tr>
+<tr>
+<td>Ratio 1.5 or more gives Could</td>
+<td>Uses <code>&gt;</code> instead of <code>&gt;=</code></td>
+<td>An item with value 3 and effort 2 returns "Could"</td>
+</tr>
+<tr>
+<td>The ratio is <code>value / effort</code></td>
+<td>Uses <code>//</code>, so 3 over 2 becomes 1 and falls into Wont</td>
+<td>Value 3 and effort 2 returns "Could", not "Wont"</td>
+</tr>
+<tr>
+<td>Below 1.5 gives Wont</td>
+<td>Uses a threshold that is too low or too high</td>
+<td>Value 1 and effort 2 returns "Wont"</td>
+</tr>
+<tr>
+<td>The statement asks for no rounding</td>
+<td>Rounds the ratio, so 8 over 3 becomes 3 and wrongly reaches Should</td>
+<td>Compare the exact ratio with the thresholds, and do not round it anywhere</td>
+</tr>
+<tr>
+<td>Bucket rank comes before ratio</td>
+<td>Sorts by ratio alone, so a Should with a high ratio comes before a Must</td>
+<td>A Must with ratio 0.5 comes before a Should with ratio 5</td>
+</tr>
+<tr>
+<td>Within a bucket, ratio is highest first</td>
+<td>Sorts by value, or by ratio ascending</td>
+<td>Two Should items with ratios 4 and 5 are listed with the 5 first</td>
+</tr>
+<tr>
+<td>Ties are broken by id, A to Z</td>
+<td>Uses the input order, or sorts ids descending</td>
+<td>Two items with equal ratio and ids "B" and "A", listed B first, give A first</td>
+</tr>
+<tr>
+<td><code>prioritise</code> returns ids</td>
+<td>Returns the items, or the whole dictionaries</td>
+<td>Every element of the result is a text value</td>
+</tr>
+<tr>
+<td>The loop does not stop at an item that does not fit</td>
+<td>Breaks out of the loop at the first item that does not fit</td>
+<td>Capacity 1, then an item of effort 3, then an item of effort 1 still selects the second item</td>
+</tr>
+<tr>
+<td><code>fit_capacity</code> returns ids in the order taken</td>
+<td>Sorts the chosen ids alphabetically before returning them</td>
+<td>The result matches the order in which you took the items</td>
+</tr>
+<tr>
+<td>An item fits when its effort fits the capacity left</td>
+<td>Is unsure what to do when an effort exactly equals what is left</td>
+<td>The statement does not say whether equality fits, so it is unclear in the course itself. Most people read "still fits" as "effort &lt;= remaining", but ask your trainer, then write one assert for your choice</td>
+</tr>
+<tr>
+<td>Empty input is possible</td>
+<td>Crashes on an empty list, for example when it calls <code>max</code> on nothing</td>
+<td><code>prioritise([])</code> returns an empty list, and <code>fit_capacity([], 8)</code> returns an empty list</td>
+</tr>
+<tr>
+<td>Inputs are not changed</td>
+<td>Calls <code>.sort()</code> on the caller's list, or edits the dictionaries</td>
+<td>After each call, the input list is in its original order and every dictionary is unchanged</td>
+</tr>
+<tr>
+<td>Types: <code>value</code> and <code>effort</code> are whole numbers, and the ratio is a decimal</td>
+<td>Mixes integer division with the ratio, which is the same error as <code>//</code> above</td>
+<td>Print the ratio for value 3 and effort 2 in your test, and check it is 1.5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file first. Note the names of the functions, their parameters and the <code>RANK</code> dictionary, and do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any logic. For example, <code>assert moscow_bucket({"id": "A", "value": 10, "effort": 2, "must": False}) == "Should"</code> describes what the function must do, before you know how.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Each row is a possible hidden test, so each row should have an assert that would fail for the careless version.</li>
+<li>Implement one function at a time. After each one, run the asserts. Do not start the next function until the current one passes.</li>
+<li>Check the types and the boundaries last. Confirm that a ratio on a boundary is compared with <code>&gt;=</code>, that no rounding has crept in, and that the returned values are lists of text.</li>
+<li>Run the visible tests. Read any failure message closely, because it usually names the input that went wrong.</li>
+<li>Check that your code does not print anything and does not change its inputs.</li>
+<li>Submit once, after the visible tests pass and your own asserts pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>This problem is about a food bank that loads a van. It uses the same skills as the lab: classifying items with thresholds, sorting by several keys, and a greedy loop that skips items that do not fit. The rules are different, so you must read them.</p>
+<p>Each donation is a dictionary with <code>name</code> (text), <code>days_left</code> (a whole number), <code>kg</code> (a whole number) and an optional <code>urgent</code> flag, which is False if it is missing. Implement three functions.</p>
+<ul>
+<li><code>band(donation) -&gt; str</code> returns "Now" if <code>urgent</code> is truthy. Otherwise it returns "Soon" if <code>days_left</code> is 2 or less, "Later" if <code>days_left</code> is 7 or less, and "Hold" for anything else.</li>
+<li><code>load_order(donations) -&gt; list[str]</code> returns the names sorted by band, in the order Now, Soon, Later, Hold; then by weight, heaviest first; then by name, A to Z.</li>
+<li><code>pack_van(donations, max_kg) -&gt; list[str]</code> walks through the donations in load order, skips every "Hold", keeps each donation whose <code>kg</code> fits in the space left, and returns the names in the order they were kept. A negative <code>max_kg</code> raises <code>ValueError</code>.</li>
+</ul>
+<p>A load that exactly fills the remaining space counts as fitting. Work through the example below before you read the solution.</p>
+<div class="hl"><pre><span></span><code><span class="n">donations</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rice&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>The output is <code>Soon Hold</code>. Milk has two days or fewer left, and Rice has more than seven.</p>
+<p>The solution is in the block below. It is run by the build, so every assert must pass.</p>
+<div class="hl"><pre><span></span><code><span class="n">NOW</span><span class="p">,</span> <span class="n">SOON</span><span class="p">,</span> <span class="n">LATER</span><span class="p">,</span> <span class="n">HOLD</span> <span class="o">=</span> <span class="s2">&quot;Now&quot;</span><span class="p">,</span> <span class="s2">&quot;Soon&quot;</span><span class="p">,</span> <span class="s2">&quot;Later&quot;</span><span class="p">,</span> <span class="s2">&quot;Hold&quot;</span>
+<span class="n">BAND_RANK</span> <span class="o">=</span> <span class="p">{</span><span class="n">NOW</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOON</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">LATER</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">HOLD</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">band</span><span class="p">(</span><span class="n">donation</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">donation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;urgent&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">NOW</span>
+    <span class="k">if</span> <span class="n">donation</span><span class="p">[</span><span class="s2">&quot;days_left&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SOON</span>
+    <span class="k">if</span> <span class="n">donation</span><span class="p">[</span><span class="s2">&quot;days_left&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">LATER</span>
+    <span class="k">return</span> <span class="n">HOLD</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_key</span><span class="p">(</span><span class="n">donation</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">BAND_RANK</span><span class="p">[</span><span class="n">band</span><span class="p">(</span><span class="n">donation</span><span class="p">)],</span> <span class="o">-</span><span class="n">donation</span><span class="p">[</span><span class="s2">&quot;kg&quot;</span><span class="p">],</span> <span class="n">donation</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_order</span><span class="p">(</span><span class="n">donations</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">load_key</span><span class="p">)]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="n">max_kg</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">max_kg</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;max_kg cannot be negative&quot;</span><span class="p">)</span>
+    <span class="n">remaining</span> <span class="o">=</span> <span class="n">max_kg</span>
+    <span class="n">taken</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">load_key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">band</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">HOLD</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;kg&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">remaining</span><span class="p">:</span>
+            <span class="n">taken</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="n">remaining</span> <span class="o">-=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;kg&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">taken</span>
+
+
+<span class="n">donations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rice&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lentils&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flour&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Oats&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">HOLD</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="n">LATER</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="n">NOW</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">(</span><span class="n">donations</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="n">SOON</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span> <span class="o">==</span> <span class="n">LATER</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span> <span class="o">==</span> <span class="n">HOLD</span>
+<span class="k">assert</span> <span class="n">band</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;urgent&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span> <span class="o">==</span> <span class="n">NOW</span>
+
+<span class="k">assert</span> <span class="n">load_order</span><span class="p">(</span><span class="n">donations</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;Flour&quot;</span><span class="p">,</span> <span class="s2">&quot;Lentils&quot;</span><span class="p">,</span> <span class="s2">&quot;Oats&quot;</span><span class="p">,</span> <span class="s2">&quot;Rice&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;Oats&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;Flour&quot;</span><span class="p">,</span> <span class="s2">&quot;Lentils&quot;</span><span class="p">,</span> <span class="s2">&quot;Oats&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">([],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">pack_van</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;days_left&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span>
+
+<span class="n">before</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">donations</span><span class="p">]</span>
+<span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">donations</span><span class="p">]</span> <span class="o">==</span> <span class="n">before</span>
+<span class="k">assert</span> <span class="n">before</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Rice&quot;</span><span class="p">,</span> <span class="s2">&quot;Lentils&quot;</span><span class="p">,</span> <span class="s2">&quot;Milk&quot;</span><span class="p">,</span> <span class="s2">&quot;Bread&quot;</span><span class="p">,</span> <span class="s2">&quot;Eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;Flour&quot;</span><span class="p">,</span> <span class="s2">&quot;Oats&quot;</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pack_van</span><span class="p">(</span><span class="n">donations</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">&quot;expected ValueError&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Line by line, the important parts are these.</p>
+<ul>
+<li><code>NOW, SOON, LATER, HOLD = ...</code> gives each band name a variable. A typo in a variable name raises an error, while a typo in a plain string silently makes a different band.</li>
+<li><code>BAND_RANK</code> maps each band to its place in the order, so Now is 0 and Hold is 3. Sorting by these numbers puts the bands in the required order.</li>
+<li>In <code>band</code>, the urgent test comes first, so an urgent donation is Now whatever its days. <code>donation.get("urgent", False)</code> returns False when the key is missing, which is the behaviour you want for an optional field.</li>
+<li>The two <code>if</code> tests with <code>&lt;=</code> include the boundaries. Two days is Soon, and seven days is Later.</li>
+<li><code>load_key</code> returns a tuple of three parts. The first is the band rank. The second is <code>-donation["kg"]</code>, so heavier items come first. The third is the name, which breaks any tie in weight. Because the name is last, Flour comes before Lentils when both weigh 8 kg.</li>
+<li><code>load_order</code> builds the names in the order that <code>load_key</code> gives. The list comprehension is a short form of a loop that appends each name to a new list.</li>
+<li><code>pack_van</code> raises <code>ValueError</code> before it does any work when the limit is negative. The variable <code>remaining</code> starts at the limit and goes down each time an item is kept.</li>
+<li>The <code>continue</code> line skips every Hold, and the <code>if</code> line keeps an item only when its weight fits in what is left. The loop never stops early, so a small item later in the order can still be kept after a large one is skipped.</li>
+<li><code>sorted(...)</code> returns a new list, so the <code>donations</code> list keeps its original order. The check on <code>before</code> confirms that.</li>
+<li>The try block expects <code>ValueError</code>. If no error were raised, the <code>raise SystemExit</code> line would stop the program with a message, and the test would fail. When the error is raised, the <code>except</code> catches it and the test passes.</li>
+</ul>
+<p>When the block runs, it prints nothing if every assert passes.</p>
+<p>The trace below steps through the loop in <code>pack_van</code>, using a shorter list with a limit of 10 kg. It follows the same pattern as the real function.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Packing a van with 10 kg&quot;, &quot;code&quot;: [&quot;remaining = 10&quot;, &quot;taken = []&quot;, &quot;for name, kg in [(\&quot;Bread\&quot;, 3), (\&quot;Eggs\&quot;, 6), (\&quot;Milk\&quot;, 5), (\&quot;Oats\&quot;, 4)]:&quot;, &quot;    if kg &lt;= remaining:&quot;, &quot;        taken.append(name)&quot;, &quot;        remaining -= kg&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;remaining&quot;, &quot;10&quot;]], &quot;note&quot;: &quot;Set the free space to 10 kg, the van&#x27;s limit.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;remaining&quot;, &quot;10&quot;], [&quot;taken&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Start with an empty list of names.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Bread\&quot;&quot;], [&quot;kg&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;10&quot;], [&quot;taken&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first item in load order.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Bread\&quot;&quot;], [&quot;kg&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;10&quot;], [&quot;taken&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Does 3 kg fit into 10 kg? Yes, so the test is true.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Bread\&quot;&quot;], [&quot;kg&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;10&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;]&quot;]], &quot;note&quot;: &quot;The name Bread goes into the list.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Bread\&quot;&quot;], [&quot;kg&quot;, &quot;3&quot;], [&quot;remaining&quot;, &quot;7&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;]&quot;]], &quot;note&quot;: &quot;Its weight comes off the free space, leaving 7 kg.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Eggs\&quot;&quot;], [&quot;kg&quot;, &quot;6&quot;], [&quot;remaining&quot;, &quot;7&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;]&quot;]], &quot;note&quot;: &quot;The next item is Eggs.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Eggs\&quot;&quot;], [&quot;kg&quot;, &quot;6&quot;], [&quot;remaining&quot;, &quot;7&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;]&quot;]], &quot;note&quot;: &quot;Does 6 kg fit into 7 kg? Yes.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Eggs\&quot;&quot;], [&quot;kg&quot;, &quot;6&quot;], [&quot;remaining&quot;, &quot;7&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;Eggs is added to the list.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Eggs\&quot;&quot;], [&quot;kg&quot;, &quot;6&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;The free space falls to 1 kg.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Milk\&quot;&quot;], [&quot;kg&quot;, &quot;5&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;The next item is Milk.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Milk\&quot;&quot;], [&quot;kg&quot;, &quot;5&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;Does 5 kg fit into 1 kg? No, so Milk is skipped.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Oats\&quot;&quot;], [&quot;kg&quot;, &quot;4&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;The loop moves on, so Oats is checked.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Oats\&quot;&quot;], [&quot;kg&quot;, &quot;4&quot;], [&quot;remaining&quot;, &quot;1&quot;], [&quot;taken&quot;, &quot;[\&quot;Bread\&quot;, \&quot;Eggs\&quot;]&quot;]], &quot;note&quot;: &quot;4 kg does not fit into 1 kg, so Oats is skipped too.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a new problem, about parcels at a post office. Read it as you would read a lab task, then write your solution before you open the answer box.</p>
+<p>Each parcel is a dictionary with <code>id</code> (text), <code>weight_g</code> (a whole number of grams) and an optional <code>express</code> flag, which is False if it is missing. Implement two functions.</p>
+<ul>
+<li><code>courier_fee(parcel) -&gt; number</code> works out the base fee from the weight. Up to and including 500 g, the base fee is 40. Up to and including 2000 g, it is 70. Above 2000 g, it is 120. If <code>express</code> is truthy, multiply the base fee by 1.25. Round the result to two decimal places, once, at the end.</li>
+<li><code>cheapest_first(parcels) -&gt; list[str]</code> returns the parcel ids sorted by fee, lowest first. Ties are broken by id, A to Z.</li>
+</ul>
+<p>Make these asserts pass.</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P1&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">40</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">70</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P3&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P4&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span> <span class="o">==</span> <span class="mf">50.0</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P5&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span> <span class="o">==</span> <span class="mf">87.5</span>
+<span class="k">assert</span> <span class="n">cheapest_first</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2001</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">cheapest_first</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">courier_fee</span><span class="p">(</span><span class="n">parcel</span><span class="p">):</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">parcel</span><span class="p">[</span><span class="s2">&quot;weight_g&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="n">fee</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="k">elif</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="n">fee</span> <span class="o">=</span> <span class="mi">70</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fee</span> <span class="o">=</span> <span class="mi">120</span>
+    <span class="k">if</span> <span class="n">parcel</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">fee</span> <span class="o">=</span> <span class="n">fee</span> <span class="o">*</span> <span class="mf">1.25</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fee</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cheapest_first</span><span class="p">(</span><span class="n">parcels</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parcels</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">(</span><span class="n">courier_fee</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]))]</span>
+
+
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P1&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">40</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">70</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P3&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P4&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span> <span class="o">==</span> <span class="mf">50.0</span>
+<span class="k">assert</span> <span class="n">courier_fee</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;P5&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span> <span class="o">==</span> <span class="mf">87.5</span>
+<span class="k">assert</span> <span class="n">cheapest_first</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">2001</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;express&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">cheapest_first</span><span class="p">([{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;weight_g&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+</code></pre></div></details>
+
+<p>The weight boundaries use <code>&lt;=</code>, so 500 g is in the first band and 2000 g is in the second. The express multiplier is applied to the base fee, and <code>round</code> is called only once, on the final value. The sort key is a tuple of the fee and the id, so two parcels with the same fee are ordered by their ids. The <code>cheapest_first</code> function calls <code>courier_fee</code> for each parcel, but it does not change the parcel dictionaries.</p>
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>The three function names and their parameters match the starter file exactly, and you have not renamed or removed <code>RANK</code>.</li>
+<li>Each function returns a value, and none of them calls <code>print</code>.</li>
+<li><code>moscow_bucket</code> tests <code>must</code> with <code>if</code>, not with <code>== True</code> or <code>is True</code>, and it checks the ratio with <code>&gt;=</code> for both thresholds.</li>
+<li>The ratio is calculated with <code>/</code>, and it is never rounded or converted to an integer.</li>
+<li><code>prioritise</code> sorts by the rank from <code>RANK</code>, then by the negated ratio, then by the id, and it returns a list of text ids.</li>
+<li><code>fit_capacity</code> walks the list in the same priority order, and its loop continues past an item that does not fit.</li>
+<li>The asserts for empty lists and for an item whose effort exactly fits the remaining capacity both pass.</li>
+<li>Your code does not change the input list or any of the item dictionaries, and no <code>.sort()</code> is called on an input.</li>
+<li>Every assert from your method section passes, and no test or debug print is left in the file.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<h3 id="why-did-you-cap-the-musts-at-five">Why did you cap the Musts at five?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>We capped the Musts at five because a list with more than five had stopped being a priority list. A Must is an item the product fails without, and a long list of them means the team has not made a decision. Capping forces us to move the extras to Should, which keeps the core chain protected. We also wrote a Won't list with reasons, so that when someone asks for more, we can point to the documented decision.</p></details>
+
+<h3 id="how-do-you-know-your-models-claim-is-honest">How do you know your model's claim is honest?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The claim is stated in business units, in minutes per patient, and it is based on the same holdout as the baseline, so the comparison is fair. We also computed a sensitivity check that multiplies the error by 1.10, to see whether the claim still holds if production is 10% worse. Every number in the README and the slides is copied from metrics.json, so none of them can drift. Finally, we list the segments where the model loses, so the limit is visible.</p></details>
+
+<h3 id="what-is-bus-factor-and-how-did-you-measure-it">What is bus factor and how did you measure it?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>Bus factor is the number of people who would have to leave before a module could no longer be maintained. We measured it from git history by counting the distinct authors of each module, not the number of commits. Any module with only one author was given a second owner, who is a person who did not write the code. That person drafted the runbook section, and the original author reviewed it before it was merged into HANDOVER.md.</p></details>
+
+<h3 id="how-would-a-stranger-run-your-project">How would a stranger run your project?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>A stranger would clone the repository and read the README, which has setup, run and test sections with copy-paste commands. For the tested version they would check out the tag, which names one exact commit, and build the Docker image with the pinned dependencies. The HANDOVER.md file gives them the architecture, the runbook, the known issues and the rollback plan. We tested each runbook command on a clean clone before we merged, so the first run should work.</p></details>
+
+<h3 id="how-do-you-know-the-portfolios-claims-are-true">How do you know the portfolio's claims are true?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>Each claimed skill links to a repository, a pull request or a demo that shows it. I checked the contribution statements against git log, and I listed only pull requests that exist and that I wrote or reviewed. The numbers on the portfolio are copied from metrics.json, and they match my CV and LinkedIn profile. I also tested the page on a phone, because a recruiter might open it there first.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command, flag, function or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MoSCoW: Must, Should, Could, Won't</td>
+<td>Sort the backlog by necessity; at most five Musts</td>
+</tr>
+<tr>
+<td>Sensitivity check, <code>sens = mae * 1.10</code></td>
+<td>Tests the claim against a production model that is 10% worse</td>
+</tr>
+<tr>
+<td><code>improvement_pct</code></td>
+<td>Gain over the baseline as a percentage, rounded to one decimal</td>
+</tr>
+<tr>
+<td><code>json.dump(..., indent=2)</code></td>
+<td>Writes a dictionary to a JSON file with readable indentation</td>
+</tr>
+<tr>
+<td><code>git log --format='%an' -- PATH</code></td>
+<td>Prints the author name of each commit that touched PATH</td>
+</tr>
+<tr>
+<td><code>sort -u</code></td>
+<td>Sorts lines and removes duplicates</td>
+</tr>
+<tr>
+<td><code>wc -l</code></td>
+<td>Counts lines</td>
+</tr>
+<tr>
+<td><code>tee -a FILE</code></td>
+<td>Shows output on screen and appends it to FILE</td>
+</tr>
+<tr>
+<td><code>git shortlog -sn --no-merges</code></td>
+<td>Commit counts per person, largest first, without merges</td>
+</tr>
+<tr>
+<td><code>git log --author="NAME" --oneline -- PATH</code></td>
+<td>Commits by NAME to PATH, one per line</td>
+</tr>
+<tr>
+<td><code>gh pr list --state merged --author @me --json number,title</code></td>
+<td>Your merged pull requests as JSON</td>
+</tr>
+<tr>
+<td><code>git tag -a v1.0.0 -m "..."</code></td>
+<td>Creates an annotated tag with a message</td>
+</tr>
+<tr>
+<td><code>git push origin v1.0.0</code></td>
+<td>Sends the tag to the remote called origin</td>
+</tr>
+<tr>
+<td><code>git show v1.0.0 --no-patch</code></td>
+<td>Shows the tag and its commit, without file changes</td>
+</tr>
+<tr>
+<td><code>git describe --tags</code></td>
+<td>Prints the nearest tag name</td>
+</tr>
+<tr>
+<td><code>git checkout v1.0.0</code></td>
+<td>Checks out the tagged code (detached HEAD)</td>
+</tr>
+<tr>
+<td><code>docker build -t NAME:TAG .</code></td>
+<td>Builds an image from the Dockerfile in the current folder</td>
+</tr>
+<tr>
+<td><code>docker push REGISTRY/NAME:TAG</code></td>
+<td>Uploads the image to a registry</td>
+</tr>
+<tr>
+<td><code>docker run -p 8000:8000 NAME:TAG</code></td>
+<td>Runs an image and connects port 8000 on your machine to port 8000 in the container</td>
+</tr>
+<tr>
+<td><code>docker compose up -d --build</code></td>
+<td>Builds and starts all services in the background</td>
+</tr>
+<tr>
+<td><code>docker compose ps</code></td>
+<td>Shows the state and health of each service</td>
+</tr>
+<tr>
+<td><code>FROM</code>, <code>WORKDIR</code>, <code>COPY</code>, <code>RUN</code>, <code>EXPOSE</code>, <code>CMD</code></td>
+<td>Dockerfile instructions: base image, folder, copy, run at build, document port, start command</td>
+</tr>
+<tr>
+<td><code>pip install --no-cache-dir -r FILE</code></td>
+<td>Installs packages listed in FILE without keeping a download cache</td>
+</tr>
+<tr>
+<td><code>pytest -q .</code></td>
+<td>Runs the tests in the current folder in quiet mode</td>
+</tr>
+<tr>
+<td><code>\|\| exit 1</code></td>
+<td>Stops the script with an error if the command before it failed</td>
+</tr>
+<tr>
+<td><code>curl -i -X POST -d @FILE URL</code></td>
+<td>Sends a POST request with FILE as the body and shows the headers</td>
+</tr>
+<tr>
+<td><code>curl -sI URL \| head -1</code></td>
+<td>Silently fetches the headers and shows the status line</td>
+</tr>
+<tr>
+<td><code>gh api user --jq .login</code></td>
+<td>Prints your GitHub username</td>
+</tr>
+<tr>
+<td><code>gh repo create NAME --public --clone</code></td>
+<td>Creates a public repository and copies it to your machine</td>
+</tr>
+<tr>
+<td><code>ffmpeg -t 45 -vf "scale=720:-2" -crf 28 -an -movflags +faststart</code></td>
+<td>Keeps 45 seconds, sets 720 pixels wide, sets quality and removes audio, for fast web playback</td>
+</tr>
+<tr>
+<td><code>ls -lh FILE</code></td>
+<td>Lists a file with a human-readable size</td>
+</tr>
+<tr>
+<td>Repository named <code>&lt;username&gt;.github.io</code></td>
+<td>The name GitHub Pages needs for the site</td>
+</tr>
+<tr>
+<td>Bus factor</td>
+<td>Distinct people who can maintain a module; 1 means a risk</td>
+</tr>
+<tr>
+<td>Acceptance line</td>
+<td>A command or number that gives a yes or no answer</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>Return to a known tag for the code and a known image tag for the running service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;MoSCoW&quot;, &quot;a&quot;: &quot;Must, Should, Could and Won&#x27;t. Must means the product fails without it, and the course caps Musts at five.&quot;}, {&quot;q&quot;: &quot;Won&#x27;t (this time)&quot;, &quot;a&quot;: &quot;A recorded decision with a reason, so that the item is not requested again without discussion.&quot;}, {&quot;q&quot;: &quot;MAE&quot;, &quot;a&quot;: &quot;Mean absolute error, the average size of the model&#x27;s mistake in the units of the target, such as minutes.&quot;}, {&quot;q&quot;: &quot;Sensitivity check&quot;, &quot;a&quot;: &quot;Re-scoring the model with its error multiplied by 1.10, to test whether the claim survives a 10% worse production model.&quot;}, {&quot;q&quot;: &quot;Bus factor&quot;, &quot;a&quot;: &quot;The number of distinct people who would have to leave before a module could no longer be maintained.&quot;}, {&quot;q&quot;: &quot;Git commit count vs bus factor&quot;, &quot;a&quot;: &quot;Commit count does not measure bus factor. Count distinct authors, then check that a second person can run the module.&quot;}, {&quot;q&quot;: &quot;Annotated tag&quot;, &quot;a&quot;: &quot;A git tag made with git tag -a, which stores the tagger, date and message, and pins one exact commit.&quot;}, {&quot;q&quot;: &quot;Semantic version&quot;, &quot;a&quot;: &quot;A number in the form MAJOR.MINOR.PATCH, such as v1.0.0, where a larger number means a bigger change.&quot;}, {&quot;q&quot;: &quot;Docker image vs container&quot;, &quot;a&quot;: &quot;An image is a packaged app. A container is one running copy of that image.&quot;}, {&quot;q&quot;: &quot;Dockerfile layer order&quot;, &quot;a&quot;: &quot;Copy the dependency file and install before copying the code, so that code changes do not reinstall packages.&quot;}, {&quot;q&quot;: &quot;Acceptance line&quot;, &quot;a&quot;: &quot;A command or number that someone can run to get a yes or no answer, such as returns HTTP 200.&quot;}, {&quot;q&quot;: &quot;Pages repository name&quot;, &quot;a&quot;: &quot;GitHub Pages publishes a site from a repository named exactly username.github.io.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D28.html"><small>Previous</small>Day 28 — Generative AI and LLM APIs</a><a class="nx" href="P6.html"><small>Next</small>Project 6 — CityPulse Capstone</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,999 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 13 — Object storage with S3 and boto3 · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D13" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 4 · Days 11–15 · Pipelines and cloud</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a class="cur" href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 4 · Days 11–15 · Pipelines and cloud</p><h1>Day 13 — Object storage with S3 and boto3</h1><p class="sub">You will be able to create a private, encrypted and versioned S3 bucket, upload files under date-based keys with boto3, and show that anonymous access is refused.</p><p class="meta">85 min read · practice quiz · 6 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D13.mp4?v=1794464119"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you learn to store files in the cloud and reach them from Python. Amazon Web Services (AWS) rents out computers and storage over the internet. Its file store is called Amazon S3 (Simple Storage Service). S3 keeps files as objects inside buckets, which are named containers. Every object has a key, which is its full name inside the bucket.</p>
+<p>You will do three things. You will lock a bucket so that nobody outside can read it, encrypt it, and keep old copies of changed files. You will upload CityPulse air-quality data under date-based keys. You will write a short Python script that does the upload and reports failures correctly.</p>
+<p>Think of a bucket as a warehouse and the key as the shelf label printed on each box. A tidy label scheme means you can find the box for one day without opening every box in the building.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Terminal.</strong> The terminal is a text window where you type commands and the computer prints text back. A <strong>command</strong> is one line you type, such as <code>ls</code>, which lists the files in a folder. Use <strong>Git Bash</strong>, a terminal that understands the <strong>Bash</strong> language of commands. Git Bash is installed with Git for Windows. Use it instead of PowerShell for every command in this chapter, because the examples use single quotes and <code>$</code> variables, which PowerShell reads differently.</p>
+<p><strong>File, folder and path.</strong> A file holds data such as text, numbers or an image. A folder holds files and other folders. A <strong>path</strong> is the address of a file, for example <code>data/clean/aq_clean.parquet</code>. Parquet is a compressed table format. It stores each column together, so a reader can skip the columns it does not need.</p>
+<p><strong>Variable and function.</strong> A <strong>variable</strong> is a name that holds a value, such as <code>bucket = "citypulse-x7k2q9"</code>. A <strong>function</strong> is a named block of code that takes inputs and returns a result. In <code>len("abc")</code>, <code>len</code> is the function and <code>"abc"</code> is the input it works on.</p>
+<p><strong>Script and module.</strong> A <strong>script</strong> is a text file of Python code that you run with <code>python filename.py</code>. A <strong>module</strong> is a Python file that another program loads with <code>import</code>, as in <code>import boto3</code>.</p>
+<p><strong>Server and cloud.</strong> A <strong>server</strong> is a computer that answers requests from other programs. The <strong>cloud</strong> means that the servers belong to a provider such as AWS, and you rent parts of them over the internet.</p>
+<p><strong>Bucket, object, key and prefix.</strong> A bucket is a container with a name that is unique across the whole of AWS. An <strong>object</strong> is one stored file together with its <strong>metadata</strong>, which are extra facts such as size and content type. The <strong>key</strong> is the object's full name, for example <code>clean/aqi/date=2026-12-17/aq_clean.parquet</code>. A <strong>prefix</strong> is the start of a key, such as <code>clean/aqi/</code>. S3 has no real folders. The slashes only look like folders in the AWS web console.</p>
+<p><strong>API and SDK.</strong> An <strong>API</strong> (Application Programming Interface) is a list of named operations that a program can call, such as "store this file under this key". An <strong>SDK</strong> (Software Development Kit) is a library that gives you those operations in one language. <strong>boto3</strong> is the SDK for Python. You install it with <code>pip install boto3</code>, where <strong>pip</strong> is the Python package installer.</p>
+<p><strong>HTTP and status codes.</strong> <strong>HTTP</strong> (Hypertext Transfer Protocol) is the message format that browsers and tools use to talk to web servers. Every reply carries a three-digit <strong>status code</strong>. 200 means success, 403 means the request is refused, and 404 means the thing was not found.</p>
+<p><strong>Credentials, profile and environment variable.</strong> <strong>Credentials</strong> are secret values that prove who you are to AWS. A <strong>profile</strong> is a named set of credentials stored in a file on your computer, such as <code>citypulse-pipeline</code>. An <strong>environment variable</strong> is a named setting that the shell passes to every program it starts. You set one with <code>export NAME=value</code>.</p>
+<p><strong>Region.</strong> A <strong>region</strong> is one AWS data-centre area. This course uses <code>ap-south-1</code>, which is the Mumbai region.</p>
+<p><strong>Exception and exit code.</strong> An <strong>exception</strong> is an error that Python raises while a program runs. A <code>ClientError</code> is the exception that boto3 raises when AWS refuses a request. The <strong>exit code</strong> is the number a program hands back to the shell when it stops. Zero means success and any other number means failure. In Bash, <code>echo $?</code> prints the exit code of the last command.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="amazon-s3-buckets-and-partitioning">Amazon S3 buckets and partitioning</h3>
+<p><strong>What it is.</strong> S3 stores objects in buckets. An object can be any size up to 5 TB, and you pay for the bytes you keep and the requests you make. CityPulse uses S3 for clean data because the virtual machine you build on Day 14 (ticket T19) and the Lambda function (a small program that AWS runs when an event happens) in a later day must write to it, and analysts must read it from anywhere.</p>
+<p><strong>Why not the alternatives.</strong> An <strong>EBS volume</strong> is a virtual disk attached to one virtual machine. Only that machine can use it, and you pay for the size you provision whether you use it or not. <strong>Amazon EFS</strong> is a shared file system with folder paths. It costs more and is unnecessary for files that are written once and then read. Storing files as <strong>database BLOBs</strong> (large binary values inside SQL tables) bloats the database and costs far more per gigabyte.</p>
+<p><strong>How it works.</strong> The CityPulse key layout is <code>clean/&lt;dataset&gt;/date=YYYY-MM-DD/&lt;filename&gt;</code>. The <code>date=</code> part is a naming convention that query tools understand. Because the date is in the key, a reader that asks for the prefix <code>clean/aqi/date=2026-12-17/</code> gets only that day. This is called <strong>partitioning</strong>: the data is split into parts by a value that readers filter on.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Building one dated key&quot;, &quot;code&quot;: [&quot;import datetime&quot;, &quot;dates = [\&quot;2026-12-17\&quot;, \&quot;2026-12-18\&quot;]&quot;, &quot;keys = []&quot;, &quot;for text in dates:&quot;, &quot;    day = datetime.date.fromisoformat(text)&quot;, &quot;    keys.append(\&quot;clean/aqi/date=\&quot; + day.isoformat() + \&quot;/aq_clean.parquet\&quot;)&quot;, &quot;print(keys)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [], &quot;note&quot;: &quot;Python loads the datetime module.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;dates&quot;, &quot;[\&quot;2026-12-17\&quot;, \&quot;2026-12-18\&quot;]&quot;], [&quot;keys&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The two date strings are stored, and the key list starts empty.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;dates&quot;, &quot;[\&quot;2026-12-17\&quot;, \&quot;2026-12-18\&quot;]&quot;], [&quot;keys&quot;, &quot;[]&quot;], [&quot;text&quot;, &quot;\&quot;2026-12-17\&quot;&quot;]], &quot;note&quot;: &quot;The loop takes the first date string.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;dates&quot;, &quot;[\&quot;2026-12-17\&quot;, \&quot;2026-12-18\&quot;]&quot;], [&quot;keys&quot;, &quot;[]&quot;], [&quot;text&quot;, &quot;\&quot;2026-12-17\&quot;&quot;], [&quot;day&quot;, &quot;2026-12-17&quot;]], &quot;note&quot;: &quot;fromisoformat checks the text and makes a date object. A text that is not a real date raises ValueError.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;keys&quot;, &quot;[\&quot;clean/aqi/date=2026-12-17/aq_clean.parquet\&quot;]&quot;], [&quot;text&quot;, &quot;\&quot;2026-12-17\&quot;&quot;], [&quot;day&quot;, &quot;2026-12-17&quot;]], &quot;note&quot;: &quot;The first key is built from the date and appended.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;keys&quot;, &quot;[\&quot;clean/aqi/date=2026-12-17/aq_clean.parquet\&quot;]&quot;], [&quot;text&quot;, &quot;\&quot;2026-12-18\&quot;&quot;]], &quot;note&quot;: &quot;The loop comes round again with the second date.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;keys&quot;, &quot;[\&quot;clean/aqi/date=2026-12-17/aq_clean.parquet\&quot;]&quot;], [&quot;text&quot;, &quot;\&quot;2026-12-18\&quot;&quot;], [&quot;day&quot;, &quot;2026-12-18&quot;]], &quot;note&quot;: &quot;The second date becomes a date object.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;keys&quot;, &quot;[\&quot;clean/aqi/date=2026-12-17/aq_clean.parquet\&quot;, \&quot;clean/aqi/date=2026-12-18/aq_clean.parquet\&quot;]&quot;]], &quot;note&quot;: &quot;The second key is appended, and the loop ends.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;keys&quot;, &quot;[both keys]&quot;]], &quot;note&quot;: &quot;print shows the list, with two keys in order.&quot;}]}"></div>
+
+<p>The <code>date=</code> names are ISO dates. That means year first, then month, then day, all with leading zeros. Text sorted in this order is also in date order, which is why the layout works for listing.</p>
+<p>Here is the picture of one reading moving through the system. The upload script sends the object, S3 stores it, and a dashboard asks only for one day.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One day of AQI data, from upload to dashboard&quot;, &quot;nodes&quot;: [&quot;upload.py&quot;, &quot;S3 bucket&quot;, &quot;Dashboard reader&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;put_object with Key&quot;, &quot;note&quot;: &quot;upload.py sends the file bytes and the key clean/aqi/date=2026-12-17/aq_clean.parquet.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;stored, success&quot;, &quot;note&quot;: &quot;S3 writes the object and replies that the write succeeded.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;list with Prefix&quot;, &quot;note&quot;: &quot;The dashboard asks only for keys that start with clean/aqi/date=2026-12-17/.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;matching keys only&quot;, &quot;note&quot;: &quot;S3 returns the keys under that prefix, so the dashboard reads one day and nothing else.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;AccessDenied&quot;, &quot;note&quot;: &quot;If the caller is not allowed, S3 refuses, and the refusal travels back as an error.&quot;}]}"></div>
+
+<p><strong>Commands that prove the bucket is set up.</strong> Every setting in this chapter can be read back with a <code>get</code> command. The term block below shows how to check versioning. The output shown is the shape you should expect.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws s3api get-bucket-versioning --bucket citypulse-x7k2q9&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Status\&quot;: \&quot;Enabled\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}]}"></div>
+
+<p><code>aws</code> is the AWS command-line tool. <code>s3api</code> is the group of commands that map one-to-one onto the S3 API. <code>get-bucket-versioning</code> asks for the current versioning setting. <code>--bucket</code> is a flag, which is an option written after the command name. The flag names the bucket, and the value after it is the bucket name. <code>Status</code> is <code>Enabled</code> only after you turn versioning on. The bucket name <code>citypulse-x7k2q9</code> is an example, and you use your own.</p>
+<div class="box box-trap"><div class="box-h">Trap: Listing the whole bucket</div><p>Running <code>aws s3 ls s3://bucket</code> with no prefix is denied for the scoped pipeline identity. List <code>s3://bucket/clean/aqi/</code> instead. Narrow prefixes are also cheaper and faster, because S3 does less work.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Dates in the wrong order</div><p>A key such as <code>date=17-12-2026</code> does not sort by date, because text sorts by its first characters. Use <code>date=YYYY-MM-DD</code> every time.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Choosing a bucket name</div><p>Bucket names are global and permanent. Add a random suffix, and never put personal data in the name. Once a name exists anywhere in AWS, nobody else can take it.</p></div>
+
+<h3 id="encryption-and-the-public-access-block">Encryption and the public-access block</h3>
+<p><strong>What it is.</strong> Three settings keep the bucket safe. <strong>Block Public Access</strong> is a set of four switches that override any <strong>ACL</strong> (access control list, a permission list attached to a bucket or object) or bucket policy that would make data public. <strong>Default encryption</strong> with SSE-S3 (server-side encryption with S3-managed keys) encrypts every new object at rest, meaning while it is stored on disk, using the AES-256 algorithm. Since 2023 AWS applies SSE-S3 to new objects by default, but the course still sets it explicitly so the evidence shows it. <strong>Versioning</strong> keeps the old copy of an object when it is overwritten or deleted.</p>
+<p><strong>Why not the alternatives.</strong> <strong>SSE-KMS</strong> uses a key from AWS Key Management Service, which gives you a log of each use of the key. It adds cost and permissions work, so it is worth it only for sensitive data. <strong>Client-side encryption</strong> means your code encrypts the file before upload. It is the strongest option, but then you manage the keys, and S3 cannot read the data. A <strong>bucket policy</strong> that denies public access also works, but Block Public Access is simpler and overrides mistakes made elsewhere.</p>
+<p><strong>How it works.</strong> The three settings are bucket settings, so the admin profile sets them once. The pipeline profile never does this. The commands use the flags <code>--bucket</code> and <code>--versioning-configuration</code>, and the values are written as <code>Name=Value</code> pairs.</p>
+<div class="hl"><pre><span></span><code><span class="nv">B</span><span class="o">=</span>citypulse-x7k2q9
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+aws<span class="w"> </span>s3api<span class="w"> </span>put-public-access-block<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--public-access-block-configuration<span class="w"> </span><span class="nv">BlockPublicAcls</span><span class="o">=</span>true,IgnorePublicAcls<span class="o">=</span>true,BlockPublicPolicy<span class="o">=</span>true,RestrictPublicBuckets<span class="o">=</span><span class="nb">true</span>
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-encryption<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--server-side-encryption-configuration<span class="w"> </span><span class="s1">&#39;{&quot;Rules&quot;:[{&quot;ApplyServerSideEncryptionByDefault&quot;:{&quot;SSEAlgorithm&quot;:&quot;AES256&quot;}}]}&#39;</span>
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+</code></pre></div>
+
+<p>Line 1 stores the bucket name in the variable <code>B</code>. The shell replaces <code>$B</code> with the value everywhere it appears, and the quotes around <code>"$B"</code> stop a name with odd characters from splitting into two words. Line 2 sets two environment variables. <code>AWS_PROFILE</code> picks the credentials, and <code>AWS_REGION</code> picks the region. Replace <code>&lt;admin-profile&gt;</code> with the name of the admin profile from your setup. Line 3 turns on all four Block Public Access switches. Each value is <code>true</code>, and the list is separated by commas with no spaces. Line 4 sets default encryption. The argument is a JSON text in single quotes. JSON is a text format for nested data made of braces, brackets and quoted keys. The rule says that every new object gets <code>AES256</code>. Line 5 turns versioning on. Nothing is printed when a <code>put</code> command works, so you check the result with the <code>get</code> commands in the evidence step.</p>
+<div class="hl"><pre><span></span><code><span class="o">{</span><span class="w"> </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-public-access-block<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span>
+<span class="w">  </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-encryption<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span>
+<span class="w">  </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/T18-bucket-settings.txt
+curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}\n&#39;</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="nv">$B</span><span class="s2">.s3.ap-south-1.amazonaws.com/clean/aqi/date=2026-12-17/aq_clean.parquet&quot;</span>
+</code></pre></div>
+
+<p>The braces group three commands so their output goes into one file with <code>&gt;</code>. The <code>&gt;</code> symbol writes the output to a file and replaces any earlier content. <code>curl</code> is a tool that sends an HTTP request from the terminal. <code>-s</code> hides the progress meter. <code>-o /dev/null</code> throws the body away. <code>-w '%{http_code}\n'</code> prints only the status code, followed by a new line. The URL is the object's address on the internet. You are not signed in, so the expected output is <code>403</code>. That is the proof that the bucket refuses the public.</p>
+<div class="box box-trap"><div class="box-h">Trap: Trusting a 404 as proof</div><p>A 404 means the object was not found, which proves nothing about privacy. Test an object that exists. For a private bucket, the answer must be 403.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Pipeline profile with bucket settings</div><p>Running the <code>put-</code> commands with the pipeline profile gives <code>AccessDenied</code>. Bucket configuration is an admin task, and the pipeline is deliberately not allowed to change it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Versioning without a cleanup rule</div><p>Versioning keeps every old copy, so storage grows forever unless you expire old copies. Apply the seven-day expiry of noncurrent versions in the lifecycle file, covered in the worked example.</p></div>
+
+<h3 id="the-boto3-sdk">The boto3 SDK</h3>
+<p><strong>What it is.</strong> boto3 is the official AWS SDK for Python. It finds credentials for you, signs each request so AWS can check it, and exposes every AWS operation as a Python method. When AWS refuses a call, boto3 raises <code>botocore.exceptions.ClientError</code>. <strong>botocore</strong> is the library underneath boto3 that does the low-level work.</p>
+<p><strong>Why not the alternatives.</strong> The <strong>AWS CLI</strong> from Bash is excellent for one-off commands and evidence, but it is harder to test from Python and harder to turn into a clean exit code. <strong>s3fs</strong> and <strong>fsspec</strong> make S3 look like a file system for pandas. They are convenient, but they hide errors and add dependencies. <strong>Raw HTTPS requests</strong> are possible, but you would have to rebuild SigV4, which is the AWS request-signing method, yourself. boto3 avoids all three problems.</p>
+<p><strong>How it works.</strong> When you call <code>boto3.client("s3")</code>, boto3 looks for credentials in a fixed order. It checks environment variables first, then the profile named by <code>AWS_PROFILE</code> in the shared config files, and then the role of the machine (an instance role on EC2). This is the <strong>credential chain</strong>. The same code therefore runs on your laptop with a profile and on a cloud machine with a role, and no key appears in the code.</p>
+<p>The slide code is <code>src/citypulse/upload.py</code>. Every line is explained below.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientError</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">object_key</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">day</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;clean/</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">/date=</span><span class="si">{</span><span class="n">day</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">flag</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;--src&quot;</span><span class="p">,</span> <span class="s2">&quot;--dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;--date&quot;</span><span class="p">):</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">src</span><span class="p">,</span> <span class="n">bucket</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">src</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CITYPULSE_BUCKET&quot;</span><span class="p">]</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">object_key</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">date</span><span class="p">),</span> <span class="n">src</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">src</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span>
+    <span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;upload failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;uploaded s3://</span><span class="si">{</span><span class="n">bucket</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<ul>
+<li><code>import argparse, datetime, os, pathlib, sys</code> loads five standard-library modules. <code>argparse</code> reads command-line flags, <code>datetime</code> handles dates, <code>os</code> reads environment variables, <code>pathlib</code> handles file paths, and <code>sys</code> gives access to the exit mechanism and the error output.</li>
+<li><code>import boto3</code> and <code>from botocore.exceptions import ClientError</code> load the SDK and the one exception class this script handles.</li>
+<li><code>def object_key(...)</code> defines a function. Its inputs are a dataset name, a date and a file name. The type hints such as <code>: str</code> and <code>-&gt; str</code> are notes for readers and tools. Python does not enforce them.</li>
+<li>The return line builds the f-string. An f-string is a string with <code>{...}</code> slots filled in at run time. <code>day.isoformat()</code> turns a date into text such as <code>2026-12-17</code>.</li>
+<li><code>def main() -&gt; int:</code> defines the main function, which returns the exit code.</li>
+<li><code>p = argparse.ArgumentParser()</code> creates a parser that will read the command-line flags.</li>
+<li>The <code>for</code> loop registers <code>--src</code>, <code>--dataset</code> and <code>--date</code> as required flags. Without a required flag, the script stops with a usage message.</li>
+<li><code>a = p.parse_args()</code> reads the flags and stores them in <code>a</code>, so <code>a.src</code> is the path you typed after <code>--src</code>.</li>
+<li>The next line finds the file path with <code>pathlib.Path</code>, reads the bucket name from the <code>CITYPULSE_BUCKET</code> environment variable, and then builds the key. <code>src.name</code> is the file name with the folders removed.</li>
+<li><code>try:</code> opens a block that might raise an error. The only error caught is <code>ClientError</code>.</li>
+<li><code>put_object(Bucket=..., Key=..., Body=...)</code> sends the bytes of the file to S3 under that key. <code>read_bytes()</code> loads the whole file into memory, which is fine for these small files.</li>
+<li><code>except ClientError as e:</code> runs only when AWS refuses the call. It prints the message to <code>sys.stderr</code>, the error channel, and returns <code>1</code>.</li>
+<li>The last two lines print the success message and return <code>0</code>.</li>
+<li><code>if __name__ == "__main__":</code> runs <code>main()</code> only when the file is run directly, not when another file imports it. <code>sys.exit(main())</code> passes the return value to the shell as the exit code.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Hard-coding the profile</div><p>Writing <code>boto3.Session(profile_name="citypulse-pipeline")</code> into the code breaks the EC2 run, where there is no such profile. Let the credential chain read <code>AWS_PROFILE</code> or the instance role.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: The wrong error class</div><p><code>upload_file</code> wraps its errors in <code>S3UploadFailedError</code>, which comes from <code>boto3.exceptions</code>, not from <code>botocore</code>. Catch that class too, or use <code>put_object</code> as the script does.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Testing by uploading</div><p>Calling AWS to test <code>object_key</code> is slow and needs a network. Put the logic in a pure function, which means a function that depends only on its inputs, and unit-test it in <code>tests/test_upload.py</code> with no AWS at all.</p></div>
+
+<p>Now watch the SDK work through a small Python program. It counts readings per station.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting readings per station&quot;, &quot;code&quot;: [&quot;counts = {}&quot;, &quot;for sid in [\&quot;S1\&quot;, \&quot;S2\&quot;, \&quot;S1\&quot;]:&quot;, &quot;    counts[sid] = counts.get(sid, 0) + 1&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Start with an empty dictionary.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The loop takes the first station id.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1}&quot;]], &quot;note&quot;: &quot;\&quot;S1\&quot; was not there, so get returns 0, and 0 + 1 is stored.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S2\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1}&quot;]], &quot;note&quot;: &quot;Second time round the loop.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S2\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;Same pattern for the new station.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;Third time round the loop.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 2, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;\&quot;S1\&quot; is already there, so get returns 1, and the count becomes 2.&quot;}]}"></div>
+
+<p>This trace uses a dictionary, which you will need again in the graded lab. The <code>get</code> method returns a default value when the key is missing, instead of raising an error.</p>
+<h2 id="the-worked-example">The worked example</h2>
+<p><strong>Goal.</strong> Upload the same clean file under two dates and then list both dates with the scoped pipeline profile. This is the workbook's example for the day. It proves that the layout, the credentials and the listing all work together.</p>
+<p><strong>Code.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">B</span><span class="o">=</span>citypulse-x7k2q9
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1<span class="w"> </span><span class="nv">CITYPULSE_BUCKET</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span>
+<span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">2026</span>-12-17<span class="w"> </span><span class="m">2026</span>-12-18<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>data/clean/aq_clean.parquet<span class="w"> </span>--dataset<span class="w"> </span>aqi<span class="w"> </span>--date<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/clean/aqi/&quot;</span><span class="w"> </span>--recursive<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/T18-ls.txt
+</code></pre></div>
+
+<p><strong>Explanation.</strong> The first two lines set the bucket name, the credentials and the <code>CITYPULSE_BUCKET</code> variable that <code>upload.py</code> reads. <code>citypulse-pipeline</code> is the scoped profile, which means a profile limited to the <code>clean/</code> and <code>raw/</code> prefixes. The <code>for ... in ...; do</code> line starts a loop over the two dates. Each pass sets the variable <code>d</code> to one date. <code>python -m citypulse.upload</code> runs the upload module as a script. <code>--src</code> gives the file to upload, <code>--dataset</code> gives the dataset name, and <code>--date</code> gives the date. The <code>"$d"</code> in quotes passes the current date. <code>done</code> ends the loop. The last line lists everything under <code>clean/aqi/</code>. <code>--recursive</code> lists the objects inside the nested prefixes too, not just the first level. The <code>&gt;</code> symbol saves the listing as evidence.</p>
+<p><strong>Output.</strong> Each upload prints one line, and the listing prints one line per object. The numbers below are illustrative, because your sizes and times will differ.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;for d in 2026-12-17 2026-12-18; do python -m citypulse.upload --src data/clean/aq_clean.parquet --dataset aqi --date \&quot;$d\&quot;; done&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;uploaded s3://citypulse-x7k2q9/clean/aqi/date=2026-12-17/aq_clean.parquet&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;uploaded s3://citypulse-x7k2q9/clean/aqi/date=2026-12-18/aq_clean.parquet&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws s3 ls \&quot;s3://citypulse-x7k2q9/clean/aqi/\&quot; --recursive&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-12-17 09:30:12       1834 clean/aqi/date=2026-12-17/aq_clean.parquet&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-12-18 09:30:14       1834 clean/aqi/date=2026-12-18/aq_clean.parquet&quot;}]}"></div>
+
+<p>The listing shows the two <code>date=</code> prefixes, which is the result you need. The admin then adds a lifecycle rule. The lifecycle file moves old raw data to a cheaper storage class and expires old versions. This is an admin task:</p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-lifecycle-configuration<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--lifecycle-configuration<span class="w"> </span>file://infra/storage/lifecycle.json
+aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-lifecycle-configuration<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>file://</code> tells the CLI to read the value from a file. The second command prints the rule back so you can save it as evidence. The course's own <code>lifecycle.json</code> is the authority. A rule of the same shape looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raw-cheaper-and-expire-old-versions&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raw/&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;Transitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;Days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;StorageClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STANDARD_IA&quot;</span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">&quot;NoncurrentVersionExpiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;NoncurrentDays&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><code>Filter</code> limits the rule to keys that start with <code>raw/</code>. <code>Transitions</code> moves the current objects to the <code>STANDARD_IA</code> class after 30 days. <code>NoncurrentVersionExpiration</code> deletes an old version seven days after it stopped being the latest one.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Before you start, make sure <code>src/citypulse/upload.py</code> matches the listing in The tools section. Use Git Bash for every command. Keep the bucket name in a file called <code>docs/evidence/bucket.txt</code>, so you can reuse it.</p>
+<h3 id="step-1-create-a-private-versioned-bucket">Step 1 — Create a private, versioned bucket</h3>
+<p><strong>What you do.</strong> Use the admin profile to create the bucket and set its three settings: Block Public Access, default encryption and versioning.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+<span class="nv">B</span><span class="o">=</span>citypulse-&lt;your-random-suffix&gt;
+aws<span class="w"> </span>s3api<span class="w"> </span>create-bucket<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--create-bucket-configuration<span class="w"> </span><span class="nv">LocationConstraint</span><span class="o">=</span>ap-south-1
+aws<span class="w"> </span>s3api<span class="w"> </span>put-public-access-block<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--public-access-block-configuration<span class="w"> </span><span class="nv">BlockPublicAcls</span><span class="o">=</span>true,IgnorePublicAcls<span class="o">=</span>true,BlockPublicPolicy<span class="o">=</span>true,RestrictPublicBuckets<span class="o">=</span><span class="nb">true</span>
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-encryption<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--server-side-encryption-configuration<span class="w"> </span><span class="s1">&#39;{&quot;Rules&quot;:[{&quot;ApplyServerSideEncryptionByDefault&quot;:{&quot;SSEAlgorithm&quot;:&quot;AES256&quot;}}]}&#39;</span>
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+</code></pre></div>
+
+<p>The <code>create-bucket</code> line needs <code>LocationConstraint</code> for a region outside <code>us-east-1</code>, which is why it is there. Replace <code>&lt;your-random-suffix&gt;</code> with random letters and digits.</p>
+<p><strong>What you should see.</strong> <code>create-bucket</code> prints a small JSON block with the bucket's <code>Location</code>, and the other three commands print nothing when they succeed. A failure prints an error with a code such as <code>BucketAlreadyExists</code>. If you see that, pick a different suffix.</p>
+<p><strong>How you know it worked.</strong> Run <code>aws s3api get-public-access-block --bucket "$B"</code>, <code>get-bucket-encryption</code> and <code>get-bucket-versioning</code>. The first shows four <code>true</code> values, the second shows <code>AES256</code>, and the third shows <code>"Status": "Enabled"</code>.</p>
+<h3 id="step-2-design-a-date-partitioned-key-layout">Step 2 — Design a date-partitioned key layout</h3>
+<p><strong>What you do.</strong> Write the layout on paper before you upload. The layout is <code>clean/&lt;dataset&gt;/date=YYYY-MM-DD/&lt;filename&gt;</code>, where the dataset for this lab is <code>aqi</code>.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import datetime; print(f&#39;clean/aqi/date={datetime.date(2026,12,17).isoformat()}/aq_clean.parquet&#39;)&quot;</span>
+</code></pre></div>
+
+<p><code>python -c</code> runs a line of Python given on the command line instead of a file. The f-string inserts the date, and <code>isoformat()</code> writes it as <code>2026-12-17</code>.</p>
+<p><strong>What you should see.</strong> <code>clean/aqi/date=2026-12-17/aq_clean.parquet</code></p>
+<p><strong>How you know it worked.</strong> The printed key has exactly one <code>date=</code> part, the date is in year-month-day order, and the file name is the one you intend to upload.</p>
+<h3 id="step-3-generate-a-sample-readings-file">Step 3 — Generate a sample readings file</h3>
+<p><strong>What you do.</strong> Create a small CSV file with three columns. CSV means comma-separated values, a plain text table. The <code>ts</code> column is a time stamp, <code>pollutant</code> names the substance, and <code>value</code> is the reading.</p>
+<p><strong>What you type.</strong> Create <code>make_sample.py</code> with this content and run it.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;ts,pollutant,value&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2026-12-17T06:00:00Z,pm25,41.2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2026-12-17T07:00:00Z,pm25,44.8&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;readings.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;wrote&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>rows</code> is a list of text lines. <code>"\n".join(rows)</code> glues the lines together with a new line between them. <code>write_text</code> writes the result to a file, and the <code>+ "\n"</code> adds a final new line. <code>len(rows) - 1</code> counts the data rows by leaving out the header.</p>
+<p>Run it with <code>python make_sample.py</code>.</p>
+<p><strong>What you should see.</strong> <code>wrote 2 rows</code></p>
+<p><strong>How you know it worked.</strong> <code>head readings.csv</code> prints the header and the two data rows. <code>head</code> shows the first lines of a file.</p>
+<h3 id="step-4-upload-with-boto3">Step 4 — Upload with boto3</h3>
+<p><strong>What you do.</strong> Switch to the scoped pipeline profile and upload the file for two dates.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">unset</span><span class="w"> </span>AWS_PROFILE
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1<span class="w"> </span><span class="nv">CITYPULSE_BUCKET</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>readings.csv<span class="w"> </span>--dataset<span class="w"> </span>aqi<span class="w"> </span>--date<span class="w"> </span><span class="m">2026</span>-12-17
+python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>readings.csv<span class="w"> </span>--dataset<span class="w"> </span>aqi<span class="w"> </span>--date<span class="w"> </span><span class="m">2026</span>-12-18
+</code></pre></div>
+
+<p><code>unset</code> removes a variable from the shell, so the old profile cannot leak through. <code>CITYPULSE_BUCKET</code> is the variable that <code>upload.py</code> reads, and it must be exported for Python to see it. If you forget it, <code>os.environ</code> raises a <code>KeyError</code>.</p>
+<p><strong>What you should see.</strong> Two lines, <code>uploaded s3://citypulse-&lt;your-suffix&gt;/clean/aqi/date=2026-12-17/readings.csv</code> and the same for <code>2026-12-18</code>.</p>
+<p><strong>How you know it worked.</strong> Both lines start with <code>uploaded</code>, and the exit code is 0. Run <code>echo $?</code> straight after the second command and expect <code>0</code>.</p>
+<h3 id="step-5-list-and-read-back">Step 5 — List and read back</h3>
+<p><strong>What you do.</strong> List the objects with the pipeline profile, then read one back from Python.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/clean/aqi/&quot;</span><span class="w"> </span>--recursive
+</code></pre></div>
+
+<p>Then create <code>read_back.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span>
+    <span class="n">Bucket</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CITYPULSE_BUCKET&quot;</span><span class="p">],</span>
+    <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;clean/aqi/date=2026-12-17/readings.csv&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;Body&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;header:&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>get_object</code> fetches the object. <code>obj["Body"]</code> is a stream of bytes, and <code>.read()</code> collects all of them. <code>.decode()</code> turns the bytes into text, and <code>splitlines()</code> splits the text into a list of lines. Line 0 is the header.</p>
+<p><strong>What you should see.</strong> Two listing lines, each with a date, a time, a size and a key that contains <code>date=</code>. Then <code>header: ts,pollutant,value</code> and <code>rows: 2</code>.</p>
+<p><strong>How you know it worked.</strong> The listing shows both dates, and the rows count matches the file you generated in Step 3.</p>
+<h3 id="step-6-prove-versioning-works">Step 6 — Prove versioning works</h3>
+<p><strong>What you do.</strong> Change one value in the sample file, upload it to the same key again, and list the versions with the admin profile.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/44.8/45.0/&#39;</span><span class="w"> </span>readings.csv
+python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>readings.csv<span class="w"> </span>--dataset<span class="w"> </span>aqi<span class="w"> </span>--date<span class="w"> </span><span class="m">2026</span>-12-17
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;
+aws<span class="w"> </span>s3api<span class="w"> </span>list-object-versions<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--prefix<span class="w"> </span>clean/aqi/date<span class="o">=</span><span class="m">2026</span>-12-17/<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Versions[].{Key:Key,VersionId:VersionId,IsLatest:IsLatest}&#39;</span><span class="w"> </span>--output<span class="w"> </span>table
+</code></pre></div>
+
+<p><code>sed -i</code> edits a file in place. The expression <code>s/44.8/45.0/</code> replaces the first <code>44.8</code> with <code>45.0</code> on each line. <code>--prefix</code> limits the listing to one day. <code>--query</code> uses JMESPath, a small language for picking fields from JSON output, and <code>--output table</code> prints the result as a table.</p>
+<p><strong>What you should see.</strong> Two rows with the same <code>Key</code>, two different <code>VersionId</code> strings, and <code>IsLatest</code> as <code>True</code> on exactly one row.</p>
+<p><strong>How you know it worked.</strong> The key appears twice with different version IDs. The old copy was kept, and the new copy is marked as the latest.</p>
+<h3 id="step-7-clean-up">Step 7 — Clean up</h3>
+<p><strong>What you do.</strong> Empty the bucket and then delete it. Do this only after you have saved your evidence files, and after your instructor confirms that you no longer need the bucket.</p>
+<p><strong>What you type.</strong> In a versioned bucket, <code>aws s3 rm --recursive</code> only adds a delete marker, which hides the object but keeps every version. To remove the versions as well, use the AWS web console: open the bucket, choose Empty, type the confirmation text, and then delete the bucket. Then check it from the terminal.</p>
+<p><strong>What you should see.</strong> <code>aws s3api head-bucket --bucket "$B"</code> prints an error with a code such as <code>404</code> or <code>NoSuchBucket</code>.</p>
+<p><strong>How you know it worked.</strong> The bucket no longer exists, so the error is correct. If you see a success message instead, the bucket still exists and you must empty it again.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"A Tiny In-Memory S3 for CityPulse Readings" (easy), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Build a basic s3:// URI</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A leading slash on the key is stripped</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>put then get round-trips the value</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>get of an absent key returns None</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>List keys under a prefix, sorted</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 76 of the 100 points. The other 24 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K06.html#y2-t18-upload-clean-parquet-to-date-partitioned-private-bucket">Y2-T18 · Upload clean parquet to date-partitioned private bucket</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz for today has ten case-study multiple-choice questions, one for each topic in this chapter, in the order the sub-sections below follow. Each question gives a short scenario about the CityPulse team and asks what to do, what to check or what is true. The pass mark is 70 per cent, which means seven correct answers out of ten. Only your first attempt counts towards your skill score, so treat the first try as the real one and read every question properly before you choose.</p>
+<p>Use this method on every case-study question.</p>
+<ol>
+<li><strong>Read the last line first.</strong> It says what is asked, such as "what should the team do first" or "which setting proves the bucket is private". Knowing the question tells you which facts matter.</li>
+<li><strong>Underline the facts in the scenario that matter.</strong> These are usually a symptom, a constraint or a role, such as "the pipeline profile is scoped" or "the file is 12 GB".</li>
+<li><strong>Eliminate options that are true in general but do not fix this scenario.</strong> Many wrong answers are correct facts about S3 or boto3 that do not solve the problem in front of you.</li>
+<li><strong>Watch for "most", "first" and "best".</strong> "First" means the step that comes before the others. "Best" means the option that fits every constraint in the scenario, not just one of them.</li>
+</ol>
+<p>The quiz tests whether you can match a symptom to the right behaviour and pick the fix that causes the least harm. Each sub-section teaches one topic from zero, then gives three practice questions. The final block is a harder mixed self-test.</p>
+<h3 id="uploading-with-boto3">Uploading with boto3</h3>
+<p><strong>What it is.</strong> boto3 is the official AWS SDK (Software Development Kit) for Python. An SDK is a library that gives you ready-made functions for one service, so you do not write the web requests yourself. You create a client with <code>boto3.client("s3")</code>. The client finds your credentials on its own through the credential chain, so the code holds no secret. An upload is one call to <code>put_object</code> with three named arguments. <code>Bucket</code> is the bucket name, <code>Key</code> is the object's full name, and <code>Body</code> is the content. <code>Body</code> is normally bytes, so the safe habit is to turn a Python string into bytes with <code>.encode("utf-8")</code> first. The example below needs AWS to run, so read it for its shape only.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+<span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;ts,value</span><span class="se">\n</span><span class="s2">2026-12-17T06:00:00Z,41.2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s2">&quot;citypulse-x7k2q9&quot;</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;clean/aqi/date=2026-12-17/sample.csv&quot;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>encode("utf-8")</code> turns the text into bytes, and <code>\n</code> is a new line inside the string. When the upload works, nothing is printed. When AWS refuses it, the call raises <code>ClientError</code>.</p>
+<p><strong>How it shows up in a case study.</strong> The ingest job runs at 06:00 and uploads the day's readings to <code>clean/aqi/</code>. The team finds that the job reports success, yet no file appears in the bucket. Their script wraps the upload in <code>except Exception: pass</code>, so every failure is hidden and the exit code is 0. The right reasoning is to narrow the handler to the one error the script expects, <code>ClientError</code>, print the message to standard error and return 1. Then the scheduler marks the run as failed, and someone sees it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Trusting a quiet success</div><p>A broad <code>except</code> that prints nothing makes a refused upload look like a good one. Catch the expected error, report it and return a non-zero code.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script builds a CSV as a Python string and passes it straight to put_object as Body. Which change makes the body correct before upload?&quot;, &quot;opts&quot;: [&quot;Add a Key argument that ends in the file extension.&quot;, &quot;Call .encode(\&quot;utf-8\&quot;) on the string, or read the file with read_bytes().&quot;, &quot;Wrap the call in a try block that catches every error.&quot;, &quot;Pass the string through str() a second time.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Body should be bytes, and encode or read_bytes gives bytes. The tempting wrong answer is the broad try block, which hides a problem instead of fixing the value.&quot;}, {&quot;q&quot;: &quot;A developer writes boto3.Session(profile_name=\&quot;citypulse-pipeline\&quot;) into the upload script, and the script later runs on a cloud VM with no such profile. What is the problem and the fix?&quot;, &quot;opts&quot;: [&quot;Nothing is wrong, because the profile name is only a label.&quot;, &quot;The bucket name is too long, so shorten it.&quot;, &quot;The upload needs a second put_object call that names the profile.&quot;, &quot;The profile does not exist on the VM, so let the credential chain read AWS_PROFILE or the instance role.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Hard-coding the profile breaks any machine without it. The tempting wrong answer is that a label does no harm, but the session fails when the profile is missing.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s upload script calls put_object for each file. Which arguments must the call use, and how?&quot;, &quot;opts&quot;: [&quot;Bucket, Key and Body, passed as named arguments.&quot;, &quot;File, name and content, passed as positional strings.&quot;, &quot;Path, Object and Data, passed as named arguments.&quot;, &quot;Bucket and File only, because Body is optional.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;put_object takes the named arguments Bucket, Key and Body. The tempting wrong answer is the pattern of upload_file, which takes the file path first and then the bucket and key.&quot;}]}"></div>
+
+<h3 id="the-s3-object-model">The S3 object model</h3>
+<p><strong>What it is.</strong> S3 (Simple Storage Service) keeps three kinds of thing. A <strong>bucket</strong> is a named container. Its name is unique across the whole of AWS and cannot be changed later. An <strong>object</strong> is one stored file, which means its bytes plus metadata such as size and content type. A <strong>key</strong> is the object's full name inside the bucket, and it is one single string. In <code>clean/aqi/date=2026-12-17/aq_clean.parquet</code> the slashes are part of the text. S3 has no real folders. The console shows folder-like views by grouping keys that share a prefix. Because of this, you cannot rename a folder in one step. You must copy each object to its new key and then delete the old one.</p>
+<p><strong>How it shows up in a case study.</strong> A data engineer wants to rename <code>raw/aqi-old/</code> to <code>raw/aqi-2026/</code> for the whole team. In a file system this is one command. The bucket holds about 40,000 keys under the old prefix. The team therefore plans a copy job that lists every key, copies each one to its new name, checks the copies and only then deletes the originals. The reasoning starts from the fact that the key is the whole name, so changing a prefix means changing every key under it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting a folder to be an object</div><p>The console shows a folder icon, but S3 holds no folder to rename. A single rename call does not exist.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The upload log shows s3://citypulse-x7k2q9/clean/aqi/date=2026-12-17/aq_clean.parquet. Which part is the bucket, and which part is the key?&quot;, &quot;opts&quot;: [&quot;The word clean is the bucket, and aqi is a folder inside it.&quot;, &quot;The whole path is the bucket name, and aq_clean.parquet is the object.&quot;, &quot;The name citypulse-x7k2q9 is the bucket, and the text after its slash is the key.&quot;, &quot;The bucket is aq_clean.parquet, because it is the last part of the path.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The bucket is the name directly after s3://, and everything after the bucket&#x27;s slash is the key. The tempting wrong answer is to read the first folder-like word as the bucket.&quot;}, {&quot;q&quot;: &quot;A team wants to rename raw/aqi-old/ to raw/aqi-2026/ in one step. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;One rename call moves the folder, because S3 folders are objects.&quot;, &quot;Each object under the old prefix must be copied to its new key, and then the old key deleted.&quot;, &quot;The bucket must be deleted and recreated under the new name.&quot;, &quot;The rename works only after versioning is turned off.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;S3 has no folders, so each key is copied and then deleted. The tempting wrong answer is the single rename that a file system offers.&quot;}, {&quot;q&quot;: &quot;A pipeline stores a copy of a reading at readings/station-42.csv and another at readings/Station-42.csv. A listing of readings/ shows both. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;They are one object, because S3 ignores capital letters in key names.&quot;, &quot;S3 keeps only the newer of the two and deletes the other.&quot;, &quot;The second one is a folder called Station-42.csv that holds the first.&quot;, &quot;They are two different keys, because key names are case-sensitive.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A key is an exact string, so capitals matter. The tempting wrong answer is the habit from Windows file names, where case is ignored.&quot;}]}"></div>
+
+<h3 id="partitioning-keys-by-date">Partitioning keys by date</h3>
+<p><strong>What it is.</strong> Partitioning means splitting data into parts by a value that readers filter on, and writing that value into the key. CityPulse uses <code>date=YYYY-MM-DD</code>. A listing with the prefix <code>clean/aqi/date=2026-12-17/</code> then returns only the objects for that day, because S3 matches the start of each key. The format matters. ISO dates, which put the year first, then the month, then the day, with leading zeros, sort correctly as plain text.</p>
+<div class="hl"><pre><span></span><code><span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2026-12-10&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-12-09&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-01-02&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">dates</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>['2026-12-09', '2026-12-10', '2027-01-02']</code>, which is calendar order. The day-first form does not behave this way. The text <code>01-01-2027</code> sorts before <code>17-12-2026</code>, because <code>0</code> comes before <code>1</code>, even though 1 January 2027 is the later date.</p>
+<p><strong>How it shows up in a case study.</strong> The dashboard team notices that its weekly report lists dates in the wrong order. The first pipeline wrote keys such as <code>clean/aqi/17-12-2026/</code>, and the report sorts those names as text. The fix is to write new uploads with <code>date=YYYY-MM-DD</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: A date that looks right</div><p><code>17-12-2026</code> looks like a date to a person, but as text it sorts wrongly across years. Use the ISO form every time.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A reader lists the prefix clean/aqi/date=2026-12-17/ to load one day of AQI data. Which key does the listing return?&quot;, &quot;opts&quot;: [&quot;clean/aqi/date=2026-12-17/aq_clean.parquet&quot;, &quot;clean/aqi/date=2026-11-17/aq_clean.parquet&quot;, &quot;clean/aqi/date=2026-12-18/aq_clean.parquet&quot;, &quot;clean/aqi/aq_clean_2026-12-17.parquet&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A prefix match needs the key to start with the whole prefix, including the slash at the end. The tempting wrong answer is the file whose name contains the date, but the date is not at the start of its key.&quot;}, {&quot;q&quot;: &quot;A team writes keys for 1 January 2027 and 17 December 2026 in the form clean/aqi/01-01-2027/ and clean/aqi/17-12-2026/, and then sorts them for a report. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The sort is correct, because the day is the first part of each key.&quot;, &quot;The sort is correct for these dates, but breaks in leap years.&quot;, &quot;Text sorting puts 01-01-2027 before 17-12-2026, so the report lists the dates in the wrong order.&quot;, &quot;The keys cannot be sorted, because they contain hyphens.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;As text, 01-01-2027 comes first, even though it is the later date. The tempting wrong answer is that the day-first form looks natural to a person.&quot;}, {&quot;q&quot;: &quot;A dashboard needs all of December 2026 in one listing. The pipeline already stores clean/aqi/date=2026-12-17/ and similar keys for each day. Which query fits the existing layout?&quot;, &quot;opts&quot;: [&quot;Add a second bucket for each month, because prefixes cannot match part of a value.&quot;, &quot;List the prefix clean/aqi/date=2026-12- and it returns only the days in December.&quot;, &quot;Rename every key so that it ends with the month name, and then match the suffix.&quot;, &quot;List the bucket root and filter the dates in Python after the call.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;ISO dates put the year and month first, so the text prefix date=2026-12- matches exactly the days in that month. The tempting wrong answer is to list everything and filter in Python, which reads far more data than needed.&quot;}]}"></div>
+
+<h3 id="paginating-long-listings">Paginating long listings</h3>
+<p><strong>What it is.</strong> A listing call returns one page of keys, not all of them. <code>list_objects_v2</code> returns at most 1,000 keys per call. When more keys exist, the response has <code>IsTruncated</code> set to <code>True</code>, and a <code>NextContinuationToken</code>, which is a bookmark for the next call. A <strong>paginator</strong> hides this loop. <code>s3.get_paginator("list_objects_v2")</code> gives you an object whose <code>paginate</code> method yields one response per page. Each page has <code>KeyCount</code>, the number of keys in that page. Also, when no key matches the prefix, the response has no <code>Contents</code> entry at all, so <code>resp["Contents"]</code> raises <code>KeyError</code>. The safe form is <code>resp.get("Contents", [])</code>. The loop below uses plain Python to show the idea. Each dictionary stands for one page.</p>
+<div class="hl"><pre><span></span><code><span class="n">pages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;KeyCount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;KeyCount&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;KeyCount&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>3</code>. Each pass adds one page's count to the running total.</p>
+<p><strong>How it shows up in a case study.</strong> The audit job counts the objects under <code>raw/</code> and reports 1,000 every month, even though the number grows. The job calls <code>list_objects_v2</code> once and reads the first response. The reasoning is that <code>IsTruncated</code> tells the reader that more pages exist. A paginator, and a total that adds each page's <code>KeyCount</code>, fixes the report.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading only the first page</div><p>One call looks correct on a small test bucket and stops at 1,000 keys in production, without an error. Use the paginator.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The audit job calls list_objects_v2 once for raw/ and counts the Contents list. The bucket holds 2,400 keys under raw/. What does the report show?&quot;, &quot;opts&quot;: [&quot;2,400, because one call returns every key under the prefix.&quot;, &quot;2,000, because the call returns two full pages automatically.&quot;, &quot;0, because the call fails when there are more than 1,000 keys.&quot;, &quot;At most 1,000, because the call returns only the first page and IsTruncated is True.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;list_objects_v2 returns at most 1,000 keys per call, and the rest are skipped without an error. The tempting wrong answer is 2,400, which assumes one call returns everything.&quot;}, {&quot;q&quot;: &quot;A reader writes resp[\&quot;Contents\&quot;] for a prefix where no objects exist yet. Which result is correct?&quot;, &quot;opts&quot;: [&quot;A KeyError, because S3 leaves out the Contents entry when nothing matches.&quot;, &quot;An empty list, because S3 always includes Contents.&quot;, &quot;Zero, because S3 sets Contents to 0 for empty prefixes.&quot;, &quot;None, because S3 sets Contents to None when the prefix is empty.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;With no match, the key is missing, so a plain lookup fails. The tempting wrong answer is an empty list, which is the right value only if the code uses resp.get(\&quot;Contents\&quot;, []).&quot;}, {&quot;q&quot;: &quot;A team wants the number of objects that match a prefix, using a paginator. Which code is correct?&quot;, &quot;opts&quot;: [&quot;Read KeyCount from the first page and stop, because it holds the total.&quot;, &quot;Call paginate with MaxItems set to 1, and read KeyCount.&quot;, &quot;Loop over pag.paginate(Bucket=..., Prefix=...) and add up each page&#x27;s KeyCount.&quot;, &quot;Read the continuation token and use its value as the count.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each page&#x27;s KeyCount counts only that page, so the counts must be added. The tempting wrong answer is the first page, which holds only part of the total.&quot;}]}"></div>
+
+<h3 id="presigned-urls">Presigned URLs</h3>
+<p><strong>What it is.</strong> A presigned URL is a web address that already carries a signature made with the signer's credentials. Anyone who holds the link can open it, even without an AWS account, until the link expires. You create one with <code>generate_presigned_url</code>. The first argument is the operation name, such as <code>"get_object"</code>. <code>Params</code> names the bucket and key. <code>ExpiresIn</code> is the lifetime in seconds, so 3600 means one hour. The link carries the rights of the account that signed it, and the signing identity must stay valid.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">generate_presigned_url</span><span class="p">(</span>
+    <span class="s2">&quot;get_object&quot;</span><span class="p">,</span>
+    <span class="n">Params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;citypulse-x7k2q9&quot;</span><span class="p">,</span> <span class="s2">&quot;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;clean/aqi/date=2026-12-17/aq_clean.parquet&quot;</span><span class="p">},</span>
+    <span class="n">ExpiresIn</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The value of <code>url</code> is a long <code>https</code> address, and its query text includes an expiry such as <code>X-Amz-Expires=3600</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A partner needs one clean file for a week of review, and the admin suggests making the bucket public for a day. The better answer is a presigned link to that one object. It covers one key, and its lifetime is set in seconds, so it stops working by itself. A public bucket exposes every object while it is open, and someone must remember to close it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Confusing seconds with minutes</div><p><code>ExpiresIn=60</code> gives one minute, not one hour. Work out the value in seconds before you run the code.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team wants a partner to download one file for one hour without AWS credentials. The engineer sets ExpiresIn=60, thinking it means one hour. What happens?&quot;, &quot;opts&quot;: [&quot;The link lasts one hour, because ExpiresIn is always given in hours.&quot;, &quot;The link lasts one minute, because ExpiresIn counts seconds.&quot;, &quot;The link never expires, because only the bucket policy sets the time.&quot;, &quot;The link lasts 60 days, because the value is read as days.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;ExpiresIn counts seconds, so 3600 is one hour. The tempting wrong answer is the hour reading, which comes from assuming the unit.&quot;}, {&quot;q&quot;: &quot;An analyst asks for a shareable link to one clean file. The admin suggests switching off Block Public Access for the bucket until the review ends. What is the best answer?&quot;, &quot;opts&quot;: [&quot;Agree, because the public setting ends when the review is over.&quot;, &quot;Agree, if the file name is hard to guess.&quot;, &quot;Refuse the link, because presigned URLs work only inside AWS.&quot;, &quot;Create a presigned URL for that one object with a short ExpiresIn, because it covers one key and expires by itself.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A public bucket exposes every object, and the link covers only one key. The tempting wrong answer is to rely on someone switching the setting back later.&quot;}, {&quot;q&quot;: &quot;A presigned link was made by a service account that is disabled a few days later, and a partner tries the link after that. What is the likely result?&quot;, &quot;opts&quot;: [&quot;The request is refused, because the link&#x27;s permission depends on the signing identity, which no longer works.&quot;, &quot;The link works, because presigned URLs store their own copy of the permission.&quot;, &quot;The link works until ExpiresIn runs out, whatever happens to the account.&quot;, &quot;The bucket is made public automatically to serve the link.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The signature is checked against the signer&#x27;s permissions, so a disabled signer breaks the link before its time ends. The tempting wrong answer is that the expiry is the only limit.&quot;}]}"></div>
+
+<h3 id="lifecycle-rules">Lifecycle rules</h3>
+<p><strong>What it is.</strong> A lifecycle configuration is a set of rules that S3 applies in the background, without any code running. A rule has a <code>Filter</code> that limits it to a prefix, such as <code>raw/</code>. A <code>Transitions</code> entry moves current objects to a cheaper storage class after a number of days, such as <code>STANDARD_IA</code>. The object stays in the bucket and can still be read, though reads from the cheaper class cost extra. A <code>NoncurrentVersionExpiration</code> entry deletes old versions a number of days after they stopped being the latest, and it applies only in a versioned bucket. An <code>Expiration</code> entry deletes current objects, so it removes data. S3 applies rules in the background, so an object may move or disappear some time after its day limit.</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raw-cheaper&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raw/&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;Transitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;Days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;StorageClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STANDARD_IA&quot;</span><span class="p">}]}]}</span>
+</code></pre></div>
+
+<p><strong>How it shows up in a case study.</strong> Storage cost has grown since the bucket turned on versioning. Finance asks for the cheapest fix that still keeps every raw file. The reasoning is to move <code>raw/</code> objects to <code>STANDARD_IA</code> after 30 days, which keeps the data, and to expire noncurrent versions after 7 days, which removes only the old copies. The team does not add an expiration rule for current raw data, because that would delete the files they must keep.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expiration is not transition</div><p>An expiration rule for current objects deletes them. A transition only changes the storage class, and the data stays.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The team must keep raw/ data for the record, but wants it cheaper after 30 days. Which rule type does this?&quot;, &quot;opts&quot;: [&quot;An Expiration rule with Days set to 30 on the raw/ prefix.&quot;, &quot;A bucket policy that denies reads after 30 days.&quot;, &quot;A Transition to STANDARD_IA after 30 days, limited by a Filter on raw/.&quot;, &quot;A presigned URL that expires after 30 days.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A transition keeps the data and changes its storage class. The tempting wrong answer is an expiration, which deletes the objects.&quot;}, {&quot;q&quot;: &quot;After the lifecycle rule runs, old versions of clean/ files still take up space. The rule has no noncurrent expiry. Which setting is missing?&quot;, &quot;opts&quot;: [&quot;A Transition from STANDARD to STANDARD_IA.&quot;, &quot;NoncurrentVersionExpiration with NoncurrentDays set to 7.&quot;, &quot;A Filter that sets Prefix to the bucket name.&quot;, &quot;A second bucket that holds the older versions.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Noncurrent expiry deletes old versions after the set number of days. The tempting wrong answer is a transition, which keeps the old data in a cheaper class.&quot;}, {&quot;q&quot;: &quot;A lifecycle rule has an Expiration with Days set to 90 and a Filter prefix of clean/aqi/. Which result is correct?&quot;, &quot;opts&quot;: [&quot;The objects move to a cheaper class after 90 days.&quot;, &quot;Only old versions are removed after 90 days.&quot;, &quot;Nothing changes, because lifecycle rules ignore prefixes.&quot;, &quot;Current objects under clean/aqi/ are deleted about 90 days after they were created.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An expiration on current objects deletes them, and the prefix limits which objects are affected. The tempting wrong answer is the transition, which keeps the data.&quot;}]}"></div>
+
+<h3 id="handling-boto3-errors">Handling boto3 errors</h3>
+<p><strong>What it is.</strong> When AWS refuses a call, boto3 raises <code>botocore.exceptions.ClientError</code>. An exception is an error that Python raises while the program runs, and <code>try</code> and <code>except</code> catch it. The error details are in the <code>response</code> dictionary of the exception object. The error code is at <code>e.response["Error"]["Code"]</code>, for example <code>AccessDenied</code>, <code>NoSuchKey</code> or <code>NoSuchBucket</code>. The message is at <code>e.response["Error"]["Message"]</code>. The example below builds a <code>ClientError</code> by hand, so it runs without AWS.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">ClientError</span><span class="p">({</span><span class="s2">&quot;Error&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Code&quot;</span><span class="p">:</span> <span class="s2">&quot;AccessDenied&quot;</span><span class="p">,</span> <span class="s2">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;Access Denied&quot;</span><span class="p">}},</span> <span class="s2">&quot;PutObject&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;code:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;Error&quot;</span><span class="p">][</span><span class="s2">&quot;Code&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>code: AccessDenied</code>. A good handler catches only the error type it expects, prints the message to standard error, and returns a non-zero exit code.</p>
+<p><strong>How it shows up in a case study.</strong> A nightly job logs "upload failed" for every run, but the team cannot see why. The job prints only a short message and returns 0 at the end, so the scheduler marks every run as successful. The reasoning is that the error code tells you the cause. <code>AccessDenied</code> points to permissions, and <code>NoSuchBucket</code> points to the bucket name in the configuration. The fix is to catch <code>ClientError</code> only, print the error and return 1.</p>
+<div class="box box-trap"><div class="box-h">Trap: Catching everything</div><p>A broad <code>except</code> that returns success hides every failure, including bugs in your own code. Catch the error you expect.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script catches ClientError and prints the error code for an upload. AWS refuses the request because the pipeline profile lacks permission. Which code does e.response show?&quot;, &quot;opts&quot;: [&quot;AccessDenied&quot;, &quot;NoSuchBucket&quot;, &quot;NoSuchKey&quot;, &quot;ValueError&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;AccessDenied means the identity is not allowed to act. The tempting wrong answer is NoSuchKey, which means the object is missing, not that permission is lacking.&quot;}, {&quot;q&quot;: &quot;A script wraps the upload in except Exception: pass and returns 0 at the end. Each upload fails with AccessDenied, but the scheduler marks the job as green. Which change fixes the problem?&quot;, &quot;opts&quot;: [&quot;Add a sleep before the upload, so that the permission arrives in time.&quot;, &quot;Print every exception in a bare except, and keep returning 0.&quot;, &quot;Catch ClientError only, print the error to stderr and return 1.&quot;, &quot;Remove the try block and let boto3 retry until it works.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Catching only ClientError, reporting it and returning 1 makes the failure visible to the scheduler. The tempting wrong answer is a bare except that prints the error but still returns 0.&quot;}, {&quot;q&quot;: &quot;A reader downloads a file and receives the error code NoSuchKey. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The bucket was deleted and must be created again.&quot;, &quot;The key does not exist in the bucket, so the name or the date in the key is probably wrong.&quot;, &quot;The permissions are wrong, so the admin must grant s3:GetObject.&quot;, &quot;The file is encrypted, so the reader needs a KMS key.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;NoSuchKey means that no object exists under that key. The tempting wrong answer is AccessDenied, which is about permission and has a different code.&quot;}]}"></div>
+
+<h3 id="encryption-at-rest">Encryption at rest</h3>
+<p><strong>What it is.</strong> Encryption at rest means the data is encrypted while it is stored. Default encryption with SSE-S3 (server-side encryption with S3-managed keys) makes S3 encrypt every new object with AES-256, using keys that AWS manages. You set it once on the bucket, and your code needs no change. When a reader asks for an object, S3 decrypts it for any identity that is allowed to read it. Encryption at rest is therefore not access control. Access is controlled by bucket permissions and by Block Public Access. SSE-KMS uses a key from AWS Key Management Service, and each use of the key can be logged, but each reader also needs permission to use that key. Client-side encryption means your code encrypts the file before upload. Then S3 holds data that it cannot read.</p>
+<p><strong>How it shows up in a case study.</strong> The client's policy says that all stored data must be encrypted at rest by default, and the team does not want to manage keys. An auditor asks who can read the data when the bucket is encrypted. The reasoning is that SSE-S3 meets the policy, because AWS manages the keys with no work for the team. Who can read the data is decided by the permissions and by Block Public Access. The pipeline profile is scoped, so only that identity and the admin identities can read it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Treating encryption as access control</div><p>An encrypted object is still readable by any identity that has read permission. Encryption protects the stored disks, not the people inside the account.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The client policy says all stored data must be encrypted at rest with AWS-managed keys, and the team must do no key work. An engineer proposes SSE-KMS with a customer managed key. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;SSE-KMS is wrong, because KMS cannot encrypt S3 objects at all.&quot;, &quot;SSE-KMS is required, because only it encrypts data at rest.&quot;, &quot;SSE-KMS and client-side encryption are the same setting.&quot;, &quot;SSE-S3 meets the policy with AWS-managed keys and no key work, while SSE-KMS works but adds key management and cost the policy does not ask for.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The policy asks for AWS-managed keys with no key work, which is SSE-S3. The tempting wrong answer is SSE-KMS, which is a valid choice but adds a customer-managed key the team must handle.&quot;}, {&quot;q&quot;: &quot;A reader with s3:GetObject permission downloads an encrypted object and sees normal bytes. Why?&quot;, &quot;opts&quot;: [&quot;S3 decrypts the object for any identity that is allowed to read it, so encryption at rest does not hide data from permitted readers.&quot;, &quot;The reader holds the decryption key on a laptop, so S3 is not involved.&quot;, &quot;The bucket was not encrypted, because the file had no key.&quot;, &quot;Encryption applies only to uploads made with the admin profile.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Encryption at rest protects stored data, and permitted reads are decrypted by S3. The tempting wrong answer is that encryption is a lock that the reader must open.&quot;}, {&quot;q&quot;: &quot;An auditor asks whether the default encryption setting stops a teammate who already has read access to the bucket from reading the data. Which answer is best?&quot;, &quot;opts&quot;: [&quot;Yes, because the encryption setting hides the bucket from the teammate&#x27;s listing.&quot;, &quot;Yes, because default encryption checks the teammate&#x27;s password.&quot;, &quot;No, because encryption at rest does not restrict reads, so access must be limited with bucket permissions and Block Public Access.&quot;, &quot;Yes, but only for objects uploaded after the setting was turned on.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Encryption at rest does not limit who can read an object. The tempting wrong answer is the yes that comes from treating encryption as access control.&quot;}]}"></div>
+
+<h3 id="versioning">Versioning</h3>
+<p><strong>What it is.</strong> Versioning keeps every version of an object. With versioning on, an overwrite creates a new version and keeps the old one. A delete adds a <strong>delete marker</strong> on top, so the older versions still exist. Each version has a <strong>version ID</strong>. You read an older version by passing <code>VersionId</code> to <code>get_object</code>. You restore it by copying that version back to the same key, which makes the copy the newest version. Old versions take storage and cost money, so a lifecycle rule should expire noncurrent versions after a set number of days. Versioning protects against overwrites and deletes inside one bucket. It is not a full backup, because it does not protect you from losing the whole bucket.</p>
+<p><strong>How it shows up in a case study.</strong> A bad pipeline run overwrites yesterday's good Parquet file with an empty file. The team needs the good file back under the same key. The reasoning is to list the versions, find the version ID of the good file and copy it back. The team should not rely on re-running the pipeline, because a rebuild may not reproduce the same bytes. The team should also check the expiry window, because a version that has expired cannot be copied back.</p>
+<div class="box box-trap"><div class="box-h">Trap: Versioning as a backup</div><p>Versioning protects objects inside the same bucket. It does not replace a copy stored somewhere else.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An engineer deletes clean/aqi/date=2026-12-17/aq_clean.parquet with the normal delete command, and the bucket has versioning on. What is the state now?&quot;, &quot;opts&quot;: [&quot;The file and all its history are gone for good.&quot;, &quot;The current version is hidden behind a delete marker, and the older versions still exist.&quot;, &quot;The file is moved into a folder called trash and can be read with the same key.&quot;, &quot;The bucket becomes read-only until an admin restores it.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;With versioning on, a delete adds a delete marker and keeps the versions. The tempting wrong answer is a permanent delete, which happens only when the versions themselves are removed.&quot;}, {&quot;q&quot;: &quot;A team wants a good version of a Parquet file back under its original key. Which action restores it?&quot;, &quot;opts&quot;: [&quot;Turn versioning on now, because that restores old copies automatically.&quot;, &quot;Upload the bad file again under a new version number.&quot;, &quot;Run the pipeline for that day, because the earlier file is kept under a hidden name.&quot;, &quot;Find the version ID of the good version, read it with that VersionId, and copy it back to the same key.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Copying an old version back makes it the newest version. The tempting wrong answer is re-running the pipeline, which may not rebuild the same bytes.&quot;}, {&quot;q&quot;: &quot;A lifecycle rule expires noncurrent versions after 1 day. A reviewer wants to restore a raw/ file that was overwritten three days ago. What is the likely result?&quot;, &quot;opts&quot;: [&quot;The old version may already be gone, so the restore can fail for that version.&quot;, &quot;The restore works, because the rule removes only versions older than a year.&quot;, &quot;The restore works, because noncurrent versions are copied to a backup bucket.&quot;, &quot;The restore works, because the delete markers hold the old bytes.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Noncurrent expiry removes old versions after the set number of days, so a short window can lose the version needed. The tempting wrong answer is that versioning is on, so the restore must work.&quot;}]}"></div>
+
+<h3 id="multipart-uploads">Multipart uploads</h3>
+<p><strong>What it is.</strong> A single upload request, <code>PUT</code>, can carry at most 5 GB. A larger object must be uploaded in parts. A <strong>multipart upload</strong> starts, sends each part with a part number, and then completes by naming all of the parts. Each part except the last must be at least 5 MiB, and an upload can have up to 10,000 parts. The boto3 method <code>upload_file</code> does the splitting for you. It switches to multipart once the file passes its threshold, which defaults to 8 MB. An upload that never completes keeps its stored parts, and those parts cost money. A lifecycle rule can abort incomplete uploads after a set number of days.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s2">&quot;big.parquet&quot;</span><span class="p">,</span> <span class="s2">&quot;citypulse-x7k2q9&quot;</span><span class="p">,</span> <span class="s2">&quot;clean/aqi/date=2026-12-17/big.parquet&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>It chooses a single request or a multipart upload by itself.</p>
+<p><strong>How it shows up in a case study.</strong> A 12 GB hourly export fails with a size error from a script that was written around <code>put_object</code>. The reasoning is that a single request is limited to 5 GB, so the script must use <code>upload_file</code>, which splits large files. The team must also add a rule that aborts incomplete multipart uploads, because the failed runs left parts behind that still cost money.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming put_object has no size limit</div><p><code>put_object</code> takes one object up to 5 GB. Use <code>upload_file</code> or the multipart calls for anything larger.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script sends a 12 GB Parquet file with put_object and gets a size error. Which change fixes this?&quot;, &quot;opts&quot;: [&quot;Compress the file to a zip with a .gz extension, which removes the limit.&quot;, &quot;Increase the timeout, so that the request can carry a larger body.&quot;, &quot;Use upload_file, which splits the file into parts for a multipart upload.&quot;, &quot;Change the key to end with .parquet, which tells S3 the file can be split.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A single request is limited to 5 GB, so the file must go in parts. The tempting wrong answer is compression, which may still leave the file above the limit.&quot;}, {&quot;q&quot;: &quot;A multipart upload fails halfway, and the storage bill rises over the next week. Which lifecycle setting prevents the cost?&quot;, &quot;opts&quot;: [&quot;A Transition of incomplete uploads to STANDARD_IA after 30 days.&quot;, &quot;AbortIncompleteMultipartUpload with a set number of days, so unfinished parts are removed.&quot;, &quot;A NoncurrentVersionExpiration of 7 days for incomplete uploads.&quot;, &quot;An Expiration of current objects after 1 day.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The abort rule removes the stored parts of unfinished uploads. The tempting wrong answer is a transition, which moves data to a cheaper class but keeps it.&quot;}, {&quot;q&quot;: &quot;A team uploads a 20 MB file in parts. Which statement about the part sizes and the number of parts is correct?&quot;, &quot;opts&quot;: [&quot;Every part must be exactly 5 MiB, including the last one.&quot;, &quot;Each part must be at most 5 MiB, and the last one must be at least 5 MiB.&quot;, &quot;Each part must be 1 GB, because S3 stores parts in gigabyte units.&quot;, &quot;Each part except the last must be at least 5 MiB, and an upload can have at most 10,000 parts.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The rule is a minimum size for every part except the last, plus a maximum count. The tempting wrong answer is a fixed size for all parts, which the rule does not require.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The ten questions below mix all the topics, one per topic. Answer them without looking back.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A scheduled job reads CITYPULSE_BUCKET with os.environ before its try block. The variable is missing on the VM only, and the log shows a traceback instead of a ClientError line. What is the best explanation and fix?&quot;, &quot;opts&quot;: [&quot;The KeyError came from the environment lookup before the try block, so the fix is to set the variable on the VM, not to catch ClientError.&quot;, &quot;The ClientError was raised inside the try block and was not printed, so widen the handler to Exception.&quot;, &quot;The bucket refused the upload, so grant the VM&#x27;s role the s3:PutObject permission.&quot;, &quot;The file is larger than 5 GB, so switch to upload_file.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The KeyError is raised before the try block, so the ClientError handler never sees it. The tempting wrong answer is AccessDenied, which would appear as a ClientError line.&quot;}, {&quot;q&quot;: &quot;A pipeline writes a zero-byte object called clean/aqi/date=2026-12-17/ as a folder marker. The team later wants to rename the whole day to date=2026-12-18. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;One rename call works, because the marker object carries all the other keys.&quot;, &quot;The console can rename the day in one step, so the copy loop is unnecessary.&quot;, &quot;Every key under the old prefix, including the marker, must be copied to its new key and then deleted, because S3 has no folder rename.&quot;, &quot;Renaming is blocked while the marker exists, so the marker must be deleted first.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The marker is an ordinary object, and S3 renames by copying and deleting. The tempting wrong answer is the console rename, which still copies and deletes behind the scenes.&quot;}, {&quot;q&quot;: &quot;A team stores each station&#x27;s files as clean/aqi/station=42/date=2026-12-17/. They want one listing of station 42 for all of December 2026. Which prefix fits?&quot;, &quot;opts&quot;: [&quot;List clean/aqi/date=2026-12- and pick out station 42 by sorting the results.&quot;, &quot;List the prefix clean/aqi/station=42/date=2026-12-, which matches station 42 for December only.&quot;, &quot;List the prefix clean/aqi/date=12-2026/, because the month must come first.&quot;, &quot;List the prefix station=42, because listings always start at the bucket root.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A prefix matches the start of each key, so the filters must appear in the key in the same order. The tempting wrong answer is to list too much and filter after the call.&quot;}, {&quot;q&quot;: &quot;A job lists raw/2026/ with a paginator and PageSize set to 2 for testing. The loop adds KeyCount for each page, and the bucket holds 5 keys. What total does the job report, and why?&quot;, &quot;opts&quot;: [&quot;2, because PageSize sets the total count of the listing.&quot;, &quot;4, because the last page is ignored by the paginator.&quot;, &quot;5 only when PageSize is at least 1,000, because smaller pages drop keys.&quot;, &quot;5, because the paginator fetches every page, and PageSize only changes how many keys each request asks for.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The paginator continues until IsTruncated is False, so the total does not change with the page size. The tempting wrong answer is 2, which reads PageSize as the total.&quot;}, {&quot;q&quot;: &quot;A presigned GET URL is made with ExpiresIn=604800, which is seven days, for a review. Two days later the engineer who signed it leaves, and the access key is disabled. A reviewer tries the link. Which result is most likely?&quot;, &quot;opts&quot;: [&quot;The request fails, because the link carries the permission of the signing identity, which is now disabled.&quot;, &quot;The request works until day seven, because the link keeps its own permission.&quot;, &quot;The request works, because the link is copied into the bucket&#x27;s ACL.&quot;, &quot;The request fails only if the reviewer holds an AWS account.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The link&#x27;s rights come from the signer, so disabling the signer breaks the link before it expires. The tempting wrong answer is that the expiry is the only limit.&quot;}, {&quot;q&quot;: &quot;A raw/ file was overwritten 10 days ago. The bucket has versioning on, and the lifecycle rule expires noncurrent versions after 7 days. A teammate asks whether the old version can be restored. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;The old version is still there, because noncurrent versions expire only after 30 days.&quot;, &quot;The old version moves to STANDARD_IA at day 30, so it can still be restored.&quot;, &quot;The old version has most likely expired already, because it has been noncurrent for longer than the 7-day rule allows.&quot;, &quot;The current file was deleted at day 30, so the old version is now the current one.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The rule removes a noncurrent version after 7 days, so a version noncurrent for 10 days is probably gone. The tempting wrong answer is the 30-day transition, which applies to current objects and does not keep old versions.&quot;}, {&quot;q&quot;: &quot;An uploader prints the error code for each failure. Over a week it sees NoSuchBucket on one run and AccessDenied on another, and the third run exits with code 1 but logs no ClientError at all. What is the most likely cause of the third run?&quot;, &quot;opts&quot;: [&quot;AWS returned NoSuchKey, which always produces exit code 1 with no log line.&quot;, &quot;The failure happened before the try block, for example a missing environment variable raising KeyError, which the except ClientError branch never catches.&quot;, &quot;The script returned 1 because the bucket was empty, as designed.&quot;, &quot;boto3 retried the call so often that the log was truncated.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;An error outside the try block skips the ClientError handler, and Python exits with code 1. The tempting wrong answer is NoSuchKey, which would be logged as a ClientError.&quot;}, {&quot;q&quot;: &quot;An auditor asks whether SSE-S3 default encryption protects the data from a former employee whose IAM user still has s3:GetObject on the bucket. Which answer is best?&quot;, &quot;opts&quot;: [&quot;Yes, because SSE-S3 shows the former employee only ciphertext.&quot;, &quot;Yes, because the AES-256 keys are held by the former employee&#x27;s account.&quot;, &quot;Only partly, because SSE-S3 blocks deletes but not reads.&quot;, &quot;No, because S3 decrypts the object for any identity with read permission, so the protection must come from removing the permission and keeping Block Public Access on.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Encryption at rest does not limit a permitted identity. The tempting wrong answer is that encryption hides the data from the identity.&quot;}, {&quot;q&quot;: &quot;A reader needs yesterday&#x27;s file back after an overwrite. A teammate says re-running the pipeline will restore it. The bucket has versioning on, and the lifecycle rule expires noncurrent versions after 7 days. What is the best advice?&quot;, &quot;opts&quot;: [&quot;Check the versions list first for the good version ID, which should still exist inside the 7-day window, and copy that version back to the key.&quot;, &quot;Turn versioning off, because versions block a restore.&quot;, &quot;Delete the bucket, because versioning cannot be used with lifecycle rules.&quot;, &quot;Do nothing, because the lifecycle rule has already copied the file to STANDARD_IA.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The overwrite is inside the window, so the good version should still be listed. The tempting wrong answer is the re-run, which may not match the old bytes.&quot;}, {&quot;q&quot;: &quot;An engineer splits a 60 GB file into 4 GB parts and sends each part with put_object, expecting S3 to join them. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;put_object accepts any size, so the four calls are fine and S3 joins them.&quot;, &quot;A part must be exactly 5 MiB, so S3 refuses 4 GB parts.&quot;, &quot;Each put_object call stores a separate object, so the file is not rebuilt as one object, and the multipart calls or upload_file are needed to join the parts.&quot;, &quot;The parts must be sent in reverse order, otherwise S3 rejects them.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each put_object creates its own key, so nothing joins them into one object. The tempting wrong answer is that put_object has no size limit, which it does.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab asks you to write four small functions that work on a plain Python dictionary. The dictionary stands in for a bucket before you use <code>boto3</code>. The platform runs your functions with visible tests, which you can see, and hidden tests, which you cannot. The hidden tests are where most of the top marks are decided, so read every rule in the statement before you write any code. This section restates the task, teaches the Python ideas it needs with examples that have nothing to do with the lab, and shows you a method to test your own work. It does not give a solution to the real lab. The worked example and the practice task use a different domain.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> Before the CityPulse team connects to AWS, it prototypes an S3 bucket as a plain Python dictionary. The dictionary maps each object key to the data stored under that key. You write four module-level functions, which means functions defined at the top level of the file, not inside a class. Each function is checked by calling it directly.</p>
+<ul>
+<li><code>s3_uri(bucket, key)</code> returns a string in the form <code>"s3://&lt;bucket&gt;/&lt;key&gt;"</code>.</li>
+<li>(The statement does not say what a key such as <code>//x</code> should give, so if you are unsure, ask your trainer. Tests are unlikely to check it.)</li>
+<li>A leading <code>/</code> on <code>key</code> must be stripped first. A key that starts with a slash gives the same address as the same key without it.</li>
+<li>The rest of the key is not changed.</li>
+<li><code>put_object(store, key, value)</code> returns a dictionary.</li>
+<li>It returns a <strong>new</strong> dictionary that is a copy of <code>store</code>, with <code>key</code> set to <code>value</code>.</li>
+<li>It must not change <code>store</code>. The caller still holds the old dictionary afterwards.</li>
+<li>If <code>key</code> was already present, the copy holds the new value for it.</li>
+<li><code>get_object(store, key)</code> returns the value stored under <code>key</code>, or <code>None</code> if the key is absent.</li>
+<li><code>list_prefix(store, prefix)</code> returns a <strong>sorted</strong> list of the keys that start with <code>prefix</code>.</li>
+<li>Only keys are returned, not values.</li>
+<li>With the usual meaning of "starts with", the empty prefix <code>""</code> matches every key. The statement does not spell this out, so ask your trainer if you want certainty.</li>
+<li>The list is sorted in ascending order, which is the normal order for text in Python.</li>
+</ul>
+<p>The statement gives this example, and the values in it are what your functions must return.</p>
+<div class="hl"><pre><span></span><code><span class="n">bucket</span> <span class="o">=</span> <span class="n">put_object</span><span class="p">({},</span> <span class="s2">&quot;readings/d1.json&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">get_object</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="s2">&quot;readings/d1.json&quot;</span><span class="p">)</span>                 <span class="c1"># -&gt; 42</span>
+<span class="n">s3_uri</span><span class="p">(</span><span class="s2">&quot;citypulse-raw&quot;</span><span class="p">,</span> <span class="s2">&quot;/readings/d1.json&quot;</span><span class="p">)</span>           <span class="c1"># -&gt; &quot;s3://citypulse-raw/readings/d1.json&quot;</span>
+<span class="n">list_prefix</span><span class="p">({</span><span class="s2">&quot;logs/a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;data/b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="s2">&quot;logs/&quot;</span><span class="p">)</span>       <span class="c1"># -&gt; [&quot;logs/a&quot;]</span>
+</code></pre></div>
+
+<p>Each run must finish within 30 seconds and use at most 128 MB of memory.</p>
+<p><strong>The scoring table.</strong> The visible tests are worth 76 points in total, as shown below. Two hidden tests are worth 24 points between them. The total is 100.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build a basic s3:// URI</td>
+<td>16</td>
+</tr>
+<tr>
+<td>A leading slash on the key is stripped</td>
+<td>14</td>
+</tr>
+<tr>
+<td>put then get round-trips the value</td>
+<td>16</td>
+</tr>
+<tr>
+<td>get of an absent key returns None</td>
+<td>14</td>
+</tr>
+<tr>
+<td>List keys under a prefix, sorted</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hidden tests.</strong> A hidden test is a check that the platform does not show you. You learn only how many there are and how many points they carry. There are two, worth 24 points together. They decide the top marks because the visible tests can give at most 76 points, and the remaining 24 points depend on cases you have not been shown. Every rule in the statement is a possible hidden check, so a solution that passes the visible tests but breaks one rule can still lose those points.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each function uses a few Python ideas. Learn each idea with the small example given. The examples use fruit, shop and school data, so you can see the idea without the lab's details. Try each example in a shell or a file before you rely on it.</p>
+<p><strong>Strings and slicing (for <code>s3_uri</code>).</strong> A string can be sliced with <code>text[start:end]</code>. Leaving out <code>start</code> begins at the first character, and <code>text[1:]</code> removes one character from the front.</p>
+<div class="hl"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;#ticket-9&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>                        <span class="c1"># ticket-9</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ORDER-17&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ORDER&quot;</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Pune&#39;</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>                 <span class="c1"># Pune-3</span>
+</code></pre></div>
+
+<p><code>startswith</code> checks the beginning of a string and returns <code>True</code> or <code>False</code>. An f-string puts values into the text where the braces are, and the output is <code>Pune-3</code>.</p>
+<p><strong>Copying a dictionary (for <code>put_object</code>).</strong> <code>dict(d)</code> makes a new dictionary with the same pairs. Changing the copy does not change the original.</p>
+<div class="hl"><pre><span></span><code><span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mango&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}</span>
+<span class="n">copy</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">copy</span><span class="p">[</span><span class="s2">&quot;kiwi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>  <span class="c1"># {&#39;mango&#39;: 40}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>    <span class="c1"># {&#39;mango&#39;: 40, &#39;kiwi&#39;: 55}</span>
+</code></pre></div>
+
+<p>The copy is a <strong>shallow</strong> copy. The new dictionary holds the same list objects as the old one, so changing a list inside the copy changes it in the original too. Keep this in mind when a value is a list.</p>
+<p><strong>Looking up a key that may be missing (for <code>get_object</code>).</strong> <code>d[key]</code> raises <code>KeyError</code> when the key is missing. <code>d.get(key)</code> returns <code>None</code> instead, and <code>d.get(key, default)</code> returns the default you give.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tea&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tea&quot;</span><span class="p">))</span>     <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coffee&quot;</span><span class="p">))</span>  <span class="c1"># None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coffee&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coffee&quot;</span> <span class="ow">in</span> <span class="n">stock</span><span class="p">)</span>    <span class="c1"># False</span>
+</code></pre></div>
+
+<p><code>in</code> checks whether a key exists and returns <code>True</code> or <code>False</code>. Use <code>get</code> when a missing key is a normal answer, and use <code>in</code> when you need to know the difference between a stored value and a missing one.</p>
+<p><strong>Filtering and sorting (for <code>list_prefix</code>).</strong> A list comprehension builds a new list from a loop in one line. <code>sorted</code> returns a new sorted list and leaves the original alone. Text is compared character by character, using the character codes, so capital letters come before lower-case ones.</p>
+<div class="hl"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)])</span>  <span class="c1"># [&#39;banana&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>                            <span class="c1"># [&#39;banana&#39;, &#39;fig&#39;, &#39;pear&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>                   <span class="c1"># [&#39;fig&#39;, &#39;pear&#39;, &#39;banana&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]))</span>                  <span class="c1"># [&#39;B&#39;, &#39;a&#39;, &#39;b&#39;]</span>
+</code></pre></div>
+
+<p>The <code>key</code> argument changes what is compared, so <code>key=len</code> sorts by length. Without a key, the order is the normal text order, and <code>B</code> comes before <code>a</code>. The statement asks for sorted keys, so you must not add a key that changes the order.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below is a rule from the statement. Check every row before you submit. A hidden test can check any of them.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A leading <code>/</code> on <code>key</code> must be stripped first</td>
+<td>Removes every slash with <code>replace("/", "")</code>, or strips both ends with <code>strip("/")</code>, which also removes a trailing slash</td>
+<td>Call the function with a key that ends in <code>/</code> and check that the trailing slash is still there</td>
+</tr>
+<tr>
+<td>The result is <code>"s3://&lt;bucket&gt;/&lt;key&gt;"</code></td>
+<td>Adds an extra slash, or drops the bucket name</td>
+<td>Compare the output with the example and count the slashes after <code>s3:</code>: there are two before the bucket and one before the key</td>
+</tr>
+<tr>
+<td><code>put_object</code> returns a <strong>new</strong> dictionary</td>
+<td>Runs <code>store[key] = value</code> and returns <code>store</code>, which changes the caller's dictionary</td>
+<td>Keep <code>original = {"a": 1}</code>, call the function, and then assert that <code>original</code> still equals <code>{"a": 1}</code></td>
+</tr>
+<tr>
+<td><code>put_object</code> sets <code>key</code> to <code>value</code></td>
+<td>Appends the value to a list stored under the key, or keeps the old value</td>
+<td>Put the same key twice, then assert that the second value is the one returned and that the copy has one key</td>
+</tr>
+<tr>
+<td><code>get_object</code> returns <code>None</code> if the key is absent</td>
+<td>Uses <code>store[key]</code>, which raises <code>KeyError</code></td>
+<td>Ask for a key you never stored and assert that the result <code>is None</code></td>
+</tr>
+<tr>
+<td>A stored value of <code>0</code> or <code>""</code> is still a value</td>
+<td><code>store.get(key) or None</code> turns <code>0</code> and <code>""</code> into <code>None</code></td>
+<td>Store <code>0</code>, then assert that <code>get_object</code> returns <code>0</code></td>
+</tr>
+<tr>
+<td><code>list_prefix</code> returns keys that start with <code>prefix</code></td>
+<td>Uses <code>prefix in key</code>, which matches the text anywhere in the key</td>
+<td>Use <code>{"x/logs/a": 1}</code> with the prefix <code>"logs/"</code> and assert that the result is <code>[]</code></td>
+</tr>
+<tr>
+<td>The prefix is matched as it is given</td>
+<td>Adds or removes a slash, so <code>"logs"</code> behaves differently from <code>"logs/"</code></td>
+<td>Use <code>{"logs/a": 1, "logs2/b": 2}</code> with the prefix <code>"logs"</code> and check that both keys are returned, sorted</td>
+</tr>
+<tr>
+<td>The list is <strong>sorted</strong></td>
+<td>Returns keys in insertion order, which is the order they were added</td>
+<td>Store keys in reverse order and assert the sorted order</td>
+</tr>
+<tr>
+<td>Sorting is in ascending text order</td>
+<td>Uses <code>key=str.lower</code>, which puts <code>logs/b</code> before <code>logs/C</code></td>
+<td>Store <code>{"logs/b": 1, "logs/C": 2}</code> with prefix <code>"logs/"</code> and assert that <code>logs/C</code> comes first, because capitals sort before lower-case letters</td>
+</tr>
+<tr>
+<td>A listing with no match gives an empty list</td>
+<td>Returns <code>None</code> when nothing matches</td>
+<td>Assert that the result <code>== []</code> for a prefix that matches nothing</td>
+</tr>
+<tr>
+<td><code>put_object</code> does not change <code>store</code></td>
+<td>Uses <code>del</code>, <code>pop</code> or item assignment on <code>store</code></td>
+<td>Take a copy of the dictionary before the call, then assert that the caller's dictionary still equals that copy</td>
+</tr>
+</tbody>
+</table>
+<p>The statement has no rule about rounding, and it has no rule about checking types, so do not add checks it does not ask for. Your functions should return the values the statement describes and nothing else.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file and the statement together. Note the four names, their parameters and what each one must return.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function body. The examples give exact values, so each one is a test you can run.</li>
+<li>Add your own <code>assert</code> lines for every row in the table above. Work out each expected value by hand before you run the code, so that the test is not just a copy of what your code returns.</li>
+<li>Implement one function at a time. After each function, run all the asserts. Do not start the next function while an earlier assert fails.</li>
+<li>Check the return types last. This statement asks for a string, a dictionary, a value and a list, so confirm that each function returns the type named in the statement.</li>
+<li>Run the visible tests. Then submit once, after you have read the whole statement again.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The twin problem below is about a college coding club and its scores. It uses dictionaries, copies, <code>None</code>, sorting with a key and a boundary check, so you practise the same skills in a different domain.</p>
+<p><strong>The task.</strong> A college coding club keeps its scores in a dictionary. Each key is a student's name, and each value is a list of scores from 0 to 100. Write three module-level functions.</p>
+<ul>
+<li><code>add_score(book, name, score)</code> returns a <strong>new</strong> dictionary, a copy of <code>book</code>, with <code>score</code> added to the end of the list for <code>name</code>. The name must be a non-empty string after spaces are removed from both ends. The score must be an <code>int</code> or a <code>float</code>, not a <code>bool</code>, and it must be from 0 to 100 inclusive. Any other input raises <code>ValueError</code>.</li>
+<li><code>average(book, name)</code> returns the average of the student's scores, rounded to one decimal place. It returns <code>None</code> when the student is missing or has no scores.</li>
+<li><code>ranking(book)</code> returns a list of names that have at least one score. The list is ordered by average, highest first. Names with equal averages are ordered from A to Z.</li>
+</ul>
+<p>For example, <code>ranking({"B": [50], "A": [50]})</code> returns <code>["A", "B"]</code>, and <code>ranking({})</code> returns <code>[]</code>.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_score</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name must be a non-empty string&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score must be a number&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score must be from 0 to 100&quot;</span><span class="p">)</span>
+    <span class="n">new_book</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+    <span class="n">new_book</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[]))</span> <span class="o">+</span> <span class="p">[</span><span class="n">score</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_book</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ranking</span><span class="p">(</span><span class="n">book</span><span class="p">):</span>
+    <span class="n">rated</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">book</span><span class="p">:</span>
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">rated</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">avg</span><span class="p">))</span>
+    <span class="n">rated</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">rated</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">raises_value_error</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fn</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="n">book</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">one</span> <span class="o">=</span> <span class="n">add_score</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">two</span> <span class="o">=</span> <span class="n">add_score</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">book</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">one</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">two</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">85.0</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">({</span><span class="s2">&quot;Ravi&quot;</span><span class="p">:</span> <span class="p">[]},</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="n">meera</span> <span class="o">=</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Meera&quot;</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">meera</span> <span class="o">=</span> <span class="n">add_score</span><span class="p">(</span><span class="n">meera</span><span class="p">,</span> <span class="s2">&quot;Meera&quot;</span><span class="p">,</span> <span class="mi">71</span><span class="p">)</span>
+<span class="n">meera</span> <span class="o">=</span> <span class="n">add_score</span><span class="p">(</span><span class="n">meera</span><span class="p">,</span> <span class="s2">&quot;Meera&quot;</span><span class="p">,</span> <span class="mi">71</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">(</span><span class="n">meera</span><span class="p">,</span> <span class="s2">&quot;Meera&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mf">70.7</span>
+
+<span class="n">club</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">],</span> <span class="s2">&quot;Meera&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">71</span><span class="p">],</span> <span class="s2">&quot;Dev&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Kiran&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">85</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">ranking</span><span class="p">(</span><span class="n">club</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Kiran&quot;</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;Meera&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">ranking</span><span class="p">({})</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">ranking</span><span class="p">({</span><span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">]})</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mf">72.5</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">72.5</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;80&quot;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">add_score</span><span class="p">({},</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Line-by-line explanation.</strong></p>
+<ul>
+<li><code>add_score</code> checks the name first. <code>isinstance(name, str)</code> confirms the type, and <code>name.strip() == ""</code> catches a name that is empty or only spaces. Either case raises <code>ValueError</code>, which stops the function before anything is stored.</li>
+<li>The score check comes next. <code>isinstance(score, bool)</code> is checked before the number test, because <code>bool</code> is a subclass of <code>int</code>. Without that check, <code>True</code> would pass as the score <code>1</code>. The test <code>not isinstance(score, (int, float))</code> rejects strings such as <code>"80"</code>.</li>
+<li>The range check uses <code>score &lt; 0 or score &gt; 100</code>, so the values 0 and 100 are allowed and anything outside the range is refused.</li>
+<li><code>new_book = dict(book)</code> makes a copy, so the caller's dictionary is not changed. <code>list(book.get(name, []))</code> copies the old list too, so the new list is separate. Then <code>+ [score]</code> adds the new score at the end.</li>
+<li><code>average</code> returns <code>None</code> when <code>book.get(name)</code> gives <code>None</code> for a missing student, or an empty list. The test <code>not scores</code> is true for both.</li>
+<li><code>round(sum(scores) / len(scores), 1)</code> divides the total by the count, and then rounds once at the end. Rounding at the end gives <code>70.7</code> for the scores 70, 71 and 71, where the exact average is 70.666...</li>
+<li><code>ranking</code> builds a list of <code>(name, average)</code> pairs and skips students whose average is <code>None</code>.</li>
+<li>The <code>sort</code> call uses a key of <code>(-pair[1], pair[0])</code>. The minus sign makes higher averages sort first, and the name breaks any tie in A-to-Z order. The statement's tie rule is carried by the second part of the key.</li>
+<li>The last line returns only the names. <code>for name, _ in rated</code> unpacks each pair and throws away the average with <code>_</code>.</li>
+</ul>
+<p>The club dictionary in the tests has a student called Dev with an empty list, so the ranking must leave Dev out. The three students with an average of 85.0 come first, in name order: Asha, Kiran, then Ravi.</p>
+<p><strong>Trace.</strong> This animation steps through the ranking logic on a smaller book, with the sort written inline so that you can see every variable change.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Ranking two students with equal averages&quot;, &quot;code&quot;: [&quot;book = {\&quot;Ravi\&quot;: [85], \&quot;Asha\&quot;: [80, 90]}&quot;, &quot;rated = []&quot;, &quot;for name in book:&quot;, &quot;    scores = book[name]&quot;, &quot;    avg = round(sum(scores) / len(scores), 1)&quot;, &quot;    rated.append((name, avg))&quot;, &quot;rated.sort(key=lambda pair: (-pair[1], pair[0]))&quot;, &quot;names = [pair[0] for pair in rated]&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;book&quot;, &quot;{\&quot;Ravi\&quot;: [85], \&quot;Asha\&quot;: [80, 90]}&quot;]], &quot;note&quot;: &quot;The book is built with two students.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;book&quot;, &quot;{\&quot;Ravi\&quot;: [85], \&quot;Asha\&quot;: [80, 90]}&quot;], [&quot;rated&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;rated starts as an empty list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;book&quot;, &quot;{\&quot;Ravi\&quot;: [85], \&quot;Asha\&quot;: [80, 90]}&quot;], [&quot;rated&quot;, &quot;[]&quot;], [&quot;name&quot;, &quot;\&quot;Ravi\&quot;&quot;]], &quot;note&quot;: &quot;The loop takes the first name in insertion order.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ravi\&quot;&quot;], [&quot;scores&quot;, &quot;[85]&quot;]], &quot;note&quot;: &quot;scores is the list stored for Ravi.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ravi\&quot;&quot;], [&quot;scores&quot;, &quot;[85]&quot;], [&quot;avg&quot;, &quot;85.0&quot;]], &quot;note&quot;: &quot;The average is 85 divided by 1, rounded to one decimal place.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;rated&quot;, &quot;[(\&quot;Ravi\&quot;, 85.0)]&quot;]], &quot;note&quot;: &quot;The pair is added to rated.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Asha\&quot;&quot;], [&quot;rated&quot;, &quot;[(\&quot;Ravi\&quot;, 85.0)]&quot;]], &quot;note&quot;: &quot;The loop comes round with the second name.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Asha\&quot;&quot;], [&quot;scores&quot;, &quot;[80, 90]&quot;]], &quot;note&quot;: &quot;Asha has two scores.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Asha\&quot;&quot;], [&quot;scores&quot;, &quot;[80, 90]&quot;], [&quot;avg&quot;, &quot;85.0&quot;]], &quot;note&quot;: &quot;80 plus 90 is 170, and 170 divided by 2 is 85.0.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;rated&quot;, &quot;[(\&quot;Ravi\&quot;, 85.0), (\&quot;Asha\&quot;, 85.0)]&quot;]], &quot;note&quot;: &quot;Both pairs are now in rated, in insertion order.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;rated&quot;, &quot;[(\&quot;Asha\&quot;, 85.0), (\&quot;Ravi\&quot;, 85.0)]&quot;]], &quot;note&quot;: &quot;The sort puts the higher average first, and equal averages fall back to the name, so Asha comes before Ravi.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;rated&quot;, &quot;[(\&quot;Asha\&quot;, 85.0), (\&quot;Ravi\&quot;, 85.0)]&quot;], [&quot;names&quot;, &quot;[\&quot;Asha\&quot;, \&quot;Ravi\&quot;]&quot;]], &quot;note&quot;: &quot;The list comprehension keeps the names in the sorted order.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This practice task is a new twin problem. A bus has a seat plan, which is a dictionary that maps each seat label, such as <code>"1A"</code>, to the passenger's name, or to <code>None</code> when the seat is free. Write three module-level functions.</p>
+<ul>
+<li><code>reserve(plan, seat, passenger)</code> returns a <strong>new</strong> dictionary, a copy of <code>plan</code>, with the seat set to <code>passenger</code>. It raises <code>ValueError</code> if the seat is not in the plan, if the seat is already taken, or if <code>passenger</code> is not a non-empty string after its spaces are removed.</li>
+<li><code>free_seats(plan)</code> returns a sorted list of the seat labels whose value is <code>None</code>.</li>
+<li><code>occupancy(plan)</code> returns the percentage of seats that are taken, rounded to one decimal place. An empty plan gives <code>0.0</code>.</li>
+</ul>
+<p>Write your three functions above the asserts below, and make every assert pass. The asserts use a helper that returns <code>True</code> when the function raises <code>ValueError</code>.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">raises_value_error</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fn</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="n">plan</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1A&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;1B&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">free_seats</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;1A&quot;</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">]</span>
+<span class="n">booked</span> <span class="o">=</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">booked</span><span class="p">[</span><span class="s2">&quot;2A&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Ravi&quot;</span> <span class="ow">and</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;2A&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">free_seats</span><span class="p">(</span><span class="n">booked</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;1A&quot;</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">occupancy</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span> <span class="o">==</span> <span class="mf">25.0</span>
+<span class="k">assert</span> <span class="n">occupancy</span><span class="p">(</span><span class="n">booked</span><span class="p">)</span> <span class="o">==</span> <span class="mf">50.0</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;1B&quot;</span><span class="p">,</span> <span class="s2">&quot;Mina&quot;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;9Z&quot;</span><span class="p">,</span> <span class="s2">&quot;Mina&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>The solution below contains the three functions and the same asserts. Try the task yourself first, and read the solution only when you have a working version or are stuck.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">raises_value_error</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fn</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">seat</span><span class="p">,</span> <span class="n">passenger</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">seat</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unknown seat&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">passenger</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">passenger</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;passenger name required&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">plan</span><span class="p">[</span><span class="n">seat</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;seat already taken&quot;</span><span class="p">)</span>
+    <span class="n">new_plan</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
+    <span class="n">new_plan</span><span class="p">[</span><span class="n">seat</span><span class="p">]</span> <span class="o">=</span> <span class="n">passenger</span>
+    <span class="k">return</span> <span class="n">new_plan</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">free_seats</span><span class="p">(</span><span class="n">plan</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">seat</span> <span class="k">for</span> <span class="n">seat</span><span class="p">,</span> <span class="n">who</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">who</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">occupancy</span><span class="p">(</span><span class="n">plan</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plan</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">taken</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">who</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">who</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">taken</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">plan</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">plan</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1A&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;1B&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">free_seats</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;1A&quot;</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">]</span>
+<span class="n">booked</span> <span class="o">=</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;2A&quot;</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">booked</span><span class="p">[</span><span class="s2">&quot;2A&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Ravi&quot;</span> <span class="ow">and</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;2A&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">free_seats</span><span class="p">(</span><span class="n">booked</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;1A&quot;</span><span class="p">,</span> <span class="s2">&quot;2B&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">occupancy</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span> <span class="o">==</span> <span class="mf">25.0</span>
+<span class="k">assert</span> <span class="n">occupancy</span><span class="p">(</span><span class="n">booked</span><span class="p">)</span> <span class="o">==</span> <span class="mf">50.0</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;1B&quot;</span><span class="p">,</span> <span class="s2">&quot;Mina&quot;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">reserve</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="s2">&quot;9Z&quot;</span><span class="p">,</span> <span class="s2">&quot;Mina&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The <code>reserve</code> function checks three things in order: the seat exists, the passenger is a real name, and the seat is free. Only then does it copy the dictionary and set the seat. The <code>free_seats</code> function uses a generator expression to pick the seats whose value is <code>None</code>, and <code>sorted</code> puts them in text order. The <code>occupancy</code> function counts the taken seats with <code>sum</code> over a generator, then turns the count into a percentage and rounds once at the end. The empty-plan check comes first, so the function never divides by zero.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Each function returns the type that the statement names: a string from <code>s3_uri</code>, a dictionary from <code>put_object</code>, a value or <code>None</code> from <code>get_object</code>, and a list from <code>list_prefix</code>.</li>
+<li><code>s3_uri</code> removes the leading slash from the key and keeps the rest of the key unchanged, including any trailing slash.</li>
+<li><code>put_object</code> returns a new dictionary, and the dictionary you pass in is unchanged afterwards. Test this with a copy taken before the call.</li>
+<li><code>get_object</code> returns <code>None</code> for a missing key, and it returns a stored <code>0</code> or empty string unchanged.</li>
+<li><code>list_prefix</code> matches the start of each key exactly as the prefix is given, so <code>"logs"</code> matches <code>"logs2/b"</code> as well as <code>"logs/a"</code>.</li>
+<li>The list from <code>list_prefix</code> is sorted in ascending text order, and a prefix with no match gives <code>[]</code>, not <code>None</code>.</li>
+<li>The four functions only return values. They do not print, read input or open files.</li>
+<li>You have at least one <code>assert</code> for every row in the table of rules, and each expected value was worked out by hand.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<details class="box box-answer"><summary>Why do the keys use date= and ISO dates?</summary><p>The key holds the dataset and the day, so a prefix listing such as <code>clean/aqi/date=2026-12-17/</code> returns one day without reading the others. The ISO form, year then month then day, sorts in calendar order as plain text. The <code>date=</code> name is a convention that query tools understand. Together these make the layout cheap to read and easy to scale.</p></details>
+
+<details class="box box-answer"><summary>How do you prove that a bucket is private?</summary><p>I check the bucket's Block Public Access settings with <code>get-public-access-block</code> and confirm all four flags are true. Then I request an object that exists with a plain <code>curl</code> request that has no credentials. A private bucket must return 403, and I save that output as evidence. A 404 would prove nothing, because it only says the object is missing.</p></details>
+
+<details class="box box-answer"><summary>Why does upload.py use the credential chain instead of keys in the code?</summary><p>The credential chain lets boto3 find credentials from environment variables, a named profile or the instance role, in that order. The same code therefore runs on a laptop with a profile and on an EC2 machine with a role, with no change. Hard-coded keys would leak through version control and would break on any other machine. Keeping secrets out of the code is also part of the course's security rules.</p></details>
+
+<details class="box box-answer"><summary>What does versioning protect against, and what does it cost?</summary><p>Versioning protects against overwrites and deletes. When a pipeline replaces a good file with a bad one, the old version stays, so you can restore it by its version ID. The cost is storage for every old version, which grows without limit unless a lifecycle rule expires noncurrent versions. Versioning is not a full backup, because it protects only inside the same bucket.</p></details>
+
+<details class="box box-answer"><summary>Why should a listing use a paginator?</summary><p>S3 returns at most 1,000 keys per call, and a longer listing is split across several responses. A paginator sends the continuation token for you and gives you one page at a time, so the same loop works for three objects or three million. Without it, a listing silently stops at 1,000 keys. The paginator is also the safe way to count objects.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aws s3api create-bucket</code></td>
+<td>Creates a bucket in a region</td>
+<td><code>--create-bucket-configuration LocationConstraint=ap-south-1</code></td>
+</tr>
+<tr>
+<td><code>put-public-access-block</code></td>
+<td>Sets the four Block Public Access flags</td>
+<td><code>BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true</code></td>
+</tr>
+<tr>
+<td><code>put-bucket-encryption</code></td>
+<td>Sets default SSE-S3 encryption</td>
+<td><code>SSEAlgorithm":"AES256"</code></td>
+</tr>
+<tr>
+<td><code>put-bucket-versioning</code></td>
+<td>Turns versioning on</td>
+<td><code>Status=Enabled</code></td>
+</tr>
+<tr>
+<td><code>get-public-access-block</code></td>
+<td>Prints the four flags as evidence</td>
+<td><code>--bucket "$B"</code></td>
+</tr>
+<tr>
+<td><code>get-bucket-encryption</code></td>
+<td>Prints the encryption rule</td>
+<td><code>--bucket "$B"</code></td>
+</tr>
+<tr>
+<td><code>get-bucket-versioning</code></td>
+<td>Prints the versioning status</td>
+<td><code>"Status": "Enabled"</code></td>
+</tr>
+<tr>
+<td><code>aws s3 ls --recursive</code></td>
+<td>Lists all keys under a prefix</td>
+<td><code>s3://$B/clean/aqi/</code></td>
+</tr>
+<tr>
+<td><code>list-object-versions</code></td>
+<td>Lists every version of each key</td>
+<td><code>--prefix clean/aqi/date=2026-12-17/</code></td>
+</tr>
+<tr>
+<td><code>put-bucket-lifecycle-configuration</code></td>
+<td>Applies lifecycle rules from a file</td>
+<td><code>file://infra/storage/lifecycle.json</code></td>
+</tr>
+<tr>
+<td><code>curl -o /dev/null -w '%{http_code}'</code></td>
+<td>Prints only the HTTP status code</td>
+<td>Expect <code>403</code> for a private object</td>
+</tr>
+<tr>
+<td><code>export AWS_PROFILE=</code></td>
+<td>Chooses the credentials for AWS commands</td>
+<td><code>citypulse-pipeline</code> for uploads</td>
+</tr>
+<tr>
+<td><code>export CITYPULSE_BUCKET=</code></td>
+<td>Sets the bucket that upload.py reads</td>
+<td><code>os.environ["CITYPULSE_BUCKET"]</code></td>
+</tr>
+<tr>
+<td><code>python -m citypulse.upload</code></td>
+<td>Runs the upload module</td>
+<td><code>--src</code>, <code>--dataset</code>, <code>--date</code></td>
+</tr>
+<tr>
+<td><code>echo $?</code></td>
+<td>Prints the exit code of the last command</td>
+<td><code>0</code> means success</td>
+</tr>
+<tr>
+<td><code>boto3.client("s3")</code></td>
+<td>Creates an S3 client using the credential chain</td>
+<td>No keys in the code</td>
+</tr>
+<tr>
+<td><code>put_object</code></td>
+<td>Stores bytes under a key</td>
+<td><code>Bucket=</code>, <code>Key=</code>, <code>Body=</code></td>
+</tr>
+<tr>
+<td><code>list_objects_v2</code></td>
+<td>Lists up to 1,000 keys</td>
+<td><code>Prefix=</code> narrows the list</td>
+</tr>
+<tr>
+<td><code>get_paginator("list_objects_v2")</code></td>
+<td>Walks every page of a listing</td>
+<td><code>pag.paginate(Bucket=...)</code></td>
+</tr>
+<tr>
+<td><code>head_object</code></td>
+<td>Reads metadata without the body</td>
+<td><code>ContentLength</code>, <code>ETag</code></td>
+</tr>
+<tr>
+<td><code>get_object</code></td>
+<td>Reads the body as a stream</td>
+<td><code>obj["Body"].read()</code></td>
+</tr>
+<tr>
+<td><code>ClientError</code></td>
+<td>Exception for AWS refusals</td>
+<td><code>e.response["Error"]["Code"]</code></td>
+</tr>
+<tr>
+<td><code>S3UploadFailedError</code></td>
+<td>Exception raised by <code>upload_file</code></td>
+<td>Import from <code>boto3.exceptions</code></td>
+</tr>
+<tr>
+<td><code>generate_presigned_url</code></td>
+<td>Makes a time-limited link</td>
+<td><code>ExpiresIn=3600</code></td>
+</tr>
+<tr>
+<td>Rule: key layout</td>
+<td>Dataset and day in the key</td>
+<td><code>clean/&lt;dataset&gt;/date=YYYY-MM-DD/&lt;file&gt;</code></td>
+</tr>
+<tr>
+<td>Rule: ISO dates</td>
+<td>Sort by date as text</td>
+<td><code>2026-12-17</code>, never <code>17-12-2026</code></td>
+</tr>
+<tr>
+<td>Rule: test privacy</td>
+<td>Test an existing object</td>
+<td>Private means 403, not 404</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;bucket&quot;, &quot;a&quot;: &quot;A container with a name that is unique across all of AWS, holding objects.&quot;}, {&quot;q&quot;: &quot;key&quot;, &quot;a&quot;: &quot;The full name of an object inside a bucket, such as clean/aqi/date=2026-12-17/aq_clean.parquet.&quot;}, {&quot;q&quot;: &quot;prefix&quot;, &quot;a&quot;: &quot;The start of a key, such as clean/aqi/, used to list one group of objects.&quot;}, {&quot;q&quot;: &quot;partitioning&quot;, &quot;a&quot;: &quot;Putting a value that readers filter on, such as the date, into the key.&quot;}, {&quot;q&quot;: &quot;Block Public Access&quot;, &quot;a&quot;: &quot;Four bucket switches that override any ACL or policy that would make data public.&quot;}, {&quot;q&quot;: &quot;SSE-S3&quot;, &quot;a&quot;: &quot;Default server-side encryption with S3-managed AES-256 keys, applied to every new object.&quot;}, {&quot;q&quot;: &quot;versioning&quot;, &quot;a&quot;: &quot;Keeps the old copy of an object when it is overwritten or deleted, and adds delete markers.&quot;}, {&quot;q&quot;: &quot;credential chain&quot;, &quot;a&quot;: &quot;The order in which boto3 looks for credentials: environment, profile, then instance role.&quot;}, {&quot;q&quot;: &quot;ClientError&quot;, &quot;a&quot;: &quot;The botocore exception raised when AWS refuses a call, with the code in e.response.&quot;}, {&quot;q&quot;: &quot;paginator&quot;, &quot;a&quot;: &quot;A helper that walks every page of a listing, because one call returns at most 1,000 keys.&quot;}, {&quot;q&quot;: &quot;presigned URL&quot;, &quot;a&quot;: &quot;A link that carries a signature and an expiry, so the holder can use it without credentials.&quot;}, {&quot;q&quot;: &quot;multipart upload&quot;, &quot;a&quot;: &quot;Sends a large file as parts, each at least 5 MiB except the last, and needed above 5 GB.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D12.html"><small>Previous</small>Day 12 — Cloud fundamentals and IAM on AWS</a><a class="nx" href="D14.html"><small>Next</small>Day 14 — Virtual machines: EC2, SSH and hardening</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

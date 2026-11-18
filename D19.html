@@ -1,0 +1,1041 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 19 — Dashboards with Streamlit · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D19" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 5 · Days 16–20 · Algorithms, analysis, ML</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a class="cur" href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 5 · Days 16–20 · Algorithms, analysis, ML</p><h1>Day 19 — Dashboards with Streamlit</h1><p class="sub">You will be able to build a cached, filtered Streamlit dashboard with three KPI cards, and deploy it with its secret keys kept out of Git.</p><p class="meta">87 min read · practice quiz · 5 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D19.mp4?v=1794465287"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#your-task">Your task</a></li><li><a href="#your-task_1">Your task</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>A dashboard is a page of numbers and charts that a person can change with buttons and drop-down lists. Today you build one for CityPulse, the air-quality platform, so that a city officer can pick a date range and see three numbers that decide what to do next. The analogy is a car dashboard: it shows speed, fuel and an engine warning, not every sensor reading in the car.</p>
+<p>By the end you will be able to explain how Streamlit reruns your script, cache a slow data load, add a sidebar filter, show KPIs with change arrows, and publish the app to a public web address without leaking a password.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section explains the words the rest of the chapter uses. Skip what you already know.</p>
+<p>A <strong>file</strong> is a named piece of stored data. A <strong>folder</strong> (also called a directory) holds files. A <strong>terminal</strong> is a text window where you type instructions to the computer. An instruction you type there is a <strong>command</strong>. For example, <code>ls</code> is a command that lists the files in the current folder.</p>
+<p>A <strong>script</strong> is a file that contains instructions in order. Python is the language these scripts are written in. A <strong>variable</strong> is a name that holds a value, such as <code>total = 5</code>. A <strong>function</strong> is a named block of instructions you can run by writing its name and brackets. <code>len(x)</code> is a function call that returns the number of items in <code>x</code>.</p>
+<p>A <strong>library</strong> (or package) is code someone else wrote that you can use. You add one with <code>pip install</code>. <code>pip</code> is the Python package installer. A <strong>module</strong> is a library or a file you bring in with <code>import</code>, as in <code>import pandas as pd</code>, which means "load pandas and call it <code>pd</code> in this file."</p>
+<p>A <strong>list</strong> is an ordered collection written with square brackets: <code>["S1", "S2"]</code>. A <strong>dictionary</strong> (dict) maps keys to values, written with braces: <code>{"store": "S1", "amount": 10.0}</code>. You read a value with its key: <code>row["amount"]</code> gives <code>10.0</code>. A <strong>tuple</strong> is a fixed group of values in round brackets, such as <code>(2027, 1, 5)</code>.</p>
+<p>A <strong>DataFrame</strong> is a table in memory, provided by the pandas library. It has named columns and numbered rows. A <strong>parquet</strong> file is a compact file format for tables. Pandas reads it with <code>pd.read_parquet</code>.</p>
+<p><strong>S3</strong> (Simple Storage Service) is Amazon's file storage. A <strong>bucket</strong> is a named container inside S3. A path such as <code>s3://my-bucket/clean/file.parquet</code> points at one file in one bucket.</p>
+<p>A <strong>server</strong> is a program that waits for requests and answers them. A <strong>browser</strong> is the program you look at web pages in. A <strong>URL</strong> is a web address. <code>localhost</code> means "this computer", and <code>8501</code> is a <strong>port</strong>, a numbered door on a computer that a program listens on. So <code>http://localhost:8501</code> means "the program on this computer listening on door 8501."</p>
+<p><strong>Git</strong> records changes to a folder of files over time. That folder is a <strong>repository</strong>. A <strong>commit</strong> is one saved snapshot. A file named <code>.gitignore</code> lists files Git must never track. A <strong>secret</strong> is a password or key. Anyone who gets a secret can use the account it belongs to, so secrets must stay out of Git.</p>
+<p><strong>Deploying</strong> means putting an app on a machine that other people can reach. <strong>Streamlit Community Cloud</strong> is a free host for Streamlit apps. It runs your code from GitHub, which is a website that hosts Git repositories.</p>
+<p>A <strong>decorator</strong> is a line starting with <code>@</code> placed above a function, such as <code>@st.cache_data</code>. It changes how the function behaves without you editing its body. A <strong>cache</strong> is a stored copy of a result, kept so that it does not have to be computed again.</p>
+<p>A <strong>widget</strong> is a control on the page: a drop-down list, a date picker, a button. A <strong>rerun</strong> is one complete execution of your script from its first line to its last.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="streamlit-apps-and-caching">Streamlit apps and caching</h3>
+<p><strong>What it is.</strong> Streamlit turns a Python script into an interactive web page. You write normal Python: call <code>st.title</code>, <code>st.selectbox</code>, <code>st.line_chart</code>. Streamlit draws each call as a part of the page. When the user changes a widget, Streamlit runs your whole script again from the top, and the page shows the new output.</p>
+<p><strong>Why CityPulse uses it.</strong> The team already writes pandas and Plotly code in Python, so the dashboard needs no HTML or JavaScript. The course compares it with three alternatives. Plotly Dash gives finer control through callbacks, but needs more code for a three-number dashboard. Power BI and Tableau are strong for business users, but the charts and logic already live in Python. FastAPI with React gives full control and scale, but is far more work than one ticket allows. Streamlit is the smallest correct choice for this ticket.</p>
+<p><strong>How it works.</strong> Here is the rerun model in plain terms. The browser shows widgets. Each widget has a current value. When you move the date picker, the browser sends the new value to the Streamlit server. The server runs <code>app/dashboard.py</code> from line 1 to the last line, with the widget now holding the new value, and sends the result back. Nothing is remembered between runs unless you store it on purpose, which the session-state topic covers in section 6.</p>
+<p>Caching solves the cost problem. Every rerun repeats every line, including the line that reads a file from S3. A download on each click makes the app feel slow. <code>@st.cache_data(ttl=600)</code> tells Streamlit to store the return value of the function and reuse it for 600 seconds. <code>ttl</code> means "time to live", and its unit is seconds, so 600 is ten minutes.</p>
+<p>The flow below shows what happens after a date change, both when the cache has an entry and when it has expired.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One date change, one rerun&quot;, &quot;nodes&quot;: [&quot;Browser&quot;, &quot;Streamlit server&quot;, &quot;Amazon S3&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;date changed&quot;, &quot;note&quot;: &quot;The browser sends the new date range to the server.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 1, &quot;label&quot;: &quot;cache hit&quot;, &quot;note&quot;: &quot;The loader finds a copy younger than ten minutes and returns it.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;cache miss&quot;, &quot;note&quot;: &quot;Only when the copy is missing or expired, the loader asks S3 for the file.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;file bytes&quot;, &quot;note&quot;: &quot;S3 returns the daily aggregate file.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;new page&quot;, &quot;note&quot;: &quot;The script finishes and the browser redraws the page.&quot;}]}"></div>
+
+<p>The flow has a self-loop (2 to 2) in the cache-hit step. Read it as "the server uses its own copy." The block accepts it because each step only needs a from and a to number.</p>
+<p>Now watch the rerun happen. The code below is plain Python, not Streamlit. It simulates a cache with a counter, so you can see when a real read happens. Read it carefully and follow the steps.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;A cache stops repeated reads&quot;, &quot;code&quot;: [&quot;reads = 0&quot;, &quot;cache = {}&quot;, &quot;def load_daily():&quot;, &quot;    global reads&quot;, &quot;    if \&quot;daily\&quot; not in cache:&quot;, &quot;        reads += 1&quot;, &quot;        cache[\&quot;daily\&quot;] = [1, 2, 3]&quot;, &quot;    return cache[\&quot;daily\&quot;]&quot;, &quot;for click in range(2):&quot;, &quot;    data = load_daily()&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;reads&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;Create the read counter.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;reads&quot;, &quot;0&quot;], [&quot;cache&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Create an empty cache.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;reads&quot;, &quot;0&quot;], [&quot;cache&quot;, &quot;{}&quot;], [&quot;load_daily&quot;, &quot;&lt;function&gt;&quot;]], &quot;note&quot;: &quot;Define the function. Nothing is called yet.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;0&quot;], [&quot;cache&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The loop starts with the first click.&quot;}, {&quot;line&quot;: 10, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;0&quot;], [&quot;cache&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The function is called. Its body runs next.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;0&quot;], [&quot;cache&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;\&quot;daily\&quot; is not in the cache, so the if body runs.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;cache&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The counter goes up because a real read has happened.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;The data is stored in the cache.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;The function returns the stored list.&quot;}, {&quot;line&quot;: 10, &quot;state&quot;: [[&quot;click&quot;, &quot;0&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;data&quot;, &quot;[1, 2, 3]&quot;]], &quot;note&quot;: &quot;The returned list is stored in data.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;click&quot;, &quot;1&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;data&quot;, &quot;[1, 2, 3]&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;The second click reruns the loop.&quot;}, {&quot;line&quot;: 10, &quot;state&quot;: [[&quot;click&quot;, &quot;1&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;data&quot;, &quot;[1, 2, 3]&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;The function is called again.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;click&quot;, &quot;1&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;data&quot;, &quot;[1, 2, 3]&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;\&quot;daily\&quot; is already in the cache, so the if body is skipped.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;click&quot;, &quot;1&quot;], [&quot;reads&quot;, &quot;1&quot;], [&quot;data&quot;, &quot;[1, 2, 3]&quot;], [&quot;cache&quot;, &quot;{\&quot;daily\&quot;: [1, 2, 3]}&quot;]], &quot;note&quot;: &quot;The stored list is returned with no new read.&quot;}]}"></div>
+
+<p>The trace skips line 4 (<code>global reads</code>). That line is a declaration. It tells Python that <code>reads</code> inside the function means the outer variable, and it does nothing when it runs. After the trace, <code>reads</code> is still 1, and the second click did no read. That is exactly what <code>st.cache_data</code> does for your S3 file.</p>
+<p>Streamlit's real decorator behaves the same way for this purpose. It keys the cache on the function and its arguments, and it returns a copy of the stored value, so changing the copy does not change the cache. The course still tells you to filter into a new variable and never change a cached DataFrame in place. Follow that rule, because it keeps the code easy to reason about.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading S3 outside a cached function</div><p>If you write <code>df = pd.read_parquet(...)</code> at the top level of the script, every click downloads the file again. The app then feels slow even though the code is correct. Put the read inside a function and decorate that function.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Forgetting s3fs</div><p>Pandas reads <code>s3://</code> paths through a helper library called <code>s3fs</code>. If it is missing from <code>requirements.txt</code>, the dashboard fails on the cloud host even when it works on your laptop. Add it to the requirements file.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Mutating a cached DataFrame</div><p>Writing <code>df["x"] = 0</code> on a cached DataFrame changes your working copy and makes later code hard to follow. Filter into a new variable such as <code>view = df[...]</code> and leave <code>df</code> alone.</p></div>
+
+<h3 id="kpi-design">KPI design</h3>
+<p><strong>What it is.</strong> A KPI (key performance indicator) is one number with a clear formula, a unit and a "good" direction. It tells a user whether things are on track against a goal. A good dashboard shows few KPIs, each tied to the project's success metric, and each with a comparison, such as the change from the previous period.</p>
+<p><strong>Why CityPulse uses three.</strong> The client's earlier dashboard had 25 charts and was abandoned. Ticket T28 limits CityPulse to three KPIs and two charts. Two other designs were rejected. Showing all metrics feels complete, but users cannot tell what matters and stop opening the page. A single composite air-quality index gives one simple number, but hides which pollutant or station causes it.</p>
+<p><strong>How it works.</strong> Work backwards from the officer's daily decision to the few numbers that inform it. Write each KPI's formula and unit in the README KPI table before you write code. The dashboard then computes each KPI for the selected range and for the previous range of equal length. <code>st.metric</code> shows the value and the change.</p>
+<p>The three KPIs for CityPulse are "Days over 60 µg/m³", "Mean PM2.5 (µg/m³)" and "Worst day (µg/m³)". The code below computes them from the daily table.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+
+<span class="n">LIMIT</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config/limits.yaml&quot;</span><span class="p">))[</span><span class="s2">&quot;pm25_24h_limit&quot;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">kpis</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)[</span><span class="s2">&quot;pm25_mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;over&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">((</span><span class="n">city</span> <span class="o">&gt;</span> <span class="n">LIMIT</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">city</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;worst&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">city</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)}</span>
+
+<span class="n">span</span> <span class="o">=</span> <span class="n">picked</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">picked</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">now</span><span class="p">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">kpis</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">picked</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">picked</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">kpis</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">picked</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">span</span><span class="p">,</span> <span class="n">picked</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<p><code>from datetime import timedelta</code> brings in the <code>timedelta</code> type, which stores a length of time such as "3 days". <code>import yaml</code> loads the library that reads YAML, a text format for settings.</p>
+<p><code>LIMIT = yaml.safe_load(open("config/limits.yaml"))["pm25_24h_limit"]</code> opens the settings file, reads it, and takes out the value stored under <code>pm25_24h_limit</code>. <code>open</code> opens a file, and <code>safe_load</code> turns YAML text into Python values. The limit is 60 in the course. Reading it from the file means a change to the standard needs one edit, not a search through the code.</p>
+<p><code>def kpis(df, start, end) -&gt; dict:</code> defines a function that takes a table and two dates. The <code>-&gt; dict</code> note says it returns a dictionary. Python does not enforce it; it documents the intent.</p>
+<p><code>city = df[...].groupby("date")["pm25_mean"].mean()</code> keeps rows between the two dates, groups them by date, and averages the pollutant per day. The result is one city-wide value for each day.</p>
+<p><code>return {"over": ..., "mean": ..., "worst": ...}</code> returns a dictionary. <code>(city &gt; LIMIT).sum()</code> counts the days above the limit: the comparison gives true or false for each day, and <code>sum</code> counts the trues. <code>int(...)</code> converts that count to a plain whole number.</p>
+<p><code>span = picked[1] - picked[0] + timedelta(days=1)</code> counts the days in the selected range. Both ends are included, so one day is added.</p>
+<p><code>prev = kpis(df, picked[0] - span, picked[0] - timedelta(days=1))</code> computes the same KPIs for the block of days just before the selection. The previous block ends the day before the selected start.</p>
+<p>There is no output from this block on its own. Its results appear on the page through the metric cards in the next code block.</p>
+<div class="hl"><pre><span></span><code><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c1</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Days over 60 µg/m³&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="s2">&quot;over&quot;</span><span class="p">],</span> <span class="n">now</span><span class="p">[</span><span class="s2">&quot;over&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev</span><span class="p">[</span><span class="s2">&quot;over&quot;</span><span class="p">],</span> <span class="n">delta_color</span><span class="o">=</span><span class="s2">&quot;inverse&quot;</span><span class="p">)</span>
+<span class="n">c2</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Mean PM2.5 (µg/m³)&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="nb">round</span><span class="p">(</span><span class="n">now</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delta_color</span><span class="o">=</span><span class="s2">&quot;inverse&quot;</span><span class="p">)</span>
+<span class="n">c3</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Worst day (µg/m³)&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="s2">&quot;worst&quot;</span><span class="p">],</span> <span class="nb">round</span><span class="p">(</span><span class="n">now</span><span class="p">[</span><span class="s2">&quot;worst&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev</span><span class="p">[</span><span class="s2">&quot;worst&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delta_color</span><span class="o">=</span><span class="s2">&quot;inverse&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>st.columns(3)</code> creates three side-by-side areas and returns them as three variables. <code>c1.metric(...)</code> draws a metric inside the first area. The first argument is the label. The second is the value shown big. The third is the change from the previous period, which Streamlit prints as an arrow with the number. <code>delta_color="inverse"</code> reverses the colour rule. With the default, a rise is green. For air quality, a rise is bad, so <code>inverse</code> makes a rise red.</p>
+<p>On the page you should see three cards. The number on the first card is a whole number of days. The other two have one decimal place. Each shows an arrow and a change.</p>
+<div class="box box-trap"><div class="box-h">Trap: Default delta colours</div><p>Leaving out <code>delta_color="inverse"</code> shows a rise in PM2.5 as green. That tells the officer the wrong thing. Pollution metrics need <code>inverse</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Hard-coding the limit</div><p>Typing <code>60</code> inside the function means the code and the standard can drift apart. Read the value from <code>config/limits.yaml</code> the way the charts do.</p></div>
+
+<div class="box box-tip"><div class="box-h">Tip: Name the formula in the viva</div><p>An examiner will ask what each KPI means. Say the formula in one sentence, the unit and the good direction. Three sentences of that per KPI covers the question.</p></div>
+
+<h3 id="secretstoml-and-deployment">secrets.toml and deployment</h3>
+<p><strong>What it is.</strong> A secret is a value that proves who you are to a service, such as an AWS access key. The dashboard reads the S3 bucket with a read-only key called <code>citypulse-dashboard-ro</code>. Streamlit reads secrets from a file named <code>.streamlit/secrets.toml</code> on your laptop and exposes them to code as <code>st.secrets</code>. TOML is a plain-text settings format with <code>[section]</code> headings and <code>key = "value"</code> lines.</p>
+<p><strong>Why CityPulse uses it.</strong> On Streamlit Community Cloud you paste the same TOML text into the app's Secrets settings, so the cloud app gets its keys without them ever being in Git. The course lists alternatives. Environment variables are the standard for containers, and later tickets use them. EC2 or Lambda gives full control inside AWS, but the team already tore down that compute in T25 and would pay for it again. A tunnel from a laptop is a trainer-approved fallback only, because the URL dies when the laptop sleeps.</p>
+<p><strong>How it works.</strong> Deployment connects a GitHub repository, picks a branch (<code>main</code>) and the file to run (<code>app/dashboard.py</code>), and gives you a public URL. Before deploying, you prove that no secret is tracked by Git. The commands below do that.</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>.streamlit
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;.streamlit/secrets.toml&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+cat<span class="w"> </span>&gt;<span class="w"> </span>.streamlit/secrets.example.toml<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">[aws]</span>
+<span class="s">access_key_id = &quot;&lt;citypulse-dashboard-ro access key id&gt;&quot;</span>
+<span class="s">secret_access_key = &quot;&lt;citypulse-dashboard-ro secret&gt;&quot;</span>
+<span class="s">bucket = &quot;citypulse-&lt;name&gt;-&lt;rand4&gt;&quot;</span>
+<span class="s">EOF</span>
+cp<span class="w"> </span>.streamlit/secrets.example.toml<span class="w"> </span>.streamlit/secrets.toml
+git<span class="w"> </span>add<span class="w"> </span>.gitignore<span class="w"> </span>.streamlit/secrets.example.toml
+git<span class="w"> </span>ls-files<span class="w"> </span>.streamlit
+gitleaks<span class="w"> </span>detect<span class="w"> </span>--source<span class="w"> </span>.<span class="w"> </span>--log-opts<span class="o">=</span>--all
+</code></pre></div>
+
+<p>Line by line:</p>
+<p><code>mkdir -p .streamlit</code> creates the folder <code>.streamlit</code>. The <code>-p</code> flag means "create it, and do not complain if it already exists."</p>
+<p><code>echo ".streamlit/secrets.toml" &gt;&gt; .gitignore</code> adds the real secrets file to <code>.gitignore</code>. <code>echo</code> prints text, and <code>&gt;&gt;</code> appends the output to the end of the file named after it, instead of replacing the file. The <code>&gt;</code> and <code>&gt;&gt;</code> symbols are called redirection.</p>
+<p><code>cat &gt; .streamlit/secrets.example.toml &lt;&lt;'EOF'</code> starts writing a file. <code>cat</code> prints files, and <code>&gt;</code> sends the output into the named file. The <code>&lt;&lt;'EOF'</code> part means "take the following lines as input until a line that says EOF." The quotes around <code>EOF</code> stop the shell from changing the text.</p>
+<p>The four lines between the markers are the example settings. Their values are placeholders in angle brackets. They show the shape of the file without exposing a real key.</p>
+<p><code>cp .streamlit/secrets.example.toml .streamlit/secrets.toml</code> copies the example to the real file. <code>cp</code> means copy. You then fill in the real values in the new file on your laptop only. The <code>#</code> comment that the slides place after this line is a note to you and is not run.</p>
+<p><code>git add ...</code> stages the two files so Git will record them in the next commit. The file <code>secrets.toml</code> is not listed, which is correct.</p>
+<p><code>git ls-files .streamlit</code> lists the files inside <code>.streamlit</code> that Git is tracking. The correct output is one line: <code>.streamlit/secrets.example.toml</code>. If you see <code>secrets.toml</code>, stop, because the real key is about to enter Git history.</p>
+<p><code>gitleaks detect --source . --log-opts=--all</code> scans the whole repository, including past commits, for things that look like keys. <code>--source .</code> means "the current folder". <code>--log-opts=--all</code> tells it to look at every branch and commit. The correct output says no leaks were found.</p>
+<div class="box box-trap"><div class="box-h">Trap: Adding secrets.toml to .gitignore after committing it</div><p><code>.gitignore</code> only stops files that Git has not yet tracked. If the file was already committed, the key stays in history even after you delete it. Rotate the key in AWS at once, and remove the file from tracking.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Using the pipeline user&#x27;s keys</div><p>The dashboard must not use the keys of the pipeline user, which can write data. Create <code>citypulse-dashboard-ro</code> with read access on <code>clean/agg</code> only.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Testing load time on a warm laptop tab</div><p>Your laptop has the page open and cached already, so it always looks fast. Use a phone in a private browser tab to measure a true cold load. The target is under five seconds.</p></div>
+
+<p><strong>Deploying.</strong> After the checks pass, you push to <code>main</code>, create the app on Streamlit Community Cloud from the repository, paste the contents of your real <code>secrets.toml</code> into the app's Secrets box, and open the public URL. Run it locally first with this command.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;streamlit run app/dashboard.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;You can now view your Streamlit app in your browser.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Local URL: http://localhost:8501&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Network URL: http://192.168.1.14:8501&quot;}]}"></div>
+
+<p>Each line after the command is output. <code>Local URL</code> opens on your laptop only. <code>Network URL</code> opens on other devices on the same Wi-Fi. Your IP address will differ from the example. The command keeps running until you stop it with Ctrl+C.</p>
+<p>The flow below shows how code, secrets and the public URL reach the cloud app. Notice that the secrets travel by a separate route from the code.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Code goes through Git, secrets go by hand&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Streamlit Cloud&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push&quot;, &quot;note&quot;: &quot;Your code commits travel to GitHub. The secrets file is not among them.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;deploy from main&quot;, &quot;note&quot;: &quot;Streamlit Cloud fetches the branch and the file app/dashboard.py.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;paste secrets&quot;, &quot;note&quot;: &quot;You paste the real TOML into the app&#x27;s Secrets box directly.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;public URL&quot;, &quot;note&quot;: &quot;The app is running, and you can open the URL from any device.&quot;}]}"></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook builds a small dashboard step by step. You will work through it in order, and the explanation of each step follows the code.</p>
+<p><strong>Goal.</strong> Show the readings for one station and one pollutant, with the average as a headline number and a line chart of the values over time.</p>
+<p><strong>Step A. Load the data once.</strong> The code reads the readings file and wraps the read in a cached function.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;readings.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Line by line: <code>import streamlit as st, pandas as pd</code> loads both libraries, and <code>as</code> gives each a short name. <code>@st.cache_data</code> is the decorator from section 3, placed above the function. <code>def load():</code> defines the function with no inputs. <code>pd.read_csv("readings.csv", parse_dates=["ts"])</code> reads a comma-separated file. The <code>parse_dates</code> option turns the <code>ts</code> column into real date-and-time values instead of plain text. <code>df = load()</code> calls the function. On the first run it reads the file, and later runs reuse the stored copy. The course reports the first 1,392 rows loaded.</p>
+<p><strong>Step B. Add two selectors.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CityPulse Air Quality&quot;</span><span class="p">)</span>
+<span class="n">station</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Station&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">station_id</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">poll</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Pollutant&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">pollutant</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</code></pre></div>
+
+<p><code>st.title</code> draws the page heading. <code>st.selectbox(label, options)</code> draws a drop-down list and returns the chosen option. The chosen value is stored in <code>station</code> and <code>poll</code>. <code>df.station_id.unique()</code> returns each distinct station once. In this data the options are <code>CP-001</code>, <code>CP-002</code>, <code>CP-003</code> and <code>CP-004</code>. The first option is the default.</p>
+<p><strong>Step C. Filter and show the result.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">sel</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">station_id</span> <span class="o">==</span> <span class="n">station</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">pollutant</span> <span class="o">==</span> <span class="n">poll</span><span class="p">)]</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avg </span><span class="si">{</span><span class="n">poll</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sel</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;ts&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>sel = df[...]</code> keeps the rows where both conditions are true. The <code>&amp;</code> symbol means "and". Each condition sits in its own round brackets because <code>&amp;</code> binds more tightly than <code>==</code>. Without the brackets Python raises an error.</p>
+<p><code>st.metric(f"Avg {poll}", ...)</code> shows the average. The <code>f"..."</code> text is an f-string: the <code>{poll}</code> inside is replaced by the pollutant name. <code>sel.value.mean()</code> averages the <code>value</code> column, and <code>:.1f</code> formats the number with one decimal place.</p>
+<p><code>st.line_chart(sel, x="ts", y="value")</code> draws a line chart with time on the horizontal axis and the value on the vertical axis.</p>
+<p><strong>Output.</strong> Launch the app with <code>streamlit run app/dashboard.py</code> (the workbook uses <code>app.py</code>; the ticket uses the <code>app/</code> path). For the first station and the first pollutant, the card shows the average as a number with one decimal place. In the earlier metrics check, the CP-001 PM2.5 average over 116 samples is 49.7, so the card reads "Avg pm25" with the value 49.7 if the first pollutant is <code>pm25</code>. The chart shows the hourly line for the same selection. Changing either drop-down redraws both immediately.</p>
+<p>The workbook also prints the number of points as a check. For <code>CP-001</code> and <code>pm25</code> there are 116 hourly points. If your chart shows fewer, the filter is wrong, so check the two conditions first.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Work in the project folder that holds <code>app/dashboard.py</code>. Each step ends with a visible result. Do not go on until the result matches.</p>
+<h3 id="step-1-a-minimal-app-that-runs">Step 1 — A minimal app that runs</h3>
+<p><strong>What you do.</strong> Create <code>app/dashboard.py</code> with one line of Streamlit output.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CityPulse Air Quality&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>import streamlit as st</code> loads the library under the short name <code>st</code>. <code>st.title(...)</code> draws a large heading. Save the file, then run this command in the terminal from the project folder.</p>
+<div class="hl"><pre><span></span><code>streamlit<span class="w"> </span>run<span class="w"> </span>app/dashboard.py
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The terminal prints <code>Local URL: http://localhost:8501</code>. Your browser shows the heading. The app is not Python in the browser: the browser shows the page that the Streamlit server built from your script.</p>
+<p><strong>How you know it worked.</strong> Change the title text, save, and refresh the browser. The new text appears. Stop the server with Ctrl+C when you are done.</p>
+<h3 id="step-2-cache-the-data-load">Step 2 — Cache the data load</h3>
+<p><strong>What you do.</strong> Add the loader from section 4 to <code>app/dashboard.py</code>, decorated with <code>@st.cache_data(ttl=600)</code>. The loader reads the daily aggregate file from S3 with the keys in your local <code>.streamlit/secrets.toml</code>. Create that file first, using the commands in section 3, because the loader cannot run without it.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_daily</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">aws</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;aws&quot;</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;s3://</span><span class="si">{</span><span class="n">aws</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/clean/agg/daily_station/daily_station.parquet&quot;</span><span class="p">,</span>
+        <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">aws</span><span class="p">[</span><span class="s2">&quot;access_key_id&quot;</span><span class="p">],</span> <span class="s2">&quot;secret&quot;</span><span class="p">:</span> <span class="n">aws</span><span class="p">[</span><span class="s2">&quot;secret_access_key&quot;</span><span class="p">]},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_daily</span><span class="p">()</span>
+</code></pre></div>
+
+<p><code>st.secrets["aws"]</code> reads the <code>[aws]</code> section of the secrets file into a dictionary. <code>aws['bucket']</code> reads one value from it. The <code>f"..."</code> string puts that bucket name into the S3 address. <code>storage_options</code> passes the key pair to the S3 library, and <code>pd.read_parquet</code> reads the table. <code>df.assign(date=...)</code> returns a copy of the table with <code>date</code> converted to a date value, and <code>.dt.date</code> keeps only the day. <code>df = load_daily()</code> calls the cached function.</p>
+<p><strong>What you should see.</strong> The page loads. Refresh the browser a few times. The terminal does not show a new download on each refresh.</p>
+<p><strong>How you know it worked.</strong> Add a line <code>print("reading S3")</code> inside <code>load_daily</code>, above <code>aws = ...</code>. Refresh the page twice. The message prints once in the terminal, not on every refresh. Remove the print line afterwards.</p>
+<h3 id="step-3-add-sidebar-filters">Step 3 — Add sidebar filters</h3>
+<p><strong>What you do.</strong> Add a date range picker in the sidebar. The sidebar is the narrow column on the left of the page. Give the picker the earliest and latest dates in the data as the default.</p>
+<div class="hl"><pre><span></span><code><span class="n">picked</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">date_input</span><span class="p">(</span><span class="s2">&quot;Date range&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Select an end date.&quot;</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+
+<p><code>st.sidebar.date_input</code> draws the picker in the sidebar. Its second argument is a tuple of two dates, which sets the default range. The result is stored in <code>picked</code>, which holds two dates once the user has chosen both. While the user has picked only a start date, <code>picked</code> holds one date, so <code>len(picked)</code> is 1.</p>
+<p><code>if len(picked) &lt; 2:</code> checks for that incomplete state. <code>st.info(...)</code> shows a blue message box. <code>st.stop()</code> ends this run cleanly, so the rest of the script does not run with bad input. Without the guard, the next lines would raise an error and show a traceback.</p>
+<p><strong>What you should see.</strong> The sidebar shows the date picker with the full range selected. Click the first date only and the page shows "Select an end date." with no red error.</p>
+<p><strong>How you know it worked.</strong> Click one date in the picker and confirm that the message appears instead of an error. Then pick the end date and confirm the message disappears.</p>
+<h3 id="step-4-apply-the-filters">Step 4 — Apply the filters</h3>
+<p><strong>What you do.</strong> Keep only the rows inside the chosen range and show them.</p>
+<div class="hl"><pre><span></span><code><span class="n">view</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">picked</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">picked</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>picked[0]</code> is the first date and <code>picked[1]</code> is the last. The two conditions keep the rows from the first date to the last, including both ends. <code>view</code> is a new variable. The cached <code>df</code> is not changed. <code>st.dataframe(view)</code> draws the table as an interactive grid with sortable columns.</p>
+<p><strong>What you should see.</strong> The table shows only the days you selected. Change the range and the number of rows changes.</p>
+<p><strong>How you know it worked.</strong> Pick a range of exactly one day. The table should have rows for that day only, and each station appears once for that day.</p>
+<h3 id="step-5-show-kpis-with-stmetric">Step 5 — Show KPIs with st.metric</h3>
+<p><strong>What you do.</strong> Add the three KPI cards from section 3, using the <code>kpis</code> function and the <code>config/limits.yaml</code> settings file. If that file does not exist yet, ask your trainer for it. Do not type the limit into the code.</p>
+<p><strong>What you should see.</strong> Three cards in a row, each with a value and an arrow showing the change from the previous period of equal length. Each arrow for a rise in PM2.5 is red.</p>
+<p><strong>How you know it worked.</strong> Choose a range, then write down the three values. Pick the same number of days immediately before it in the picker. The change on each card should equal the first range's value minus the second range's value, rounded as the code rounds it.</p>
+<h3 id="step-6-add-a-time-series-chart">Step 6 — Add a time-series chart</h3>
+<p><strong>What you do.</strong> Draw one line for the city-wide daily mean of PM2.5 over the selected range. The two charts from the course are imported from <code>citypulse.charts</code> and shown with <code>st.plotly_chart</code>, but this step needs only one line chart.</p>
+<div class="hl"><pre><span></span><code><span class="n">trend</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)[</span><span class="s2">&quot;pm25_mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span><span class="n">trend</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>view.groupby("date")</code> gathers the rows for each day. <code>["pm25_mean"].mean()</code> averages the pollutant for each day. The result, <code>trend</code>, has one value per date, and <code>st.line_chart(trend)</code> draws it with dates along the horizontal axis.</p>
+<p><strong>What you should see.</strong> One line that runs left to right, one point per day in the selected range. A shorter range gives fewer points.</p>
+<p><strong>How you know it worked.</strong> Compare the first point on the chart with the first row of your daily table for the same date. The values should match.</p>
+<h3 id="step-7-run-and-self-check">Step 7 — Run and self-check</h3>
+<p><strong>What you do.</strong> Run the finished app, then check that no secret is tracked by Git and that the app loads quickly on a phone.</p>
+<div class="hl"><pre><span></span><code>streamlit<span class="w"> </span>run<span class="w"> </span>app/dashboard.py
+git<span class="w"> </span>ls-files<span class="w"> </span>.streamlit
+gitleaks<span class="w"> </span>detect<span class="w"> </span>--source<span class="w"> </span>.<span class="w"> </span>--log-opts<span class="o">=</span>--all
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The app opens at <code>http://localhost:8501</code>. <code>git ls-files .streamlit</code> prints only <code>.streamlit/secrets.example.toml</code>. <code>gitleaks</code> reports no leaks.</p>
+<p><strong>How you know it worked.</strong> Open the Network URL on a phone in a private browser tab, and time the first load. The ticket asks for under five seconds. A reload in the same tab is not a cold load, so ignore it.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"CityPulse: KPI data layer behind a dashboard" (easy), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>KPIs for station A on the selected day</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>single-reading station</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>different day filters correctly</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>no matching station -&gt; empty KPIs</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 70 of the 100 points. The other 30 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K09.html#y2-t28-ship-streamlit-dashboard-v1-with-3-kpis-2-charts-date-filter">Y2-T28 · Ship Streamlit dashboard v1 with 3 KPIs, 2 charts, date filter</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The platform quiz for this Day has ten case-study questions. It asks one question on each topic below, in the order shown in this section. The pass mark is 70 per cent, so you need seven correct answers out of ten. Your skill score keeps the result of your first attempt, so a second attempt does not replace it. Each question gives you a short scenario about a CityPulse team and asks which call, setting or change fits it.</p>
+<p>The questions test reasoning more than memory. Most wrong options are true facts about Streamlit that are used at the wrong moment, so you must read the scenario before you judge any option.</p>
+<p><strong>How to answer a case-study question.</strong> Read the last line first. It tells you what is being asked, so you know what to look for in the scenario. Then read the scenario again and underline the facts that matter: who uses the page, what they see, and what must stay true. Eliminate every option that is true in general but does not fix this scenario. Watch for three words. "Most" asks for the strongest option. "First" asks for the step that comes before the others. "Best" asks for the option that satisfies every constraint in the scenario, not just one of them.</p>
+<h3 id="showing-text-and-headings">Showing text and headings</h3>
+<p><strong>What it is.</strong> Streamlit draws text with a few calls. Each call adds one element to the page, in the order the script runs. <code>st.title</code> draws the largest heading. <code>st.header</code> and <code>st.subheader</code> draw smaller headings, in that order. <code>st.markdown</code> renders text that uses Markdown symbols, such as <code>**bold**</code> for bold text and a leading dash for a list item. <code>st.caption</code> draws small grey text for a note. <code>st.text</code> shows its text exactly as typed, in a plain monospaced font, so symbols such as <code>**</code> are not turned into bold.</p>
+<p>Here is a small example:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CityPulse Air Quality&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s2">&quot;Readings refresh every ten minutes.&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;**Warning:** PM2.5 is above 60 at CP-003.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>On the page, from top to bottom, you see a large heading, then a line of small grey text, then a line with the word Warning in bold. The three calls do not depend on each other. Changing the order of the lines changes the order on the page.</p>
+<p><strong>How it shows up in a case study.</strong> A city team has a dashboard page for one station. The operations lead wants the page name as the main heading, a small grey line under it saying when the data was last loaded, and a short bold warning for the officer. The officer reads the heading first, so only the page name should use the largest size. The loaded-at line is a note, not a section, so <code>st.caption</code> fits it. The warning is short formatted text, so <code>st.markdown</code> fits it. A developer who uses <code>st.title</code> for every line would make every line look like a page name.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using st.title for a note</div><p>The title is the largest element on the page. Using it for a small note makes the note look like a second page name, which confuses the reader and breaks the layout the team asked for.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The operations dashboard needs a small grey line under the main heading that says \&quot;Last loaded at 08:00\&quot;. The developer wants a call that draws a note, not a heading. Which call fits?&quot;, &quot;opts&quot;: [&quot;st.title(\&quot;Last loaded at 08:00\&quot;)&quot;, &quot;st.caption(\&quot;Last loaded at 08:00\&quot;)&quot;, &quot;st.header(\&quot;Last loaded at 08:00\&quot;)&quot;, &quot;st.dataframe(\&quot;Last loaded at 08:00\&quot;)&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;st.caption draws small grey note text. st.title draws the largest heading and st.header draws a heading, so both are wrong for a note. st.dataframe draws a table, not a line of text.&quot;}, {&quot;q&quot;: &quot;A page must show the words \&quot;High PM2.5\&quot; in bold, followed by a bulleted list of two actions. The developer writes the text with Markdown symbols, such as double asterisks and a leading dash. Which call renders those symbols as bold text and a list?&quot;, &quot;opts&quot;: [&quot;st.text(\&quot;**High PM2.5**\&quot;)&quot;, &quot;st.title(\&quot;**High PM2.5**\&quot;)&quot;, &quot;st.subheader(\&quot;**High PM2.5**\&quot;)&quot;, &quot;st.markdown(\&quot;**High PM2.5**\&quot;)&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;st.markdown renders Markdown symbols as bold text and list items. st.text shows the asterisks and dashes exactly as typed. st.title and st.subheader draw headings, and a heading is not a bulleted list.&quot;}, {&quot;q&quot;: &quot;A section of the page must start with a heading at the third level of text, below the title and the header. The team&#x27;s style guide asks for exactly that level. Which call draws it?&quot;, &quot;opts&quot;: [&quot;st.subheader(\&quot;Station charts\&quot;)&quot;, &quot;st.title(\&quot;Station charts\&quot;)&quot;, &quot;st.caption(\&quot;Station charts\&quot;)&quot;, &quot;st.text(\&quot;Station charts\&quot;)&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The three heading levels are title, then header, then subheader, so subheader is the third level. st.title is the largest, st.caption is a small note, and st.text is plain monospaced text rather than a heading.&quot;}]}"></div>
+
+<h3 id="drop-down-lists-with-selectbox">Drop-down lists with selectbox</h3>
+<p><strong>What it is.</strong> <code>st.selectbox(label, options)</code> draws a drop-down list and returns the option the user chose. It returns the option value itself, such as the text <code>"CP-002"</code>. It does not return the position of that option, and it does not return the label. The first option is chosen when the page loads. Pass <code>index=</code> to choose a different default position. Each choice reruns the script, so the code after the call always sees the current value.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">colour</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Pick a colour&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;You picked&quot;</span><span class="p">,</span> <span class="n">colour</span><span class="p">)</span>
+</code></pre></div>
+
+<p>On first load the drop-down shows green, and the page says "You picked green". If the user picks blue, the script reruns and the page says "You picked blue". The number 1 in the code is only the default position. It never appears on the page.</p>
+<p><strong>How it shows up in a case study.</strong> Officers choose one of four stations from a sidebar drop-down. The code takes the value and filters the readings for that station id. The developer should filter on the value itself, because the widget already returns the station that was picked. A developer who expects a position would first look the station up in the list, which adds a step and a source of errors. Reason from what the widget returns, then use it directly. Pass <code>index</code> as well, so that the page loads with a sensible default.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting a position or a label</div><p>The variable does not hold 0, and it does not hold the label "Station". It holds the chosen value. Filtering against a number matches no rows and gives an empty chart, and no error warns you.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A dashboard offers a pollutant drop-down made with st.selectbox(\&quot;Pollutant\&quot;, [\&quot;pm25\&quot;, \&quot;no2\&quot;, \&quot;o3\&quot;]). The officer chooses no2. The developer then filters with pollutant == 1, expecting the second option to match. What is the problem?&quot;, &quot;opts&quot;: [&quot;Nothing is wrong, because 1 is the position of no2&quot;, &quot;The widget cannot return text, so the filter must use the label&quot;, &quot;The variable holds \&quot;no2\&quot;, so comparing it with 1 matches no rows&quot;, &quot;The drop-down needs index=1 before any comparison works&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The widget returns the value \&quot;no2\&quot;, not its position, so the comparison with 1 is false for every reading. The first option is wrong because the widget never returns positions. The last option is wrong because index sets the default choice, not the type of the returned value.&quot;}, {&quot;q&quot;: &quot;A sidebar drop-down is made with st.selectbox(\&quot;Station\&quot;, [\&quot;CP-001\&quot;, \&quot;CP-002\&quot;]). The team wants CP-002 to be selected when the page first loads. Which change does this?&quot;, &quot;opts&quot;: [&quot;Add index=1 to the call, because CP-002 is at position 1&quot;, &quot;Add index=\&quot;CP-002\&quot; to the call&quot;, &quot;Change the label to \&quot;CP-002\&quot;&quot;, &quot;Put the call inside st.form()&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;index takes a position counted from 0, and CP-002 is at position 1. index=\&quot;CP-002\&quot; is the tempting wrong answer, because it names the value, but index needs a number. Changing the label selects nothing, and a form changes when the page reruns, not which option is the default.&quot;}, {&quot;q&quot;: &quot;A developer writes pick = st.selectbox(\&quot;Pollutant\&quot;, [\&quot;pm25\&quot;, \&quot;no2\&quot;]) and then st.write(pick). The officer does not touch the drop-down. What does the page show?&quot;, &quot;opts&quot;: [&quot;0&quot;, &quot;Pollutant&quot;, &quot;[\&quot;pm25\&quot;, \&quot;no2\&quot;]&quot;, &quot;pm25&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;With no index argument the first option is chosen, and the variable holds its value, pm25. 0 is the position of the default, which the widget does not return, and Pollutant is the label. The whole list is not returned either.&quot;}]}"></div>
+
+<h3 id="interactive-tables-with-dataframe">Interactive tables with dataframe</h3>
+<p><strong>What it is.</strong> <code>st.dataframe(df)</code> draws a table that the user can scroll, sort and resize by clicking column headings. It is meant for exploring data. <code>st.table(df)</code> draws a static table with no sorting. By default a DataFrame shows its index, the row numbers, as the first column. Pass <code>hide_index=True</code> to hide that column.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">readings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CP-001&quot;</span><span class="p">,</span> <span class="s2">&quot;CP-002&quot;</span><span class="p">],</span> <span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">45.7</span><span class="p">,</span> <span class="mf">61.2</span><span class="p">]})</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>On the page you see a grid with two columns, station and pm25, and two rows. There are no row numbers on the left. Clicking the pm25 heading sorts the rows by that column. For a single number, such as a mean, use <code>st.metric</code> instead, because a table is the wrong shape for one value.</p>
+<p><strong>How it shows up in a case study.</strong> An officer must scan about 1,400 daily rows and find the worst days by sorting on PM2.5. A developer proposes <code>st.table</code> because it looks simpler. Reason from the job: the officer needs to sort and scroll, so the table must be interactive, which means <code>st.dataframe</code>. <code>st.table</code> would show every row with no way to sort it, and it suits a fixed printout in a report. The row numbers mean nothing to the officer, so hide them.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing st.table for an explorer</div><p>st.table looks tidy, but its output cannot be sorted. A team that picks it for an exploration page has to rebuild the sorting by hand. Use st.dataframe when the user explores, and st.table when the output is fixed.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team needs the 1,392 daily rows on a page, and the officer must click a column heading to sort by PM2.5. Which call fits?&quot;, &quot;opts&quot;: [&quot;st.table(daily)&quot;, &quot;st.dataframe(daily)&quot;, &quot;st.metric(\&quot;Rows\&quot;, daily)&quot;, &quot;st.caption(daily)&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;st.dataframe draws an interactive grid, and clicking a heading sorts it. st.table is static, so sorting is not available. st.metric takes a single value, not a table, and st.caption draws small text.&quot;}, {&quot;q&quot;: &quot;A developer shows a table with st.dataframe, and the first column is a row number from 0 to 1,391 that means nothing to the team. The team still wants to sort by any column. Which change does this?&quot;, &quot;opts&quot;: [&quot;Replace st.dataframe with st.table&quot;, &quot;Add st.stop() before the call&quot;, &quot;Use st.metric for the table&quot;, &quot;Pass hide_index=True to st.dataframe&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;hide_index=True removes the index column and keeps the sorting. st.table would remove the numbers too, but it would also remove the sorting. st.stop ends the run, and st.metric shows one value.&quot;}, {&quot;q&quot;: &quot;A weekly report page must show a fixed table exactly as it is, with no sorting, scrolling or resizing, because the officer only reads it. Which call draws it?&quot;, &quot;opts&quot;: [&quot;st.dataframe(weekly)&quot;, &quot;st.line_chart(weekly)&quot;, &quot;st.table(weekly)&quot;, &quot;st.selectbox(\&quot;Week\&quot;, weekly)&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;st.table draws a static table, which is what the requirement describes. st.dataframe is the interactive choice, and the requirement rules it out. st.line_chart draws a chart, and st.selectbox is a drop-down, not a table.&quot;}]}"></div>
+
+<h3 id="headline-numbers-with-metric">Headline numbers with metric</h3>
+<p><strong>What it is.</strong> <code>st.metric(label, value, delta=None, delta_color="normal")</code> draws a headline number with a label above it. The <code>delta</code> is the change, and Streamlit prints it with an arrow. The <code>delta_color</code> option sets the colour rule. With <code>"normal"</code>, a positive change is green and a negative change is red. With <code>"inverse"</code>, a positive change is red and a negative change is green. With <code>"off"</code>, the change is grey and has no colour.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Mean PM2.5 (µg/m³)&quot;</span><span class="p">,</span> <span class="mf">36.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="n">delta_color</span><span class="o">=</span><span class="s2">&quot;inverse&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>On the page you see the value 36.5 in large text, with an upward arrow and the change +6.5 in red. Because the rule is inverse, the rise is shown as bad. The option <code>label_visibility="hidden"</code> removes the label, and it does not change the colour.</p>
+<p><strong>How it shows up in a case study.</strong> An officer compares this week's mean PM2.5 with last week's, which was 30.0. This week it is 36.5. The card should show the value and the change, and the change must be red, because a rise in pollution is bad news. The developer passes the difference as <code>delta</code> and sets <code>delta_color="inverse"</code>. The reasoning is about direction: decide which way is bad for the reader, then choose the colour rule that matches. A table or a chart would not give the headline number the officer needs.</p>
+<div class="box box-trap"><div class="box-h">Trap: Leaving the colour rule at normal</div><p>The default colours a rise green, which tells the officer that pollution improved. Pollution metrics need <code>"inverse"</code>, so that a higher value is shown as bad.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The team shows the number of days over the air-quality limit. Last week there were 2 such days and this week there are 5. The card should show the rise in red. Which call does this?&quot;, &quot;opts&quot;: [&quot;st.metric(\&quot;Days over limit\&quot;, 5, 3, delta_color=\&quot;inverse\&quot;)&quot;, &quot;st.metric(\&quot;Days over limit\&quot;, 5, 3, delta_color=\&quot;normal\&quot;)&quot;, &quot;st.metric(\&quot;Days over limit\&quot;, 5, 3, delta_color=\&quot;off\&quot;)&quot;, &quot;st.metric(\&quot;Days over limit\&quot;, 3, 5, delta_color=\&quot;inverse\&quot;)&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The value is 5 and the change is 5 minus 2, which is 3, shown in red because of inverse. normal shows the rise in green, off shows it in grey, and the last option swaps the value and the change.&quot;}, {&quot;q&quot;: &quot;A card shows the worst-day PM2.5 at 42.0, with a change of -4.0 from the previous period. A fall is good news, and the team wants the fall shown in green. Which option does this?&quot;, &quot;opts&quot;: [&quot;delta_color=\&quot;normal\&quot;&quot;, &quot;delta_color=\&quot;off\&quot;&quot;, &quot;delta_color=\&quot;inverse\&quot;&quot;, &quot;label_visibility=\&quot;hidden\&quot;&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;With inverse, a negative change is green, which fits a pollutant where a fall is good. With normal, a fall is red. off gives grey. label_visibility hides the label and has no effect on the colour.&quot;}, {&quot;q&quot;: &quot;A card&#x27;s label is already written as a heading just above it, so the label should not be drawn again inside the card. The value and the arrow must stay. Which option does this?&quot;, &quot;opts&quot;: [&quot;delta=None&quot;, &quot;delta_color=\&quot;off\&quot;&quot;, &quot;st.caption(label)&quot;, &quot;label_visibility=\&quot;hidden\&quot;&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;label_visibility=\&quot;hidden\&quot; removes the label and keeps the value and the change. Leaving out delta removes the change, and delta_color=\&quot;off\&quot; removes only the colour. st.caption draws another line of text and does not touch the card.&quot;}]}"></div>
+
+<h3 id="caching-with-cache_data">Caching with cache_data</h3>
+<p><strong>What it is.</strong> <code>st.cache_data</code> stores what a function returns. Later calls with the same arguments return the stored copy and skip the body of the function. Pass <code>ttl=</code> to set a time to live in seconds. After that time the stored value expires, and the function runs again. Without <code>ttl</code>, the stored value stays until the server restarts or the code changes. Use <code>st.cache_resource</code> for objects that must not be copied, such as a database connection.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">slow_square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">slow_square</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The first time the page runs, it waits about two seconds and shows 16. For the next sixty seconds, every rerun with the argument 4 shows 16 at once, because the body of <code>slow_square</code> does not run. After sixty seconds the stored value expires, and the next run waits two seconds again.</p>
+<p><strong>How it shows up in a case study.</strong> An officer reports that the dashboard never shows new daily files, even an hour after they arrive. The loader is decorated with <code>@st.cache_data</code>, but with no <code>ttl</code>. The stored copy never expires, so the page keeps showing the file from the first load. The fix keeps the cache, because the speed matters, and adds a time limit that matches the team's freshness target, such as <code>ttl=600</code> for ten minutes. Reason from the freshness target first, then choose the time limit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Caching forever, or reading outside the cache</div><p>A cache with no time limit never refreshes. A read placed outside any cached function runs on every rerun, so the cache does not help at all.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A loader reads a file from storage. Officers say new files never appear, even a day later. The decorator is @st.cache_data with no arguments, and the team still wants the page to load quickly. Which change fixes this?&quot;, &quot;opts&quot;: [&quot;Remove the decorator entirely&quot;, &quot;Add ttl=600 to the decorator&quot;, &quot;Add st.stop() at the top of the loader&quot;, &quot;Replace it with @st.cache_resource and no arguments&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;ttl=600 lets the stored copy expire after ten minutes, so new files appear, and clicks still reuse the copy. Removing the decorator makes every rerun read the file, which is slow. st.stop ends a run, and cache_resource with no arguments keeps its value forever too.&quot;}, {&quot;q&quot;: &quot;A function opens a database connection. The team wants that connection shared across reruns, and the object cannot be copied. Which decorator fits?&quot;, &quot;opts&quot;: [&quot;@st.cache_data&quot;, &quot;@st.cache_data(ttl=600)&quot;, &quot;@st.session_state&quot;, &quot;@st.cache_resource&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;st.cache_resource is meant for objects such as connections that should not be copied. st.cache_data returns a copy of its stored value, which is built for data that can be copied. st.session_state is not a decorator at all.&quot;}, {&quot;q&quot;: &quot;A script reads a large file at the top, outside any function, so the read runs on every click and the page takes four seconds to respond. The data itself must stay the same. Which change makes clicks faster?&quot;, &quot;opts&quot;: [&quot;Move the read into a function and decorate it with @st.cache_data&quot;, &quot;Move the read to the bottom of the script&quot;, &quot;Add print() before the read to log each click&quot;, &quot;Add st.stop() before the read&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A cached function skips the read on later reruns, and the data is unchanged. Moving the read to the bottom still runs it on every rerun. print only logs, so it does not prevent the read. st.stop before the read would hide the data rather than speed up the page.&quot;}]}"></div>
+
+<h3 id="the-rerun-model-and-stop">The rerun model and stop</h3>
+<p><strong>What it is.</strong> Streamlit runs the whole script from the first line to the last on every interaction, such as a widget change. Each run creates its variables afresh, so a value set at the top starts again each time. <code>st.stop()</code> ends the current run immediately and without an error. Lines below it are not run. Lines above it still appear on the page.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Top of the page&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">&quot;Stop here&quot;</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Bottom of the page&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>When the box is not ticked, the page shows both lines. When the officer ticks the box, the script reruns, reaches <code>st.stop</code>, and ends. The page shows only the top line, and no error appears. The bottom line is not drawn, because its code never ran.</p>
+<p><strong>How it shows up in a case study.</strong> The dashboard needs a station before it can draw a chart. When no station is chosen, the page must show a warning and skip the chart without a traceback. The developer writes the warning and then calls <code>st.stop()</code>. Reason from the rule: the run ends at the stop, so nothing below it runs, and no error appears. A developer who expects a counter to remember its value would also get a wrong result, because each run starts again from the top.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting a value to survive a rerun</div><p>A line such as <code>visits = 0</code> followed by <code>visits = visits + 1</code> shows 1 on every run. The value is not kept between reruns. Store it in st.session_state when it must survive.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team writes visits = 0 near the top of the script and visits = visits + 1 below it, then shows visits on the page. The officer clicks a widget five times. What does the page show after the fifth click?&quot;, &quot;opts&quot;: [&quot;5&quot;, &quot;6&quot;, &quot;1&quot;, &quot;0&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each run starts from the top, so visits is set to 0 and then to 1 again. The tempting answer is 5, which assumes the value keeps counting. 0 is wrong because the increment still runs on each run.&quot;}, {&quot;q&quot;: &quot;A page must show a warning and no charts while no station is chosen. The developer adds the warning, and then the rest of the run must end without an error or a traceback. Which call does this?&quot;, &quot;opts&quot;: [&quot;st.stop()&quot;, &quot;st.rerun()&quot;, &quot;st.session_state.clear()&quot;, &quot;st.cache_data()&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;st.stop ends the current run cleanly, so lines below it are not run. st.rerun starts a new run, which is the opposite of what is needed. Clearing session state removes stored values, and st.cache_data is a decorator, not a way to end a run.&quot;}, {&quot;q&quot;: &quot;A developer creates seen = [] at the top of the script and adds the current station to seen once per run. After five clicks, how long is seen?&quot;, &quot;opts&quot;: [&quot;5&quot;, &quot;1&quot;, &quot;0&quot;, &quot;The script raises an error&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The list is made again on every run, so each run holds one item. The tempting answer is 5, which assumes the list survives between runs. 0 is wrong because the append runs on every run, and no error is raised.&quot;}]}"></div>
+
+<h3 id="per-user-memory-with-session-state">Per-user memory with session state</h3>
+<p><strong>What it is.</strong> <code>st.session_state</code> is a dictionary-like store that belongs to one browser session. Its values survive reruns for that user, which normal variables do not. Write the first value only when the key is missing, using <code>if "visits" not in st.session_state:</code>, and update it afterwards. Each open browser tab has its own session state, so two officers never share a value.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="k">if</span> <span class="s2">&quot;visits&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;visits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Add one&quot;</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;visits&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;visits&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The first time the page loads, the value is 0. After each press of Add one, the value goes up by one, and the page shows the new number. Reloading the browser tab starts a new session, so the count starts again at 0 in that tab.</p>
+<p><strong>How it shows up in a case study.</strong> Each officer wants the station she last viewed to be remembered during her visit, without changing what other officers see. A developer stores it in a top-level variable, which resets on every run. Another proposes a cached function, which is shared by all users. The right place is session state, because the value belongs to one browser session. Reason from who should see the value: one officer, one session.</p>
+<div class="box box-trap"><div class="box-h">Trap: Global variables and cache for per-user data</div><p>A top-level variable is reset on every rerun. A value inside st.cache_data is shared by every user. Neither keeps data for one officer, so use st.session_state.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Each officer wants the last station she viewed remembered during her visit, without changing what other officers see. Which storage fits?&quot;, &quot;opts&quot;: [&quot;A top-level variable last_station = \&quot;CP-001\&quot;&quot;, &quot;@st.cache_data on a function that returns the station&quot;, &quot;An environment variable STATION set once when the server starts&quot;, &quot;st.session_state with the key last_station&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;st.session_state holds a value for one browser session across reruns. A top-level variable is reset on each run, a cached value is shared by all users, and an environment variable is shared by the whole server.&quot;}, {&quot;q&quot;: &quot;A developer stores a click count inside a function decorated with @st.cache_data(ttl=600) and returns it. Two officers click on their own pages, and both see the same number. Why?&quot;, &quot;opts&quot;: [&quot;The count is stored in each browser, and the browsers share it&quot;, &quot;st.cache_data stores one value that all users of the app share&quot;, &quot;A ttl of 600 is too short for a count&quot;, &quot;Streamlit cannot store numbers in a cache&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The cache holds one stored value for the whole app, so every user gets it. The first option blames the browser, but the browser stores nothing for this function. A ttl of 600 limits how long the copy lasts, not who shares it, and numbers can be cached.&quot;}, {&quot;q&quot;: &quot;A developer writes if \&quot;clicks\&quot; not in st.session_state: st.session_state[\&quot;clicks\&quot;] = 0 at the top, and inside if st.button(\&quot;Add one\&quot;): adds one with st.session_state[\&quot;clicks\&quot;] += 1. The officer presses the button three times. What is the value afterwards?&quot;, &quot;opts&quot;: [&quot;0&quot;, &quot;1&quot;, &quot;3&quot;, &quot;4&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;st.button is True only in the run that follows a press, so the addition runs once for each of the three presses. 4 is wrong because the first step only sets 0 and adds nothing. 0 and 1 ignore two or three of the presses.&quot;}]}"></div>
+
+<h3 id="sidebar-and-columns">Sidebar and columns</h3>
+<p><strong>What it is.</strong> <code>st.sidebar</code> is the narrow column on the left of the page. Any element written with <code>st.sidebar.</code> is drawn there, wherever it appears in the script. <code>st.columns(3)</code> returns three areas that sit side by side in the main part of the page, and each area takes ordinary calls such as <code>.metric</code>.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Station&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CP-001&quot;</span><span class="p">,</span> <span class="s2">&quot;CP-002&quot;</span><span class="p">])</span>
+<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">left</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Readings&quot;</span><span class="p">,</span> <span class="mi">1392</span><span class="p">)</span>
+<span class="n">right</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Stations&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The sidebar shows the station drop-down on the left. The main area shows two cards side by side, with Readings on the left and Stations on the right. Moving the sidebar line to the bottom of the script does not move the drop-down into the main area.</p>
+<p><strong>How it shows up in a case study.</strong> The officer wants a date filter in a left column and three KPI cards in a row at the top of the main area. The sidebar suits the filter, because a filter is a control the officer changes and it can stay out of the way. The cards need width to read, so they belong in columns. A developer who puts the cards in the sidebar gives them a narrow strip, and the row the officer expects is lost. Reason from the place each element should appear.</p>
+<div class="box box-trap"><div class="box-h">Trap: Cards in the sidebar</div><p>st.sidebar is narrow, so cards placed there stack on top of each other instead of sitting in a row. Put KPI cards in st.columns, and put filters in the sidebar.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A dashboard needs a date filter in the left column and two KPI cards side by side in the main area. Which code does this?&quot;, &quot;opts&quot;: [&quot;st.sidebar.date_input(...) for the filter and st.columns(2) for the cards&quot;, &quot;st.columns(2) for the filter and st.sidebar.metric for the cards&quot;, &quot;st.sidebar.metric for both the filter and the cards&quot;, &quot;st.form for the cards and st.sidebar.title for the filter&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;st.sidebar.date_input puts the filter in the left column, and st.columns(2) gives two side-by-side areas for the cards. The other options put the cards in the narrow sidebar, or use calls that do not make a filter.&quot;}, {&quot;q&quot;: &quot;A developer calls st.sidebar.metric three times for three KPI cards, and the cards appear as a narrow stack on the left. Which change keeps the cards side by side in the main area?&quot;, &quot;opts&quot;: [&quot;Add st.stop() before the cards&quot;, &quot;Replace st.metric with st.table&quot;, &quot;Create cols = st.columns(3) and call cols[0].metric, cols[1].metric and cols[2].metric&quot;, &quot;Wrap each card in st.sidebar&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Calling metric on each of the three columns places one card in each area, in a row. Wrapping the cards in the sidebar keeps the narrow stack. st.stop ends the run, and st.table draws a table, not cards.&quot;}, {&quot;q&quot;: &quot;A developer writes st.sidebar.selectbox(\&quot;Pollutant\&quot;, [\&quot;pm25\&quot;, \&quot;no2\&quot;]) at the bottom of a long script, after a chart. Where does the drop-down appear on the page?&quot;, &quot;opts&quot;: [&quot;At the bottom of the main area, under the chart&quot;, &quot;In the main area, at the place where it is written&quot;, &quot;In a new browser tab&quot;, &quot;In the left sidebar, whatever its position in the script&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Any element written with st.sidebar is drawn in the sidebar, so its position in the script does not matter. The options that place it in the main area ignore what the sidebar call does.&quot;}]}"></div>
+
+<h3 id="matplotlib-figures-with-pyplot">Matplotlib figures with pyplot</h3>
+<p><strong>What it is.</strong> Matplotlib is a Python library for drawing charts. You create a figure, add lines or bars to it, and then pass the figure to <code>st.pyplot(fig)</code>, which draws it on the page. Plotly is another charting library. A Plotly figure goes to <code>st.plotly_chart(fig, use_container_width=True)</code> instead. Each call accepts only its own kind of figure.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Squares&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The page shows one chart titled Squares. The line rises from 4 at x equal to 1, to 9 at x equal to 2, and to 16 at x equal to 3. <code>plt.subplots()</code> creates a figure and one set of axes, and the names <code>fig</code> and <code>ax</code> hold them.</p>
+<p><strong>How it shows up in a case study.</strong> A team has a histogram of PM2.5 drawn with Matplotlib in an older notebook, and a Plotly chart from the shared charts module. Both must appear on the same dashboard page. The reasoning is about the library behind each figure. The histogram goes to <code>st.pyplot</code>, and the Plotly chart goes to <code>st.plotly_chart</code>. Neither call can draw the other's figure, so the team must check which library made each figure before choosing a call.</p>
+<div class="box box-trap"><div class="box-h">Trap: Passing a figure to the wrong call</div><p>A Matplotlib figure passed to st.plotly_chart, or a Plotly figure passed to st.pyplot, fails, because each call accepts only its own kind of figure.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team has a Plotly figure returned by the shared charts module and wants it on the page. Which call draws it?&quot;, &quot;opts&quot;: [&quot;st.pyplot(fig)&quot;, &quot;st.plotly_chart(fig, use_container_width=True)&quot;, &quot;print(fig)&quot;, &quot;st.table(fig)&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;st.plotly_chart draws Plotly figures. st.pyplot expects a Matplotlib figure, so it is the wrong call here. print writes text to the terminal and draws nothing on the page, and st.table draws a table.&quot;}, {&quot;q&quot;: &quot;A developer draws a histogram with Matplotlib into hist_fig and writes st.plotly_chart(hist_fig) in the app. The page shows an error. Which call should replace it?&quot;, &quot;opts&quot;: [&quot;st.line_chart(hist_fig)&quot;, &quot;st.dataframe(hist_fig)&quot;, &quot;st.metric(\&quot;Histogram\&quot;, hist_fig)&quot;, &quot;st.pyplot(hist_fig)&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;hist_fig is a Matplotlib figure, so st.pyplot is the matching call. st.line_chart, st.dataframe and st.metric do not draw Matplotlib figures, and st.metric would show the figure as a value, which it cannot be.&quot;}, {&quot;q&quot;: &quot;A developer creates a Matplotlib line chart in fig and then forgets to pass it to Streamlit. The officer reloads the page. What does she see for this chart?&quot;, &quot;opts&quot;: [&quot;Nothing, because the figure is created but never drawn on the page&quot;, &quot;An automatic chart drawn from the variable name&quot;, &quot;A traceback in the browser&quot;, &quot;The chart drawn twice, once for each rerun&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Creating a figure does not draw it on the page. Only a call such as st.pyplot draws it. Streamlit does not draw variables automatically, and a missing call does not cause a traceback or a second drawing.&quot;}]}"></div>
+
+<h3 id="batching-filters-in-a-form">Batching filters in a form</h3>
+<p><strong>What it is.</strong> <code>st.form(key)</code> groups widgets so that the script does not rerun when one of them changes. The run happens only when the user presses the button created with <code>st.form_submit_button(label)</code>. All the values are then sent together, in one run. Each form has a key, which is a unique text name.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">form</span><span class="p">(</span><span class="s2">&quot;filters&quot;</span><span class="p">):</span>
+    <span class="n">station</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Station&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CP-001&quot;</span><span class="p">,</span> <span class="s2">&quot;CP-002&quot;</span><span class="p">])</span>
+    <span class="n">pollutant</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Pollutant&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;pm25&quot;</span><span class="p">,</span> <span class="s2">&quot;no2&quot;</span><span class="p">])</span>
+    <span class="n">submitted</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;Apply&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">submitted</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">pollutant</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Changing either drop-down does nothing yet. When the officer presses Apply, the script runs once, and the page shows the two chosen values. The variable <code>submitted</code> is True only in that run. The indented lines under <code>with st.form("filters"):</code> are the widgets that belong to the form.</p>
+<p><strong>How it shows up in a case study.</strong> The dashboard has a station, a pollutant and a date range, and the query behind them is slow. Each change reruns the page, so the officer waits after every click and sees the page flicker. The team wants the three values applied together, when the officer is ready. Reason from the wait: a form holds back the reruns until one submit, so the query runs once. The form needs a submit button, or no change is ever applied.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting the submit button</div><p>A form with no st.form_submit_button is an error: Streamlit shows a "Missing Submit Button" message, because the form's values can never be sent. A plain st.button inside a form is an error too. Also, st.stop is not a way to wait for a button to be pressed.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A dashboard has three filters that together start an expensive query. The team wants the query to run once, after the officer finishes choosing, and not after every change. Which change fits?&quot;, &quot;opts&quot;: [&quot;Put the three filters in st.sidebar&quot;, &quot;Add st.stop() after the filters&quot;, &quot;Wrap the three filters in st.form and add st.form_submit_button(\&quot;Apply\&quot;)&quot;, &quot;Replace the filters with st.table&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A form holds the values until the submit button is pressed, then sends them together. The sidebar only moves the filters, and st.stop ends the run without waiting for a button. st.table draws a table and does not stop the reruns.&quot;}, {&quot;q&quot;: &quot;A developer wraps two selectboxes in st.form and puts an if st.button(\&quot;Apply\&quot;) block inside the form. Streamlit reports an error instead of drawing the form. Which fix is right?&quot;, &quot;opts&quot;: [&quot;Use st.form_submit_button(\&quot;Apply\&quot;) inside the form, and remove the st.button&quot;, &quot;Move the button outside the form and leave the rest as it is&quot;, &quot;Add ttl=600 to the form&quot;, &quot;Use st.cache_resource for the button&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A form accepts only its own submit control, st.form_submit_button, and the values are sent through it; a plain st.button inside a form is an error. Moving the button outside leaves the form with no submit button, which is also an error. ttl belongs to caching, and st.cache_resource is for objects, not buttons.&quot;}, {&quot;q&quot;: &quot;A form holds a selectbox and a submit button labelled Apply. The officer changes the selectbox but has not pressed Apply. What does the code after the form see?&quot;, &quot;opts&quot;: [&quot;The new choice, after a short delay&quot;, &quot;An error, because the form is incomplete&quot;, &quot;The first option, because the form resets itself&quot;, &quot;The previously submitted value, and no rerun has happened&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A form holds back widget changes until its submit button is pressed, so nothing is sent and the script does not rerun. Waiting does not help. The form does not reset, and an unsent change is not an error.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>Ten mixed questions, one per topic, harder than the ones above. Answer them without looking back.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A form holds a date range picker and a station drop-down, and its submit button is labelled Apply. The officer changes the station, presses Apply, and then changes the date range without pressing Apply. Which date range does the page use?&quot;, &quot;opts&quot;: [&quot;The new date range, because the picker sends its value at once&quot;, &quot;The date range from the last Apply, because the form sends its values only on submit&quot;, &quot;No date range, because the form resets whenever any widget changes&quot;, &quot;An error, because two kinds of widget cannot share a form&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The form holds back changes until Apply, so the date range from the last submit stays in use. The first option assumes the picker works alone, but inside a form it does not. The form does not reset, and the widgets can share it.&quot;}, {&quot;q&quot;: &quot;A loader decorated with @st.cache_data(ttl=600) reads a file. The officer loads the page at 09:00, which stores the file, and loads it again at 09:05 and at 09:12. The file was replaced at 09:08. What does the officer see at 09:12?&quot;, &quot;opts&quot;: [&quot;The old file, because cache_data never expires&quot;, &quot;The new file at 09:05, because every rerun reads the file again&quot;, &quot;The new file at 09:12, because the copy stored at 09:00 expired at 09:10&quot;, &quot;An error, because the file changed while it was cached&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The copy stored at 09:00 is kept until 09:10, so 09:05 still shows the old file. At 09:12 the copy has expired and the loader reads the new file. The first option ignores the ttl, which is set here.&quot;}, {&quot;q&quot;: &quot;A script keeps a counter in st.session_state[\&quot;n\&quot;] and adds one inside if st.button(\&quot;Add\&quot;). An officer opens two browser tabs. In tab one she presses Add three times, and in tab two she presses Add once. What does tab two show?&quot;, &quot;opts&quot;: [&quot;1, because each browser tab has its own session state&quot;, &quot;4, because the server shares one session state for all tabs&quot;, &quot;3, because a new tab copies the counter of the old tab&quot;, &quot;0, because the counter resets when a tab is switched&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Each tab has its own session, so tab two counts from its own starting value and shows 1. The tempting answer is 4, which assumes one shared counter.&quot;}, {&quot;q&quot;: &quot;A developer writes pick = st.selectbox(\&quot;Station\&quot;, [\&quot;CP-001\&quot;, \&quot;CP-002\&quot;, \&quot;CP-003\&quot;], index=2), and then chosen = [\&quot;CP-001\&quot;, \&quot;CP-002\&quot;, \&quot;CP-003\&quot;].index(pick). The page loads and nobody touches the drop-down. What is the value of chosen?&quot;, &quot;opts&quot;: [&quot;0&quot;, &quot;1&quot;, &quot;\&quot;CP-003\&quot;&quot;, &quot;2&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;index=2 makes the third option the default, so pick is \&quot;CP-003\&quot;. list.index returns the position of that value, which is 2. The option \&quot;CP-003\&quot; is the value itself, but the code asks for its position.&quot;}, {&quot;q&quot;: &quot;This week&#x27;s mean PM2.5 is 40.0 and last week&#x27;s was 44.0. The developer writes st.metric(\&quot;Mean PM2.5\&quot;, 40.0, -4.0, delta_color=\&quot;normal\&quot;). Which colour does the fall show?&quot;, &quot;opts&quot;: [&quot;Green, because normal shows every change as positive&quot;, &quot;Grey, because a negative change is never coloured&quot;, &quot;Red, because normal shows a negative change in red&quot;, &quot;No colour, because the delta is negative&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;normal colours a negative change red and a positive change green. The fall here is shown in red, which sends the wrong message for a fall in pollution, so the team should use inverse.&quot;}, {&quot;q&quot;: &quot;A dashboard script starts with if not picked: st.info(\&quot;Choose a date\&quot;) followed by st.stop(), and then draws a table of rows. The officer clears the date. What does she see?&quot;, &quot;opts&quot;: [&quot;An error and a traceback&quot;, &quot;The info message, and no table&quot;, &quot;An empty table with no rows&quot;, &quot;The table and the info message together&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;st.info shows the message, then st.stop ends the run, so the table code is never reached. The last option forgets that the run ends at the stop.&quot;}, {&quot;q&quot;: &quot;A developer shows 1,392 rows with st.dataframe(readings, hide_index=True). The officer sorts the table by PM2.5, descending. Which statement is true?&quot;, &quot;opts&quot;: [&quot;The sort works, and the row numbers are no longer shown&quot;, &quot;The sort stops working, because hide_index turns sorting off&quot;, &quot;Only the first 20 rows are shown, and sorting is disabled&quot;, &quot;hide_index replaces the table with a caption&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;hide_index removes the index column only. Sorting stays available in st.dataframe. The other statements describe st.table or a change that hide_index does not make.&quot;}, {&quot;q&quot;: &quot;A dashboard has st.sidebar.selectbox and cols = st.columns(3). The developer writes cols[0].metric, cols[1].metric and cols[2].metric for three cards. A later developer moves the selectbox call to the bottom of the script. Where do the selectbox and the cards appear?&quot;, &quot;opts&quot;: [&quot;The selectbox at the bottom of the main area, and the cards in the sidebar&quot;, &quot;The selectbox in the main area, and the cards in the sidebar&quot;, &quot;Both in the main area, in the order written&quot;, &quot;The selectbox in the sidebar, and the three cards side by side in the main area&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The sidebar call places the drop-down on the left whatever its position. The three columns keep the cards in a row. The third option is tempting, but the sidebar call is not drawn in the main area.&quot;}, {&quot;q&quot;: &quot;A form-free page needs a section heading at the third level of text, below the title and the header, followed by a small grey note on its own line. Which pair of calls draws both?&quot;, &quot;opts&quot;: [&quot;st.title followed by st.header&quot;, &quot;st.subheader followed by st.caption&quot;, &quot;st.caption followed by st.subheader&quot;, &quot;st.markdown followed by st.write&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;st.subheader is the third level, and st.caption is the small grey note. The first option uses the two largest levels, the third option puts the note before the heading, and the last option gives plain text rather than a heading and a note.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s script builds a Plotly figure, plotly_fig, in the shared charts module, and a Matplotlib histogram, hist_fig, in the same script. Both must appear on the page, each with the correct call. Which pair is correct?&quot;, &quot;opts&quot;: [&quot;st.pyplot(plotly_fig) and st.plotly_chart(hist_fig)&quot;, &quot;st.plotly_chart(hist_fig) and st.pyplot(plotly_fig)&quot;, &quot;st.plotly_chart(plotly_fig, use_container_width=True) and st.pyplot(hist_fig)&quot;, &quot;st.line_chart(plotly_fig) and st.line_chart(hist_fig)&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each figure goes to the call for its own library. The first two options swap the calls, and both fail. The last option uses line_chart, which draws charts from data rather than from a figure object.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p>The lab is a small data layer for the CityPulse dashboard. The dashboard has a drop-down for a station and a date picker for a day. When the officer changes either one, the page calls one function and shows the numbers it returns. You write that function. The page code is not part of the lab, and you do not need Streamlit to pass it.</p>
+<p>Here is the statement in plain English.</p>
+<ul>
+<li><strong>The function.</strong> You implement <code>station_day_kpis(readings, station_id, date)</code>. It takes a list of readings, a station id as text, and a date as text. It returns one dictionary.</li>
+<li><strong>The shape of a reading.</strong> Each reading is a dictionary with four keys: <code>station_id</code>, <code>ts</code>, <code>pollutant</code> and <code>value</code>.</li>
+<li><strong>The timestamps.</strong> <code>ts</code> is text such as <code>"2026-11-03T08:00"</code>. <code>date</code> is text such as <code>"2026-11-03"</code>.</li>
+<li><strong>Which readings count.</strong> Keep a reading only if its <code>station_id</code> equals the <code>station_id</code> argument and its <code>ts</code> starts with the <code>date</code> text. Both conditions must be true.</li>
+<li><strong><code>count</code>.</strong> The number of matching readings, as a whole number.</li>
+<li><strong><code>avg_value</code>, <code>max_value</code> and <code>min_value</code>.</strong> Taken over the <code>value</code> of the matching readings. Each is rounded to 2 decimal places.</li>
+<li><strong><code>pollutants</code>.</strong> A sorted list of the distinct pollutant names among the matching readings. Each name appears once.</li>
+<li><strong>No match.</strong> If nothing matches, return exactly <code>{"count": 0, "avg_value": 0.0, "max_value": None, "min_value": None, "pollutants": []}</code>.</li>
+<li><strong>The example.</strong> The statement shows a call with station "A" and the date "2026-11-03". Its result has count 3, average 37.0, maximum 51.0 and minimum 18.0, and the pollutants NO2 and PM25, in that order.</li>
+</ul>
+<p>Each run may take up to 30 seconds and use up to 128 MB of memory. A plain, correct solution uses a tiny fraction of either. The limits matter only if you do something very wasteful, such as repeating the whole list many times over.</p>
+<p>The platform scores the lab in two parts. The scoring table is below.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KPIs for station A on the selected day</td>
+<td>25</td>
+</tr>
+<tr>
+<td>single-reading station</td>
+<td>15</td>
+</tr>
+<tr>
+<td>different day filters correctly</td>
+<td>15</td>
+</tr>
+<tr>
+<td>no matching station gives empty KPIs</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Visible total</strong></td>
+<td><strong>70</strong></td>
+</tr>
+<tr>
+<td>Hidden tests (2 tests)</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>The four visible tests are a sample. The platform also runs two hidden tests. You cannot see them, and they are worth 30 points together. They decide the top marks, because a solution that only fits the four visible cases earns at most 70 points. A solution that follows every rule in the statement can earn the full 100. The statement is the only guide to what the hidden tests check, so treat every rule in it as a possible test. The rules table below turns those rules into checks you can run yourself.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>The function uses a handful of Python ideas. Each one is shown below on different data, so you can learn it without being given the lab's answer. Copy each example, run it, and compare the output with the comment. Build your own function from these ideas only after you can explain each one in your own words.</p>
+<p><strong>1. Reading a key safely with <code>get</code>.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">pet</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Milo&quot;</span><span class="p">,</span> <span class="s2">&quot;legs&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;colour&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;legs&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>unknown</code>, then <code>4</code>. <code>pet["colour"]</code> would raise a <code>KeyError</code>, because the key is missing. <code>get</code> returns the default instead, so the program keeps going.</p>
+<p><strong>2. A list comprehension with two conditions.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">trees</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;oak&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;pine&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;oak&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}]</span>
+<span class="n">old_oaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trees</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;oak&quot;</span> <span class="ow">and</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">old_oaks</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>[{'kind': 'oak', 'age': 40}]</code>. The <code>and</code> keeps an item only when both tests are true. The kept items stay in their original order, and the list being read is not changed.</p>
+<p><strong>3. Checking the start of a text.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;invoice-2024-07-19.pdf&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;invoice-2024&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;2024&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2024&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>True</code>, <code>False</code>, then <code>True</code>. <code>startswith</code> checks only the beginning of the text. <code>in</code> finds the text anywhere, including the middle, so it can match where you did not intend. When the statement says "starts with", use <code>startswith</code>.</p>
+<p><strong>4. Removing duplicates and sorting.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;amber&quot;</span><span class="p">]</span>
+<span class="n">unique</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">colours</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">unique</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colours</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>['amber', 'blue', 'red']</code>, then <code>4 3</code>. A <code>set</code> keeps each item once, but a set has no order you can rely on. <code>sorted</code> returns a new list in alphabetical order, and the original list is left as it was.</p>
+<p><strong>5. Sums, averages, and the empty case.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">heights</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">heights</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">heights</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">([],</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>1.5</code>, then <code>2.0 1.0</code>, then <code>None</code>. <code>max([])</code> without a <code>default</code> raises a <code>ValueError</code>, so check for an empty list first, or give a default. Dividing by <code>len</code> of an empty list is also an error. Decide what an empty input returns before you do any arithmetic on it.</p>
+<p><strong>6. Rounding once, at the end.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.675</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>3.33</code>, then <code>2.67</code>, then <code>2</code>. <code>round</code> picks the nearest value, and for an exact half it picks the even neighbour, so <code>round(2.5)</code> is 2. The number 2.675 is stored as slightly less than 2.675, so it rounds down. Round the final result, not the parts that feed it. Rounding a sum first and then dividing can give a different last digit.</p>
+<p><strong>7. Booleans are numbers, and 0 is not the same type as 0.0.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>True</code>, <code>False</code>, <code>False</code>, <code>True</code>, then <code>float</code>. <code>bool</code> is a subclass of <code>int</code>, so <code>isinstance(True, int)</code> is True. The check <code>type(x) is int</code> is stricter, because it accepts only <code>int</code> itself. <code>0 == 0.0</code> is True, so an equality test cannot tell the two apart. <code>type</code> can.</p>
+<p><strong>8. Changing a list in place.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">ordered</span><span class="p">)</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>[3, 1, 2] [1, 2, 3]</code>, then <code>[1, 2, 3]</code>. <code>sorted</code> returns a new list and leaves <code>scores</code> alone. <code>scores.sort()</code> changes <code>scores</code> itself. If that list belongs to the caller, the caller's data has changed, and nobody asked for that.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below comes from a rule in the statement, or from a Python behaviour that could break one. Treat the last column as a check you run yourself. The statement gives you no range for the date, so no boundary is inclusive or exclusive in the usual sense. The day boundary comes entirely from the text match on <code>ts</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep readings whose <code>station_id</code> equals the argument</td>
+<td>Ignores the station, or keeps every reading for the day</td>
+<td>Add a reading for another station on the same day, and check that it is excluded</td>
+</tr>
+<tr>
+<td><code>ts</code> starts with <code>date</code></td>
+<td>Uses <code>date in ts</code>, which also matches text in the middle, or <code>ts == date</code>, which never matches a timestamp with a time in it</td>
+<td>Make one reading at 23:59 on the date and one at 00:00 the next day. Only the first counts</td>
+</tr>
+<tr>
+<td><code>station_id</code> must equal the argument</td>
+<td>Uses <code>in</code> or <code>startswith</code> on the id, so "A" also matches "AB"</td>
+<td>Add a reading for station "AB" on the same day and ask for "A". It must not count</td>
+</tr>
+<tr>
+<td>Both conditions must be true</td>
+<td>Uses <code>or</code> where <code>and</code> is needed</td>
+<td>Add one row that matches only the station and one that matches only the date. Neither may count</td>
+</tr>
+<tr>
+<td><code>count</code> is a number of matching readings, an integer</td>
+<td>Counts distinct stations, or returns a float such as 3.0</td>
+<td><code>type(result["count"]) is int</code> must be True</td>
+</tr>
+<tr>
+<td><code>avg_value</code> is taken over the matching values, rounded to 2 decimals</td>
+<td>Averages every reading, or rounds each value before averaging</td>
+<td>Work out the average by hand from the matching values only, then compare it with the two-decimal result</td>
+</tr>
+<tr>
+<td><code>max_value</code> and <code>min_value</code> are taken over the matching values</td>
+<td>Takes the maximum or minimum over the whole list</td>
+<td>Print the matching values, then check the maximum and minimum against them</td>
+</tr>
+<tr>
+<td>Rounding to 2 decimals</td>
+<td>Rounds the sum, then the average, and gets a different last digit</td>
+<td>Compare the unrounded average printed in full with the rounded value, and check the rounding by hand</td>
+</tr>
+<tr>
+<td><code>pollutants</code> is a sorted list of distinct names</td>
+<td>Returns duplicates, returns a set, or returns the names in whatever order they appear</td>
+<td><code>isinstance(result["pollutants"], list)</code> must be True, and the list must equal the sorted unique names</td>
+</tr>
+<tr>
+<td>No match gives the exact zero dictionary</td>
+<td>Returns <code>None</code>, raises a <code>ValueError</code> from <code>max([])</code>, or returns <code>0</code> where the statement shows <code>0.0</code></td>
+<td>Call with <code>[]</code> and with an unknown station. Compare the whole dictionary with <code>==</code>, and check the type of <code>avg_value</code></td>
+</tr>
+<tr>
+<td>Each <code>value</code> is a number</td>
+<td>Adds a string such as <code>"45.7"</code> to a float, which raises a <code>TypeError</code>, or treats <code>True</code> as the number 1</td>
+<td>Print the type of one reading's <code>value</code> in your own test. Convert only if a test shows text values</td>
+</tr>
+<tr>
+<td>The input list is not changed</td>
+<td>Calls <code>.sort()</code> or <code>.pop()</code> on the readings, so the caller's list changes</td>
+<td>Copy the list before the call, then compare the copy with the list after the call using <code>==</code></td>
+</tr>
+</tbody>
+</table>
+<p>The statement has no tie-break rule, because the function returns no single record that could be picked from a tie. Equal values do not change the maximum, the minimum or the average, and repeated pollutant names are removed by the distinct rule. Do not invent a tie-break rule that the statement does not give.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file from top to bottom. Note the function name, its arguments and any module-level names. Do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any code. For this lab, that is the example call with its exact result, and the no-match call with its exact dictionary.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table. Include the empty input, the day boundary, the wrong station, and the type checks.</li>
+<li>Implement one piece at a time. Write the filter first and check it with an assert. Then write the count, then the three summary values, then the pollutant list.</li>
+<li>Run the asserts after each piece. A failing assert names the rule that broke, so fix that rule before moving on.</li>
+<li>Check the types and the rounding last. Use <code>type(...)</code> to check the types, and round once, at the end.</li>
+<li>Run the visible tests. Read every failure message in full, because each one points at a rule.</li>
+<li>Submit once. Use the rules table, not the submit button, to find out what the hidden tests might check.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The twin problem is about gym class bookings, not CityPulse. It needs the same skills: two conditions in one filter, a month matched as the start of a text, a count of booleans, a rounded ratio, a sum rounded once at the end, a value taken from the earliest item by a key, and a fixed result for no match.</p>
+<p><strong>Scenario:</strong> A gym records each class booking for each member. The app shows a monthly summary for one member.</p>
+<h2 id="your-task">Your task</h2>
+<p>Implement <code>member_month_summary(bookings, member, month)</code>. Each booking is a dictionary with the keys <code>member</code>, <code>class_name</code>, <code>start</code>, <code>fee</code> and <code>attended</code>. <code>start</code> looks like <code>"2027-03-04T18:00"</code>. <code>month</code> looks like <code>"2027-03"</code>. <code>fee</code> is a number, and <code>attended</code> is True or False.</p>
+<p>Keep the bookings where <code>member</code> equals the argument and <code>start</code> starts with <code>month</code>. Return a dictionary with these keys:</p>
+<ul>
+<li><code>booked</code>: the number of matching bookings, as an integer.</li>
+<li><code>attended</code>: the number of matching bookings whose <code>attended</code> is True, as an integer.</li>
+<li><code>attendance_rate</code>: <code>attended</code> divided by <code>booked</code>, rounded to 2 decimal places. It is 0.0 when there are no matches.</li>
+<li><code>fees</code>: the sum of the matching fees, rounded to 2 decimal places.</li>
+<li><code>first_class</code>: the <code>class_name</code> of the matching booking with the earliest <code>start</code>. If two share the earliest <code>start</code>, take the one that comes first in the list.</li>
+</ul>
+<p>If nothing matches, return <code>{"booked": 0, "attended": 0, "attendance_rate": 0.0, "fees": 0.0, "first_class": None}</code>.</p>
+<p>For the bookings in the solution below, <code>member_month_summary(bookings, "M1", "2027-03")</code> returns three bookings, two attended, a rate of 0.67, fees of 21.0, and the first class "Yoga".</p>
+<div class="hl"><pre><span></span><code><span class="n">bookings</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-04T18:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spin&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-09T07:30&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-11T18:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M2&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pilates&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-05T10:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">7.25</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-04-01T18:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">extra</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M3&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pilates&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-02T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M3&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spin&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-02T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">third</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M4&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spin&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-02T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M4&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spin&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-03T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;M4&quot;</span><span class="p">,</span> <span class="s2">&quot;class_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spin&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-03-04T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">empty</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">member_month_summary</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="n">member</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bookings</span> <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">member</span> <span class="ow">and</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">month</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+    <span class="n">booked</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+    <span class="n">attended</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;attended&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">earliest</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="n">booked</span><span class="p">,</span>
+        <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="n">attended</span><span class="p">,</span>
+        <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">attended</span> <span class="o">/</span> <span class="n">booked</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;fee&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="n">earliest</span><span class="p">[</span><span class="s2">&quot;class_name&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="n">before</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bookings</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">,</span> <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="mf">21.0</span><span class="p">,</span> <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">([],</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="s2">&quot;M9&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="s2">&quot;M1&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-04&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span> <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">(</span><span class="n">extra</span><span class="p">,</span> <span class="s2">&quot;M3&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;booked&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;attended&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;attendance_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;fees&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;first_class&quot;</span><span class="p">:</span> <span class="s2">&quot;Pilates&quot;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">member_month_summary</span><span class="p">(</span><span class="n">third</span><span class="p">,</span> <span class="s2">&quot;M4&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-03&quot;</span><span class="p">)[</span><span class="s2">&quot;attendance_rate&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.33</span>
+<span class="k">assert</span> <span class="n">bookings</span> <span class="o">==</span> <span class="n">before</span>
+</code></pre></div>
+
+<p><strong>Line by line.</strong> The first lines build test data. Each booking is a dictionary, and the lists <code>extra</code> and <code>third</code> test the rounding of fees, a tie on the start time, and the rounding of a rate. <code>empty</code> is the exact result for no match.</p>
+<p><code>def member_month_summary(bookings, member, month):</code> defines the function with its three inputs.</p>
+<p><code>matches = [...]</code> is a list comprehension with two conditions. <code>b["member"] == member</code> checks the member, and <code>b["start"].startswith(month)</code> checks that the start text begins with the month. The <code>and</code> requires both to be true. The result is a new list, and <code>bookings</code> is not changed.</p>
+<p><code>if not matches:</code> is true when the list is empty. The function then returns the fixed result at once. This is the guard that stops <code>min</code> from failing later on an empty list.</p>
+<p><code>booked = len(matches)</code> counts the matches. The count is an integer, so it can be used as a divisor.</p>
+<p><code>attended = sum(1 for b in matches if b["attended"] is True)</code> adds one for each booking whose <code>attended</code> value is the bool <code>True</code>. The <code>is True</code> test is used on purpose. A plain <code>if b["attended"]</code> would work for this data, but <code>is True</code> states exactly which value is being counted.</p>
+<p><code>earliest = min(matches, key=lambda b: b["start"])</code> returns the booking with the smallest <code>start</code>. The <code>key</code> says what to compare. Because the timestamps have a fixed format, comparing them as text gives the earliest one. When two bookings tie, <code>min</code> returns the first of them in the list.</p>
+<p>The return dictionary builds each value. <code>round(attended / booked, 2)</code> divides once and rounds once. <code>round(sum(...), 2)</code> adds the fees and rounds the total once, which is why 0.1 plus 0.2 gives 0.3 rather than a long decimal. <code>earliest["class_name"]</code> reads one field from the chosen booking.</p>
+<p>The asserts test the normal case, the empty list, a wrong member, a month with one booking, the rounding of fees, the tie on the start time, and the rounding of one third to 0.33. The last assert checks that the input list is unchanged. A silent run means every check passed.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting the attended bookings&quot;, &quot;code&quot;: [&quot;rows = [{\&quot;attended\&quot;: True}, {\&quot;attended\&quot;: False}, {\&quot;attended\&quot;: True}]&quot;, &quot;attended = 0&quot;, &quot;for b in rows:&quot;, &quot;    if b[\&quot;attended\&quot;] is True:&quot;, &quot;        attended += 1&quot;, &quot;print(attended)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;rows&quot;, &quot;3 bookings&quot;]], &quot;note&quot;: &quot;Create the list of three bookings.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;rows&quot;, &quot;3 bookings&quot;], [&quot;attended&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;Start the count at zero.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;attended&quot;, &quot;0&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The loop takes the first booking.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;attended&quot;, &quot;0&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The test is True, so the next line runs.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;attended&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The count goes up by one.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;attended&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: False}&quot;]], &quot;note&quot;: &quot;The loop takes the second booking.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;attended&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: False}&quot;]], &quot;note&quot;: &quot;The test is False, so line 5 is skipped.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;attended&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The loop takes the third booking.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;attended&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The test is True again.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;attended&quot;, &quot;2&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The count goes up to 2.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;attended&quot;, &quot;2&quot;], [&quot;b&quot;, &quot;{\&quot;attended\&quot;: True}&quot;]], &quot;note&quot;: &quot;The loop has no more bookings and ends.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;attended&quot;, &quot;2&quot;]], &quot;note&quot;: &quot;The print line shows 2.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p><strong>Scenario:</strong> A bakery records each order with the baker's name, the time the order was placed, and the number of loaves. The owner's screen shows one baker's day.</p>
+<h2 id="your-task_1">Your task</h2>
+<p>Implement <code>baker_day_report(orders, baker, day)</code>. Each order is a dictionary with the keys <code>baker</code>, <code>placed</code> and <code>loaves</code>. <code>placed</code> looks like <code>"2027-06-02T07:15"</code>, and <code>day</code> looks like <code>"2027-06-02"</code>. <code>loaves</code> is a whole number.</p>
+<p>Keep the orders where <code>baker</code> equals the argument and <code>placed</code> starts with <code>day</code>. Return a dictionary with these keys:</p>
+<ul>
+<li><code>orders</code>: the number of matching orders, as an integer.</li>
+<li><code>loaves</code>: the total loaves in those orders, as an integer.</li>
+<li><code>earliest</code>: the <code>placed</code> text of the earliest matching order, or <code>None</code> if nothing matches.</li>
+<li><code>biggest</code>: the largest <code>loaves</code> value among the matching orders, or <code>None</code> if nothing matches.</li>
+<li><code>average_loaves</code>: <code>loaves</code> divided by <code>orders</code>, rounded to 1 decimal place. It is 0.0 if nothing matches.</li>
+</ul>
+<p>If nothing matches, return <code>{"orders": 0, "loaves": 0, "earliest": None, "biggest": None, "average_loaves": 0.0}</code>.</p>
+<p>These asserts should pass once your function is written. The data is defined first.</p>
+<div class="hl"><pre><span></span><code><span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T07:15&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T16:40&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T08:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-03T07:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">third</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T10:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T11:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">empty</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T07:15&quot;</span><span class="p">,</span> <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;biggest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">([],</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-04&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">third</span><span class="p">,</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;average_loaves&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.3</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">third</span><span class="p">,</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;earliest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2027-06-02T09:00&quot;</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T07:15&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T16:40&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T08:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-03T07:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">third</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T09:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T10:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;baker&quot;</span><span class="p">:</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T11:00&quot;</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">empty</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">baker</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">orders</span> <span class="k">if</span> <span class="n">o</span><span class="p">[</span><span class="s2">&quot;baker&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">baker</span> <span class="ow">and</span> <span class="n">o</span><span class="p">[</span><span class="s2">&quot;placed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">day</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+    <span class="n">loaves</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;loaves&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">),</span>
+        <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="n">loaves</span><span class="p">,</span>
+        <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;placed&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">),</span>
+        <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;loaves&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">),</span>
+        <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">loaves</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">}</span>
+
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;loaves&quot;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;earliest&quot;</span><span class="p">:</span> <span class="s2">&quot;2027-06-02T07:15&quot;</span><span class="p">,</span> <span class="s2">&quot;biggest&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;average_loaves&quot;</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;biggest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-03&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">([],</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-04&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">empty</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">third</span><span class="p">,</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;average_loaves&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.3</span>
+<span class="k">assert</span> <span class="n">baker_day_report</span><span class="p">(</span><span class="n">third</span><span class="p">,</span> <span class="s2">&quot;Cy&quot;</span><span class="p">,</span> <span class="s2">&quot;2027-06-02&quot;</span><span class="p">)[</span><span class="s2">&quot;earliest&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2027-06-02T09:00&quot;</span>
+</code></pre></div></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>The function name and the three parameters match the starter file exactly, in the same order.</li>
+<li>The function does not call <code>input()</code> or leave <code>print()</code> calls in it.</li>
+<li>The day match uses <code>startswith</code>, or an equivalent that matches the date at the start only. You have tested a reading at 23:59 and one at 00:00 the next day.</li>
+<li>The empty result is the full dictionary, with <code>0.0</code> and <code>None</code> where the statement says so, and you compared it with <code>==</code>.</li>
+<li><code>count</code> is an integer, and <code>avg_value</code>, <code>max_value</code> and <code>min_value</code> are each rounded to 2 decimal places once, at the end.</li>
+<li><code>pollutants</code> is a list, sorted, with no duplicate names.</li>
+<li>The input list is unchanged after the call. You copied it before the call and compared it afterwards.</li>
+<li>The example from the statement and your own asserts all pass.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p><strong>1. What happens in a Streamlit app when the user changes the date range?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Streamlit reruns the whole script from the first line to the last, with the widget now holding the new value. Lines that do not depend on the date are still run again, so anything expensive must be cached. The cached loader returns its stored DataFrame unless its time to live has passed, so only the filtering and drawing repeat. The page then shows the new output.</p></details>
+
+<p><strong>2. Why cache the loader, and what does <code>ttl=600</code> do?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Without a cache, every click downloads the daily file from S3 again, and the app feels slow on a phone. The decorator <code>@st.cache_data</code> stores the loader's result the first time, so later reruns reuse it. The <code>ttl</code> argument, short for time to live, sets how long the stored copy is valid, in seconds. With 600, the data is at most ten minutes old, which is fresh enough for an officer and keeps the cold load under five seconds.</p></details>
+
+<p><strong>3. Why are the S3 keys kept in <code>secrets.toml</code> and not in the code?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Anything committed to Git stays in its history even after deletion, and the repository could be shared or leaked. The secrets file is listed in <code>.gitignore</code>, so Git never tracks it, and <code>git ls-files</code> and <code>gitleaks</code> check that. The cloud app receives the same values through its Secrets settings. The key itself is read-only and limited to <code>clean/agg</code>, so if it did leak, the damage is limited.</p></details>
+
+<p><strong>4. Why does <code>delta_color="inverse"</code> matter for the PM2.5 card?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The default colours a rise green, which suggests good news. For air quality, a higher PM2.5 is worse, so a rise has to show red. The <code>inverse</code> option reverses the colour rule and keeps the card's message right. This is a design decision, so I would name the metric's "good" direction in the README KPI table.</p></details>
+
+<p><strong>5. Why Streamlit, and not Plotly Dash, Power BI or a React app?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The team already writes pandas and Plotly code in Python, so Streamlit needs no HTML or JavaScript and reuses the charts from the citypulse package. Dash offers finer control, but it needs more code than a three-number dashboard requires. Power BI and Tableau suit business users, but would move the logic out of Python and add licensing. A React app with FastAPI is far more work than one ticket allows.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Kind</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streamlit run app/dashboard.py</code></td>
+<td>command</td>
+<td>Starts the app and prints the Local and Network URLs. Use <code>streamlit run</code>, not <code>python</code>.</td>
+</tr>
+<tr>
+<td><code>pip install streamlit pandas</code></td>
+<td>command</td>
+<td>Installs the libraries the dashboard uses.</td>
+</tr>
+<tr>
+<td><code>mkdir -p .streamlit</code></td>
+<td>command</td>
+<td>Creates the settings folder, and does nothing if it exists.</td>
+</tr>
+<tr>
+<td><code>cp a b</code></td>
+<td>command</td>
+<td>Copies file <code>a</code> to file <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>git add</code></td>
+<td>command</td>
+<td>Stages files for the next commit.</td>
+</tr>
+<tr>
+<td><code>git ls-files .streamlit</code></td>
+<td>command</td>
+<td>Lists tracked files in the folder. Must show only <code>secrets.example.toml</code>.</td>
+</tr>
+<tr>
+<td><code>gitleaks detect --source . --log-opts=--all</code></td>
+<td>command</td>
+<td>Scans the whole history for leaked secrets. Must report no leaks.</td>
+</tr>
+<tr>
+<td><code>echo "x" &gt;&gt; .gitignore</code></td>
+<td>command</td>
+<td>Appends a line to a file, keeping its existing lines.</td>
+</tr>
+<tr>
+<td><code>st.title(text)</code></td>
+<td>function</td>
+<td>Draws the page's largest heading.</td>
+</tr>
+<tr>
+<td><code>st.caption(text)</code></td>
+<td>function</td>
+<td>Draws small grey note text.</td>
+</tr>
+<tr>
+<td><code>st.selectbox(label, options)</code></td>
+<td>function</td>
+<td>Draws a drop-down and returns the chosen value.</td>
+</tr>
+<tr>
+<td><code>st.dataframe(df)</code></td>
+<td>function</td>
+<td>Draws a sortable, scrollable table.</td>
+</tr>
+<tr>
+<td><code>st.metric(label, value, delta, delta_color)</code></td>
+<td>function</td>
+<td>Draws a headline number with a change arrow.</td>
+</tr>
+<tr>
+<td><code>delta_color="inverse"</code></td>
+<td>option</td>
+<td>Makes a positive change red. Use it for pollution.</td>
+</tr>
+<tr>
+<td><code>@st.cache_data(ttl=600)</code></td>
+<td>decorator</td>
+<td>Stores a function's result for 600 seconds.</td>
+</tr>
+<tr>
+<td><code>st.secrets["aws"]</code></td>
+<td>value</td>
+<td>Reads the <code>[aws]</code> section of <code>secrets.toml</code>.</td>
+</tr>
+<tr>
+<td><code>st.sidebar.date_input(label, default)</code></td>
+<td>function</td>
+<td>Draws a date picker in the sidebar. Returns a tuple of dates.</td>
+</tr>
+<tr>
+<td><code>st.stop()</code></td>
+<td>function</td>
+<td>Ends the current run without an error.</td>
+</tr>
+<tr>
+<td><code>st.info(text)</code></td>
+<td>function</td>
+<td>Shows a blue message box.</td>
+</tr>
+<tr>
+<td><code>st.columns(3)</code></td>
+<td>function</td>
+<td>Returns three side-by-side areas.</td>
+</tr>
+<tr>
+<td><code>st.line_chart(data, x, y)</code></td>
+<td>function</td>
+<td>Draws a line chart from a DataFrame or Series.</td>
+</tr>
+<tr>
+<td><code>st.plotly_chart(fig, use_container_width=True)</code></td>
+<td>function</td>
+<td>Draws a Plotly figure.</td>
+</tr>
+<tr>
+<td><code>st.pyplot(fig)</code></td>
+<td>function</td>
+<td>Draws a Matplotlib figure.</td>
+</tr>
+<tr>
+<td><code>st.session_state</code></td>
+<td>value</td>
+<td>Per-browser-session store that survives reruns.</td>
+</tr>
+<tr>
+<td><code>st.form(key)</code> and <code>st.form_submit_button(label)</code></td>
+<td>function</td>
+<td>Groups widgets and reruns only on submit.</td>
+</tr>
+<tr>
+<td><code>pd.read_parquet(path, storage_options=...)</code></td>
+<td>function</td>
+<td>Reads a parquet file, here from S3 with keys.</td>
+</tr>
+<tr>
+<td><code>df.assign(col=...)</code></td>
+<td>method</td>
+<td>Returns a copy of the table with a changed column.</td>
+</tr>
+<tr>
+<td><code>ts[:10]</code></td>
+<td>slice</td>
+<td>The date part of an ISO timestamp.</td>
+</tr>
+<tr>
+<td><code>max(items, key=...)</code></td>
+<td>function</td>
+<td>Returns the item with the largest key. Ties keep the first.</td>
+</tr>
+<tr>
+<td><code>round(x, 2)</code></td>
+<td>function</td>
+<td>Rounds to two decimals. Halves round to even.</td>
+</tr>
+<tr>
+<td>Rule: the read goes in a cached function</td>
+<td>rule</td>
+<td>Otherwise every click re-reads S3.</td>
+</tr>
+<tr>
+<td>Rule: never change a cached DataFrame</td>
+<td>rule</td>
+<td>Filter into a new variable instead.</td>
+</tr>
+<tr>
+<td>Rule: secrets only in <code>.streamlit/secrets.toml</code> and cloud settings</td>
+<td>rule</td>
+<td>Never in code or Git. Add the file to <code>.gitignore</code>.</td>
+</tr>
+<tr>
+<td>Rule: test cold load on a phone in a private tab</td>
+<td>rule</td>
+<td>A warm laptop tab does not measure the real load.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;Streamlit rerun model&quot;, &quot;a&quot;: &quot;The whole script runs again from top to bottom on every widget change.&quot;}, {&quot;q&quot;: &quot;st.cache_data(ttl=600)&quot;, &quot;a&quot;: &quot;Stores the function&#x27;s return value for 600 seconds, then re-runs the function.&quot;}, {&quot;q&quot;: &quot;st.stop()&quot;, &quot;a&quot;: &quot;Ends the current run cleanly, with no traceback.&quot;}, {&quot;q&quot;: &quot;st.metric with delta_color=\&quot;inverse\&quot;&quot;, &quot;a&quot;: &quot;Shows a rise in red, the right colour for pollution.&quot;}, {&quot;q&quot;: &quot;st.sidebar&quot;, &quot;a&quot;: &quot;The left column, where filters go.&quot;}, {&quot;q&quot;: &quot;st.session_state&quot;, &quot;a&quot;: &quot;Per-browser-session values that survive reruns.&quot;}, {&quot;q&quot;: &quot;st.form and st.form_submit_button&quot;, &quot;a&quot;: &quot;Hold widget changes back until the user presses the submit button.&quot;}, {&quot;q&quot;: &quot;st.pyplot versus st.plotly_chart&quot;, &quot;a&quot;: &quot;Matplotlib figures go to pyplot, Plotly figures to plotly_chart.&quot;}, {&quot;q&quot;: &quot;.streamlit/secrets.toml&quot;, &quot;a&quot;: &quot;The real keys file, gitignored, read as st.secrets.&quot;}, {&quot;q&quot;: &quot;secrets.example.toml&quot;, &quot;a&quot;: &quot;The committed template with placeholder values only.&quot;}, {&quot;q&quot;: &quot;Idempotent read in a cache&quot;, &quot;a&quot;: &quot;A cached loader that runs once and returns the same result on each later call within its time to live.&quot;}, {&quot;q&quot;: &quot;ts[:10]&quot;, &quot;a&quot;: &quot;The date part of an ISO timestamp, such as 2027-01-05.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D18.html"><small>Previous</small>Day 18 — Exploratory analysis and data visualisation</a><a class="nx" href="D20.html"><small>Next</small>Day 20 — Machine learning foundations</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

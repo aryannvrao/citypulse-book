@@ -1,0 +1,1034 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 5 — Team workflow: branches, pull requests and reviews · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D05" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 2 · Days 1–5 · Tools and teamwork</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a class="cur" href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 2 · Days 1–5 · Tools and teamwork</p><h1>Day 5 — Team workflow: branches, pull requests and reviews</h1><p class="sub">You will be able to create a focused branch, open a pull request that a teammate can review with evidence, enforce review on main, and publish a tagged release with matching notes.</p><p class="meta">94 min read · practice quiz · 17 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D05.mp4?v=1794464967"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Five students work on the same program. If each person edits the shared copy of the code directly, one broken change can stop everyone. The team works the way a school newspaper does. Each story is drafted on its own sheet, an editor reads it and asks for changes, and only then does it go to print.</p>
+<p>In CityPulse, your draft is a <strong>branch</strong>, the editor's request is a <strong>pull request</strong>, the printing rule is <strong>branch protection</strong>, and the printed edition is a <strong>release</strong> with a version number. By the end of this chapter you will be able to start a branch from an up-to-date main, open a pull request linked to an Issue, review a teammate's change by running it, block direct pushes to main, and publish v0.2.0 with an annotated tag and release notes.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Terminal.</strong> A text window where you type commands instead of clicking buttons. Everything in this chapter happens in a terminal, unless the text says otherwise.</p>
+<p><strong>Command.</strong> A line of text you type and run, such as <code>git status</code>. The first word names the program. The words after it tell the program what to do.</p>
+<p><strong>File and folder.</strong> A file holds data, for example a Python script or a CSV table. A folder (also called a directory) holds files and other folders.</p>
+<p><strong>Flag.</strong> An option that changes how a command behaves. Flags usually start with a dash. A short flag is one letter, such as <code>-m</code>. A long flag is a word, such as <code>--force</code>, and starts with two dashes.</p>
+<p><strong>Argument.</strong> A value you pass to a command or function. In <code>git switch -c feat/12-loc-flag</code>, the text <code>feat/12-loc-flag</code> is an argument.</p>
+<p><strong>Git.</strong> A version control system: a program that records saved states of your files, so you can see who changed what and return to an older state.</p>
+<p><strong>Repository (repo).</strong> A folder that Git tracks, including its full history.</p>
+<p><strong>Commit.</strong> One saved state of the files, with a message and an ID. The ID is a long code of letters and digits. Courses and tools often show a short form such as <code>6400cdb</code>.</p>
+<p><strong>Branch.</strong> A movable name that points at a line of commits. Adding a commit moves the name forward. Creating a new branch starts a second line from the commit you are on, so two lines of work can grow without touching each other.</p>
+<p><strong>Remote and origin.</strong> A remote is a copy of the repository on another computer, usually a server. <code>origin</code> is the default name for the main remote, here the copy on GitHub. <code>origin/main</code> means "the main branch as it was the last time Git downloaded it from origin".</p>
+<p><strong>GitHub.</strong> A website that hosts Git repositories and adds Issues, pull requests and releases on top.</p>
+<p><strong>Issue.</strong> A ticket on GitHub that describes a task or bug. Each Issue has a number, such as #12.</p>
+<p><strong>Pull request (PR).</strong> A request to merge one branch into another. It is a page that holds the diff, the discussion and the checks in one place.</p>
+<p><strong>Diff.</strong> The set of lines added and removed between two versions of the files.</p>
+<p><strong>Tag.</strong> A permanent name attached to one commit, such as <code>v0.2.0</code>.</p>
+<p><strong>Release.</strong> A published version on GitHub, built from a tag, with notes that describe what changed.</p>
+<p><strong>Function.</strong> A named block of Python code. It takes inputs (arguments) and returns a result with <code>return</code>.</p>
+<p><strong>Variable.</strong> A name that holds a value, for example <code>total = 0</code>.</p>
+<p><strong>List.</strong> An ordered collection written in square brackets: <code>[1, 2, 3]</code>.</p>
+<p><strong>Dictionary (dict).</strong> A collection of key-and-value pairs written in curly braces. You look up a value by its key: <code>{"name": "tests", "status": "pass"}</code> has the key <code>"status"</code> with the value <code>"pass"</code>.</p>
+<p><strong>Set.</strong> A collection with no order and no repeats: <code>{"S1", "S2"}</code>.</p>
+<p><strong>Loop.</strong> A block that repeats once for each item in a collection. In <code>for item in items:</code>, the indented lines run once per item.</p>
+<p><strong>Assert.</strong> A line that checks a condition. If the condition is false, Python stops with an error. The tests in this chapter use <code>assert</code> to check your functions.</p>
+<p><strong>Server.</strong> A computer that provides a service to other computers. GitHub is a server.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="git-branches-merge-and-rebase">Git branches, merge and rebase</h3>
+<p><strong>What it is.</strong> A branch lets you develop a change in isolation. When the change is ready, you join it back to main. Git has two ways to join. A <strong>merge</strong> creates a new commit that has two parents, so both histories stay visible. A <strong>rebase</strong> copies your commits so they sit on top of the latest main. The copies get new IDs, so the history looks as if you started from the newer main.</p>
+<p><strong>Why CityPulse uses branches.</strong> Five students will change <code>fetch.sh</code> in the same week. Branches keep each change separate until someone has reviewed it. Branch names such as <code>feat/12-loc-flag</code> also link the work to Issue #12 on the project board.</p>
+<p><strong>Alternatives.</strong> The first alternative is to commit everyone's work straight to main. It is the fastest at the start, but untested changes land directly on the shared line. The T08 gate forbids this. The second alternative is a long-lived <code>develop</code> branch, the approach called Git Flow. It suits teams that ship on a schedule at large companies. For a squad of five, the extra branches cost more than they save.</p>
+<p><strong>How it works.</strong> Start every branch from the latest main, so your diff contains only your change. Commit in small steps. When main moves on, bring its new work in. Rebase if only you use the branch. Merge if someone else has pulled it. Then push the branch and open a pull request.</p>
+<p><strong>The slide code, explained.</strong> The course shows this sequence for Issue #12. The lines are restored here to their normal form.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/12-loc-flag
+git<span class="w"> </span>add<span class="w"> </span>-p<span class="w"> </span>scripts/fetch.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add --loc flag to fetch.sh&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Lets squads fetch a second Bengaluru location without editing the script.&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/12-loc-flag
+<span class="c1">## later, main has moved and only you use this branch:</span>
+git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>rebase<span class="w"> </span>origin/main
+git<span class="w"> </span>push<span class="w"> </span>--force-with-lease
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all<span class="w"> </span>-10
+</code></pre></div>
+
+<ul>
+<li><code>git switch main</code> changes the branch you are working on to <code>main</code>. The <code>&amp;&amp;</code> after it means "run the next command only if this one succeeded".</li>
+<li><code>git pull --ff-only</code> downloads the latest main from origin and moves your local main forward. <code>--ff-only</code> means "fast-forward only". If your local main has commits that origin lacks, Git refuses, which stops you from creating an accidental merge commit on main.</li>
+<li><code>git switch -c feat/12-loc-flag</code> creates a new branch and switches to it. <code>-c</code> means "create". The name follows the pattern type, Issue number, short description. <code>feat</code> stands for feature.</li>
+<li><code>git add -p scripts/fetch.sh</code> stages changes in the file. Staging selects what goes into the next commit. <code>-p</code> (patch) shows you each changed block and asks whether to stage it. Type <code>y</code> to stage the block and <code>n</code> to leave it out.</li>
+<li><code>git commit -m "..." -m "..."</code> creates the commit. Each <code>-m</code> adds one paragraph to the message. The first paragraph is the title and the second is the body.</li>
+<li><code>git push -u origin feat/12-loc-flag</code> uploads the branch to origin. <code>-u</code> records the link, so later <code>git push</code> calls need no arguments.</li>
+<li>The line starting with <code>#</code> is a comment. Git and the shell ignore it.</li>
+<li><code>git fetch origin</code> downloads new commits and updates <code>origin/main</code>. It does not change your files.</li>
+<li><code>git rebase origin/main</code> replays your commits on top of the latest <code>origin/main</code>. Your commit IDs change.</li>
+<li><code>git push --force-with-lease</code> overwrites the remote branch with the rewritten history. It refuses if someone has pushed to the branch since your last fetch.</li>
+<li><code>git log --oneline --graph --all -10</code> prints the last ten commits, one per line, and draws the branch lines.</li>
+</ul>
+<p>The last command gives output like this. The exact drawing depends on your history.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --oneline --graph --all -10&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* 5501ef2 Merge PR #42: drop duplicate station readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;|\\&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;| * 6400cdb Drop duplicate station readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;|/&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* a0a4240 CityPulse ingest: load + clean readings&quot;}]}"></div>
+
+<p>Read the graph from the bottom up. The line at the bottom is the oldest commit. The two lines that split and join show a branch that was merged back.</p>
+<div class="box box-trap"><div class="box-h">Trap: Rebasing a branch someone else has pulled</div><p>A rebase rewrites the commits on the branch. A teammate who already has the old commits will get a tangle on their next pull. If anyone else has pulled your branch, merge main into it instead.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Using plain --force</div><p><code>git push --force</code> overwrites the remote branch even when a teammate has pushed new work to it. Use <code>git push --force-with-lease</code>, which refuses in that case.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Branching from a stale main</div><p>If you skip <code>git pull --ff-only</code>, your branch starts from old code. Its diff then includes work that has already been merged, and you get conflicts that were avoidable.</p></div>
+
+<h3 id="pull-requests-and-code-review">Pull requests and code review</h3>
+<p><strong>What it is.</strong> A pull request asks GitHub to merge one branch into another. The page shows the diff, the comments and the results of any checks. Code review means a squad-mate reads the change, runs it, and then comments, requests changes or approves.</p>
+<p><strong>Why CityPulse uses pull requests.</strong> The T08 gate scores each student on one merged PR and two substantive reviews. A closing keyword in the pull request description, <code>Closes #12</code>, closes Issue #12 automatically when the PR merges. Reviewers can also run the change with <code>gh pr checkout</code>, which catches bugs that a diff alone hides.</p>
+<p><strong>Alternatives.</strong> Pair programming gives fast feedback, but it leaves no written review trail for scoring or for future readers. Emailing patches is how the Linux kernel project works. It has no link to Issues, checks or branch protection, so CityPulse does not use it.</p>
+<p><strong>How it works.</strong> The author opens a PR that says what changed, why, and how it was tested. Reviewers check out the branch and run it, then leave labelled comments. The author answers with new commits and marks each thread as resolved. After approval, the PR is merged and the branch deleted.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One pull request from push to merge&quot;, &quot;nodes&quot;: [&quot;Author&#x27;s laptop&quot;, &quot;GitHub&quot;, &quot;Reviewer&#x27;s laptop&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push -u origin feat/12-loc-flag&quot;, &quot;note&quot;: &quot;The branch travels to GitHub, and the PR is opened against main.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;review requested&quot;, &quot;note&quot;: &quot;GitHub tells the reviewer that PR #14 is waiting.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;request changes&quot;, &quot;note&quot;: &quot;The reviewer runs the branch, then posts a blocking comment with evidence.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;fix commit pushed&quot;, &quot;note&quot;: &quot;The author adds a commit to the same branch, and the PR updates by itself.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;approve&quot;, &quot;note&quot;: &quot;The reviewer runs the fix again and approves.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;merged&quot;, &quot;note&quot;: &quot;GitHub merges the PR and closes Issue #12, because the description said Closes #12.&quot;}]}"></div>
+
+<p><strong>The author's commands, explained.</strong> The course uses the GitHub command-line tool, <code>gh</code>. You need to sign in once with <code>gh auth login</code> before these work.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Add --loc flag to fetch.sh&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;Closes #12. How tested: ./scripts/fetch.sh --loc Whitefield appended 1 row.&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--reviewer<span class="w"> </span>ravi-k,meera-s
+</code></pre></div>
+
+<ul>
+<li><code>gh pr create</code> opens a pull request from the current branch.</li>
+<li><code>--base main</code> says the PR should merge into <code>main</code>.</li>
+<li><code>--title</code> sets the PR title, in quotes because it contains spaces.</li>
+<li><code>--body</code> sets the description. <code>Closes #12</code> is the keyword that closes Issue #12 on merge. The backslash at the end of the first line tells the shell that the command continues on the next line.</li>
+<li><code>--reviewer ravi-k,meera-s</code> asks two people to review. The names are separated by a comma and no spaces.</li>
+</ul>
+<p>A successful run prints the address of the new PR. The course's example looks like this.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh pr create --fill --reviewer data-lead&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Creating pull request for feat/dedup-step into main in you/citypulse&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;https://github.com/you/citypulse/pull/42&quot;}]}"></div>
+
+<p>The <code>--fill</code> flag builds the title and body from your commit messages, instead of asking you for them.</p>
+<p><strong>The reviewer's commands, explained.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>checkout<span class="w"> </span><span class="m">14</span>
+./scripts/fetch.sh<span class="w"> </span>--loc<span class="w"> </span>Whitefield<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="w"> </span><span class="s2">&quot;data/raw/</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span><span class="s2">.csv&quot;</span>
+gh<span class="w"> </span>pr<span class="w"> </span>review<span class="w"> </span><span class="m">14</span><span class="w"> </span>--request-changes<span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;Blocking: --loc with no value crashes under set -u; add a usage check.&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh pr checkout 14</code> downloads PR #14's branch and switches your computer to it, so you can run the code.</li>
+<li><code>./scripts/fetch.sh --loc Whitefield</code> runs the script. The <code>./</code> means "the script in this folder". The <code>--loc</code> flag passes the location name Whitefield.</li>
+<li><code>&amp;&amp;</code> runs the next command only if the script succeeded.</li>
+<li><code>tail -1</code> prints the last line of a file. Here it shows the row that was just appended.</li>
+<li><code>$(date +%F)</code> runs <code>date +%F</code>, which prints today's date as <code>2026-11-11</code>, and puts the result into the file path.</li>
+<li><code>gh pr review 14 --request-changes --body "..."</code> posts a review on PR #14 that blocks merging until the problem is fixed. <code>set -u</code> in the script makes an unset variable an error, so a missing <code>--loc</code> value stops the script with a message.</li>
+</ul>
+<p>When the author has fixed the problem and the reviewer has checked it, the reviewer runs <code>gh pr review 14 --approve --body "Re-ran: 1 row appended, no duplicates."</code>. The author then merges with:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>merge<span class="w"> </span><span class="m">14</span><span class="w"> </span>--squash<span class="w"> </span>--delete-branch
+</code></pre></div>
+
+<p><code>--squash</code> combines all the PR's commits into one commit on main. <code>--delete-branch</code> removes the branch on GitHub after the merge. The course's worked example uses a plain merge command instead. Both appear in the course material, so know the difference: <code>--squash</code> gives main one commit per PR, and a merge keeps every commit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Writing LGTM and nothing else</div><p>"LGTM" means "looks good to me". On its own it scores zero under the T08 rules. Say what you ran, with what input, and what you saw.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Reviewing the diff without running the code</div><p>A diff can look correct and still fail at runtime. Run the branch before you approve.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Merging with open threads</div><p>An unresolved thread hides a question that nobody answered. Answer or resolve each thread before merging.</p></div>
+
+<h3 id="branch-protection">Branch protection</h3>
+<p><strong>What it is.</strong> Branch protection is a GitHub setting. It blocks direct pushes to a branch and requires conditions, such as approvals or passing checks, before a PR can merge. It turns a team agreement into a rule that the server enforces.</p>
+<p><strong>Why CityPulse uses it.</strong> The T08 gate tests that <code>git push origin main</code> is rejected. Turning on "include administrators" stops the Tech Lead from bypassing review under deadline pressure. T09 adds a required shellcheck check to the same rule, and T10 audits it.</p>
+<p><strong>Alternatives.</strong> A team agreement costs nothing to set up, but it breaks under deadline pressure. The CHARTER controls need enforcement, so an agreement alone is not enough. Repository rulesets are newer and can cover many branches at once. Either approach works. Classic branch protection is simpler when you protect a single <code>main</code> branch.</p>
+<p><strong>The command, explained.</strong> This command sets the rule through GitHub's API. An API is the set of web addresses a program uses to read or change data on a server.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s1">&#39;repos/{owner}/{repo}/branches/main/protection&#39;</span><span class="w"> </span>--input<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">{</span>
+<span class="s">  &quot;required_status_checks&quot;: null,</span>
+<span class="s">  &quot;enforce_admins&quot;: true,</span>
+<span class="s">  &quot;required_pull_request_reviews&quot;: {&quot;required_approving_review_count&quot;: 1},</span>
+<span class="s">  &quot;restrictions&quot;: null</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh api</code> sends a request to GitHub's API.</li>
+<li><code>-X PUT</code> sets the request method to PUT, which replaces the current setting.</li>
+<li><code>'repos/{owner}/{repo}/branches/main/protection'</code> is the address of the rule for <code>main</code>. <code>{owner}</code> and <code>{repo}</code> are filled in by <code>gh</code> from the repository in your current folder.</li>
+<li><code>--input -</code> tells <code>gh</code> to read the request body from standard input, which is the text that follows.</li>
+<li><code>&lt;&lt;'EOF'</code> starts a "here document". The shell feeds it every line up to the next line that says <code>EOF</code>. The quotes around <code>EOF</code> stop the shell from changing <code>$</code> or other symbols inside the text.</li>
+<li><code>"required_status_checks": null</code> means no automated checks are required yet. T09 changes this later.</li>
+<li><code>"enforce_admins": true</code> applies the rule to administrators as well. This is the setting the trap below is about.</li>
+<li><code>"required_approving_review_count": 1</code> requires one approving review.</li>
+<li><code>"restrictions": null</code> does not limit who may push, beyond the rules above.</li>
+</ul>
+<p>Now check the setting:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span><span class="s1">&#39;repos/{owner}/{repo}/branches/main/protection&#39;</span><span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.required_pull_request_reviews.required_approving_review_count&#39;</span>
+</code></pre></div>
+
+<p><code>--jq</code> picks one value out of the JSON response. The expected output is <code>1</code>.</p>
+<p>Next, prove that a direct push is refused. Make an empty commit, which records no file changes, and try to push it to main.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Test direct push&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">   </span><span class="c1"># expect: protected branch hook declined</span>
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/main
+</code></pre></div>
+
+<ul>
+<li><code>git commit --allow-empty</code> creates a commit with no changes, which is enough to test a push.</li>
+<li><code>git push origin main</code> should print a refusal with the words "protected branch hook declined". Copy this message into your lab notes as evidence.</li>
+<li><code>git reset --hard origin/main</code> moves your local main back to the state of origin's main and discards the test commit. It throws away local changes, so run it only when the test commit is the only thing you want to discard.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Leaving out include administrators</div><p>Without <code>enforce_admins</code>, the rule applies to everyone except repository administrators. The Tech Lead could then push directly. Set <code>"enforce_admins": true</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Protecting main before the PR template is merged</div><p>If you protect main first, the template PR cannot be merged. Merge the template PR, then turn on protection.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Forgetting the test commit</div><p>After the rejected push, the test commit still exists on your local main. Run <code>git reset --hard origin/main</code> to remove it.</p></div>
+
+<h3 id="semantic-versioning-and-releases">Semantic versioning and releases</h3>
+<p><strong>What it is.</strong> A semantic version has three numbers, MAJOR.MINOR.PATCH. A breaking change raises MAJOR. A new feature that stays compatible raises MINOR. A fix raises PATCH. A release is an annotated Git tag on one commit, with notes taken from a CHANGELOG file. An annotated tag stores the author, the date and a message. A CHANGELOG is a file that lists what changed in each version.</p>
+<p><strong>Why CityPulse uses it.</strong> The tags <code>v0.1-p1</code> and <code>v0.2.0</code> mark the exact commit that was demonstrated at each milestone. The CHANGELOG follows the Keep a Changelog format, so the client sponsor gets readable release notes. The T10 gate checks that the GitHub Release notes match the <code>[0.2.0]</code> section of CHANGELOG.md.</p>
+<p><strong>Alternatives.</strong> Date-based versions, such as 2026.11.28, are clear for scheduled releases. They say nothing about compatibility. Lightweight tags are only pointers. They carry no author, date or message, but an annotated tag is auditable.</p>
+<p><strong>The release commands, explained.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+grep<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;^## \[0.2.0\]&#39;</span><span class="w"> </span>CHANGELOG.md
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v0.2.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;P2: team workflow&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.2.0
+awk<span class="w"> </span><span class="s1">&#39;/^## \[0.2.0\]/{f=1; next} /^## \[/{f=0} f&#39;</span><span class="w"> </span>CHANGELOG.md<span class="w"> </span>&gt;<span class="w"> </span>/tmp/notes-0.2.0.md
+gh<span class="w"> </span>release<span class="w"> </span>create<span class="w"> </span>v0.2.0<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;v0.2.0&quot;</span><span class="w"> </span>--notes-file<span class="w"> </span>/tmp/notes-0.2.0.md
+gh<span class="w"> </span>release<span class="w"> </span>view<span class="w"> </span>v0.2.0
+git<span class="w"> </span>ls-remote<span class="w"> </span>--tags<span class="w"> </span>origin<span class="w"> </span>v0.2.0
+</code></pre></div>
+
+<ul>
+<li>The first line makes sure you are tagging the latest main, not an old copy.</li>
+<li><code>grep -n</code> searches a file for a pattern and prints matching lines with their line numbers. The pattern <code>'^## \[0.2.0\]'</code> means "a line that starts with <code>## [0.2.0]</code>". The <code>^</code> anchors the match to the start of the line, and <code>\[</code> matches a literal square bracket. The output is one line that shows where the heading is.</li>
+<li><code>git tag -a v0.2.0 -m "P2: team workflow"</code> creates an annotated tag named <code>v0.2.0</code>. <code>-a</code> makes it annotated, and <code>-m</code> gives the message.</li>
+<li><code>git push origin v0.2.0</code> sends the tag to origin. <code>git push</code> does not send tags unless you name them.</li>
+<li><code>awk</code> is a text-processing tool. The first pattern, <code>/^## \[0.2.0\]/{f=1; next}</code>, switches a flag <code>f</code> on when it meets the heading and skips the heading line. The second pattern, <code>/^## \[/{f=0}</code>, switches the flag off at the next heading. The final <code>f</code> prints each line while the flag is on. The result is the text of the 0.2.0 section alone.</li>
+<li><code>&gt; /tmp/notes-0.2.0.md</code> writes the output into a file. The course uses <code>/tmp</code>, which Git Bash on Windows also understands. Any writable path works, as long as the same path is used in the next command.</li>
+<li><code>gh release create v0.2.0 --title "v0.2.0" --notes-file /tmp/notes-0.2.0.md</code> creates the GitHub Release for the tag and fills its notes from the file.</li>
+<li><code>gh release view v0.2.0</code> prints the release so you can check it.</li>
+<li><code>git ls-remote --tags origin v0.2.0</code> asks origin which tag it holds and prints the ID of that tag. This proves the tag arrived on the server.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Tagging a stale main</div><p>If your local main is behind origin, the tag lands on an older commit. Always run <code>git pull --ff-only</code> first.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Bumping MAJOR for a small change</div><p>Before version 1.0.0, a new feature raises MINOR. Going from v0.2.0 to v1.0.0 would signal a stable, compatibility-promising release that you have not made.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p><strong>Goal.</strong> Remove repeated station readings and zero readings from the data that <code>clean.py</code> reads. A repeated reading is one with the same station, timestamp and pollutant as an earlier row.</p>
+<p><strong>The code.</strong> The course's slides show these two functions. The indentation was lost in the extraction and has been restored.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dedup</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">seen</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(),</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;pollutant&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">dedup</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>  <span class="c1"># drop duplicate station readings</span>
+</code></pre></div>
+
+<p><strong>Explanation, line by line.</strong></p>
+<ul>
+<li><code>def dedup(rows):</code> defines a function named <code>dedup</code>. It takes one argument, <code>rows</code>, a list of readings. Each reading is a dictionary with keys such as <code>"station_id"</code>.</li>
+<li><code>seen, out = set(), []</code> creates two variables at once. <code>seen</code> is an empty set that records keys already met. <code>out</code> is an empty list that will hold the kept rows.</li>
+<li><code>for r in rows:</code> runs the indented lines once for each reading, with <code>r</code> holding the current one.</li>
+<li><code>key = (r["station_id"], r["ts"], r["pollutant"])</code> builds a tuple, which is a fixed group of values in round brackets. Together, these three fields identify one reading.</li>
+<li><code>if key not in seen:</code> checks whether this key has been seen before. It is true only for the first occurrence.</li>
+<li><code>seen.add(key)</code> records the key, and <code>out.append(r)</code> keeps the reading.</li>
+<li><code>return out</code> sends the kept rows back to the caller. Indentation shows which lines belong inside the function.</li>
+<li><code>def clean(rows):</code> defines the second function.</li>
+<li><code>rows = [r for r in rows if float(r["value"]) &gt; 0]</code> is a list comprehension. It builds a new list with only the readings whose <code>value</code> field, converted to a number by <code>float</code>, is greater than zero.</li>
+<li><code>return dedup(rows)</code> passes the filtered list to <code>dedup</code> and returns the result. The comment after <code>#</code> is ignored by Python.</li>
+</ul>
+<p><strong>Tracing the loop.</strong> The next animation uses the same loop pattern on a shorter list of keys, so you can see the set and the list change. Press play and watch each line light up.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Keeping the first copy of each key&quot;, &quot;code&quot;: [&quot;seen, out = set(), []&quot;, &quot;for key in [\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;, \&quot;S1-pm25\&quot;]:&quot;, &quot;    if key not in seen:&quot;, &quot;        seen.add(key)&quot;, &quot;        out.append(key)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;seen&quot;, &quot;set()&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Both names are created. seen is an empty set and out is an empty list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first key.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The key is not in seen yet, so the test is true.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;}&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The key is recorded.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;]&quot;]], &quot;note&quot;: &quot;The first copy is kept.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S2-no2\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;]&quot;]], &quot;note&quot;: &quot;Second time round the loop.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S2-no2\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;]&quot;]], &quot;note&quot;: &quot;This key is new, so the test is true.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S2-no2\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;]&quot;]], &quot;note&quot;: &quot;The new key is recorded.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S2-no2\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;]&quot;]], &quot;note&quot;: &quot;The second key is kept.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;]&quot;]], &quot;note&quot;: &quot;Third time round, and the key is a repeat.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;key&quot;, &quot;\&quot;S1-pm25\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;}&quot;], [&quot;out&quot;, &quot;[\&quot;S1-pm25\&quot;, \&quot;S2-no2\&quot;]&quot;]], &quot;note&quot;: &quot;The test is false, so the indented lines are skipped.&quot;}]}"></div>
+
+<p>The final <code>out</code> holds two keys. The repeat was dropped, and the order of the first occurrences was kept.</p>
+<p><strong>The Git steps.</strong> Create the branch, commit, and read the diff against main:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git switch -c feat/dedup-step&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Switched to a new branch &#x27;feat/dedup-step&#x27;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m &#x27;Drop duplicate station readings&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[feat/dedup-step 6400cdb] Drop duplicate station readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1 file changed, 9 insertions(+), 2 deletions(-)&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git diff --stat main..feat/dedup-step&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean.py | 11 +++++++++--&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1 file changed, 9 insertions(+), 2 deletions(-)&quot;}]}"></div>
+
+<p>The <code>--stat</code> form of <code>git diff</code> summarises the change. <code>main..feat/dedup-step</code> compares the tip of main with the tip of the branch. The line <code>1 file changed, 9 insertions(+), 2 deletions(-)</code> tells the reviewer that the change is small and self-contained. The <code>+</code> and <code>-</code> marks show the added and removed lines.</p>
+<p><strong>The test run.</strong> The course's sample file, <code>readings.csv</code>, has four rows. Two are identical, and one has a value of 0. The course shows the output after running <code>clean.py</code>: two rows remain, which are one reading from S1 and one from S2. The extract does not show the part of <code>clean.py</code> that reads the file from the command line, so your script may print the rows in a different form. What matters is the count.</p>
+<p><strong>The review and the merge.</strong> The author attaches this run to PR #42. A teammate runs the branch, sees two rows instead of four, and approves with evidence. Protected main then accepts only the merge through the PR. The course shows the final merge and graph like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --oneline --graph -n 3&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* 5501ef2 Merge PR #42: drop duplicate station readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;|\\&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;| * 6400cdb Drop duplicate station readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;|/&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* a0a4240 CityPulse ingest: load + clean readings&quot;}]}"></div>
+
+<p>The change is on main through a reviewed PR, and the branch is gone. The commit <code>5501ef2</code> is the merge, and <code>6400cdb</code> is the original commit on the branch.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Run the lab in the CityPulse repository that the course gives you. Your Issue number, branch name and PR number will differ from the examples. Use your own.</p>
+<h3 id="step-1-start-from-a-fresh-main">Step 1: Start from a fresh main</h3>
+<p><strong>What you do.</strong> Make sure your local main matches origin's main.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+</code></pre></div>
+
+<p><strong>You should see.</strong> A line such as <code>Already up to date.</code> or a summary of the new commits that were downloaded.</p>
+<p><strong>How you know it worked.</strong> Running <code>git status</code> prints <code>On branch main</code> and <code>nothing to commit, working tree clean</code>. If <code>git pull --ff-only</code> refuses, your local main has commits that origin does not have. Ask for help before you continue, because you need to know where those commits came from.</p>
+<h3 id="step-2-create-a-focused-feature-branch">Step 2: Create a focused feature branch</h3>
+<p><strong>What you do.</strong> Create one branch for one Issue, named after the Issue.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/12-loc-flag
+</code></pre></div>
+
+<p><strong>You should see.</strong> <code>Switched to a new branch 'feat/12-loc-flag'</code>.</p>
+<p><strong>How you know it worked.</strong> <code>git branch --show-current</code> prints <code>feat/12-loc-flag</code>. Main is unchanged, which you can check with <code>git log --oneline -1 main</code>.</p>
+<h3 id="step-3-make-a-small-reviewable-commit">Step 3: Make a small, reviewable commit</h3>
+<p><strong>What you do.</strong> Change one file, then stage only the lines that belong to this change and commit them.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>-p<span class="w"> </span>scripts/fetch.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add --loc flag to fetch.sh&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Lets squads fetch a second Bengaluru location without editing the script.&quot;</span>
+</code></pre></div>
+
+<p>Answer <code>y</code> or <code>n</code> to each block that <code>git add -p</code> shows.</p>
+<p><strong>You should see.</strong> Git prints the short commit ID and a summary such as <code>1 file changed, 9 insertions(+)</code>.</p>
+<p><strong>How you know it worked.</strong> <code>git show --stat HEAD</code> lists only the file you meant to change. If the list shows other files, undo the commit with <code>git reset --soft HEAD~1</code>, which keeps your edits, and stage again.</p>
+<h3 id="step-4-push-and-open-a-pull-request">Step 4: Push and open a pull request</h3>
+<p><strong>What you do.</strong> Upload the branch and open a PR that closes Issue #12.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/12-loc-flag
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Add --loc flag to fetch.sh&quot;</span><span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;Closes #12. How tested: ./scripts/fetch.sh --loc Whitefield appended 1 row.&quot;</span><span class="w"> </span>--reviewer<span class="w"> </span>ravi-k,meera-s
+</code></pre></div>
+
+<p>Use the reviewer names that the course gives you.</p>
+<p><strong>You should see.</strong> The push prints a summary and a link to create the PR. <code>gh pr create</code> prints the URL of the new PR.</p>
+<p><strong>How you know it worked.</strong> Open the URL. The PR's description contains <code>Closes #12</code>, and the reviewers are listed.</p>
+<h3 id="step-5-respond-to-review-feedback">Step 5: Respond to review feedback</h3>
+<p><strong>What you do.</strong> Read each review comment. Fix the code if the comment is right. Push a new commit, reply to the thread and resolve it.</p>
+<p><strong>Type.</strong> Make the change in your editor, then:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts/fetch.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add usage check for --loc without a value&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+
+<p><strong>You should see.</strong> The push adds the commit to the existing PR. The PR does not open a second one.</p>
+<p><strong>How you know it worked.</strong> Each comment thread on the PR shows either a reply from you or a resolved mark. The reviewer's <code>--approve</code> review appears after they re-run your code. Do not merge until every thread is resolved or answered.</p>
+<h3 id="step-6-sync-with-main-via-rebase">Step 6: Sync with main via rebase</h3>
+<p><strong>What you do.</strong> Only if main moved while your PR was open and nobody else has pulled your branch, bring the new main work under your commits.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>rebase<span class="w"> </span>origin/main
+git<span class="w"> </span>push<span class="w"> </span>--force-with-lease
+</code></pre></div>
+
+<p><strong>You should see.</strong> Git replays your commits one by one. If it stops with a conflict, the output names the file.</p>
+<p><strong>How you know it worked.</strong> <code>git log --oneline --graph -5</code> shows your commits sitting on top of the latest origin/main. The PR page updates on its own.</p>
+<p>If a reviewer has already pulled your branch, do not rebase. Run <code>git merge origin/main</code> instead, then push normally with <code>git push</code>.</p>
+<h3 id="step-7-merge-the-pr-and-clean-up">Step 7: Merge the PR and clean up</h3>
+<p><strong>What you do.</strong> Merge the approved PR and delete the branch, then update your local main.</p>
+<p><strong>Type.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>merge<span class="w"> </span><span class="m">14</span><span class="w"> </span>--squash<span class="w"> </span>--delete-branch
+git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+git<span class="w"> </span>branch<span class="w"> </span>--list<span class="w"> </span>feat/12-loc-flag
+</code></pre></div>
+
+<p>Use the PR number that your own PR shows.</p>
+<p><strong>You should see.</strong> <code>gh pr merge</code> reports the merge and, because of <code>--delete-branch</code>, deletes the branch on GitHub and your local copy of it. <code>git branch --list feat/12-loc-flag</code> prints nothing.</p>
+<p><strong>How you know it worked.</strong> Issue #12 is closed on GitHub, because the PR said <code>Closes #12</code>. <code>git log --oneline -3</code> shows the squashed commit at the top of main.</p>
+<p>If the local branch is still listed, delete it with <code>git branch -D feat/12-loc-flag</code>. After a squash merge, <code>git branch -d</code> refuses, because the branch's original commits are not on main. Check with <code>git log main..feat/12-loc-flag</code> first if you are unsure.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Is this CityPulse PR mergeable? (PR review rules)" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Totals files, additions and deletions</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>No changes -&gt; (0, 0, 0)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Approvals with no blocks -&gt; approved</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Any request_changes -&gt; blocked</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>All rules satisfied -&gt; mergeable</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 68 of the 100 points. The other 32 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K03.html#y2-t08-first-real-pr-per-student-2-peer-reviews-protect-main">Y2-T08 · First real PR per student, 2 peer reviews, protect main</a></li>
+<li><a href="K03.html#y2-t10-p2d01-github-profile-release-v020-peer-audit-start-fetchpy">Y2-T10 · P2/D01: GitHub profile, release v0.2.0, peer audit, start fetch.py</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day quiz has ten case-study multiple-choice questions. There is one question for each topic below, in the same order. You need 70% to pass, so seven correct answers is the minimum. The first attempt is the one your skill score keeps, so take your time on the first try and do not treat it as practice.</p>
+<p>Each case study is a short scenario with a team, a symptom and a constraint. Work through it in a fixed order. Read the last line first, because it tells you what is being asked. Then go back to the scenario and underline the facts that matter: which branch is involved, whether anyone else has pulled it, and whether main has moved since the branch was made. Next, go through the options and eliminate any that are true in general but do not fix this scenario. Many wrong answers are sensible Git advice that answers a different question.</p>
+<p>Watch three words. "Most" asks for the strongest answer when several are reasonable. "First" asks what to do before anything else, so a good step that comes later is wrong. "Best" asks for the option that fits every constraint in the scenario, not just any correct statement. If an option would destroy work or rewrite history that a teammate depends on, it is almost never the answer.</p>
+<h3 id="creating-a-branch">Creating a branch</h3>
+<p><strong>What it is.</strong> A branch is a movable name that points at a commit. When you run <code>git switch -c feat/21-export</code>, Git creates the name at the commit you are on at that moment and switches your files to it. The new branch starts from that point and from nothing else. Creating a branch does not change main, and it changes nothing on GitHub until you push. You can check where you are with these commands:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git switch main&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Switched to branch &#x27;main&#x27;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git pull --ff-only&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Already up to date.&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git switch -c feat/21-export&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Switched to a new branch &#x27;feat/21-export&#x27;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --oneline -1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;6400cdb Drop duplicate station readings&quot;}]}"></div>
+
+<p>The last command shows the commit the branch starts from. The name <code>feat/21-export</code> says nothing about that point, so check the commit before you write any code.</p>
+<p><strong>How it shows up in a case study.</strong> Mina has finished her export code for Issue #21. Her local main is three days old because she has not pulled, and she runs <code>git switch -c feat/21-export</code> straight away. When she opens the pull request, the diff shows old ingest code as new, and Git reports conflicts that a teammate has already solved on main. The reasoning is that the starting point decides what the diff contains. The fix is to switch to main, run <code>git pull --ff-only</code>, create the branch again, and re-apply her edits on top. Nothing needs to be deleted on GitHub, and the name of the branch can stay the same.</p>
+<div class="box box-trap"><div class="box-h">Trap: Thinking a branch name is the starting point</div><p>The name <code>feat/21-export</code> looks as if it starts from a known point, but it does not. Only the commit you are on when you create the branch decides where it begins.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Yusuf has a finished change for Issue #18. His local main is a week old because he has not pulled, and he creates feat/18-alerts with git switch -c right away. What is the main risk of this order?&quot;, &quot;opts&quot;: [&quot;Git deletes the remote main branch on GitHub.&quot;, &quot;The branch starts from the old main, so his diff mixes his change with old code and conflicts become likely.&quot;, &quot;The Issue moves to the Done column on the project board.&quot;, &quot;Main becomes read-only until he pushes the branch.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A new branch starts at the commit you are on, so a stale main gives a stale starting point. git switch -c never touches the remote. The tempting answer about deleting remote main is wrong because no branch command does that.&quot;}, {&quot;q&quot;: &quot;Lena made the branch feat/9-units from an old commit and has not shared it. Main has moved on, and she wants her commits to sit on the latest main without losing any of them. Which step comes first?&quot;, &quot;opts&quot;: [&quot;Delete feat/9-units and create it again, which keeps her commits.&quot;, &quot;Run git push --force to reset the remote branch to match her laptop.&quot;, &quot;Run git fetch origin, then git rebase origin/main, which replays her commits on top of the latest main.&quot;, &quot;Commit an empty change so that Git treats the branch as new.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A rebase moves the starting point of her commits without losing them, and the fetch makes sure origin/main is current. Deleting the branch throws the commits away. The force push does not change where the branch starts, and an empty commit changes nothing about the base.&quot;}, {&quot;q&quot;: &quot;Ahmed is already on main and up to date. He wants a new branch for Issue #30 that starts from this exact commit. Which command does this?&quot;, &quot;opts&quot;: [&quot;git switch -c feat/30-filters&quot;, &quot;git branch --delete feat/30-filters&quot;, &quot;git push origin feat/30-filters&quot;, &quot;git tag -a feat/30-filters&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;git switch -c creates a branch at the current commit and switches to it. git branch --delete removes a branch. git push uploads a branch that already exists, and git tag -a creates a tag rather than a branch.&quot;}]}"></div>
+
+<h3 id="why-a-pull-request-exists">Why a pull request exists</h3>
+<p><strong>What it is.</strong> A pull request is GitHub's page for asking that one branch be merged into another, usually main. It holds the diff, the discussion and the results of any checks in one place. Opening a pull request does not change main. Nothing is merged until someone merges it, and in CityPulse that happens only after a teammate has reviewed the change. The author writes a description that says what changed, why, and how it was tested. The words <code>Closes #12</code> in the description link the pull request to Issue #12, so GitHub closes the Issue when the pull request merges. Here is what the command looks like from the terminal:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh pr create --base main --title \&quot;Add --loc flag\&quot; --body \&quot;Closes #12. How tested: one row appended.\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;https://github.com/you/citypulse/pull/14&quot;}]}"></div>
+
+<p>The printed address is the page where reviewers read the diff and leave comments.</p>
+<p><strong>How it shows up in a case study.</strong> Ravi tells the squad that they do not need pull requests, because he can merge his branch into main himself. He has tested the change on his laptop and is confident it is correct. The squad's gate counts substantive reviews, and the team wants the Issue to close on its own when the work lands. The reasoning is that a pull request is the control point where a teammate reads and runs the change before it reaches main. Ravi's own test is useful evidence, but it is not a review. The pull request is also where <code>Closes #n</code> takes effect, so the right reply explains the review and the link as the purpose of the pull request.</p>
+<div class="box box-trap"><div class="box-h">Trap: Treating the PR as a backup</div><p>A pull request is not a backup. The branch on origin already holds the commits. The pull request is the proposal to merge them.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Sara&#x27;s team asks why every change needs a pull request, even when the author has tested it carefully. Her friend says the pull request only copies the branch to GitHub. Which statement gives the most accurate reason for the pull request?&quot;, &quot;opts&quot;: [&quot;It is a second server copy that keeps the work safe.&quot;, &quot;It renames the branch so that it matches the Issue number.&quot;, &quot;It puts the diff, the discussion and the checks in one place, so a teammate can review and run the change before it reaches main.&quot;, &quot;It is needed only when the branch is older than a week.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The review is the control the squad is scored on, and the pull request is where that review happens. The backup answer is tempting, but the branch on origin already holds the commits, so the pull request adds no backup.&quot;}, {&quot;q&quot;: &quot;Omar opened PR #22 with an empty description. Two reviewers have asked what the change does and whether it closes an Issue, and they will not approve until they know. What should Omar do first?&quot;, &quot;opts&quot;: [&quot;Merge the branch directly to main to save time, since the reviewers are slow.&quot;, &quot;Edit the description to say what changed, why, how it was tested, and include Closes #21, then reply to the reviewers.&quot;, &quot;Ask one reviewer to approve without reading, because the title is clear.&quot;, &quot;Delete the branch, since the pull request has no description.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A description that says what, why and how lets reviewers act on it, and Closes #21 links the Issue. Merging directly skips the review that the course rules require. Deleting the branch would throw away the work.&quot;}, {&quot;q&quot;: &quot;Priya&#x27;s pull request shows green checks, but no reviewer has looked at it. A teammate suggests merging now because the code passes. Which reply best fits the course rules?&quot;, &quot;opts&quot;: [&quot;Merge it, because passing checks replace a review.&quot;, &quot;Close the pull request and push the code straight to main instead.&quot;, &quot;Ask the author to comment LGTM so that the pull request can merge.&quot;, &quot;Wait for a teammate to review and run the branch, because passing checks show that the code builds but do not replace a review.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Checks and reviews answer different questions. A green check shows only what the checks test. The rule requires a reviewer who reads and runs the change. LGTM alone earns no credit.&quot;}]}"></div>
+
+<h3 id="resolving-a-merge-conflict">Resolving a merge conflict</h3>
+<p><strong>What it is.</strong> A merge or a rebase stops with a conflict when two lines of history changed the same lines of one file, and Git cannot choose between the two versions. Git writes both versions into the file between marker lines, so that a person can decide. A conflict looks like this in the terminal:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git merge origin/main&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Auto-merging clean.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;CONFLICT (content): Merge conflict in clean.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Automatic merge failed; fix conflicts and then commit the result.&quot;}]}"></div>
+
+<p>Inside <code>clean.py</code>, the conflicting part is marked like this:</p>
+<div class="hl"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+rows = [r for r in rows if float(r[&quot;value&quot;]) &gt; 0]
+=======
+rows = [r for r in rows if float(r[&quot;value&quot;]) &gt;= 0]
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main
+</code></pre></div>
+
+<p>In a merge, the line <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> starts your version (in a rebase the two sides are swapped: HEAD is the branch you are rebasing onto). The line of equals signs separates the two versions, and the line ending in <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> closes the other side. To resolve the conflict, you edit the lines to keep the correct code, delete the three marker lines, run <code>git add</code> on the file, and then finish the merge or rebase. A conflict is a request for a human decision, not a failure that needs a force push.</p>
+<p><strong>How it shows up in a case study.</strong> Dana's merge of origin/main into her branch stops in clean.py. Her branch removes zero-value readings, and main has changed the same line in another way. Git cannot know which rule CityPulse wants, because that depends on the data and the team's decision. Dana must read both versions, choose or combine them, delete the markers, run the tests, and only then stage and commit. She must not force push, because that would overwrite the teammate's change on origin.</p>
+<div class="box box-trap"><div class="box-h">Trap: Force-pushing to get rid of a conflict</div><p>A force push does not resolve a conflict. It replaces the remote version with yours and can erase a teammate's work.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Dana runs git merge origin/main and sees CONFLICT (content) in clean.py. Her branch and main both changed the same line. Which action resolves the conflict correctly?&quot;, &quot;opts&quot;: [&quot;Edit clean.py to keep the right code, delete the three marker lines, run git add clean.py, then finish the merge with a commit.&quot;, &quot;Run git merge --abort, then git push --force so that the remote matches her branch.&quot;, &quot;Delete clean.py from the branch and commit the deletion.&quot;, &quot;Run git commit --allow-empty to clear the conflict markers.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The markers show two versions, and a person must choose between them. Once the file is edited and staged, Git can finish the merge. The force-push answer is tempting because it looks quick, but it overwrites a teammate&#x27;s work on origin.&quot;}, {&quot;q&quot;: &quot;Kofi is rebasing feat/15-zones onto origin/main, and the rebase stops with a conflict in zones.py. The file shows a line of equals signs between two blocks of code. What does that line mark?&quot;, &quot;opts&quot;: [&quot;The start of the commit message that the rebase will write.&quot;, &quot;The end of the file, where Git stops reading.&quot;, &quot;The boundary between the two versions of the conflicting lines, with the first version above it and the second below.&quot;, &quot;The line that tells Git the conflict is already resolved.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The equals line separates the two versions. The start marker opens the first version and the end marker closes the second. The answer about \&quot;already resolved\&quot; is tempting, but only deleting the markers, running git add and continuing the rebase finishes the job.&quot;}, {&quot;q&quot;: &quot;Meera&#x27;s merge stopped with a conflict. She has edited the file, deleted the markers and run the tests, and they pass. What is the next step, and what must she avoid?&quot;, &quot;opts&quot;: [&quot;Run git add on the file, then complete the merge with a commit, and avoid git push --force to make the remote match her local copy.&quot;, &quot;Run git push --force and skip git add, since the tests pass.&quot;, &quot;Delete the markers, then create a new branch from the old commit.&quot;, &quot;Open a second pull request, because every conflict needs its own pull request.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;git add records the resolved file, and the commit finishes the merge. A force push would overwrite the remote version and could erase a teammate&#x27;s work. The second pull request is wrong because a conflict belongs to the same branch.&quot;}]}"></div>
+
+<h3 id="updating-a-pull-request-with-new-commits">Updating a pull request with new commits</h3>
+<p><strong>What it is.</strong> A pull request follows its branch. The pull request records the branch name, and it shows whatever commits are on that branch. When you push a new commit to the same branch, GitHub adds the commit to the pull request, and the diff updates by itself. You do not open a second pull request. Review threads stay attached to the lines they were written about, so you answer each thread, and then resolve it. The push output shows the branch moving from one commit to another:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git add scripts/fetch.sh&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m \&quot;Add usage check for --loc without a value\&quot;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git push&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;   a1b2c3d..e4f5a6b  feat/12-loc-flag -&gt; feat/12-loc-flag&quot;}]}"></div>
+
+<p>The arrow shows that the branch on origin now points at the new commit, and the pull request shows it too.</p>
+<p><strong>How it shows up in a case study.</strong> Ines's reviewer has requested changes on PR #14 because the script has no usage check. Ines creates a new pull request with the fix, and the first pull request stays open with its review history. Now two reviewers must read the same change twice, and the approval is split. The reasoning is that the pull request is the branch, so the fix belongs on feat/12-loc-flag as a new commit. Ines pushes the commit, replies in the thread, resolves it, and asks the reviewer to re-run the code and approve.</p>
+<div class="box box-trap"><div class="box-h">Trap: Opening a second PR for the fix</div><p>A second pull request splits the review history and leaves the first one stuck. Push the fix to the same branch instead.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Tomas has pushed a fix commit to feat/12-loc-flag after a request for changes on PR #14. The reviewer asks where the new code is. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The reviewer must open a new pull request, because the old one shows a fixed snapshot.&quot;, &quot;The fix exists only on Tomas&#x27;s laptop until he opens a second pull request.&quot;, &quot;The pull request must be closed and reopened before the new commit can appear.&quot;, &quot;The pull request follows its branch, so the new commit appears on PR #14 by itself and the reviewer can check it there.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A pull request is a live view of its branch, not a snapshot. The second pull request is tempting, but it splits the review history and is not needed.&quot;}, {&quot;q&quot;: &quot;Hana&#x27;s reviewer left a thread about a missing usage check. Hana has fixed the code, pushed the commit and replied in the thread. What must happen before the pull request merges?&quot;, &quot;opts&quot;: [&quot;The reviewer re-runs the branch and approves, and every thread is either answered or resolved.&quot;, &quot;Hana merges at once, because she has replied to the thread.&quot;, &quot;The reviewer deletes the thread so that the pull request can merge.&quot;, &quot;Hana rebases main onto the branch so that the thread disappears.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A reply does not replace the reviewer&#x27;s check. The course rule is to answer or resolve each thread, and the approval comes after the re-run. Rebasing does not remove comments from a pull request.&quot;}, {&quot;q&quot;: &quot;Jun pushed a new commit to his branch on Tuesday. On Wednesday a reviewer says the pull request still shows the old diff. What is the most likely explanation, and what should Jun check first?&quot;, &quot;opts&quot;: [&quot;The pull request is a fixed copy, so Jun must recreate it with the same title.&quot;, &quot;GitHub keeps the first diff for a week, so Jun should wait and see.&quot;, &quot;Jun may have pushed to a different branch from the one the pull request follows, so he should check the branch name on the pull request and push there.&quot;, &quot;Git does not send commits to GitHub unless the commit has a tag.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A pull request follows the branch it was opened from. If the push went to another branch, the pull request cannot see it. The tag answer is wrong, because push sends commits and tags are separate.&quot;}]}"></div>
+
+<h3 id="branch-protection-rules">Branch protection rules</h3>
+<p><strong>What it is.</strong> Branch protection is a GitHub rule that applies to a branch such as main. It blocks direct pushes and can require conditions before a merge, such as a pull request with approvals or passing checks. GitHub enforces the rule on the server, so it still applies when someone pushes from a terminal. In CityPulse, the rule requires one approving review, and it covers administrators through the setting <code>enforce_admins</code>. A direct push that is refused looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git push origin main&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;! [remote rejected] main -&gt; main (protected branch hook declined)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;error: failed to push some refs to &#x27;origin&#x27;&quot;}]}"></div>
+
+<p>The setting <code>enforce_admins</code> decides whether the rule binds administrators. If it is missing or false, the rule applies to everyone except repository administrators, and those people can push directly. The required approval count is a number. A value of 1 means one approving review is needed before a merge.</p>
+<p><strong>How it shows up in a case study.</strong> The Tech Lead of a squad pushes a small fix straight to main during a deadline, and the push succeeds. The squad's rule says main needs one approval, so the protection exists on paper, but administrators were not included. The reasoning is that the rule is not enforced for administrators at all. The fix is to set <code>enforce_admins</code> to true, then prove the rule works by trying a direct push that GitHub must refuse. A promise from the Tech Lead is not enforcement, and neither is a team agreement written in a document.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting administrators</div><p>A rule that does not include administrators is not enforced for the Tech Lead. The setting <code>enforce_admins</code> must be true.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The squad has a rule that main needs one approval. The Tech Lead, who is a repository administrator, pushes a fix to main during a deadline, and the push succeeds. Which setting most likely explains this?&quot;, &quot;opts&quot;: [&quot;enforce_admins is missing or false, so the rule does not apply to repository administrators.&quot;, &quot;The required approval count is zero, so the rule has no effect at all.&quot;, &quot;main has no commits, so GitHub has nothing to compare the push with.&quot;, &quot;The branch name does not start with feat, so the protection ignores it.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;enforce_admins decides whether administrators are covered. A count of zero would also explain the result, but the case says the rule requires one approval, so the missing setting is the most likely cause. The naming answer is wrong because the rule is set on main itself.&quot;}, {&quot;q&quot;: &quot;The squad has turned on branch protection for main. Which test best proves that the rule works for everyone, including the Tech Lead?&quot;, &quot;opts&quot;: [&quot;Read the rule on the GitHub settings page and confirm that it is switched on.&quot;, &quot;Run git status on main and check that it says there is nothing to commit.&quot;, &quot;Create a new branch and open a pull request from it.&quot;, &quot;Create an empty commit, try to push it straight to main as the Tech Lead, and keep the rejection message as evidence.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A direct push is exactly what the rule must refuse, so the refusal is the proof. Reading the settings page shows what was intended, not what is enforced. Git status shows local files only, and a new branch does not test the protection on main.&quot;}, {&quot;q&quot;: &quot;Ellen has enabled branch protection on main and requires one approval. A teammate asks whether the rule also stops a direct push from an administrator. What is the correct answer?&quot;, &quot;opts&quot;: [&quot;Only if enforce_admins is set to true, because otherwise administrators are not bound by the rule.&quot;, &quot;Yes, always, because administrators can never push directly under any protection.&quot;, &quot;No, because a rule can only block people who are not in the team.&quot;, &quot;Yes, because the approval count applies to administrators&#x27; own commits by default.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;enforce_admins brings administrators under the rule. Without it, the required approval does not bind them. The \&quot;always\&quot; answer is tempting, but it assumes a setting that the question does not confirm.&quot;}]}"></div>
+
+<h3 id="rebasing-onto-main">Rebasing onto main</h3>
+<p><strong>What it is.</strong> A rebase takes your commits and replays them on top of a newer base, usually origin/main. Git creates new copies of the commits with new IDs, so the history looks as if you started from the newer main. The old commits stay in Git's reflog for a while, but they are no longer on the branch. Because the history has changed, a normal push is refused afterwards. The usual sequence is shown below:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git fetch origin&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git rebase origin/main&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Successfully rebased and updated refs/heads/feat/15-zones.&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git push --force-with-lease&quot;}]}"></div>
+
+<p>The <code>--force-with-lease</code> option replaces the remote branch, but only if the remote is the same as the copy your last fetch saw. If someone else has pushed since then, the push is refused, and nobody's work is overwritten silently.</p>
+<p><strong>How it shows up in a case study.</strong> Ben's branch feat/22-alerts has been pulled by Carla, who has added her own commit on top. Main has moved on, and Ben wants a clean history, so he plans to rebase and force-push. The reasoning is that Carla's copy still holds the old commits, so after the rebase her next pull would produce a tangle of duplicate history. Ben should merge origin/main into the branch instead and push normally. The merge keeps every commit that Carla already has, and it adds one new commit that records the join.</p>
+<div class="box box-trap"><div class="box-h">Trap: Rebasing a shared branch</div><p>The usual mistake is to rebase a branch that a teammate has already pulled. Their next pull then produces duplicate or tangled history.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Carla has pulled Ben&#x27;s branch feat/22-alerts and added a commit. Main has moved on, and Ben wants the new main work in without making a tangle. Which action is correct?&quot;, &quot;opts&quot;: [&quot;Rebase onto origin/main and force-push, so that the branch has one clean line.&quot;, &quot;Delete the branch on GitHub and push a new copy from Ben&#x27;s laptop.&quot;, &quot;Merge origin/main into the branch and push normally, because Carla already has the old commits.&quot;, &quot;Run git commit --allow-empty and push, so that main&#x27;s work is marked as seen.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A rebase gives the commits new IDs, so Carla&#x27;s copy no longer matches the branch. A merge keeps the old commits and adds one new commit. The force-push answer is tempting, but it would leave Carla with a tangle the next time she pulls.&quot;}, {&quot;q&quot;: &quot;Priya is the only person using feat/15-zones, and she has already pushed it. Main has moved on, and she wants her history to sit on the latest main. Which sequence is both readable and safe?&quot;, &quot;opts&quot;: [&quot;git fetch origin, then git rebase origin/main, then git push --force-with-lease.&quot;, &quot;git rebase origin/main, then git push --force.&quot;, &quot;git merge main, then git push --force-with-lease.&quot;, &quot;git rebase main, then git push.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Only Priya uses the branch, so rebasing is safe. Fetching first makes origin/main current, and --force-with-lease refuses if someone has pushed since her fetch. Plain --force skips that check. The answer with git rebase main uses her local main, which may be out of date.&quot;}, {&quot;q&quot;: &quot;Sam rebased his branch onto origin/main and then ran a normal git push. Git refused the push. What is the best explanation?&quot;, &quot;opts&quot;: [&quot;GitHub does not accept branches that have been rebased.&quot;, &quot;The branch name is too long for the remote to store.&quot;, &quot;Main is protected, so no branch can be pushed to it.&quot;, &quot;The rebase rewrote the commits, so the remote branch and the local branch now have different histories, and a normal push is refused.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A push is refused when the remote would lose commits that the local branch does not contain. The answer is --force-with-lease, provided that only Sam uses the branch. The protected-main answer is tempting, but this push targets his own branch.&quot;}]}"></div>
+
+<h3 id="writing-a-useful-review">Writing a useful review</h3>
+<p><strong>What it is.</strong> A code review is a teammate reading a change, running it, and then commenting, requesting changes or approving. A useful review comment says three things: what you ran, what input you used, and what you saw. The course rule is that a bare "LGTM" earns no credit under the T08 rules, and general praise earns nothing either. An approval needs evidence in the same way. A review of a script might look like this in the terminal:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh pr checkout 14&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;./scripts/fetch.sh --loc&quot;}]}"></div>
+
+<p>The first command downloads the pull request's branch to your computer, so you can run it. The second command runs the script with the flag but no value, which is the case the author may have missed. The review comment then reports what happened when the script ran, using the exact input.</p>
+<p><strong>How it shows up in a case study.</strong> Dev's pull request changes a script that reads location names. The reviewer, Ana, writes "Looks good, nice work" and approves. Later the script fails when a location name contains a space. The reasoning is that general praise and an approval without a run give the author nothing to act on. A comment that states the run, the input and the result would have caught the problem: "I ran the branch with a location name that has a space. It failed on the variable, so please quote it." A stranger could act on that without asking any question.</p>
+<div class="box box-trap"><div class="box-h">Trap: Approving without running</div><p>An approval that does not mention a run is not evidence. A reviewer who only read the diff can miss runtime errors.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which review comment earns credit under the course rules for a change to fetch.sh?&quot;, &quot;opts&quot;: [&quot;I ran the branch with a location name that has a space. The script failed with an error on the variable, so please quote it.&quot;, &quot;LGTM.&quot;, &quot;Nice work, the code is clean and tidy.&quot;, &quot;Approved after reading the diff carefully.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The right comment says what was run, what input was used, what happened and what to change. The other three contain no evidence. The answer about reading the diff is tempting, but reading is not running.&quot;}, {&quot;q&quot;: &quot;Kiran wants to approve PR #14, which adds a usage check for the flag. Which approval comment is most useful to the author?&quot;, &quot;opts&quot;: [&quot;Approved, ship it.&quot;, &quot;Good work on this one, team.&quot;, &quot;Re-ran the branch with --loc and no value. It printed the usage message and exited with an error, so the fix works.&quot;, &quot;Approved, I trust you.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The approval states the run and the result, so the author knows what was checked. The first three comments give no evidence. \&quot;I trust you\&quot; is a feeling, not a check.&quot;}, {&quot;q&quot;: &quot;A reviewer has run the branch and found a real bug. Which comment is most useful, and why does its form matter?&quot;, &quot;opts&quot;: [&quot;Please look at it again, something seems wrong.&quot;, &quot;Blocking: with a space in the location name the script stops with an error at the line that uses the variable. Quote the variable and re-run with that input.&quot;, &quot;It is a problem, so maybe fix it sometime.&quot;, &quot;It would be better if it were done in a different way in general.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A comment that a stranger could act on names the problem, the input, the place and the change. A vague comment forces the author to ask questions before fixing anything. The first answer is tempting, but it is vague.&quot;}]}"></div>
+
+<h3 id="squash-merging">Squash merging</h3>
+<p><strong>What it is.</strong> A squash merge takes all the commits of a pull request and combines their changes into one new commit on main. The branch keeps its own commits, but main gets one commit that carries the pull request's title. The command is run by the person who merges the approved pull request:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh pr merge 14 --squash --delete-branch&quot;}]}"></div>
+
+<p>The flag <code>--delete-branch</code> removes the branch after the merge. A normal merge with a merge commit keeps every commit from the branch, plus the merge itself, so main gets all of them. A squash keeps main to one commit per pull request, which makes its history short and easy to read. Neither choice changes the commits that are already on main.</p>
+<p><strong>How it shows up in a case study.</strong> The squad wants main to show one commit per pull request, with no work-in-progress commits such as "fix typo" or "try again". Kiran's pull request has seven commits of that kind. The reasoning is that a squash merge keeps main readable, while the branch keeps the detailed history for anyone who needs it. The team should choose a squash for pull requests where the detail is noise, and a merge where the separate commits matter. A squash does not rewrite main's old history. It adds one new commit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming squash rewrites main&#x27;s old history</div><p>A squash merge does not change the commits that are already on main. It adds one new commit for the pull request.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The squad wants main to get one commit per pull request, with no work-in-progress commits such as \&quot;try again\&quot;. Which command does this once the pull request is approved?&quot;, &quot;opts&quot;: [&quot;git merge --no-ff feat/21-export, which keeps every commit.&quot;, &quot;git push --force origin main, which rewrites main to match the branch.&quot;, &quot;git rebase main on the feature branch, then push the branch.&quot;, &quot;gh pr merge 21 --squash --delete-branch&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The squash merge combines the pull request&#x27;s commits into one commit on main. The no-fast-forward merge keeps every commit, which is the opposite of the goal. Rebasing changes only the branch, and force-pushing main breaks the protection rule.&quot;}, {&quot;q&quot;: &quot;Mina squash-merged PR #21, and now main has one new commit. The individual commits from her branch do not appear on main. Which statement describes this correctly?&quot;, &quot;opts&quot;: [&quot;A squash merge copies the net change into one new commit on main, so the separate branch commits are summarised by that commit.&quot;, &quot;The squash merge deleted the branch commits from the repository.&quot;, &quot;The squash merge rewrote all of main&#x27;s old commits into one commit.&quot;, &quot;The squash merge is only valid when the branch has exactly one commit.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The net change is kept, but the separate commits are not on main. The rewrite answer is the tempting one, but a squash leaves main&#x27;s older history alone.&quot;}, {&quot;q&quot;: &quot;After a squash merge, git branch -d feat/22-alerts refuses to delete the local branch. What is the reason, and what should the developer do?&quot;, &quot;opts&quot;: [&quot;Git refuses because the branch name starts with feat, which is reserved.&quot;, &quot;Git refuses because main is protected, so it cannot check the branch.&quot;, &quot;Git cannot find the branch&#x27;s original commits on main, so it treats the branch as unmerged. Check with git log main..feat/22-alerts, and use -D only if the squash was correct.&quot;, &quot;Git refuses because the branch still exists on GitHub, so it must be deleted there first.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;After a squash, main holds one new commit, so the branch&#x27;s own commits are not in main&#x27;s history. The -d option checks for that and refuses. The -D option forces the deletion, so you should check the commits first. Note that git log main..feat/22-alerts lists every branch commit after a squash, so it shows what would be lost; confirm on GitHub that the pull request was merged.&quot;}]}"></div>
+
+<h3 id="the-fork-concept">The fork concept</h3>
+<p><strong>What it is.</strong> A fork is a copy of someone else's repository that GitHub makes under your own account. You have full rights in your fork, but you have no push rights in the original unless the owner gives you write access. To contribute, you push a branch to your fork and open a pull request from that fork into the original repository. A clone is different. It is a download of a repository to your computer. Your clone usually points at a remote called <code>origin</code>, and that remote can be your fork or the original. A typical clone looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git clone https://github.com/you/citypulse.git&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Cloning into &#x27;citypulse&#x27;...&quot;}]}"></div>
+
+<p>The address contains your account name, which shows that the copy belongs to you. A fork is the GitHub copy. A clone is what you download onto your machine.</p>
+<p><strong>How it shows up in a case study.</strong> A student who is not on the CityPulse team wants to add a feature, but has only read access to the repository. The student forks the repository, pushes feat/31-units to the fork, and opens a pull request from the fork into the original. The reasoning is that the fork is the only place where this student has rights. The original repository receives the proposal, and the Tech Lead reviews it there. A direct push to the original would be refused, and a download of the code would not let the student propose a merge.</p>
+<div class="box box-trap"><div class="box-h">Trap: Confusing a fork with a clone</div><p>A clone is a download to your own machine. A fork is a copy on GitHub that belongs to your account.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A student has only read access to the CityPulse repository and wants to propose a change. What is the correct route?&quot;, &quot;opts&quot;: [&quot;Fork the repository, push a branch to the fork, then open a pull request from the fork into the original.&quot;, &quot;Clone the original repository and push the branch to it, since a clone has write access.&quot;, &quot;Email the patch to the Tech Lead so the change lands on main.&quot;, &quot;Create a new repository with the same name and push the branch there.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The fork gives the student rights in their own copy, and the pull request asks the original to merge it. A clone on its own does not grant push rights to the original. The email route is tempting, but it bypasses the pull request and the protection rule.&quot;}, {&quot;q&quot;: &quot;Aziz says that he has a clone of the repository on his laptop, so he already has a fork. Which correction is right?&quot;, &quot;opts&quot;: [&quot;A clone and a fork are the same thing with different names.&quot;, &quot;A fork is only a local copy on a laptop, and a clone is a copy on GitHub.&quot;, &quot;Both are the same, but a fork needs a paid account.&quot;, &quot;A clone is a download to his laptop, while a fork is a copy on GitHub under his account. He may have both, or only one.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The two words describe different places. A clone does not mean there is a fork on GitHub. The answer that swaps the two definitions is tempting but reversed.&quot;}, {&quot;q&quot;: &quot;Chen has pushed feat/31-units to his fork on GitHub. What does the Tech Lead need to do to review it?&quot;, &quot;opts&quot;: [&quot;Open a pull request from Chen&#x27;s fork and feat/31-units into the original repository&#x27;s main branch, so the Tech Lead can review it there.&quot;, &quot;Copy the branch into the original repository by a direct push, since the fork is public.&quot;, &quot;Wait for Chen to delete his fork, so that the branch moves to origin.&quot;, &quot;Merge the fork into the original on GitHub without a pull request.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The pull request from the fork is the proposal, and it is reviewed in the original repository. A direct push needs write access that Chen does not have in the original. Deleting the fork would remove the branch.&quot;}]}"></div>
+
+<h3 id="comparing-branches-with-diff">Comparing branches with diff</h3>
+<p><strong>What it is.</strong> <code>git diff</code> compares two versions of the files and prints the changed lines. Two dots, as in <code>main..feat/22-alerts</code>, compare the tip of main with the tip of the branch. Three dots, as in <code>main...feat/22-alerts</code>, compare the branch with the point where it split from main. If main has moved on since the split, the two-dot form also shows main's newer work, but as removed lines, as if the branch had deleted it. The three-dot form shows only what the branch adds. The <code>--stat</code> option summarises the result by file:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git diff --stat main...feat/22-alerts&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; alerts.py | 14 ++++++++++++--&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; 1 file changed, 12 insertions(+), 2 deletions(-)&quot;}]}"></div>
+
+<p>The last line gives the totals, so you can see at a glance how large the change is before you read the lines themselves.</p>
+<p><strong>How it shows up in a case study.</strong> Shreya's branch was made a week ago, and main has merged two pull requests since then. She wants to check that her pull request contains only her own change before she asks for a review. Her two-dot diff shows lines from the other pull requests as removed, which looks alarming. The reasoning is that the three-dot form compares against the split point, so only her own change appears. She should run the three-dot <code>--stat</code> command to check the summary, then read the lines of the file she changed.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using two dots when main has moved</div><p>Two dots show main's newer work as removed. Use three dots to see only what the branch adds.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Shreya&#x27;s branch was created a week ago, and main has moved on since then. She wants to see only the changes her branch adds. Which command should she use?&quot;, &quot;opts&quot;: [&quot;git log main&quot;, &quot;git diff main..feat/22-alerts&quot;, &quot;git diff main...feat/22-alerts&quot;, &quot;git status&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Three dots compare the branch with the point where it split from main, so only her own changes appear. Two dots would also show main&#x27;s newer work as removed. git log lists commits, and git status shows local files, so neither answers the question about the changes.&quot;}, {&quot;q&quot;: &quot;Kiran wants to see which commits are on feat/9-units but not yet on main, before he opens a pull request. Which command shows that list?&quot;, &quot;opts&quot;: [&quot;git status&quot;, &quot;git log main..feat/9-units&quot;, &quot;git diff main&quot;, &quot;git branch -a&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The two-dot range in git log lists the commits that are reachable from the branch and not from main. These are the commits that the pull request would add. git diff main shows changed lines rather than a list of commits, and git branch -a lists branch names.&quot;}, {&quot;q&quot;: &quot;A reviewer says the pull request lists changes to files that the author never edited. The author&#x27;s two-dot stat is much longer than expected. What is the most likely cause, and which command shows the true change?&quot;, &quot;opts&quot;: [&quot;The branch has a tag that points at the wrong commit, so the stat is wrong.&quot;, &quot;The remote is down, so the list shows files from an old copy.&quot;, &quot;The branch was created from a tag, so every file looks changed.&quot;, &quot;The branch split from main some time ago, and the two-dot form shows main&#x27;s newer work as removed. Use git diff --stat main...feat to see only the branch&#x27;s own changes.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The longer list comes from main&#x27;s newer commits, which the two-dot form counts as changes to the branch. The three-dot form compares against the split point, so it matches what the pull request shows. The tag answer is tempting, but tags do not change which files a diff contains.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The ten questions below mix the topics in the same order as above. Each one is harder than the questions in its topic. Work through them without looking back, and then read the explanations to see which step you missed.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Aisha pulled main yesterday and then made commits on feat/25-maps. Today the lead asks for a second branch for Issue #26 that does not contain the maps work. Her local main has not moved since yesterday. Which sequence creates the second branch from main?&quot;, &quot;opts&quot;: [&quot;git switch main, then git pull --ff-only, then git switch -c feat/26-legend.&quot;, &quot;git switch -c feat/26-legend, because a new branch starts from main by default.&quot;, &quot;git branch feat/26-legend origin/feat/25-maps.&quot;, &quot;git checkout feat/25-maps, then git switch -c feat/26-legend.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Switching to main first makes the new branch start at main&#x27;s tip. Creating it from the current branch carries the maps commits along. The \&quot;by default\&quot; answer is tempting, but a new branch always starts at the commit you are on, and the other two options start from the maps work.&quot;}, {&quot;q&quot;: &quot;Ravi says that a pull request only adds paperwork because the tests already passed on his laptop. The T08 gate asks whether each change received a substantive review. Which statement is the most accurate?&quot;, &quot;opts&quot;: [&quot;Tests on the laptop make a pull request unnecessary, since the same code will run on main.&quot;, &quot;A pull request exists so that the author can keep a backup of the branch on GitHub.&quot;, &quot;A pull request is where a teammate reviews the change and its evidence before it reaches main, so the author&#x27;s own test does not replace the review.&quot;, &quot;A pull request matters only for Issues that carry a label.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The review is a separate control from testing. The author&#x27;s test is evidence that the reviewer can use, but it is not a review. The backup answer is tempting, but the branch on origin already holds the commits.&quot;}, {&quot;q&quot;: &quot;During a rebase onto origin/main, Ines&#x27;s conflict is in fetch.sh. She has kept the right lines and deleted the marker lines, and Git still reports that the rebase is not finished. What is the next step?&quot;, &quot;opts&quot;: [&quot;Run git add scripts/fetch.sh, then continue the rebase, and check the result with git log --oneline --graph before pushing.&quot;, &quot;Run git rebase --abort, then git push --force so the remote matches her file.&quot;, &quot;Run git commit --allow-empty so that the rebase has a commit to finish.&quot;, &quot;Delete fetch.sh from the branch, then run git push.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;git add records the resolved file, and continuing the rebase replays the next commit. Aborting and force-pushing would throw her work away. An empty commit does not finish a conflict, and deleting the file removes the fix.&quot;}, {&quot;q&quot;: &quot;Tomas pushed a fix to feat/12-loc-flag. He also opened a second pull request for the same change, and now both pull requests have reviewers. Which action keeps the review history readable?&quot;, &quot;opts&quot;: [&quot;Keep both pull requests open and ask the reviewers to pick one.&quot;, &quot;Close the first pull request and approve the second one yourself.&quot;, &quot;Merge the second pull request, then delete the first branch.&quot;, &quot;Close the duplicate pull request with a comment that points to the original, and keep reviewing on the first pull request, which follows feat/12-loc-flag.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;One branch should have one pull request, so keeping both splits the review. Approving your own pull request is not a review. Deleting the first branch would break the pull request that still follows it.&quot;}, {&quot;q&quot;: &quot;The Tech Lead, who is a repository administrator, pushes directly to main. The rule requires one approval and the push succeeds. The rule was turned on last week. What is the best next action?&quot;, &quot;opts&quot;: [&quot;Set enforce_admins to true on the protection rule, then try a direct push as the Tech Lead that GitHub must refuse.&quot;, &quot;Add a required shellcheck check, since that stops direct pushes by anyone.&quot;, &quot;Delete main and recreate it, so that the rule resets from zero.&quot;, &quot;Ask the Tech Lead to avoid pushing to main in future.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;enforce_admins brings administrators under the rule, and a refused test push is the evidence. A status check does not stop administrators on its own. Recreating main would not help, and a promise is not enforcement.&quot;}, {&quot;q&quot;: &quot;Ravi pushed feat/15-zones yesterday. Lena pulled it this morning and added a commit on top. Ravi now needs main&#x27;s latest work. Which sequence is safe?&quot;, &quot;opts&quot;: [&quot;Rebase onto origin/main, then force-push with --force.&quot;, &quot;Delete the remote branch, then push a fresh copy of Ravi&#x27;s local branch.&quot;, &quot;Fetch origin, merge origin/main into the branch, then push normally, because Lena already has the old commits.&quot;, &quot;Run git commit --allow-empty and push, since that updates the branch.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Lena has the old commits, so a rebase would break her copy. A merge keeps the shared history and adds one commit. Force-pushing ignores the safety check, and deleting the remote branch removes Lena&#x27;s commit from origin.&quot;}, {&quot;q&quot;: &quot;Priya&#x27;s review says \&quot;Looks good, approved.\&quot; A teammate asks what makes a review count under the course rules. Which version earns credit?&quot;, &quot;opts&quot;: [&quot;Looks good, I checked the diff carefully and approved.&quot;, &quot;Ran the branch with a location name that has a space. The script printed two rows and no error, so approved.&quot;, &quot;Approved, great work on the structure of the code.&quot;, &quot;LGTM.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Credit goes to a review that states what was run, the input and the result. Checking the diff is reading, and general praise has no evidence. The first answer is tempting, but it reports effort rather than a run.&quot;}, {&quot;q&quot;: &quot;Kiran&#x27;s pull request has seven commits, such as \&quot;start\&quot;, \&quot;fix typo\&quot; and \&quot;try again\&quot;. The squad wants one clean commit per pull request on main. Which command should the reviewer use after approval?&quot;, &quot;opts&quot;: [&quot;git merge --no-ff feat/9-units, so that each commit stays visible.&quot;, &quot;git rebase main on the feature branch, then push with --force.&quot;, &quot;git push origin main --force, to replace main with the branch.&quot;, &quot;gh pr merge 9 --squash --delete-branch&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The squash merge gives main one commit. The no-fast-forward merge keeps all seven. Force-pushing main breaks the protection rule, and rebasing the feature branch changes only the branch.&quot;}, {&quot;q&quot;: &quot;A contributor has read access to the CityPulse repository and wants to propose a change. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The contributor can fork the repository, push the branch to the fork, and open a pull request from the fork into the original.&quot;, &quot;The contributor must be made an owner before a pull request can be opened.&quot;, &quot;The contributor can push directly to main, because read access includes writing.&quot;, &quot;A fork and a clone are the same thing, so cloning alone is enough to open a pull request.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Read access allows the contributor to copy the code but not to push to the original. The fork gives push rights in the contributor&#x27;s own copy, and the pull request asks the original to merge it. A clone alone cannot open a pull request.&quot;}, {&quot;q&quot;: &quot;Dana&#x27;s branch was made from main on Monday. Main received two new commits on Wednesday. Dana runs git diff main..feat/30-stats and sees lines from Wednesday&#x27;s commits shown as removed. Which command shows only her own change?&quot;, &quot;opts&quot;: [&quot;git diff main..feat/30-stats --stat&quot;, &quot;git log main..feat/30-stats --oneline&quot;, &quot;git diff main...feat/30-stats&quot;, &quot;git status feat/30-stats&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Three dots compare the branch with the point where it split from main, so Wednesday&#x27;s commits do not appear. The --stat option with two dots still counts those commits. git log lists commits rather than changed lines, and git status does not compare branches at all.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem with three functions in a starter file. The platform runs automatic tests on your functions after you submit. Some tests use cases that the examples do not show, so you have to think about the edge cases yourself. This part explains the task, the Python ideas it needs, the rules that careless solutions break, and a method you can use for any graded lab. It also works through a twin problem from another domain, so that you can practise the same skills on different data.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse team has a bot that runs as part of its pull request gate. The bot summarises the diff, reads the review states and decides whether a pull request may merge. Your job is to write the three functions that do these three jobs. You do not need files, network access or input from the keyboard.</p>
+<p><strong>The functions and their rules.</strong> Each function is listed with its name, its input and every rule in the statement.</p>
+<ul>
+<li><code>summarize(changes)</code>: <code>changes</code> is a list of dictionaries. Each dictionary has the keys <code>path</code>, <code>additions</code> and <code>deletions</code>.</li>
+<li>Return a tuple of three integers, in this order: the number of files changed, the total of the additions, and the total of the deletions.</li>
+<li>Each dictionary is one changed file, so the file count is the number of dictionaries.</li>
+<li>An empty list has no changes, so the result is <code>(0, 0, 0)</code>.</li>
+<li>The statement's example is one file with 40 additions and 5 deletions, which gives <code>(1, 40, 5)</code>.</li>
+<li><code>review_decision(reviews)</code>: <code>reviews</code> is a list of review states. Each state is one of the strings <code>'approve'</code>, <code>'request_changes'</code> or <code>'comment'</code>.</li>
+<li>Return <code>'blocked'</code> if any reviewer requested changes, even when other reviewers approved.</li>
+<li>Otherwise return <code>'approved'</code> if at least one reviewer approved.</li>
+<li>Otherwise return <code>'pending'</code>. This includes an empty list and a list that contains only comments.</li>
+<li>The statement's example is <code>["approve", "request_changes"]</code>, which gives <code>'blocked'</code>.</li>
+<li><code>is_mergeable(pr)</code>: <code>pr</code> is a dictionary with the keys <code>draft</code>, <code>conflicts</code>, <code>ci_passed</code>, <code>changes_requested</code>, <code>approvals</code> and <code>required_approvals</code>.</li>
+<li>Return <code>True</code> only if the pull request is not a draft, has no conflicts, has passing CI, has no outstanding change requests, and has <code>approvals</code> at least equal to <code>required_approvals</code>.</li>
+<li>In every other case the result is <code>False</code>.</li>
+</ul>
+<p><strong>The scoring.</strong> The five visible tests are worth 68 points in total. The table below gives each one.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Totals files, additions and deletions</td>
+<td>18</td>
+</tr>
+<tr>
+<td>No changes gives (0, 0, 0)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Approvals with no blocks gives approved</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Any request_changes gives blocked</td>
+<td>14</td>
+</tr>
+<tr>
+<td>All rules satisfied gives mergeable</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>The limits are 30 seconds of running time and 128 MB of memory. Your solution is far inside both limits, so speed is not the issue.</p>
+<p><strong>Hidden tests.</strong> There are three hidden tests, worth 32 points together. You do not see their inputs. They run only after you submit, and they check cases that the visible tests do not show. Because they are worth 32 of the 100 points, a solution that passes only the visible tests can reach at most 68. The top marks depend on the hidden tests, so you must read the rules as closely as a tester would. The rules table later in this section lists the checks that they are most likely to make.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that has nothing to do with the lab's data. Work out the output yourself before you check it.</p>
+<p><strong>Adding up a field in a list of dictionaries.</strong> Use <code>sum</code> with a generator, or a loop with a counter. Each item of the list is one record, and you pick out the field you want.</p>
+<div class="hl"><pre><span></span><code><span class="n">sales</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="s2">&quot;bun&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="s2">&quot;cake&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sales</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>4</code>. The <code>for s in sales</code> part runs once for each dictionary, and <code>s["count"]</code> reads one field from it. An empty list gives <code>sum</code> the value <code>0</code>, which is the correct total for no records.</p>
+<p><strong>Returning several values as a tuple, and reading them back.</strong> A tuple is a fixed group of values in round brackets. A function can return one, and the caller can unpack it into names.</p>
+<div class="hl"><pre><span></span><code><span class="n">pair</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span> <span class="o">=</span> <span class="n">pair</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">second</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>7</code>. The three names take the three values in order, so the order you return the values in matters to the caller. The number of values must also match the number of names, or Python raises an error.</p>
+<p><strong>Counting items and checking their number.</strong> <code>len</code> returns the number of items in a list or a tuple. An empty list has length <code>0</code>.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]),</span> <span class="nb">len</span><span class="p">([]))</span>
+</code></pre></div>
+
+<p>The output is <code>2 0</code>. Counting entries is the simplest way to report how many records there were.</p>
+<p><strong>Matching text exactly.</strong> The <code>==</code> operator compares two strings letter by letter, and capital letters count as different letters.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes&quot;</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>False True</code>. A review state written as <code>'Approve'</code> would not match <code>'approve'</code>, so the rules that name exact strings must be followed exactly.</p>
+<p><strong>Checking whether any or all items match.</strong> <code>any</code> returns <code>True</code> when at least one item is true. <code>all</code> returns <code>True</code> only when every item is true. Both behave in a surprising way for an empty list.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">([]),</span> <span class="nb">all</span><span class="p">([]),</span> <span class="nb">any</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nb">all</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>The output is <code>False True True False</code>. An empty list has no item that is true, so <code>any</code> gives <code>False</code>. It also has no item that is false, so <code>all</code> gives <code>True</code>. Remember this when a rule says "every" or "at least one" and the input may be empty.</p>
+<p><strong>Choosing a result with an ordered series of checks.</strong> When several rules can apply, test them in priority order and return at the first match. The order of the <code>if</code> lines is the priority.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">weather_advice</span><span class="p">(</span><span class="n">rain</span><span class="p">,</span> <span class="n">cold</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rain</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;take an umbrella&quot;</span>
+    <span class="k">if</span> <span class="n">cold</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;wear a coat&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;go out&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">weather_advice</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>take an umbrella</code>. Both conditions are true here, but the first one wins, because the function returns as soon as it reaches a <code>return</code>. If the rules are in the wrong order, a case that should be blocked can be reported under a weaker message.</p>
+<p><strong>Booleans, comparisons and the boundary.</strong> A comparison gives <code>True</code> or <code>False</code>. The <code>&gt;=</code> operator includes the boundary value, and <code>&gt;</code> does not.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>True False False</code>. The rule "at least" uses <code>&gt;=</code>, and the rule "more than" uses <code>&gt;</code>. A bool is also a kind of integer in Python, so <code>isinstance(True, int)</code> gives <code>True</code>, but <code>type(True) is int</code> gives <code>False</code>. When a value must be a real bool, a comparison or a literal <code>True</code> is the safest way to return it.</p>
+<p><strong>Reading a dictionary with a default.</strong> <code>dict.get(key, default)</code> returns the value for the key, or the default when the key is missing. A plain <code>dict[key]</code> raises an error for a missing key.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bun&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bun&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cake&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>3 0</code>. A missing optional field can be read safely with <code>get</code>, and a required field should be read with square brackets so that a missing key is noticed.</p>
+<p><strong>Sorting by more than one field.</strong> <code>sorted</code> with a <code>key</code> function builds a new list in the order the key gives. A tuple key sorts by the first item, then by the second item for ties. A minus sign reverses the order of a number.</p>
+<div class="hl"><pre><span></span><code><span class="n">snacks</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;jam&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;bun&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">snacks</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</code></pre></div>
+
+<p>The output is <code>[('jam', 5), ('bun', 2), ('tea', 2)]</code>. The largest count comes first because of the minus sign, and the two items with count 2 are in name order because the name is the second part of the key.</p>
+<p><strong>Not changing the input.</strong> <code>sorted</code> returns a new list and leaves the original alone. The method <code>list.sort()</code> changes the list in place and returns <code>None</code>. Choose the first when the caller's data must stay the same.</p>
+<div class="hl"><pre><span></span><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">new</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>[3, 1] [1, 3]</code>. The original list is unchanged. Changing the input by accident is one of the most common reasons a hidden test fails, because a later check uses the changed data.</p>
+<p><strong>Rounding.</strong> Python's <code>round</code> uses round-half-to-even for exact halves, and it can show a float that is slightly off.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.5</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="mf">2.675</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>2 4 2.67</code>. The float 2.675 is stored as a value a little below 2.675, so it rounds down. Round only at the end of a calculation, and never round a count. A count of whole things is already an exact integer.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row is a rule from the statement, the mistake a careless solution makes, and a check you can run yourself. Write the checks as <code>assert</code> lines before you submit.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summarize</code> returns a tuple of three integers in the order files, additions, deletions</td>
+<td>Returns a list, or puts the values in another order</td>
+<td>Assert that <code>summarize</code> on the statement's example equals <code>(1, 40, 5)</code>. A list never equals a tuple.</td>
+</tr>
+<tr>
+<td>Each dictionary is one changed file</td>
+<td>Counts the additions instead of the files, or counts unique paths</td>
+<td>Pass two dictionaries with the same path and assert the file count is 2.</td>
+</tr>
+<tr>
+<td>No changes gives <code>(0, 0, 0)</code></td>
+<td>Crashes on an empty list, for example by reading the first item</td>
+<td>Assert that <code>summarize([])</code> equals <code>(0, 0, 0)</code>.</td>
+</tr>
+<tr>
+<td>The totals are sums of the two number fields</td>
+<td>Adds deletions to additions, or reads the wrong key</td>
+<td>Use one dictionary where the two numbers differ, and check both totals.</td>
+</tr>
+<tr>
+<td><code>review_decision</code> returns one of three exact strings</td>
+<td>Returns <code>'Approved'</code> with a capital letter, or returns a bool</td>
+<td>Assert with <code>==</code> on each string. <code>'Approved'</code> is not equal to <code>'approved'</code>.</td>
+</tr>
+<tr>
+<td>Any <code>request_changes</code> gives <code>'blocked'</code>, even with an approval</td>
+<td>Checks for an approval first and returns <code>'approved'</code></td>
+<td>Assert that <code>["approve", "request_changes"]</code> and <code>["request_changes"]</code> both give <code>'blocked'</code>.</td>
+</tr>
+<tr>
+<td>At least one approval and no blocks gives <code>'approved'</code></td>
+<td>Requires every review to be an approval</td>
+<td>Assert that <code>["approve", "comment"]</code> gives <code>'approved'</code>.</td>
+</tr>
+<tr>
+<td>Otherwise <code>'pending'</code>, including an empty list and comments only</td>
+<td>Returns <code>'approved'</code> for an empty list, or crashes</td>
+<td>Assert that <code>[]</code> and <code>["comment"]</code> both give <code>'pending'</code>.</td>
+</tr>
+<tr>
+<td><code>is_mergeable</code> is <code>True</code> only when every condition holds</td>
+<td>Returns a truthy value such as the number of approvals, or misses one condition</td>
+<td>Build a dictionary that passes everything, then break one key at a time. Assert <code>False</code> each time.</td>
+</tr>
+<tr>
+<td>The result is a real bool</td>
+<td>Returns <code>1</code>, <code>0</code> or the text <code>'yes'</code></td>
+<td>Assert with <code>is True</code> and <code>is False</code>.</td>
+</tr>
+<tr>
+<td>Approvals must be at least the required number</td>
+<td>Uses a strict greater-than, so equal counts fail</td>
+<td>Assert that equal approvals and required approvals give <code>True</code>.</td>
+</tr>
+<tr>
+<td>A draft is never mergeable</td>
+<td>Ignores the <code>draft</code> key</td>
+<td>Assert that a draft with everything else passing gives <code>False</code>.</td>
+</tr>
+<tr>
+<td>Conflicts block a merge</td>
+<td>Checks the other conditions and forgets <code>conflicts</code></td>
+<td>Assert that <code>conflicts</code> set to <code>True</code> gives <code>False</code>.</td>
+</tr>
+<tr>
+<td>Failed CI blocks a merge</td>
+<td>Forgets <code>ci_passed</code></td>
+<td>Assert that <code>ci_passed</code> set to <code>False</code> gives <code>False</code>.</td>
+</tr>
+<tr>
+<td>Outstanding change requests block a merge</td>
+<td>Checks the approval count only</td>
+<td>Assert that <code>changes_requested</code> set to <code>True</code> gives <code>False</code>, even with enough approvals.</td>
+</tr>
+<tr>
+<td>Zero required and zero given can still be mergeable</td>
+<td>Assumes at least one approval is always needed</td>
+<td>Assert that <code>required_approvals</code> of 0 and <code>approvals</code> of 0, with everything else passing, gives <code>True</code>.</td>
+</tr>
+<tr>
+<td>The input is not changed</td>
+<td>Sorts or removes items from the caller's list</td>
+<td>Copy the input before the call, then assert that the input is equal to the copy afterwards.</td>
+</tr>
+<tr>
+<td>No value is rounded</td>
+<td>Divides a count, or rounds a whole number</td>
+<td>Check that every count in the output is a whole number.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file first. Note the three function names and their arguments, and do not rename them. Read the statement again and underline every rule, every example and every word such as "any", "only", "at least" and "otherwise".</li>
+<li>Write the examples from the statement as <code>assert</code> lines first. The statement's example for <code>summarize</code> and <code>review_decision</code> are the first two checks. Each one should fail at the moment, because nothing is implemented yet.</li>
+<li>Add your own <code>assert</code> lines for every row of the table above. Use empty inputs, the boundary values, ties, mixed cases and the case where two rules are true at once.</li>
+<li>Implement one function, <code>summarize</code>, and run the asserts after each change. Stop and fix the function until every assert about it passes.</li>
+<li>Implement <code>review_decision</code> next, and run the asserts again. Keep the order of the rules exactly as the statement gives them, because the first matching rule decides the answer.</li>
+<li>Implement <code>is_mergeable</code> last among the logic functions, and run all the asserts again. Check each condition on its own before you combine them.</li>
+<li>Check types and rounding last. Confirm that the tuple is a tuple, that the strings are exact, and that the result of <code>is_mergeable</code> is a real bool. There is no rounding in this lab, so make sure none has crept in.</li>
+<li>Run the visible tests and read every failure message. Submit once, after your own asserts and the visible tests both pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The problem below is a bike-share task with the same skills as the lab: totals over a list of dictionaries, a decision that depends on several conditions, and a boolean with a strict boundary. It is a different domain with different data, so it is not the lab.</p>
+<p><strong>The scenario.</strong> BikeHop runs a bike-share app. Its back office checks trips, fares and accounts with three functions.</p>
+<ul>
+<li><code>trip_totals(trips)</code>: <code>trips</code> is a list of dictionaries with the keys <code>km</code> and <code>minutes</code>, both whole numbers. Return a tuple of three whole numbers: the number of trips, the total of <code>km</code>, and the total of <code>minutes</code>. An empty list gives <code>(0, 0, 0)</code>.</li>
+<li><code>fare_state(fares)</code>: <code>fares</code> is a list of dictionaries with the key <code>status</code>, which is <code>'paid'</code>, <code>'waived'</code> or <code>'due'</code>. Return <code>'overdue'</code> if any fare is <code>'due'</code>. Otherwise return <code>'clear'</code>. An empty list gives <code>'clear'</code>.</li>
+<li><code>can_rent(account)</code>: <code>account</code> is a dictionary with the keys <code>suspended</code> (<code>True</code> or <code>False</code>), <code>active_rentals</code> and <code>limit</code>, both whole numbers. Return <code>True</code> only when the account is not suspended and <code>active_rentals</code> is less than <code>limit</code>. Otherwise return <code>False</code>.</li>
+</ul>
+<p><strong>The solution and its tests.</strong> Read the code and the asserts. The solution is shown in full here because this is a worked example. You will write your own solution to the second twin problem below.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trip_totals</span><span class="p">(</span><span class="n">trips</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trips</span><span class="p">)</span>
+    <span class="n">total_km</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trips</span><span class="p">)</span>
+    <span class="n">total_minutes</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;minutes&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trips</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">total_km</span><span class="p">,</span> <span class="n">total_minutes</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fare_state</span><span class="p">(</span><span class="n">fares</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fares</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;overdue&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;clear&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_rent</span><span class="p">(</span><span class="n">account</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">account</span><span class="p">[</span><span class="s2">&quot;suspended&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">account</span><span class="p">[</span><span class="s2">&quot;active_rentals&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">account</span><span class="p">[</span><span class="s2">&quot;limit&quot;</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">trip_totals</span><span class="p">([])</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">trip_totals</span><span class="p">([{</span><span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}])</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">trip_totals</span><span class="p">([{</span><span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">fare_state</span><span class="p">([])</span> <span class="o">==</span> <span class="s2">&quot;clear&quot;</span>
+<span class="k">assert</span> <span class="n">fare_state</span><span class="p">([{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;paid&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;waived&quot;</span><span class="p">}])</span> <span class="o">==</span> <span class="s2">&quot;clear&quot;</span>
+<span class="k">assert</span> <span class="n">fare_state</span><span class="p">([{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;paid&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;due&quot;</span><span class="p">}])</span> <span class="o">==</span> <span class="s2">&quot;overdue&quot;</span>
+<span class="k">assert</span> <span class="n">can_rent</span><span class="p">({</span><span class="s2">&quot;suspended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;active_rentals&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">can_rent</span><span class="p">({</span><span class="s2">&quot;suspended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;active_rentals&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">can_rent</span><span class="p">({</span><span class="s2">&quot;suspended&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;active_rentals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">can_rent</span><span class="p">({</span><span class="s2">&quot;suspended&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;active_rentals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p><strong>Explanation, line by line.</strong></p>
+<ul>
+<li><code>count = len(trips)</code> counts the dictionaries. An empty list gives <code>0</code>.</li>
+<li><code>total_km = sum(t["km"] for t in trips)</code> adds the <code>km</code> field of each trip. For an empty list, <code>sum</code> returns <code>0</code>.</li>
+<li><code>total_minutes = sum(t["minutes"] for t in trips)</code> does the same for the <code>minutes</code> field.</li>
+<li><code>return (count, total_km, total_minutes)</code> returns the three numbers in the order the statement gives. All three are whole numbers, so no rounding is needed.</li>
+<li><code>def fare_state(fares):</code> starts the second function. The loop checks each fare in turn.</li>
+<li><code>if f["status"] == "due":</code> compares the text exactly. A fare with status <code>'Due'</code> would not match, which is why the rule uses the exact lower-case word.</li>
+<li><code>return "overdue"</code> leaves the function at once, so the first overdue fare decides the answer. The loop does not need to look at the rest.</li>
+<li><code>return "clear"</code> is reached only when the loop finished without a return. This covers the empty list and the case with only paid or waived fares.</li>
+<li><code>if account["suspended"]:</code> returns <code>False</code> straight away for a suspended account. The later checks are not needed, so the order matters.</li>
+<li><code>return account["active_rentals"] &lt; account["limit"]</code> returns the result of a comparison, which is a real bool. The strict <code>&lt;</code> means that an account with exactly <code>limit</code> rentals cannot rent another bike.</li>
+</ul>
+<p>The asserts show the expected output. When the file runs, nothing is printed, and each assert passes silently. If one fails, Python stops and names the line.</p>
+<p><strong>Tracing the loop in <code>fare_state</code>.</strong> The animation below steps through the function on two fares: one paid and one due. Press play and watch the variables change.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Finding an overdue fare&quot;, &quot;code&quot;: [&quot;def fare_state(fares):&quot;, &quot;    for f in fares:&quot;, &quot;        if f[\&quot;status\&quot;] == \&quot;due\&quot;:&quot;, &quot;            return \&quot;overdue\&quot;&quot;, &quot;    return \&quot;clear\&quot;&quot;, &quot;state = fare_state([{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}])&quot;], &quot;steps&quot;: [{&quot;line&quot;: 6, &quot;state&quot;: [[&quot;state&quot;, &quot;unset&quot;]], &quot;note&quot;: &quot;The call starts with two fares, one paid and one due.&quot;}, {&quot;line&quot;: 1, &quot;state&quot;: [[&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The function starts, and fares holds the list it was given.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;f&quot;, &quot;{\&quot;status\&quot;: \&quot;paid\&quot;}&quot;], [&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The loop takes the first fare.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;f&quot;, &quot;{\&quot;status\&quot;: \&quot;paid\&quot;}&quot;], [&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The status is not \&quot;due\&quot;, so the test is false.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;f&quot;, &quot;{\&quot;status\&quot;: \&quot;due\&quot;}&quot;], [&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The loop takes the second fare.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;f&quot;, &quot;{\&quot;status\&quot;: \&quot;due\&quot;}&quot;], [&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The status is \&quot;due\&quot;, so the test is true.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;f&quot;, &quot;{\&quot;status\&quot;: \&quot;due\&quot;}&quot;], [&quot;fares&quot;, &quot;[{\&quot;status\&quot;: \&quot;paid\&quot;}, {\&quot;status\&quot;: \&quot;due\&quot;}]&quot;]], &quot;note&quot;: &quot;The function returns overdue at once, and nothing else is checked.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;state&quot;, &quot;\&quot;overdue\&quot;&quot;]], &quot;note&quot;: &quot;The returned text is stored in state.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a new twin problem, a shop stock check. Write two functions in your own file, then make the asserts below pass.</p>
+<p><strong>The scenario.</strong> A corner shop keeps a list of its stock. An item needs reordering when its stock is below its minimum.</p>
+<ul>
+<li><code>reorder_list(items)</code>: <code>items</code> is a list of dictionaries with the keys <code>name</code> (text), <code>stock</code> and <code>minimum</code> (both whole numbers). Return a list of the names of the items that need reordering. An item needs reordering when <code>stock</code> is less than <code>minimum</code>, so equal values do not count. Sort the names by the shortfall first, with the largest shortfall at the top, where the shortfall is <code>minimum</code> minus <code>stock</code>. Sort by name, A to Z, when two shortfalls are equal. An empty list gives an empty list. The function must not change the input.</li>
+</ul>
+<p>Make these assert lines pass.</p>
+<div class="hl"><pre><span></span><code><span class="n">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;milk&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;salt&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;milk&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;jam&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;oil&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bean&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;bean&quot;</span><span class="p">,</span> <span class="s2">&quot;oil&quot;</span><span class="p">]</span>
+<span class="n">before</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+<span class="n">reorder_list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">items</span> <span class="o">==</span> <span class="n">before</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>Try your own solution first. This is the full solution, as a tested block.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reorder_list</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="n">short</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;stock&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;minimum&quot;</span><span class="p">]]</span>
+    <span class="n">short</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;minimum&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;stock&quot;</span><span class="p">]),</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">short</span><span class="p">]</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;milk&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;salt&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;milk&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;jam&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">reorder_list</span><span class="p">([{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;oil&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bean&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;bean&quot;</span><span class="p">,</span> <span class="s2">&quot;oil&quot;</span><span class="p">]</span>
+<span class="n">before</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+<span class="n">reorder_list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">items</span> <span class="o">==</span> <span class="n">before</span>
+</code></pre></div>
+
+<p>The first line keeps only the items where stock is below minimum, using a new list. The <code>sort</code> call orders that new list by a key that is a tuple. The minus sign on the shortfall makes the largest shortfall come first, and the name breaks ties in A to Z order. The last line returns the names in that order. Because the function builds a new list and sorts only that list, the caller's dictionaries are never changed.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Each function returns the type the statement names: a tuple from <code>summarize</code>, one of three exact strings from <code>review_decision</code>, and a real <code>True</code> or <code>False</code> from <code>is_mergeable</code>.</li>
+<li>The empty input cases return the empty result: <code>(0, 0, 0)</code> for <code>summarize</code>, <code>'pending'</code> for <code>review_decision</code>, and, for <code>is_mergeable</code>, a pull request with zero required approvals and zero given still passes when every other condition is met.</li>
+<li>Each condition of <code>is_mergeable</code> has its own assert, with the one condition failing and everything else passing.</li>
+<li>The boundary cases are covered: approvals equal to required approvals, and zero required approvals with zero given.</li>
+<li>The order of the rules in <code>review_decision</code> is right, so that <code>request_changes</code> beats <code>approve</code>.</li>
+<li>Your functions do not change the dictionaries or lists that the caller passed in.</li>
+<li>No value is rounded, and every count is a whole number.</li>
+<li>The file keeps the three function names exactly as the starter file gives them, and it has no stray print lines that the platform could confuse with output.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p><strong>Q1. Why does the team never commit straight to main?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Main is the line that everyone builds from, so a broken change there stops everyone. Committing on a branch lets a change be tested and reviewed before it lands. Branch protection makes this a rule the server enforces, not a habit people can skip under deadline pressure. The T08 gate tests that a direct push is refused, so this is also checked.</p></details>
+
+<p><strong>Q2. When is a rebase safe, and why must you not use one on a branch that others have pulled?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A rebase is safe when only you use the branch, because it rewrites commit IDs and nobody else holds the old ones. After a rebase, you publish the branch with <code>--force-with-lease</code>, which refuses if someone pushed in the meantime. If a teammate has pulled the branch, a rebase leaves their copy pointing at commits that no longer exist on the branch. In that case, merge main into the branch and push normally.</p></details>
+
+<p><strong>Q3. What does "Closes #12" do in a pull request?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>It is a closing keyword that GitHub reads from the PR description. When the PR merges into the default branch, GitHub closes Issue #12 automatically. This keeps the project board accurate without a manual step. The keyword only takes effect on merge, so an open PR leaves the Issue open.</p></details>
+
+<p><strong>Q4. How do you prove that branch protection works?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Create an empty commit and try to push it straight to main. GitHub must refuse the push, and the message to look for is "protected branch hook declined". Keep the rejection message as evidence. Then reset the local main to origin's main with <code>git reset --hard origin/main</code>, so the test commit does not stay on your machine.</p></details>
+
+<p><strong>Q5. How do you choose the next version number after v0.2.0?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Look at the size of the change. A fix raises the PATCH number, so v0.2.1. A new feature that stays compatible raises the MINOR number, so v0.3.0. A breaking change raises MAJOR, but before version 1.0.0 the course rule is that a new feature still raises MINOR. The number tells users how much they need to check before upgrading.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command, flag or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git switch main</code></td>
+<td>Changes the current branch to main.</td>
+</tr>
+<tr>
+<td><code>git pull --ff-only</code></td>
+<td>Downloads main and moves it forward, refusing any merge commit.</td>
+</tr>
+<tr>
+<td><code>git switch -c NAME</code></td>
+<td>Creates a new branch from the current commit and switches to it.</td>
+</tr>
+<tr>
+<td><code>git add -p FILE</code></td>
+<td>Stages chosen blocks of a file, asking y or n for each.</td>
+</tr>
+<tr>
+<td><code>git commit -m "TITLE" -m "BODY"</code></td>
+<td>Commits with a title and a body paragraph.</td>
+</tr>
+<tr>
+<td><code>git push -u origin NAME</code></td>
+<td>Uploads a branch and links it to origin.</td>
+</tr>
+<tr>
+<td><code>git fetch origin</code></td>
+<td>Downloads new commits without changing files.</td>
+</tr>
+<tr>
+<td><code>git rebase origin/main</code></td>
+<td>Replays your commits on top of the latest main; new IDs.</td>
+</tr>
+<tr>
+<td><code>git push --force-with-lease</code></td>
+<td>Overwrites the remote branch only if no one pushed since your fetch.</td>
+</tr>
+<tr>
+<td><code>git push --force</code></td>
+<td>Overwrites the remote even when others have pushed; avoid.</td>
+</tr>
+<tr>
+<td><code>git log --oneline --graph --all -10</code></td>
+<td>Shows the last ten commits with branch lines.</td>
+</tr>
+<tr>
+<td><code>git diff --stat main..NAME</code></td>
+<td>Summarises changes between the tips of main and the branch.</td>
+</tr>
+<tr>
+<td><code>git diff main...NAME</code></td>
+<td>Shows only the branch's own changes since it split from main.</td>
+</tr>
+<tr>
+<td><code>git merge --no-ff NAME</code></td>
+<td>Merges and always creates a merge commit.</td>
+</tr>
+<tr>
+<td><code>git branch -d NAME</code></td>
+<td>Deletes a merged local branch.</td>
+</tr>
+<tr>
+<td><code>git tag -a vX.Y.Z -m "MESSAGE"</code></td>
+<td>Creates an annotated tag.</td>
+</tr>
+<tr>
+<td><code>git push origin vX.Y.Z</code></td>
+<td>Sends one tag to origin; push does not send tags by itself.</td>
+</tr>
+<tr>
+<td><code>git ls-remote --tags origin vX.Y.Z</code></td>
+<td>Asks origin whether it holds that tag.</td>
+</tr>
+<tr>
+<td><code>git commit --allow-empty -m "MESSAGE"</code></td>
+<td>Creates a commit with no file changes, for testing.</td>
+</tr>
+<tr>
+<td><code>git reset --hard origin/main</code></td>
+<td>Discards local commits and changes; use with care.</td>
+</tr>
+<tr>
+<td><code>gh pr create --base main --title "..." --body "Closes #n ..." --reviewer NAME</code></td>
+<td>Opens a PR into main with a reviewer.</td>
+</tr>
+<tr>
+<td><code>gh pr create --fill</code></td>
+<td>Builds the title and body from commit messages.</td>
+</tr>
+<tr>
+<td><code>gh pr checkout N</code></td>
+<td>Downloads PR N's branch to run it locally.</td>
+</tr>
+<tr>
+<td><code>gh pr review N --request-changes --body "..."</code></td>
+<td>Blocks merge with a comment.</td>
+</tr>
+<tr>
+<td><code>gh pr review N --approve --body "..."</code></td>
+<td>Approves the PR with a comment.</td>
+</tr>
+<tr>
+<td><code>gh pr merge N --squash --delete-branch</code></td>
+<td>Squashes the PR into one commit and deletes the branch.</td>
+</tr>
+<tr>
+<td><code>gh api -X PUT 'repos/{owner}/{repo}/branches/main/protection' --input -</code></td>
+<td>Sets branch protection from JSON on standard input.</td>
+</tr>
+<tr>
+<td><code>enforce_admins: true</code></td>
+<td>Applies protection to administrators too.</td>
+</tr>
+<tr>
+<td><code>required_approving_review_count: 1</code></td>
+<td>Requires one approval before merge.</td>
+</tr>
+<tr>
+<td><code>grep -n '^## \[0.2.0\]' CHANGELOG.md</code></td>
+<td>Finds the line of the 0.2.0 heading.</td>
+</tr>
+<tr>
+<td><code>gh release create vX.Y.Z --title "..." --notes-file FILE</code></td>
+<td>Publishes a release from a tag with notes from a file.</td>
+</tr>
+<tr>
+<td><code>gh release view vX.Y.Z</code></td>
+<td>Shows a release.</td>
+</tr>
+<tr>
+<td>MAJOR.MINOR.PATCH</td>
+<td>Breaking change, new feature, fix. Before 1.0.0, new features raise MINOR.</td>
+</tr>
+<tr>
+<td><code>Closes #n</code></td>
+<td>Closes Issue n when the PR merges.</td>
+</tr>
+<tr>
+<td>Conflict markers</td>
+<td><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. Edit, delete the markers, then <code>git add</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;branch&quot;, &quot;a&quot;: &quot;A movable name that points at a line of commits; new work on it moves the name forward.&quot;}, {&quot;q&quot;: &quot;pull request&quot;, &quot;a&quot;: &quot;A request to merge one branch into another, with the diff, discussion and checks in one place.&quot;}, {&quot;q&quot;: &quot;rebase&quot;, &quot;a&quot;: &quot;Replays your commits on top of a newer base, giving them new IDs; safe only when no one else has pulled the branch.&quot;}, {&quot;q&quot;: &quot;--force-with-lease&quot;, &quot;a&quot;: &quot;A force push that refuses if someone has pushed to the remote branch since your last fetch.&quot;}, {&quot;q&quot;: &quot;branch protection&quot;, &quot;a&quot;: &quot;A GitHub rule that blocks direct pushes to a branch and requires an approval before merge.&quot;}, {&quot;q&quot;: &quot;enforce_admins&quot;, &quot;a&quot;: &quot;The protection setting that applies the rule to administrators as well.&quot;}, {&quot;q&quot;: &quot;Closes #12&quot;, &quot;a&quot;: &quot;A PR description keyword that closes Issue #12 automatically when the PR merges.&quot;}, {&quot;q&quot;: &quot;annotated tag&quot;, &quot;a&quot;: &quot;A tag that stores the author, date and message, created with git tag -a.&quot;}, {&quot;q&quot;: &quot;semantic version&quot;, &quot;a&quot;: &quot;MAJOR.MINOR.PATCH: breaking change, new feature, fix.&quot;}, {&quot;q&quot;: &quot;fork&quot;, &quot;a&quot;: &quot;Your own copy of someone else&#x27;s repository on GitHub, used to contribute without write access.&quot;}, {&quot;q&quot;: &quot;three-dot diff&quot;, &quot;a&quot;: &quot;git diff main...branch shows only the branch&#x27;s own changes since it split from main.&quot;}, {&quot;q&quot;: &quot;squash merge&quot;, &quot;a&quot;: &quot;Combines all of a PR&#x27;s commits into one commit on main with gh pr merge --squash.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D04.html"><small>Previous</small>Day 4 — Bash scripting and cron automation</a><a class="nx" href="P1.html"><small>Next</small>Project 1 — Air-Quality Monitor</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

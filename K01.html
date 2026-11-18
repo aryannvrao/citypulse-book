@@ -1,0 +1,1502 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T01–T03: onboarding, squad and charter · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K01" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a class="cur" href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T01–T03: onboarding, squad and charter</h1><p class="sub">3 tickets, 8 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">63 min read · practice quiz · 7 animations</p><video class="vid" controls preload="metadata" src="videos/K01.mp4?v=1794965398"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t01-onboard-github-with-2fa-org-invite-lab-access-start-t0">Y2-T01 · Onboard: GitHub with 2FA, org invite, lab access, start T0</a></li><li><a href="#y2-t02-form-squad-assign-roles-shortlist-2-domains-with-verified-data-urls">Y2-T02 · Form squad, assign roles, shortlist 2 domains with verified data URLs</a></li><li><a href="#y2-t03-p0-create-repo-with-readme-signed-chartermd-10-issue-board">Y2-T03 · P0: create repo with README, signed CHARTER.md, 10-issue board</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t01-onboard-github-with-2fa-org-invite-lab-access-start-t0">Y2-T01</a></td>
+<td>1</td>
+<td>1</td>
+<td>Onboard: GitHub with 2FA, org invite, lab access, start T0</td>
+</tr>
+<tr>
+<td><a href="#y2-t02-form-squad-assign-roles-shortlist-2-domains-with-verified-data-urls">Y2-T02</a></td>
+<td>2</td>
+<td>2</td>
+<td>Form squad, assign roles, shortlist 2 domains with verified data URLs</td>
+</tr>
+<tr>
+<td><a href="#y2-t03-p0-create-repo-with-readme-signed-chartermd-10-issue-board">Y2-T03</a></td>
+<td>3</td>
+<td>5</td>
+<td>P0: create repo with README, signed CHARTER.md, 10-issue board</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t01-onboard-github-with-2fa-org-invite-lab-access-start-t0">Y2-T01 · Onboard: GitHub with 2FA, org invite, lab access, start T0</h2>
+<p><em>Session 1 · phase E0 · 1 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>CityPulse is a platform that holds data about Bengaluru city services, such as air quality and traffic. Your intern cohort builds it from November 2026 to May 2027, in squads of about five. Every ticket is scored from evidence on GitHub, the website where the team's code and discussions live. Each piece of evidence is tied to the GitHub account that made it.</p>
+<p>So your account must be ready before any real work starts. It needs your real name and a photo, so the trainer can match you to your onboarding form. It needs two-factor authentication (2FA), so a stolen password alone cannot log in. And it must be a member of the course's organisation, <code>citypulse-y2</code>, where every squad repository lives. The ticket says an intern without these cannot be scored at all.</p>
+<p>Lab access is the third requirement. You log in to the lab machine, run a few commands and show the result, so the trainer knows the tools work on the machine used for marking.</p>
+<p>This ticket also starts the T0 baseline diagnostic, a short assessment that measures where each intern starts. Its results feed the gap report and the squad balancing in T02. You must start it and submit at least section 1 before 20:30. You answer its questions yourself.</p>
+<p>If something fails today, tell your trainer early.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>Nothing from earlier tickets is needed, because this is the first ticket. Check that you have each of these, which the programme provides:</p>
+<ul>
+<li>A GitHub account that you are willing to use for the whole course.</li>
+<li>A phone with an authenticator app, such as Google Authenticator.</li>
+<li>A lab-platform account, one per student.</li>
+<li>The LMS onboarding form link.</li>
+<li>A login for the assessment platform, where T0 is published.</li>
+<li>Access to <code>#cohort-y2</code> on Discord or Teams.</li>
+<li>On your laptop, Git for Windows (which includes Git Bash) and the GitHub command-line tool <code>gh</code>. Install <code>gh</code> from cli.github.com.</li>
+</ul>
+<p>Run these quick checks. Each one should print a version line, which means you are ready.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh --version&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;gh version 2.x.x&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git --version&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;git version 2.x.x&quot;}]}"></div>
+
+<p>Runs on: your laptop, in Git Bash. The exact version numbers will differ. What matters is a version line instead of an error. Then open github.com in a browser while logged in. Your settings page should load. If it asks you to log in, do so now.</p>
+<p>There is no squad repository yet, because Y2-T03 creates it. Your evidence comes from GitHub settings, the form, the lab, the platform and chat.</p>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Username (login)</td>
+<td>The short name GitHub gives your account, such as <code>example-student</code>.</td>
+</tr>
+<tr>
+<td>Profile URL</td>
+<td>Your profile's web address, <code>https://github.com/&lt;username&gt;</code>.</td>
+</tr>
+<tr>
+<td>Private window</td>
+<td>A browser window without your saved logins, so you see your profile as a stranger would.</td>
+</tr>
+<tr>
+<td>Two-factor authentication (2FA)</td>
+<td>A second proof of identity, asked for at login in addition to your password.</td>
+</tr>
+<tr>
+<td>Authenticator app</td>
+<td>A phone app that shows a new six-digit code every 30 seconds.</td>
+</tr>
+<tr>
+<td>Recovery codes</td>
+<td>One-time backup codes that let you log in if you lose your phone.</td>
+</tr>
+<tr>
+<td>Organisation</td>
+<td>A group account on GitHub that owns repositories and has members.</td>
+</tr>
+<tr>
+<td>Invitation</td>
+<td>An offer to join an organisation. It stays pending until you accept it.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Application Programming Interface: web addresses that programs call to get data.</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>One API address that returns one kind of data, such as a members list.</td>
+</tr>
+<tr>
+<td><code>gh</code></td>
+<td>The GitHub command-line tool. It calls the API for you.</td>
+</tr>
+<tr>
+<td><code>--jq</code></td>
+<td>A <code>gh</code> option that prints only the fields you name from the answer.</td>
+</tr>
+<tr>
+<td><code>--paginate</code></td>
+<td>A <code>gh</code> option that fetches every page of a long answer.</td>
+</tr>
+<tr>
+<td>Pipe (<code>\|</code>)</td>
+<td>A symbol that sends one command's output into the next command.</td>
+</tr>
+<tr>
+<td>Exit status</td>
+<td>The number a command returns when it ends. <code>0</code> means success.</td>
+</tr>
+<tr>
+<td><code>grep -x</code></td>
+<td>Prints only lines that match the text exactly.</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td>A window where you type commands and read the text answers.</td>
+</tr>
+<tr>
+<td>Prompt</td>
+<td>The text before the cursor, which often shows your username.</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>Prints the username you are logged in to the machine as.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Prints the current date and time.</td>
+</tr>
+<tr>
+<td>Timezone (<code>TZ</code>)</td>
+<td>A setting for local time. <code>Asia/Kolkata</code> is Indian Standard Time (IST).</td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>A tool that asks a website for a response from the command line.</td>
+</tr>
+<tr>
+<td>Python 3</td>
+<td>Version 3 of the Python programming language, used throughout the course.</td>
+</tr>
+<tr>
+<td>LMS</td>
+<td>The programme's learning website, where the onboarding form is submitted.</td>
+</tr>
+<tr>
+<td>T0 baseline</td>
+<td>The first assessment, which measures where each intern starts.</td>
+</tr>
+<tr>
+<td>Gap report</td>
+<td>A list of what each intern needs to build up.</td>
+</tr>
+<tr>
+<td>Trainer</td>
+<td>The course staff member who runs the test cases and gives the gate score.</td>
+</tr>
+<tr>
+<td>Test case (TC)</td>
+<td>A check the trainer runs, with a command or step and an expected result.</td>
+</tr>
+<tr>
+<td>Scorecard</td>
+<td>The trainer's record for each student. It can carry a flag.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p>The ticket has six acceptance criteria and five test cases. Some tests need the trainer's rights to the organisation or access to the assessment platform, so you cannot run them yourself. Learn what the trainer sees, so you are ready for it.</p>
+<p><strong>Criterion 1: 2FA is on, and you are a member.</strong> The trainer runs TC1 and TC2. TC1 looks for your login in the list of members with 2FA turned off.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh api &#x27;orgs/citypulse-y2/members?filter=2fa_disabled&#x27; --paginate --jq &#x27;.[].login&#x27; | grep -x example-student&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1&quot;}]}"></div>
+
+<p>Runs on: the trainer's laptop. <code>example-student</code> stands in for your real login. <code>gh api</code> sends a request to the GitHub API. The quotes around the endpoint stop the shell from reading <code>?</code> as a special symbol. <code>filter=2fa_disabled</code> asks only for members with 2FA off. <code>--paginate</code> fetches every page. <code>--jq '.[].login'</code> prints each login on its own line. The pipe sends those lines to <code>grep -x</code>, which keeps only an exact match. <code>echo $?</code> prints the exit status, which is <code>1</code> when nothing matched.</p>
+<p>Passing output is no output, then <code>1</code>. Failing output is your login printed on a line, which means 2FA is off. Fix it in your security settings and ask the trainer to rerun the test. An error message from <code>gh</code> on screen means the test did not really run, so it proves nothing. The criterion also needs your login to appear in the full member list, which the trainer checks with <code>gh api orgs/citypulse-y2/members --paginate --jq '.[].login'</code>. Passing means your login is printed. If it is missing, you are not a member yet. TC2 uses the same shape with <code>orgs/citypulse-y2/invitations</code>, which lists pending invitations. Passing output is no output. If your login appears, accept the invitation in T01.3.</p>
+<p><strong>Criterion 2: the profile shows your real name and photo.</strong> The trainer runs TC3 and opens your profile URL from the form in a private window. Passing output is a public profile with your full real name, a photo and your bio. The username in the address bar must match your login. A "Page not found" message usually means a typo in the form.</p>
+<p><strong>Criterion 3: the lab screenshot.</strong> The trainer runs TC4, watches you run <code>whoami &amp;&amp; date</code> in the lab, and compares the output with your screenshot. Passing output is your username on one line, then a date and time in IST. The screenshot must be dated 2026-11-03 and must also show a Python 3 version line and a Git version line (from the longer command in Y2-T01.4). The <code>&amp;&amp;</code> means <code>date</code> runs only if <code>whoami</code> worked. Failing output is a different username, a date that does not match the screenshot, or a time that looks five and a half hours behind, which means UTC.</p>
+<p><strong>Criterion 4: T0 has started.</strong> The trainer runs TC5 and filters the assessment-platform report by your name. Passing output is <code>started</code> or <code>completed</code>, with a timestamp at or before 20:30. Failing output is <code>not started</code> or no row at all.</p>
+<p><strong>Criterion 5: your intro is in <code>#cohort-y2</code>.</strong> There is no test case. The trainer searches the channel for your name and checks that the post has all three items.</p>
+<p><strong>Criterion 6: the scorecard flag.</strong> This is a rule. If any of the first four criteria fails at 20:30, the scorecard shows the <code>not onboarded</code> flag. Report problems before the deadline.</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T01.1</td>
+<td>Every student</td>
+<td>GitHub profile with real name, photo and bio</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T01.2</td>
+<td>Every student</td>
+<td>2FA with an authenticator app, recovery codes saved, log out and back in</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T01.3</td>
+<td>Every student</td>
+<td>Send your username in chat and accept the invitation</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T01.4</td>
+<td>Every student</td>
+<td>Run the lab check command and take a screenshot</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T01.5</td>
+<td>Every student</td>
+<td>Submit the LMS form with profile URL and screenshot</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T01.6</td>
+<td>Every student</td>
+<td>Open T0 and submit at least section 1</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T01.7</td>
+<td>Every student</td>
+<td>Post your intro in <code>#cohort-y2</code></td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<p>Every subtask belongs to every student, so there is nothing to split. You do all seven on your own account. Do not share your account, screenshot or form with a squad-mate.</p>
+<p>No branch is needed for this ticket. If you want to practise commit evidence before T03, use your own sandbox repository and a branch such as <code>practice/y2-t01</code>, never a squad repository. The example messages below are for that practice repository, in the order you might make them:</p>
+<ol>
+<li><code>Add onboarding checklist notes</code></li>
+<li><code>Record where recovery codes are stored, not the codes</code></li>
+<li><code>Add lab check output for whoami and date</code></li>
+<li><code>Note T0 start time and status</code></li>
+<li><code>Fix typo in profile URL note</code></li>
+</ol>
+<p>Never write recovery codes, authenticator secrets or passwords into a commit, a note or a chat message.</p>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<h4 id="y2-t011-github-profile">Y2-T01.1: GitHub profile</h4>
+<p><strong>Goal.</strong> Your profile shows your full real name, a photo and a short bio.</p>
+<p><strong>Stage 1: edit the profile.</strong> Runs on: your laptop, in a browser. Open Settings, then Public profile. Labels can change, so follow the page. Enter your full real name, upload a clear photo of your face, and write one true line in the Bio field. The ticket's example is <code>Data/Cloud intern @ CityPulse | Atria DT</code>. You may use it or write your own. Save.</p>
+<p><strong>Stage 2: check from the command line.</strong> Runs on: your laptop, in Git Bash. Sign in to <code>gh</code> once.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--hostname<span class="w"> </span>github.com<span class="w"> </span>--git-protocol<span class="w"> </span>https<span class="w"> </span>--web
+</code></pre></div>
+
+<p><code>--hostname github.com</code> names the GitHub website. <code>--git-protocol https</code> tells <code>gh</code> to use HTTPS for Git. <code>--web</code> opens a browser page for the sign-in. You should see a message that you are logged in.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>user<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.login, .name, .avatar_url&#39;</span>
+</code></pre></div>
+
+<p><code>gh api user</code> asks for your account record. <code>--jq</code> prints three fields on separate lines: your username, your name and your photo address.</p>
+<p><strong>Stage 3: test it.</strong> The name line must match your full real name, and the photo address must not be empty.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using a nickname</div><p>A nickname or initials fails TC3. The trainer matches you to your onboarding form, so use your full real name.</p></div>
+
+<h4 id="y2-t012-two-factor-authentication">Y2-T01.2: Two-factor authentication</h4>
+<p><strong>Goal.</strong> Your login needs a code from your phone as well as your password, and you can recover if you lose the phone.</p>
+<p><strong>Stage 1: turn on 2FA.</strong> Runs on: your laptop, in a browser. Open Settings, then Password and authentication, then Two-factor authentication. Choose the authenticator app option and scan the QR code with your phone app.</p>
+<p><strong>Stage 2: confirm the code.</strong> Type the six-digit code shown on your phone into GitHub. Codes change every 30 seconds, and they work only when your phone's clock is correct, so keep automatic time on.</p>
+<p><strong>Stage 3: save the recovery codes.</strong> Download them and store the file away from your phone, such as on an encrypted drive. Each code works once. Do not paste them anywhere.</p>
+<p><strong>Stage 4: prove it works.</strong> Log out in the browser, then log in again with your password and the app code. Then run this:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>user<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.two_factor_authentication&#39;</span>
+</code></pre></div>
+
+<p>You should see <code>true</code>. The command checks the setting, but only the log-out and log-in step proves that the code works.</p>
+<div class="box box-trap"><div class="box-h">Trap: Losing the phone</div><p>Without saved recovery codes, a lost phone can lock you out. Then you need the IT desk and a named recovery time.</p></div>
+
+<h4 id="y2-t013-invitation">Y2-T01.3: Invitation</h4>
+<p><strong>Goal.</strong> Your GitHub account is a member of <code>citypulse-y2</code>, and it is the same account as your onboarding form.</p>
+<p><strong>Stage 1: send your username.</strong> Post your username in the chat named by the programme, as the ticket says. The ticket does not name the chat, so if you do not know which one, ask your trainer.</p>
+<p><strong>Stage 2: accept in the browser.</strong> Runs on: your laptop, logged in as that account. Open <code>https://github.com/orgs/citypulse-y2/invitation</code> and accept.</p>
+<p><strong>Stage 3: check the membership.</strong> Runs on: your laptop, in Git Bash.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>user/memberships/orgs/citypulse-y2<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.state&#39;</span>
+</code></pre></div>
+
+<p><code>user/memberships/orgs/citypulse-y2</code> asks for your membership in the organisation. <code>--jq '.state'</code> prints one word. You should see <code>active</code>. <code>pending</code> means the invitation is not accepted yet.</p>
+<p>The API can also accept it. Use this only if the browser page fails and your trainer agrees:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>PATCH<span class="w"> </span>user/memberships/orgs/citypulse-y2<span class="w"> </span>-f<span class="w"> </span><span class="nv">state</span><span class="o">=</span>active<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.state&#39;</span>
+</code></pre></div>
+
+<p><code>-X PATCH</code> changes an existing record. <code>-f state=active</code> sends the field <code>state</code> with the value <code>active</code>. If it answers with a permission or scope error, your login lacks the right to do it, so stop and ask the trainer.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Getting into the organisation&quot;, &quot;nodes&quot;: [&quot;You&quot;, &quot;Programme admin&quot;, &quot;citypulse-y2 org&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;your username&quot;, &quot;note&quot;: &quot;You post your GitHub username in the chat.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;send invite&quot;, &quot;note&quot;: &quot;The admin invites that username to the organisation.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;invitation pending&quot;, &quot;note&quot;: &quot;GitHub shows you an invitation to accept.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;accept&quot;, &quot;note&quot;: &quot;You accept in the browser with the same account.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;state: active&quot;, &quot;note&quot;: &quot;The membership command now prints active.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A second account</div><p>If you accepted with a second GitHub account, the membership sits on the wrong login, and TC1 and TC2 fail for the account in your form.</p></div>
+
+<h4 id="y2-t014-lab-check">Y2-T01.4: Lab check</h4>
+<p><strong>Goal.</strong> A screenshot that shows your lab username, the date and time, a Python 3 version and a Git version, plus a GitHub reachability check.</p>
+<p><strong>Stage 1: log in to the lab.</strong> Runs on: the lab machine. The ticket does not name the login method, so follow the lab's instructions.</p>
+<p><strong>Stage 2: run the check.</strong> Type this single line into the lab terminal:</p>
+<div class="hl"><pre><span></span><code>whoami<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>date<span class="p">;</span><span class="w"> </span>hostname<span class="p">;</span><span class="w"> </span>python3<span class="w"> </span>--version<span class="p">;</span><span class="w"> </span>git<span class="w"> </span>--version<span class="p">;</span><span class="w"> </span>curl<span class="w"> </span>-sI<span class="w"> </span>https://github.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+</code></pre></div>
+
+<p><code>whoami &amp;&amp; date</code> prints your username, then the date, and <code>date</code> runs only if <code>whoami</code> worked. The semicolon runs the next command whatever happened before. <code>hostname</code> prints the machine name. <code>python3 --version</code> prints a line that starts <code>Python 3.</code>. <code>git --version</code> prints the Git version. <code>curl -sI https://github.com</code> asks GitHub for its headers only, silently. <code>-s</code> hides the progress meter, and <code>-I</code> asks for headers. <code>| head -1</code> keeps the first line, such as <code>HTTP/2 200</code>.</p>
+<p><strong>Stage 3: check the time zone.</strong> Run <code>TZ=Asia/Kolkata date</code>. <code>TZ=</code> sets the timezone for that one command. Use this line in the screenshot if the first <code>date</code> shows UTC, and tell the trainer, because TC4 expects the lab's current IST time.</p>
+<p><strong>Stage 4: test it.</strong> Take the screenshot, with your username, the Python 3 line and the Git line all readable.</p>
+<h4 id="y2-t015-lms-onboarding-form">Y2-T01.5: LMS onboarding form</h4>
+<p><strong>Goal.</strong> The form holds your profile URL and your lab screenshot.</p>
+<p><strong>Stage 1: check the URL.</strong> Build <code>https://github.com/&lt;username&gt;</code> and open it in a private window. Your name and photo should show.</p>
+<p><strong>Stage 2: fill and submit.</strong> Enter the URL, attach the Y2-T01.4 screenshot, read every field, then submit once and check the confirmation.</p>
+<h4 id="y2-t016-t0-baseline">Y2-T01.6: T0 baseline</h4>
+<p><strong>Goal.</strong> T0 has started before 20:30, with at least section 1 submitted.</p>
+<p><strong>Stage 1: open the platform.</strong> Runs on: your laptop, in a browser. Log in with the account the programme gave you and open the T0 baseline.</p>
+<p><strong>Stage 2: start and submit.</strong> Read the instructions, start, and work through section 1. The start timestamp is the evidence TC5 uses.</p>
+<p><strong>Stage 3: test it.</strong> Check that the status shows <code>started</code> or <code>completed</code> with a time at or before 20:30.</p>
+<p>This guide does not give T0 answers. The skills here are reading instructions, starting on time and submitting a section.</p>
+<h4 id="y2-t017-intro-post">Y2-T01.7: Intro post</h4>
+<p><strong>Goal.</strong> One post in <code>#cohort-y2</code> with your name, one thing you built and one thing you want to build at CityPulse.</p>
+<p><strong>Stage 1: use the checklist.</strong> The first line gives your full name. The second names one thing you built. The third names one thing you want to build at CityPulse.</p>
+<p><strong>Stage 2: look at a fictional shape.</strong> This example is about a different, made-up person and project. Copy the shape, never the words.</p>
+<blockquote>
+<p>Hello, I am Example Name. I built a timetable app for a school club. At CityPulse I want to build a transport data check.</p>
+</blockquote>
+<p><strong>Stage 3: test it.</strong> Search <code>#cohort-y2</code> for your name and check that the post has all three items.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>This ticket does not ask for a pull request. Run these checks in order and keep the output.</p>
+<ol>
+<li><code>gh api user --jq '.two_factor_authentication'</code> expects <code>true</code>.</li>
+<li><code>gh api user/memberships/orgs/citypulse-y2 --jq '.state'</code> expects <code>active</code>.</li>
+<li>The profile URL in a private window expects your real name and photo.</li>
+<li>The lab line from Y2-T01.4 expects your username, a date, a Python 3 line and a Git line.</li>
+<li>The T0 status on the platform expects <code>started</code> or <code>completed</code>.</li>
+<li>A search of <code>#cohort-y2</code> for your name expects the intro post.</li>
+</ol>
+<p>TC1 and TC2 need the trainer's rights, so ask the trainer to run them. Never paste a recovery code, authenticator secret or password into evidence, and blur anything private in an image.</p>
+<p>If a later ticket asks for a pull request, use this template. It gives the structure only, and you write the words:</p>
+<div class="hl"><pre><span></span><code>## What
+One sentence on the change.
+
+## Why
+The ticket or problem it answers.
+
+## How to test
+The commands a reviewer runs, in order.
+
+## Evidence
+Pasted output or screenshots, with private details removed.
+
+## Checklist
+- [ ] The tests I was asked to run pass
+- [ ] I have removed any secret or private detail
+</code></pre></div>
+
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] GitHub account has real name, photo, bio and 2FA via authenticator app. You know this is true when <code>gh api user --jq '.login, .name, .two_factor_authentication'</code> shows your name and <code>true</code>, and your profile shows a photo.</li>
+<li>[ ] Org invite accepted with the same account. You know this is true when the membership command prints <code>active</code>.</li>
+<li>[ ] Lab verification screenshot and profile URL submitted on the LMS onboarding form. You know this is true when the confirmation appears.</li>
+<li>[ ] T0 started on the platform by 20:30, and completed before T02 starts. You know this is true when the platform shows a timestamp at or before 20:30, and later shows <code>completed</code>.</li>
+<li>[ ] Intro posted in #cohort-y2. You know this is true when a search for your name finds all three items.</li>
+<li>[ ] Roster row shows all columns green, or a named recovery time is logged by the IT desk. You know this is true when your trainer confirms it.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>false</code> from the 2FA check</td>
+<td>2FA is off for the account you use</td>
+<td>Turn it on in security settings and rerun the check.</td>
+</tr>
+<tr>
+<td>Profile URL shows "Page not found"</td>
+<td>Typo in the username, or a different login in the form</td>
+<td>Copy the login from <code>gh api user --jq '.login'</code> and rebuild the URL.</td>
+</tr>
+<tr>
+<td>Membership state is <code>pending</code></td>
+<td>Invitation not accepted, or accepted on a second account</td>
+<td>Log in with the form's account and accept again.</td>
+</tr>
+<tr>
+<td>Lab <code>date</code> shows UTC</td>
+<td>The lab machine uses UTC</td>
+<td>Run <code>TZ=Asia/Kolkata date</code> and use that line in the screenshot.</td>
+</tr>
+<tr>
+<td><code>python3: command not found</code></td>
+<td>Python 3 is missing or has another name</td>
+<td>Tell the IT desk now, because the ticket names <code>python3</code>.</td>
+</tr>
+<tr>
+<td><code>gh: command not found</code> in Git Bash</td>
+<td><code>gh</code> not installed, or Git Bash opened before the install</td>
+<td>Install from cli.github.com and open a new Git Bash window.</td>
+</tr>
+<tr>
+<td>Authenticator codes rejected</td>
+<td>The phone's clock is out of step</td>
+<td>Turn on automatic date and time, then try again.</td>
+</tr>
+<tr>
+<td>Intro not found by search</td>
+<td>Posted in a different channel or a direct message</td>
+<td>Post again in <code>#cohort-y2</code>.</td>
+</tr>
+<tr>
+<td>T0 shows <code>not started</code></td>
+<td>T0 was not opened before 20:30</td>
+<td>Open T0 now, submit section 1 and tell the trainer.</td>
+</tr>
+<tr>
+<td>Locked out after losing the phone</td>
+<td>Recovery codes were not saved</td>
+<td>Use a saved code if you have one, or ask the IT desk for a named recovery time.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p><strong>Why does the course need a verified GitHub account on Day 1?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Every ticket is scored from evidence on GitHub, and each piece of evidence is tied to the account that made it. An unverified account cannot be linked to your work, so that work cannot be scored. Day 1 also starts the T0 baseline, which feeds the gap report.</p></details>
+
+<p><strong>What is the trade-off of an authenticator app compared with a text message?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>An authenticator app creates codes on the phone, so it does not travel over the phone network and is harder to intercept. Its cost is dependence on the phone's clock and the app, which is why recovery codes matter. A text message is easier to set up, but it can be redirected. The course chooses the app.</p></details>
+
+<p><strong>What did you personally do to make your account recoverable?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A strong answer names each step you took and the check that proved it, such as turning on 2FA, saving recovery codes away from the phone, logging out and back in, and running the membership check. An untested recovery plan is not a plan. Use your own steps and your own results.</p></details>
+
+<p><strong>Why does the lab check print both <code>whoami</code> and <code>date</code>?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>whoami</code> shows which account the session belongs to, so the screenshot links to a student. <code>date</code> shows when it was taken. The <code>&amp;&amp;</code> means <code>date</code> runs only if <code>whoami</code> worked, so a failed login cannot produce a misleading screenshot.</p></details>
+
+<p><strong>Why does the trainer open your profile in a private window?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A private window has none of your saved logins, so the trainer sees what any stranger sees. This proves your real name and photo are public, not just visible to you while logged in.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;On the lab machine you run whoami &amp;&amp; date. The first command fails. Does date still run?&quot;, &quot;opts&quot;: [&quot;Yes, because the &amp;&amp; symbol ignores errors&quot;, &quot;No, because &amp;&amp; runs the next command only when the first one succeeds&quot;, &quot;Yes, but it prints UTC only&quot;, &quot;No, because whoami must come last&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The &amp;&amp; operator stops the chain when the first command fails. The tempting wrong answer is that date runs anyway, which is what the semicolon ; does, not &amp;&amp;.&quot;}, {&quot;q&quot;: &quot;The trainer&#x27;s check prints no output and then echo $? prints 1. What does that mean?&quot;, &quot;opts&quot;: [&quot;The check failed and your login is in the list&quot;, &quot;Your invitation is pending&quot;, &quot;Your login is not in the list, so the check passed for that test case&quot;, &quot;Your 2FA is switched off, so you must turn it on&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;grep -x printed nothing, so it matched no line, and exit status 1 means no match. Only a printed login would be a failure. The tempting wrong answer is treating the absence of output as an error.&quot;}, {&quot;q&quot;: &quot;Your phone&#x27;s clock is five minutes wrong, and GitHub rejects the authenticator code. What is the most likely cause, and the fix?&quot;, &quot;opts&quot;: [&quot;GitHub is down, so wait for it to return&quot;, &quot;The recovery codes have replaced the app&quot;, &quot;The password is wrong, so reset it&quot;, &quot;The code depends on the time, so the phone&#x27;s clock must be set automatically&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Authenticator codes change every 30 seconds and depend on a shared time. A clock out of step produces codes GitHub does not accept. The tempting wrong answer is blaming the password, which is not part of the code check.&quot;}]}"></div>
+
+<h2 id="y2-t02-form-squad-assign-roles-shortlist-2-domains-with-verified-data-urls">Y2-T02 · Form squad, assign roles, shortlist 2 domains with verified data URLs</h2>
+<p><em>Session 2 · phase E0 · 2 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>CityPulse is a platform that shows Bengaluru city data. Each squad builds one product on top of public data from the city. Before anyone writes code, the company needs a team with clear roles, and a problem that is worth solving with data that really exists.</p>
+<p>This ticket prevents two common failures. The first is a vague goal. "Analyse pollution" does not say who the product is for, what hurts them, which data you would use, or how you would know it worked. The second is a dead or HTML-only data URL. A URL is the web address your program asks for data. If the address is dead, it returns an error. If it returns an HTML web page (a page built for people to look at) instead of JSON (a text format for data, explained below), the automatic fetching work that starts in T05 cannot read it. You find both problems now, by checking the URLs yourself.</p>
+<p>By tonight, your squad of five must set its first-month roles, shortlist two domains (broad topic areas), write a problem statement for each, and prove that both data sources answer with JSON. You also write a three-line working agreement and give a 60-second pitch.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p>Y2-T01 must be complete for you: GitHub with two-factor authentication (2FA) switched on, membership of the <code>citypulse-y2</code> organisation, and lab access. For this ticket, "complete" means done and confirmed. No pull request is needed.</p>
+<p>You need an LMS account with access to the squad sheet, a GitHub account, Git Bash on your Windows laptop (installed with Git for Windows), and access to the Linux lab machine. Run each check where the table says.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Command</th>
+<th>Where it runs</th>
+<th>Ready when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git Bash</td>
+<td><code>git --version</code></td>
+<td>Laptop, Git Bash</td>
+<td>Prints <code>git version</code> and a number</td>
+</tr>
+<tr>
+<td>curl</td>
+<td><code>curl --version</code></td>
+<td>Laptop, Git Bash</td>
+<td>First line starts with <code>curl</code></td>
+</tr>
+<tr>
+<td>jq</td>
+<td><code>jq --version</code></td>
+<td>Lab machine</td>
+<td>Prints <code>jq-</code> and a version number</td>
+</tr>
+<tr>
+<td>Lab machine</td>
+<td><code>uname -a</code></td>
+<td>Lab, after login</td>
+<td>Output starts with <code>Linux</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>python3 --version</code></td>
+<td>Lab machine</td>
+<td>Prints <code>Python 3.</code></td>
+</tr>
+<tr>
+<td>Squad sheet</td>
+<td>Open it on the LMS</td>
+<td>Browser</td>
+<td>Opens and shows your squad</td>
+</tr>
+</tbody>
+</table>
+<p>Git for Windows does not include jq. If <code>jq --version</code> says "command not found" on your laptop, do the URL checks on the lab machine, where jq is installed. That also matches what your trainer sees.</p>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Squad</td>
+<td>A team of about five students who build one CityPulse product.</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>The job one member holds for the first month, one role per person. This guide uses Tech Lead, Backend, Data, QA/DevOps and Scrum/Docs. Check the LMS for your squad's exact five.</td>
+</tr>
+<tr>
+<td>LMS</td>
+<td>Learning management system: the course website where the squad sheet lives.</td>
+</tr>
+<tr>
+<td>Squad sheet</td>
+<td>The shared table on the LMS with members, roles, domains, statements, URLs and the verified-by column.</td>
+</tr>
+<tr>
+<td>T0 baseline</td>
+<td>The first platform test every student completes. The trainer checks it in the platform report.</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>A broad topic area from the menu, such as air quality.</td>
+</tr>
+<tr>
+<td>Problem statement</td>
+<td>One sentence that names a user, a pain, a data source and a measurable outcome.</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>The result that proves the product works, written as a number with a unit.</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>The measure after a number, such as h (hours) or µg/m³ (micrograms per cubic metre).</td>
+</tr>
+<tr>
+<td>PM2.5</td>
+<td>Fine particles in the air, measured in µg/m³.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Application programming interface: a web address your program calls to get data.</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>A web address.</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>The protocol that browsers and curl use to request pages and data.</td>
+</tr>
+<tr>
+<td>HTTP status code</td>
+<td>A three-digit number the server sends back. 200 means OK, 404 means not found, 000 means curl got no answer.</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>The language of web pages. Built for people to look at, not for programs to read data from.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>A text format for structured data. A JSON document starts with <code>{</code> or <code>[</code>.</td>
+</tr>
+<tr>
+<td>JSON field path</td>
+<td>The route to one value inside JSON, such as <code>.records[0].pm25</code>.</td>
+</tr>
+<tr>
+<td>curl</td>
+<td>A command-line tool that requests a URL.</td>
+</tr>
+<tr>
+<td>jq</td>
+<td>A command-line tool that reads JSON and picks out values.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a command returns when it finishes. 0 means success, anything else means a problem.</td>
+</tr>
+<tr>
+<td>API key or token</td>
+<td>A secret string that proves who you are to an API. It must never appear in the sheet.</td>
+</tr>
+<tr>
+<td>Hex string</td>
+<td>A string made of the digits 0 to 9 and the letters a to f, such as a long key.</td>
+</tr>
+<tr>
+<td>Verified-by column</td>
+<td>The sheet column where each student records their own curl result.</td>
+</tr>
+<tr>
+<td>Working agreement</td>
+<td>A short list of rules the squad agrees on.</td>
+</tr>
+<tr>
+<td>Pitch</td>
+<td>A 60-second spoken summary of your problem and data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>The trainer checks six acceptance criteria. You can check each one yourself first.</p>
+<ol>
+<li><strong>T0 completed.</strong> Every student shows T0 as completed on the platform report. Check your status now. The programme deadline for T0 is 18:30. If a student cannot finish, the trainer logs a named recovery time for them.</li>
+<li><strong>5 members, 5 distinct roles.</strong> Checked by TC3.</li>
+<li><strong>Each statement names a user, a pain, a data source and an outcome with a number and a unit.</strong> Checked by TC4.</li>
+<li><strong>Each URL returns HTTP 200 with JSON containing the recorded field path.</strong> Checked by TC1 and TC2.</li>
+<li><strong>No API key or token anywhere in the sheet.</strong> Checked by TC5.</li>
+<li><strong>Every student has a personal verified-by entry.</strong> Check that your own cell holds your curl result.</li>
+</ol>
+<p>The trainer then runs five test cases. Each command is split into parts below.</p>
+<p><strong>TC1: the URL returns 200 and JSON.</strong> For each URL in the sheet:</p>
+<p><code>curl -s -o /tmp/r.json -w '%{http_code}' --max-time 15 '&lt;url&gt;'; head -c 1 /tmp/r.json</code></p>
+<ul>
+<li><code>curl</code> sends the request.</li>
+<li><code>-s</code> (silent) hides the progress meter.</li>
+<li><code>-o /tmp/r.json</code> saves the response body to a file. Git Bash maps <code>/tmp</code> to a Windows folder; the lab uses the real <code>/tmp</code>.</li>
+<li><code>-w '%{http_code}'</code> (write-out) prints the status code after the request. The single quotes stop the shell reading the braces.</li>
+<li><code>--max-time 15</code> gives up after 15 seconds.</li>
+<li><code>'&lt;url&gt;'</code> is the address. Keep the quotes, because an <code>&amp;</code> in a URL would split the command.</li>
+<li><code>;</code> runs the next command whether or not the first succeeded.</li>
+<li><code>head -c 1</code> prints the first byte of the saved body.</li>
+</ul>
+<p>Passing output is <code>200{</code> or <code>200[</code>. curl prints no newline after the code, so the body's first byte sits on the same line. <code>200&lt;</code> means the source sent HTML. <code>404</code> followed by <code>&lt;</code> means a not-found page. <code>000</code> means no answer within 15 seconds, a wrong host, or a blocked address. Without <code>--fail</code>, curl exits 0 even on a 404, so always read the status code.</p>
+<p><strong>TC2: the recorded field path exists.</strong></p>
+<p><code>jq -e '&lt;recorded jq path&gt;' /tmp/r.json</code></p>
+<ul>
+<li><code>jq</code> reads the JSON file.</li>
+<li><code>-e</code> sets the exit code from the value: 0 when the value is not null or false, 1 when it is, and 4 when nothing comes out.</li>
+<li>The filter in single quotes is the path copied from the sheet.</li>
+</ul>
+<p>Passing output is a value, and <code>echo $?</code> then prints <code>0</code>. If the output is <code>null</code> with exit code 1, the path is wrong for this response. If you see <code>Cannot index array with "name"</code>, the response is a list, so the path needs <code>.[0]</code> first.</p>
+<p><strong>TC3: 5 members, 5 distinct roles, no blanks.</strong> Copy the role column, without the header, into <code>roles.txt</code>, then run:</p>
+<p><code>sort -u roles.txt | grep -c .</code></p>
+<ul>
+<li><code>sort -u</code> sorts the lines and keeps one copy of each.</li>
+<li><code>|</code> passes that output to the next command.</li>
+<li><code>grep -c .</code> counts lines containing at least one character, so blank lines are not counted.</li>
+</ul>
+<p>Passing output is <code>5</code>. A <code>6</code> means the header was copied. A <code>4</code> means two members share a role.</p>
+<p><strong>TC4: each outcome has a number and a unit.</strong> This is a read-through. Highlight the outcome. "Alert residents at least 2 h before PM2.5 exceeds 60 µg/m³" passes: it has 2 with h, and 60 with µg/m³. "Improve the air" fails, because it has no number. Vague ones go back for rewrite before 20:30. This is an example of the shape only. Do not copy it, because your statement must use your own user, pain and data source.</p>
+<p><strong>TC5: no keys or tokens.</strong> Export the sheet as CSV from the LMS, then run:</p>
+<p><code>grep -n -i -E 'key=|token|apikey|[0-9a-f]{32,}' sheet-export.csv</code></p>
+<ul>
+<li><code>grep</code> prints lines that match a pattern.</li>
+<li><code>-n</code> adds line numbers.</li>
+<li><code>-i</code> ignores case, so <code>TOKEN</code> also matches.</li>
+<li><code>-E</code> enables extended patterns: <code>|</code> means "or", and <code>{32,}</code> means 32 or more repeats.</li>
+</ul>
+<p>Passing output is nothing. Run <code>echo $?</code> straight after: exit code 1 means no match. Failing output shows a line number and the text. The usual cause is a URL containing <code>apikey=</code>, or a long hex string pasted into a cell.</p>
+<div class="box box-trap"><div class="box-h">Trap: Passing TC5 is not enough</div><p>TC5 searches the sheet export only. A key inside a URL you paste is still a key in the sheet, so check each URL before you paste it.</p></div>
+
+<p>Here is a passing run of TC1 and TC2 on the lab machine, for an imaginary URL.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s -o /tmp/r.json -w &#x27;%{http_code}&#x27; --max-time 15 &#x27;https://api.example.test/air/latest&#x27;; head -c 1 /tmp/r.json&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;200{&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;jq -e &#x27;.records[0].pm25&#x27; /tmp/r.json&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;42&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}]}"></div>
+
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Owner</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T02.1</td>
+<td>Squad</td>
+<td>Confirm five members; fill member and role columns</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T02.2</td>
+<td>Squad</td>
+<td>Shortlist two domains from the menu</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T02.3</td>
+<td>Every student</td>
+<td>Draft one problem statement and post it in the thread</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T02.4</td>
+<td>Data</td>
+<td>Run <code>./verify_source.sh</code> for both URLs and record results</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T02.5</td>
+<td>Every student</td>
+<td>Personal live curl, recorded in your verified-by cell</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T02.6</td>
+<td>Scrum/Docs</td>
+<td>Write the working agreement; submit the sheet by 20:15</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T02.7</td>
+<td>Tech Lead</td>
+<td>Rehearse and deliver the 60-second pitch</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p>Every student must do T02.3 and T02.5 personally, because the trainer checks the verified-by column per student. If you hold the Data role, own T02.4 as well. Tell the squad in the thread which piece you took.</p>
+<p>Your strongest contribution is the statement you draft yourself and your own live curl. Use the branch name <code>y2-t02-&lt;your-github-username&gt;</code> if your squad keeps evidence in the repository. The repository is created in Y2-T03, the next ticket, so ask your trainer whether to keep a copy there. If you do, these commit messages show the order of your work:</p>
+<ol>
+<li><code>docs(y2-t02): add member list and roles to squad sheet</code></li>
+<li><code>docs(y2-t02): shortlist two domains from menu</code></li>
+<li><code>docs(y2-t02): add my candidate problem statement</code></li>
+<li><code>docs(y2-t02): record verify_source results for both URLs</code></li>
+<li><code>docs(y2-t02): add my personal curl result to verified-by</code></li>
+<li><code>docs(y2-t02): add three-line working agreement</code></li>
+</ol>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<h4 id="y2-t021-members-and-roles-squad-10-min">Y2-T02.1: Members and roles (Squad, 10 min)</h4>
+<p><strong>Goal.</strong> Five rows, each with one member and one role, and no blank cells.</p>
+<p><strong>Stage 1.</strong> Open the squad sheet. Check the five names against the squad list your trainer published.</p>
+<p><strong>Stage 2.</strong> Fill the member and role columns. Each role appears once. Use the LMS role names if they differ from this guide.</p>
+<p><strong>Stage 3.</strong> Check the count with TC3. It should print <code>5</code>.</p>
+<p><strong>Test this stage.</strong> You can name the role each member holds, and no cell is blank.</p>
+<h4 id="y2-t022-shortlist-two-domains-squad-5-min">Y2-T02.2: Shortlist two domains (Squad, 5 min)</h4>
+<p><strong>Goal.</strong> Two domains from the menu in the sheet.</p>
+<p><strong>Stage 1.</strong> For each menu domain, ask: who would use this, what hurts them, and could a public data source answer it? If you cannot answer one question quickly, the domain is weak.</p>
+<p><strong>Stage 2.</strong> Pick two and write them in the domain cells, spelt exactly as the menu spells them.</p>
+<p><strong>Test this stage.</strong> Both cells are filled, and the squad agrees in the thread.</p>
+<h4 id="y2-t023-draft-one-problem-statement-every-student-15-min">Y2-T02.3: Draft one problem statement (Every student, 15 min)</h4>
+<p><strong>Goal.</strong> One statement you wrote, posted to the squad thread. The squad then picks the best two.</p>
+<p><strong>Stage 1.</strong> Use this structure, with your own words and your own data source:</p>
+<p><em>[Specific user] needs [pain fixed]. We will use [data source and field]. We know it works when [outcome with a number and a unit].</em></p>
+<p><strong>Stage 2.</strong> Here is a fictional example from a different project, a school bus app: "School bus parents need to know when a bus is late. We will use a public bus-location feed, field delay_minutes. We know it works when parents get a message at least 10 min before a bus is more than 15 min late." Write your own about one of the two domains. Do not copy this one.</p>
+<p><strong>Stage 3.</strong> Check the outcome with TC4: highlight it, and confirm a number and a unit are both present.</p>
+<p><strong>Test this stage.</strong> The statement is posted in the thread.</p>
+<h4 id="y2-t024-verify-the-two-data-sources-data-15-min">Y2-T02.4: Verify the two data sources (Data, 15 min)</h4>
+<p><strong>Goal.</strong> For each URL: the HTTP code, the first five lines of the response, a working jq path, and a key-required note.</p>
+<p><strong>Stage 1.</strong> On the lab machine, check the script is there:</p>
+<p><code>ls -l verify_source.sh</code></p>
+<p>If the line ends in <code>verify_source.sh</code>, it is present. If you see "No such file", ask your trainer. Do not write a replacement.</p>
+<p><strong>Stage 2.</strong> Run the TC1 command by hand on one URL. Expect <code>200</code> followed by <code>{</code> or <code>[</code>.</p>
+<p><strong>Stage 3.</strong> Find the path. <code>jq 'keys' /tmp/r.json</code> lists the top-level names. If the top is a list, <code>jq '.[0]' /tmp/r.json</code> shows one item. Choose a path to the value you need, and test it with TC2. Your data will use different names.</p>
+<p><strong>Stage 4.</strong> Run the script for both URLs:</p>
+<p><code>./verify_source.sh '&lt;url&gt;' '&lt;jq path&gt;'</code></p>
+<p>Paste the HTTP code and the first five lines of the response into the sheet. To get five lines from compact JSON, use <code>jq '.' /tmp/r.json | head -n 5</code>, because <code>jq '.'</code> pretty-prints the output. Write "key required: yes" for a 401 or 403 response or a URL that needs a key, and "no" otherwise.</p>
+<div class="box box-trap"><div class="box-h">Trap: Never paste a key</div><p>If a URL holds a key, do not paste it. Write "yes" in the key column and tell your trainer.</p></div>
+
+<p><strong>Test this stage.</strong> TC1 and TC2 pass for both URLs before you paste anything.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One URL, one check, one sheet entry&quot;, &quot;nodes&quot;: [&quot;Your machine&quot;, &quot;Public data source&quot;, &quot;LMS squad sheet&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;curl request&quot;, &quot;note&quot;: &quot;Your machine asks for the data, with a 15-second limit.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;200 and a JSON body&quot;, &quot;note&quot;: &quot;The source replies with a status code and a body, saved to a file.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;paste code and five lines&quot;, &quot;note&quot;: &quot;You paste the status code and first lines into the sheet, never a key.&quot;}]}"></div>
+
+<h4 id="y2-t025-your-personal-curl-every-student-5-min">Y2-T02.5: Your personal curl (Every student, 5 min)</h4>
+<p><strong>Goal.</strong> A live result in your own verified-by cell.</p>
+<p><strong>Stage 1.</strong> On the lab machine, run for one of the squad's URLs:</p>
+<p><code>curl -s -o /dev/null -w '%{http_code}\n' '&lt;url&gt;'</code></p>
+<p><code>-s</code> hides the progress meter. <code>-o /dev/null</code> discards the body, because you only need the code. <code>-w '%{http_code}\n'</code> prints the code and a newline. Expected output is <code>200</code>.</p>
+<p><strong>Stage 2.</strong> Enter your name, the date, the time and the code in your verified-by cell, for example "Asha, 17 Nov, 19:40, 200". Do not add a key.</p>
+<p><strong>Test this stage.</strong> Your cell shows your name, a time and <code>200</code>.</p>
+<h4 id="y2-t026-working-agreement-and-submission-scrumdocs-10-min">Y2-T02.6: Working agreement and submission (Scrum/Docs, 10 min)</h4>
+<p><strong>Goal.</strong> A three-line working agreement, and the sheet submitted by 20:15.</p>
+<p><strong>Stage 1.</strong> Write three lines, one rule each, covering how you meet, how you decide and how you hand work over. An imaginary bus-app squad might write "We post a status update in the thread by 19:00." That shows the shape only. Write your squad's own rules.</p>
+<p><strong>Stage 2.</strong> Check the sheet line by line: five members, five roles, two domains, two statements, two URLs, five verified-by cells.</p>
+<p><strong>Test this stage.</strong> The LMS shows a submission time before 20:15.</p>
+<h4 id="y2-t027-the-60-second-pitch-tech-lead-10-min">Y2-T02.7: The 60-second pitch (Tech Lead, 10 min)</h4>
+<p><strong>Goal.</strong> A pitch covering the user, the pain, the data URL and the outcome metric, in under 60 seconds.</p>
+<p><strong>Stage 1.</strong> Plan the time: about 10 seconds for the user, 15 for the pain, 15 for the URL and 20 for the outcome.</p>
+<p><strong>Stage 2.</strong> Say it aloud with a phone timer running.</p>
+<p><strong>Test this stage.</strong> A squad-mate hears it end at 60 seconds or less, with a number and a unit in the outcome.</p>
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run every test case yourself, in order, and keep the output:</p>
+<ol>
+<li>TC1 on each URL.</li>
+<li>TC2 on each URL, with <code>echo $?</code>.</li>
+<li>TC3 on your copy of the roles.</li>
+<li>TC4 on each statement.</li>
+<li>TC5 on the sheet export, with <code>echo $?</code>.</li>
+</ol>
+<p>If your squad keeps evidence in the repository, open a pull request with this template. Replace each bracketed line with your own words.</p>
+<div class="hl"><pre><span></span><code>## What
+[One sentence on what this change adds to the squad sheet or docs.]
+
+## Why
+[One sentence on why the squad needs it for Y2-T02.]
+
+## How to test
+[The commands you ran, in order: TC1 to TC5.]
+
+## Evidence
+[Paste the output of each test case. Add a screenshot if your trainer asks.]
+
+## Checklist
+- [ ] Five members, five roles, no blanks
+- [ ] Two domains and two statements, each with a number and a unit
+- [ ] Both URLs return 200 and JSON, with the path recorded
+- [ ] My verified-by entry is filled
+- [ ] No key or token in the sheet
+</code></pre></div>
+
+<p>If the repository is not used for this ticket, paste the same headings into your LMS submission note.</p>
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] <strong>T0 completed by you.</strong> The platform report shows it as completed.</li>
+<li>[ ] <strong>Sheet submitted with 5 members, 5 roles, 2 domains, 2 statements and 2 URLs.</strong> Open the submitted sheet and count each item.</li>
+<li>[ ] <strong>Both URLs verified as 200 and JSON with the field path, by the Data role and the trainer.</strong> TC1 and TC2 pass for both.</li>
+<li>[ ] <strong>Every student has a personal verified-by entry.</strong> Your own cell shows your name, time and <code>200</code>.</li>
+<li>[ ] <strong>Three-line working agreement drafted.</strong> It is in the sheet or the thread.</li>
+<li>[ ] <strong>60-second pitch delivered.</strong> You timed it at 60 seconds or less.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>curl prints <code>000</code></td>
+<td>No answer within 15 s, a mistyped host, or a blocked address</td>
+<td>Check the spelling and retry; try the other URL</td>
+</tr>
+<tr>
+<td>curl prints <code>200</code>, but <code>head -c 1</code> shows <code>&lt;</code></td>
+<td>The source sent an HTML page, not data</td>
+<td>This URL fails the ticket. Tell your squad and pick another source</td>
+</tr>
+<tr>
+<td><code>jq -e</code> prints <code>null</code> and exits 1</td>
+<td>The path does not match the response's names</td>
+<td>Run <code>jq 'keys'</code> and <code>jq '.[0]'</code>, then correct the path</td>
+</tr>
+<tr>
+<td><code>jq</code> says <code>Cannot index array</code></td>
+<td>The top level is a list</td>
+<td>Add <code>[0]</code> after the list name</td>
+</tr>
+<tr>
+<td>curl prints <code>401</code> or <code>403</code></td>
+<td>The source needs a key or login</td>
+<td>Record "key required: yes" and tell your trainer. Never paste the key</td>
+</tr>
+<tr>
+<td>Only part of the command runs</td>
+<td>An unquoted <code>&amp;</code> in the URL split the command</td>
+<td>Put the whole URL in single quotes</td>
+</tr>
+<tr>
+<td>TC5 prints a line with <code>apikey=</code></td>
+<td>A URL holding a key was pasted into a cell</td>
+<td>Delete it and record "key required: yes"</td>
+</tr>
+<tr>
+<td>TC4 returns your statement</td>
+<td>The outcome has no number or no unit</td>
+<td>Rewrite the outcome with a measurable number and unit</td>
+</tr>
+<tr>
+<td>TC3 prints <code>6</code></td>
+<td>The header row was counted</td>
+<td>Remove the header and count again</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p><strong>1. Why check the URLs before writing any code?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The fetching work in T05 expects JSON from a live address. A dead or HTML-only source blocks that work, and the team would find out late. A live check now tests the one thing the later work depends on, so it is the cheapest point to catch the failure.</p></details>
+
+<p><strong>2. Why is a 200 status code alone not enough?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A 200 only says the request succeeded. It does not prove the body is JSON or that the field we need exists. So the check reads the first byte to confirm JSON, then uses <code>jq -e</code> to confirm the recorded path returns a non-null value.</p></details>
+
+<p><strong>3. What is the trade-off between a source that needs a key and one that does not?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A keyed source may hold richer data, but its key is a secret that must stay out of the sheet, the repository and the URLs. An open source is simpler to share, but may lack the field the outcome needs. I would record "key required: yes" honestly and choose the source that can measure the outcome.</p></details>
+
+<p><strong>4. Why must the outcome have a number and a unit?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Without a number and a unit, nobody can say whether the product succeeded. "Alert residents at least 2 h before PM2.5 exceeds 60 µg/m³" can be tested against data. The number sets the target and the unit makes it specific.</p></details>
+
+<p><strong>5. What did you personally do, and how do you show it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the step you owned, such as your own statement or your live curl. Show the exact command, the status code, the path you used and the cell where you recorded it. Describe only what you actually did, and let the output be the proof.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A squad URL returns a 404 page. A teammate says the check is fine because curl finished without an error. What is wrong?&quot;, &quot;opts&quot;: [&quot;curl always fails on a 404, so the teammate is wrong that it finished&quot;, &quot;The 404 page is HTML, so the check passes only with a jq path&quot;, &quot;curl exits 0 on a 404 unless you add --fail, so you must read the status code&quot;, &quot;The -s flag hides the error, so nothing can be seen&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;curl does not treat a 404 as an error by default. --fail changes that. -s hides the progress meter (and error messages unless you add -S), but it does not change the status code.&quot;}, {&quot;q&quot;: &quot;You run jq -e &#x27;.records[0].aqi&#x27; on a file and it prints null. What exit code does jq give?&quot;, &quot;opts&quot;: [&quot;1&quot;, &quot;0&quot;, &quot;4&quot;, &quot;2&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;With -e, a null or false final value gives exit code 1. 0 would mean a real value was found, and 4 means no valid result was produced at all.&quot;}, {&quot;q&quot;: &quot;Which command finds 32 or more hex characters in a sheet export, in any case?&quot;, &quot;opts&quot;: [&quot;grep -n token sheet-export.csv&quot;, &quot;grep -c hex sheet-export.csv&quot;, &quot;grep -n &#x27;32&#x27; sheet-export.csv&quot;, &quot;grep -n -i -E &#x27;[0-9a-f]{32,}&#x27; sheet-export.csv&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-E enables the {32,} repeat count, -i matches uppercase too, and -n shows line numbers. Searching for the word token or the number 32 misses the hex strings the ticket asks about.&quot;}]}"></div>
+
+<h2 id="y2-t03-p0-create-repo-with-readme-signed-chartermd-10-issue-board">Y2-T03 · P0: create repo with README, signed CHARTER.md, 10-issue board</h2>
+<p><em>Session 3 · phase E0 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_2">The ticket in plain words</h3>
+<p>CityPulse is a platform that shows Bengaluru city data, and each squad builds one product on top of it. The squad needs one place that says what it builds and how success is judged. That place is a GitHub repository named <code>citypulse-&lt;squad&gt;</code>.</p>
+<p>The repository holds a README, which states the problem, the user, the data source and one success metric. It also holds a charter, a short agreement that all five members sign, with rules that prevent a repeat of the GitLab accident of 2017. In that case a production database was deleted by mistake while an engineer was fixing a database replication problem, and the backups had not been working. A good charter names rules that would have caught a failure like that early.</p>
+<p>The ticket also builds the backlog: at least ten labelled issues on a project board, each with acceptance criteria (the checks that show an issue is finished). Every student also proves basic Linux skill on the shared server, because every pipeline from T05 runs in a terminal.</p>
+<h3 id="before-you-start_2">Before you start</h3>
+<p>Y2-T02 must be merged: your squad sheet lists five roles, two verified domains and their URLs. The Tech Lead must have created an empty repository <code>citypulse-&lt;squad&gt;</code> in the <code>citypulse-y2</code> organisation. You need VS Code and Git on your laptop, and access to the shared Linux server, where <code>/srv/hunt/</code> is ready.</p>
+<p>Run each check where the table says. Commands run in Git Bash on your laptop unless stated.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Command</th>
+<th>Where</th>
+<th>Ready when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git</td>
+<td><code>git --version</code></td>
+<td>Laptop</td>
+<td>Prints <code>git version</code> and a number</td>
+</tr>
+<tr>
+<td>GitHub CLI</td>
+<td><code>gh auth status</code></td>
+<td>Laptop</td>
+<td>Says you are logged in to github.com</td>
+</tr>
+<tr>
+<td>Organisation</td>
+<td><code>gh api user/memberships/orgs/citypulse-y2 --jq .state</code></td>
+<td>Laptop</td>
+<td>Prints <code>active</code></td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><code>gh repo view citypulse-y2/citypulse-&lt;squad&gt; --json name</code></td>
+<td>Laptop</td>
+<td>Prints a JSON line with the repository name</td>
+</tr>
+<tr>
+<td>Git identity</td>
+<td><code>git config user.email</code></td>
+<td>Laptop</td>
+<td>Prints the email on your GitHub account</td>
+</tr>
+<tr>
+<td>jq</td>
+<td><code>jq --version</code></td>
+<td>Lab machine</td>
+<td>Prints <code>jq-</code> and a version number</td>
+</tr>
+<tr>
+<td>Lab machine</td>
+<td><code>uname -a</code></td>
+<td>Lab machine</td>
+<td>Output starts with <code>Linux</code></td>
+</tr>
+</tbody>
+</table>
+<p>The project board in step Y2-T03.6 needs the <code>project</code> scope. If <code>gh auth status</code> does not list it, run <code>gh auth refresh -s project</code> now.</p>
+<h3 id="words-you-need_2">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Squad</td>
+<td>A team of about five students who build one CityPulse product.</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>The job one member holds in the squad, such as Tech Lead or Data.</td>
+</tr>
+<tr>
+<td>Sprint</td>
+<td>A fixed block of work that ends with a milestone.</td>
+</tr>
+<tr>
+<td>Milestone</td>
+<td>A named checkpoint. This ticket closes P0.</td>
+</tr>
+<tr>
+<td>Repository (repo)</td>
+<td>A project folder that Git tracks, with its history, stored on GitHub.</td>
+</tr>
+<tr>
+<td>Organisation</td>
+<td>A GitHub account that groups repositories and members.</td>
+</tr>
+<tr>
+<td>Clone</td>
+<td>A copy of a remote repository on your laptop.</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of the project, with a message and an author.</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>The name and email on a commit, taken from the Git settings of the machine that made it.</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>The name and email set with <code>git config</code>.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A separate line of commits, so you can work without changing <code>main</code>.</td>
+</tr>
+<tr>
+<td>Main</td>
+<td>The default branch, the version the squad treats as current.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge a branch, with a page where others review it.</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>Joining one branch's commits into another, usually <code>main</code>.</td>
+</tr>
+<tr>
+<td>README</td>
+<td>The first page of a repository.</td>
+</tr>
+<tr>
+<td>Markdown</td>
+<td>Plain text with simple marks: <code>#</code> for headings, <code>- [ ]</code> for checklist items.</td>
+</tr>
+<tr>
+<td>Success metric</td>
+<td>One target with a number, a unit and a target date.</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>The measure after a number, such as <code>%</code> or <code>per hour</code>.</td>
+</tr>
+<tr>
+<td>PM2.5</td>
+<td>Fine particles in the air, measured in µg/m³.</td>
+</tr>
+<tr>
+<td>Process control</td>
+<td>A rule the team can check that stops a known kind of failure.</td>
+</tr>
+<tr>
+<td>Charter</td>
+<td>The signed agreement: the metric, the process controls and the signatures.</td>
+</tr>
+<tr>
+<td>Signature line</td>
+<td>A line in the form <code>Signed: &lt;full name&gt; (@login), &lt;date&gt;</code>.</td>
+</tr>
+<tr>
+<td>.gitkeep</td>
+<td>An empty file that keeps an empty folder in Git.</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>A file that lists files Git must not track.</td>
+</tr>
+<tr>
+<td>LICENSE</td>
+<td>The file stating the terms on which others may use the code.</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>A tracked piece of work, with a title, a body and labels.</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>A tag on an issue. This squad uses feature, data, bug and docs.</td>
+</tr>
+<tr>
+<td>Acceptance criteria</td>
+<td>The checks that prove an issue is finished, written as a checklist.</td>
+</tr>
+<tr>
+<td>Project board</td>
+<td>A GitHub board that shows issues in columns such as Todo.</td>
+</tr>
+<tr>
+<td>Backlog</td>
+<td>The ordered list of work waiting to be done.</td>
+</tr>
+<tr>
+<td>gh</td>
+<td>GitHub's command-line tool.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>A text format for structured data, which <code>gh --json</code> prints.</td>
+</tr>
+<tr>
+<td>jq</td>
+<td>A tool that reads JSON and picks out values.</td>
+</tr>
+<tr>
+<td>Pipe (<code>\|</code>)</td>
+<td>Sends the output of one command into the next.</td>
+</tr>
+<tr>
+<td>Hidden file</td>
+<td>A file whose name starts with a dot, such as <code>.gitignore</code>. <code>ls -a</code> shows it.</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>The program that reads your typed commands.</td>
+</tr>
+<tr>
+<td>Shell history</td>
+<td>The list of commands you typed in a session.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_2">How your trainer checks it</h3>
+<p>Criterion 1 is TC1, criterion 2 is TC4, criterion 3 is TC2, criterion 4 is TC3 plus a look at the board, and criterion 6 is TC5. Criterion 5, the hunt score, is read from the trainer's sheet.</p>
+<h4 id="tc1-the-files-and-folders-exist">TC1: the files and folders exist</h4>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>citypulse-&lt;squad&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ls<span class="w"> </span>src<span class="w"> </span>data<span class="w"> </span>docs<span class="w"> </span>tests
+</code></pre></div>
+
+<ul>
+<li><code>gh repo clone OWNER/REPO</code> copies the repository into a folder with its name.</li>
+<li><code>&amp;&amp;</code> runs the next command only if the last one succeeded.</li>
+<li><code>ls -a</code> lists every name, including hidden ones such as <code>.gitignore</code>.</li>
+<li><code>ls src data docs tests</code> prints a heading per folder. The folders hold only <code>.gitkeep</code>, which is hidden, so the lines under each heading are empty. That is correct.</li>
+</ul>
+<p>Passing output shows <code>.git</code>, <code>.gitignore</code>, <code>CHARTER.md</code>, <code>LICENSE</code>, <code>README.md</code>, <code>data</code>, <code>docs</code>, <code>src</code> and <code>tests</code>, then four headings with no error. <code>cannot access 'tests'</code> means the folder is missing on main.</p>
+<h4 id="tc2-five-distinct-authors-signed-the-charter">TC2: five distinct authors signed the charter</h4>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%an &lt;%ae&gt;&#39;</span><span class="w"> </span>--<span class="w"> </span>CHARTER.md<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<ul>
+<li><code>--format='%an &lt;%ae&gt;'</code> prints each commit's author name and email.</li>
+<li><code>-- CHARTER.md</code> keeps only commits that changed that file. The <code>--</code> separates options from the file name.</li>
+<li><code>sort -u</code> keeps one copy of each line, and <code>wc -l</code> counts the lines.</li>
+</ul>
+<p>On a finished squad the result looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --format=&#x27;%an &lt;%ae&gt;&#x27; -- CHARTER.md | sort -u | wc -l&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;5&quot;}]}"></div>
+
+<p>Passing output is <code>5</code>. A <code>1</code> means everyone committed from one identity. A <code>4</code> means one signature is missing or committed from another identity. A count of 6 or more means one student has two identities, such as a work and a personal email.</p>
+<h4 id="tc3-at-least-ten-labelled-issues">TC3: at least ten labelled issues</h4>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;<span class="w"> </span>--state<span class="w"> </span>all<span class="w"> </span>--limit<span class="w"> </span><span class="m">50</span><span class="w"> </span>--json<span class="w"> </span>number,labels<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;length, [.[] | select(.labels|length==0)] | length&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>--state all</code> includes closed issues. <code>--json number,labels</code> prints each issue's number and labels as JSON.</li>
+<li>In the <code>jq</code> program, <code>length</code> counts the issues. The comma prints a second answer.</li>
+<li><code>[.[] | select(.labels|length==0)]</code> keeps issues with no labels, and the final <code>length</code> counts them.</li>
+</ul>
+<p>Passing output is two lines: a total of at least 10, then 0. No output at all, with an error message from <code>gh</code>, usually means a wrong repository name or no access. (The <code>jq</code> program works because <code>|</code> has the lowest priority: both answers before it are passed through the final <code>length</code>.) A second number above 0 means an issue has no label; fix it with <code>gh issue edit &lt;number&gt; --add-label docs</code>. The test checks only that labels exist, so read the names yourself: each must be one of the four agreed labels.</p>
+<h4 id="tc4-the-metric-line-has-a-number-a-unit-and-a-date">TC4: the metric line has a number, a unit and a date</h4>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;metric&#39;</span><span class="w"> </span>-A2<span class="w"> </span>CHARTER.md
+</code></pre></div>
+
+<ul>
+<li><code>grep</code> prints lines that match a pattern. <code>-i</code> ignores case, and <code>-E</code> selects the extended pattern language.</li>
+<li><code>-A2</code> prints two lines after each match, so the value appears with its heading.</li>
+</ul>
+<p>Passing output shows a line with a number, a unit and a date in <code>YYYY-MM-DD</code> form, such as <code>≥95% of hourly PM2.5 readings captured per week by 2026-12-12</code>. No output means the word <code>metric</code> is missing, or you are in the wrong folder (check with <code>pwd</code>).</p>
+<h4 id="tc5-each-students-linux-record-has-the-student-as-author">TC5: each student's Linux record has the student as author</h4>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%an&#39;</span><span class="w"> </span>--<span class="w"> </span>docs/linux/&lt;name&gt;.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u
+</code></pre></div>
+
+<p>Passing output is the student's own name only. Empty output means the file was not pushed, or has a different name. A teammate's name means the file was committed from a shared laptop.</p>
+<h3 id="split-the-work_2">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T03.1</td>
+<td>Tech Lead</td>
+<td>Clone, add the folder layout with <code>.gitkeep</code>, <code>.gitignore</code> and <code>LICENSE</code>, first commit</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T03.2</td>
+<td>Squad</td>
+<td>Co-write <code>CHARTER.md</code>: three process controls and one metric</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Y2-T03.3</td>
+<td>Every student</td>
+<td>Add your signature line from your own identity</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T03.4</td>
+<td>Scrum/Docs</td>
+<td>Write <code>README.md</code> with problem, user, data URL, metric and roles</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T03.5</td>
+<td>Data and Backend</td>
+<td>Create 10 labelled issues with acceptance criteria</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T03.6</td>
+<td>QA/DevOps</td>
+<td>Create the board with Todo, In progress and Done, and add all 10 issues</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T03.7</td>
+<td>Every student</td>
+<td>Complete the 20-task Linux hunt in your own answers file</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Y2-T03.8</td>
+<td>Every student</td>
+<td>Save your shell history, copy it into <code>docs/linux</code>, push under your identity</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p>Own one piece from start to end, so your commits show it. A good choice is one process control in Y2-T03.2, in its own commit, approved by a squad-mate. Use a branch such as <code>feat/y2-t03-&lt;your-name&gt;</code>, and merge only through a pull request.</p>
+<p>Example commit messages, in the order one student might make them:</p>
+<div class="hl"><pre><span></span><code>Add process control: second person confirms deletes on shared data
+Reword metric to include unit and target date
+Add my signature to CHARTER.md
+Resolve CHARTER.md merge conflict and keep every signature
+Add Linux history record for &lt;your-name&gt;
+</code></pre></div>
+
+<h3 id="do-it-step-by-step_2">Do it, step by step</h3>
+<p>Use your squad's name in place of <code>&lt;squad&gt;</code>. Test each stage before moving on.</p>
+<h4 id="y2-t031-create-the-first-commit-tech-lead">Y2-T03.1 Create the first commit (Tech Lead)</h4>
+<p>Goal: main holds the four folders, <code>.gitignore</code> and <code>LICENSE</code>.</p>
+<p>Stage 1, clone and check identity, in Git Bash on your laptop:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;
+<span class="nb">cd</span><span class="w"> </span>citypulse-&lt;squad&gt;
+git<span class="w"> </span>config<span class="w"> </span>user.name
+git<span class="w"> </span>config<span class="w"> </span>user.email
+</code></pre></div>
+
+<p><code>gh repo clone</code> copies the repository and <code>cd</code> enters it. The two <code>git config</code> lines print your name and email. The email must match your GitHub account, because the course counts authors from these values.</p>
+<p>Stage 2, make folders. Git ignores empty folders, so each gets a <code>.gitkeep</code> file:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>src<span class="w"> </span>data<span class="w"> </span>docs<span class="w"> </span>tests
+touch<span class="w"> </span>src/.gitkeep<span class="w"> </span>data/.gitkeep<span class="w"> </span>docs/.gitkeep<span class="w"> </span>tests/.gitkeep
+ls<span class="w"> </span>-a<span class="w"> </span>src
+</code></pre></div>
+
+<p><code>mkdir -p</code> creates folders and ignores ones that exist. <code>touch</code> creates an empty file. <code>ls -a src</code> should show <code>.gitkeep</code>.</p>
+<p>Stage 3, write <code>.gitignore</code> in VS Code. Use <code>data/*</code> with <code>!data/.gitkeep</code>, then add rules for <code>.env</code> and <code>__pycache__/</code>. Never write <code>data/</code> alone, because that hides <code>data/.gitkeep</code>.</p>
+<p>Stage 4, add <code>LICENSE</code> with the licence your trainer approves. The ticket does not say which licence that is, so ask your trainer before you choose one.</p>
+<p>Stage 5, commit and push:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>status<span class="w"> </span>--short
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add folder layout, .gitignore and LICENSE&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%h %an %s&#39;</span><span class="w"> </span>-1
+</code></pre></div>
+
+<p><code>git add .</code> stages every file that is not ignored. The last command prints the hash, your name and the message. Cloning an empty repository prints a warning that you cloned an empty repository; that is normal. If <code>git branch --show-current</code> does not print <code>main</code>, run <code>git branch -M main</code> before pushing. If the push is refused because main is protected, open a pull request instead.</p>
+<div class="box box-trap"><div class="box-h">Trap: git commit -am and new files</div><p><code>-a</code> stages only files Git already tracks, so new files need <code>git add</code>. See <a href="D01.html">Day 1 — Git, GitHub and secure accounts</a>.</p></div>
+
+<h4 id="y2-t032-co-write-chartermd-squad">Y2-T03.2 Co-write CHARTER.md (Squad)</h4>
+<p>Goal: the charter has a metric with a number, a unit and a date, and at least three process controls drawn from the 2017 case.</p>
+<p>Stage 1, read the case and write three failures it shows. As a starting point, the public account says an engineer deleted the data folder on the wrong server late at night, and the team then found that several backup methods had been failing without anyone noticing, so failure alerts did not reach them. Read the account yourselves and find more. For each, ask which simple rule, checked by a second person, would have caught it. A process control is a rule someone can check. "Be careful with deletes" is not one. "A second member confirms the exact path before any delete on shared data" is.</p>
+<p>Stage 2, write the metric as one sentence. The check needs three parts: a target number, a unit and a date. Name the measured thing (and a time window if it repeats) so the number means something. A fictional example about a library shows the shape:</p>
+<p><code>At least 90% of returned library books checked in within 1 day, by 2027-03-31.</code></p>
+<div class="box box-trap"><div class="box-h">Trap: A line starting with a greater-than sign</div><p>In Markdown, a line that starts with <code>&gt;</code> becomes a quotation. Write ≥ or "At least" instead.</p></div>
+
+<p>Stage 3, lay out the file with headings and checklist boxes. This is the shape only:</p>
+<div class="hl"><pre><span></span><code>## CityPulse &lt;squad&gt; Charter
+## Success metric
+&lt;your metric sentence&gt;
+## Process controls
+- [ ] &lt;control one, in your own words&gt;
+- [ ] &lt;control two&gt;
+- [ ] &lt;control three&gt;
+## Signatures
+</code></pre></div>
+
+<p>Stage 4, preview with Ctrl+Shift+V in VS Code, then open a pull request. Each member adds their own control in their own commit.</p>
+<p>Test: TC4 prints the metric line with all three parts.</p>
+<h4 id="y2-t033-add-your-signature-every-student">Y2-T03.3 Add your signature (every student)</h4>
+<p>Goal: your signature sits in a commit with your name as author.</p>
+<p>Stage 1, get the latest main and branch:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/y2-t03-&lt;your-name&gt;
+</code></pre></div>
+
+<p><code>git switch -c</code> creates a branch and moves onto it.</p>
+<p>Stage 2, add your line under Signatures, in the form <code>Signed: &lt;full name&gt; (@&lt;login&gt;), &lt;date&gt;</code>, with the date as <code>YYYY-MM-DD</code>. Then commit and push:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>CHARTER.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add my signature to CHARTER.md&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/y2-t03-&lt;your-name&gt;
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--fill
+</code></pre></div>
+
+<p><code>gh pr create --fill</code> opens the pull request and uses the commit message as its title. A squad-mate approves it. You never merge your own pull request.</p>
+<p>Here is how your commit reaches the trainer's check:</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;From your commit to the trainer&#x27;s count&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Trainer&#x27;s check&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push&quot;, &quot;note&quot;: &quot;Your signature commit travels to GitHub under your own identity.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;merged to main&quot;, &quot;note&quot;: &quot;After approval, the commit reaches main.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;git log then sort -u&quot;, &quot;note&quot;: &quot;The trainer reads every author of CHARTER.md and counts the distinct names.&quot;}]}"></div>
+
+<h4 id="y2-t034-write-readmemd-scrumdocs">Y2-T03.4 Write README.md (Scrum/Docs)</h4>
+<p>Goal: the README has the headings Problem, User, Data source, Success metric, Team and roles, and Final domain, each with your text.</p>
+<p>The data source is the URL verified in Y2-T02 for your final domain. Copy the metric from <code>CHARTER.md</code> rather than retyping it.
+Test: open the README on GitHub, check each heading, and check the metric matches the charter.</p>
+<h4 id="y2-t035-create-10-labelled-issues-data-and-backend">Y2-T03.5 Create 10 labelled issues (Data and Backend)</h4>
+<p>Goal: ten issues, each with exactly one label from feature, data, bug or docs, and each with an acceptance-criteria section.</p>
+<p>Stage 1, check labels, and create any that are missing:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>label<span class="w"> </span>list<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;
+gh<span class="w"> </span>label<span class="w"> </span>create<span class="w"> </span>data<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;<span class="w"> </span>--color<span class="w"> </span>0E8A16<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Data work&quot;</span>
+</code></pre></div>
+
+<p>A new repository usually has <code>bug</code> and <code>documentation</code> but not <code>docs</code>, <code>feature</code> or <code>data</code>, so create each of the four names you use. <code>gh label create</code> takes a name, a six-digit hex colour and a description. Without the label, <code>gh issue create</code> fails with a "label not found" message.</p>
+<p>Stage 2, write each body in a file, with a <code>## Acceptance criteria</code> heading and <code>- [ ]</code> items. A fictional example for another project shows the layout:</p>
+<div class="hl"><pre><span></span><code>## Acceptance criteria
+- [ ] The import script runs on a sample file
+- [ ] The row count matches the source file
+</code></pre></div>
+
+<p>Stage 3, create one issue, then repeat for the others:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Check the source URL returns JSON&quot;</span><span class="w"> </span>--label<span class="w"> </span>data<span class="w"> </span>--body-file<span class="w"> </span>issue1.txt
+</code></pre></div>
+
+<p><code>--title</code> names the issue, <code>--label</code> attaches one label, and <code>--body-file</code> reads the body from a file. <code>gh</code> prints the new issue's URL.</p>
+<p>Test: rerun that <code>gh issue list</code> command. It shows ten entries, each with one label.</p>
+<h4 id="y2-t036-create-the-project-board-qadevops">Y2-T03.6 Create the project board (QA/DevOps)</h4>
+<p>Goal: a board named <code>CityPulse &lt;squad&gt; backlog</code> holds all ten issues.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>project<span class="w"> </span>create<span class="w"> </span>--owner<span class="w"> </span>citypulse-y2<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;CityPulse &lt;squad&gt; backlog&quot;</span>
+gh<span class="w"> </span>project<span class="w"> </span>list<span class="w"> </span>--owner<span class="w"> </span>citypulse-y2
+</code></pre></div>
+
+<p><code>--owner</code> names the organisation, and <code>gh project list</code> prints the board's number. In the browser, check the Status field has Todo, In progress and Done, and rename any that differ.</p>
+<p>Add each issue with <code>gh project item-add &lt;project-number&gt; --owner citypulse-y2 --url &lt;issue-url&gt;</code>. Get the URLs with <code>gh issue list --repo citypulse-y2/citypulse-&lt;squad&gt; --json url --jq '.[].url'</code>, then repeat the add command for each one.
+Test: the board shows ten items.</p>
+<h4 id="y2-t037-complete-the-linux-hunt-every-student">Y2-T03.7 Complete the Linux hunt (every student)</h4>
+<p>Goal: your answers are in <code>~/hunt/answers.txt</code> on the lab machine. The hunt is individual, so do not copy a teammate's file. You need at least 16 of the 20 correct. The Linux skills behind it are in <a href="D02.html">Day 2 — Linux and the command line</a>.</p>
+<p>Learn redirection on a practice file first:</p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;first line&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/practice.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;second line&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/practice.txt
+cat<span class="w"> </span>~/practice.txt
+</code></pre></div>
+
+<p><code>&gt;</code> writes and replaces. <code>&gt;&gt;</code> appends. <code>cat</code> prints the file. Expected output: two lines.</p>
+<p>Create your answers file with <code>mkdir -p ~/hunt</code>, and add each answer with <code>&gt;&gt;</code> so none is lost.</p>
+<p>Test: <code>cat ~/hunt/answers.txt</code> shows every answer so far, with no gaps.</p>
+<div class="box box-trap"><div class="box-h">Trap: Secrets in history</div><p>Commands you type are saved in your history. Never type a password or token into a command. If one slips in, follow the secret response in <a href="D01.html">Day 1</a>: revoke the secret first, then tell your trainer.</p></div>
+
+<h4 id="y2-t038-save-your-history-and-push-it-every-student">Y2-T03.8 Save your history and push it (every student)</h4>
+<p>Goal: <code>docs/linux/&lt;name&gt;.txt</code> holds your history, committed under your identity.</p>
+<p>Stage 1, save the history. <code>history</code> prints numbered commands, so redirect it to a file in <code>/tmp</code>, a shared temporary folder:</p>
+<div class="hl"><pre><span></span><code><span class="nb">history</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/&lt;name&gt;.txt
+wc<span class="w"> </span>-l<span class="w"> </span>/tmp/&lt;name&gt;.txt
+</code></pre></div>
+
+<p><code>wc -l</code> counts lines. A count of 0 means this shell has no history, so run the commands in the same session. Files in <code>/tmp</code> can be removed on restart, so copy promptly.</p>
+<p>Stage 2, bring the file from the lab machine into your clone on your laptop, using the method your trainer set up, such as <code>scp</code> (run on the laptop, inside your clone):</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>docs/linux
+scp<span class="w"> </span>&lt;lab-user&gt;@&lt;lab-host&gt;:/tmp/&lt;name&gt;.txt<span class="w"> </span>docs/linux/&lt;name&gt;.txt
+git<span class="w"> </span>status<span class="w"> </span>--short
+</code></pre></div>
+
+<p><code>&lt;lab-user&gt;</code> and <code>&lt;lab-host&gt;</code> are the login details your trainer gave you. <code>git status --short</code> should show <code>?? docs/linux/</code> as untracked.</p>
+<p>Search it for <code>token</code>, <code>key</code> and <code>password</code>, and remove any secret before you commit.</p>
+<p>Stage 3, commit on your own branch and open a pull request:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/y2-t03-&lt;your-name&gt;-history
+git<span class="w"> </span>add<span class="w"> </span>docs/linux/&lt;name&gt;.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add Linux history record for &lt;your-name&gt;&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/y2-t03-&lt;your-name&gt;-history
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--fill
+</code></pre></div>
+
+<p>Test: <code>git log --format='%an' -- docs/linux/&lt;name&gt;.txt | sort -u</code> prints your name.</p>
+<h3 id="prove-it-before-review_2">Prove it before review</h3>
+<p>Run every test case yourself, in order, and keep the output.</p>
+<p>Use this structure for the pull request description. The headings are fixed; the words are yours:</p>
+<div class="hl"><pre><span></span><code>## What
+One sentence on the files this pull request changes.
+## Why
+The subtask (for example Y2-T03.3) and the criterion it serves.
+## How to test
+The commands a reviewer runs, in order.
+## Evidence
+The output of each test case, pasted in short form, and a screenshot of the board.
+## Checklist
+- [ ] My commits use my own Git identity
+- [ ] The test case named above passes on my branch
+- [ ] No secret is committed
+</code></pre></div>
+
+<h3 id="definition-of-done_2">Definition of done</h3>
+<ul>
+<li>[ ] Final domain recorded in <code>README.md</code>. You know it when the README on main names it.</li>
+<li>[ ] <code>CHARTER.md</code> signed by all five through their own commits. You know it when TC2 prints <code>5</code>.</li>
+<li>[ ] Success metric has a number, a unit and a date, approved by the trainer in the demo. You know it when TC4 prints all three parts.</li>
+<li>[ ] Ten labelled issues on the project board. You know it when TC3 prints at least 10 and then 0.</li>
+<li>[ ] Each student's hunt is at least 16 out of 20, and <code>docs/linux/&lt;name&gt;.txt</code> is pushed. You know it when TC5 prints your name.</li>
+<li>[ ] Five-minute demo from README to CHARTER to board. You know it when you have timed the run under five minutes.</li>
+</ul>
+<h3 id="what-goes-wrong_2">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC2 prints <code>1</code></td>
+<td>Everyone committed from one laptop or identity</td>
+<td>Commit from your own machine with your own <code>git config</code>; ask your trainer before changing old history</td>
+</tr>
+<tr>
+<td>TC3 second number above 0</td>
+<td>An issue has no label</td>
+<td><code>gh issue edit &lt;number&gt; --add-label docs</code> with the right label</td>
+</tr>
+<tr>
+<td>TC4 prints nothing</td>
+<td>The word <code>metric</code> is missing, or you are in the wrong folder</td>
+<td>Check with <code>pwd</code>, then <code>cd</code> to the repository root</td>
+</tr>
+<tr>
+<td>Merge conflict in <code>CHARTER.md</code></td>
+<td>Two students edited the same lines</td>
+<td>Pull main, keep every signature line, commit the resolution</td>
+</tr>
+<tr>
+<td>History file is empty</td>
+<td><code>history</code> shows only the current session</td>
+<td>Run the commands in the same session, then save</td>
+</tr>
+<tr>
+<td>TC5 shows a teammate's name</td>
+<td>The file was committed from a shared laptop</td>
+<td>Commit again from your own identity, and tell your trainer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_2">Defend it in the viva</h3>
+<p>Why does the metric need a number, a unit and a target date?</p>
+<details class="box box-answer"><summary>Model answer</summary><p>The number sets the size of the goal, the unit says what is measured, and the date makes the goal testable. Without a date, a metric can never be marked as missed, which is why TC4 checks all three.</p></details>
+
+<p>Why sign the charter with Git commits instead of a Word file with a signature image?</p>
+<details class="box box-answer"><summary>Model answer</summary><p>This is a trade-off. Word gives richer formatting, but its file cannot be compared line by line in a pull request. A commit records who signed and when, and TC2 counts those authors. The cost is plainer formatting.</p></details>
+
+<p>What did you personally contribute, and how can the trainer check it?</p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the control you wrote, the pull request that reviewed it and the commit hash. Then point to the evidence: TC2 and <code>git log</code> on the file show your name against that commit. Use your own words, and claim only work you did.</p></details>
+
+<p>Why does the ticket require process controls, and what does each one cost?</p>
+<details class="box box-answer"><summary>Model answer</summary><p>The 2017 case shows that one mistake can destroy data when no second person checks the action and the backups are untested. A control is a checkable rule. Each one adds a small step, so choose the failures the team could realistically have.</p></details>
+
+<p>Why might TC2 give a wrong answer, and how would you spot it?</p>
+<details class="box box-answer"><summary>Model answer</summary><p>The command counts each name and email pair, so one person with two emails is counted twice. Run it without <code>sort -u</code> and <code>wc -l</code> to read the full list, and ask your trainer before changing old history.</p></details>
+
+<h3 id="check-yourself_2">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which command prints the number of distinct people who committed to CHARTER.md?&quot;, &quot;opts&quot;: [&quot;ls -a CHARTER.md&quot;, &quot;git log --format=&#x27;%an &lt;%ae&gt;&#x27; -- CHARTER.md | sort -u | wc -l&quot;, &quot;git status --short&quot;, &quot;grep -c CHARTER.md&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;git log lists the authors of commits that touched the file, sort -u keeps one copy of each, and wc -l counts them. The other options do not list authors.&quot;}, {&quot;q&quot;: &quot;The trainer&#x27;s check needs a number, a unit and a date. Your metric line reads: Reach 90 by 2027-03-31. Which required part is missing?&quot;, &quot;opts&quot;: [&quot;A target date&quot;, &quot;A number&quot;, &quot;A time window&quot;, &quot;A unit&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The rule needs a number, a unit and a date. 90 is a number and 2027-03-31 is a date, but nothing says what 90 is counted in, such as a percentage. The time window is tempting, but it is not one of the three required parts.&quot;}, {&quot;q&quot;: &quot;Why does the trainer check that each issue has a label from a fixed set?&quot;, &quot;opts&quot;: [&quot;So the backlog can be sorted into the four agreed types&quot;, &quot;So GitHub emails the squad when an issue opens&quot;, &quot;So the commit author becomes the issue owner&quot;, &quot;So the issue closes when its branch is merged&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Labels from one agreed set sort the backlog. The other options are not what labels do.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="P6.html"><small>Previous</small>Project 6 — CityPulse Capstone</a><a class="nx" href="K02.html"><small>Next</small>Capstone tickets T04–T07: setup, fetching and scheduling data</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

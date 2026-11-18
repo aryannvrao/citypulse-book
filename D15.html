@@ -1,0 +1,1058 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 15 — Serverless and cost awareness · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D15" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 4 · Days 11–15 · Pipelines and cloud</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a class="cur" href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 4 · Days 11–15 · Pipelines and cloud</p><h1>Day 15 — Serverless and cost awareness</h1><p class="sub">You will be able to deploy a scheduled Lambda function, read its billed cost from the logs, price it against a virtual machine, and tear everything down safely.</p><p class="meta">81 min read · practice quiz · 3 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D15.mp4?v=1794464475"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you run a small program in the cloud that wakes up every 30 minutes, fetches air-quality data for Bengaluru, and saves it to a storage bucket. Then you measure what it cost and compare that with keeping a virtual machine switched on all month.</p>
+<p>Think of a taxi. You hail one for each trip and pay for the ride. A private car sits in the car park all day and you pay for it whether you drive or not. Lambda is the taxi and a virtual machine is the car. For a job that takes two seconds every half hour, the taxi is much cheaper.</p>
+<p>By the end you will be able to write a handler, schedule it, read its billing line, do the cost sums by hand, and delete everything except what you meant to keep.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>The terminal.</strong> The terminal is a window where you type instructions to the computer instead of clicking. Each instruction is a <strong>command</strong>. Lines in this book that start with <code>$</code> are commands you type. The <code>$</code> is the prompt, a marker that says "type here". You do not type the <code>$</code> itself.</p>
+<p><strong>Flags.</strong> Most commands take extra options called <strong>flags</strong>. A flag starts with <code>-</code> or <code>--</code>. In <code>aws logs tail /aws/lambda/citypulse-fetch --since 30m</code>, the flag <code>--since 30m</code> means "show the last 30 minutes". Flags tell the command how to behave.</p>
+<p><strong>A file and a folder.</strong> A <strong>file</strong> is a named block of stored text or data. A <strong>folder</strong> (also called a directory) holds files and other folders. Paths such as <code>infra/function/handler.py</code> mean: start in <code>infra</code>, go into <code>function</code>, and open <code>handler.py</code>.</p>
+<p><strong>A variable.</strong> A <strong>variable</strong> is a name that stores a value, such as <code>size = 318</code>. The name <code>size</code> now stands for 318 until you change it. Python programs use variables for almost everything.</p>
+<p><strong>A function.</strong> A <strong>function</strong> is a named block of code that takes inputs and gives back a result. <code>def</code> starts a function definition in Python. <code>def handler(event, context):</code> defines a function called <code>handler</code> that takes two inputs.</p>
+<p><strong>A server.</strong> A <strong>server</strong> is a computer that waits for requests and answers them. Your laptop is not a server. A virtual machine on a cloud provider is a server, and you pay for it while it is switched on, even when it is idle.</p>
+<p><strong>The cloud and AWS.</strong> The <strong>cloud</strong> means rented computers and services in someone else's data centre. <strong>AWS</strong> (Amazon Web Services) is Amazon's cloud. Each service has a name. <strong>S3</strong> is the file storage service. A <strong>bucket</strong> is a container in S3, and an <strong>object</strong> is one file stored in a bucket. An object is identified by its <strong>key</strong>, which is its full path inside the bucket, such as <code>raw/openmeteo-aq/date=2027-01-12/fetch_0900.json</code>.</p>
+<p><strong>JSON.</strong> <strong>JSON</strong> (JavaScript Object Notation) is a text format for structured data. It uses <code>{"key": "value"}</code> pairs and lists in square brackets. Python reads it with the <code>json</code> module.</p>
+<p><strong>An API.</strong> An <strong>API</strong> (Application Programming Interface) is a defined way for one program to ask another for something. The Open-Meteo air-quality API answers a web request with JSON.</p>
+<p><strong>Billing by time.</strong> Compute is billed in units of memory multiplied by time. A <strong>GB-second</strong> is one gigabyte of memory used for one second. Running 1 GB for 10 seconds costs 10 GB-seconds. Lambda uses this unit, so the cost depends on how long your code runs and how much memory you give it.</p>
+<p><strong>IAM and roles.</strong> <strong>IAM</strong> (Identity and Access Management) controls who can do what in AWS. A <strong>role</strong> is an identity that a service can take on for a while. It comes with temporary credentials (a short-lived username and password pair made by AWS) and a list of allowed actions.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="aws-lambda">AWS Lambda</h3>
+<p><strong>What it is.</strong> Lambda runs your code only when something triggers it. You give it a handler function, a runtime (the language version, here <code>python3.12</code>), a memory size, a timeout (the longest one run may last), and an execution role. AWS looks after the servers, patching and scaling.</p>
+<p><strong>Why CityPulse uses it.</strong> The fetch runs for about two seconds every 30 minutes. An always-on virtual machine would be idle for over 99% of its hours and would need patching. The course also compares Lambda with a scheduled GitHub Actions workflow, which is free but can start late and needs extra set-up to reach the bucket, and with an ECS Fargate scheduled task, which suits containers that run longer than 15 minutes.</p>
+<p><strong>How it works.</strong> When an event arrives, Lambda starts a container or reuses one that is already running. It gives the container temporary credentials for the execution role and calls <code>handler(event, context)</code>. When the handler returns or raises an error, Lambda writes a <code>REPORT</code> line to the logs. That line decides the bill.</p>
+<p><strong>The slide code, line by line.</strong> This is <code>infra/function/handler.py</code>, with indentation restored:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://air-quality-api.open-meteo.com/v1/air-quality?latitude=12.97&quot;</span>
+       <span class="s2">&quot;&amp;longitude=77.59&amp;hourly=pm2_5,pm10,us_aqi&amp;timezone=Asia</span><span class="si">%2F</span><span class="s2">Kolkata&quot;</span><span class="p">)</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>  <span class="c1"># created once per cold start, reused when warm</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>  <span class="c1"># raises HTTPError on non-2xx</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>               <span class="c1"># raises if body is not JSON</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;raw/openmeteo-aq/date=%Y-%m-</span><span class="si">%d</span><span class="s2">/fetch_%H%M.json&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CITYPULSE_BUCKET&quot;</span><span class="p">],</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="s2">&quot;bytes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)}))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="s2">&quot;bytes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)}</span>
+</code></pre></div>
+
+<ul>
+<li><code>import json, os, urllib.request</code> loads three standard library modules. <code>json</code> reads and writes JSON, <code>os</code> reads environment variables, and <code>urllib.request</code> makes web requests. Standard library means it ships with Python, so there is nothing to install.</li>
+<li><code>from datetime import datetime, timezone</code> takes two names from the <code>datetime</code> module, for the current time and the UTC time zone.</li>
+<li><code>import boto3</code> loads the AWS SDK for Python. <strong>boto3</strong> is the library that lets Python call AWS services.</li>
+<li><code>URL = (...)</code> stores the address of the API in a variable. The parentheses let the string continue over two lines. Python joins the two pieces into one string.</li>
+<li><code>s3 = boto3.client("s3")</code> creates an S3 client. It sits outside the handler on purpose. Code at module level runs once when the container starts, not on every call.</li>
+<li><code>def handler(event, context):</code> is the entry point Lambda calls. <code>event</code> holds the input data, and <code>context</code> holds information about the run.</li>
+<li><code>with urllib.request.urlopen(URL, timeout=20) as r:</code> fetches the page and gives up after 20 seconds. <code>with</code> makes sure the connection closes afterwards. <code>as r</code> names the response <code>r</code>.</li>
+<li><code>body = r.read(); json.loads(body)</code> reads the response bytes, and then parses them. The parse is only a check. If the body is not JSON, the call raises an error, and the run fails rather than saving bad data.</li>
+<li><code>key = ...strftime(...)</code> builds the object key from the current UTC time. <code>%Y-%m-%d</code> gives the date and <code>%H%M</code> gives the hour and minute. So a run at 09:00 UTC writes <code>fetch_0900.json</code>.</li>
+<li><code>s3.put_object(...)</code> saves the body into the bucket. <code>Bucket</code> reads the bucket name from the environment variable <code>CITYPULSE_BUCKET</code>. <code>Key</code> is the path inside the bucket. <code>Body</code> is the data.</li>
+<li><code>print(...)</code> writes one line to the logs. The <code>json.dumps</code> call turns the Python dictionary into JSON text first.</li>
+<li><code>return {...}</code> gives a result back to Lambda, which is also recorded.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Keys in environment variables</div><p>Do not put AWS access keys into environment variables or into the code. The execution role gives the function temporary credentials automatically. If you store a long-lived key, it can leak, and it stays valid until someone deletes it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: The default 3-second timeout</div><p>Lambda's default timeout is 3 seconds. The course sets 60 seconds, so that a slow API response does not kill a run. The handler above also has its own 20-second limit on the web request.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Swallowing errors</div><p>If you catch every exception and return success, CloudWatch records a successful run and you never see the failure. Let errors raise, so the invocation is marked as failed.</p></div>
+
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One scheduled run, end to end&quot;, &quot;nodes&quot;: [&quot;EventBridge Scheduler&quot;, &quot;Lambda function&quot;, &quot;Open-Meteo&quot;, &quot;S3 bucket&quot;, &quot;CloudWatch Logs&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;invoke&quot;, &quot;note&quot;: &quot;The scheduler calls the function with its own invoke role.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;GET air quality&quot;, &quot;note&quot;: &quot;The handler asks Open-Meteo for Bengaluru readings.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;JSON body&quot;, &quot;note&quot;: &quot;Open-Meteo returns the hourly values.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 3, &quot;label&quot;: &quot;put_object&quot;, &quot;note&quot;: &quot;The handler writes the body under the raw/openmeteo-aq prefix.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 4, &quot;label&quot;: &quot;REPORT line&quot;, &quot;note&quot;: &quot;Lambda records the billed duration and memory for the run.&quot;}]}"></div>
+
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws logs tail /aws/lambda/citypulse-validate --since 1m&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...a1b2c3 START RequestId: 7f3c-9a21 Version: $LATEST&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...a1b2c3 REPORT RequestId: 7f3c-9a21 Duration: 42.70 ms&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Memory Size: 128 MB  Max Memory Used: 61 MB  Billed Duration: 43 ms&quot;}]}"></div>
+
+<p>The <code>term</code> block above is taken from the Technology in Action walk-through, which uses a second function called <code>citypulse-validate</code>. It teaches the same ideas as <code>citypulse-fetch</code>. The <code>REPORT</code> line shows the measured duration of 42.70 ms, which is billed as 43 ms, because Lambda rounds the billed time up to the next whole millisecond.</p>
+<h3 id="eventbridge-scheduler">EventBridge Scheduler</h3>
+<p><strong>What it is.</strong> EventBridge Scheduler is a managed cron service. You give it a timing rule, such as <code>rate(30 minutes)</code>, and a target, such as the Lambda function. At each tick it calls the target. <strong>Cron</strong> is the old Unix name for a scheduler. You will also see <code>cron(...)</code> expressions, which use a different syntax.</p>
+<p><strong>Why CityPulse uses it.</strong> It replaces the crontab on the old virtual machine from Day 19. A crontab is a list of timed commands kept on one machine. Once that machine is stopped, the schedule stops too, and the machine still costs money while it waits. The scheduler has no server to patch.</p>
+<p><strong>How it works.</strong> The scheduler assumes its own role. That role must trust <code>scheduler.amazonaws.com</code>. Because the scheduler can only do what its role allows, you give it the permission to invoke one function and nothing more. The call is asynchronous, which means the scheduler does not wait for the answer. You therefore prove that a run happened by reading the function's CloudWatch logs, not the schedule's status.</p>
+<p><strong>The slide code, line by line.</strong> The commands below come from the course slides. Indentation and the backslashes at the end of lines are kept.</p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+<span class="nv">FN_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>lambda<span class="w"> </span>get-function<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>--query<span class="w"> </span>Configuration.FunctionArn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-scheduler<span class="w"> </span>--query<span class="w"> </span>Role.Arn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>scheduler<span class="w"> </span>create-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--schedule-expression<span class="w"> </span><span class="s2">&quot;rate(5 minutes)&quot;</span><span class="w"> </span>--flexible-time-window<span class="w"> </span><span class="nv">Mode</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target<span class="w"> </span><span class="s2">&quot;Arn=</span><span class="nv">$FN_ARN</span><span class="s2">,RoleArn=</span><span class="nv">$ROLE_ARN</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>logs<span class="w"> </span>tail<span class="w"> </span>/aws/lambda/citypulse-fetch<span class="w"> </span>--since<span class="w"> </span>30m<span class="w">   </span><span class="c1"># after 10+ minutes: 2 runs</span>
+aws<span class="w"> </span>scheduler<span class="w"> </span>update-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--schedule-expression<span class="w"> </span><span class="s2">&quot;rate(30 minutes)&quot;</span><span class="w"> </span>--flexible-time-window<span class="w"> </span><span class="nv">Mode</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target<span class="w"> </span><span class="s2">&quot;Arn=</span><span class="nv">$FN_ARN</span><span class="s2">,RoleArn=</span><span class="nv">$ROLE_ARN</span><span class="s2">&quot;</span><span class="w"> </span>--state<span class="w"> </span>DISABLED
+aws<span class="w"> </span>scheduler<span class="w"> </span>get-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/<span class="nv">$USER</span>/T23-schedule.txt
+</code></pre></div>
+
+<ul>
+<li><code>export AWS_REGION=ap-south-1</code> sets an environment variable for this terminal session. It tells every later AWS command to use the Mumbai region.</li>
+<li><code>FN_ARN=$(...)</code> runs a command and stores its output in a variable. <code>Configuration.FunctionArn</code> is the path inside the returned JSON to the function's ARN, its unique Amazon Resource Name. <code>--output text</code> prints the bare value without JSON around it.</li>
+<li><code>ROLE_ARN=$(...)</code> does the same for the scheduler's role.</li>
+<li><code>aws scheduler create-schedule</code> creates the schedule. <code>--name</code> is a label you choose. <code>--schedule-expression "rate(5 minutes)"</code> sets the timing. <code>--flexible-time-window Mode=OFF</code> means the run happens at the exact time, not somewhere within a window.</li>
+<li><code>--target "Arn=...,RoleArn=..."</code> tells the scheduler which function to call and which role to use.</li>
+<li><code>aws logs tail ... --since 30m</code> shows the last 30 minutes of log lines for the function. After ten minutes at a five-minute rate you should see two runs.</li>
+<li><code>update-schedule</code> changes the rate to 30 minutes and adds <code>--state DISABLED</code>. This command replaces the whole definition, so you must pass the expression, the window and the target again. Leave out <code>--state DISABLED</code> if you want the schedule to keep running at the slower rate.</li>
+<li><code>get-schedule ... &gt; docs/evidence/...</code> saves the schedule's details to a text file. <code>&gt;</code> sends the output into a file rather than the screen.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Reusing the execution role</div><p>Do not give the scheduler the function's execution role. The scheduler needs a role that trusts <code>scheduler.amazonaws.com</code>. A role that trusts only <code>lambda.amazonaws.com</code> will be refused.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Counting manual invokes</div><p>A manual <code>aws lambda invoke</code> proves the function works, but it is not scheduled evidence. The course needs two runs started by the scheduler, visible in the logs.</p></div>
+
+<h3 id="cost-estimation-and-teardown-scripts">Cost estimation and teardown scripts</h3>
+<p><strong>What it is.</strong> Cost estimation turns usage into a monthly figure. Usage means hours, invocations, duration, memory and storage. You multiply each by the provider's published price. The AWS Pricing Calculator (calculator.aws) does this for you. A teardown script deletes resources in dependency order, so nothing keeps billing. A <strong>dry run</strong> prints what the script would delete without deleting anything.</p>
+<p><strong>Why CityPulse uses it.</strong> The client asked for numbers. Forty-eight runs a day for 30 days, at about two seconds each and 0.25 GB, come to about 720 GB-seconds a month. That is far less than the 730 hours a month a virtual machine runs. Teardown also matters for assessment. If a virtual machine or a schedule is still running, the account keeps billing, and the course fails that student.</p>
+<p><strong>How it works.</strong> Measured duration and memory, taken from the <code>REPORT</code> line, go into the calculator. This gives a monthly Lambda figure next to the virtual machine figure. The break-even count is the number of invocations at which the two costs are equal. Teardown runs schedule first, then function, then role, so nothing is left pointing at something that no longer exists.</p>
+<p><strong>The slide code, line by line.</strong> This is <code>infra/teardown.sh</code>, with indentation restored.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nv">OWNER</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">:?usage: teardown.sh &lt;owner&gt; [--apply]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">APPLY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+run<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APPLY</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;--apply&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DRY: </span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+run<span class="w"> </span>aws<span class="w"> </span>scheduler<span class="w"> </span>delete-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m
+run<span class="w"> </span>aws<span class="w"> </span>lambda<span class="w"> </span>delete-function<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch
+<span class="nv">ids</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Owner,Values=</span><span class="nv">$OWNER</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Name=instance-state-name,Values=running,stopped&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[].Instances[].InstanceId&#39;</span><span class="k">)</span>
+<span class="k">for</span><span class="w"> </span>id<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$ids</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>run<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>terminate-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Kept: bucket, citypulse-pipeline user and policy (see README)&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the first line of a script. It tells the system to run the file with the Bash shell.</li>
+<li><code>set -euo pipefail</code> makes the script stricter. <code>-e</code> stops at the first failing command. <code>-u</code> stops if an unset variable is used. <code>-o pipefail</code> makes a pipeline fail if any part of it fails.</li>
+<li><code>OWNER="${1:?usage: ...}"</code> stores the first argument (the word after the script name) in <code>OWNER</code>. If it is missing, the <code>:?</code> part stops the script and prints the usage message.</li>
+<li><code>APPLY="${2:-}"</code> stores the second argument, or an empty string if there is none.</li>
+<li><code>run() { ... }</code> defines a small function called <code>run</code>. If <code>APPLY</code> is exactly <code>--apply</code>, it runs the command. Otherwise it prints <code>DRY:</code> followed by the command.</li>
+<li><code>run aws scheduler delete-schedule ...</code> deletes the schedule first. This stops the scheduler firing at a function that is about to be deleted.</li>
+<li><code>run aws lambda delete-function ...</code> deletes the function.</li>
+<li><code>ids=$(...)</code> finds every EC2 virtual machine tagged with your owner name that is running or stopped. <code>--filters</code> narrows the list, and <code>--query</code> extracts only the instance IDs.</li>
+<li><code>for id in $ids; do ...; done</code> loops over the IDs and terminates each one. The <code>$ids</code> is left unquoted on purpose, so that the shell splits the list into separate IDs.</li>
+<li><code>echo "Kept: ..."</code> reminds you what is deliberately left behind.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Stopped machines still bill</div><p>A stopped virtual machine stops charging for compute, but its disk (the EBS volume) and any Elastic IP address keep billing. Price the volume too, and make sure the teardown terminates the machine.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Using another region&#x27;s prices</div><p>Prices differ by region. Select Asia Pacific (Mumbai), <code>ap-south-1</code>, in the calculator, and write the date next to the link, because prices change.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Running --apply without reading the dry run</div><p>Read every <code>DRY:</code> line before you add <code>--apply</code>. Each line should name a resource tagged with your own owner name. If a line names something you do not recognise, stop and ask.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p><strong>Goal.</strong> A function validates each air-quality reading as it lands in S3, and the team wants to know what each run costs. The Technology in Action walk-through builds this example in seven steps. The account number <code>123456789012</code> is an example, so replace it with your own.</p>
+<p><strong>Step 1, the handler.</strong> Restored from the walk-through:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;s3&quot;</span><span class="p">]</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">rec</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">][</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">rec</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;validating </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2"> bytes)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;ok&quot;</span><span class="p">:</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">}</span>
+</code></pre></div>
+
+<p>The handler reads the first record from the event, which is the list S3 sends with each object. It takes the object's key and size, prints a line, and returns <code>ok</code> when the object is not empty. <code>f"..."</code> is an f-string, which puts variables inside text. Its output is a line such as <code>validating raw/2026/11/03/S1-0900.json (318 bytes)</code>.</p>
+<p><strong>Step 2, a local test.</strong> You can test the logic on your own computer before you spend anything in AWS:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">validate_reading</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
+
+<span class="n">event</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Records&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;s3&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;bucket&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;citypulse-readings&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;raw/2026/11/03/S1-0900.json&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">318</span><span class="p">}}}]}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Ctx</span><span class="p">:</span>
+    <span class="n">function_name</span> <span class="o">=</span> <span class="s2">&quot;citypulse-validate&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">Ctx</span><span class="p">())))</span>
+</code></pre></div>
+
+<p><code>from validate_reading import handler</code> loads the function from the file <code>validate_reading.py</code>. <code>event</code> is a dictionary that copies the shape of a real S3 event. <code>class Ctx</code> builds a stand-in for the <code>context</code> object. The last line calls the handler and prints its result. Run it with <code>python3 test_local.py</code>. The expected output is the print line from the handler, followed by <code>{"ok": true, "key": "raw/2026/11/03/S1-0900.json"}</code>.</p>
+<p><strong>Step 3, package and deploy.</strong> Zip the file, then create the function:</p>
+<div class="hl"><pre><span></span><code>zip<span class="w"> </span>-q<span class="w"> </span><span class="k">function</span>.zip<span class="w"> </span>validate_reading.py
+aws<span class="w"> </span>lambda<span class="w"> </span>create-function<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--function-name<span class="w"> </span>citypulse-validate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--runtime<span class="w"> </span>python3.12<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--handler<span class="w"> </span>validate_reading.handler<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--memory-size<span class="w"> </span><span class="m">128</span><span class="w"> </span>--timeout<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role<span class="w"> </span>arn:aws:iam::123456789012:role/citypulse-lambda<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--zip-file<span class="w"> </span>fileb://function.zip
+</code></pre></div>
+
+<p><code>zip -q</code> builds <code>function.zip</code> quietly. <code>--handler validate_reading.handler</code> means "file <code>validate_reading</code>, function <code>handler</code>". <code>--memory-size 128</code> and <code>--timeout 10</code> cap the cost. <code>--role</code> gives the execution role ARN, and <code>fileb://</code> tells the CLI to read the zip as binary data. The expected output is JSON that usually shows <code>"State": "Pending"</code>, which becomes <code>Active</code> within a few seconds.</p>
+<p><strong>Step 4, the S3 trigger.</strong> S3 must be allowed to call the function, and the bucket must notify the function:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>lambda<span class="w"> </span>add-permission<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--function-name<span class="w"> </span>citypulse-validate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--statement-id<span class="w"> </span>s3invoke<span class="w"> </span>--action<span class="w"> </span>lambda:InvokeFunction<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--principal<span class="w"> </span>s3.amazonaws.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--source-arn<span class="w"> </span>arn:aws:s3:::citypulse-readings
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-notification-configuration<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bucket<span class="w"> </span>citypulse-readings<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--notification-configuration<span class="w"> </span>file://notify.json
+</code></pre></div>
+
+<p><code>add-permission</code> adds a rule to the function's resource policy. The rule says that S3 may call <code>InvokeFunction</code> for this bucket. <code>--statement-id</code> is a label for that rule. The second command turns on bucket notifications, reading the rules from <code>notify.json</code>. That file names the function and the event type <code>s3:ObjectCreated</code>. The course file is the authority here, so use it rather than writing your own.</p>
+<p><strong>Step 5, trigger it.</strong> Upload a reading:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>S1-0900.json<span class="w"> </span>s3://citypulse-readings/raw/2026/11/03/S1-0900.json
+</code></pre></div>
+
+<p><code>aws s3 cp</code> copies a local file to a destination. The <code>s3://</code> prefix marks the destination as a bucket path. The expected output is <code>upload: ./S1-0900.json to s3://citypulse-readings/...</code>. The function then runs with no server involved.</p>
+<p><strong>Step 6, read the logs.</strong> Run <code>aws logs tail /aws/lambda/citypulse-validate --since 1m</code>. The log group <code>/aws/lambda/&lt;function name&gt;</code> is created automatically. You should see <code>START</code>, your print line, <code>END</code> and <code>REPORT</code>. The <code>REPORT</code> line shows <code>Billed Duration: 43 ms</code> and <code>Max Memory Used: 61 MB</code>.</p>
+<p><strong>Step 7, right-size and guard.</strong> Raise the memory and add an alarm:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>lambda<span class="w"> </span>update-function-configuration<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--function-name<span class="w"> </span>citypulse-validate<span class="w"> </span>--memory-size<span class="w"> </span><span class="m">256</span>
+aws<span class="w"> </span>cloudwatch<span class="w"> </span>put-metric-alarm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--alarm-name<span class="w"> </span>citypulse-validate-errors<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>AWS/Lambda<span class="w"> </span>--metric-name<span class="w"> </span>Errors<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--statistic<span class="w"> </span>Sum<span class="w"> </span>--period<span class="w"> </span><span class="m">300</span><span class="w"> </span>--threshold<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--comparison-operator<span class="w"> </span>GreaterThanOrEqualToThreshold<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--evaluation-periods<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+
+<p><code>update-function-configuration</code> changes settings without touching the code. The walk-through shows the flag as <code>--memorysize</code>, which is a typo. The correct flag is <code>--memory-size</code>. <code>put-metric-alarm</code> watches the <code>Errors</code> metric in the <code>AWS/Lambda</code> namespace. <code>--period 300</code> sums errors over 300 seconds. <code>--threshold 1</code> with <code>GreaterThanOrEqualToThreshold</code> raises the alarm when there is at least one error. <code>--evaluation-periods 1</code> means one period is enough. Note that this alarm has no action attached, so it only shows in the console until you add a notification. The walk-through says 256 MB "roughly halves" the duration. Treat that as something to measure, not something to assume.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The lab uses the course function <code>citypulse-fetch</code>. Run commands from the folder that holds your project, and use the exact names in your README if they differ.</p>
+<h3 id="step-1-write-the-handler">Step 1: Write the handler</h3>
+<p><strong>What you do.</strong> Create <code>infra/function/handler.py</code> with the code from the AWS Lambda section above.</p>
+<p><strong>What you type.</strong> Open the file in your editor and paste the code. Then check that Python reads it without errors:</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import ast; ast.parse(open(&#39;infra/function/handler.py&#39;).read())&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> No output means the file is valid Python. An error with a line number means there is a typo, often in indentation.</p>
+<p><strong>How you know it worked.</strong> The command ends with no error text, and the file still contains the line <code>def handler(event, context):</code>.</p>
+<h3 id="step-2-create-a-least-privilege-execution-role">Step 2: Create a least-privilege execution role</h3>
+<p><strong>What you do.</strong> Create a role that Lambda can take on, and give it only the permissions it needs: write to the raw prefix of the bucket, and write logs. "Least privilege" means granting only what is needed.</p>
+<p><strong>What you type.</strong> First, a trust policy saying that Lambda may take on this role. Save it as <code>trust.json</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lambda.amazonaws.com&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Then run:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-fetch-fn<span class="w"> </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
+aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-fetch-fn<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+</code></pre></div>
+
+<p>The second command gives the role the standard permission to write logs. Next, save a policy that allows writes to one prefix only, as <code>s3-write.json</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::citypulse-pipeline-s3/raw/openmeteo-aq/*&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Then attach it with <code>aws iam put-role-policy --role-name citypulse-fetch-fn --policy-name citypulse-pipeline-s3 --policy-document file://s3-write.json</code>. Replace <code>citypulse-pipeline-s3</code> with your bucket name from the README if it differs.</p>
+<p><strong>What you should see.</strong> <code>create-role</code> prints the role's ARN. The other two commands print nothing when they succeed.</p>
+<p><strong>How you know it worked.</strong> <code>aws iam get-role --role-name citypulse-fetch-fn</code> returns the role, and the policy has <code>s3:PutObject</code> on the <code>raw/openmeteo-aq/</code> prefix only. No access key appears anywhere.</p>
+<h3 id="step-3-package-and-deploy">Step 3: Package and deploy</h3>
+<p><strong>What you do.</strong> Zip the handler and deliver it with the course script.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>bash<span class="w"> </span>infra/function/deploy.sh
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The first run creates the function. A later run updates the code instead. The slides say the first run shows <code>create-function</code> and the second shows <code>update-function-code</code>. Check the output on each run.</p>
+<p><strong>How you know it worked.</strong> <code>aws lambda get-function --function-name citypulse-fetch --query Configuration.State --output text</code> prints <code>Active</code>.</p>
+<h3 id="step-4-invoke-with-a-test-event">Step 4: Invoke with a test event</h3>
+<p><strong>What you do.</strong> Run the function once by hand, so that you know it works before the schedule starts.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>lambda<span class="w"> </span>invoke<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>out.json
+cat<span class="w"> </span>out.json
+</code></pre></div>
+
+<p><code>aws lambda invoke</code> calls the function and saves its return value to <code>out.json</code>. <code>cat</code> prints the contents of a file.</p>
+<p><strong>What you should see.</strong> The terminal reports a status code of 200 for a successful call. <code>out.json</code> holds the value the handler returns, for example <code>{"key": "raw/openmeteo-aq/date=2027-01-12/fetch_0900.json", "bytes": 12345}</code>. The key and byte count will be different on your run.</p>
+<p><strong>How you know it worked.</strong> <code>aws s3 ls s3://citypulse-pipeline-s3/raw/openmeteo-aq/</code> lists a new object. If the list is empty, check the error in the logs, not the status code alone.</p>
+<h3 id="step-5-read-the-logs-and-the-billing-line">Step 5: Read the logs and the billing line</h3>
+<p><strong>What you do.</strong> Create the scheduler, wait for two runs, then read the <code>REPORT</code> line.</p>
+<p><strong>What you type.</strong> Run the scheduler commands from the section on EventBridge Scheduler. Wait at least ten minutes. Then:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>logs<span class="w"> </span>tail<span class="w"> </span>/aws/lambda/citypulse-fetch<span class="w"> </span>--since<span class="w"> </span>30m
+</code></pre></div>
+
+<p><strong>What you should see.</strong> Two sets of <code>START</code>, <code>END</code> and <code>REPORT</code> lines, roughly five minutes apart. Each <code>REPORT</code> line shows <code>Duration</code>, <code>Billed Duration</code>, <code>Memory Size</code> and <code>Max Memory Used</code>.</p>
+<p><strong>How you know it worked.</strong> You can point to two <code>REPORT</code> lines created by the schedule, not by your manual invoke. Copy the billed duration and the max memory into your notes for step 6.</p>
+<h3 id="step-6-do-the-cost-math">Step 6: Do the cost math</h3>
+<p><strong>What you do.</strong> Turn the measured numbers into a monthly figure, and compare it with the virtual machine.</p>
+<p><strong>What you type.</strong> Use a calculator, or Python as a calculator:</p>
+<div class="hl"><pre><span></span><code><span class="n">invocations</span> <span class="o">=</span> <span class="mi">48</span> <span class="o">*</span> <span class="mi">30</span>
+<span class="n">gb_seconds</span> <span class="o">=</span> <span class="n">invocations</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">256</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gb_seconds</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> <code>720.0</code>.</p>
+<p><strong>How you know it worked.</strong> Your number should match the sum done by hand: 48 runs a day times 30 days is 1,440 invocations; 1,440 times 2 seconds is 2,880 seconds; 2,880 seconds times 0.25 GB is 720 GB-seconds.</p>
+<p>Then enter the same usage into calculator.aws, Asia Pacific (Mumbai). Compare the Lambda figure with the monthly cost of a virtual machine running 730 hours with an 8 GB gp3 volume. Write the break-even count in <code>docs/cloud-cost.md</code>. The break-even count is the VM cost divided by the cost of one Lambda invocation.</p>
+<h3 id="step-7-clean-up">Step 7: Clean up</h3>
+<p><strong>What you do.</strong> Delete the schedule and function, terminate any virtual machine tagged to you, and keep only the bucket, the user and the policy listed in the README.</p>
+<p><strong>What you type.</strong> Dry run first, then the real run:</p>
+<div class="hl"><pre><span></span><code>bash<span class="w"> </span>infra/teardown.sh<span class="w"> </span>demo
+bash<span class="w"> </span>infra/teardown.sh<span class="w"> </span>demo<span class="w"> </span>--apply
+bash<span class="w"> </span>scripts/teardown_check.sh
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The dry run prints <code>DRY:</code> lines and deletes nothing. The <code>--apply</code> run performs the same steps. <code>teardown_check.sh</code> lists what remains.</p>
+<p><strong>How you know it worked.</strong> The output of <code>teardown_check.sh</code> matches the "Kept resources" list in your README. Nothing else is listed.</p>
+<div class="box box-trap"><div class="box-h">Trap: A failed rerun</div><p>The script uses <code>set -e</code>, so it stops at the first command that fails. If you already deleted the schedule, <code>delete-schedule</code> fails on the second run and the script stops. Read the error, confirm what is already gone, and continue from that point.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Costing the CityPulse Ingest Lambda" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Cost of 1M invocations at 512MB / 200ms</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>GB-seconds for the same workload</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Cost at 128MB / 1000ms</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Pick the cheapest memory/duration config</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 66 of the 100 points. The other 34 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K08.html#y2-t23-deploy-scheduled-serverless-fetch-to-bucket-cost-comparison">Y2-T23 · Deploy scheduled serverless fetch to bucket + cost comparison</a></li>
+<li><a href="K08.html#y2-t25-y2-d03-defend-three-secured-cloud-labs-then-tear-down">Y2-T25 · Y2-D03: defend three secured cloud labs, then tear down</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic in this section, in the same order. Each gives a short scenario about a team, a symptom or a limit, and asks for the best action or explanation. The pass mark is 70%. Your skill score keeps the result of your first attempt, so use a second attempt to learn, not to change the score. Read the topics as a study guide, then try the self-test at the end.</p>
+<p>Answer every case-study question with the same four steps.</p>
+<ol>
+<li>Read the last line first. It says what is asked: a cause, the cheapest option, a first step or a fix.</li>
+<li>Underline the facts that change the decision: the numbers, the service names, the limits and the symptom.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about Lambda. Ask whether the option solves the problem described.</li>
+<li>Watch the key words. "Most" means one option is better than the rest. "First" means order matters. "Best" means a trade-off, so pick the option that fits the scenario's constraint.</li>
+</ol>
+<p>Each topic ends with a trap box that names the tempting wrong answer.</p>
+<h3 id="starting-lambda-from-an-s3-upload">Starting Lambda from an S3 upload</h3>
+<p><strong>What it is.</strong> Amazon S3 can send a notification when something happens in a bucket, such as <code>s3:ObjectCreated</code> when a new object is written. The notification sends an event to a Lambda function, so the function starts on the upload and nothing has to poll the bucket. Two parts are needed. The function's resource policy must allow S3 to call it, which you add with <code>aws lambda add-permission</code>. The bucket notification then names the function and the event type.</p>
+<p>The event is a dictionary. Its <code>Records</code> list holds one entry per object, with the bucket name, the key and the size:</p>
+<div class="hl"><pre><span></span><code><span class="n">event</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Records&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;s3&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;bucket&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;readings&quot;</span><span class="p">},</span>
+                             <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;raw/a.json&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">210</span><span class="p">}}}]}</span>
+<span class="n">rec</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;s3&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rec</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">][</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">rec</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>raw/a.json 210</code>. The file contents are not in the event, so a handler that needs them must read the object with a separate call.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team receives an hourly sensor file in a bucket. A teammate proposes a cron job that lists the bucket every minute. The team wants the lowest cost and a delay of only a few seconds. The listing would run every minute whether or not a file had arrived, and the server would sit idle most of the day. The event notification runs the function only when a file lands. The reasoning starts from the constraints: idle time costs money, and polling adds delay.</p>
+<div class="box box-trap"><div class="box-h">Trap: Polling because it feels familiar</div><p>A listing loop looks simple, but it pays for idle time, adds up to a minute of delay and needs extra code to avoid handling a file twice.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse team stores hourly readings in a bucket. They want the lowest cost and a delay of only a few seconds. Which design fits?&quot;, &quot;opts&quot;: [&quot;A cron job on a server that lists the bucket every minute&quot;, &quot;An S3 event notification that invokes the function on each object-created event&quot;, &quot;A loop inside the function that sleeps for five minutes, then lists the bucket&quot;, &quot;A daily job that copies the whole bucket to a second bucket&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The event starts the function as each object arrives, so nothing runs between uploads. The cron job pays for idle time and can be a minute late.&quot;}, {&quot;q&quot;: &quot;A bucket notification has a prefix filter of raw/. Uploads to landing/ never start the function, although its code and permissions are correct. What is the most likely explanation?&quot;, &quot;opts&quot;: [&quot;The function needs a cron schedule to pick up landing/ files&quot;, &quot;The execution role needs write access to landing/&quot;, &quot;The notification only matches keys that start with raw/, so landing/ objects never trigger it&quot;, &quot;The function&#x27;s timeout is too short for landing/ files&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A prefix filter limits which keys send an event. If no event is sent, the function never starts, whatever its role or timeout.&quot;}, {&quot;q&quot;: &quot;A handler reads event[\&quot;Records\&quot;][0][\&quot;s3\&quot;][\&quot;object\&quot;][\&quot;key\&quot;] for each upload. Which statement about the event is correct?&quot;, &quot;opts&quot;: [&quot;It gives the key and size of the object, but not the file contents&quot;, &quot;It gives the full file contents, so the handler never calls S3&quot;, &quot;It gives only the function&#x27;s own name and memory size&quot;, &quot;It gives a list of every object in the bucket&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The event carries metadata. The tempting wrong answer, that it includes the contents, would make a separate read unnecessary.&quot;}]}"></div>
+
+<h3 id="pricing-lambda-in-gb-seconds-and-requests">Pricing Lambda in GB-seconds and requests</h3>
+<p><strong>What it is.</strong> Lambda bills compute in GB-seconds, which is memory in gigabytes multiplied by billed time in seconds. Each invocation also has a request charge. The console shows memory in megabytes, and a gigabyte is 1,024 megabytes, so divide by 1,024 first. A setting of 512 MB is 0.5 GB, so a 2-second run at 512 MB uses 1 GB-second:</p>
+<div class="hl"><pre><span></span><code><span class="n">memory_mb</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">seconds</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">memory_mb</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">*</span> <span class="n">seconds</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>1.0</code>. The REPORT line rounds billed time up to the next whole millisecond. For a month, multiply the GB-seconds of one run by the number of runs, then add the request charge as a separate amount.</p>
+<p><strong>How it shows up in a case study.</strong> A finance analyst at CityPulse estimates the monthly compute of a fetch function. It runs 1,440 times a month, takes 1.5 seconds per run and is set to 1,024 MB. The first draft used 1,024 as gigabytes and came out 1,024 times too large. Converting first gives 1 GB, so the answer is 1,440 times 1.5 times 1, which is 2,160 GB-seconds. The request charge is added separately.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting the megabyte conversion</div><p>Using the megabyte figure as gigabytes inflates the answer by 1,024. At 1,024 MB, one second of run time is exactly one GB-second.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A function runs 2,000 times a month, takes 0.5 seconds per run and is set to 256 MB. What is the monthly compute usage in GB-seconds?&quot;, &quot;opts&quot;: [&quot;1,000&quot;, &quot;2,000&quot;, &quot;250&quot;, &quot;128,000&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;2,000 times 0.5 is 1,000 seconds, and 256 MB is 0.25 GB, so the answer is 250. The answer 1,000 leaves out the memory.&quot;}, {&quot;q&quot;: &quot;Memory rises from 512 MB to 1,024 MB, and billed time falls from 800 ms to 500 ms. Prices and request counts do not change. What happens to compute cost per run?&quot;, &quot;opts&quot;: [&quot;It rises, from 0.4 to 0.5 GB-seconds, even though each run is faster&quot;, &quot;It falls, because the run is faster&quot;, &quot;It is unchanged, because the request count is the same&quot;, &quot;Memory is not part of the GB-second charge&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;0.5 GB times 0.8 s is 0.4. 1 GB times 0.5 s is 0.5. The speed gain does not cancel the higher memory price.&quot;}, {&quot;q&quot;: &quot;Team A adds the request charge to the compute charge. Team B uses only compute. For very short runs with many invocations, which statement is correct?&quot;, &quot;opts&quot;: [&quot;Team B is right, because compute always dwarfs requests&quot;, &quot;Both teams get the same answer for any workload&quot;, &quot;Team A double-counts, because compute already includes requests&quot;, &quot;Team B can underestimate the bill, because the request charge is added on top of compute&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Requests and compute are separate charges. With many short runs, the request part can be a large share of the bill.&quot;}]}"></div>
+
+<h3 id="tuning-memory-against-cost">Tuning memory against cost</h3>
+<p><strong>What it is.</strong> Memory changes two things at once: the price per millisecond and the CPU share. A run that needs CPU may finish faster at a higher setting, so the total cost can fall, stay the same or rise. You cannot tell from the setting alone. Measure the same workload at two or more sizes, read the billed time from each REPORT line, and work out the GB-seconds:</p>
+<div class="hl"><pre><span></span><code><span class="n">runs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">500</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">memory_mb</span><span class="p">,</span> <span class="n">billed_ms</span> <span class="ow">in</span> <span class="n">runs</span><span class="p">:</span>
+    <span class="n">gb_s</span> <span class="o">=</span> <span class="p">(</span><span class="n">memory_mb</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">billed_ms</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">memory_mb</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">gb_s</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>128 0.25</code> and <code>512 0.25</code>. Both settings cost the same here, so the memory size alone does not decide. Only the measured times, multiplied by memory, show the true cost.</p>
+<p><strong>How it shows up in a case study.</strong> A validation function is set to 128 MB and takes 900 ms. A manager proposes 1,024 MB, because bigger must be cheaper. An engineer measures 256 MB and finds 400 ms. At 128 MB the compute is 0.125 times 0.9, which is 0.1125 GB-seconds. At 256 MB it is 0.25 times 0.4, which is 0.1 GB-seconds. The middle setting is cheaper. Measurement, not the largest setting, gives the answer.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming the largest setting is cheapest</div><p>A bigger setting pays off only when the run gets faster by more than the price rises. If 1,024 MB still takes 400 ms, it costs four times as much per run as 256 MB.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A function runs in 1,200 ms at 128 MB and in 250 ms at 512 MB. A manager says 512 MB must cost more, because its price per millisecond is higher. What is the best reply?&quot;, &quot;opts&quot;: [&quot;The manager is right, because the rate is higher, so the total is higher&quot;, &quot;At 512 MB the cost is lower, 0.125 GB-seconds against 0.15, because the run finishes much sooner&quot;, &quot;Both settings cost the same, because billing ignores memory&quot;, &quot;The result depends only on the timeout&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;0.125 times 1.2 is 0.15, and 0.5 times 0.25 is 0.125. The manager judges by the rate and ignores the time.&quot;}, {&quot;q&quot;: &quot;A workload takes 400 ms at both 1,024 MB and 1,536 MB. Which action best reduces cost?&quot;, &quot;opts&quot;: [&quot;Raise the memory to 2,048 MB to see whether the duration changes&quot;, &quot;Remove the timeout so a run cannot be stopped&quot;, &quot;Switch the function to a cron job to reduce the cost per run&quot;, &quot;Keep 1,024 MB, because 1,536 MB costs more and did not shorten the run&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;With equal durations, cost rises with memory, so the lower setting wins. Raising memory further adds cost before any benefit is shown.&quot;}, {&quot;q&quot;: &quot;A CPU-heavy job is measured at 256 MB and at 512 MB. At 512 MB the billed time falls by more than half. Which conclusion is best supported?&quot;, &quot;opts&quot;: [&quot;At 512 MB the run is likely cheaper, because the time fell by more than the price doubled, but the REPORT lines should confirm it&quot;, &quot;The 256 MB setting is always cheaper, because its memory price is lower&quot;, &quot;The 512 MB setting is cheaper only with a longer timeout&quot;, &quot;Memory has no effect on a CPU-heavy job&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Doubling memory doubles the rate, but a time below half of its old value makes the product smaller. Durations still vary, so confirm with measurements.&quot;}]}"></div>
+
+<h3 id="lambdas-time-and-memory-limits">Lambda's time and memory limits</h3>
+<p><strong>What it is.</strong> Some Lambda limits cannot be changed. One run lasts at most 15 minutes, which is 900 seconds, and the timeout you set must be at or below that. Memory can be set from 128 MB up to 10,240 MB. More memory gives more CPU, but it does not extend the time limit. A run that passes its timeout is stopped and reported as a failure. Work that needs longer must move to another service, such as a container task on ECS Fargate, or be split into smaller runs. A quick check makes the point:</p>
+<div class="hl"><pre><span></span><code><span class="n">MAX_TIMEOUT_S</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">job_seconds</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">job_seconds</span> <span class="o">&lt;=</span> <span class="n">MAX_TIMEOUT_S</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>False</code>. A 40-minute job does not fit in one run, however much memory you give it.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team must process an export that takes about 40 minutes. A teammate suggests a 40-minute timeout and the maximum memory. The timeout cannot exceed 900 seconds, and memory does not change that. The job would fail at 15 minutes. The team can move the export to a container task, which is not bound by the 15-minute cap, or split it into monthly chunks that each finish well inside the limit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Raising memory to fix a slow run</div><p>More memory may shorten a slow run, but the 15-minute ceiling stays. A 40-minute job still fails at 15.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A nightly aggregation needs 35 minutes. The team sets the timeout to 15 minutes and the memory to 10,240 MB, but the run still stops at 15 minutes. What is the root cause?&quot;, &quot;opts&quot;: [&quot;The memory is too high, so the CPU is throttled&quot;, &quot;The timeout is in milliseconds, so 15 means 15 ms&quot;, &quot;The job needs longer than the 15-minute maximum that one Lambda run can have&quot;, &quot;The schedule fires too often and cuts runs short&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The 15-minute limit applies to every run, and memory does not change it. High memory gives more CPU, not less.&quot;}, {&quot;q&quot;: &quot;A tiny validator peaks at about 40 MB and finishes in 80 ms. The team wants the lowest memory setting that Lambda allows. Which should it use?&quot;, &quot;opts&quot;: [&quot;32 MB&quot;, &quot;128 MB&quot;, &quot;40 MB&quot;, &quot;64 MB&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The lowest allowed setting is 128 MB, so smaller values cannot be chosen. 40 MB is above the peak but still below the minimum.&quot;}, {&quot;q&quot;: &quot;A weekly report takes 14 minutes, but on slow days it takes 16 and the function fails. Which action fits Lambda&#x27;s limits?&quot;, &quot;opts&quot;: [&quot;Split the report into smaller parts that each finish well within 15 minutes, or move the whole job to a container task&quot;, &quot;Raise the memory to 10,240 MB so the slow days finish&quot;, &quot;Set the timeout to 20 minutes in the console&quot;, &quot;Retry automatically until one attempt finishes&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The limit is fixed, so the work must change or move. A 20-minute timeout is refused, and retries repeat the same failing work.&quot;}]}"></div>
+
+<h3 id="idempotent-retries">Idempotent retries</h3>
+<p><strong>What it is.</strong> An operation is idempotent when running it again leaves the same result as running it once. Retries make this important. Lambda may retry a failed asynchronous invocation, and an event source may deliver the same event twice. A simple way to make a write idempotent is to build the key from a value that stays the same for every attempt, such as the reading's own time. Here a dictionary stands in for a bucket:</p>
+<div class="hl"><pre><span></span><code><span class="n">store</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="n">store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">body</span>
+<span class="n">save</span><span class="p">(</span><span class="s2">&quot;raw/2027-01-12/fetch_0900.json&quot;</span><span class="p">,</span> <span class="s2">&quot;reading A&quot;</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s2">&quot;raw/2027-01-12/fetch_0900.json&quot;</span><span class="p">,</span> <span class="s2">&quot;reading A&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>1</code>. The second save used the same key, so it replaced the object. With a random key, the output would be <code>2</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A fetch function sometimes times out after writing an object, and Lambda retries it. The team asks whether the bucket will hold duplicates. If the key comes from the reading's fixed time, a retry in the same minute writes the same key and the bucket keeps one copy. A retry in a later minute writes a new key, so duplicates can still appear across minutes. Adding a random suffix would make every attempt a new object.</p>
+<div class="box box-trap"><div class="box-h">Trap: A random key for every attempt</div><p>A key with a random ID, or with the current second, turns every retry into a new object. Nothing in S3 flags the copies as duplicates.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A function writes each reading under a key with a random ID. The first attempt wrote an object and then failed, and the retry wrote a second. What does the bucket hold, and what fixes it?&quot;, &quot;opts&quot;: [&quot;One object, because S3 merges identical bodies&quot;, &quot;Zero objects, because retries are never written&quot;, &quot;One object, because Lambda deletes the earlier attempt&quot;, &quot;Two objects for one reading, so the key should come from the reading&#x27;s own time&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A new random key makes a new object each time. A key from the reading&#x27;s time gives the same name on each attempt, so a retry overwrites.&quot;}, {&quot;q&quot;: &quot;A function builds its key from the date and the minute. A retry starts two minutes after the original run. What is the most accurate result?&quot;, &quot;opts&quot;: [&quot;The retry overwrites the first object, because the key matches&quot;, &quot;The retry writes a second object under a different key, so duplicates can appear across minutes&quot;, &quot;The bucket refuses the retry, because the object already exists&quot;, &quot;Lambda ignores the retry because it is late&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A minute-based key changes every minute. S3 allows overwrites by default, so refusal is wrong. Use the reading&#x27;s own timestamp or a deduplication step.&quot;}, {&quot;q&quot;: &quot;A reviewer says a handler is idempotent. Which test best supports that claim?&quot;, &quot;opts&quot;: [&quot;The handler finishes in under three seconds on its first run&quot;, &quot;The logs show a single START line for each run&quot;, &quot;Running the handler twice with the same event leaves the bucket as running it once would&quot;, &quot;The handler creates its boto3 client at module level&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Idempotency is about the final state after repeated runs. Speed and logs say nothing about repeat safety.&quot;}]}"></div>
+
+<h3 id="the-execution-role-and-temporary-credentials">The execution role and temporary credentials</h3>
+<p><strong>What it is.</strong> An execution role is an IAM role that Lambda assumes when it runs your function. Lambda gives the code temporary credentials for that role, and they expire on their own. The role's trust policy names <code>lambda.amazonaws.com</code> as the service allowed to assume it. Its permissions policy lists what the function may do. The code needs no access key, and none is stored in the environment. A least-privilege statement for the fetch function might look like this:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::citypulse-pipeline-s3/raw/openmeteo-aq/*&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>It allows writes under <code>raw/openmeteo-aq/</code> in one bucket and nothing else. Writing logs needs a separate permission, which the standard basic execution policy provides.</p>
+<p><strong>How it shows up in a case study.</strong> A new team member wants quick results, so they create an access key for an administrator user and paste it into the environment variables. The key is long-lived, it can leak through a log or a commit, and it grants far more than the function needs. The better design is the execution role. If the function later gets an access denied error, the fix is to add the missing action to the role's policy.</p>
+<div class="box box-trap"><div class="box-h">Trap: Full access for convenience</div><p>Full access stops failures, but it removes least privilege. A bug can then delete or overwrite data the function never needed to touch.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A function fails with access denied when it calls put_object. A colleague proposes an access key in the environment variables. What is the better fix?&quot;, &quot;opts&quot;: [&quot;Add only the s3:PutObject permission for the needed prefix to the execution role&#x27;s policy&quot;, &quot;Store the key in the handler code and add the file to .gitignore&quot;, &quot;Give the execution role full administrator access&quot;, &quot;Turn off the bucket&#x27;s encryption&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A missing action belongs in the role&#x27;s policy, kept as narrow as the job allows. Keys in code or environment variables can leak, and administrator access is far too broad.&quot;}, {&quot;q&quot;: &quot;How does the running function get its AWS permissions?&quot;, &quot;opts&quot;: [&quot;It reads an access key from a file uploaded with the code&quot;, &quot;It uses the deploying user&#x27;s credentials, stored permanently in the function&quot;, &quot;It has no permissions, because permissions come only from the bucket&quot;, &quot;Lambda assumes the execution role and gives the function temporary credentials for it&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The execution role is assumed by Lambda, and its credentials are temporary. The deploying user&#x27;s credentials are not used by the running code.&quot;}, {&quot;q&quot;: &quot;A reviewer finds the fetch role allows all S3 actions on every bucket. Which change best follows least privilege?&quot;, &quot;opts&quot;: [&quot;Keep the policy, and rotate the access key every month&quot;, &quot;Replace it with s3:PutObject on the raw/openmeteo-aq/ prefix of the one bucket, plus log permissions&quot;, &quot;Add a second role with the same access as a backup&quot;, &quot;Attach the administrator policy so future features do not fail&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Least privilege means the needed action on the needed resource. The role uses temporary credentials, so there is no key to rotate.&quot;}]}"></div>
+
+<h3 id="cold-starts-and-warm-starts">Cold starts and warm starts</h3>
+<p><strong>What it is.</strong> A cold start happens when Lambda has no ready environment for a request. It creates one, loads the code, starts the runtime and runs the module-level code, such as creating the boto3 client. A warm start reuses an environment that has already run, so module-level code does not run again. The first call pays the set-up time, which appears on the REPORT line as <code>Init Duration</code>. Keep slow set-up at module level and out of the handler:</p>
+<div class="hl"><pre><span></span><code><span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;citypulse-readings&quot;</span><span class="p">}</span>  <span class="c1"># runs once per cold start</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;bucket&quot;</span><span class="p">]</span>                <span class="c1"># runs on every call</span>
+</code></pre></div>
+
+<p>The first call in a new environment runs both lines. Later calls run only the handler body.</p>
+<p><strong>How it shows up in a case study.</strong> A team sees the first run of the morning take 1.8 seconds, and later runs take 0.3 seconds. A teammate suspects the bucket policy. The slow run follows a quiet period, and the gap matches the time to create a new environment. The REPORT line on that run shows an Init Duration, which confirms a cold start. A bucket policy would slow every call, not only the first one.</p>
+<div class="box box-trap"><div class="box-h">Trap: Blaming the cold start for every slow call</div><p>A slow call is a cold start only when the REPORT line shows an Init Duration or the timing matches a new environment. A slow handler is slow on every call.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A function&#x27;s slow runs take about 1.2 seconds longer, and they follow long idle periods. Their REPORT lines show an Init Duration. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;A bucket policy that delays every upload&quot;, &quot;The memory was set too high&quot;, &quot;The timeout was reached on each slow run&quot;, &quot;A cold start, because Lambda created a new environment and ran the module-level code&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An Init Duration appears when Lambda creates a new environment. A bucket policy would slow every call, and a timeout would stop the run, not delay it.&quot;}, {&quot;q&quot;: &quot;A team moves its S3 client creation from the handler to module level. What should it expect?&quot;, &quot;opts&quot;: [&quot;Every call creates a new client, so calls become slower&quot;, &quot;The client is created once per environment, so warm calls skip that set-up&quot;, &quot;Memory usage drops to zero&quot;, &quot;Cold starts are removed completely&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Module-level code runs once per environment and is reused. Cold starts still happen, because each new environment pays the set-up time.&quot;}, {&quot;q&quot;: &quot;A function is slow only on the first call of the day. Which change lowers the effect most safely?&quot;, &quot;opts&quot;: [&quot;Set the timeout to 900 seconds so the first call can finish&quot;, &quot;Increase memory to the maximum without measuring&quot;, &quot;Trim the start-up work: import only what is needed and create clients once at module level, so the cold start is short&quot;, &quot;Remove the logging so the first call is quicker&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Start-up time shrinks when the set-up code is small and runs once per environment. A longer timeout changes the limit, not the speed.&quot;}]}"></div>
+
+<h3 id="limiting-concurrency">Limiting concurrency</h3>
+<p><strong>What it is.</strong> Concurrency is the number of copies of a function running at the same moment. When every copy is busy, Lambda starts another, up to account and regional limits. Reserved concurrency caps one function at a fixed number of copies and sets that many aside from the account's pool. Calls beyond the cap are throttled. A synchronous caller gets an error. An asynchronous event, such as an S3 notification, is retried for a period and may be dropped if it keeps failing. For a burst:</p>
+<div class="hl"><pre><span></span><code><span class="n">burst_events</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">reserved</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">burst_events</span><span class="p">,</span> <span class="n">reserved</span><span class="p">),</span> <span class="s2">&quot;copies run at once&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">burst_events</span> <span class="o">-</span> <span class="n">reserved</span><span class="p">,</span> <span class="s2">&quot;events are throttled and must wait or be retried&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output shows 50 copies at once and 450 events waiting or retrying.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse function calls a city API that fails under load. A burst of 500 uploads arrives in one second, and the team wants no more than 50 copies at once. The cap on parallel copies is reserved concurrency, set on the function. Memory and timeout change how long each run takes and what it costs, but they do not change how many copies start. The team also checks how the throttled events are retried.</p>
+<div class="box box-trap"><div class="box-h">Trap: Tuning memory to limit parallel runs</div><p>Memory changes run speed and cost, not the number of copies. It does nothing to protect a downstream API from a burst.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A city API accepts only 10 requests at the same time. A sensor-alert function calls it. Which setting protects the API?&quot;, &quot;opts&quot;: [&quot;Reserved concurrency of 10 on the function&quot;, &quot;A memory size of 10 GB&quot;, &quot;A timeout of 10 minutes&quot;, &quot;An S3 lifecycle rule that expires objects after 10 days&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Reserved concurrency caps how many copies of one function run at once. Memory and timeout change speed and cost, not the number of copies.&quot;}, {&quot;q&quot;: &quot;A burst of 2,000 uploads arrives. Reserved concurrency is 100, and each run takes 3 seconds. Ignoring start-up, roughly how long does the burst take?&quot;, &quot;opts&quot;: [&quot;3 seconds&quot;, &quot;20 seconds&quot;, &quot;60 seconds&quot;, &quot;2,000 seconds&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;2,000 runs in rounds of 100 is 20 rounds of 3 seconds, which is 60 seconds. The 3-second answer assumes everything runs at once.&quot;}, {&quot;q&quot;: &quot;A function&#x27;s reserved concurrency is set to 0. What happens to a new S3 upload that triggers it?&quot;, &quot;opts&quot;: [&quot;The upload is processed, but more slowly&quot;, &quot;The function is throttled, so the event does not run until the limit is raised, and retries may end in failure&quot;, &quot;The function uses the full account capacity&quot;, &quot;The bucket deletes the object&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A reserved concurrency of 0 stops the function from running. Treating throttling as a delay is the tempting wrong answer.&quot;}]}"></div>
+
+<h3 id="batching-records-per-invocation">Batching records per invocation</h3>
+<p><strong>What it is.</strong> Batching handles many items in one invocation instead of one invocation per item. Each invocation has a request charge and fixed overhead, such as start-up and connection time. Batches cut the invocation count, but a batch waits to fill, so items arrive later. For queues and streams, an event source mapping sets a batch size and a batching window, the longest wait before Lambda invokes with a partial batch. For a steady stream:</p>
+<div class="hl"><pre><span></span><code><span class="n">readings_per_minute</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">readings_per_minute</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>100</code>. One invocation per reading would need 10,000. The batch must also finish within its time and memory limits.</p>
+<p><strong>How it shows up in a case study.</strong> A queue receives about 10,000 small readings a minute, and the first design runs once per reading. A cost review finds that request charges and overhead dominate. The team proposes batches of 100 with a window of a few seconds. Batching cuts the invocations by 100 times, and a short window keeps data fresh. Before choosing the size, the team measures how long a batch of 100 takes, because it must finish well inside its timeout.</p>
+<div class="box box-trap"><div class="box-h">Trap: Batching so far that data goes stale</div><p>A large batch with a long wait saves money but delivers readings late. A batch that reaches the timeout is retried whole.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A source sends 6,000 small readings a minute, and each reading has its own run. Which change most reduces invocations while keeping data fresh?&quot;, &quot;opts&quot;: [&quot;Keep one run per reading and raise the memory&quot;, &quot;Process the readings once a day&quot;, &quot;Batch the readings in groups of about 50, with a short batching window&quot;, &quot;Disable the trigger and read the queue by hand&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Groups of about 50 cut 6,000 invocations a minute to about 120. Daily processing is cheap but the data is up to a day old.&quot;}, {&quot;q&quot;: &quot;Team A batches 1,000 readings per run, and each run takes 14 minutes against a 15-minute limit. What is its main risk?&quot;, &quot;opts&quot;: [&quot;Lambda stops charging for runs longer than 10 minutes&quot;, &quot;A slow day can push a run over 15 minutes, and then the whole batch is retried&quot;, &quot;Batches cannot contain more than 10 readings&quot;, &quot;Batching stops the REPORT line from being written&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A batch needs headroom under its timeout. One slow day can multiply the work through retries. The other options are not Lambda behaviour.&quot;}, {&quot;q&quot;: &quot;A reviewer says batching always saves money. Which statement is most accurate?&quot;, &quot;opts&quot;: [&quot;Batching always saves money, because compute is free for batched runs&quot;, &quot;Batching removes the need for a timeout&quot;, &quot;Batching only matters for S3 events&quot;, &quot;Batching usually reduces request charges, but larger batches add waiting and can reach the timeout, so the size must be measured&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Fewer invocations usually cut request charges. The word \&quot;always\&quot; is the tempting wrong answer, because oversized batches cost more in delay and retries.&quot;}]}"></div>
+
+<h3 id="reading-logs-report-lines-and-alarms">Reading logs, REPORT lines and alarms</h3>
+<p><strong>What it is.</strong> Lambda writes logs to CloudWatch Logs, in a log group named <code>/aws/lambda/</code> followed by the function name. Each run writes START, any <code>print</code> output, END and a REPORT line. The REPORT line gives Duration, Billed Duration, Memory Size and Max Memory Used. Billed Duration is the figure you pay for, rounded up to the next whole millisecond. Metrics such as <code>Errors</code> and <code>Throttles</code> are published per function, and an alarm watches a metric against a threshold:</p>
+<div class="hl"><pre><span></span><code>REPORT RequestId: 4a1b Duration: 311.50 ms Billed Duration: 312 ms Memory Size: 256 MB Max Memory Used: 88 MB
+</code></pre></div>
+
+<p>Here 311.50 ms of work is billed as 312 ms. The 88 MB used against a 256 MB setting hints that less memory might do, but measure before you change it.</p>
+<p><strong>How it shows up in a case study.</strong> A team's function has a few errors on Monday, but the team reads only the print output and sees nothing wrong. The monthly bill also looks high. Print output shows what the code did, not whether the run failed or what it cost. The REPORT lines show billed time and memory, and an alarm on Errors would have flagged the failures. The team adds that alarm and checks the billed time against its estimate.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading only the print output</div><p>Print lines show what the code did, not what it cost. Billed Duration appears only on the REPORT line, and a failed run may print nothing useful.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team wants the billed duration of each run. Which log line holds it?&quot;, &quot;opts&quot;: [&quot;The START line with the request ID&quot;, &quot;The END line with the request ID&quot;, &quot;The line printed by the handler&#x27;s print call&quot;, &quot;The REPORT line, which shows Billed Duration&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;REPORT is the only line with billing figures. START and END mark run boundaries, and print output shows what the code did.&quot;}, {&quot;q&quot;: &quot;An alarm watches Errors, with a threshold of one error in one five-minute period. Overnight a run fails and a retry succeeds. What is the best reading?&quot;, &quot;opts&quot;: [&quot;The alarm cannot fire, because the retry succeeded&quot;, &quot;The alarm fires, because the failed attempt is counted in the Errors metric for that period&quot;, &quot;The alarm fires only when the schedule is stopped&quot;, &quot;The alarm measures billed duration&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Errors counts failed invocations, including the failed attempt before a successful retry. A successful retry does not erase the error.&quot;}, {&quot;q&quot;: &quot;Which metric best signals that calls are being held back by the concurrency cap?&quot;, &quot;opts&quot;: [&quot;Duration&quot;, &quot;Errors&quot;, &quot;Throttles&quot;, &quot;ConcurrentExecutions&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Throttles counts calls refused because a limit was reached. ConcurrentExecutions shows how many copies run, not the refused calls.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>These are harder than the questions above, because each combines two ideas from its topic. Try them without looking back.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A bucket already triggers function A. The team adds function B by calling put-bucket-notification-configuration with a rule for B only. What happens to A?&quot;, &quot;opts&quot;: [&quot;A stops being triggered, because the call replaces the whole notification configuration&quot;, &quot;Both keep running, because the new rule is added to the old one&quot;, &quot;Only B runs, because a newer rule takes priority&quot;, &quot;The bucket refuses the call until A is deleted&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The put call replaces the whole configuration, so A&#x27;s rule must be included again. Believing new rules are added is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A team runs 3 million invocations a month. Each bills 400 ms at 384 MB. What is the monthly compute in GB-seconds?&quot;, &quot;opts&quot;: [&quot;450&quot;, &quot;460,800,000&quot;, &quot;1,200,000&quot;, &quot;450,000&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;3 million times 0.4 s is 1.2 million seconds, and 384 MB is 0.375 GB, giving 450,000. The answer 460,800,000 treats 384 as gigabytes.&quot;}, {&quot;q&quot;: &quot;A function bills 1,600 ms at 128 MB, 700 ms at 256 MB and 380 ms at 512 MB. With one price per GB-second, which setting has the lowest compute cost per run?&quot;, &quot;opts&quot;: [&quot;128 MB at 0.2 GB-seconds&quot;, &quot;256 MB at 0.175 GB-seconds&quot;, &quot;512 MB at 0.19 GB-seconds&quot;, &quot;512 MB, because it is the fastest&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The costs are 0.2, 0.175 and 0.19. The fastest setting is not the cheapest, because the rate rises faster than the time falls.&quot;}, {&quot;q&quot;: &quot;One event can take 22 minutes of work, and the team must keep each event in a single job. Which choice fits best?&quot;, &quot;opts&quot;: [&quot;Raise the memory to 10,240 MB and keep a 15-minute timeout&quot;, &quot;Set the timeout to 25 minutes in the configuration&quot;, &quot;Move the job to a container service, such as ECS Fargate, which is not bound by the 15-minute Lambda limit&quot;, &quot;Invoke the function twice for each event, so each call gets 15 minutes&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;No Lambda run lasts longer than 15 minutes, and memory does not change that. Two calls split the work but each is still capped.&quot;}, {&quot;q&quot;: &quot;A handler writes a row keyed by reading ID. A retry arrives after the first attempt wrote the row but before the response was seen. Which design is idempotent?&quot;, &quot;opts&quot;: [&quot;Always insert, and let the database create duplicates&quot;, &quot;Generate a new UUID for each attempt&quot;, &quot;Use an upsert keyed by reading ID, so a second attempt leaves exactly one row&quot;, &quot;Log the attempt and skip the write&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;An upsert keyed by reading ID gives the same final row on every attempt. A new UUID creates a new row each time.&quot;}, {&quot;q&quot;: &quot;A developer proposes s3:* on all buckets, so a future bucket works without change. Today the function writes to one prefix. What is the best response?&quot;, &quot;opts&quot;: [&quot;Decline it, because the policy should name only the bucket and prefix in use, and new needs can be added when they arise&quot;, &quot;Accept it, because future flexibility is worth the risk&quot;, &quot;Accept it, and add an access key as a backup&quot;, &quot;Accept it, because wildcard roles cannot delete objects&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Least privilege names only what the function needs now. The claim that wildcards cannot delete objects is false, which makes it the most tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A latency-sensitive API must answer within 200 ms on every call, including the first after idle time. Cold starts take about 1.5 seconds. Which option keeps environments ready?&quot;, &quot;opts&quot;: [&quot;Raise the memory to 10,240 MB&quot;, &quot;Use provisioned concurrency on the function&#x27;s alias, so environments stay initialised&quot;, &quot;Add a bucket lifecycle rule&quot;, &quot;Move the boto3 client into the handler&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Provisioned concurrency keeps environments initialised ahead of requests. More memory does not stop a new environment being created.&quot;}, {&quot;q&quot;: &quot;A function has reserved concurrency of 20. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;It is a minimum that guarantees the function runs at all times&quot;, &quot;It has no effect on the account pool, because it counts only queued events&quot;, &quot;It applies only to synchronous calls&quot;, &quot;It sets a maximum for the function and also reserves that many from the account&#x27;s pool&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Reserved concurrency caps the function and reserves capacity from the pool. It is not a guaranteed minimum, and it covers asynchronous events too.&quot;}, {&quot;q&quot;: &quot;A queue delivers batches of 200 messages, each taking 50 ms, so a batch takes 10 seconds. The timeout is 12 seconds, and a downstream call sometimes adds 5 seconds. Which change is most sensible?&quot;, &quot;opts&quot;: [&quot;Reduce the batch size to about 100, leaving headroom under the timeout&quot;, &quot;Raise the batch size to 2,000 to save invocations&quot;, &quot;Remove the timeout so batches cannot fail&quot;, &quot;Process one message per run with a one-second timeout&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;200 messages plus 5 seconds is 15 seconds, past the 12-second limit. 100 messages take 5 seconds, plus 5 seconds of delay, which fits.&quot;}, {&quot;q&quot;: &quot;A function shows Max Memory Used of 90 MB on a 512 MB setting, and the team wants lower cost. What is the most sound next step?&quot;, &quot;opts&quot;: [&quot;Set the memory to 90 MB exactly&quot;, &quot;Remove the REPORT logging so the figures stop changing&quot;, &quot;Measure the billed duration at smaller settings such as 128 MB and 256 MB, and compare the cost before changing anything&quot;, &quot;Raise the memory to 1,024 MB to see the figure fall&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Lower memory can mean less CPU, so measure each candidate. 90 MB is below the 128 MB minimum, so it cannot be set.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab asks you to write three small Python functions for a cost model. The platform runs visible tests, which you can see, and hidden tests, which you cannot. The hidden tests decide the top marks, so this section teaches you how to check your own work for the cases the visible tests may not show. It also teaches the Python ideas each function needs, using examples that have nothing to do with the lab's data. You will then solve a twin problem in full, and finally you will attempt a second twin problem yourself.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> CityPulse ingests sensor readings through an AWS Lambda function. Finance wants two answers: the monthly bill for the ingest, and the memory setting that costs least. You write three functions. The starter file already has two module-level prices, and you must use them as they are. <code>REQUEST_PRICE</code> is 0.0000002 USD per request. <code>GBS_PRICE</code> is 0.0000166667 USD per GB-second.</p>
+<p>The task has three functions. Each rule in the statement is listed under the function it belongs to.</p>
+<ul>
+<li><code>gb_seconds(invocations, duration_ms, memory_mb)</code> returns a float.</li>
+<li>It is the number of invocations, multiplied by the memory in gigabytes, multiplied by the duration in seconds.</li>
+<li>Memory is given in megabytes, so divide it by 1,024 to get gigabytes.</li>
+<li>Duration is given in milliseconds, so divide it by 1,000 to get seconds.</li>
+<li>The statement does not ask you to round this value.</li>
+<li><code>lambda_cost(invocations, duration_ms, memory_mb)</code> returns a float.</li>
+<li>The request cost is <code>REQUEST_PRICE</code> multiplied by the number of invocations.</li>
+<li>The compute cost is the GB-seconds from <code>gb_seconds</code> multiplied by <code>GBS_PRICE</code>.</li>
+<li>The total is the request cost plus the compute cost, and the function returns <code>round(total, 2)</code>.</li>
+<li>The statement's example is <code>lambda_cost(1_000_000, 200, 512)</code>, which should return 1.87.</li>
+<li><code>cheapest_memory(invocations, configs)</code> returns an int.</li>
+<li><code>configs</code> is a list of dictionaries. Each dictionary has the keys <code>memory_mb</code> and <code>duration_ms</code>.</li>
+<li>The cost of each configuration is what <code>lambda_cost</code> returns for that configuration's duration and memory, with the same number of invocations.</li>
+<li>The function returns the <code>memory_mb</code> of the configuration with the lowest cost.</li>
+<li>On a tie, it returns the smaller <code>memory_mb</code>.</li>
+<li>The statement's example calls the function with two configurations and says the answer is the cheaper of the two memory sizes. Work out which one that is by checking both costs yourself.</li>
+</ul>
+<p>The header of the task lists limits of 30 seconds and 128 MB. These describe how much your code is allowed to use when it runs. The functions here are short arithmetic, so the limits will not matter if the logic is correct.</p>
+<p><strong>The scoring table.</strong> The four visible tests are worth the points below. They add up to 66 points.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost of 1 million invocations at 512 MB and 200 ms</td>
+<td>18</td>
+</tr>
+<tr>
+<td>GB-seconds for the same workload</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Cost at 128 MB and 1,000 ms</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Pick the cheapest memory and duration configuration</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<p>There are also three hidden tests worth 34 points between them. The platform shows you how many hidden tests there are and how many points they carry, but not their inputs or expected results.</p>
+<p>Hidden tests decide the top marks because they check the cases the visible tests may not show. A solution that only matches the visible examples can score 66 points and no more. To reach 100, every function must follow every rule in the statement, including the rules about rounding, ties and return types, even where the examples do not show them. That is why the next sections focus on checking rather than on the first working draft.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>This section teaches the Python ideas that the three functions use. Each idea comes with a small example that uses different data from the lab. Work through the examples yourself before you write the functions. Do not copy any of them into the lab's functions.</p>
+<p><strong>Division, units and floats.</strong> Dividing with <code>/</code> always gives a float, even when the result is a whole number. Floats are binary approximations, so some decimal values cannot be stored exactly:</p>
+<div class="hl"><pre><span></span><code><span class="n">grams</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">kilograms</span> <span class="o">=</span> <span class="n">grams</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kilograms</span><span class="p">)</span>     <span class="c1"># 1.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)</span>     <span class="c1"># 0.30000000000000004</span>
+</code></pre></div>
+
+<p>The statement's <code>gb_seconds</code> is a raw value, not a rounded one, so do not round it. The rounding comes only in <code>lambda_cost</code>. If you compare floats in your own asserts, check for a small difference rather than exact equality, unless the value is a clean number such as 1.0.</p>
+<p><strong>Constants and round.</strong> Module-level names, such as <code>REQUEST_PRICE</code>, can be read from inside any function. Use the name, not a retyped copy of the number, so that the value stays the same as the starter file. The built-in <code>round</code> takes an optional number of places:</p>
+<div class="hl"><pre><span></span><code><span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>                 <span class="c1"># a module-level constant</span>
+<span class="n">hours</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hours</span> <span class="o">*</span> <span class="n">RATE</span><span class="p">)</span>        <span class="c1"># 1.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">4.125</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>     <span class="c1"># 4.12, because ties go to the even digit</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.675</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>     <span class="c1"># 2.67, because 2.675 is stored slightly below the half</span>
+</code></pre></div>
+
+<p><code>round</code> uses round-half-to-even on the stored binary value. The statement says <code>round(total, 2)</code>, so you use the built-in <code>round</code> on the final total, as the statement requires.</p>
+<p><strong>Round once, at the end.</strong> Rounding parts before you add them can change the total. This example uses an unrelated price of 1.005 twice:</p>
+<div class="hl"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mf">1.005</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.005</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># 2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>             <span class="c1"># 2.01</span>
+</code></pre></div>
+
+<p>The first line rounds each part and gets 2.0. The second adds first and rounds once, and gets 2.01. The statement rounds only the total, so only the second pattern is correct for <code>lambda_cost</code>.</p>
+<p><strong>Lists of dictionaries and dict.get.</strong> <code>configs</code> is a list of dictionaries. Reading a key with square brackets fails loudly if the key is missing, which is useful when a key must exist. The <code>get</code> method returns a default instead of failing:</p>
+<div class="hl"><pre><span></span><code><span class="n">book</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Atlas&quot;</span><span class="p">,</span> <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="mi">320</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">])</span>           <span class="c1"># 320</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># 0, because the key is missing</span>
+</code></pre></div>
+
+<p>For the lab, the statement's configuration keys are always present, so square brackets are the natural choice.</p>
+<p><strong>Tuples and tie-breaks.</strong> A tuple is compared item by item from the left. <code>min</code> over a list of tuples returns the smallest tuple, so a tie on the first item is settled by the second item:</p>
+<div class="hl"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">72</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;Bilal&quot;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>                  <span class="c1"># (72, &#39;Ravi&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">([(</span><span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;Bilal&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">)]))</span>   <span class="c1"># (85, &#39;Asha&#39;)</span>
+</code></pre></div>
+
+<p>This is how a tie-break can be written in one comparison. Put the value you want to minimise first, and the tie-break value second. Think about which item must be smaller when two values are equal, and make sure the tuple puts that item in the right place.</p>
+<p><strong>Returning the right type.</strong> <code>isinstance</code> checks the type of a value. <code>bool</code> is a subclass of <code>int</code>, so a boolean passes an integer check, and that can surprise you:</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>        <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>     <span class="c1"># True, because bool is a subclass of int</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>      <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">7.0</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span>                  <span class="c1"># True, but the two types differ</span>
+</code></pre></div>
+
+<p>The last line matters for <code>cheapest_memory</code>. The value <code>7.0</code> equals <code>7</code>, but it is a float. If the statement asks for an int, return the value as it was given, and do not convert it to a float along the way.</p>
+<p><strong>Slicing and not changing the input.</strong> A slice makes a new list. The <code>sort</code> method changes a list in place, while <code>sorted</code> returns a new one:</p>
+<div class="hl"><pre><span></span><code><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>            <span class="c1"># [&#39;b&#39;, &#39;c&#39;]</span>
+<span class="n">copy</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="n">copy</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>                 <span class="c1"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], unchanged</span>
+</code></pre></div>
+
+<p>The statement does not require the input list to stay the same. It is still good practice, and it is easy to check with your own assert.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table below lists the rules from the statement, the mistake a careless solution makes, and how to check your own. Each row can become one assert in your own test file.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gb_seconds uses memory_mb / 1024</td>
+<td>Uses the megabyte value as if it were gigabytes, so the answer is 1,024 times too large</td>
+<td>One invocation at 1,024 MB for 1,000 ms must give exactly 1.0</td>
+</tr>
+<tr>
+<td>gb_seconds uses duration_ms / 1000</td>
+<td>Forgets the division, or divides by 1,000 twice</td>
+<td>The same case gives 1.0, not 1000.0 or 0.001</td>
+</tr>
+<tr>
+<td>gb_seconds scales with invocations</td>
+<td>Returns the value for one run instead of all of them</td>
+<td>Double the invocations and check that the result doubles</td>
+</tr>
+<tr>
+<td>lambda_cost adds the request cost and the compute cost</td>
+<td>Returns only the compute part, or only the request part</td>
+<td>Compare the total with a sum you work out on paper</td>
+</tr>
+<tr>
+<td>Use REQUEST_PRICE and GBS_PRICE</td>
+<td>Retypes the prices with fewer digits, which can change the last cent</td>
+<td>Read the prices from the module names, and check that changing a constant changes the result</td>
+</tr>
+<tr>
+<td>round(total, 2) is applied to the total</td>
+<td>Rounds the GB-seconds or each part first, which can move the total by a cent</td>
+<td>Compare the rounded result with a version that rounds only the total</td>
+</tr>
+<tr>
+<td>cheapest_memory compares the lowest lambda_cost</td>
+<td>Compares unrounded totals, or compares durations or memory sizes instead</td>
+<td>Print each configuration's cost next to its memory and find the lowest by eye</td>
+</tr>
+<tr>
+<td>On a tie, return the smaller memory_mb</td>
+<td>Keeps the first configuration in the list, or keeps the larger memory</td>
+<td>Pass the same two configurations in both orders, and check that the answer does not change</td>
+</tr>
+<tr>
+<td>cheapest_memory returns an int memory_mb</td>
+<td>Returns a float such as 128.0, a string, or an index</td>
+<td>Check with isinstance that the result is an int that appears in the configurations</td>
+</tr>
+<tr>
+<td>lambda_cost returns a float</td>
+<td>Returns an int when the total is a whole number</td>
+<td>Check with isinstance that the result is a float</td>
+</tr>
+<tr>
+<td>Zero invocations</td>
+<td>Divides by the number of invocations, or raises an error</td>
+<td>Zero invocations must give 0.0 from lambda_cost</td>
+</tr>
+<tr>
+<td>The names and signatures in the starter file</td>
+<td>Renames a parameter or moves a constant into the function</td>
+<td>Keep the starter file's names and order exactly as they are</td>
+</tr>
+</tbody>
+</table>
+<p>The statement does not say what should happen with an empty <code>configs</code> list, with booleans or strings passed where numbers are expected, or whether the input list must stay unchanged. These are not rules in the statement, so do not invent a behaviour for them. Your own asserts can still check that the input list is unchanged, because that is good practice, but you should not treat any of these cases as a graded rule. The only boundary the statement sets is the tie rule.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<p>Follow these steps for this lab and for any graded lab you meet later.</p>
+<ol>
+<li>Read the starter file. Note every module-level name, every function name and every parameter in order. Do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function body. For this lab, that means the <code>lambda_cost</code> example and the <code>cheapest_memory</code> example. Work out each expected value on paper first, then check your paper answer with a calculator.</li>
+<li>Add your own asserts for every row of the rules table above. Each row gives one check.</li>
+<li>Implement one function at a time. Start with <code>gb_seconds</code>, run its asserts until they pass, then move to <code>lambda_cost</code>, then to <code>cheapest_memory</code>. Running the asserts after each function shows you which function broke.</li>
+<li>Check types and rounding last. Use <code>isinstance</code> for the return types, and make sure the rounding happens once, at the end.</li>
+<li>Run the visible tests. Read each failure message, and find the rule it refers to in the table.</li>
+<li>Submit once. Submit only when the visible tests pass and your own asserts pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The twin problem is a different domain that needs the same skills: integer and decimal arithmetic, rounding at the end, a tie-break and a function that chooses the best option from a list.</p>
+<p><strong>The twin problem.</strong> A bike-share company bills each trip in 15-minute blocks. A block that has started counts in full. So 1 minute and 15 minutes are each one block, and 16 minutes is two blocks. Every trip also pays a base fee. The fare is the base fee plus the number of blocks times the block price, rounded half up to the nearest cent at the end. Write three functions.</p>
+<ul>
+<li><code>billable_blocks(minutes)</code> returns the number of blocks as an int.</li>
+<li><code>trip_fare(minutes, base_fee, block_price)</code> returns the fare as a float with two decimal places.</li>
+<li><code>cheapest_plan(minutes, plans)</code> takes a list of dictionaries with the keys <code>name</code>, <code>base_fee</code> and <code>block_price</code>. It returns the name of the plan with the lowest fare. On a tie, it returns the name that comes first alphabetically. If <code>plans</code> is empty, it raises <code>ValueError</code>. It must not change the list.</li>
+</ul>
+<p>Here is the full solution with its tests. The block runs when the book is built, and it must pass.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span><span class="p">,</span> <span class="n">ROUND_HALF_UP</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">billable_blocks</span><span class="p">(</span><span class="n">minutes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">minutes</span> <span class="o">+</span> <span class="mi">14</span><span class="p">)</span> <span class="o">//</span> <span class="mi">15</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trip_fare</span><span class="p">(</span><span class="n">minutes</span><span class="p">,</span> <span class="n">base_fee</span><span class="p">,</span> <span class="n">block_price</span><span class="p">):</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">base_fee</span><span class="p">))</span> <span class="o">+</span> <span class="n">blocks</span> <span class="o">*</span> <span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">block_price</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;0.01&quot;</span><span class="p">),</span> <span class="n">rounding</span><span class="o">=</span><span class="n">ROUND_HALF_UP</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cheapest_plan</span><span class="p">(</span><span class="n">minutes</span><span class="p">,</span> <span class="n">plans</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plans</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no plans given&quot;</span><span class="p">)</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">plan</span> <span class="ow">in</span> <span class="n">plans</span><span class="p">:</span>
+        <span class="n">fare</span> <span class="o">=</span> <span class="n">trip_fare</span><span class="p">(</span><span class="n">minutes</span><span class="p">,</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;base_fee&quot;</span><span class="p">],</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;block_price&quot;</span><span class="p">])</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="p">(</span><span class="n">fare</span><span class="p">,</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">best</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">candidate</span> <span class="o">&lt;</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">candidate</span>
+    <span class="k">return</span> <span class="n">best</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">plans</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic&quot;</span><span class="p">,</span> <span class="s2">&quot;base_fee&quot;</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span> <span class="s2">&quot;block_price&quot;</span><span class="p">:</span> <span class="mf">0.30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Plus&quot;</span><span class="p">,</span> <span class="s2">&quot;base_fee&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s2">&quot;block_price&quot;</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ride&quot;</span><span class="p">,</span> <span class="s2">&quot;base_fee&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">,</span> <span class="s2">&quot;block_price&quot;</span><span class="p">:</span> <span class="mf">0.10</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">snapshot</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plans</span><span class="p">]</span>
+
+<span class="c1">## billable_blocks: a started block counts in full</span>
+<span class="k">assert</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">billable_blocks</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="c1">## trip_fare: base fee plus blocks, rounded half up at the end</span>
+<span class="k">assert</span> <span class="n">trip_fare</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.40</span>
+<span class="k">assert</span> <span class="n">trip_fare</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.50</span>
+<span class="k">assert</span> <span class="n">trip_fare</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.01</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trip_fare</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+
+<span class="c1">## cheapest_plan: the lowest fare wins</span>
+<span class="k">assert</span> <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">plans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Plus&quot;</span>
+<span class="k">assert</span> <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">plans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Plus&quot;</span>
+<span class="k">assert</span> <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">plans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Plus&quot;</span>
+
+<span class="c1">## the order of the list does not change the answer</span>
+<span class="k">assert</span> <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">plans</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;Plus&quot;</span>
+
+<span class="c1">## a tie on fare goes to the name that comes first alphabetically</span>
+<span class="k">assert</span> <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="s2">&quot;base_fee&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s2">&quot;block_price&quot;</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ann&quot;</span><span class="p">,</span> <span class="s2">&quot;base_fee&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s2">&quot;block_price&quot;</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">},</span>
+<span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;Ann&quot;</span>
+
+<span class="c1">## an empty list raises ValueError</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">cheapest_plan</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="p">[])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for an empty list&quot;</span><span class="p">)</span>
+
+<span class="c1">## the input list is not changed</span>
+<span class="k">assert</span> <span class="n">plans</span> <span class="o">==</span> <span class="n">snapshot</span>
+</code></pre></div>
+
+<p>The block prints nothing when it passes. A failed assert stops the build with an error that names the line.</p>
+<p>Explanation, line by line:</p>
+<ul>
+<li><code>from decimal import Decimal, ROUND_HALF_UP</code> brings in the exact decimal type and the rounding mode for money.</li>
+<li>In <code>billable_blocks</code>, <code>(minutes + 14) // 15</code> uses integer division, which always rounds down. Adding 14 means any remainder from 1 to 14 pushes the result up by one. Zero minutes give 0, 1 minute gives 1, 15 minutes gives 29 // 15, which is 1, and 16 minutes gives 30 // 15, which is 2.</li>
+<li>In <code>trip_fare</code>, <code>Decimal(str(base_fee))</code> converts the value through its text form, so 0.50 stays exactly 0.50. Multiplying an int by a <code>Decimal</code> works, so <code>blocks * Decimal(...)</code> is the block charge.</li>
+<li><code>total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)</code> rounds once, at the end, to two places, with halves going up. The <code>float(...)</code> call converts the result back for the return value.</li>
+<li>In <code>cheapest_plan</code>, the empty-list check comes first, so the function never looks for a minimum of nothing. <code>best</code> starts as <code>None</code>.</li>
+<li>Each plan gives a <code>candidate</code> tuple, with the fare first and the name second. The <code>if</code> line takes the first candidate, and then any candidate that is smaller. Tuples compare the fare first, and they compare names only when the fares are equal.</li>
+<li><code>return best[1]</code> returns the name from the best tuple.</li>
+<li>The asserts check each rule in turn: the block counts, the fare and its rounding, the lowest fare, the order of the list, the alphabetical tie-break, the empty list, and the unchanged input.</li>
+<li>The <code>try</code> and <code>except</code> block checks that the error is raised. If no error is raised, the <code>else</code> branch fails the build on purpose.</li>
+</ul>
+<p>Here is the trickiest part, the choice of the cheapest plan, animated in a small standalone form. The fares are already worked out, so you can follow the comparison.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Choosing the cheapest plan&quot;, &quot;code&quot;: [&quot;plans = [(\&quot;Basic\&quot;, 1.4), (\&quot;Plus\&quot;, 1.4), (\&quot;Ride\&quot;, 2.1)]&quot;, &quot;best = None&quot;, &quot;for name, fare in plans:&quot;, &quot;    candidate = (fare, name)&quot;, &quot;    if best is None or candidate &lt; best:&quot;, &quot;        best = candidate&quot;, &quot;print(best[1])&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;plans&quot;, &quot;[(\&quot;Basic\&quot;, 1.4), (\&quot;Plus\&quot;, 1.4), (\&quot;Ride\&quot;, 2.1)]&quot;], [&quot;best&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;Three pairs of name and fare are stored. Nothing is compared yet.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;plans&quot;, &quot;[(\&quot;Basic\&quot;, 1.4), (\&quot;Plus\&quot;, 1.4), (\&quot;Ride\&quot;, 2.1)]&quot;], [&quot;best&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;best starts with no value.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Basic\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;best&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;The loop unpacks the first pair.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Basic\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;], [&quot;best&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;The fare goes first, so the tuples sort by fare.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Basic\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;], [&quot;best&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;best is None, so the test is true.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Basic\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The first candidate becomes the best so far.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Plus\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The second pair. candidate still holds the old value.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Plus\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Plus\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The new candidate is (1.4, \&quot;Plus\&quot;).&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Plus\&quot;&quot;], [&quot;fare&quot;, &quot;1.4&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Plus\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The fares tie, so the names decide. Plus comes after Basic, so the test is false and line 6 is skipped.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ride\&quot;&quot;], [&quot;fare&quot;, &quot;2.1&quot;], [&quot;candidate&quot;, &quot;(1.4, \&quot;Plus\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The third pair.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ride\&quot;&quot;], [&quot;fare&quot;, &quot;2.1&quot;], [&quot;candidate&quot;, &quot;(2.1, \&quot;Ride\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The candidate is (2.1, \&quot;Ride\&quot;).&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ride\&quot;&quot;], [&quot;fare&quot;, &quot;2.1&quot;], [&quot;candidate&quot;, &quot;(2.1, \&quot;Ride\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;2.1 is larger than 1.4, so the test is false.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;Ride\&quot;&quot;], [&quot;fare&quot;, &quot;2.1&quot;], [&quot;candidate&quot;, &quot;(2.1, \&quot;Ride\&quot;)&quot;], [&quot;best&quot;, &quot;(1.4, \&quot;Basic\&quot;)&quot;]], &quot;note&quot;: &quot;The loop has ended. best[1] is Basic, and that is printed.&quot;}]}"></div>
+
+<p>Expected output when you run the animated code on its own is <code>Basic</code>. The tie between Basic and Plus at 1.4 is settled by the names, and the earlier name in the alphabet wins.</p>
+<h3 id="your-turn">Your turn</h3>
+<p>Solve this second twin problem yourself, then check your answer against the asserts below. Your functions should pass all seven asserts.</p>
+<p>A library charges a fine for each late day, in pence. Use whole numbers of pence throughout, with no decimals. Write three functions.</p>
+<ul>
+<li><code>fine_pence(days_late, rate_pence, cap_pence)</code> returns an int. It returns 0 when <code>days_late</code> is zero or less. Otherwise it returns <code>days_late</code> times <code>rate_pence</code>, but never more than <code>cap_pence</code>.</li>
+<li><code>total_fines(loans, rate_pence, cap_pence)</code> takes a list of dictionaries with the keys <code>title</code> and <code>days_late</code>. It returns the sum of <code>fine_pence</code> for each loan, as an int. An empty list gives 0. It must not change <code>loans</code>.</li>
+<li><code>most_overdue(loans)</code> returns the title of the loan with the most days late. On a tie, it returns the title that comes first alphabetically. An empty list raises <code>ValueError</code>.</li>
+</ul>
+<p>These are the asserts your functions should pass:</p>
+<div class="hl"><pre><span></span><code><span class="n">loans</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Ajax&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoo&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">75</span>
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">500</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">675</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([],</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Ajax&quot;</span>
+<span class="k">assert</span> <span class="n">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;Dune&quot;</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>The solution below includes the seven asserts above, plus a check that the input list is unchanged and that an empty list raises <code>ValueError</code>.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fine_pence</span><span class="p">(</span><span class="n">days_late</span><span class="p">,</span> <span class="n">rate_pence</span><span class="p">,</span> <span class="n">cap_pence</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">days_late</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">days_late</span> <span class="o">*</span> <span class="n">rate_pence</span><span class="p">,</span> <span class="n">cap_pence</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="n">rate_pence</span><span class="p">,</span> <span class="n">cap_pence</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">loan</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">fine_pence</span><span class="p">(</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;days_late&quot;</span><span class="p">],</span> <span class="n">rate_pence</span><span class="p">,</span> <span class="n">cap_pence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no loans given&quot;</span><span class="p">)</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">loan</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;days_late&quot;</span><span class="p">],</span> <span class="n">loan</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">best</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">key</span>
+    <span class="k">return</span> <span class="n">best</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">loans</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Ajax&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoo&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">snapshot</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">75</span>
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">fine_pence</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">500</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">675</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([],</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Ajax&quot;</span>
+<span class="k">assert</span> <span class="n">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;Dune&quot;</span>
+<span class="k">assert</span> <span class="n">loans</span> <span class="o">==</span> <span class="n">snapshot</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">total_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">most_overdue</span><span class="p">([])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for an empty list&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">most_overdue</span><span class="p">(</span><span class="n">loans</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Ajax&quot;</span>
+</code></pre></div>
+
+<p>The key idea in <code>most_overdue</code> is the tuple <code>(-days, title)</code>. Negating the days turns "most days" into "smallest number", so <code>min</code> through the comparison picks the largest value. The title is the second item, so it settles a tie in alphabetical order. The <code>fine_pence</code> function uses <code>min</code> to apply the cap, and it returns 0 before the multiplication when the book is not late.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Check that each function name, parameter name and parameter order matches the starter file exactly.</li>
+<li>Check that both prices are read from <code>REQUEST_PRICE</code> and <code>GBS_PRICE</code>, and not retyped.</li>
+<li>Check that one invocation at 1,024 MB for 1,000 ms gives exactly 1.0 from <code>gb_seconds</code>.</li>
+<li>Check that <code>lambda_cost</code> rounds once, at the end, with <code>round(total, 2)</code>, and returns a float.</li>
+<li>Check that <code>lambda_cost</code> with zero invocations returns 0.0.</li>
+<li>Check that <code>cheapest_memory</code> returns an int taken from the configurations, and not a float or a string.</li>
+<li>Check the tie rule by passing the same two configurations in both orders.</li>
+<li>Remove any <code>print</code> calls and any test code that runs when the file is imported.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p>Viva examiners and interviewers ask these questions about today's work. Answer in your own words, and use the model answers only as a check on the facts.</p>
+<h3 id="question-1-why-is-lambda-cheaper-than-a-virtual-machine-for-this-fetch">Question 1: Why is Lambda cheaper than a virtual machine for this fetch?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The fetch runs for about two seconds every 30 minutes, so the function is active for a tiny share of the month. Lambda bills only for the GB-seconds and requests used, so the monthly cost is a few hundred GB-seconds. A virtual machine is billed for every hour it is switched on, which is about 730 hours a month, and it needs patching even when idle. For this workload the pay-per-use model wins by a wide margin.</p></details>
+
+<h3 id="question-2-why-does-the-function-use-an-execution-role-instead-of-access-keys">Question 2: Why does the function use an execution role instead of access keys?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The execution role is an IAM role that Lambda assumes, and AWS gives the function temporary credentials for it. No long-term key is stored in the code, the environment or the repository, so there is nothing to leak. The role's policy allows only the actions the function needs, such as writing to the raw prefix. If the function's permissions must change, I edit the policy, not the code.</p></details>
+
+<h3 id="question-3-what-does-the-report-line-tell-you-and-how-do-you-use-it">Question 3: What does the REPORT line tell you, and how do you use it?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The REPORT line gives the duration, the billed duration, the memory size and the maximum memory used for one invocation. The billed duration times the memory is the cost driver, so it is the measured input to the calculator. The max memory used shows whether the memory setting is too large or too small. I compare these numbers across memory sizes before I choose one.</p></details>
+
+<h3 id="question-4-why-should-teardown-delete-the-schedule-before-the-function">Question 4: Why should teardown delete the schedule before the function?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>If the function is deleted first, the scheduler keeps firing invocations at a target that no longer exists, and those failed attempts are noise in the logs and in the retry logic. Deleting the schedule first stops the trigger cleanly. The order is schedule, then function, then role, so each resource is removed before the thing it depends on. I also run the script as a dry run first, to check the list.</p></details>
+
+<h3 id="question-5-how-would-you-explain-the-break-even-invocation-count">Question 5: How would you explain the break-even invocation count?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The break-even count is the number of Lambda invocations at which the monthly Lambda cost equals the fixed monthly cost of the virtual machine. I find it by dividing the VM's monthly cost by the cost of one invocation, which I measure from the REPORT line. Below that count, Lambda is cheaper. Above it, the VM may be cheaper if the workload is steady and heavy. I would check the number against the calculator before I rely on it.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>def handler(event, context):</code></td>
+<td>The entry point Lambda calls on each run</td>
+</tr>
+<tr>
+<td><code>boto3.client("s3")</code> at module level</td>
+<td>Creates the S3 client once per cold start</td>
+</tr>
+<tr>
+<td><code>--runtime python3.12</code></td>
+<td>Language version the function runs on</td>
+</tr>
+<tr>
+<td><code>--memory-size 128</code></td>
+<td>Memory in MB; also sets the CPU share and the price per ms</td>
+</tr>
+<tr>
+<td><code>--timeout 10</code></td>
+<td>Longest allowed run, in seconds</td>
+</tr>
+<tr>
+<td><code>--role arn:...</code></td>
+<td>Execution role the function assumes</td>
+</tr>
+<tr>
+<td><code>aws lambda create-function</code></td>
+<td>Creates a function from a zip file</td>
+</tr>
+<tr>
+<td><code>aws lambda invoke --function-name X out.json</code></td>
+<td>Runs the function once and saves its result</td>
+</tr>
+<tr>
+<td><code>aws lambda update-function-configuration --memory-size 256</code></td>
+<td>Changes settings without changing code</td>
+</tr>
+<tr>
+<td><code>aws lambda add-permission --statement-id ... --principal s3.amazonaws.com</code></td>
+<td>Lets S3 invoke the function</td>
+</tr>
+<tr>
+<td><code>aws s3api put-bucket-notification-configuration</code></td>
+<td>Sends S3 events to the function</td>
+</tr>
+<tr>
+<td><code>aws logs tail /aws/lambda/X --since 30m</code></td>
+<td>Shows the last 30 minutes of logs</td>
+</tr>
+<tr>
+<td><code>REPORT</code> line</td>
+<td>Billed duration and max memory for one run</td>
+</tr>
+<tr>
+<td><code>GB-s = invocations x seconds x (MB / 1024)</code></td>
+<td>Compute usage in GB-seconds</td>
+</tr>
+<tr>
+<td><code>cost = GB-s x price + requests / 1e6 x request price</code></td>
+<td>Monthly cost formula</td>
+</tr>
+<tr>
+<td><code>aws scheduler create-schedule</code></td>
+<td>Creates a timed trigger</td>
+</tr>
+<tr>
+<td><code>rate(30 minutes)</code></td>
+<td>A schedule expression that fires every 30 minutes</td>
+</tr>
+<tr>
+<td><code>--flexible-time-window Mode=OFF</code></td>
+<td>Runs at the exact time, not within a window</td>
+</tr>
+<tr>
+<td><code>aws scheduler update-schedule</code></td>
+<td>Replaces the whole schedule definition</td>
+</tr>
+<tr>
+<td><code>--state DISABLED</code></td>
+<td>Stops all invocations from that schedule</td>
+</tr>
+<tr>
+<td><code>set -euo pipefail</code></td>
+<td>Makes a script stop at the first error or unset variable</td>
+</tr>
+<tr>
+<td><code>${1:?usage: ...}</code></td>
+<td>Stops the script with a message if an argument is missing</td>
+</tr>
+<tr>
+<td><code>teardown.sh &lt;owner&gt;</code></td>
+<td>Dry run: prints the DRY lines and deletes nothing</td>
+</tr>
+<tr>
+<td><code>teardown.sh &lt;owner&gt; --apply</code></td>
+<td>Deletes the tagged resources</td>
+</tr>
+<tr>
+<td><code>aws cloudwatch put-metric-alarm</code></td>
+<td>Alerts on a metric, such as Errors</td>
+</tr>
+<tr>
+<td>Reserved concurrency</td>
+<td>Caps how many copies of one function run at once</td>
+</tr>
+<tr>
+<td>Rule: pay for stopped VMs too</td>
+<td>Stopped VMs still bill their volume and any Elastic IP</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;execution role&quot;, &quot;a&quot;: &quot;An IAM role that Lambda assumes, giving the function temporary credentials for its policy.&quot;}, {&quot;q&quot;: &quot;cold start&quot;, &quot;a&quot;: &quot;The slow first call, when Lambda creates a new container and runs the module-level code.&quot;}, {&quot;q&quot;: &quot;warm start&quot;, &quot;a&quot;: &quot;A call that reuses an existing container, so module-level code does not run again.&quot;}, {&quot;q&quot;: &quot;GB-second&quot;, &quot;a&quot;: &quot;One gigabyte of memory used for one second. The unit Lambda bills compute in.&quot;}, {&quot;q&quot;: &quot;REPORT line&quot;, &quot;a&quot;: &quot;The CloudWatch log line with the billed duration and max memory used for one run.&quot;}, {&quot;q&quot;: &quot;idempotent&quot;, &quot;a&quot;: &quot;Running an operation again leaves the same result as running it once.&quot;}, {&quot;q&quot;: &quot;reserved concurrency&quot;, &quot;a&quot;: &quot;A cap on how many copies of one function may run at the same time.&quot;}, {&quot;q&quot;: &quot;EventBridge Scheduler&quot;, &quot;a&quot;: &quot;A managed cron service that invokes a target, such as a Lambda function, on a timing rule.&quot;}, {&quot;q&quot;: &quot;dry run&quot;, &quot;a&quot;: &quot;A run that prints what would happen and changes nothing.&quot;}, {&quot;q&quot;: &quot;break-even count&quot;, &quot;a&quot;: &quot;The number of invocations at which Lambda&#x27;s monthly cost equals the VM&#x27;s monthly cost.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D14.html"><small>Previous</small>Day 14 — Virtual machines: EC2, SSH and hardening</a><a class="nx" href="P3.html"><small>Next</small>Project 3 — Serverless Ingest and Daily Brief</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

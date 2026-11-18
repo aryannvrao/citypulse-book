@@ -1,0 +1,1591 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T11–T12: the Python fetch and clean stages · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K04" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a class="cur" href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T11–T12: the Python fetch and clean stages</h1><p class="sub">2 tickets, 10 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">74 min read · practice quiz · 6 animations · 1 tested solution</p><video class="vid" controls preload="metadata" src="videos/K04.mp4?v=1794965894"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t11-refactor-to-srccitypulsefetchpy-v1-utc-logging-data-dictionary">Y2-T11 · Refactor to src/citypulse/fetch.py v1: UTC, logging, data dictionary</a></li><li><a href="#y2-t12-build-srccitypulsecleanpy-to-parquet-with-documented-dq-rules">Y2-T12 · Build src/citypulse/clean.py to Parquet with documented DQ rules</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t11-refactor-to-srccitypulsefetchpy-v1-utc-logging-data-dictionary">Y2-T11</a></td>
+<td>11</td>
+<td>5</td>
+<td>Refactor to src/citypulse/fetch.py v1: UTC, logging, data dictionary</td>
+</tr>
+<tr>
+<td><a href="#y2-t12-build-srccitypulsecleanpy-to-parquet-with-documented-dq-rules">Y2-T12</a></td>
+<td>12</td>
+<td>5</td>
+<td>Build src/citypulse/clean.py to Parquet with documented DQ rules</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t11-refactor-to-srccitypulsefetchpy-v1-utc-logging-data-dictionary">Y2-T11 · Refactor to src/citypulse/fetch.py v1: UTC, logging, data dictionary</h2>
+<p><em>Session 11 · phase E3 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>CityPulse collects weather and air-quality readings for Bengaluru and stores them in a CSV file (a plain text table with one row per reading and commas between the columns). Until now the fetcher that does this has been a bash script, <code>fetch_once.sh</code>. Bash works, but it is hard to test and hard for a teammate to extend. This ticket moves the fetcher into Python, in a package called <code>citypulse</code>, split into small named functions.</p>
+<p>The ticket asks for four changes. First, the fetcher reports what it is doing with logging instead of <code>print</code>, so a failed run leaves an ERROR line you can find later. Second, it handles the errors you expect (no network, HTTP 404) instead of catching everything. Third, every timestamp is written as UTC in ISO-8601 form, for example <code>2026-12-01T13:00:00Z</code>. Fourth, every column has a documented type, unit and source in <code>docs/data-dictionary.md</code>.</p>
+<p>The reason for the third and fourth changes is a famous failure. In 1999 NASA's Mars Climate Orbiter was lost because one team's software produced force values in pound-force seconds while another expected newton-seconds. Nothing crashed, so nobody noticed until the spacecraft was gone. CityPulse charts would fail in the same silent way if one column held IST times and another held UTC, or if µg/m³ and ppm were mixed.</p>
+<p>By the end of this ticket, the fetcher should run from a clean virtual environment, write the same data as the bash fetcher for the same hour, and fail loudly when the API cannot be reached. Your squad still chooses its data source, column names and thresholds.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p><strong>Must already be merged (from the spec):</strong></p>
+<ul>
+<li>Y2-T08: each student's first real pull request, with two peer reviews, and <code>main</code> protected.</li>
+<li>Y2-T09: a shellcheck CI gate on pull requests.</li>
+<li>Y2-T10: release v0.2.0, your <code>fetch.py</code> v0 pull request (it reproduces the columns of <code>fetch_once.sh</code>), a pinned <code>requirements.txt</code>, a <code>.env.example</code> file, and shellcheck running on <code>main</code>.</li>
+</ul>
+<p><strong>Tools and accounts, with a check for each.</strong> Run these from the root of your squad repository. Where a command runs is marked.</p>
+<ul>
+<li><strong>Python 3.10 or later</strong> (laptop, Git Bash). Run <code>python --version</code>. Expected: <code>Python 3.10.x</code> or higher. If <code>python</code> is not found on Windows, try <code>py --version</code>.</li>
+<li><strong>The venv module</strong> (laptop and lab). Run <code>python -c "import venv; print('venv ok')"</code>. Expected: <code>venv ok</code>.</li>
+<li><strong>Git with your own identity</strong> (laptop, Git Bash). Run <code>git config user.name</code> and <code>git config user.email</code>. Expected: your name and the email on your GitHub account. Commits made under someone else's name will not count as your contribution.</li>
+<li><strong>A clean working tree</strong> (laptop, Git Bash). Run <code>git status</code>. Expected: <code>On branch</code> followed by your branch name, then <code>nothing to commit, working tree clean</code>.</li>
+<li><strong>awk, diff, sort and grep</strong> (lab Linux, or Git Bash). Run <code>awk 'BEGIN { print "awk ok" }'</code>. Expected: <code>awk ok</code>.</li>
+<li><strong>GNU date</strong> (lab Linux, or Git Bash). Run <code>date -u -d "2026-12-01T18:30:00+05:30" +%Y-%m-%dT%H:%M:%SZ</code>. Expected: <code>2026-12-01T13:00:00Z</code>. macOS <code>date</code> does not support <code>-d</code> in this form, so use the lab or Git Bash for this ticket.</li>
+<li><strong>A reachable API</strong> (laptop or lab). Run <code>curl -sS -o /dev/null -w "%{http_code}\n" "&lt;the URL your Y2-T10 fetch.py uses&gt;"</code>. Expected: <code>200</code>. If you see a DNS or connection error, you have no network and cannot finish TC1.</li>
+</ul>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API</td>
+<td>A web address that returns data to a program instead of a web page.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>Text that holds data as nested keys and values, the format most APIs return.</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>A text table with one row per line and commas between values. The first line is the header with the column names.</td>
+</tr>
+<tr>
+<td>Column header</td>
+<td>The first line of the CSV, naming each column.</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>One Python file. <code>fetch.py</code> is a module.</td>
+</tr>
+<tr>
+<td>Package</td>
+<td>A folder of modules with an <code>__init__.py</code> file inside. <code>citypulse</code> is a package.</td>
+</tr>
+<tr>
+<td><code>src</code> layout</td>
+<td>A project layout where the code lives in <code>src/citypulse/</code>, so tests and tools cannot import the code by accident from the wrong folder.</td>
+</tr>
+<tr>
+<td><code>pyproject.toml</code></td>
+<td>The file that tells pip how to build and install your package.</td>
+</tr>
+<tr>
+<td>Virtual environment (venv)</td>
+<td>A private folder of Python packages, so each project has its own versions.</td>
+</tr>
+<tr>
+<td>Editable install (<code>pip install -e .</code>)</td>
+<td>Installs your package so that it points at your <code>src</code> folder. Edits take effect without reinstalling.</td>
+</tr>
+<tr>
+<td><code>python -m</code></td>
+<td>Runs a module by its dotted name, for example <code>python -m citypulse.fetch</code>.</td>
+</tr>
+<tr>
+<td>Environment variable</td>
+<td>A named value the shell passes to a program, such as <code>AQ_URL</code>.</td>
+</tr>
+<tr>
+<td><code>.env</code> file</td>
+<td>A file of environment variables for your machine. It holds local settings and must never be committed.</td>
+</tr>
+<tr>
+<td><code>.env.example</code></td>
+<td>A committed template that lists the variable names with no real values.</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>A file that tells Git which paths to leave out of commits.</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Writing messages with a level (DEBUG, INFO, WARNING, ERROR), a time and a logger name.</td>
+</tr>
+<tr>
+<td>Logger</td>
+<td>An object that writes log messages. Each module makes one with <code>logging.getLogger(__name__)</code>.</td>
+</tr>
+<tr>
+<td><code>print</code></td>
+<td>A call that writes straight to the screen. It has no levels, so the ticket forbids it in <code>src/</code>.</td>
+</tr>
+<tr>
+<td>Exception</td>
+<td>An error raised by Python code, which the caller can catch.</td>
+</tr>
+<tr>
+<td>Bare <code>except:</code></td>
+<td>A handler that catches every error, including mistakes in your own code. The ticket forbids it.</td>
+</tr>
+<tr>
+<td>HTTP 404</td>
+<td>The server answer "not found" for the URL.</td>
+</tr>
+<tr>
+<td><code>raise_for_status()</code></td>
+<td>A <code>requests</code> method that turns an HTTP error such as 404 into an exception.</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>The number of seconds a request may wait before it fails.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a program returns to the shell. 0 means success; anything else means failure.</td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>The shell variable holding the exit code of the last command.</td>
+</tr>
+<tr>
+<td>Type hint</td>
+<td>An annotation such as <code>name: str</code> or <code>-&gt; str</code> that states the expected type. Python does not enforce it.</td>
+</tr>
+<tr>
+<td>Docstring</td>
+<td>The text in triple quotes under a <code>def</code> line, describing what the function does.</td>
+</tr>
+<tr>
+<td>Pure function</td>
+<td>A function that reads only its inputs, does no file or network work, and returns the same result for the same input.</td>
+</tr>
+<tr>
+<td>Single responsibility</td>
+<td>The rule that a function does one job, so it has one reason to change.</td>
+</tr>
+<tr>
+<td>UTC</td>
+<td>Coordinated Universal Time, the shared clock with no daylight saving or local offset.</td>
+</tr>
+<tr>
+<td>IST</td>
+<td>Indian Standard Time, which is UTC plus five hours and thirty minutes.</td>
+</tr>
+<tr>
+<td>ISO-8601</td>
+<td>The standard text form for dates and times, such as <code>2026-12-01T13:00:00Z</code>.</td>
+</tr>
+<tr>
+<td>Naive and aware datetime</td>
+<td>A naive datetime has no zone attached. An aware datetime knows its zone.</td>
+</tr>
+<tr>
+<td><code>zoneinfo</code></td>
+<td>The standard library module that knows named zones such as <code>Asia/Kolkata</code>.</td>
+</tr>
+<tr>
+<td>Data dictionary</td>
+<td>A document that lists every column with its type, unit, source and an example.</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>What a number measures, such as µg/m³ (micrograms per cubic metre).</td>
+</tr>
+<tr>
+<td>Parity</td>
+<td>Two programs producing the same output for the same input.</td>
+</tr>
+<tr>
+<td><code>diff</code></td>
+<td>A command that prints the lines that differ between two files.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td>A command that puts lines in order, so two files with the same rows in different order can match.</td>
+</tr>
+<tr>
+<td>Process substitution <code>&lt;( ... )</code></td>
+<td>Bash syntax that gives the output of a command to another command as if it were a file.</td>
+</tr>
+<tr>
+<td>Pipe <code>\|</code></td>
+<td>Sends the output of one command into the input of the next.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A proposed set of commits, reviewed by squad-mates before it is merged.</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Continuous integration: automatic checks, such as shellcheck, that run on each pull request.</td>
+</tr>
+<tr>
+<td>Cold-call</td>
+<td>A short oral question from the trainer, asked without warning.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p><strong>Acceptance criteria.</strong> Each one is checked by a trainer, and you should check it yourself first.</p>
+<ul>
+<li><strong>AC1.</strong> In a fresh venv, <code>pip install -e .</code> followed by <code>python -m citypulse.fetch</code> exits 0 and writes rows whose timestamp column matches <code>^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$</code>. Read the regex as: start of line, four digits, a dash, two digits, and so on, a literal <code>T</code>, the time, a literal <code>Z</code>, end of line.</li>
+<li><strong>AC2.</strong> For the same hour, the bash output converted to UTC and the Python output, sorted and diffed, give an empty diff. This is TC3.</li>
+<li><strong>AC3.</strong> <code>src/</code> has zero <code>print(</code> calls and zero bare <code>except:</code> clauses, and every public function (one whose name does not start with an underscore) has type hints and a docstring. This is checked by grep, as TC-style checks in Y2-T11.6 show.</li>
+<li><strong>AC4.</strong> When the network is unreachable or the URL returns 404, fetch logs an ERROR with the reason and <code>main()</code> returns a non-zero exit code. This is TC4 for the 404 case. Test the unreachable case yourself with <code>AQ_URL=https://nonexistent.invalid/ python -m citypulse.fetch; echo $?</code>. The <code>.invalid</code> ending is reserved, so the name cannot resolve.</li>
+<li><strong>AC5.</strong> Every column in the CSV header appears in <code>docs/data-dictionary.md</code> with a type, unit and source. This is TC5.</li>
+<li><strong>AC6.</strong> Asked "why is your function separate?", you name its single responsibility.</li>
+</ul>
+<p><strong>TC1: a clean install and a successful run.</strong> Runs on the lab Linux machine, or Git Bash on your laptop.</p>
+<p>Command: <code>python -m venv /tmp/v &amp;&amp; . /tmp/v/bin/activate &amp;&amp; pip install -e . &amp;&amp; python -m citypulse.fetch; echo $?</code></p>
+<p>Parts:</p>
+<ul>
+<li><code>python -m venv /tmp/v</code> creates a fresh virtual environment in the folder <code>/tmp/v</code>. On Git Bash, <code>/tmp</code> is a real folder under your Windows temporary directory.</li>
+<li><code>&amp;&amp;</code> runs the next command only if the previous one succeeded.</li>
+<li><code>. /tmp/v/bin/activate</code> loads the environment, so <code>python</code> and <code>pip</code> now point inside it. On Git Bash the path is <code>. /tmp/v/Scripts/activate</code>, because Windows venvs use <code>Scripts</code>.</li>
+<li><code>pip install -e .</code> installs the package in the current folder (<code>.</code>) in editable mode, reading <code>pyproject.toml</code>.</li>
+<li><code>python -m citypulse.fetch</code> runs the module <code>fetch</code> inside the package <code>citypulse</code> as a program.</li>
+<li><code>; echo $?</code> runs after the Python command, whatever its result, and prints its exit code.</li>
+</ul>
+<p>Passing output looks like this. The log format is your own, so the wording may differ. The level and the final <code>0</code> matter:</p>
+<div class="hl"><pre><span></span><code>INFO citypulse.fetch: wrote 24 rows to your output file
+0
+</code></pre></div>
+
+<p>Failing output and causes:</p>
+<ul>
+<li><code>ModuleNotFoundError: No module named 'citypulse'</code>. The editable install did not run in this environment. You may have activated a different venv, or your <code>pyproject.toml</code> does not point at <code>src</code>.</li>
+<li>A non-zero number at the end, with an ERROR line above it. The network is down, or the URL is wrong. Check the curl command in "Before you start".</li>
+</ul>
+<p>Here is the same test as an animation of a passing run:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python -m citypulse.fetch; echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;INFO citypulse.fetch: wrote 24 rows to your output file&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}]}"></div>
+
+<p><strong>TC2: every timestamp is UTC ISO-8601.</strong> Runs on the lab Linux machine.</p>
+<p>Command: <code>awk -F, 'NR&gt;1 &amp;&amp; $1 !~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$/' &lt;py output&gt; | wc -l</code></p>
+<p>Replace <code>&lt;py output&gt;</code> with the path to your Python CSV.</p>
+<p>Parts:</p>
+<ul>
+<li><code>awk</code> scans the file one line at a time.</li>
+<li><code>-F,</code> says the fields are separated by commas.</li>
+<li><code>NR&gt;1</code> skips line 1, the header. <code>NR</code> is the record (line) number.</li>
+<li><code>$1</code> is the first field, the timestamp column in this ticket.</li>
+<li><code>!~</code> means "does not match".</li>
+<li><code>/^...$/</code> is the regex from AC1, written for awk.</li>
+<li><code>| wc -l</code> counts the lines awk printed. Each printed line is a row with a bad timestamp.</li>
+</ul>
+<p>Passing output: <code>0</code>.</p>
+<p>Failing output: a number above 0. Usual causes: timestamps written with a space instead of <code>T</code>, with an offset such as <code>+05:30</code>, without seconds, or as local time without the <code>Z</code>. On an older awk that does not support <code>{4}</code> intervals, awk may print an error instead of a count. Use <code>gawk</code> if you see that.</p>
+<p><strong>TC3: the parity diff.</strong> Runs on the lab Linux machine, or Git Bash.</p>
+<p>Command: <code>diff &lt;(sort bash_utc.csv) &lt;(sort py.csv)</code></p>
+<p>Parts:</p>
+<ul>
+<li><code>sort bash_utc.csv</code> prints the lines of your bash output, converted to UTC, in sorted order. Row order does not matter for this test.</li>
+<li><code>&lt;( ... )</code> runs the command and gives its output to <code>diff</code> as if it were a file.</li>
+<li><code>diff</code> prints every line that differs between the two sorted lists.</li>
+</ul>
+<p>Passing output: nothing at all. The command prints no lines and the prompt returns. To see the exit code, add <code>; echo $?</code>, which should print <code>0</code>.</p>
+<p>Failing output: lines starting with <code>&lt;</code> (from the first file) and <code>&gt;</code> (from the second file). Usual causes: one side still uses IST, one side has no <code>Z</code>, numbers are printed with different decimal places, or columns come in a different order. Fix the Python. Never edit <code>fetch_once.sh</code> to make the test pass.</p>
+<p><strong>TC4: a 404 must be an error.</strong> Runs on the lab Linux machine, or Git Bash.</p>
+<p>Command: <code>AQ_URL=https://air-quality-api.open-meteo.com/v1/nope python -m citypulse.fetch; echo $?</code></p>
+<p>Parts:</p>
+<ul>
+<li><code>AQ_URL=...</code> sets the environment variable for this one command only. Your <code>config.py</code> reads it, so the program calls the wrong URL.</li>
+<li><code>/v1/nope</code> is a path the API does not have, so the server answers 404.</li>
+<li><code>python -m citypulse.fetch</code> runs your fetcher.</li>
+<li><code>; echo $?</code> prints the exit code.</li>
+</ul>
+<p>Passing output: an ERROR log line that names HTTP 404 and the reason, then a non-zero number such as <code>1</code>.</p>
+<p>Failing output and causes:</p>
+<ul>
+<li>A <code>0</code> at the end. This is the most common failure. Either <code>config.py</code> ignores <code>AQ_URL</code>, or <code>main()</code> returns nothing. A trap: <code>SystemExit(None)</code> exits with 0. Make <code>main()</code> return an <code>int</code> and call <code>raise SystemExit(main())</code>.</li>
+<li>No ERROR line. The exception is caught and not logged, or a bare <code>except:</code> hides it.</li>
+</ul>
+<p><strong>TC5: every column is in the data dictionary.</strong> Runs on the lab Linux machine, or Git Bash.</p>
+<p>Command: <code>for c in $(head -1 &lt;py output&gt; | tr , ' '); do grep -q "| $c " docs/data-dictionary.md || echo MISSING $c; done</code></p>
+<p>Parts:</p>
+<ul>
+<li><code>head -1</code> reads the first line of the CSV, the header.</li>
+<li><code>tr , ' '</code> replaces each comma with a space, so the column names become separate words.</li>
+<li><code>$( ... )</code> runs the pipeline and puts its output into the <code>for</code> list.</li>
+<li><code>for c in ...; do ... done</code> repeats the body once for each column name, with <code>$c</code> set to that name.</li>
+<li><code>grep -q "| $c "</code> searches the dictionary for a table cell that starts with the name. <code>-q</code> means quiet: grep prints nothing and only sets its exit code.</li>
+<li><code>|| echo MISSING $c</code> runs the <code>echo</code> only when grep found nothing.</li>
+</ul>
+<p>Passing output: no <code>MISSING</code> lines.</p>
+<p>Failing output: <code>MISSING &lt;name&gt;</code>. Usual causes: a typo in the dictionary, a different name in the CSV, or backticks around the name in the table (<code>`pm2_5`</code> breaks the pattern <code>| pm2_5</code>).</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T11.1</td>
+<td>Tech Lead</td>
+<td>Merge the best <code>fetch.py</code> v0 as the base, create the <code>src</code> layout and <code>pyproject.toml</code>, and check the import.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T11.2</td>
+<td>Backend</td>
+<td>Write <code>config.py</code> with environment defaults, update <code>.env.example</code>, and confirm <code>.env</code> is ignored.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T11.3</td>
+<td>Every student</td>
+<td>Implement one assigned function (<code>fetch_json</code>, <code>parse</code>, <code>to_utc_iso</code>, <code>check_units</code> or <code>save_rows</code>) with type hints, a docstring and logging. Commit under your own identity.</td>
+<td>35m</td>
+</tr>
+<tr>
+<td>Y2-T11.4</td>
+<td>Data</td>
+<td>Run bash and Python for the same hour and make the sorted diff empty. Fix the Python, never the bash.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T11.5</td>
+<td>Scrum/Docs</td>
+<td>Write <code>docs/data-dictionary.md</code> with column, type, unit, source and example for every output column.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T11.6</td>
+<td>QA/DevOps</td>
+<td>Run the two grep checks, and paste both results in the pull request.</td>
+<td>5m</td>
+</tr>
+<tr>
+<td>Y2-T11.7</td>
+<td>Every student</td>
+<td>Be ready to answer "why is this a separate function?" for your function.</td>
+<td>5m</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which piece to own.</strong> Y2-T11.3 is the subtask that shows your own contribution in Git. Ask your squad which of the five functions is free, and claim one before you start. Do not take a function a squad-mate has already claimed. The commits for your function are the ones that will show your name against the ticket.</p>
+<p><strong>Branch name.</strong> Use the branch rule your squad has agreed. If it has none, a clear name is <code>feature/y2-t11-fetch-v1</code>, with one shared branch for the squad and one commit per function from each student.</p>
+<p><strong>Example commit messages, in the order you would make them.</strong> These are patterns for your own wording. Each should describe what the commit actually changes.</p>
+<ol>
+<li><code>chore: add src layout and pyproject.toml for citypulse</code></li>
+<li><code>feat(config): read AQ_URL and defaults from environment</code></li>
+<li><code>chore: add AQ_URL to .env.example and confirm .env is ignored</code></li>
+<li><code>feat(fetch): add to_utc_iso with type hints and docstring</code></li>
+<li><code>refactor(fetch): replace print calls with logging</code></li>
+<li><code>fix(fetch): exit non-zero and log ERROR when the request fails</code></li>
+<li><code>docs: add data dictionary for every output column</code></li>
+</ol>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<p>Work through these in order. Each stage ends with a test. Do not move on until the test passes.</p>
+<h4 id="y2-t111-create-the-src-layout-and-pyprojecttoml">Y2-T11.1: Create the src layout and pyproject.toml</h4>
+<p><strong>Goal.</strong> A package named <code>citypulse</code> that you can install and import.</p>
+<p><strong>Choose the base first.</strong> As Tech Lead, the squad compares the <code>fetch.py</code> v0 pull requests from Y2-T10 and picks the one that reproduces the <code>fetch_once.sh</code> columns most cleanly. Merge that one, then move it to <code>src/citypulse/fetch.py</code> with <code>git mv fetch.py src/citypulse/fetch.py</code> after Stage 1 below (adjust the first path to where v0 lives). The other v0 files are not deleted by you; agree with the squad what happens to them.</p>
+<p><strong>Why a <code>src</code> layout.</strong> Code goes in <code>src/citypulse/</code>, and the tests and commands import it only through the installed package. This stops an accidental import of a file from the wrong folder.</p>
+<p><strong>Stage 1: create the folders.</strong> Run these from the repository root (lab Linux or Git Bash):</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>src/citypulse
+touch<span class="w"> </span>src/citypulse/__init__.py
+ls<span class="w"> </span>-R<span class="w"> </span>src
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>mkdir -p</code> creates the folder and any missing parents. The <code>-p</code> flag means no error if it already exists.</li>
+<li><code>touch</code> creates an empty file if it does not exist.</li>
+<li><code>ls -R src</code> lists the folder tree recursively.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>src:
+citypulse
+
+src/citypulse:
+__init__.py
+</code></pre></div>
+
+<p><strong>Stage 2: give the package a version.</strong> Put one line in <code>src/citypulse/__init__.py</code>: <code>__version__ = "..."</code>, with a version string your squad has agreed. The ticket's test reads it back.</p>
+<p><strong>Stage 3: write pyproject.toml.</strong> Build the file in three blocks. Each block tells pip one thing.</p>
+<div class="hl"><pre><span></span><code><span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&gt;=68&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+</code></pre></div>
+
+<p>This block says that setuptools builds the package, and that version 68 or later is needed.</p>
+<div class="hl"><pre><span></span><code><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;citypulse&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.10&quot;</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+</code></pre></div>
+
+<p>This block gives the name and version, and the minimum Python. Put the version your squad agreed in Stage 2. Replace the empty <code>dependencies</code> list with the package names from <code>requirements.txt</code>, one string each, for example <code>"requests"</code>. Use the pinned versions in that file as the reference.</p>
+<div class="hl"><pre><span></span><code><span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>This block tells setuptools to look for packages inside <code>src</code>.</p>
+<p><strong>Stage 4: test the install.</strong> Run these in a new venv:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/tmp/v
+.<span class="w"> </span>/tmp/v/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import citypulse; print(citypulse.__version__)&#39;</span>
+</code></pre></div>
+
+<p>Git Bash on Windows: use <code>. /tmp/v/Scripts/activate</code> on the second line.</p>
+<p>Line by line: the first command creates the venv. The second loads it, which you can see from the <code>(v)</code> at the start of the prompt. The third installs your package in editable mode. The fourth imports the package and prints its version.</p>
+<p>Expected output: the version string from Stage 2, for example <code>0.2.0</code>. If you see <code>ModuleNotFoundError</code>, check that <code>src/citypulse/__init__.py</code> exists and that the <code>where = ["src"]</code> block is spelled exactly as above.</p>
+<h4 id="y2-t112-write-configpy-with-environment-defaults">Y2-T11.2: Write config.py with environment defaults</h4>
+<p><strong>Goal.</strong> One file that holds every setting the fetcher needs, with defaults, so the code never contains a hard-coded URL that cannot be changed.</p>
+<p><strong>Technique first: <code>os.environ.get</code>.</strong> Run these two commands. Git Bash and Linux both accept the <code>NAME=value command</code> form:</p>
+<div class="hl"><pre><span></span><code><span class="nv">SOME_NAME</span><span class="o">=</span>hello<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import os; print(os.environ.get(&#39;SOME_NAME&#39;, &#39;fallback&#39;))&quot;</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import os; print(os.environ.get(&#39;SOME_NAME&#39;, &#39;fallback&#39;))&quot;</span>
+</code></pre></div>
+
+<p>Expected output: <code>hello</code>, then <code>fallback</code>.</p>
+<p>Line by line: the prefix <code>SOME_NAME=hello</code> sets an environment variable for that one command. <code>os.environ</code> is the dictionary of all environment variables. <code>.get('SOME_NAME', 'fallback')</code> returns the value if it is set, and the second value if it is not. The second command has no variable set, so the fallback is printed.</p>
+<p><strong>Stage 1: write config.py.</strong> Create <code>src/citypulse/config.py</code>. The first two lines are:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">AQ_URL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AQ_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;the URL your Y2-T10 fetch.py uses&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Replace the placeholder with your squad's URL. <code>AQ_URL</code> must keep this name, because TC4 sets it. Add one line for each other setting, using names your squad agrees. A type hint such as <code>: str</code> tells the reader what the value is.</p>
+<p><strong>Stage 2: update .env.example.</strong> Add the variable with an empty value and a comment, never a real secret:</p>
+<div class="hl"><pre><span></span><code>## Override the source URL. Leave empty to use the default in config.py.
+AQ_URL=
+</code></pre></div>
+
+<p><strong>Stage 3: confirm .env is ignored.</strong> Create a throwaway file and ask Git whether it is ignored:</p>
+<div class="hl"><pre><span></span><code>touch<span class="w"> </span>.env
+git<span class="w"> </span>check-ignore<span class="w"> </span>-v<span class="w"> </span>.env
+</code></pre></div>
+
+<p>Expected output: a line such as <code>.gitignore:3:.env  .env</code>. The first number is the line in <code>.gitignore</code> that matches. If nothing prints, <code>.env</code> is not ignored yet. Add the line <code>.env</code> to <code>.gitignore</code>, and check again. Then delete the throwaway file with <code>rm .env</code> only if it is not yours to keep.</p>
+<p><strong>Stage 4: test the config.</strong> With the venv active:</p>
+<div class="hl"><pre><span></span><code><span class="nv">AQ_URL</span><span class="o">=</span>https://example.invalid/test<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from citypulse import config; print(config.AQ_URL)&quot;</span>
+</code></pre></div>
+
+<p>Expected output: <code>https://example.invalid/test</code>. Run it again without the <code>AQ_URL=</code> prefix. Expected output: your default URL.</p>
+<h4 id="y2-t113-implement-one-function">Y2-T11.3: Implement one function</h4>
+<p><strong>Goal.</strong> One function with a type hint, a docstring and logging, committed under your own identity.</p>
+<p><strong>The shape of the pipeline.</strong> Each function does one step. The animation shows how a run passes through them.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One run of the Python fetcher&quot;, &quot;nodes&quot;: [&quot;Open-Meteo API&quot;, &quot;fetch_json&quot;, &quot;parse&quot;, &quot;save_rows&quot;, &quot;CSV file&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;GET request&quot;, &quot;note&quot;: &quot;fetch_json asks the API for its JSON body and waits up to a timeout.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;JSON dictionary&quot;, &quot;note&quot;: &quot;parse picks the values it needs and converts times to UTC.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;one row&quot;, &quot;note&quot;: &quot;save_rows writes the header once, then adds each row.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;label&quot;: &quot;file written&quot;, &quot;note&quot;: &quot;The CSV on disk now holds the new rows.&quot;}]}"></div>
+
+<p><strong>Technique 1: logging.</strong> Logging is set up once, in <code>main()</code>. Each module only asks for a logger and writes to it. Try this small example:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(levelname)s</span><span class="s2"> </span><span class="si">%(name)s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;starting with </span><span class="si">%d</span><span class="s2"> rows&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;fetch failed for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;https://example.invalid/x&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>basicConfig</code> sets the level and the format for the whole program. It is called once.</li>
+<li><code>getLogger("demo")</code> makes a named logger. In your code you use <code>getLogger(__name__)</code>.</li>
+<li><code>log.info(...)</code> writes a message at INFO level, and <code>log.error(...)</code> at ERROR level.</li>
+<li><code>%d</code> and <code>%s</code> are placeholders. The values come after the message, not joined in with an f-string. Logging formats the text only when the message is actually written.</li>
+</ul>
+<p>Expected output, on the error stream:</p>
+<div class="hl"><pre><span></span><code>INFO demo: starting with 3 rows
+ERROR demo: fetch failed for https://example.invalid/x
+</code></pre></div>
+
+<p><strong>Technique 2: a function with a hint, a docstring and a tested example.</strong> Here is a worked example of the time conversion technique. It uses a fixed offset, so it runs without any extra packages. It is not the function your squad needs. Read it, then write your own version with your own names:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">shift_to_utc</span><span class="p">(</span><span class="n">local_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hours</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minutes</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pure: a local time with a fixed offset becomes UTC text.&quot;&quot;&quot;</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="n">minutes</span><span class="p">)</span>
+    <span class="n">aware</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">local_text</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">aware</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">shift_to_utc</span><span class="p">(</span><span class="s2">&quot;2026-12-01T18:30:00&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;2026-12-01T13:00:00Z&quot;</span>
+<span class="k">assert</span> <span class="n">shift_to_utc</span><span class="p">(</span><span class="s2">&quot;2026-12-01T00:10:00&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;2026-12-01T05:10:00Z&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>def shift_to_utc(local_text: str, hours: int, minutes: int) -&gt; str:</code> declares the inputs with their types, and says the result is a string.</li>
+<li>The docstring says the function is pure. It reads only its inputs.</li>
+<li><code>timedelta(hours=hours, minutes=minutes)</code> is the offset as a duration.</li>
+<li><code>fromisoformat(...)</code> reads the text as a naive datetime. <code>.replace(tzinfo=...)</code> attaches the offset, which makes the value aware.</li>
+<li><code>astimezone(timezone.utc)</code> converts to UTC. <code>strftime(...)</code> writes the text, with the literal <code>Z</code> at the end to mark UTC.</li>
+<li>The two <code>assert</code> lines are the tests. If either is wrong, the block fails when the book is built.</li>
+</ul>
+<p><strong>Named zones on Windows.</strong> For a named zone such as <code>Asia/Kolkata</code>, use <code>zoneinfo.ZoneInfo("Asia/Kolkata")</code> instead of a fixed offset. On Windows, Python may not find the zone database, and then it raises <code>ZoneInfoNotFoundError</code>. The fix is <code>pip install tzdata</code>, and then pin <code>tzdata</code> in <code>requirements.txt</code> so that every squad member has it.</p>
+<p><strong>Stage 1: write the signature and docstring first.</strong> Before any logic, write the shape of your function. The template has the parts every function needs:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">your_function_name</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;One sentence: what it does and what it returns.&quot;&quot;&quot;</span>
+    <span class="c1"># your steps go here</span>
+</code></pre></div>
+
+<p>Choose the names and types that match your function. Keep it pure where you can. A pure function is easy to test, because the same input always gives the same output.</p>
+<p><strong>Stage 2: add the steps and the logging.</strong> Inside the function, write the steps one at a time. Use <code>log.info</code> for normal progress and <code>log.error</code> for a failure, with the reason in the message. Do not use <code>print</code>. Do not write <code>except:</code> on its own line. Name the exception you expect, for example <code>except requests.RequestException as exc:</code>.</p>
+<p>The five assigned functions each have one job. <code>fetch_json</code> makes the HTTP request and returns the decoded JSON. <code>parse</code> picks the fields out of that JSON into rows. <code>to_utc_iso</code> converts one time to UTC text. <code>check_units</code> checks that values are in the units your data dictionary promises (for example, flags a value outside a plausible range), and logs a WARNING when one is not. <code>save_rows</code> writes the header and rows to the CSV. A sixth function, <code>main() -&gt; int</code>, sets up logging once, calls the others, catches the expected errors, logs them at ERROR and returns 0 or 1. The file ends with <code>if __name__ == "__main__":</code> followed by <code>raise SystemExit(main())</code>, which is what makes <code>python -m citypulse.fetch</code> run it.</p>
+<p><strong>Stage 3: test the function from the shell.</strong> Adjust the import and the call to your own names. The expected answer stays the same:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from citypulse.fetch import to_utc_iso; print(to_utc_iso(&#39;2026-12-01T18:30&#39;, &#39;Asia/Kolkata&#39;))&quot;</span>
+</code></pre></div>
+
+<p>Expected output: <code>2026-12-01T13:00:00Z</code>. If your function has a different signature, change the call, not the expected answer.</p>
+<p>Here is the conversion again, as an animation of the steps that the fixed-offset example uses:</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Shifting an IST time to UTC by hand&quot;, &quot;code&quot;: [&quot;from datetime import datetime, timedelta, timezone&quot;, &quot;local = \&quot;2026-12-01T18:30:00\&quot;&quot;, &quot;offset = timedelta(hours=5, minutes=30)&quot;, &quot;aware = datetime.fromisoformat(local).replace(tzinfo=timezone(offset))&quot;, &quot;utc = aware.astimezone(timezone.utc)&quot;, &quot;text = utc.strftime(\&quot;%Y-%m-%dT%H:%M:%SZ\&quot;)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [], &quot;note&quot;: &quot;The names datetime, timedelta and timezone are loaded.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;local&quot;, &quot;\&quot;2026-12-01T18:30:00\&quot;&quot;]], &quot;note&quot;: &quot;The local time is still plain text.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;local&quot;, &quot;\&quot;2026-12-01T18:30:00\&quot;&quot;], [&quot;offset&quot;, &quot;5h30m&quot;]], &quot;note&quot;: &quot;The offset is the gap between IST and UTC.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;aware&quot;, &quot;2026-12-01 18:30 at +05:30&quot;]], &quot;note&quot;: &quot;The value now knows which zone it belongs to.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;utc&quot;, &quot;2026-12-01 13:00 at UTC&quot;]], &quot;note&quot;: &quot;astimezone subtracts the offset, so 18:30 IST is 13:00 UTC.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;text&quot;, &quot;\&quot;2026-12-01T13:00:00Z\&quot;&quot;]], &quot;note&quot;: &quot;strftime writes the text, with the Z that marks UTC.&quot;}]}"></div>
+
+<p><strong>Stage 4: commit only your function.</strong> Stage the file and write a commit message that says what changed:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>src/citypulse/fetch.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(fetch): add to_utc_iso with type hints and docstring&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>git add</code> puts the file in the next commit. <code>git commit -m</code> makes the commit with the message in quotes. Expected output: a line such as <code>[feature/your-branch abc1234] feat(fetch): ...</code> followed by a summary of one changed file.</p>
+<h4 id="y2-t114-parity-check-against-bash">Y2-T11.4: Parity check against bash</h4>
+<p><strong>Goal.</strong> The bash and Python outputs for the same hour match after sorting.</p>
+<p><strong>Technique: converting bash times to UTC with GNU date.</strong> The <code>-d</code> option reads a date and time text. The <code>TZ=</code> prefix sets the zone that the text is in, so a time without an offset is read in that zone:</p>
+<div class="hl"><pre><span></span><code><span class="nv">TZ</span><span class="o">=</span>Asia/Kolkata<span class="w"> </span>date<span class="w"> </span>-u<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;2026-12-01T18:30:00&quot;</span><span class="w"> </span>+%Y-%m-%dT%H:%M:%SZ
+</code></pre></div>
+
+<p>Expected output: <code>2026-12-01T13:00:00Z</code>. Line by line: <code>TZ=Asia/Kolkata</code> sets the zone for this command. <code>date -u</code> prints in UTC. <code>-d</code> gives the time to read. The <code>+%Y-%m-%dT%H:%M:%SZ</code> part is the output format; the <code>Z</code> is written as plain text. If <code>TZ=Asia/Kolkata</code> is not understood on your Git Bash, use the POSIX form <code>TZ=IST-5:30</code> instead, where the sign is reversed on purpose and means five and a half hours ahead of UTC.</p>
+<p><strong>Stage 1: produce the two files.</strong> Run the bash fetcher for one hour, using the command your squad's README gives. Save its output as <code>bash_raw.csv</code>. Run the Python fetcher and copy its output file to <code>py.csv</code>. Do not edit the bash script.</p>
+<p><strong>Stage 2: convert the bash timestamps.</strong> Keep the header, convert each data line, and write the result to <code>bash_utc.csv</code>:</p>
+<div class="hl"><pre><span></span><code><span class="o">{</span>
+<span class="w">  </span>head<span class="w"> </span>-1<span class="w"> </span>bash_raw.csv
+<span class="w">  </span>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>bash_raw.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span>,<span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>ts<span class="w"> </span>rest<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>Asia/Kolkata<span class="w"> </span>date<span class="w"> </span>-u<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ts</span><span class="s2">&quot;</span><span class="w"> </span>+%Y-%m-%dT%H:%M:%SZ<span class="k">)</span><span class="s2">,</span><span class="nv">$rest</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">done</span>
+<span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>bash_utc.csv
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>{ ... } &gt; bash_utc.csv</code> groups the commands and writes all their output to one file.</li>
+<li><code>head -1</code> prints the header.</li>
+<li><code>tail -n +2</code> prints from line 2 onwards, so the header is not converted.</li>
+<li><code>while IFS=, read -r ts rest</code> reads each line, splitting only at commas. <code>ts</code> gets the first field and <code>rest</code> gets the others.</li>
+<li>The <code>date</code> call converts <code>ts</code> and <code>echo</code> writes the new timestamp, a comma and the rest of the line.</li>
+</ul>
+<p>Check the result with <code>head -3 bash_utc.csv</code>. The timestamp column should now end in <code>Z</code>. If <code>date</code> prints an error, the timestamp in your bash output is not in a format <code>date -d</code> reads. Adjust the timezone part of the command, not the data.</p>
+<p><strong>Stage 3: sort and diff until empty.</strong> Run TC3:</p>
+<div class="hl"><pre><span></span><code>diff<span class="w"> </span>&lt;<span class="o">(</span>sort<span class="w"> </span>bash_utc.csv<span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span>sort<span class="w"> </span>py.csv<span class="o">)</span>
+</code></pre></div>
+
+<p>Expected output: nothing. If lines differ, fix the Python. Common fixes are the zone used for the Python timestamps, the number of decimal places, or the column order. Agree the number format with your squad and record it in the data dictionary. Run the command again after every fix until nothing prints.</p>
+<h4 id="y2-t115-write-docsdata-dictionarymd">Y2-T11.5: Write docs/data-dictionary.md</h4>
+<p><strong>Goal.</strong> A table with one row for every column in the CSV header.</p>
+<p><strong>Technique: list the columns.</strong> Print each header name on its own line:</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-1<span class="w"> </span>py.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>,<span class="w"> </span><span class="s1">&#39;\n&#39;</span>
+</code></pre></div>
+
+<p>Line by line: <code>head -1</code> reads the header. <code>tr , '\n'</code> replaces each comma with a newline, so each name is on its own line.</p>
+<p><strong>Stage 1: the table shape.</strong> Use one header row, one separator row and one row per column. Plain names only, with no backticks around them, because TC5 searches for <code>| name</code>:</p>
+<div class="hl"><pre><span></span><code>| Column | Type | Unit | Source | Example |
+| --- | --- | --- | --- | --- |
+| example_column | float | µg/m³ | Air-quality API, current block | 12.4 |
+</code></pre></div>
+
+<p>This row is a fictional example. Replace it with one row per real column of your CSV. The type column uses words such as <code>str</code>, <code>float</code>, <code>int</code>, or <code>text (ISO-8601 UTC)</code>. The unit column says <code>none</code> when a column has no unit.</p>
+<p><strong>Stage 2: fill in one row, then test it.</strong> Write the row for the timestamp column first, because it is the one the ticket cares most about. Its unit is the zone, UTC, and its source is the API field it comes from. Then do the remaining rows.</p>
+<p><strong>Stage 3: run TC5.</strong> Use the loop from the trainer's test. Expected output: no <code>MISSING</code> lines.</p>
+<h4 id="y2-t116-run-the-two-grep-checks">Y2-T11.6: Run the two grep checks</h4>
+<p><strong>Goal.</strong> Prove that <code>src/</code> has no <code>print(</code> calls and no bare <code>except:</code> clauses.</p>
+<p><strong>Technique: grep.</strong> <code>grep</code> searches text. <code>-r</code> searches all files in the folders below, and <code>-n</code> prints line numbers:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-rn<span class="w"> </span><span class="s1">&#39;print(&#39;</span><span class="w"> </span>src/
+grep<span class="w"> </span>-rn<span class="w"> </span><span class="s1">&#39;except:&#39;</span><span class="w"> </span>src/
+</code></pre></div>
+
+<p>Expected output: nothing for either command. Paste both results, even when they are empty, into your pull request.</p>
+<p>Check the matches by eye. <code>print(</code> also matches names such as <code>pprint(</code>, and the second pattern matches only the exact text <code>except:</code>.</p>
+<p><strong>Fixing a match.</strong> Replace <code>print</code> with logging, and name the exception.</p>
+<p>Before: <code>print("rows:", n)</code>
+After: <code>log.info("rows: %d", n)</code></p>
+<p>Before: <code>except:</code>
+After: <code>except requests.RequestException as exc:</code></p>
+<p><strong>Type hints and docstrings.</strong> AC3 also asks for hints and docstrings on public functions. List the functions and check each line:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-rn<span class="w"> </span>-A1<span class="w"> </span><span class="s2">&quot;^def [a-z]&quot;</span><span class="w"> </span>src/citypulse/
+</code></pre></div>
+
+<p>Each <code>def</code> line must end with <code>-&gt; &lt;type&gt;:</code>, and the line printed under it (<code>-A1</code> prints one line after each match) must start a docstring with <code>"""</code>.</p>
+<h4 id="y2-t117-prepare-the-cold-call-answer">Y2-T11.7: Prepare the cold-call answer</h4>
+<p><strong>Goal.</strong> You can say, in your own words, why your function is separate from the others.</p>
+<p>There is no code to write for this subtask. Prepare with this checklist, then say the answer aloud without reading it:</p>
+<ul>
+<li>The name of your function, and its input and output.</li>
+<li>The one job it does, in one sentence.</li>
+<li>What would have to change in the other functions if your function were merged into one of them.</li>
+<li>One example call and the result it gives.</li>
+</ul>
+<p>If you cannot say what would break if the job were merged into another function, the responsibility is not yet clear. Change the function until it is.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>Run every test case yourself, in order, from a clean state. Start from a fresh venv, so the install is tested properly. Paste the output of each one into the pull request.</p>
+<ol>
+<li>TC1: run the clean install and the run command. Paste the last lines of output and the <code>0</code>.</li>
+<li>TC2: run the awk command. Paste the single <code>0</code>.</li>
+<li>TC3: run the diff command. Paste the command and the statement that it printed nothing.</li>
+<li>TC4: run the 404 command. Paste the ERROR line and the non-zero exit code.</li>
+<li>TC5: run the dictionary loop. Paste the statement that no <code>MISSING</code> lines printed.</li>
+<li>Run the two grep checks from Y2-T11.6. Paste both empty results.</li>
+</ol>
+<p><strong>Pull-request description template.</strong> Use these headings. Replace each line in angle brackets with your own text.</p>
+<div class="hl"><pre><span></span><code>## What
+&lt;the files you changed and the functions they contain&gt;
+
+## Why
+&lt;the ticket, Y2-T11, and the reason for the move from bash to Python&gt;
+
+## How to test
+1. &lt;the clean venv command&gt;
+2. &lt;the run command&gt;
+
+## Evidence
+- TC1 output: &lt;paste&gt;
+- TC2 output: &lt;paste&gt;
+- TC3 diff: &lt;paste the command and the empty result&gt;
+- TC4 output: &lt;paste the ERROR line and the exit code&gt;
+- TC5 output: &lt;paste&gt;
+- grep checks: &lt;paste both results&gt;
+
+## Checklist
+- [ ] Tests TC1 to TC5 pass
+- [ ] No print or bare except in src/
+- [ ] Data dictionary covers every column
+</code></pre></div>
+
+<p>Evidence means text you can see, such as a log excerpt, a command and its output, or a screenshot. Do not paste a claim without the output that backs it.</p>
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] <code>src/citypulse/fetch.py</code> and <code>config.py</code> are merged through a reviewed pull request with green CI. You know it is true when the pull request shows a squad-mate's approval and the CI check on <code>main</code> is green after the merge.</li>
+<li>[ ] The parity diff output (empty) is in the pull request description. You know it is true when the description contains the command and the empty result.</li>
+<li>[ ] No <code>print</code> or bare <code>except</code> in <code>src/</code>. You know it is true when both grep commands print nothing.</li>
+<li>[ ] <code>docs/data-dictionary.md</code> covers 100% of columns, with units. You know it is true when TC5 prints no <code>MISSING</code> line.</li>
+<li>[ ] Each student has authored at least one function commit under their own identity. You know it is true when <code>git log --author="&lt;your name&gt;" --oneline</code> shows a commit that changes a function in <code>src/</code>.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'citypulse'</code> after the run</td>
+<td>The editable install ran in a different venv, or the venv was not activated</td>
+<td>Activate <code>/tmp/v</code> and run <code>pip install -e .</code> again</td>
+</tr>
+<tr>
+<td>TC2 prints a number above 0</td>
+<td>Timestamps are local time, use a space instead of <code>T</code>, or lack the <code>Z</code></td>
+<td>Convert to UTC and format with <code>%Y-%m-%dT%H:%M:%SZ</code></td>
+</tr>
+<tr>
+<td>TC3 diff shows lines with different times</td>
+<td>One side is still IST, or the bash conversion used the wrong zone</td>
+<td>Check <code>TZ=Asia/Kolkata</code> in the conversion and the zone in the Python code</td>
+</tr>
+<tr>
+<td>TC4 exits with 0</td>
+<td><code>config.py</code> ignores <code>AQ_URL</code>, or <code>main()</code> returns nothing so <code>SystemExit(None)</code> exits with 0</td>
+<td>Read <code>AQ_URL</code> with <code>os.environ.get</code>, return an <code>int</code> from <code>main()</code>, and call <code>raise SystemExit(main())</code></td>
+</tr>
+<tr>
+<td>TC4 has no ERROR line</td>
+<td>The exception is caught silently, or a bare <code>except:</code> hides it</td>
+<td>Catch the named exception and log it with the reason</td>
+</tr>
+<tr>
+<td><code>ZoneInfoNotFoundError</code> on Windows</td>
+<td>Windows does not supply the zone database</td>
+<td><code>pip install tzdata</code> and pin it in <code>requirements.txt</code></td>
+</tr>
+<tr>
+<td>grep finds <code>print(</code> in <code>src/</code></td>
+<td>A debug print was left in</td>
+<td>Replace it with <code>log.info</code> or <code>log.debug</code></td>
+</tr>
+<tr>
+<td>TC5 prints <code>MISSING &lt;name&gt;</code></td>
+<td>A typo in the dictionary, or backticks around the name in the table</td>
+<td>Match the CSV header exactly and remove the backticks</td>
+</tr>
+<tr>
+<td>Your commits are missing from the contribution view</td>
+<td>Commits were made under another name, or with no identity</td>
+<td>Set <code>git config user.name</code> and <code>user.email</code>, then make a new commit for your function</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p><strong>1. Why is your function a separate function rather than part of another one?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A good answer names the single responsibility. For example: "This function only converts one time string to UTC. It does not fetch or write anything. Because it has one job, I can test it with a fixed input and a fixed expected output, and a change to the time format touches only this function." Keep the answer to the job, the input, the output and the test.</p></details>
+
+<p><strong>2. What is a trade-off in raising an error from <code>fetch_json</code> instead of returning an empty result?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The trade-off is more code for the caller, because it must catch the error. The benefit is that a network failure cannot look like "no data". An empty result would let the run finish with exit code 0 and an empty file, and nobody would notice until a chart was wrong. Raising the error keeps the failure visible in the log and in the exit code.</p></details>
+
+<p><strong>3. What did you personally do in this ticket?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A strong answer names your function, its input and output, the one test you ran on it, and the commit that holds your change. Then it says what you changed after review and why. Use the commit hash and the test output as evidence. Do not describe work you did not do.</p></details>
+
+<p><strong>4. Why does the timestamp end in <code>Z</code>, and why is that not enough on its own?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The <code>Z</code> says the time is UTC, but it is only a label. If the value was local time when you wrote the <code>Z</code>, the label is wrong and the number is five and a half hours out for IST. The time must be converted to UTC first, and then the <code>Z</code> is correct. That is why the fix is to convert with an aware datetime and then format.</p></details>
+
+<p><strong>5. How do you know the fetcher fails correctly on a 404?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Run TC4 and read two things: the ERROR line, which must name HTTP 404 and the reason, and the exit code, which must be non-zero. The exit code comes from <code>main()</code>, which returns an integer that <code>SystemExit</code> passes to the shell. A common mistake is to return nothing, which exits with 0 and hides the failure.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;After a command runs, `echo $?` prints 0. What does that tell you?&quot;, &quot;opts&quot;: [&quot;It printed the word zero to the log&quot;, &quot;The command finished successfully with exit code 0&quot;, &quot;The command wrote zero rows to the file&quot;, &quot;The command is still running in the background&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;An exit code of 0 means success in the shell, and any other number means failure. \&quot;Zero rows\&quot; is a common confusion, because the exit code says nothing about how many rows were written.&quot;}, {&quot;q&quot;: &quot;An IST reading is at 18:30 on 1 December. What is the same moment in UTC?&quot;, &quot;opts&quot;: [&quot;18:30 UTC, with a Z added to the end&quot;, &quot;00:00 UTC on 2 December&quot;, &quot;13:00 UTC on 1 December&quot;, &quot;23:30 UTC on 30 November&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;IST is UTC plus five hours and thirty minutes, so you subtract that gap. Adding the Z to 18:30 is the most tempting wrong answer, because it keeps the wrong time and only changes the letter.&quot;}, {&quot;q&quot;: &quot;Why does the TC5 grep pattern search for \&quot;| $c \&quot; with a space after the name?&quot;, &quot;opts&quot;: [&quot;To make grep run faster on large files&quot;, &quot;To ignore column names that contain underscores&quot;, &quot;To match a whole table cell, so a short name does not match a longer one&quot;, &quot;To print the line number of each match&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Without the trailing space, the name pm2 would also match a row for pm2_5. The leading \&quot;| \&quot; and trailing space make the pattern match only the whole cell.&quot;}]}"></div>
+
+<h2 id="y2-t12-build-srccitypulsecleanpy-to-parquet-with-documented-dq-rules">Y2-T12 · Build src/citypulse/clean.py to Parquet with documented DQ rules</h2>
+<p><em>Session 12 · phase E3 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>CityPulse collects readings about Bengaluru: air quality (PM2.5 and PM10), temperature and humidity. The fetcher from the last ticket saves them as raw CSV files in <code>data/raw/</code>. Those files are not yet fit for analysis. They contain duplicate rows, numbers stored as text, gaps where a value is missing, and impossible values such as negative PM2.5 or 60 °C in Bengaluru.</p>
+<p>The ticket asks for one command, <code>python -m citypulse.clean</code>, that reads every raw file, fixes the types, removes duplicates, applies written rules for gaps and impossible values, and writes one Parquet file to <code>data/clean/</code>. Every row or value it drops must be counted, and the counts must be justified in <code>docs/data-quality.md</code>.</p>
+<p>The story behind it is Google Flu Trends. That service estimated flu activity from search queries and overestimated it for several seasons, and the problems were found only after people had relied on it. The lesson the ticket draws is that analysis on unexamined data fails quietly. A clean, counted and documented step is the defence.</p>
+<p>By the end, every chart and model downstream should be built on a file you can explain line by line.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p>These must already be merged, from Y2-T11: the <code>src/citypulse/</code> package with <code>fetch.py</code>, <code>config.py</code>, <code>docs/data-dictionary.md</code>, a virtual environment with <code>pip install -e .</code> done, and raw CSV files in <code>data/raw/</code> on the lab machine. Y2-T11 also installed pandas. This ticket adds pyarrow and pins both.</p>
+<p>You need Python 3.10 or later, Git, the GitHub CLI <code>gh</code>, and your squad clone. Read the ticket on the lab Linux machine or in Git Bash on your laptop. On Git Bash, activate your environment with <code>source .venv/Scripts/activate</code>. On Linux, use <code>source .venv/bin/activate</code>. If <code>python</code> is not found on Git Bash, use <code>py</code> everywhere instead.</p>
+<p>Check each item. Each check says what "ready" looks like.</p>
+<ul>
+<li><strong>Environment is active.</strong> Run <code>python -m pip show pandas</code>. Ready when it prints a <code>Name: pandas</code> line and a <code>Version:</code> line.</li>
+<li><strong>Raw files exist.</strong> Run <code>ls data/raw/*.csv | wc -l</code>. Ready when the number is greater than 0. If it is 0, run the fetcher from Y2-T11 first.</li>
+<li><strong>Clean main.</strong> Run <code>git switch main</code>, <code>git pull</code>, then <code>git status</code>. Ready when it prints <code>nothing to commit, working tree clean</code>.</li>
+<li><strong>GitHub login.</strong> Run <code>gh auth status</code>. Ready when it says you are logged in to github.com.</li>
+<li><strong>Parquet support.</strong> Run <code>python -c "import pyarrow.parquet; print('ok')"</code>. Ready when it prints <code>ok</code>.</li>
+</ul>
+<p>The chapters you need are <a href="D08.html">D08: Data wrangling with pandas and Parquet</a> for the code, and <a href="D11.html">D11: Data pipelines and data-quality checks</a> for the idea of counted rules.</p>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CityPulse</td>
+<td>The squad's Bengaluru city-data platform.</td>
+</tr>
+<tr>
+<td>Raw file</td>
+<td>A file exactly as the fetcher saved it, with no fixes applied.</td>
+</tr>
+<tr>
+<td>Clean file</td>
+<td>The output after all rules, stored as Parquet in <code>data/clean/</code>.</td>
+</tr>
+<tr>
+<td>DataFrame</td>
+<td>pandas' table: rows, named columns and a type for each column.</td>
+</tr>
+<tr>
+<td>pandas</td>
+<td>The Python library that reads, changes and writes tables.</td>
+</tr>
+<tr>
+<td>pyarrow</td>
+<td>The library pandas hands the work to when it writes Parquet.</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>A column-by-column file format that keeps types. See <a href="D08.html">D08</a>.</td>
+</tr>
+<tr>
+<td>dtype</td>
+<td>The type of one column, such as <code>float64</code> or <code>datetime64[ns, UTC]</code>.</td>
+</tr>
+<tr>
+<td><code>float64</code></td>
+<td>A decimal number stored with 64 bits.</td>
+</tr>
+<tr>
+<td><code>datetime64[ns, UTC]</code></td>
+<td>A timestamp in nanoseconds with the UTC zone attached.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>A column type that stores each distinct text value once, with a code for each row.</td>
+</tr>
+<tr>
+<td>Coercion</td>
+<td>Turning a value that does not fit the type into a missing value instead of raising an error. <code>errors="coerce"</code> does this.</td>
+</tr>
+<tr>
+<td><code>NaN</code></td>
+<td>Not a Number. pandas' marker for a missing number.</td>
+</tr>
+<tr>
+<td><code>NaT</code></td>
+<td>Not a Time. pandas' marker for a missing timestamp.</td>
+</tr>
+<tr>
+<td>Natural key</td>
+<td>The columns that together identify one reading, here <code>ts_utc</code> and <code>location</code>.</td>
+</tr>
+<tr>
+<td>Duplicate</td>
+<td>A row that repeats the natural key of an earlier row.</td>
+</tr>
+<tr>
+<td>Data-quality rule</td>
+<td>A written instruction that removes, sets aside or fills values, applied in a fixed order.</td>
+</tr>
+<tr>
+<td>Range rule</td>
+<td>A rule that sets aside values outside an allowed interval.</td>
+</tr>
+<tr>
+<td>Quarantine</td>
+<td>Saving suspect rows or values to a separate file, so they are not lost silently.</td>
+</tr>
+<tr>
+<td>Null rule</td>
+<td>The written decision about what to do with a missing value in one column.</td>
+</tr>
+<tr>
+<td>Null percentage</td>
+<td>The share of rows where a column is missing, multiplied by 100.</td>
+</tr>
+<tr>
+<td>Idempotent</td>
+<td>Running it again gives the same result. The trainer checks this in TC5.</td>
+</tr>
+<tr>
+<td>Glob</td>
+<td>A file pattern such as <code>*.csv</code> that matches several file names.</td>
+</tr>
+<tr>
+<td><code>Path.glob</code></td>
+<td>The <code>pathlib</code> method that returns the files matching a pattern.</td>
+</tr>
+<tr>
+<td><code>pd.concat</code></td>
+<td>The pandas call that stacks several tables into one.</td>
+</tr>
+<tr>
+<td>Assertion</td>
+<td>A check that must be true. If it is false, the program stops with an error.</td>
+</tr>
+<tr>
+<td><code>assert</code></td>
+<td>The Python statement that makes an assertion.</td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td>A fixed group of values, such as <code>(table, count)</code>.</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>The standard library system for timed messages with a level, as in Y2-T11.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a program returns. <code>0</code> means success.</td>
+</tr>
+<tr>
+<td><code>sys.exit</code></td>
+<td>The call that stops the program with an exit code.</td>
+</tr>
+<tr>
+<td><code>echo $?</code></td>
+<td>Prints the exit code of the last command.</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>A file that tells Git which paths not to track.</td>
+</tr>
+<tr>
+<td><code>.gitkeep</code></td>
+<td>An empty placeholder file that keeps an empty folder in Git.</td>
+</tr>
+<tr>
+<td>Pinned version</td>
+<td>An exact package version, such as <code>pandas==2.2.3</code>, that CI and the lab share.</td>
+</tr>
+<tr>
+<td><code>pip show</code></td>
+<td>Prints the name, version and location of an installed package.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge a branch, with checks and reviews.</td>
+</tr>
+<tr>
+<td>Approving review</td>
+<td>A squad-mate's approval. Nobody merges their own pull request.</td>
+</tr>
+<tr>
+<td><code>gh</code></td>
+<td>The GitHub command-line tool.</td>
+</tr>
+<tr>
+<td>Regular expression</td>
+<td>A pattern of characters for matching text, used by <code>grep -E</code>.</td>
+</tr>
+<tr>
+<td>Case-sensitive</td>
+<td><code>Before</code> and <code>before</code> are different to the search.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>The ticket has six acceptance criteria. The trainer checks them with the five test cases below and by reading the pull request.</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Checked by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. <code>python -m citypulse.clean</code> exits 0 and writes <code>readings.parquet</code> in one command</td>
+<td>TC1</td>
+</tr>
+<tr>
+<td>2. Duplicates on the key are 0 in the Parquet output</td>
+<td>TC2</td>
+</tr>
+<tr>
+<td>3. <code>df.dtypes</code> shows <code>ts_utc</code> as <code>datetime64[ns, UTC]</code>, metrics as <code>float64</code>, and <code>location</code> and <code>source</code> as <code>category</code></td>
+<td>TC2, and the <code>df.dtypes</code> output in the PR</td>
+</tr>
+<tr>
+<td>4. <code>docs/data-quality.md</code> shows before and after counts, null percentage per column, removed counts per rule, and one null rule per column</td>
+<td>TC4 and a reading check</td>
+</tr>
+<tr>
+<td>5. If more than 10% of rows are removed, the PR justifies each rule in writing</td>
+<td>Reading the PR</td>
+</tr>
+<tr>
+<td>6. Out-of-range values go to <code>data/clean/quarantine.csv</code> and are not dropped silently</td>
+<td>TC1 (the file exists) and reading the code</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TC1: the command runs and writes both files.</strong> The trainer runs:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python -m citypulse.clean; echo $?; ls -l data/clean/&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;total 20&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;-rw-r--r-- 1 student student  1894 quarantine.csv&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;-rw-r--r-- 1 student student 14870 readings.parquet&quot;}]}"></div>
+
+<p>The sizes are an example. Your numbers will differ.</p>
+<ul>
+<li><code>python -m citypulse.clean</code> runs the <code>clean</code> module of the <code>citypulse</code> package from the repository root.</li>
+<li>The semicolon means "run the next command even if this one failed".</li>
+<li><code>echo $?</code> prints the exit code of the clean command. <code>0</code> means success.</li>
+<li><code>ls -l data/clean/</code> lists the folder. The <code>-l</code> option shows one line per file with its size.</li>
+<li>Passing: the exit code is <code>0</code>, and both <code>quarantine.csv</code> and <code>readings.parquet</code> are listed. Note that <code>ls -l</code> does not show <code>.gitkeep</code>, because names starting with a dot are hidden unless you add <code>-a</code>.</li>
+<li>Failing with <code>ModuleNotFoundError: No module named 'citypulse'</code> means the package is not installed in this environment. Activate it and run <code>python -m pip install -e .</code> from the root.</li>
+<li>Failing with <code>FileNotFoundError</code> about no CSV files means <code>data/raw/</code> is empty or the path is wrong.</li>
+<li>Failing because <code>quarantine.csv</code> is missing on a clean run is a real trap. Write the file on every run, even when it has only a header row.</li>
+</ul>
+<p><strong>TC2: no duplicate keys, and the right types.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import pandas as pd; d=pd.read_parquet(&#39;data/clean/readings.parquet&#39;); print(d.duplicated(subset=[&#39;ts_utc&#39;,&#39;location&#39;]).sum()); print(d.dtypes)&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>python -c "..."</code> runs the text in quotes as a short program.</li>
+<li><code>import pandas as pd</code> loads pandas under the short name <code>pd</code>.</li>
+<li><code>pd.read_parquet(path)</code> loads the file. The types come back as they were written.</li>
+<li><code>d.duplicated(subset=[...])</code> marks each row that repeats an earlier key. <code>.sum()</code> counts the marked rows.</li>
+<li><code>print(d.dtypes)</code> prints the type of each column.</li>
+</ul>
+<p>Passing prints <code>0</code> first, then the types. The list is trimmed here:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python -c \&quot;...print(d.duplicated(subset=[&#x27;ts_utc&#x27;,&#x27;location&#x27;]).sum()); print(d.dtypes)\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ts_utc      datetime64[ns, UTC]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;pm2_5                   float64&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;location               category&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;dtype: object&quot;}]}"></div>
+
+<ul>
+<li>Failing with a number above 0 means the cleaning did not remove duplicates on the key, often because the dedupe rule ran on the wrong columns or before the rows were stacked.</li>
+<li>Failing with <code>ts_utc</code> shown as <code>object</code> means the timestamps were never converted with <code>pd.to_datetime</code>.</li>
+<li>Failing with <code>datetime64[us, UTC]</code> means your pandas chose microseconds. Cast with <code>astype("datetime64[ns, UTC]")</code>, because the trainer expects nanoseconds.</li>
+</ul>
+<p><strong>TC3: no impossible PM2.5 values.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import pandas as pd; d=pd.read_parquet(&#39;data/clean/readings.parquet&#39;); print((d.pm2_5&lt;0).sum(), (d.pm2_5&gt;1000).sum())&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>d.pm2_5&lt;0</code> is a true or false answer for each row. <code>(...).sum()</code> counts the true answers.</li>
+<li>The same test is done for values above 1000.</li>
+<li>Passing prints <code>0 0</code>.</li>
+<li>Failing with <code>12 0</code> or similar means negative values survived. The range rule did not change the table, usually because it assigned to a copy of the DataFrame instead of the table you return.</li>
+</ul>
+<p><strong>TC4: the report is generated and complete.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;Before|After|removed&#39;</span><span class="w"> </span>docs/data-quality.md
+</code></pre></div>
+
+<ul>
+<li><code>grep</code> searches a file for lines that match a pattern.</li>
+<li><code>-n</code> adds the line number to each match.</li>
+<li><code>-E</code> turns on extended patterns, so <code>|</code> means "or".</li>
+<li>Passing prints the table header with <code>Before</code> and <code>After</code>, and the rule rows with <code>removed</code>.</li>
+<li>Failing with no output means the report was not written, or it was written somewhere else. Check the path.</li>
+<li>The search is case-sensitive. A header that says <code>Removed</code> with a capital letter does not match <code>removed</code>. Use the lower-case word in a line of text.</li>
+</ul>
+<p><strong>TC5: running twice gives the same count.</strong> The trainer runs the command, counts the rows, runs the command again, and counts again:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>citypulse.clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import pandas as pd; print(len(pd.read_parquet(&#39;data/clean/readings.parquet&#39;)))&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>citypulse.clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import pandas as pd; print(len(pd.read_parquet(&#39;data/clean/readings.parquet&#39;)))&quot;</span>
+</code></pre></div>
+
+<ul>
+<li>The <code>&amp;&amp;</code> operators run the next step only if the previous one succeeded.</li>
+<li>Each <code>python -c</code> prints the number of rows in the file.</li>
+<li>Passing prints the same number twice.</li>
+<li>Failing with a number that grows means the output is appended, or the cleaning does not run from the raw files each time. Always read every raw file and overwrite the output.</li>
+<li>Do not fetch new data between the two runs. New raw rows would change the count legitimately.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Passing TC5 by appending</div><p>Opening the Parquet file in append mode, or writing a second file each run, makes the row count grow. The fix is simple: every run rebuilds the whole table from <code>data/raw/</code> and overwrites <code>data/clean/readings.parquet</code>.</p></div>
+
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Subtask</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T12.1</td>
+<td>Backend</td>
+<td>Pin pandas and pyarrow in <code>requirements.txt</code> and <code>pyproject.toml</code>. Reinstall. Create the <code>clean.py</code> skeleton with <code>load_raw()</code>, <code>profile()</code>, <code>clean()</code> and <code>write()</code>.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T12.2</td>
+<td>Data</td>
+<td>Write <code>load_raw()</code> (glob <code>data/raw/*.csv</code>, concatenate, add <code>src_file</code>) and the "before" profile: rows, key duplicates and null percentage per column.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T12.3</td>
+<td>Every student</td>
+<td>Implement or test one cleaning rule, log its removed count, and commit under your own identity.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T12.4</td>
+<td>QA/DevOps</td>
+<td>Add <code>assert df.duplicated(subset=KEY).sum() == 0</code>, log <code>df.dtypes</code>, and make <code>data/clean/</code> git-ignored except <code>.gitkeep</code>.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T12.5</td>
+<td>Scrum/Docs</td>
+<td>Generate <code>docs/data-quality.md</code> from code: before and after table, removed count per rule, null rule per column.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T12.6</td>
+<td>Tech Lead</td>
+<td>Open the PR with the <code>df.dtypes</code> output and the before and after table. Get one approval, check CI, merge.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T12.7</td>
+<td>Every student</td>
+<td>Be ready to justify every dropped-row category in show-and-tell.</td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which piece to own.</strong> Pick one rule and make it yours. The usual choices are the missing-timestamp rule, the duplicate rule, the range rule with quarantine, one null rule, or the dtype conversion. Pick a rule whose input and output you can test with a small table. Your commits should show that you wrote the rule, its count and its justification.</p>
+<p><strong>Branch name.</strong> Use one branch for the ticket, <code>y2-t12-clean</code>. Each student commits under their own Git identity. Check yours with <code>git config user.name</code> and <code>git config user.email</code>.</p>
+<p><strong>Example commit messages, in the order you would make them.</strong> Your squad may word them differently.</p>
+<ol>
+<li><code>chore(deps): pin pandas and pyarrow for the clean step</code></li>
+<li><code>feat(clean): add load_raw and profile with src_file</code></li>
+<li><code>feat(clean): add missing-timestamp rule with removed count</code></li>
+<li><code>feat(clean): add duplicate rule on ts_utc and location</code></li>
+<li><code>feat(clean): add range rule and quarantine.csv</code></li>
+<li><code>chore(clean): assert zero duplicates and log dtypes</code></li>
+<li><code>chore: ignore data/clean except .gitkeep</code></li>
+<li><code>docs: generate data-quality report from clean.py</code></li>
+</ol>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<h4 id="y2-t121-pins-and-the-skeleton">Y2-T12.1: pins and the skeleton</h4>
+<p><strong>Goal.</strong> Make pandas and pyarrow installed at versions your squad has tested, and create a <code>clean.py</code> file with four named functions, so the structure exists before the logic.</p>
+<p><strong>Stage 1: branch from main.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>y2-t12-clean
+</code></pre></div>
+
+<p>Expected: the last line prints <code>Switched to a new branch 'y2-t12-clean'</code>.</p>
+<p><strong>Stage 2: find the versions you have.</strong></p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>pandas<span class="w"> </span>pyarrow
+</code></pre></div>
+
+<ul>
+<li><code>python -m pip show</code> prints details of each installed package, for the Python you are using.</li>
+<li>Find the <code>Version:</code> line for each package. Write both numbers down.</li>
+<li>Add them to <code>requirements.txt</code> in the exact form <code>pandas==&lt;version&gt;</code> and <code>pyarrow==&lt;version&gt;</code>, with the numbers you just read.</li>
+<li>Copy the same two lines into the <code>dependencies</code> list in <code>pyproject.toml</code>. The two files must agree.</li>
+</ul>
+<p><strong>Stage 3: reinstall.</strong></p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+
+<ul>
+<li><code>-r requirements.txt</code> installs every pinned line in the file.</li>
+<li><code>-e .</code> installs the package in editable mode again, so the new dependencies are recorded.</li>
+</ul>
+<p>Expected: pip finishes without an error. Run the Stage 2 command again to confirm the versions did not change.</p>
+<p><strong>Stage 4: the skeleton.</strong> Create <code>src/citypulse/clean.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">RAW_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/raw&quot;</span><span class="p">)</span>
+<span class="n">CLEAN_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/clean&quot;</span><span class="p">)</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ts_utc&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_raw</span><span class="p">(</span><span class="n">raw_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read every raw CSV and return one table. Not written yet.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">profile</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Describe the table: rows, key duplicates and null percentages.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply the rules in a fixed order. Return the table and the removed counts.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">out</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the table as Parquet.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import logging</code> and <code>log = logging.getLogger(__name__)</code> follow the Y2-T11 pattern. Messages will show <code>citypulse.clean</code>.</li>
+<li><code>from pathlib import Path</code> gives you a path object with methods such as <code>glob</code> and <code>parent</code>.</li>
+<li><code>RAW_DIR</code>, <code>CLEAN_DIR</code> and <code>KEY</code> are named once, so every function uses the same values.</li>
+<li>Each function has a docstring and type hints. <code>tuple[pd.DataFrame, dict]</code> means "a pair: a table and a dictionary".</li>
+<li><code>raise NotImplementedError</code> makes an unfinished function fail loudly instead of returning nothing.</li>
+</ul>
+<p>Expected: <code>python -c "import citypulse.clean"</code> runs without an error, because nothing runs at import.</p>
+<p><strong>Test this stage.</strong> The import works, and <code>python -m pip show pyarrow</code> still prints a version. If the import fails with a syntax error, check the indentation of each function.</p>
+<h4 id="y2-t122-load-every-raw-file-and-profile-the-before">Y2-T12.2: load every raw file, and profile the "before"</h4>
+<p><strong>Goal.</strong> Read every raw CSV into one table, remember which file each row came from, and measure the table before any rule runs.</p>
+<p><strong>Technique: glob and concat.</strong> <code>Path.glob("*.csv")</code> yields each file whose name ends in <code>.csv</code>. You loop over them, read each one, and stack the results with <code>pd.concat</code>. For example, two small tables with the same columns become one table with the rows of both, and <code>ignore_index=True</code> renumbers the rows from 0.</p>
+<p><strong>Stage 1: write load_raw.</strong> Replace the body of <code>load_raw</code>:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_raw</span><span class="p">(</span><span class="n">raw_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read every raw CSV and return one table with a src_file column.&quot;&quot;&quot;</span>
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">raw_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.csv&quot;</span><span class="p">)):</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">part</span><span class="p">[</span><span class="s2">&quot;src_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">frames</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;no CSV files in </span><span class="si">{</span><span class="n">raw_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>frames = []</code> starts an empty list for the tables.</li>
+<li><code>sorted(...)</code> puts the file names in alphabetical order. Raw file names usually include a timestamp, so this is also fetch order. Check how your T11 fetcher names its files; if the names do not sort in fetch order, sort by something else. The order matters later, because the duplicate rule keeps the last copy.</li>
+<li><code>pd.read_csv(path)</code> reads one file. Every column is read as text or a number, and you will fix the types later.</li>
+<li><code>part["src_file"] = path.name</code> records the file name on every row of that file. This is the value the rule sorts on.</li>
+<li><code>frames.append(part)</code> adds the table to the list.</li>
+<li><code>if not frames:</code> is true when the list is empty. The <code>raise</code> stops the run with a clear message, instead of a confusing error from <code>concat</code>.</li>
+<li><code>pd.concat(frames, ignore_index=True)</code> stacks the tables into one and numbers the rows again.</li>
+</ul>
+<p>Expected: the function returns a table with one more column than the raw files, <code>src_file</code>.</p>
+<p><strong>Stage 2: write profile.</strong> The profile is the "before" picture. It must be generated by code, because the report uses the same numbers.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">profile</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Describe the table before any rule runs.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span>
+        <span class="s2">&quot;key_duplicates&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+        <span class="s2">&quot;null_pct&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>len(df)</code> is the row count.</li>
+<li><code>df.duplicated(subset=KEY).sum()</code> counts rows that repeat an earlier key. <code>int(...)</code> turns the result into a plain Python number, so it prints neatly.</li>
+<li><code>df.isna()</code> gives true for each missing cell. <code>.mean()</code> gives the share of true values per column, which is a fraction between 0 and 1. Multiplying by 100 gives a percentage.</li>
+<li><code>.round(2).to_dict()</code> rounds the numbers and turns the result into a dictionary from column name to percentage.</li>
+</ul>
+<p><strong>Stage 3: test it on the real raw files.</strong> Run this from the repository root:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from citypulse.clean import load_raw, profile, RAW_DIR; print(profile(load_raw(RAW_DIR)))&quot;</span>
+</code></pre></div>
+
+<p>Expected: a dictionary with <code>rows</code>, <code>key_duplicates</code> and <code>null_pct</code>. The row count should be the total of all your raw files. If you know the file sizes, add them up as a check: <code>wc -l data/raw/*.csv</code> counts lines, and each file has one header line.</p>
+<p><strong>Test this stage.</strong> Compare <code>rows</code> with the sum from <code>wc -l</code>, minus one header line for each file. If they differ, the glob found fewer files, or a file has blank lines.</p>
+<h4 id="y2-t123-one-cleaning-rule-with-its-count">Y2-T12.3: one cleaning rule, with its count</h4>
+<p><strong>Goal.</strong> Write one rule as a function that returns the cleaned table and the number it removed. The rule is the one you chose.</p>
+<p><strong>Technique: a rule returns its count.</strong> A rule takes a table, changes it and returns two things: the new table and a number. The caller stores the number in a dictionary. This keeps the count next to the change, so you cannot forget it.</p>
+<p>The missing-timestamp rule is a small example:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">drop_missing_ts</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove rows with no usable timestamp. Return the table and the count removed.&quot;&quot;&quot;</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ts_utc&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">before</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><code>before = len(df)</code> records the row count first.</li>
+<li><code>dropna(subset=["ts_utc"])</code> returns a new table without the rows whose <code>ts_utc</code> is missing. <code>subset</code> limits the check to one column.</li>
+<li><code>before - len(df)</code> is the number removed.</li>
+<li><code>return df, ...</code> returns both values together.</li>
+</ul>
+<p>The timestamps must be converted before this rule works. Use <code>pd.to_datetime(..., utc=True, errors="coerce")</code>. Coercion turns an unreadable timestamp into <code>NaT</code>, which the missing-timestamp rule then removes and counts. Put this conversion in its own small function, <code>normalise_types</code>, and call it before the rules. Convert the metrics with <code>pd.to_numeric(df[col], errors="coerce").astype("float64")</code>, and the text columns with <code>.astype("category")</code>. Use your squad's column names for the metrics and for <code>location</code> and <code>source</code>.</p>
+<p><strong>Stage 1: write the duplicate rule.</strong> The duplicate rule keeps one copy of each key, the copy from the newest raw file. Sorting first is what makes that true.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dedupe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep one row per key, taken from the last raw file. Return the table and the count removed.&quot;&quot;&quot;</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;src_file&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;stable&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">KEY</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">before</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><code>sort_values("src_file", kind="stable")</code> puts rows in file order. <code>kind="stable"</code> keeps rows that tie in their original order, which makes the result repeatable.</li>
+<li><code>drop_duplicates(subset=KEY, keep="last")</code> keeps the last row of each key in that order.</li>
+<li>The count is the same subtraction as before.</li>
+</ul>
+<p>Read the trap below before you test this rule.</p>
+<div class="box box-trap"><div class="box-h">Trap: Deduplicating before dropping blanks</div><p>If a blank reading and a valid reading share a key, and the blank sorts last, <code>keep="last"</code> keeps the blank and throws away the valid value. Decide the order of rules in your squad and write it down. The ticket's usual order is: missing timestamp, duplicates, range, then the null rule. The ticket text does not fix an order, so this guide uses that one. Whichever order your squad chooses, write it down and count every rule.</p></div>
+
+<p><strong>Stage 2: the range rule and quarantine.</strong> This rule finds impossible values, writes them to <code>data/clean/quarantine.csv</code>, and then replaces each bad value with a missing value. The row stays, and the impossible number does not reach the report.</p>
+<p>A small trace shows the idea of a range test, with three values:</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Setting aside values outside the range&quot;, &quot;code&quot;: [&quot;values = [12.0, -3.0, 1500.0]&quot;, &quot;ok = []&quot;, &quot;bad = []&quot;, &quot;for v in values:&quot;, &quot;    if 0 &lt;= v &lt;= 1000:&quot;, &quot;        ok.append(v)&quot;, &quot;    else:&quot;, &quot;        bad.append(v)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;values&quot;, &quot;[12.0, -3.0, 1500.0]&quot;]], &quot;note&quot;: &quot;Three PM2.5 readings. Two of them are not plausible.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;values&quot;, &quot;[12.0, -3.0, 1500.0]&quot;], [&quot;ok&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;An empty list will hold the good values.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;values&quot;, &quot;[12.0, -3.0, 1500.0]&quot;], [&quot;ok&quot;, &quot;[]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;An empty list will hold the values to set aside.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;v&quot;, &quot;12.0&quot;], [&quot;ok&quot;, &quot;[]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first reading.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;v&quot;, &quot;12.0&quot;], [&quot;ok&quot;, &quot;[]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;12.0 is between 0 and 1000, so the test is true.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;v&quot;, &quot;12.0&quot;], [&quot;ok&quot;, &quot;[12.0]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The good value is kept.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;v&quot;, &quot;-3.0&quot;], [&quot;ok&quot;, &quot;[12.0]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the second reading.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;v&quot;, &quot;-3.0&quot;], [&quot;ok&quot;, &quot;[12.0]&quot;], [&quot;bad&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;-3.0 is below 0, so the test is false.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;v&quot;, &quot;-3.0&quot;], [&quot;ok&quot;, &quot;[12.0]&quot;], [&quot;bad&quot;, &quot;[-3.0]&quot;]], &quot;note&quot;: &quot;The value is set aside instead of disappearing.&quot;}]}"></div>
+
+<p>Line by line, the important points are these. The test <code>0 &lt;= v &lt;= 1000</code> checks both limits in one expression. The <code>else</code> branch runs for every value that fails the test, so nothing is dropped without being recorded. In pandas you write the same test for a whole column at once, with <code>between</code>.</p>
+<p>The pandas version looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">quarantine_out_of_range</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">ranges</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set aside values outside their range. Return the table and the number of values set aside.&quot;&quot;&quot;</span>
+    <span class="n">bad</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="n">col</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span> <span class="ow">in</span> <span class="n">ranges</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">})</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">bad</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bad</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">bad</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>ranges</code> is a dictionary from column name to <code>(lowest, highest)</code>. You choose the numbers, and they must be no looser than TC3 requires: for PM2.5 the lowest value must be 0 or more and the highest 1000 or less. You may choose tighter limits, and you need sensible limits for temperature too (60 °C in Bengaluru must not pass).</li>
+<li><code>df[col].notna() &amp; ~df[col].between(lo, hi)</code> is true for a value that is present and outside its range. <code>~</code> means "not", and <code>&amp;</code> joins the two tests. A missing value is not flagged here, because the null rule handles it.</li>
+<li>The dictionary comprehension builds one true or false column per metric, in a table called <code>bad</code>.</li>
+<li><code>path.parent.mkdir(parents=True, exist_ok=True)</code> creates <code>data/clean/</code> if it is missing, and does nothing if it exists.</li>
+<li><code>df[bad.any(axis=1)].to_csv(path, index=False)</code> writes every row with at least one bad value. The file is written even when no row matches, and then it holds only the header. That keeps TC1 passing on clean data.</li>
+<li><code>df = df.copy()</code> makes an independent table, so the assignment below does not trigger pandas' SettingWithCopyWarning.</li>
+<li><code>df.loc[bad[col], col] = float("nan")</code> replaces each bad value with a missing value.</li>
+<li><code>int(bad.to_numpy().sum())</code> counts bad values, not rows. Your report must say so.</li>
+</ul>
+<p>Test the rule alone, in the interpreter, on a table of four rows that you make up in the command.</p>
+<p><strong>Stage 3: the null rule.</strong> The ticket asks for one null rule per column. Choose it with your squad. Two common choices are to keep the missing value and document it, or to drop a row when the key metric is missing. Whatever you choose, write one sentence of justification and count the removed rows with the same pattern as Stage 1. The report in Y2-T12.5 needs one row per column.</p>
+<p><strong>Stage 4: commit your rule under your identity.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>src/citypulse/clean.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(clean): add range rule and quarantine.csv&quot;</span>
+git<span class="w"> </span>log<span class="w"> </span>-1<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%an &lt;%ae&gt;&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>git add</code> stages the file.</li>
+<li><code>git commit -m</code> records it with the message in quotes.</li>
+<li><code>git log -1 --format='%an &lt;%ae&gt;'</code> prints the name and email on the last commit. Check that it is yours.</li>
+</ul>
+<p><strong>Test this stage.</strong> Your rule works alone on a small table. Its count matches the number of rows or values you know were bad.</p>
+<h4 id="y2-t124-wire-the-rules-assert-log-the-dtypes-and-ignore-the-output">Y2-T12.4: wire the rules, assert, log the dtypes, and ignore the output</h4>
+<p><strong>Goal.</strong> Connect the rules in one fixed order, prove there are no duplicate keys, log the column types, and keep data out of Git.</p>
+<p><strong>Stage 1: the order.</strong> The <code>clean()</code> function calls each rule in order, and stores each count in one dictionary:</p>
+<ol>
+<li>Convert the types with <code>normalise_types</code>.</li>
+<li>Drop missing timestamps, and store the count under <code>"missing_ts"</code>.</li>
+<li>Remove duplicates on the key, and store the count under <code>"duplicates"</code>.</li>
+<li>Set aside out-of-range values, and store the count under <code>"out_of_range_values"</code>.</li>
+<li>Apply the null rules, and store the counts under their own names.</li>
+</ol>
+<p>The first call looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="n">removed</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">df</span><span class="p">,</span> <span class="n">removed</span><span class="p">[</span><span class="s2">&quot;missing_ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">drop_missing_ts</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This works because the rule returns a pair, and Python assigns the table to <code>df</code> and the count into the dictionary. Write the other calls in the same style, in the order above.</p>
+<p><strong>Stage 2: the assertion and the dtype log.</strong> At the end of <code>clean()</code>, add:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;duplicate keys left after cleaning&quot;</span>
+<span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;dtypes:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><code>assert</code> stops the run with an error if the condition is false. The message after the comma is shown in the error.</li>
+<li><code>log.info</code> writes an INFO message. The <code>%s</code> is filled with the dtype table. You paste this log line into the PR.</li>
+</ul>
+<p><strong>Stage 3: git-ignore the output.</strong> Add these lines to <code>.gitignore</code>:</p>
+<div class="hl"><pre><span></span><code>data/clean/*
+!data/clean/.gitkeep
+</code></pre></div>
+
+<ul>
+<li><code>data/clean/*</code> ignores every file in the folder.</li>
+<li><code>!data/clean/.gitkeep</code> is an exception: the placeholder file is still tracked.</li>
+</ul>
+<p>Create the placeholder and check the rule:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>data/clean
+touch<span class="w"> </span>data/clean/.gitkeep
+git<span class="w"> </span>check-ignore<span class="w"> </span>-v<span class="w"> </span>data/clean/readings.parquet
+</code></pre></div>
+
+<p>Expected: the last command prints a line naming <code>.gitignore</code> and the <code>data/clean/*</code> rule, followed by the path. If it prints nothing, the rule is not matching. Check the spelling of the folder.</p>
+<div class="box box-trap"><div class="box-h">Trap: Committing the Parquet file</div><p>A Parquet file in the repository grows with every run and makes every pull request heavy. Keep only <code>.gitkeep</code> in Git. The output is rebuilt by the command, not stored.</p></div>
+
+<p><strong>Stage 4: make the module runnable.</strong> <code>python -m citypulse.clean</code> runs the file as a program, so it needs an entry point. Add a <code>main()</code> function and, at the bottom of the file, the standard guard:</p>
+<div class="hl"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p><code>if __name__ == "__main__":</code> is true only when the file is run with <code>python -m</code>, not when it is imported, which is why <code>import citypulse.clean</code> stays harmless. Your <code>main()</code> should do these things in order, using your own code:</p>
+<ol>
+<li>Call <code>logging.basicConfig(level=logging.INFO)</code>. Without it, <code>log.info</code> messages are not shown, so the dtype log line never appears for your PR.</li>
+<li>Call <code>load_raw(RAW_DIR)</code> and <code>profile(...)</code> on the result, and keep the "before" numbers.</li>
+<li>Call <code>clean(...)</code>, then <code>write(...)</code> to <code>CLEAN_DIR / "readings.parquet"</code>. Inside <code>write</code>, <code>df.to_parquet(out, index=False)</code> creates the file and overwrites any old one, which keeps TC5 passing. Create the folder first with <code>out.parent.mkdir(parents=True, exist_ok=True)</code>.</li>
+<li>Pass <code>CLEAN_DIR / "quarantine.csv"</code> to your range rule, so the file is written on every run.</li>
+<li>Call <code>write_report</code> (Y2-T12.5) with the before and after numbers.</li>
+</ol>
+<p>If an exception escapes <code>main()</code>, Python exits with code 1, so TC1 fails loudly. A successful run exits 0 without any extra code.</p>
+<p><strong>Test this stage.</strong> Run <code>python -m citypulse.clean</code> once. It must exit 0, the dtype line must appear in the output, and <code>git status</code> must not list anything under <code>data/clean/</code> except <code>.gitkeep</code>, which is already tracked.</p>
+<h4 id="y2-t125-the-report-generated-by-code">Y2-T12.5: the report, generated by code</h4>
+<p><strong>Goal.</strong> Write <code>docs/data-quality.md</code> from the same numbers the cleaning used, so that no count is typed by hand.</p>
+<p><strong>Technique: writing text from a list.</strong> A Python list of lines, joined with <code>"\n"</code>, becomes a file. An f-string puts a variable's value inside the text. This is how the report stays honest: the numbers come from the <code>removed</code> dictionary and the <code>profile</code> results.</p>
+<p>Add this function to <code>clean.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_report</span><span class="p">(</span><span class="n">stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">removed</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write docs/data-quality.md from the counts, so no number is typed by hand.&quot;&quot;&quot;</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;# Data quality report&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Generated by src/citypulse/clean.py. Do not edit by hand.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;| Measure | Before | After |&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;|---|---|---|&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;| Rows | </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;rows_before&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;rows_after&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Rows and values removed by each rule:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;| Rule | removed |&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;|---|---|&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">lines</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">rule</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> |&quot;</span> <span class="k">for</span> <span class="n">rule</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">removed</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li>The <code>stats</code> dictionary carries <code>rows_before</code> and <code>rows_after</code>. Put both in it inside <code>clean()</code>.</li>
+<li>The lines starting with <code>|</code> form Markdown tables. The <code>|---|---|</code> line marks the header row.</li>
+<li><code>f"| Rows | {stats['rows_before']} | ..."</code> puts the number into the table.</li>
+<li><code>lines += [...]</code> adds one table row for each rule, using a list comprehension. <code>removed.items()</code> gives each rule name and its count.</li>
+<li><code>path.write_text(..., encoding="utf-8")</code> writes the file. The encoding makes sure the file opens the same way on Windows and Linux.</li>
+</ul>
+<p>For acceptance criterion 5, work out the total removed as a percentage of the input rows (<code>rows_before</code>). If it is above 10%, the PR needs a written justification for each rule. Counting values set aside by the range rule separately from rows dropped keeps this percentage honest.</p>
+<p>Extend the report yourself. The ticket also needs null percentage for each column, and a sentence of justification for each null rule. Add a table in the same way, using the <code>null_pct</code> values from <code>profile</code>.</p>
+<p>Run the command, then the check:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>citypulse.clean<span class="p">;</span><span class="w"> </span>grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;Before|After|removed&#39;</span><span class="w"> </span>docs/data-quality.md
+</code></pre></div>
+
+<p>Expected: the grep prints at least the header line with <code>Before</code> and <code>After</code>, and one line per rule that contains <code>removed</code>.</p>
+<p><strong>Test this stage.</strong> Open the file. Every number in it must match the log output of the run. If a number is wrong, the bug is in the code, not in the report.</p>
+<h4 id="y2-t126-the-pull-request">Y2-T12.6: the pull request</h4>
+<p><strong>Goal.</strong> Open a pull request that shows the dtype output, the before and after table, and the justification. Get one approval, wait for CI, then merge.</p>
+<p><strong>Stage 1: push the branch.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>y2-t12-clean
+</code></pre></div>
+
+<ul>
+<li><code>git push</code> sends the branch to GitHub.</li>
+<li><code>-u origin y2-t12-clean</code> links the local branch to the remote one, so later pushes need no extra words.</li>
+</ul>
+<p><strong>Stage 2: open the pull request.</strong> Write the description in a file outside the repository, such as <code>../pr-y2-t12.md</code>, so it is not committed. Then run:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>y2-t12-clean<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Y2-T12: clean.py to Parquet with data-quality rules&quot;</span><span class="w"> </span>--body-file<span class="w"> </span>../pr-y2-t12.md
+</code></pre></div>
+
+<ul>
+<li><code>--base main</code> names the branch you merge into.</li>
+<li><code>--head</code> names the branch you merge from.</li>
+<li><code>--body-file</code> reads the description from the file.</li>
+</ul>
+<p>Expected: <code>gh</code> prints the link to the new pull request.</p>
+<p><strong>Stage 3: the review.</strong> Ask one squad-mate for an approval. Check the state with:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>view<span class="w"> </span>--json<span class="w"> </span>state,reviewDecision
+</code></pre></div>
+
+<p>Ready to merge when <code>reviewDecision</code> shows <code>APPROVED</code> and CI is green. The Tech Lead merges, and nobody merges their own pull request.</p>
+<p><strong>Test this stage.</strong> The pull request shows the <code>df.dtypes</code> output and the before and after table, with your own paste, not a screenshot of someone else's run.</p>
+<h4 id="y2-t127-justify-every-dropped-row">Y2-T12.7: justify every dropped row</h4>
+<p><strong>Goal.</strong> Be able to explain each rule to the trainer without notes.</p>
+<p>Prepare an answer to these four questions, in your own words, for the rule you own:</p>
+<ul>
+<li>What does the rule remove or set aside, and how many did the last run count?</li>
+<li>Why is it in this place in the order?</li>
+<li>What would a correct result look like, and how would you check it?</li>
+<li>Would the number change if you ran the command again? Why, or why not?</li>
+</ul>
+<p>Practise the answer aloud. Ask a squad-mate to ask you the questions in a different order. Do not memorise a script.</p>
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run every test case yourself, in order, from the repository root, with the branch checked out.</p>
+<ol>
+<li>Run the TC1 command. Expected: exit <code>0</code>, and both files listed.</li>
+<li>Run the TC2 command on your output. Expected: <code>0</code>, followed by the dtypes.</li>
+<li>Run the TC3 command. Expected: <code>0 0</code>.</li>
+<li>Run the TC4 grep. Expected: the lines with <code>Before</code>, <code>After</code> and <code>removed</code>.</li>
+<li>Run the TC5 command. Expected: the same row count twice.</li>
+<li>Run <code>git check-ignore -v data/clean/readings.parquet</code>. Expected: a line naming the ignore rule.</li>
+</ol>
+<p>Save the output of each run. Copy the key lines into the pull request.</p>
+<p><strong>Pull request description template.</strong> Replace each placeholder with your own text and your own evidence.</p>
+<div class="hl"><pre><span></span><code>## What
+&lt;which functions and files this pull request adds or changes&gt;
+
+## Why
+&lt;the problem the ticket solves, in your own words&gt;
+
+## How to test
+&lt;the TC1 to TC5 commands, copied from the ticket&gt;
+
+## Evidence
+&lt;the output of each test case, the df.dtypes log line, and the before and after table&gt;
+
+## Checklist
+- [ ] TC1 to TC5 run and pasted
+- [ ] Every rule has a count and a written justification
+- [ ] I authored at least one rule commit under my own identity
+</code></pre></div>
+
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] <code>clean.py</code> is merged through a reviewed pull request with CI green. You know this when <code>gh pr view --json state,reviewDecision</code> shows the pull request as merged, and the CI check is green.</li>
+<li>[ ] The pull request contains the <code>df.dtypes</code> output and the before and after table. You know this when you can find both pasted in the description.</li>
+<li>[ ] Zero duplicates are asserted in code. You know this when the assertion line is in <code>clean()</code> and TC2 prints <code>0</code>.</li>
+<li>[ ] <code>docs/data-quality.md</code> is generated and committed. You know this when running the command rewrites it with the same numbers, and TC4 finds the lines.</li>
+<li>[ ] Every dropped-row rule has a justification. You know this when each rule in the report has a sentence next to it, and you can say the sentence aloud.</li>
+<li>[ ] Each student has a rule commit. You know this when <code>git log --format='%an %s' -- src/citypulse/clean.py</code> lists your name.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC1 fails with <code>ModuleNotFoundError: No module named 'citypulse'</code></td>
+<td>The package is not installed in the active environment.</td>
+<td>Activate the environment, then run <code>python -m pip install -e .</code> from the root.</td>
+</tr>
+<tr>
+<td><code>quarantine.csv</code> is missing after a clean run</td>
+<td>The file is written only when a row is bad.</td>
+<td>Write it on every run, even when it holds only the header.</td>
+</tr>
+<tr>
+<td>TC2 prints a number above 0</td>
+<td>The duplicate rule ran on the wrong key, or before the rows were stacked.</td>
+<td>Use <code>KEY = ["ts_utc", "location"]</code> everywhere, and sort by <code>src_file</code> before <code>keep="last"</code>.</td>
+</tr>
+<tr>
+<td>TC2 shows <code>ts_utc</code> as <code>object</code></td>
+<td>The timestamps were never converted.</td>
+<td>Call <code>pd.to_datetime(..., utc=True, errors="coerce")</code> in the type step.</td>
+</tr>
+<tr>
+<td>TC3 prints <code>12 0</code> or any number above 0</td>
+<td>The range rule changed a copy, not the table you return.</td>
+<td>Assign the result back, and return the table you changed.</td>
+</tr>
+<tr>
+<td>TC4 prints nothing</td>
+<td>The report is not written, or it is written to another path.</td>
+<td>Call <code>write_report</code> at the end of <code>clean()</code>, with <code>docs/data-quality.md</code> as the path.</td>
+</tr>
+<tr>
+<td>TC4 misses the word <code>removed</code></td>
+<td>The header uses a capital letter, or the rule rows are missing.</td>
+<td>Use lower-case <code>removed</code> in the header text, and write one row per rule.</td>
+</tr>
+<tr>
+<td>TC5 shows a bigger number on the second run</td>
+<td>The output is appended, or the run reads a partial set of raw files.</td>
+<td>Overwrite the Parquet file on every run, and read all of <code>data/raw/</code>.</td>
+</tr>
+<tr>
+<td><code>git status</code> lists <code>readings.parquet</code></td>
+<td>The <code>.gitignore</code> rule is missing or in the wrong place.</td>
+<td>Add <code>data/clean/*</code> and <code>!data/clean/.gitkeep</code>, then run <code>git check-ignore -v</code>.</td>
+</tr>
+<tr>
+<td>The dtype shows <code>datetime64[us, UTC]</code></td>
+<td>Your pandas version picked microseconds.</td>
+<td>Cast with <code>astype("datetime64[ns, UTC]")</code> after conversion.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p><strong>1. Why does the ticket count every dropped row, even when the cleaning is correct?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A count is evidence. It shows what the rule did, and it shows whether the result is plausible. A large drop can mean the rule is too strict, and a zero drop can mean the rule is not running. Counts generated by code cannot drift from what the code did, so the report stays honest when the data changes. The answer should name the <code>removed</code> dictionary and the report that reads it.</p></details>
+
+<p><strong>2. What is the trade-off between dropping a row and setting one value aside?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Dropping a row removes all its other good values, such as a valid temperature sitting beside an impossible PM2.5 reading. Setting one value aside keeps the rest of the row, but it leaves gaps that later steps must handle. The cost is extra care in every analysis about missing values. The ticket accepts the cost because it keeps more good data, and the quarantine file keeps the original values so they can be inspected.</p></details>
+
+<p><strong>3. Why does <code>keep="last"</code> depend on the sort order, and what did you do to make it reliable?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>keep="last"</code> keeps whichever copy comes last in the current row order. If the order is not defined, the kept copy is not defined either. The answer should name the sort on <code>src_file</code>, the file names that follow fetch order, and the use of <code>kind="stable"</code> so ties keep their order. It should say that the sort happens before the duplicate rule and not after.</p></details>
+
+<p><strong>4. Suppose the command is run twice and the row counts differ. What would you check first?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The answer should first check whether the raw folder changed between runs, because new raw rows legitimately change the count. If it did not change, the next check is whether the output is appended or rebuilt, and whether every run reads all raw files in the same order. The answer should name TC5 as the test that catches this, and say that the fix is to overwrite the output from the full input every run.</p></details>
+
+<p><strong>5. What did you personally write in this ticket, and how do you know it is yours?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A good answer names the rule you wrote, the function it lives in, and the commit that added it, with its message. It then names the test you ran on that rule and the count it produced. You can show <code>git log --format='%an %s' -- src/citypulse/clean.py</code> if asked. Describe only the commits and the tests you ran, and do not invent how the work went.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your clean run on a day with no out-of-range values does not create data/clean/quarantine.csv, and TC1 fails. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The code writes quarantine.csv only when it has bad rows, so a clean run skips it.&quot;, &quot;The grep in TC4 is case-sensitive, so TC1 cannot find the file.&quot;, &quot;pandas cannot write CSV files, so the file is never created.&quot;, &quot;The data/clean folder is git-ignored, so the file is hidden from ls.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;TC1 lists the folder on disk, and git-ignore rules do not hide files from ls. The file must be written on every run, even as a header-only file. The grep belongs to TC4 and cannot affect TC1.&quot;}, {&quot;q&quot;: &quot;Which order of cleaning rules does this guide use?&quot;, &quot;opts&quot;: [&quot;Duplicates, then missing timestamps, then range, then null rules.&quot;, &quot;Missing timestamps, then duplicates, then range, then null rules.&quot;, &quot;Range, then null rules, then missing timestamps, then duplicates.&quot;, &quot;Null rules, then range, then duplicates, then missing timestamps.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Missing timestamps go first, so no later rule has to handle rows that cannot be placed in time. Duplicates come next, on the key. The other orders would count the same problem twice or keep a row that a later rule should have removed.&quot;}, {&quot;q&quot;: &quot;What does pd.to_datetime(..., utc=True, errors=\&quot;coerce\&quot;) do to a value it cannot read as a date?&quot;, &quot;opts&quot;: [&quot;It raises an error and stops the whole run.&quot;, &quot;It leaves the text in the column, so the type check fails.&quot;, &quot;It turns the value into a missing timestamp, so the missing-timestamp rule can count it.&quot;, &quot;It converts the value to the current local time.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Coercion keeps the run going and turns the unreadable value into NaT. The missing-timestamp rule then removes the row and counts it, which is what the ticket asks for. Raising an error would stop the run, and leaving the text would fail the dtype check.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="K03.html"><small>Previous</small>Capstone tickets T08–T10: pull requests, CI gate and first release</a><a class="nx" href="K05.html"><small>Next</small>Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

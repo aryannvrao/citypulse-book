@@ -1,0 +1,1071 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 4 — Bash scripting and cron automation · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D04" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 2 · Days 1–5 · Tools and teamwork</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a class="cur" href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 2 · Days 1–5 · Tools and teamwork</p><h1>Day 4 — Bash scripting and cron automation</h1><p class="sub">You will be able to write a Bash script that stops on errors, retries and logs what it did, schedule it with cron, and find out from its logs why a run failed.</p><p class="meta">86 min read · practice quiz · 10 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D04.mp4?v=1794465897"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you turn a command you type by hand into a recipe card that a machine follows. A Bash script is that card: a text file with the steps written in order, so anyone can run them the same way, every time. cron is the alarm clock. It wakes up at times you choose and tells the machine to follow the card. Together they let the CityPulse air-quality fetch run every 30 minutes while nobody is watching. By the end you will write a script that fails loudly instead of quietly, schedule it, and read its logs to see what happened.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section defines every word the day depends on. Read it once now, then come back to it when a term confuses you.</p>
+<p><strong>Terminal and shell.</strong> A terminal is a window where you type text instead of clicking. The program that reads what you type and runs it is called the shell. Bash (Bourne Again SHell) is the shell used in this course. The line that ends in a dollar sign, such as <code>asha@lab:~$</code>, is the prompt, which is the shell waiting for your next command.</p>
+<p><strong>Command, argument and flag.</strong> A command is a program name followed by words. In <code>ls -l logs</code>, <code>ls</code> is the command, <code>-l</code> is a flag (an option that changes how the command behaves) and <code>logs</code> is an argument (the thing the command acts on). A flag usually starts with a dash.</p>
+<p><strong>File and directory.</strong> A file holds data. A directory (also called a folder) holds files and other directories. <code>logs/fetch.log</code> means the file <code>fetch.log</code> inside the directory <code>logs</code>. A slash separates the directory names from the file name.</p>
+<p><strong>Variable.</strong> A variable is a named container that holds a value. You create one with <code>name=value</code>. There must be no spaces around the equals sign. You read it back with a dollar sign, so <code>$name</code> means "the value stored in name".</p>
+<p><strong>Function.</strong> A function is a named group of commands. You define it once and call it by name, as many times as you like. A function is the shell version of a reusable step.</p>
+<p><strong>Script.</strong> A script is a file of commands that the shell runs from top to bottom. Running <code>bash fetch.sh</code> reads the file and carries out each line in turn.</p>
+<p><strong>Exit code.</strong> Every command ends by reporting a number. <code>0</code> means success. Any other number means failure. The shell keeps the number from the most recent command in a special variable called <code>$?</code>.</p>
+<p><strong>Standard output, standard error and redirection.</strong> A command prints normal results to standard output (stream 1) and problems to standard error (stream 2). Redirection changes where those streams go. <code>&gt;</code> writes output to a file and replaces what was there. <code>&gt;&gt;</code> adds output to the end of a file. <code>2&gt;</code> sends errors to a file. The <code>|</code> symbol, called a pipe, sends the output of one command into the next.</p>
+<p><strong>Server, HTTP and API.</strong> A server is a computer that answers requests from other computers. HTTP (Hypertext Transfer Protocol) is the request-and-reply language that web clients and servers use. An API (Application Programming Interface) is a defined set of web addresses and rules that one program uses to ask another for data. <code>curl</code> is a command that sends an HTTP request and prints or saves the reply.</p>
+<p><strong>JSON and jq.</strong> JSON is a text format for structured data, such as <code>{"station_id": "CP-001"}</code>. <code>jq</code> is a command-line tool that picks values out of JSON.</p>
+<p><strong>Process, lock and log.</strong> A process is a running program. A lock is a marker that tells other programs "I am busy, wait". A log is a file that records what a program did, one line per event.</p>
+<p><strong>cron and crontab.</strong> cron is a background program that starts commands at times you choose. Your list of those times is called a crontab (cron table). The <code>crontab</code> command shows or replaces that list.</p>
+<p><strong>Environment and PATH.</strong> The environment is a set of settings that a program inherits from the program that started it. PATH is one of those settings. It is a list of folders the shell searches, in order, when you type a command name such as <code>jq</code>. If <code>jq</code> is not in a folder on PATH, the shell says <code>command not found</code>.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="bash-strict-mode-and-functions">Bash strict mode and functions</h3>
+<p><strong>What it is.</strong> Bash is the shell you have just met, and it can also run scripts. Strict mode is three settings you switch on at the top of a script with <code>set -euo pipefail</code>. The <code>set</code> command changes how the shell behaves. Functions are the named steps described above.</p>
+<p><strong>Why CityPulse uses it.</strong> <code>fetch.sh</code> runs without anyone watching. If a step fails and the script carries on, the data has a gap that nobody notices until the P1 demo. A Bash script with strict mode stops at the first real failure. Two alternatives were considered. A Python script is better for complex logic, and the course moves to Python in a later lesson, but Bash keeps this step close to <code>curl</code> and <code>jq</code>. Plain Bash without strict mode is shorter, but it keeps going after an error and appends empty rows to the data.</p>
+<p><strong>How it works.</strong> When the shell reads a script, it runs each command and then checks its exit code. With <code>-e</code> the script stops when a command returns non-zero. With <code>-u</code> the script stops when it uses a variable that was never set. With <code>-o pipefail</code> a pipeline counts as failed if any command in it failed, not only the last one. Strict mode does not stop everything. A failure inside an <code>if</code> test is ignored by <code>-e</code>, because the <code>if</code> is designed to handle failure.</p>
+<p>Here is the skeleton of <code>scripts/fetch.sh</code> from the lesson slides, with its line breaks restored:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">/..&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>logs
+log<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s %s %s\n&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span>-u<span class="w"> </span>+%FT%TZ<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/fetch.log<span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="nb">exec</span><span class="w"> </span><span class="m">9</span>&gt;<span class="s2">&quot;/tmp/citypulse-</span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">.lock&quot;</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>flock<span class="w"> </span>-n<span class="w"> </span><span class="m">9</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>log<span class="w"> </span>WARN<span class="w"> </span><span class="s2">&quot;previous run active; skipping&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>ops/STOP<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>log<span class="w"> </span>WARN<span class="w"> </span><span class="s2">&quot;ops/STOP present; not fetching&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+fetch_with_retry<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">attempt</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">delay</span><span class="o">=</span><span class="m">5</span>
+<span class="w">  </span><span class="k">until</span><span class="w"> </span>curl<span class="w"> </span>-sSf<span class="w"> </span>--max-time<span class="w"> </span><span class="m">20</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$attempt</span><span class="s2">&quot;</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>log<span class="w"> </span>ERROR<span class="w"> </span><span class="s2">&quot;HTTP fetch failed after 3 attempts: </span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="w">    </span>log<span class="w"> </span>WARN<span class="w"> </span><span class="s2">&quot;attempt </span><span class="nv">$attempt</span><span class="s2"> failed; retrying in </span><span class="si">${</span><span class="nv">delay</span><span class="si">}</span><span class="s2">s&quot;</span>
+<span class="w">    </span>sleep<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$delay</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">attempt</span><span class="o">=</span><span class="k">$((</span><span class="nv">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span><span class="p">;</span><span class="w"> </span><span class="nv">delay</span><span class="o">=</span><span class="k">$((</span><span class="nv">delay</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span><span class="k">))</span>
+<span class="w">  </span><span class="k">done</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the shebang. The two characters <code>#!</code> must be the first two characters of the file. The system reads the path after them and uses that program to run the file. <code>env</code> finds <code>bash</code> on PATH, so the line works on machines where Bash lives in a different folder.</li>
+<li><code>set -euo pipefail</code> switches on strict mode, as described above.</li>
+<li><code>cd "$(dirname "$0")/.." &amp;&amp; mkdir -p logs</code> moves to the repository root. <code>$0</code> is the path the script was started with, <code>dirname</code> strips the file name to leave the folder, and <code>/..</code> steps up one level from <code>scripts</code>. The <code>&amp;&amp;</code> runs <code>mkdir</code> only if the <code>cd</code> worked. <code>mkdir -p</code> creates <code>logs</code> if it is missing and does nothing if it already exists.</li>
+<li><code>log() { ... }</code> defines the <code>log</code> function. <code>$1</code> is its first argument (the level, such as <code>WARN</code>) and <code>$2</code> is its second (the message). <code>printf</code> prints the three parts in the format <code>&lt;timestamp&gt; &lt;LEVEL&gt; &lt;message&gt;</code>. <code>date -u +%FT%TZ</code> prints the current UTC time, for example <code>2026-11-03T14:00:01Z</code>. The <code>&gt;&gt;</code> appends the line to <code>logs/fetch.log</code>.</li>
+<li><code>exec 9&gt;"/tmp/citypulse-$(whoami).lock"</code> opens the file in <code>/tmp</code> for writing and attaches it to number 9. <code>whoami</code> prints your user name, so each user gets their own lock file.</li>
+<li><code>if ! flock -n 9; then ... fi</code> asks for the lock. <code>flock</code> with <code>-n</code> means "do not wait": if another run already holds the lock, it fails at once. The <code>!</code> reverses the test, so the block runs when the lock was not obtained. The script logs a warning and exits with <code>0</code>. The exit is deliberate: skipping an overlapping run is correct behaviour, not an error.</li>
+<li><code>if [ -f ops/STOP ]; then ... fi</code> is the kill switch. If someone creates a file called <code>ops/STOP</code>, the script logs a warning and exits before it touches the network. <code>-f</code> is true when the path is a regular file.</li>
+<li><code>fetch_with_retry() {</code> starts a function. <code>local attempt=1 delay=5</code> creates two variables that exist only inside the function. The first attempt is numbered 1 and the first wait is 5 seconds.</li>
+<li><code>until curl ...; do</code> repeats the body while <code>curl</code> fails. <code>-s</code> hides the progress bar, <code>-S</code> still shows errors, <code>-f</code> makes <code>curl</code> fail on an HTTP error such as 404, and <code>--max-time 20</code> gives up after 20 seconds. <code>-o "$TMP"</code> saves the reply to a file. The skeleton uses <code>$TMP</code> and <code>$URL</code> without setting them. In your full file you set both near the top, as lab step 2 describes.</li>
+<li>The <code>if</code> block gives up after the third failed attempt. It logs one <code>ERROR</code> line and returns <code>1</code>, which is the function's failure code.</li>
+<li>The <code>WARN</code> line records each failed attempt before the wait.</li>
+<li><code>sleep "$delay"</code> waits, then <code>attempt=$((attempt + 1))</code> and <code>delay=$((delay * 2))</code> raise the counter and double the wait. The waits are 5 seconds, then 10 seconds.</li>
+</ul>
+<p>Trace the function on a server that is always down. Attempt 1 fails and logs a <code>WARN</code>, then waits 5 seconds. Attempt 2 fails and logs a second <code>WARN</code>, then waits 10 seconds. Attempt 3 fails, the <code>if</code> is true, and the function logs one <code>ERROR</code>. That gives exactly two <code>WARN</code> lines and one <code>ERROR</code> line, which is what Y2-T06 asks you to show.</p>
+<p>The next animation steps through a small loop. Each step shows the value of each variable after the line runs.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting stations in a loop&quot;, &quot;code&quot;: [&quot;stations=\&quot;CP-001 CP-002 CP-003\&quot;&quot;, &quot;count=0&quot;, &quot;for id in $stations; do&quot;, &quot;  count=$((count + 1))&quot;, &quot;done&quot;, &quot;echo \&quot;$count\&quot;&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;stations&quot;, &quot;\&quot;CP-001 CP-002 CP-003\&quot;&quot;]], &quot;note&quot;: &quot;Store three station ids in one variable, separated by spaces.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;stations&quot;, &quot;\&quot;CP-001 CP-002 CP-003\&quot;&quot;], [&quot;count&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;Start the counter at zero.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;stations&quot;, &quot;\&quot;CP-001 CP-002 CP-003\&quot;&quot;], [&quot;count&quot;, &quot;0&quot;], [&quot;id&quot;, &quot;\&quot;CP-001\&quot;&quot;]], &quot;note&quot;: &quot;The loop takes the first id from the list.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-001\&quot;&quot;], [&quot;count&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;Add one with $((count + 1)). The result is stored back in count.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-002\&quot;&quot;], [&quot;count&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;The loop goes round again with the second id.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-002\&quot;&quot;], [&quot;count&quot;, &quot;2&quot;]], &quot;note&quot;: &quot;Add one again.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-003\&quot;&quot;], [&quot;count&quot;, &quot;2&quot;]], &quot;note&quot;: &quot;The third and last id.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-003\&quot;&quot;], [&quot;count&quot;, &quot;3&quot;]], &quot;note&quot;: &quot;Add one for the last station.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;id&quot;, &quot;\&quot;CP-003\&quot;&quot;], [&quot;count&quot;, &quot;3&quot;]], &quot;note&quot;: &quot;The loop is finished, so echo prints 3.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Using ((attempt++)) under set -e</div><p>In Bash, <code>((attempt++))</code> returns a status of 1 when the value before the increment was 0. Under <code>set -e</code> that status stops the script. Write <code>attempt=$((attempt + 1))</code> instead, as the skeleton does.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Relative paths under cron</div><p>Your terminal may be open inside the repository, but cron starts in your home folder. A path such as <code>logs/fetch.log</code> that works by hand can fail under cron. Change to the repository root at the top of the script, as the skeleton does on its third line.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Variables inside functions are global</div><p>Without <code>local</code>, a variable set inside a function is visible to the whole script and can overwrite a value the rest of the script still needs. Declare variables inside functions with <code>local</code>.</p></div>
+
+<h3 id="cron">cron</h3>
+<p><strong>What it is.</strong> cron is a background program that starts commands at fixed times. Each line of a crontab has five time fields followed by a command. The five fields are minute (0 to 59), hour (0 to 23), day of month (1 to 31), month (1 to 12) and day of week (0 to 6, where 0 is Sunday). An asterisk <code>*</code> means "every value". <code>*/30</code> in the minute field means every 30 minutes. A comma separates a list, so <code>1,3,5</code> means 1, 3 and 5. A hyphen gives a range, so <code>9-17</code> means 9 to 17 inclusive.</p>
+<p><strong>Why CityPulse uses it.</strong> CityPulse needs a reading every 30 minutes for 48 hours before the P1 demo, and nobody can stay awake for that long. cron is already on the lab machines, so no extra service is needed. The alternatives were systemd timers, which give better logs but need system-level set-up that students cannot do on the shared lab, and GitHub Actions, which can be delayed under load and would not put data on the lab. A loop with <code>while true; sleep 1800</code> dies when your terminal session ends.</p>
+<p><strong>How it works.</strong> cron wakes up every minute, reads each crontab line, and starts the command when all five fields match the current time. cron runs jobs with a short PATH, with no terminal, and in your home folder. That is why each line changes into the repository by its full path and redirects output to a file.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One scheduled run of fetch.sh&quot;, &quot;nodes&quot;: [&quot;cron&quot;, &quot;scripts/fetch.sh&quot;, &quot;CityPulse API&quot;, &quot;logs/fetch.log&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;minute 0 or 30&quot;, &quot;note&quot;: &quot;cron starts the job in a minimal environment, with no terminal.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;GET readings&quot;, &quot;note&quot;: &quot;The script asks the API for the latest readings using curl.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;JSON reply&quot;, &quot;note&quot;: &quot;The API sends the readings back, or an error such as 500.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 3, &quot;label&quot;: &quot;INFO appended&quot;, &quot;note&quot;: &quot;The script writes one timestamped line to its log.&quot;}]}"></div>
+
+<p>Here is the crontab line that runs the fetch every 30 minutes, from the lesson:</p>
+<div class="hl"><pre><span></span><code>*/30<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/asha/citypulse-squad3<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/usr/bin/env<span class="w"> </span>bash<span class="w"> </span>scripts/fetch.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/cron.out<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>*/30</code> in the minute field means every 30 minutes, so the job fires at minute 0 and minute 30 of every hour.</li>
+<li>The four <code>*</code> fields mean "every hour, every day of month, every month and every day of week".</li>
+<li><code>cd /home/asha/citypulse-squad3</code> changes to the repository by its full path. Replace the path with the output of <code>pwd</code> in your own repository.</li>
+<li><code>&amp;&amp;</code> runs the next command only if the <code>cd</code> succeeded.</li>
+<li><code>/usr/bin/env bash scripts/fetch.sh</code> runs the script with Bash. The full path to <code>env</code> is used because cron's PATH is short.</li>
+<li><code>&gt;&gt; logs/cron.out</code> appends everything the script prints to a file.</li>
+<li><code>2&gt;&amp;1</code> sends standard error to the same place as standard output. The order matters: it must come after <code>&gt;&gt;</code>.</li>
+</ul>
+<p>You should expect nothing on the screen when cron runs the job. The results appear in <code>logs/cron.out</code> and <code>logs/fetch.log</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Not redirecting output</div><p>Without <code>&gt;&gt; logs/cron.out 2&gt;&amp;1</code>, errors go to the place where cron sends mail or are lost. The job fails and nothing records why. Always append both streams to a file.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Leaving the test schedule in place</div><p>Testing often uses <code>*/2</code>, which runs every two minutes. If it stays in the crontab it floods the API. Switch back to <code>*/30</code> when the test is over.</p></div>
+
+<h3 id="logging-lock-files-logrotate-and-health-checks">Logging, lock files, logrotate and health checks</h3>
+<p><strong>What it is.</strong> These four pieces make an unattended job observable and safe to leave running. A log records what each run did. A lock file stops two runs from overlapping. logrotate archives old log files so they cannot fill the disk. A health check reads the log and reports, through its exit code, whether the job is still succeeding.</p>
+<p><strong>Why CityPulse uses them.</strong> The P1 demo injects failures, and the team must diagnose each one from <code>logs/fetch.log</code> in under two minutes. <code>flock</code> and <code>ops/STOP</code> give a kill switch and overlap protection. The alternatives are weaker. PID files are common, but they go stale after a crash. <code>flock</code> releases its lock automatically when the process exits, even after a crash. Manual log cleanup works once, but someone forgets, and the disk fills.</p>
+<p><strong>How it works.</strong> <code>flock -n 9</code> in the skeleton holds the lock on file descriptor 9 for as long as the script runs. A health check measures the age of the newest successful line. The lesson's excerpt is:</p>
+<div class="hl"><pre><span></span><code><span class="nv">last</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>grep<span class="w"> </span><span class="s1">&#39; INFO appended&#39;</span><span class="w"> </span>logs/fetch.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f1<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">age</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="o">(</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$last</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="k">)</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="k">))</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$age</span><span class="s2">&quot;</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">120</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRIT: last success </span><span class="si">${</span><span class="nv">age</span><span class="si">}</span><span class="s2"> min ago&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$age</span><span class="s2">&quot;</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WARN: last success </span><span class="si">${</span><span class="nv">age</span><span class="si">}</span><span class="s2"> min ago&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: last success </span><span class="si">${</span><span class="nv">age</span><span class="si">}</span><span class="s2"> min ago&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>grep ' INFO appended' logs/fetch.log</code> keeps only the lines that record a success.</li>
+<li><code>tail -1</code> keeps the last of those lines, which is the newest.</li>
+<li><code>cut -d' ' -f1</code> splits the line on spaces and keeps field 1, the timestamp. <code>|| true</code> stops a failure in this pipeline from ending the script when the file has no success lines yet.</li>
+<li><code>date +%s</code> prints the current time as seconds since 1970. <code>date -d "$last" +%s</code> converts the logged timestamp to the same unit. The difference, divided by 60, is the age in minutes.</li>
+<li>The <code>if</code> maps age to status: 120 minutes or more is <code>CRIT</code> with exit code 2, 60 minutes or more is <code>WARN</code> with exit code 1, and anything less is <code>OK</code> with exit code 0. The lesson also defines exit code 3 for <code>UNKNOWN</code>, which is used when the log file does not exist.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Checking only that the log exists</div><p>A log file can exist and still hold nothing but failures. Measure the age of the last <code>INFO appended</code> line, not the file's existence.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Lock files inside the repository</div><p>A lock path inside the repository can be committed to version control or deleted by a cleanup. Use <code>/tmp/citypulse-$(whoami).lock</code>, as the skeleton does.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>This is the workbook's example, a script called <code>pull_readings.sh</code> that downloads the readings for one day, verifies them, logs the result and runs on a schedule. It has seven stages, and each stage adds one idea. Run them in order, and do not skip ahead.</p>
+<p><strong>Goal.</strong> Save today's readings to a dated file, log every run, and let cron run the script every hour.</p>
+<p><strong>Stage 1. The script with strict mode.</strong></p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+
+<span class="c1">## stop on error/unset/pipe</span>
+
+curl<span class="w"> </span>-sS<span class="w"> </span>--fail<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;https://api.city/v1/readings&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>readings.json
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pulled </span><span class="k">$(</span>wc<span class="w"> </span>-c<span class="w"> </span>&lt;<span class="w"> </span>readings.json<span class="k">)</span><span class="s2"> bytes&quot;</span>
+</code></pre></div>
+
+<p>Line by line: the shebang picks Bash. <code>set -euo pipefail</code> stops the script at the first failure. The <code>\</code> at the end of the <code>curl</code> line tells Bash that the command continues on the next line. <code>-sS</code> hides the progress meter but still shows errors. <code>--fail</code> turns an HTTP error such as 404 into a failure. <code>-o readings.json</code> saves the reply to a file. <code>wc -c &lt; readings.json</code> counts the bytes in the file, and <code>$( ... )</code> places that count into the <code>echo</code> line.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash -n pull_readings.sh &amp;&amp; echo \&quot;syntax OK\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;syntax OK&quot;}]}"></div>
+
+<p><code>bash -n</code> reads the script and checks its syntax without running it. The <code>&amp;&amp;</code> prints <code>syntax OK</code> only if the check passed.</p>
+<p><strong>Stage 2. Variables and a dated file.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">API_URL</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">API_URL</span><span class="k">:-</span><span class="nv">https</span><span class="p">://api.city/v1/readings</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>
+<span class="nv">OUT</span><span class="o">=</span><span class="s2">&quot;data/readings/</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json&quot;</span>
+curl<span class="w"> </span>-sS<span class="w"> </span>--fail<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$API_URL</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+<span class="nv">N</span><span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import json;print(len(json.load(open(&#39;</span><span class="nv">$OUT</span><span class="s2">&#39;))))&quot;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ingested </span><span class="nv">$N</span><span class="s2"> readings -&gt; </span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>${API_URL:-https://...}</code> uses the value of <code>API_URL</code> if one is set, and the default address otherwise. This lets you point the script at a test server without editing it. <code>$(date +%F)</code> prints today's date as <code>2026-11-03</code>. <code>OUT</code> holds the file name for that day, so each day's pull has its own file and yesterday's data is never overwritten. The <code>curl</code> line is the same as before with the variables in place. The <code>python3</code> line loads the file as JSON and prints the number of items in the list.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;./pull_readings.sh &amp;&amp; ls -1 data/readings/&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ingested 3 readings -&gt; data/readings/2026-11-03.json&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-11-03.json&quot;}]}"></div>
+
+<p>Note that <code>./pull_readings.sh</code> runs the script only if the file is marked executable, which lab step 6 covers.</p>
+<p><strong>Stage 3. An error trap that records failures.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">LOG</span><span class="o">=</span><span class="s2">&quot;logs/ingest.log&quot;</span>
+on_err<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nv">rc</span><span class="o">=</span><span class="nv">$?</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%F %T&#39;</span><span class="k">)</span><span class="s2"> FAIL exit=</span><span class="nv">$rc</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="nb">trap</span><span class="w"> </span>on_err<span class="w"> </span>ERR
+curl<span class="w"> </span>-sS<span class="w"> </span>--fail<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$API_URL</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>LOG</code> holds the log's path. <code>on_err()</code> defines a function. Inside it, <code>rc=$?</code> copies the exit code of the failed command into <code>rc</code>, because <code>$?</code> changes with every command. The <code>echo</code> line writes a timestamped <code>FAIL</code> line. <code>trap on_err ERR</code> tells the shell to run <code>on_err</code> whenever a command fails. <code>ERR</code> is the name of that event. The <code>curl</code> line now has its failure recorded.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;./pull_readings.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;curl: (22) The requested URL returned error: 404&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;tail -n 1 logs/ingest.log&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-11-03 14:00:02 FAIL exit=22&quot;}]}"></div>
+
+<p><code>curl</code> returns exit code 22 for an HTTP error. The trap copies that number into the log, so the failure is visible the next morning.</p>
+<p><strong>Stage 4. Verify the saved file.</strong> The workbook uses <code>jq</code> to check the file before anything downstream trusts it.</p>
+<div class="hl"><pre><span></span><code><span class="nv">FILE</span><span class="o">=</span><span class="s2">&quot;data/readings/</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span><span class="s2">.json&quot;</span>
+jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;&quot;readings: \(length)&quot;, (.[] | &quot; \(.station_id) \(.pollutant) \(.value)&quot;)&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FILE</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>FILE</code> holds today's path. <code>jq -r</code> prints raw text without the JSON quotes. <code>length</code> counts the items in the array, and <code>\(length)</code> places that count inside a string. <code>.[]</code> takes each item in turn. <code>.station_id</code>, <code>.pollutant</code> and <code>.value</code> pick the named fields from each item. If the file is not valid JSON, <code>jq</code> fails, and strict mode stops the script.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash verify.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;readings: 3&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-001 pm25 42.1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-002 no2 18.7&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-003 o3 63.4&quot;}]}"></div>
+
+<p>Three well-formed readings were confirmed for stations CP-001 to CP-003.</p>
+<p><strong>Stage 5. A timestamped success line.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%F %T&#39;</span><span class="k">)</span><span class="s2"> saved </span><span class="nv">$OUT</span><span class="s2"> (</span><span class="nv">$N</span><span class="s2"> readings)&quot;</span><span class="w"> </span>&gt;&gt;<span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line: the <code>echo</code> writes the date and time, the word <code>saved</code>, the file path and the reading count. <code>&gt;&gt;</code> appends to the log, so history is kept. Run the script and read the newest line with <code>tail -n 1</code>.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;./pull_readings.sh &amp;&amp; tail -n 1 logs/ingest.log&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ingested 3 readings -&gt; data/readings/2026-11-03.json&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-11-03 23:59:52 saved data/readings/2026-11-03.json (3 readings)&quot;}]}"></div>
+
+<p><strong>Stage 6. Schedule it hourly.</strong> The workbook writes this crontab file:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## CityPulse hourly ingest</span>
+<span class="c1">## min hour dom mon dow command</span>
+<span class="m">0</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/citypulse<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./pull_readings.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/cron.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+
+<p>The first field is <code>0</code>, so the job runs at minute 0 of every hour. The other fields are <code>*</code>, so it runs every day. <code>cd /opt/citypulse</code> makes the path absolute, and <code>./pull_readings.sh</code> runs the script from that folder. <code>&gt;&gt; logs/cron.log 2&gt;&amp;1</code> keeps both output streams. The workbook installs the file with <code>crontab citypulse.cron</code>. Be aware that this replaces your whole crontab, so the lab uses the append method in step 7 of the hands-on section instead.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;crontab -l&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;# CityPulse hourly ingest&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0 * * * * cd /opt/citypulse &amp;&amp; ./pull_readings.sh &gt;&gt; logs/cron.log 2&gt;&amp;1&quot;}]}"></div>
+
+<p><strong>Stage 7. Run the whole job once.</strong> Run exactly what cron will run, then check the three results.</p>
+<div class="hl"><pre><span></span><code>./pull_readings.sh
+bash<span class="w"> </span>verify.sh
+tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>logs/ingest.log
+</code></pre></div>
+
+<p>Line by line: the first line runs the pull and logs it. The second checks the file's contents. The third shows the newest audit line. Because <code>set -e</code> is active in the scripts, a failure in the first line stops the sequence.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash run_all.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ingested 3 readings -&gt; data/readings/2026-11-03.json&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;readings: 3&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-001 pm25 42.1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-002 no2 18.7&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; CP-003 o3 63.4&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-11-03 23:59:52 saved data/readings/2026-11-03.json (3 readings)&quot;}]}"></div>
+
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>You work in the lab terminal, inside your team's repository. Create folders with <code>mkdir -p scripts logs</code>, and edit files in a plain text editor such as VS Code or <code>nano</code>. Type a command exactly as shown, including spaces and capitals.</p>
+<h3 id="step-1-start-a-safe-script">Step 1. Start a safe script</h3>
+<p>Create <code>scripts/fetch.sh</code> and make its first three lines:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">/..&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>logs
+</code></pre></div>
+
+<p>You should see the file saved with those lines and nothing else yet. Check the syntax with <code>bash -n scripts/fetch.sh</code>. It should print nothing and return to the prompt. Then run <code>echo $?</code>, which should print <code>0</code>. You know the step worked when <code>bash -n</code> reports no error and the exit code is <code>0</code>.</p>
+<h3 id="step-2-take-arguments-and-set-variables">Step 2. Take arguments and set variables</h3>
+<p>Under the three lines, set <code>URL</code> and <code>TMP</code>:</p>
+<div class="hl"><pre><span></span><code><span class="nv">URL</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">https</span><span class="p">://api.city/v1/readings</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">TMP</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>mktemp<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>$1</code> is the first argument, so <code>bash scripts/fetch.sh https://example.org/x</code> uses that address. If you run the script with no argument, the default is used. <code>mktemp</code> creates an empty temporary file and prints its path. You should see no output when you run <code>bash -n</code> again. You know it worked when <code>echo "$URL"</code> prints the default address after you have sourced the file with <code>. scripts/fetch.sh</code>.</p>
+<h3 id="step-3-guard-preconditions">Step 3. Guard preconditions</h3>
+<p>Add the lock and the kill switch, copying the skeleton from the tools section. Test the kill switch: run <code>touch ops/STOP</code>, then <code>bash scripts/fetch.sh</code>. You should see no network request and a new line in <code>logs/fetch.log</code> ending in <code>ops/STOP present; not fetching</code>. Then run <code>rm ops/STOP</code>. You know it worked when the warning appears only while the file exists.</p>
+<h3 id="step-4-loop-over-the-stations">Step 4. Loop over the stations</h3>
+<p>Add a station loop that fetches one reading per station:</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>id<span class="w"> </span><span class="k">in</span><span class="w"> </span>CP-001<span class="w"> </span>CP-002<span class="w"> </span>CP-003<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;station </span><span class="nv">$id</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p><code>for id in</code> takes each word in turn and stores it in <code>id</code>. <code>echo</code> prints the id. When you run <code>bash scripts/fetch.sh</code>, you should see <code>station CP-001</code>, then <code>station CP-002</code>, then <code>station CP-003</code>, in that order. You know it worked when all three appear, one per line.</p>
+<h3 id="step-5-log-and-report-an-exit-code">Step 5. Log and report an exit code</h3>
+<p>Add the <code>log</code> function and the retry function from the tools section, then call the retry function inside the loop. Run the script against a broken address:</p>
+<div class="hl"><pre><span></span><code>bash<span class="w"> </span>scripts/fetch.sh<span class="w"> </span>https://api.city/v1/nope
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</code></pre></div>
+
+<p>The script should log two <code>WARN</code> lines and one <code>ERROR</code> line in <code>logs/fetch.log</code>, and <code>echo $?</code> should print <code>1</code>. You know it worked when the three log lines are present and the exit code matches the failure.</p>
+<h3 id="step-6-make-it-executable-and-dry-run-it">Step 6. Make it executable and dry-run it</h3>
+<p>Run <code>chmod +x scripts/fetch.sh</code>. The command <code>chmod +x</code> adds the execute permission. Then run <code>ls -l scripts/fetch.sh</code>. The line should start with <code>-rwxr-xr-x</code> or similar, with <code>x</code> in the permission string. Run <code>./scripts/fetch.sh</code> once with a valid URL, then <code>tail -5 logs/fetch.log</code>. You should see <code>INFO appended</code> and no <code>ERROR</code> lines.</p>
+<p>To dry-run the script without a network call, run <code>bash -n scripts/fetch.sh</code>. It checks the syntax and makes no request. You know the dry run worked when no syntax error is printed.</p>
+<h3 id="step-7-schedule-it-with-cron">Step 7. Schedule it with cron</h3>
+<p>First save the current crontab, then append the line. Replace the path with the output of <code>pwd</code> in your repository:</p>
+<div class="hl"><pre><span></span><code>crontab<span class="w"> </span>-l<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>&gt;<span class="w"> </span>/tmp/cron.asha<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/cron.asha<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">*/30 * * * * cd /home/asha/citypulse-squad3 &amp;&amp; /usr/bin/env bash scripts/fetch.sh &gt;&gt; logs/cron.out 2&gt;&amp;1</span>
+<span class="s">EOF</span>
+crontab<span class="w"> </span>/tmp/cron.asha
+crontab<span class="w"> </span>-l
+</code></pre></div>
+
+<p>The first line saves your current crontab to a temporary file. <code>2&gt;/dev/null</code> hides the error that appears when you have no crontab yet. <code>|| true</code> makes the line count as success even then. The <code>cat</code> line appends the job, and <code>&lt;&lt;EOF</code> says that everything up to the next line reading <code>EOF</code> is the text to append. The <code>crontab</code> line installs the file, and <code>crontab -l</code> prints the result. You should see your job in the output. You know it worked when that line appears and, after the next half hour, <code>logs/cron.out</code> has new content.</p>
+<div class="box box-tip"><div class="box-h">Tip: Prove the job runs</div><p>Do not wait in silence. Temporarily use <code>*/2</code> in the minute field, check one cycle with <code>tail logs/cron.out</code>, then change it back to <code>*/30</code> and run <code>crontab -l</code> again. Leaving <code>*/2</code> in place floods the API.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Cron schedule &amp; ingest validation (Bash/cron)" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Splits all 5 fields plus the full command</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Fires at 03:30 (minute 30 is a 15-multiple, 3 in 0-6)</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Minute 7 is not a 15-multiple</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A well-formed reading is valid</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 58 of the 100 points. The other 42 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K02.html#y2-t06-ship-scriptsfetchsh-with-retries-logs-lock-dedup-and-30-min-cron">Y2-T06 · Ship scripts/fetch.sh with retries, logs, lock, dedup and 30-min cron</a></li>
+<li><a href="K02.html#y2-t07-p1-demo-healthcheck-log-rotation-2nd-source-merge-tag-v01-p1">Y2-T07 · P1 demo: healthcheck, log rotation, 2nd source merge, tag v0.1-p1</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic in this section, in the order given here. You need 70% to pass, which means seven correct answers. Your skill score keeps the result of your first attempt. A second attempt helps you learn, but it does not change the score. Every question describes a team, a symptom or a constraint, and then asks for a decision.</p>
+<p>Answer each case-study question in this order. First, read the last line of the question to find what is being asked. Many students read the scenario first and lose track of the task, so know the task before you sort the facts. Second, underline the facts in the scenario that matter: the schedule, the path, the error message, the constraint. Third, eliminate options that are true in general but do not fix this scenario. A correct fact can still be the wrong answer. Fourth, watch for three words. "Most" asks for the strongest answer among several sensible ones. "First" asks what to do before anything else. "Best" asks for the option with the fewest downsides for this team.</p>
+<p>Each topic below follows the same pattern. You get a plain explanation with a small example and its output, a short CityPulse scenario, a trap box that shows the tempting wrong answer, and three practice questions. Each section ends with a self-test of ten mixed questions. Read the explanation before you try the questions. Every WHY line explains the right answer and why the most tempting wrong option fails.</p>
+<h3 id="the-shebang-line">The shebang line</h3>
+<p><strong>What it is.</strong> The shebang is the first line of a script. It starts with the two characters <code>#!</code> and is followed by the path of the program that should run the file. For a Bash script the line is <code>#!/usr/bin/env bash</code>. When you type <code>./pull.sh</code>, the system reads those first two characters, starts the named program and gives it the file. The line must be the very first thing in the file. A blank line, a space or a comment above it means the system does not see a shebang at all. <code>/usr/bin/env</code> searches PATH for <code>bash</code>, so the line works on machines where Bash lives in a different folder.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pulled readings&quot;</span>
+</code></pre></div>
+
+<p>Running <code>./pull.sh</code> prints <code>pulled readings</code>. Running <code>bash pull.sh</code> prints the same line, but there the shebang is ignored, because you have named Bash yourself. Bash also treats the shebang as a comment, since it starts with <code>#</code>.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse squad keeps <code>fetch.sh</code> in Git. Ruth's laptop has Bash installed in a folder other than <code>/bin</code>, and the lab server has it in <code>/bin</code>. Ruth pastes the script into a chat message, and her editor adds a blank first line. On the lab server, Mohan runs <code>./fetch.sh</code> and the file does not start with Bash through its first line, although <code>bash fetch.sh</code> still works. The right decision is to delete the blank line, so that <code>#!/usr/bin/env bash</code> is the first line again. Keep <code>env</code>, because it lets both machines find Bash.</p>
+<div class="box box-trap"><div class="box-h">Trap: A blank line above the shebang</div><p>It is tempting to think that Bash skips whitespace, so a blank line does no harm. For the shebang it does. The system reads the first two bytes of the file, so <code>#!</code> must be there and nothing else can come first.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate&#x27;s script begins with a blank line, then #!/usr/bin/env bash on line 2. Asha runs ./fetch.sh directly and the shebang seems to be ignored. What is the cause?&quot;, &quot;opts&quot;: [&quot;The blank line is ignored, so the shebang still works.&quot;, &quot;Bash reads only shebangs that name /bin/bash.&quot;, &quot;The shebang must be the first two characters of the file, so on line 2 it is only a comment.&quot;, &quot;Running the file with ./ always skips the shebang.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The system reads the shebang only when #! are the first two characters. The tempting answer is that blank lines are skipped, but no such exception exists.&quot;}, {&quot;q&quot;: &quot;Ravi wants one script to run on a Mac, where Bash is in /opt/homebrew/bin, and on the lab server, where it is in /bin. Which first line lets both machines find Bash without editing the file?&quot;, &quot;opts&quot;: [&quot;#!/usr/bin/env bash&quot;, &quot;#!/bin/bash only&quot;, &quot;#!bash&quot;, &quot;#! /usr/bin/bash --login&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;env searches PATH for bash, so the line works wherever Bash is installed. A hard-coded /bin/bash does not point at the Bash in /opt/homebrew/bin, and a bare name without a path is not looked up in PATH, so it does not work reliably.&quot;}, {&quot;q&quot;: &quot;A lecturer says the shebang has no effect when a student types bash fetch.sh. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The shebang is always used, even when you type bash fetch.sh.&quot;, &quot;The shebang is read first, then Bash runs the file a second time.&quot;, &quot;A shebang is only a comment, so it never has any effect.&quot;, &quot;The shebang chooses the program only when the file is run directly, so bash fetch.sh ignores it.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;With bash fetch.sh you name the interpreter yourself, so the first line is not used to choose one. The tempting answer is that the shebang always runs, which would make typing bash unnecessary.&quot;}]}"></div>
+
+<h3 id="positional-arguments">Positional arguments</h3>
+<p><strong>What it is.</strong> Arguments are the values typed after a script name. Inside the script they are numbered. <code>$0</code> holds the script name, <code>$1</code> the first argument, <code>$2</code> the second, and so on. <code>$#</code> holds the number of arguments. <code>"$@"</code> holds all the arguments, each kept as its own word even when it contains a space. Positions above nine need braces, so the tenth argument is <code>${10}</code>.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;script: </span><span class="nv">$0</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;station: </span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;count: </span><span class="nv">$#</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Running <code>./show.sh CP-001 pm25</code> prints <code>script: ./show.sh</code>, then <code>station: CP-001</code>, then <code>count: 2</code>. The script name is not counted in <code>$#</code>. The command <code>shift</code> drops <code>$1</code> and moves every later argument down by one place, so the old <code>$2</code> becomes <code>$1</code>.</p>
+<p><strong>How it shows up in a case study.</strong> The squad's <code>backfill.sh</code> takes a station id in <code>$1</code> and a start date in <code>$2</code>. Priya runs <code>./backfill.sh CP-004</code> and forgets the date. Because the script runs with <code>set -u</code>, it stops with an error about an unbound variable at the point where <code>$2</code> is used. The right decision is to check <code>$#</code> at the top of the script, print a usage line that shows both arguments, and exit with status 1 before the script touches the network or the data folder.</p>
+<div class="box box-trap"><div class="box-h">Trap: Writing $10 for the tenth argument</div><p><code>$10</code> means the first argument followed by a zero, so the script receives the value of <code>$1</code> with a 0 added. Write <code>${10}</code> when you need the tenth argument.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Ben starts a script as ./import.sh data/cp.csv 2026-11-03 strict. Inside the script he writes echo \&quot;$3\&quot;. What is printed?&quot;, &quot;opts&quot;: [&quot;data/cp.csv&quot;, &quot;strict&quot;, &quot;2026-11-03&quot;, &quot;3&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;$3 is the third argument after the script name. $1 is the file and $2 is the date. The tempting answer 3 confuses the position with the value stored there.&quot;}, {&quot;q&quot;: &quot;A script receives twelve arguments, and its author writes echo \&quot;$10\&quot; to print the tenth one. What happens?&quot;, &quot;opts&quot;: [&quot;It prints the tenth argument, as intended.&quot;, &quot;It prints an error, because positions above nine are not allowed.&quot;, &quot;It prints nothing, because numbers above nine are ignored.&quot;, &quot;It prints the first argument followed by a zero.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Bash reads $10 as $1 followed by the text 0. The tenth argument needs braces, written ${10}. The tempting answer assumes the number is read as a whole.&quot;}, {&quot;q&quot;: &quot;A script is run as ./copy.sh \&quot;north dock\&quot; south. It loops with for f in \&quot;$@\&quot; and echoes each item. How many lines are printed, and what is the first?&quot;, &quot;opts&quot;: [&quot;Two lines, the first being north dock.&quot;, &quot;Three lines, the first being north.&quot;, &quot;Two lines, the first being \&quot;north.&quot;, &quot;One line, containing north dock south.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;\&quot;$@\&quot; keeps each argument as one word, so the quoted name stays together. The tempting answer splits it at the space, which is what an unquoted $@ would do.&quot;}]}"></div>
+
+<h3 id="strict-mode-with-set-euo-pipefail">Strict mode with set -euo pipefail</h3>
+<p><strong>What it is.</strong> <code>set -e</code> stops the script when a command returns a non-zero exit code. <code>set -u</code> stops it when a variable that was never set is used. <code>set -o pipefail</code> makes a pipeline fail when any command in it fails, not only the last one. Strict mode has one important exception: a failure inside the condition of an <code>if</code> is handled by the <code>if</code>, so <code>-e</code> does not stop the script there.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nb">false</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">true</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;still running&quot;</span>
+</code></pre></div>
+
+<p>This script prints nothing. The pipeline <code>false | true</code> fails because of <code>pipefail</code>, so <code>-e</code> stops the script on line 3 and the second <code>echo</code> never runs. Without <code>pipefail</code>, the pipeline would report the status of <code>true</code>, which is 0, and the script would print <code>still running</code>.</p>
+<p><strong>How it shows up in a case study.</strong> The nightly job runs <code>curl -sS --fail "$URL" | jq '.readings' &gt; data/today.json</code>. The API returns a 404. <code>curl</code> fails, and <code>jq</code> receives nothing and exits with 0, so without <code>pipefail</code> the file is written as empty and the job reports success. The team needs the job to stop. With <code>set -euo pipefail</code> the pipeline fails as a whole, and <code>-e</code> stops the script at that line, so the empty file is never trusted.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming -e stops for every failure</div><p><code>-e</code> does not stop the script for a failing command used as an <code>if</code> test, and it does not see a failure inside the first command of a pipeline unless <code>pipefail</code> is on. The tempting belief is that strict mode catches everything. Check each case.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script runs cat missing.txt | sort &gt; out.txt under set -euo pipefail. The file is missing, so cat fails, but sort succeeds and writes an empty out.txt. What happens next?&quot;, &quot;opts&quot;: [&quot;The script carries on, because sort succeeded and only the last command counts.&quot;, &quot;The script carries on, because -e never applies to pipelines.&quot;, &quot;The script stops, because pipefail makes the pipeline fail when cat failed.&quot;, &quot;The script stops, because -u stops on any missing file.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;pipefail makes the status of a pipeline the rightmost non-zero status, so the failed cat stops the script. -u is about variables that were never set, not about files. The tempting answer is what Bash does without pipefail.&quot;}, {&quot;q&quot;: &quot;A script sets NAME=\&quot;\&quot; on purpose and later uses \&quot;$NAME\&quot;. It runs under set -u. What happens?&quot;, &quot;opts&quot;: [&quot;The script carries on, because the variable is set, even though its value is empty.&quot;, &quot;The script stops at the assignment, because empty values are not allowed.&quot;, &quot;The script stops at the use, because the variable is empty.&quot;, &quot;The script stops only if NAME is used inside an if test.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;-u checks whether a variable has been set, not whether it holds text. An empty string is a value. The tempting answer confuses empty with unset.&quot;}, {&quot;q&quot;: &quot;A script under set -e runs if grep -q ERROR logs/fetch.log; then echo found; fi. There are no ERROR lines, so grep returns 1. Does set -e stop the script at this line?&quot;, &quot;opts&quot;: [&quot;Yes, because grep returned 1, which is a failure.&quot;, &quot;Yes, because -e stops on any non-zero status.&quot;, &quot;Only if pipefail is also active.&quot;, &quot;No, because a command used as the test of an if is handled by the if.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The condition of an if is designed to handle failure, so set -e ignores it. The tempting answer is that -e stops on every non-zero status.&quot;}]}"></div>
+
+<h3 id="looping-over-a-list-with-for">Looping over a list with for</h3>
+<p><strong>What it is.</strong> A <code>for</code> loop runs its body once for each word in a list. <code>for id in CP-001 CP-002; do echo "$id"; done</code> prints two lines. The list can also be a pattern such as <code>data/readings/*.json</code>. Bash replaces an unquoted pattern with the names of the matching files before the loop starts, and each name becomes one word. The loop variable keeps its last value after the loop has finished.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>data/readings/*.json<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>If the folder holds <code>2026-11-01.json</code> and <code>2026-11-02.json</code>, the output is two lines, one per file, in sorted order. If you add a third file, the loop runs three times without any change to the script.</p>
+<p><strong>How it shows up in a case study.</strong> The squad counts readings for each station file in one folder. Sam writes <code>for f in "data/readings/*.json"</code> with quotes. The quotes stop the expansion, so the loop receives one word, the text with the star in it. It runs once and reports zero readings for a file that does not exist. The right decision is to remove the quotes around the pattern. Quote the variable inside the loop, as in <code>"$f"</code>, to keep names with spaces intact.</p>
+<div class="box box-trap"><div class="box-h">Trap: Quoting the pattern</div><p>Quotes around a pattern stop the shell from expanding it. The loop then runs once with the literal text, not once per file. Remove the quotes around the pattern and keep quotes around the variable.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The folder data/readings holds 2026-11-01.json, 2026-11-02.json and 2026-11-03.json. A script contains for f in data/readings/*.json; do echo \&quot;$f\&quot;; done. How many lines does it print?&quot;, &quot;opts&quot;: [&quot;Three, one for each file name.&quot;, &quot;One, showing the text data/readings/*.json.&quot;, &quot;Zero, because an unquoted pattern is never expanded.&quot;, &quot;Three, but each line shows only the date part of the name.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The shell expands an unquoted pattern into the matching file names before the loop starts. The quoted version would give one literal word, which is the tempting answer.&quot;}, {&quot;q&quot;: &quot;A script sets count=0 and then runs for id in CP-001 CP-002 CP-003; do count=$((count + 1)); done. What are count and id after the loop?&quot;, &quot;opts&quot;: [&quot;count is 3 and id is empty.&quot;, &quot;count is 0, because the loop variable is local to the loop.&quot;, &quot;count is 3 and id is CP-003.&quot;, &quot;count is 2, because the last item is skipped.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The loop runs three times and the variable id keeps its last value. The tempting answer assumes the loop variable is cleared at the end.&quot;}, {&quot;q&quot;: &quot;A teammate writes for id in \&quot;CP-001 CP-002\&quot;; do echo \&quot;$id\&quot;; done and expects two lines. What does the script print?&quot;, &quot;opts&quot;: [&quot;CP-001 and CP-002 on two lines.&quot;, &quot;CP-001 CP-002 on one line.&quot;, &quot;Nothing, because the quotes stop the loop.&quot;, &quot;An error, because a loop needs a list without quotes.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The quotes make the whole text one word, so the loop runs once and prints the text with a space in it. The tempting answer is two lines, which needs the list to be unquoted.&quot;}]}"></div>
+
+<h3 id="reading-a-cron-schedule">Reading a cron schedule</h3>
+<p><strong>What it is.</strong> A crontab line has five schedule fields and then a command. The fields are minute (0 to 59), hour (0 to 23), day of month (1 to 31), month (1 to 12) and day of week (0 to 6, where 0 is Sunday). An asterisk means every value. <code>*/n</code> means every n units, counted from zero, so <code>*/15</code> in the minute field fires at 0, 15, 30 and 45. A comma makes a list, and a hyphen makes an inclusive range that includes both ends.</p>
+<div class="hl"><pre><span></span><code>*/30<span class="w"> </span><span class="m">9</span>-17<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">1</span>-5<span class="w"> </span>bash<span class="w"> </span>scripts/fetch.sh
+</code></pre></div>
+
+<p>This line runs the script at minutes 0 and 30 of hours 9 to 17, on Monday to Friday. That is 18 runs a day, from 09:00 to 17:30, and none at weekends.</p>
+<p><strong>How it shows up in a case study.</strong> The sponsor wants the ingest to run every 30 minutes from 08:00 to 17:30 on working days, and nothing outside those hours. Lee writes <code>*/30 8-17 * * 1-5</code>. The minute field handles the 30-minute rhythm, the hour field holds the window, and the weekday field limits the job to Monday to Friday. The other two fields stay as stars, because the sponsor did not mention a day of the month or a month. The decision is to keep the five fields in order and to use the step only in the minute field.</p>
+<div class="box box-trap"><div class="box-h">Trap: A step in the wrong field</div><p>The line <code>0 */30 * * *</code> looks like a half-hourly job, but the step is in the hour field. Hours only run from 0 to 23, so <code>*/30</code> matches hour 0 alone, and the job runs once a day at midnight.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A crontab line reads 0 */6 * * * bash fetch.sh. At which times does the job run?&quot;, &quot;opts&quot;: [&quot;Every six minutes, at all hours.&quot;, &quot;Once a day at 06:00.&quot;, &quot;Every hour, on the sixth minute.&quot;, &quot;At minute 0 of hours 0, 6, 12 and 18.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The first field is the minute and the second is the hour. The hour step */6 matches 0, 6, 12 and 18, and the minute 0 fixes the time. The tempting answer assumes the step belongs to the minute field because it appears first.&quot;}, {&quot;q&quot;: &quot;A job must run at 09:00 and 17:00 every Monday to Friday. Which five fields are right?&quot;, &quot;opts&quot;: [&quot;9,17 0 * * 1-5&quot;, &quot;0 9,17 * * 1-5&quot;, &quot;0 9-17 * * 0-5&quot;, &quot;0 9 17 * * 1-5&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The order is minute, hour, day of month, month, day of week. Minute 0 with the hour list 9,17 is right. 9-17 would run every hour in the range, 0-5 includes Sunday, and 17 in the day-of-month field would run the job only on the 17th.&quot;}, {&quot;q&quot;: &quot;A job must run every 15 minutes, but only during the hour from 02:00 to 02:45. Which five fields are right?&quot;, &quot;opts&quot;: [&quot;*/15 * 2 * *&quot;, &quot;15 2 * * *&quot;, &quot;*/15 2 * * *&quot;, &quot;0,15,30,45 * 2 * *&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The minute field is */15 and the hour field is 2. The tempting answer */15 * 2 * * puts the hour in the day-of-month field, so it runs on the second of every month. The answer 15 2 * * * runs only once.&quot;}]}"></div>
+
+<h3 id="the-cron-environment">The cron environment</h3>
+<p><strong>What it is.</strong> cron starts each job in a minimal environment. The PATH is short, there is usually no terminal, settings in your <code>.bashrc</code> are not loaded, and the working directory is your home folder. A command that works when you type it may not be found under cron. A crontab line such as <code>*/30 * * * * jq --version &gt;&gt; logs/cron.out 2&gt;&amp;1</code> can write <code>command not found</code> to the log when <code>jq</code> is installed in a folder that cron's PATH does not search (on some systems <code>jq</code> is in <code>/usr/bin</code>, which cron does search, so the example depends on where your machine installs it). Three fixes are common: give the full path to the program, set PATH at the top of the script, or load settings from a file such as <code>.env</code> inside the script.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:/usr/bin:/bin&quot;</span>
+<span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>jq
+</code></pre></div>
+
+<p><code>command -v jq</code> prints the path of <code>jq</code> when it can find it, and prints nothing with a failing status when it cannot. Put the PATH line before any command that needs a program, and cron finds the program in the same way your terminal does.</p>
+<p><strong>How it shows up in a case study.</strong> Dev's script <code>render.sh</code> uses the program <code>convert</code>, which the laptop installs in <code>/usr/local/bin</code>. The same script runs by hand on the laptop, but under cron the log says <code>convert: command not found</code>. The program is installed and works by hand, so the problem is cron's short PATH, not a missing program. The best decision is to set PATH in the script, or give the full path to <code>convert</code>, which needs no change to the crontab. Running cron as root is not needed and would not be safe.</p>
+<div class="box box-trap"><div class="box-h">Trap: Running cron as root</div><p>Running the job as root would let cron find more programs, but it is unnecessary and unsafe. The fix is a full path or a PATH line in the script, which works for any user.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Mira&#x27;s script runs convert on a PNG file. It works in her terminal, but the cron log says convert: command not found. Which fix is right?&quot;, &quot;opts&quot;: [&quot;Give the full path to convert in the script, or set PATH at the top of the script.&quot;, &quot;Run the job as the root user so that it can see every program.&quot;, &quot;Change the schedule to */2 so that it retries more often.&quot;, &quot;Add set -x so that the log shows more detail.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;cron starts with a short PATH, so the shell cannot find convert. The full path or a PATH line fixes it. Root is the tempting but unsafe answer, and set -x adds detail without changing where Bash looks.&quot;}, {&quot;q&quot;: &quot;A script loads its settings from .env, which holds API_URL. Under cron the script reports that API_URL is unset, although it is set in Ana&#x27;s terminal. Which change is correct?&quot;, &quot;opts&quot;: [&quot;Copy the .env file into /etc so that cron can read it.&quot;, &quot;Ask cron to start a terminal session, so that the shell reads .bashrc.&quot;, &quot;Load .env inside the script, after changing to the repository folder.&quot;, &quot;Remove set -u, so that unset variables are ignored.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;cron does not read your .bashrc or start a terminal, so settings exported in your shell are missing. Loading the file inside the script works under any caller. Removing set -u hides the problem instead of fixing it.&quot;}, {&quot;q&quot;: &quot;Eli&#x27;s crontab line is */30 * * * * bash scripts/fetch.sh with no cd. By hand, the same command works from the repository. Under cron the log says bash: scripts/fetch.sh: No such file or directory. Why?&quot;, &quot;opts&quot;: [&quot;cron ignores crontab lines that use a relative path.&quot;, &quot;cron starts in the home folder, so the relative path is looked up there.&quot;, &quot;The script has no shebang, so cron refuses to run it.&quot;, &quot;cron cannot run bash, so it runs sh instead.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A relative path is resolved from the working directory, and cron normally starts in your home folder. The tempting answer blames the crontab, but the path is valid; it is simply resolved from a different place.&quot;}]}"></div>
+
+<h3 id="conditional-operators-in-tests">Conditional operators in tests</h3>
+<p><strong>What it is.</strong> A test written inside <code>[ ]</code> is a command that returns 0 when the condition is true and 1 when it is false. For numbers, the operators are <code>-eq</code>, <code>-ne</code>, <code>-lt</code>, <code>-le</code>, <code>-gt</code> and <code>-ge</code>. For text, use <code>=</code> and <code>!=</code>. <code>&amp;&amp;</code> runs the second command only if the first succeeded, and <code>||</code> runs the second command only if the first failed.</p>
+<div class="hl"><pre><span></span><code><span class="nv">attempt</span><span class="o">=</span><span class="m">3</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$attempt</span><span class="s2">&quot;</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;give up&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</code></pre></div>
+
+<p>The output is <code>give up</code>, because 3 is greater than or equal to 3. Changing <code>-ge</code> to <code>-gt</code> would print nothing, because <code>-gt</code> is false for 3.</p>
+<p><strong>How it shows up in a case study.</strong> The healthcheck computes the age of the last successful fetch in minutes. The rule is that an age of 120 minutes or more is critical. Kofi writes <code>[ "$age" -gt 120 ]</code>, and the team is surprised when an age of exactly 120 is reported as a warning. The decision is to use <code>-ge</code>, which includes the boundary value. The quotes around <code>"$age"</code> also protect the test if the variable is empty.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using &gt; inside brackets</div><p><code>&gt;</code> inside <code>[ ]</code> is not a comparison. Bash reads it as a redirection and writes the output of the test to a file named after the word on the right. Use <code>-gt</code> for numbers.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script must exit when count is below 5 and carry on when it is 5 or more. Which test should guard the exit?&quot;, &quot;opts&quot;: [&quot;[ \&quot;$count\&quot; -le 5 ]&quot;, &quot;[ \&quot;$count\&quot; -gt 5 ]&quot;, &quot;[ \&quot;$count\&quot; -lt 5 ]&quot;, &quot;[ \&quot;$count\&quot; = 5 ]&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-lt is true when count is less than 5, so the exit runs only for values below 5. -le includes 5, which would exit at the wrong value. The tempting answer -gt is true for 6 and above, the opposite of what is needed.&quot;}, {&quot;q&quot;: &quot;A script contains if [ $size &gt; 100 ]; then ... fi. What is the main problem?&quot;, &quot;opts&quot;: [&quot;Bash treats &gt; as a redirection and writes to a file named 100, so the comparison never happens.&quot;, &quot;Bash compares the two values as text, which is always correct for numbers.&quot;, &quot;The test works, but it runs slowly on large files.&quot;, &quot;Nothing, because &gt; and -gt mean the same inside brackets.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Inside single brackets &gt; is a redirection, which creates a file, so the test does not compare sizes. The fix is -gt. The tempting answer assumes &gt; behaves like -gt.&quot;}, {&quot;q&quot;: &quot;A script runs grep -q ERROR logs/fetch.log &amp;&amp; echo \&quot;errors found\&quot; || echo \&quot;clean\&quot;. grep finds no match and returns 1. What is printed?&quot;, &quot;opts&quot;: [&quot;errors found&quot;, &quot;clean&quot;, &quot;errors found, then clean&quot;, &quot;Nothing, because grep stops the script.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;&amp;&amp; runs the next command only when the previous one succeeded, and || runs its command only when the previous one failed. grep returns 1 when there is no match, so the second echo runs. The tempting answer is errors found, because that text comes first in the line.&quot;}]}"></div>
+
+<h3 id="redirecting-cron-output">Redirecting cron output</h3>
+<p><strong>What it is.</strong> Redirection changes where a command sends its streams. Standard output is stream 1 and standard error is stream 2. <code>&gt;</code> writes to a file and replaces what was there. <code>&gt;&gt;</code> appends to the end of the file. <code>2&gt;&amp;1</code> sends stream 2 to wherever stream 1 is going at that point. Redirections are read from left to right, so the order matters.</p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;fetched&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/cron.out<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ls<span class="w"> </span>/missing<span class="w"> </span>&gt;&gt;<span class="w"> </span>logs/cron.out<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+
+<p>After both lines, <code>logs/cron.out</code> contains <code>fetched</code> and the error from <code>ls</code>, which reads <code>ls: cannot access '/missing': No such file or directory</code>. Both streams reached the file. Had the second line been written as <code>2&gt;&amp;1 &gt;&gt; logs/cron.out</code>, the error would have gone to the place where standard output pointed before the redirection, and the file would have held only standard output.</p>
+<p><strong>How it shows up in a case study.</strong> The cron job runs <code>bash scripts/fetch.sh &gt;&gt; logs/cron.out</code>. A fetch fails and prints an ERROR line on standard error. The log file has nothing new, so the team concludes that no run happened. The decision is to append standard error to the same file by writing <code>&gt;&gt; logs/cron.out 2&gt;&amp;1</code>. The team then reads the file and finds the error line that explains the failure.</p>
+<div class="box box-trap"><div class="box-h">Trap: Writing 2&gt;1</div><p><code>2&gt;1</code> does not mean "send errors to standard output". It writes standard error to a file named <code>1</code>. To join the streams, write <code>2&gt;&amp;1</code>.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A crontab line reads */30 * * * * bash fetch.sh 2&gt;&amp;1 &gt;&gt; logs/cron.out. An ERROR line is written to standard error. Where does it go?&quot;, &quot;opts&quot;: [&quot;Into logs/cron.out.&quot;, &quot;Into a file named 1.&quot;, &quot;To wherever standard output pointed before the redirection, not to the file.&quot;, &quot;Nowhere, because 2&gt;&amp;1 hides it.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Redirections are read left to right. When 2&gt;&amp;1 is read, standard output still points to the old place, so stream 2 is copied there, before the file redirection takes effect. The tempting answer is that the line sends everything to the file.&quot;}, {&quot;q&quot;: &quot;A job runs every 30 minutes and ends with &gt; logs/cron.out 2&gt;&amp;1. Each run deletes the previous run&#x27;s output. Which change keeps the history?&quot;, &quot;opts&quot;: [&quot;Change &gt; to 2&gt;, so that errors are kept.&quot;, &quot;Change &gt; to &gt;&gt;, so that each run appends to the file.&quot;, &quot;Add set -x to the script, so that the log grows.&quot;, &quot;Send the output to /dev/null instead of the file.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;&gt; replaces the file and &gt;&gt; appends to it. The tempting answer 2&gt; keeps only errors, and it would drop the normal output the team needs.&quot;}, {&quot;q&quot;: &quot;A crontab writes with &gt;&gt; logs/cron.out 2&gt;log/errors.out. The team wants both streams in cron.out. What is wrong?&quot;, &quot;opts&quot;: [&quot;Standard error goes to a separate file, so the errors are not in cron.out. Use 2&gt;&amp;1 instead.&quot;, &quot;Nothing is wrong, because 2&gt;log/errors.out is the same as 2&gt;&amp;1.&quot;, &quot;The file names must be in quotes, or cron rejects the line.&quot;, &quot;Redirections are read right to left, so errors reach cron.out anyway.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;2&gt; with a file name sends standard error to that file, not to cron.out. 2&gt;&amp;1 joins it to the same place as standard output. The tempting answer equates the two forms, but only 2&gt;&amp;1 joins the streams.&quot;}]}"></div>
+
+<h3 id="command-substitution">Command substitution</h3>
+<p><strong>What it is.</strong> <code>$(command)</code> runs the command and puts its output in place of the substitution. Trailing newlines are removed. You can store the result in a variable or put it inside a line of text. Single quotes stop the substitution, so <code>'$(date)'</code> is only the text. Substitution also carries the exit code of the command, which matters when the script uses <code>set -e</code>.</p>
+<div class="hl"><pre><span></span><code><span class="nv">today</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Report for </span><span class="nv">$today</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>On 3 November 2026 the output is <code>Report for 2026-11-03</code>. The <code>%F</code> format prints the date as year, month and day. The command inside the brackets runs first, and its output replaces it before <code>echo</code> runs.</p>
+<p><strong>How it shows up in a case study.</strong> A script counts the readings in a file with <code>rows=$(wc -l data/readings.csv)</code>. The report reads <code>rows: 12 data/readings.csv</code> instead of <code>rows: 12</code>. The problem is that <code>wc</code> prints the file name when the file is passed as an argument, but not when the file is given through input redirection. The decision is to write <code>rows=$(wc -l &lt; data/readings.csv)</code>, which gives the count alone, and to keep the substitution in a plain assignment, so <code>set -e</code> sees its exit code.</p>
+<div class="box box-trap"><div class="box-h">Trap: local hides the exit code</div><p><code>local status=$(curl -sf "$URL")</code> looks like one step, but <code>local</code> succeeds whatever the command returns. Under <code>set -e</code> the failure is hidden. Declare the variable with <code>local status</code> on one line, then assign it with <code>status=$(...)</code> on the next.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;In a function, a teammate writes local status=$(curl -sf \&quot;$URL\&quot;) under set -e. curl fails with exit code 22, and the script keeps going. Why?&quot;, &quot;opts&quot;: [&quot;local always succeeds, so the failure of the substitution is hidden from set -e.&quot;, &quot;The substitution is in quotes, so curl never runs.&quot;, &quot;set -e ignores every command inside a function.&quot;, &quot;curl returns 0 whenever -f is used.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;local is a command that returns 0, so the status of the substitution is lost. Declaring the variable on one line and assigning it on the next keeps the status. The tempting answer blames the function, but the cause is the single line.&quot;}, {&quot;q&quot;: &quot;A script contains echo &#x27;Today is $(date +%F)&#x27;. What does it print?&quot;, &quot;opts&quot;: [&quot;Today is 2026-11-03&quot;, &quot;Today is date +%F&quot;, &quot;Today is $(date +%F)&quot;, &quot;Nothing, because single quotes are not allowed around substitutions.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Single quotes stop expansion, so the text is printed exactly as typed. The tempting answer is the date, which appears only when the substitution is outside single quotes.&quot;}, {&quot;q&quot;: &quot;A script runs mode=\&quot;$(grep -o &#x27;mode=[a-z]*&#x27; config.txt)\&quot; with no local keyword, under set -e. config.txt has no matching line, so grep returns 1 and prints nothing. What happens?&quot;, &quot;opts&quot;: [&quot;The script carries on, with mode set to the word none.&quot;, &quot;The script carries on, because -e ignores assignments.&quot;, &quot;The script stops, because set -u sees an unset variable.&quot;, &quot;The script stops, because the assignment takes the failing status of grep.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A plain assignment takes the exit status of its command substitution, so set -e stops the script. The variable is set to an empty value, so -u does not fire. The tempting answer is that the assignment is harmless.&quot;}]}"></div>
+
+<h3 id="file-test-conditions">File test conditions</h3>
+<p><strong>What it is.</strong> A file test asks a question about a path and returns true or false. <code>-e</code> is true when the path exists, in any form. <code>-f</code> is true for a regular file. <code>-d</code> is true for a directory. <code>-s</code> is true for a file that is not empty. <code>-x</code> is true for a file with the execute permission. <code>-n</code> tests whether a string is not empty.</p>
+<div class="hl"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>ops/STOP<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;stopped&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</code></pre></div>
+
+<p>If <code>ops/STOP</code> exists as a regular file, the output is <code>stopped</code>. If it does not exist, nothing is printed. A directory named <code>ops/STOP</code> would not match <code>-f</code>, which is what you want for a kill switch that is meant to be a file.</p>
+<p><strong>How it shows up in a case study.</strong> The ingest must skip the run when the kill switch is on, and it must refuse to append to a daily file that is empty, because an empty file would hide the outage. Ines writes <code>[ -e results/day1.csv ]</code> for the empty-file check, and the test passes for an empty file. The correct decision is <code>-s</code>, which is false for an empty file. For the kill switch, the team uses <code>-f</code>, not <code>-e</code>, so a folder with the same name does not stop the job.</p>
+<div class="box box-trap"><div class="box-h">Trap: -n on a file path</div><p><code>-n</code> tests whether a string is non-empty. A file path is always a non-empty string, so <code>[ -n ops/STOP ]</code> is always true. Use <code>-f</code> or <code>-s</code> to test the file itself.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script must append to results/day1.csv only if the file exists and holds some data. Which test does this?&quot;, &quot;opts&quot;: [&quot;[ -e results/day1.csv ]&quot;, &quot;[ -d results/day1.csv ]&quot;, &quot;[ -s results/day1.csv ]&quot;, &quot;[ -n results/day1.csv ]&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-s is true only when the file has a size above zero. -e accepts an empty file, and -n is always true for a non-empty path. The tempting answer -e checks existence but says nothing about the content.&quot;}, {&quot;q&quot;: &quot;A script contains if [ -n logs/fetch.log ]; then ... fi. It is meant to skip work when the log is missing. Why does it misbehave?&quot;, &quot;opts&quot;: [&quot;-n tests a non-empty string, and the path is always non-empty, so the test is always true.&quot;, &quot;-n tests whether the file is missing, so the logic is inverted.&quot;, &quot;-n works only on directories, not on files.&quot;, &quot;-n is the same as -f, so the test is correct.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The path is text, and text is always non-empty whether the file exists or not. The fix is -f, which tests the file itself. The tempting answer assumes -n checks the file.&quot;}, {&quot;q&quot;: &quot;A script should run the helper scripts/fetch.sh only when it has the execute permission. Which test does this?&quot;, &quot;opts&quot;: [&quot;[ -f scripts/fetch.sh ]&quot;, &quot;[ -d scripts/fetch.sh ]&quot;, &quot;[ -s scripts/fetch.sh ]&quot;, &quot;[ -x scripts/fetch.sh ]&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-x checks the execute permission. -f accepts a file that has no execute bit, and running it directly would then fail. -s checks for content, and -d checks for a folder.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The following ten questions mix the topics and are harder than the ones above. Each combines two ideas, so read the scenario carefully before you answer.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script runs under set -euo pipefail and contains count=$(grep -c ERROR logs/fetch.log | tail -1). grep -c prints 0 and exits with 1 when no line matches, and the file exists. Does the script stop at this line?&quot;, &quot;opts&quot;: [&quot;No, because tail returned 0 and it is the last command in the pipeline.&quot;, &quot;Yes, because pipefail makes the pipeline fail, and the assignment takes that status.&quot;, &quot;No, because -u ignores command substitutions.&quot;, &quot;Yes, but only when the log file is empty.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;With pipefail the pipeline fails when grep fails, even though tail succeeds. A plain assignment takes the status of the substitution, so -e stops the script. The tempting answer looks only at the last command.&quot;}, {&quot;q&quot;: &quot;A job must run at minute 0 and minute 30 of hours 8 to 17, on Monday to Friday only. Which crontab schedule is right?&quot;, &quot;opts&quot;: [&quot;0,30 8-17 * * 0-5&quot;, &quot;*/30 8 * * 1-5&quot;, &quot;8-17 0,30 * * 1-5&quot;, &quot;0,30 8-17 * * 1-5&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Minute 0 and 30 form the minute list, the range 8-17 is the hour field, and 1-5 is Monday to Friday. The option 0-5 includes Sunday, because 0 is Sunday. The tempting option 8-17 0,30 puts the values in the wrong fields.&quot;}, {&quot;q&quot;: &quot;A script begins with a byte order mark, an invisible sequence of bytes, before #!/usr/bin/env bash. Run directly, the system does not start Bash from that first line. What explains this?&quot;, &quot;opts&quot;: [&quot;The first two bytes of the file are not #!, so the system does not see a shebang.&quot;, &quot;/usr/bin/env cannot find Bash on Windows.&quot;, &quot;The shebang must end with a semicolon.&quot;, &quot;The byte order mark matters only when the file is run with ./.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The shebang works only when #! are the very first two bytes. A hidden mark in front of them breaks it. The tempting answer blames the path to env, which is fine on Linux and macOS.&quot;}, {&quot;q&quot;: &quot;A line in the crontab reads */30 * * * * bash fetch.sh &gt; logs/cron.out 2&gt;&amp;1. After each run the file holds only the latest run. Which change keeps every run and both streams?&quot;, &quot;opts&quot;: [&quot;Replace 2&gt;&amp;1 with 2&gt;logs/cron.out.&quot;, &quot;Replace the first &gt; with &gt;&gt;, and keep 2&gt;&amp;1 after it.&quot;, &quot;Move 2&gt;&amp;1 in front of the &gt;.&quot;, &quot;Add set -x to the script.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;&gt;&gt; appends and keeps history, and 2&gt;&amp;1 after it sends both streams to the file. The tempting option moves 2&gt;&amp;1 in front of the redirection, which sends errors to the terminal, not the file.&quot;}, {&quot;q&quot;: &quot;A script runs set -- a b c, then the author runs shift and prints echo \&quot;$1\&quot;. What is printed?&quot;, &quot;opts&quot;: [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;An empty line.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;shift removes the first argument, so the old $2 becomes $1. The tempting answer a forgets that shift has already run. $0 is never changed by shift.&quot;}, {&quot;q&quot;: &quot;A script runs for f in data/*.csv; do process \&quot;$f\&quot;; done, and the data folder has no .csv files. What does Bash do?&quot;, &quot;opts&quot;: [&quot;The loop runs once with f set to the literal text data/*.csv.&quot;, &quot;The loop does not run, because there are no matches.&quot;, &quot;The script stops with an error, because the pattern matched nothing.&quot;, &quot;The loop runs once with f empty.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Unless nullglob is set, a pattern that matches nothing is left as typed, so the loop runs once with the text. The tempting answer assumes zero iterations, which Bash gives only when nullglob is set.&quot;}, {&quot;q&quot;: &quot;A job runs rsync from a script. Under cron it reports rsync: command not found, although the program is installed in /usr/local/bin. What is the best fix?&quot;, &quot;opts&quot;: [&quot;Install rsync as root, which places it on cron&#x27;s PATH.&quot;, &quot;Change the schedule to a different minute.&quot;, &quot;Set PATH inside the script to include /usr/local/bin, or give the full path to rsync.&quot;, &quot;Add 2&gt;&amp;1 to the crontab line.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The program is installed, but cron&#x27;s PATH does not search /usr/local/bin. A PATH line or a full path fixes this for any user. The tempting answer reinstalls the program, which does not change the search path.&quot;}, {&quot;q&quot;: &quot;A script contains [ -f ops/STOP ] &amp;&amp; [ \&quot;$hour\&quot; -lt 9 ] &amp;&amp; echo \&quot;quiet hours\&quot;. hour is 7 and ops/STOP does not exist. What is printed?&quot;, &quot;opts&quot;: [&quot;quiet hours&quot;, &quot;Nothing is printed, because the first test is false.&quot;, &quot;An error about ops/STOP, because the file is missing.&quot;, &quot;quiet hours, because the second test is true.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;&amp;&amp; runs the next command only when the previous one succeeded. The first test fails, so the chain stops and nothing is printed. The tempting answer looks at the second test alone.&quot;}, {&quot;q&quot;: &quot;A script should read config/site.env only if it is a regular file with content. Which test expresses that?&quot;, &quot;opts&quot;: [&quot;[ -s config/site.env ]&quot;, &quot;[ -n config/site.env ]&quot;, &quot;[ -f config/site.env ] || [ -s config/site.env ]&quot;, &quot;[ -f config/site.env ] &amp;&amp; [ -s config/site.env ]&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-f makes sure the path is a regular file and -s makes sure it has content, and both must be true. -s alone can accept a directory, which usually has a size above zero. -n on a path is always true. The tempting answer uses || where &amp;&amp; is needed.&quot;}, {&quot;q&quot;: &quot;A script reads stamp=$(printf &#x27;ok\\n\\n&#x27;) and then runs echo \&quot;[$stamp]\&quot;. What is printed?&quot;, &quot;opts&quot;: [&quot;[ok] followed by two blank lines inside the brackets&quot;, &quot;[$stamp]&quot;, &quot;[ok]&quot;, &quot;[]&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Command substitution removes trailing newlines, so the variable holds only ok. The tempting first option keeps the newlines, which is what happens when the output is written straight to the terminal and not captured.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem. You write functions in a starter file, and automatic tests check them. Some tests use cases you cannot see, so most of the marks depend on the edge cases you handle. This section explains the Python ideas you need from the beginning, restates the task in plain words, and works through a twin problem. A twin problem uses the same skills in a different setting. You will not find the answer to the real task here.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse ingest script runs from cron. You are porting two parts of its logic into Python, so that both can be tested without a server. The first part decides whether a cron line should run at a given minute and hour. The second part decides whether one air-quality reading is valid. The starter file already contains <code>import re</code> at the top. <code>re</code> is the standard regular expression module, which matches patterns in text.</p>
+<p><strong>The three functions.</strong> Each function must be written with exactly the name below.</p>
+<ul>
+<li><code>parse_cron(line)</code> takes one line of a crontab. It returns a tuple, which is a fixed group of values in parentheses, with six items in this order: minute, hour, dom, month, dow and command. The first five are the schedule fields, kept as text. The command is everything after the fifth field. It may contain spaces, and those spaces must be kept.</li>
+<li><code>fires_at(line, minute, hour)</code> returns <code>True</code> when the line's minute field and its hour field both match the numbers you are given, and <code>False</code> otherwise. A field can take one of these forms: <code>*</code> for every value, a plain number, a range <code>a-b</code> that includes both ends, a step <code>*/n</code> for every n units counted from zero, or a comma-separated list of any of these. You assume that the day-of-month, month and day-of-week fields always match, so you do not need to check them.</li>
+<li><code>valid_reading(reading)</code> returns <code>True</code> only when all of these hold. <code>reading</code> is a dictionary, which is a collection of named values such as <code>{"station_id": "ST1"}</code>. Its <code>station_id</code> matches the pattern <code>^ST\d+$</code>. Its <code>pollutant</code> is one of <code>pm25</code>, <code>pm10</code>, <code>no2</code> or <code>o3</code>. Its <code>value</code> is a non-negative number, and a boolean is not accepted as a number. A boolean is the value <code>True</code> or <code>False</code>, and Python counts it as a whole number, which is why it needs its own check.</li>
+</ul>
+<p>The statement gives this example, restated here:</p>
+<div class="hl"><pre><span></span><code><span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;*/15 0-6 * * * /opt/citypulse/ingest.sh&quot;</span>
+<span class="n">fires_at</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># True: 30 is a multiple of 15, and 3 is in 0-6</span>
+<span class="n">fires_at</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># False: 7 is not a multiple of 15</span>
+</code></pre></div>
+
+<p><strong>Limits and scoring.</strong> Your code has 30 seconds and 128 MB. The visible tests are below.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splits all 5 fields plus the full command</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Fires at 03:30 (minute 30 is a 15-multiple, 3 in 0-6)</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Minute 7 is not a 15-multiple</td>
+<td>14</td>
+</tr>
+<tr>
+<td>A well-formed reading is valid</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Total visible</td>
+<td>58</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hidden tests.</strong> Below the visible tests there are three hidden tests worth 42 points between them. Hidden tests are checks you cannot see before you submit. They use other lines and other readings, and they are chosen to catch solutions that only work for the examples. This is why they decide the top marks. A solution that passes the four visible tests scores 58 out of 100, and every point above that comes from behaviour you must work out from the statement yourself. The rules below show where those points are usually lost.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>This section teaches the Python ideas each function uses. Every example is small and uses data that has nothing to do with the lab. Try each one in a Python file or an interpreter before you move on.</p>
+<p><strong>Splitting text with <code>str.split</code>.</strong> Called with no argument, <code>split</code> breaks text at any run of spaces and ignores leading and trailing spaces.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  red   green  blue &quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>  <span class="c1"># [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]</span>
+</code></pre></div>
+
+<p>Called with a second argument, <code>split</code> stops after that many splits. The rest of the text stays in the last piece, with its inner spaces intact.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;red green blue black&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># [&#39;red&#39;, &#39;green&#39;, &#39;blue black&#39;]</span>
+</code></pre></div>
+
+<p><strong>Slicing a list.</strong> <code>items[:2]</code> takes the items before position 2, and <code>items[2:]</code> takes the items from position 2 to the end. Positions start at 0.</p>
+<div class="hl"><pre><span></span><code><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colours</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># [&#39;red&#39;, &#39;green&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>  <span class="c1"># [&#39;blue&#39;, &#39;black&#39;]</span>
+</code></pre></div>
+
+<p><strong>Returning several values.</strong> A function can return a tuple. The caller can unpack it into names in one line.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">shop_totals</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span>
+<span class="n">apples</span><span class="p">,</span> <span class="n">pears</span> <span class="o">=</span> <span class="n">shop_totals</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">apples</span><span class="p">,</span> <span class="n">pears</span><span class="p">)</span>  <span class="c1"># 3 12</span>
+</code></pre></div>
+
+<p><strong>Converting text to a number with <code>int</code>.</strong> <code>int("7")</code> gives the number 7. Text that is not a whole number raises a <code>ValueError</code>, which is an error that Python raises when a value has the right type but a wrong content.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;7&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 8</span>
+<span class="c1">## int(&quot;x&quot;) raises ValueError</span>
+</code></pre></div>
+
+<p><strong>Remainders with <code>%</code>.</strong> <code>%</code> gives the remainder after division. A remainder of 0 means the first number is an exact multiple of the second.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">12</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 0, so 12 is a multiple of 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">13</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 1, so 13 is not</span>
+</code></pre></div>
+
+<p><strong>Splitting once with <code>partition</code>.</strong> <code>text.partition("/")</code> returns three pieces: the part before the first slash, the slash itself, and the part after. If there is no slash, the second and third pieces are empty text.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a-b/3&quot;</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>  <span class="c1"># (&#39;a-b&#39;, &#39;/&#39;, &#39;3&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a-b&quot;</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>    <span class="c1"># (&#39;a-b&#39;, &#39;&#39;, &#39;&#39;)</span>
+</code></pre></div>
+
+<p><strong>Sets and <code>sorted</code>.</strong> <code>set.update</code> adds many items at once, repeats are dropped, and <code>sorted</code> turns a set into an ordered list.</p>
+<div class="hl"><pre><span></span><code><span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">seen</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">seen</span><span class="p">))</span>  <span class="c1"># [1, 3]</span>
+</code></pre></div>
+
+<p><strong>Ranges that include both ends.</strong> <code>range(3, 6)</code> gives 3, 4 and 5, because the end is excluded. Include the end by adding one to it.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>  <span class="c1"># [3, 4, 5, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>  <span class="c1"># [0, 4, 8], a third argument is the step</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">6</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Checking any item in a list.</strong> <code>any</code> returns <code>True</code> when at least one item in a list is true. An empty list gives <code>False</code>.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">([]))</span>  <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Reading a dictionary with <code>get</code>.</strong> <code>d[key]</code> raises a <code>KeyError</code> when the key is missing. <code>d.get(key)</code> returns <code>None</code> instead, and <code>d.get(key, default)</code> returns the default.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apples&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pears&quot;</span><span class="p">))</span>     <span class="c1"># None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pears&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;apples&quot;</span> <span class="ow">in</span> <span class="n">stock</span><span class="p">)</span>      <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Checking a type with <code>isinstance</code>.</strong> <code>isinstance(value, int)</code> is <code>True</code> for a whole number. A boolean is also an <code>int</code> in Python, because <code>bool</code> is a subclass of <code>int</code>, which means it is a special kind of integer. So <code>isinstance(True, int)</code> is <code>True</code>, and you must check for <code>bool</code> separately when a boolean should not count.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>           <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span>          <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span>   <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Matching a whole pattern with <code>re.fullmatch</code>.</strong> <code>re.compile</code> prepares a pattern once. <code>fullmatch</code> returns a match object only when the pattern matches the entire text, and <code>None</code> otherwise.</p>
+<div class="hl"><pre><span></span><code><span class="n">word</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]</span><span class="si">{3}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="s2">&quot;cats&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Checking membership in a set.</strong> A set is written in braces and holds unique values. <code>in</code> checks membership quickly.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tea&quot;</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;coffee&quot;</span><span class="p">})</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;juice&quot;</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;coffee&quot;</span><span class="p">})</span>  <span class="c1"># False</span>
+</code></pre></div>
+
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below comes from the statement. The statement does not say what a malformed crontab line should return, so do not invent an answer for that case. Use the checks in the third column to test your own solution. Write each check as an <code>assert</code> line, which is a line that stops the program with an error when its condition is false.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The first five fields are the schedule, and the command is everything after the fifth field</td>
+<td>Uses <code>split()</code> with no limit, so the command is cut at its first space</td>
+<td>Use a line with a command of three or more words and check that all of them come back</td>
+</tr>
+<tr>
+<td>The command may contain spaces</td>
+<td>Strips the inner spaces, or joins words in a different way</td>
+<td>Check a command that contains a double space, and assert the exact text</td>
+</tr>
+<tr>
+<td><code>*</code> means every value</td>
+<td>Treats <code>*</code> as minute 0 only, or fails on the star</td>
+<td>Assert <code>fires_at</code> with <code>*</code> for minute 0 and for minute 59</td>
+</tr>
+<tr>
+<td><code>*/n</code> is a step counted from zero</td>
+<td>Compares the value with n, or counts from the first value of a range</td>
+<td>Assert <code>*/15</code> is true for 0 and 45 and false for 7, and <code>*/10</code> is true for 20</td>
+</tr>
+<tr>
+<td>A comma-separated list</td>
+<td>Looks only at the first item, so <code>5,30</code> fails for 30</td>
+<td>Assert <code>5,30</code> is true for 30 and false for 31</td>
+</tr>
+<tr>
+<td>A range <code>a-b</code></td>
+<td>Uses <code>range(a, b)</code>, which excludes b</td>
+<td>Assert hour 6 matches <code>0-6</code>, and hour 7 does not</td>
+</tr>
+<tr>
+<td>A plain number</td>
+<td>Compares the text of the field with the number you are given, which is never equal</td>
+<td>Convert the field to an integer before comparing, and assert that <code>30</code> matches 30</td>
+</tr>
+<tr>
+<td><code>station_id</code> matches <code>^ST\d+$</code></td>
+<td>Uses <code>re.match</code> with <code>$</code>, which also accepts <code>ST1</code> followed by a newline</td>
+<td>Assert that <code>"ST1\n"</code> is rejected, and that <code>"ST"</code> and <code>"st1"</code> are rejected</td>
+</tr>
+<tr>
+<td><code>pollutant</code> is one of four values</td>
+<td>Accepts <code>PM25</code>, or <code>pm25</code> with a trailing space</td>
+<td>Assert that uppercase text and text with a space are rejected, and that a list as the pollutant returns <code>False</code> and does not crash</td>
+</tr>
+<tr>
+<td><code>value</code> is a non-negative number</td>
+<td>Uses <code>value &gt; 0</code>, which rejects 0</td>
+<td>Assert that a value of 0 is accepted and that -0.1 is rejected</td>
+</tr>
+<tr>
+<td>Booleans are not numbers</td>
+<td>Accepts <code>True</code> as the number 1, because <code>isinstance(True, int)</code> is true</td>
+<td>Assert that <code>True</code> and <code>False</code> values are rejected</td>
+</tr>
+<tr>
+<td>The value must be a number</td>
+<td>Accepts the text <code>"42"</code> because it looks like a number</td>
+<td>Assert that <code>"42"</code> is rejected</td>
+</tr>
+<tr>
+<td><code>reading</code> is a dictionary</td>
+<td>Reads <code>reading["value"]</code> and crashes with a <code>KeyError</code> when the key is missing</td>
+<td>Assert that a dictionary with a missing key, and a list or <code>None</code> instead of a dictionary, return <code>False</code> and do not crash</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file from top to bottom. Note the names of the functions, the signatures and any imports. Do not change the names.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function. The statement's example for <code>fires_at</code> is a good first set. The lines will fail at first, which is expected.</li>
+<li>Add your own <code>assert</code> lines for every row of the table in the previous section. Write the expected answer by hand before you run the code.</li>
+<li>Implement one function at a time. After each function, run the file, so that you see which asserts pass and which still fail. Do not start the next function until the current one passes its checks.</li>
+<li>Check the types last. This lab has no rounding, but it does have types. Make sure that booleans are rejected, that text is converted before it is compared with a number, and that the function returns <code>True</code> or <code>False</code> and not a value of another type.</li>
+<li>Run the visible tests. Read the failure message for each one, and fix the rule it names before you change anything else.</li>
+<li>Submit once, after the asserts you wrote yourself also pass. A second submission does not help if you have not found the cause of the first failure.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p><strong>The twin problem.</strong> A small company runs a nightly backup scheduler. Each job is one line made of a minute field, an hour field, a weekday field and a command, for example <code>*/20 22 1-5 rsync -a /data /backup</code>. Minutes run from 0 to 59, hours from 0 to 23 and weekdays from 0 to 6, where 0 is Sunday. Blank lines and lines that start with <code>#</code> are comments. This is a backup tool, not the CityPulse cron check, but it needs the same skills.</p>
+<ul>
+<li><code>split_job(line)</code> returns <code>None</code> for a blank line or a comment. Otherwise it returns a dictionary with the keys <code>minute</code>, <code>hour</code>, <code>weekday</code> and <code>command</code>. The first three fields are separated by spaces, and the command is everything after them, with its inner spaces kept. A line with fewer than four parts raises <code>ValueError</code>.</li>
+<li><code>expand_field(spec, low, high)</code> turns one field into the sorted list of the numbers it allows, without repeats. The forms are <code>*</code> (every number from <code>low</code> to <code>high</code>), a plain number, a range <code>a-b</code> that includes both ends, <code>*/n</code> and <code>a-b/n</code> (every n-th number, counted from the start of the range), and comma lists of these. A step of zero or less, a number outside <code>low</code> to <code>high</code>, a range whose start is above its end, a step on a plain number and text that is not a number all raise <code>ValueError</code>.</li>
+<li><code>runs_at(line, minute, hour, weekday)</code> returns <code>True</code> when all three numbers are allowed by the job's fields. A comment or blank line never runs.</li>
+<li><code>valid_log(record)</code> returns <code>True</code> only when <code>record</code> is a dictionary and all of these hold. Its <code>time</code> is text in the form <code>YYYY-MM-DDTHH:MM:SS</code> with a real month (1 to 12), a day from 1 to 31, an hour up to 23, and a minute and second up to 59. Its <code>level</code> is one of <code>INFO</code>, <code>WARN</code> or <code>ERROR</code>. Its <code>message</code> is text that is not empty once spaces are removed. If the record has a <code>size_kb</code> key, it must be a whole number of zero or more and not a boolean.</li>
+</ul>
+<p><strong>The solution.</strong> Read the code once, then read the explanation. Run it, and check that the message <code>all tests passed</code> appears.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">LEVELS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="s2">&quot;WARN&quot;</span><span class="p">,</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">}</span>
+<span class="n">STAMP</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9]</span><span class="si">{4}</span><span class="s2">-[0-9]</span><span class="si">{2}</span><span class="s2">-[0-9]</span><span class="si">{2}</span><span class="s2">T[0-9]</span><span class="si">{2}</span><span class="s2">:[0-9]</span><span class="si">{2}</span><span class="s2">:[0-9]</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">split_job</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;a job needs minute, hour, weekday and a command&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;minute&quot;</span><span class="p">:</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;weekday&quot;</span><span class="p">:</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="n">parts</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_field</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="n">allowed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="n">body</span><span class="p">,</span> <span class="n">slash</span><span class="p">,</span> <span class="n">step_text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">slash</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">step_text</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">step</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;step must be positive&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">body</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span>
+        <span class="k">elif</span> <span class="s2">&quot;-&quot;</span> <span class="ow">in</span> <span class="n">body</span><span class="p">:</span>
+            <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">first</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">slash</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;a step needs * or a range&quot;</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">low</span> <span class="ow">or</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="n">high</span> <span class="ow">or</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number outside the allowed range&quot;</span><span class="p">)</span>
+        <span class="n">allowed</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">allowed</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">runs_at</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">weekday</span><span class="p">):</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">split_job</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">job</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="n">expand_field</span><span class="p">(</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;minute&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="n">expand_field</span><span class="p">(</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="n">expand_field</span><span class="p">(</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;weekday&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">minute</span> <span class="ow">in</span> <span class="n">minutes</span> <span class="ow">and</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">hours</span> <span class="ow">and</span> <span class="n">weekday</span> <span class="ow">in</span> <span class="n">days</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">valid_log</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">stamp</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stamp</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">STAMP</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">stamp</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+    <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">16</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">19</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">day</span> <span class="o">&lt;=</span> <span class="mi">31</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">23</span> <span class="ow">or</span> <span class="n">minute</span> <span class="o">&gt;</span> <span class="mi">59</span> <span class="ow">or</span> <span class="n">second</span> <span class="o">&gt;</span> <span class="mi">59</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;level&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">LEVELS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="s2">&quot;size_kb&quot;</span> <span class="ow">in</span> <span class="n">record</span><span class="p">:</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;size_kb&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">raises_value_error</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="n">job</span> <span class="o">=</span> <span class="s2">&quot;*/20 22 1-5 rsync -a  /data /backup&quot;</span>
+<span class="k">assert</span> <span class="n">split_job</span><span class="p">(</span><span class="s2">&quot;# nightly&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">split_job</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">split_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;minute&quot;</span><span class="p">:</span> <span class="s2">&quot;*/20&quot;</span><span class="p">,</span> <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span> <span class="s2">&quot;weekday&quot;</span><span class="p">:</span> <span class="s2">&quot;1-5&quot;</span><span class="p">,</span> <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;rsync -a  /data /backup&quot;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="n">split_job</span><span class="p">,</span> <span class="s2">&quot;0 3 *&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;*/20&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;10-12&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;10-30/10&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">expand_field</span><span class="p">(</span><span class="s2">&quot;1,3-4,3&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">bad</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;*/0&quot;</span><span class="p">,</span> <span class="s2">&quot;*/x&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;5-2&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;5/10&quot;</span><span class="p">]:</span>
+    <span class="k">assert</span> <span class="n">raises_value_error</span><span class="p">(</span><span class="n">expand_field</span><span class="p">,</span> <span class="n">bad</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">bad</span>
+
+<span class="k">assert</span> <span class="n">runs_at</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">runs_at</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">runs_at</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">runs_at</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">runs_at</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">runs_at</span><span class="p">(</span><span class="s2">&quot;# &quot;</span> <span class="o">+</span> <span class="n">job</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">good</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-11-03T22:40:05&quot;</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;backup done&quot;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">valid_log</span><span class="p">(</span><span class="n">good</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;size_kb&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;size_kb&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;size_kb&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;size_kb&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-11-03 22:40:05&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-13-03T22:40:05&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-11-03T24:40:05&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-11-03T22:40:05</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;INFO&quot;</span><span class="p">]})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="o">**</span><span class="n">good</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;   &quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">good</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_log</span><span class="p">([</span><span class="s2">&quot;2026-11-03T22:40:05&quot;</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all tests passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Explanation.</strong></p>
+<ul>
+<li><code>LEVELS</code> is a set, so membership checks are quick. <code>STAMP</code> is compiled once. It checks only the shape of the time text, which is digits in the right places. The ranges of the numbers are checked separately, because a pattern cannot easily say "01 to 12".</li>
+<li><code>split_job</code> removes outer spaces with <code>strip</code>. A blank line becomes the empty text, and a comment starts with <code>#</code>, so both return <code>None</code>. Otherwise <code>split(None, 3)</code> gives at most four parts, and the fourth keeps its inner spaces. Fewer than four parts raises <code>ValueError</code>. The result is a dictionary, so the later code can say <code>job["hour"]</code> instead of remembering positions.</li>
+<li><code>expand_field</code> builds a set called <code>allowed</code>, which removes repeats on its own. For each comma-separated item, <code>partition("/")</code> gives the part before the slash, the slash itself and the part after it. When there is no slash, <code>slash</code> is the empty text, so the step stays 1. When there is one, <code>int</code> turns the step into a number, and a step of zero or less raises <code>ValueError</code>.</li>
+<li>The body then picks the start and the end. A star means the whole range <code>low</code> to <code>high</code>. A hyphen means the two numbers around it. A plain number means start and end are the same number, but a step on a plain number is rejected.</li>
+<li>The test <code>start &lt; low or end &gt; high or start &gt; end</code> rejects numbers outside the bounds and ranges written backwards. <code>range(start, end + 1, step)</code> includes the end, because <code>range</code> stops before its second argument. <code>sorted</code> turns the set into an ordered list.</li>
+<li><code>runs_at</code> returns <code>False</code> for a comment. It expands all three fields before it compares, so a bad field raises an error even when the minute does not match. The final line uses <code>and</code>, so all three must allow their number.</li>
+<li><code>valid_log</code> checks the rules in order. It rejects a record that is not a dictionary, then checks that the time is text and has the right shape. It cuts the numbers out of the text by position, because the pattern guarantees where they are. Month, day, hour, minute and second are checked against their limits. The level must be text before the set lookup, so a list cannot crash it. The message must be text with something other than spaces in it. The <code>size_kb</code> key is optional, but when it is there it must be a whole number of zero or more, and a boolean is rejected.</li>
+<li><code>raises_value_error</code> is a small helper used only by the asserts. It returns <code>True</code> when the call raises <code>ValueError</code>, which keeps the test lines short.</li>
+</ul>
+<p><strong>Trace of the trickiest function.</strong> The step handling in <code>expand_field</code> is the part that most students get wrong. This animation runs the same logic on the single item <code>10-30/10</code> with the bounds 0 and 59.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Expanding the item 10-30/10&quot;, &quot;code&quot;: [&quot;item = \&quot;10-30/10\&quot;&quot;, &quot;low, high = 0, 59&quot;, &quot;body, slash, step_text = item.partition(\&quot;/\&quot;)&quot;, &quot;step = int(step_text) if slash else 1&quot;, &quot;first, last = body.split(\&quot;-\&quot;, 1)&quot;, &quot;start, end = int(first), int(last)&quot;, &quot;allowed = set(range(start, end + 1, step))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;10-30/10\&quot;&quot;]], &quot;note&quot;: &quot;Store the item. It has a hyphen and a slash.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;item&quot;, &quot;\&quot;10-30/10\&quot;&quot;], [&quot;low&quot;, &quot;0&quot;], [&quot;high&quot;, &quot;59&quot;]], &quot;note&quot;: &quot;These are the bounds for a minute field.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;body&quot;, &quot;\&quot;10-30\&quot;&quot;], [&quot;slash&quot;, &quot;\&quot;/\&quot;&quot;], [&quot;step_text&quot;, &quot;\&quot;10\&quot;&quot;]], &quot;note&quot;: &quot;partition splits at the first slash and keeps the slash itself.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;step&quot;, &quot;10&quot;]], &quot;note&quot;: &quot;slash is not empty, so int turns \&quot;10\&quot; into the number 10.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;first&quot;, &quot;\&quot;10\&quot;&quot;], [&quot;last&quot;, &quot;\&quot;30\&quot;&quot;]], &quot;note&quot;: &quot;The body is split at its hyphen into two pieces of text.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;start&quot;, &quot;10&quot;], [&quot;end&quot;, &quot;30&quot;]], &quot;note&quot;: &quot;int turns both pieces into numbers.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;allowed&quot;, &quot;{10, 20, 30}&quot;]], &quot;note&quot;: &quot;range(10, 31, 10) gives 10, 20 and 30. Adding 1 to end includes 30.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p><strong>The twin problem.</strong> A parcel locker records how long each customer waited, in whole minutes, for a parcel to be collected from the locker. Write one function, <code>average_wait(minutes)</code>. It returns the mean of the waits, rounded to one decimal place. The list is a list of whole numbers. An empty list raises <code>ValueError</code>. Any item that is not a whole number raises <code>ValueError</code>, and a boolean is not a whole number here. Round only at the end, once the mean has been worked out.</p>
+<p>Your work is finished when all of these asserts pass. Two of them use <code>try</code> blocks, which run code that may raise an error and check that the error is raised.</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span> <span class="o">==</span> <span class="mf">15.0</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.7</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mf">3.5</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">average_wait</span><span class="p">([])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for empty input&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">average_wait</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for a boolean&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>The solution below is tested automatically when the book is built.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">average_wait</span><span class="p">(</span><span class="n">minutes</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no waits&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">minute</span> <span class="ow">in</span> <span class="n">minutes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">minute</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">minute</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;waits must be whole numbers&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">minutes</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span> <span class="o">==</span> <span class="mf">15.0</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.7</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">average_wait</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mf">3.5</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">average_wait</span><span class="p">([])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for empty input&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">average_wait</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;expected ValueError for a boolean&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all tests passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The loop checks every item before any arithmetic is done, so a bad item anywhere in the list raises the error. The division uses <code>/</code>, which gives a decimal, and <code>round</code> is applied once at the end. The value 5 divided by 3 is 1.6666 and rounds to 1.7.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Check that the three function names match the starter file exactly, with the same spelling and the same number of parameters.</li>
+<li>Check that <code>parse_cron</code> returns a tuple of six items, and that the command keeps its inner spaces.</li>
+<li>Check that <code>fires_at</code> ignores the day, month and weekday fields, and that a list such as <code>5,30</code> is tested item by item.</li>
+<li>Check that a range such as <code>0-6</code> includes 6, and that <code>*/15</code> matches 0, 15, 30 and 45.</li>
+<li>Check that <code>valid_reading</code> rejects <code>True</code> and <code>False</code> as values, and accepts a value of 0.</li>
+<li>Check that <code>valid_reading</code> rejects <code>"ST1\n"</code>, <code>"st1"</code> and <code>"PM25"</code>, and returns <code>False</code> for a dictionary with a missing key rather than raising an error.</li>
+<li>Check that no helper function is named after one of the three required functions, so that the tests call the right code.</li>
+<li>Check that you have not printed anything that the tests do not need, and that the file imports only the modules it uses.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p><strong>Question 1. Why does your script use set -euo pipefail?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Strict mode makes the script stop at the first real failure instead of carrying on with bad data. Without it, a failed download can leave an empty file that looks like a success. The <code>-e</code> flag stops on a failing command, <code>-u</code> stops on an unset variable, and <code>pipefail</code> catches a failure anywhere in a pipeline. This matters because the job runs unattended and nobody sees the error until much later.</p></details>
+
+<p><strong>Question 2. How do you stop two runs from overlapping?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The script opens a lock file in <code>/tmp</code> and asks for an exclusive lock with <code>flock -n</code>. The <code>-n</code> means the script does not wait, so a second run gives up at once and logs a warning. The kernel releases the lock when the process exits, even after a crash, so a stale lock cannot block future runs. A PID file would need manual cleanup after a crash.</p></details>
+
+<p><strong>Question 3. Why does the crontab line use absolute paths and redirect output?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>cron starts jobs in your home folder with a short PATH and no terminal, so a relative path or a command that you can run by hand may not be found under cron. The line changes into the repository by its full path and calls the script through <code>/usr/bin/env bash</code>. The <code>&gt;&gt; logs/cron.out 2&gt;&amp;1</code> appends both output streams to a file, because with no terminal there is nowhere else for the errors to go.</p></details>
+
+<p><strong>Question 4. What does the healthcheck measure, and why not just check the log exists?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The healthcheck measures the age, in minutes, of the newest line that records a successful fetch. A log file can exist and still contain only failures, so existence says nothing about success. Mapping the age to exit codes 0, 1, 2 and 3 makes the result readable by a script or a monitoring tool. The lesson's thresholds are 60 minutes for a warning and 120 minutes for critical.</p></details>
+
+<p><strong>Question 5. Why do you test the exact command cron will run?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A script that works only when you run it by hand is not proof that the scheduled job works, because cron's environment differs from your terminal. Running the exact command, with the same arguments and in the same folder, is the only honest check. The workbook's <code>run_all.sh</code> does this, then verifies the file and shows the last log line, so you can see the whole job succeed in one go.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#!/usr/bin/env bash</code></td>
+<td>First line of a script. Picks Bash to run the file directly.</td>
+</tr>
+<tr>
+<td><code>set -e</code></td>
+<td>Stop the script when a command fails.</td>
+</tr>
+<tr>
+<td><code>set -u</code></td>
+<td>Stop the script when an unset variable is used.</td>
+</tr>
+<tr>
+<td><code>set -o pipefail</code></td>
+<td>A pipeline fails if any command in it fails.</td>
+</tr>
+<tr>
+<td><code>set -euo pipefail</code></td>
+<td>All three strict-mode settings together.</td>
+</tr>
+<tr>
+<td><code>$0</code>, <code>$1</code>, <code>$2</code></td>
+<td>Script name, first argument, second argument.</td>
+</tr>
+<tr>
+<td><code>$#</code></td>
+<td>Number of arguments.</td>
+</tr>
+<tr>
+<td><code>"$@"</code></td>
+<td>All arguments, each kept as a separate word.</td>
+</tr>
+<tr>
+<td><code>${VAR:-default}</code></td>
+<td>Use <code>VAR</code> if set, otherwise the default.</td>
+</tr>
+<tr>
+<td><code>local name=value</code></td>
+<td>Make a variable visible only inside its function.</td>
+</tr>
+<tr>
+<td><code>name() { ... }</code></td>
+<td>Define a function.</td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>Exit code of the last command. 0 means success.</td>
+</tr>
+<tr>
+<td><code>$(command)</code></td>
+<td>Replace with the command's output.</td>
+</tr>
+<tr>
+<td><code>$((expr))</code></td>
+<td>Do arithmetic, for example <code>$((count + 1))</code>.</td>
+</tr>
+<tr>
+<td><code>[ -f path ]</code></td>
+<td>True when <code>path</code> is a regular file.</td>
+</tr>
+<tr>
+<td><code>[ -d path ]</code></td>
+<td>True when <code>path</code> is a directory.</td>
+</tr>
+<tr>
+<td><code>[ -x path ]</code></td>
+<td>True when <code>path</code> is executable.</td>
+</tr>
+<tr>
+<td><code>[ -s path ]</code></td>
+<td>True when <code>path</code> is a file that is not empty.</td>
+</tr>
+<tr>
+<td><code>[ -n "$text" ]</code></td>
+<td>True when the string is not empty.</td>
+</tr>
+<tr>
+<td><code>-eq -ne -lt -le -gt -ge</code></td>
+<td>Numeric comparisons inside <code>[ ]</code>.</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>Text equality inside <code>[ ]</code>.</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code> and <code>\|\|</code></td>
+<td>Run the next command only on success, or only on failure.</td>
+</tr>
+<tr>
+<td><code>&gt;</code> and <code>&gt;&gt;</code></td>
+<td>Write to a file, replacing it or appending.</td>
+</tr>
+<tr>
+<td><code>2&gt;&amp;1</code></td>
+<td>Send standard error to the same place as standard output.</td>
+</tr>
+<tr>
+<td><code>for x in ...; do ... done</code></td>
+<td>Repeat for each word in a list.</td>
+</tr>
+<tr>
+<td><code>until cmd; do ... done</code></td>
+<td>Repeat while <code>cmd</code> fails.</td>
+</tr>
+<tr>
+<td><code>flock -n 9</code></td>
+<td>Take the lock on file 9, or fail at once if it is held.</td>
+</tr>
+<tr>
+<td><code>curl -sS --fail -o FILE URL</code></td>
+<td>Quiet request, show errors, fail on HTTP errors, save to FILE.</td>
+</tr>
+<tr>
+<td><code>curl --max-time 20</code></td>
+<td>Give up after 20 seconds.</td>
+</tr>
+<tr>
+<td><code>bash -n script.sh</code></td>
+<td>Check the syntax without running the script.</td>
+</tr>
+<tr>
+<td><code>chmod +x script.sh</code></td>
+<td>Mark the script as executable.</td>
+</tr>
+<tr>
+<td><code>crontab -l</code></td>
+<td>Show your crontab.</td>
+</tr>
+<tr>
+<td><code>crontab FILE</code></td>
+<td>Replace your crontab with FILE.</td>
+</tr>
+<tr>
+<td>cron fields</td>
+<td>minute, hour, day of month, month, day of week.</td>
+</tr>
+<tr>
+<td><code>*/30</code></td>
+<td>Every 30 units in that field.</td>
+</tr>
+<tr>
+<td><code>1,3,5</code> and <code>9-17</code></td>
+<td>A list, and an inclusive range.</td>
+</tr>
+<tr>
+<td><code>0 * * * *</code></td>
+<td>At the top of every hour.</td>
+</tr>
+<tr>
+<td>Exit codes</td>
+<td>0 OK, 1 WARN, 2 CRIT, 3 UNKNOWN in the healthcheck.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;shebang&quot;, &quot;a&quot;: &quot;The first line, starting #!, that names the program used to run the script.&quot;}, {&quot;q&quot;: &quot;set -e&quot;, &quot;a&quot;: &quot;Stop the script when a command returns a non-zero exit code.&quot;}, {&quot;q&quot;: &quot;set -u&quot;, &quot;a&quot;: &quot;Stop the script when an unset variable is used.&quot;}, {&quot;q&quot;: &quot;set -o pipefail&quot;, &quot;a&quot;: &quot;A pipeline fails if any command in it fails.&quot;}, {&quot;q&quot;: &quot;$?&quot;, &quot;a&quot;: &quot;The exit code of the last command. 0 means success.&quot;}, {&quot;q&quot;: &quot;cron fields&quot;, &quot;a&quot;: &quot;Minute, hour, day of month, month, day of week.&quot;}, {&quot;q&quot;: &quot;*/30&quot;, &quot;a&quot;: &quot;Every 30 units in that field, such as every 30 minutes.&quot;}, {&quot;q&quot;: &quot;&gt;&gt; file 2&gt;&amp;1&quot;, &quot;a&quot;: &quot;Append standard output and standard error to the file.&quot;}, {&quot;q&quot;: &quot;flock -n&quot;, &quot;a&quot;: &quot;Take the lock now, or fail at once if another run holds it.&quot;}, {&quot;q&quot;: &quot;$(command)&quot;, &quot;a&quot;: &quot;Replaced by the output of the command.&quot;}, {&quot;q&quot;: &quot;local&quot;, &quot;a&quot;: &quot;Makes a variable visible only inside its function.&quot;}, {&quot;q&quot;: &quot;-f path&quot;, &quot;a&quot;: &quot;True when the path is a regular file.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D03.html"><small>Previous</small>Day 3 — Talking to APIs: HTTP, curl and jq</a><a class="nx" href="D05.html"><small>Next</small>Day 5 — Team workflow: branches, pull requests and reviews</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,2043 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T23–T25: serverless, architecture and the cloud defence · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K08" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a class="cur" href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T23–T25: serverless, architecture and the cloud defence</h1><p class="sub">3 tickets, 18 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">98 min read · practice quiz · 7 animations</p><video class="vid" controls preload="metadata" src="videos/K08.mp4?v=1794965714"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t23-deploy-scheduled-serverless-fetch-to-bucket-cost-comparison">Y2-T23 · Deploy scheduled serverless fetch to bucket + cost comparison</a></li><li><a href="#y2-t24-draw-deployed-architecture-script-teardown-write-10-point-eda">Y2-T24 · Draw deployed architecture, script teardown, write 10-point EDA</a></li><li><a href="#y2-t25-y2-d03-defend-three-secured-cloud-labs-then-tear-down">Y2-T25 · Y2-D03: defend three secured cloud labs, then tear down</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t23-deploy-scheduled-serverless-fetch-to-bucket-cost-comparison">Y2-T23</a></td>
+<td>23</td>
+<td>5</td>
+<td>Deploy scheduled serverless fetch to bucket + cost comparison</td>
+</tr>
+<tr>
+<td><a href="#y2-t24-draw-deployed-architecture-script-teardown-write-10-point-eda">Y2-T24</a></td>
+<td>24</td>
+<td>5</td>
+<td>Draw deployed architecture, script teardown, write 10-point EDA</td>
+</tr>
+<tr>
+<td><a href="#y2-t25-y2-d03-defend-three-secured-cloud-labs-then-tear-down">Y2-T25</a></td>
+<td>25</td>
+<td>8</td>
+<td>Y2-D03: defend three secured cloud labs, then tear down</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t23-deploy-scheduled-serverless-fetch-to-bucket-cost-comparison">Y2-T23 · Deploy scheduled serverless fetch to bucket + cost comparison</h2>
+<p><em>Session 23 · phase M4 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>Until now, the CityPulse fetch step has run on a virtual machine (a rented computer that is switched on all the time). That machine sits idle most of the day and someone has to patch it. This ticket asks a plain question: for a job that runs every 30 minutes, is a serverless function cheaper and simpler? The honest answer is that it depends, so the client wants numbers rather than opinions.</p>
+<p>You will move the fetch into an AWS Lambda function. Lambda runs your code only when something calls it. A timer will call it every 30 minutes. The function asks the Open-Meteo air-quality API for Bengaluru readings, checks the reply, and saves the raw JSON into your CityPulse bucket (a private storage container in S3). The function uses a role, which is a set of permissions AWS hands to the function for a short time. That means no password or access key is stored in its settings.</p>
+<p>Then you prove it works from the logs. Two runs started by the timer, not by you, must leave lines in the logs and files in the bucket. Last, you compare the monthly cost of the virtual machine with the monthly cost of the function, using AWS's own pricing calculator. You then work out how many runs it would take before the two costs are equal.</p>
+<p>The description does not name a specific failure. Its point is that teams have moved in both directions, so the decision must rest on measured cost.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>These must already be merged or finished: Y2-T20, Y2-T21 and Y2-T22 (the DSA tickets); the bucket <code>citypulse-&lt;name&gt;-&lt;rand4&gt;</code> with the policy <code>citypulse-pipeline-s3</code> (T17 and T18); the virtual machine from T19, now stopped; <code>src/citypulse/fetch.py</code> from T11, which holds the API address you will copy; and your folder <code>docs/evidence/&lt;name&gt;/</code> with the T17 to T19 files.</p>
+<p>You need AWS CLI version 2, signed in to your own AWS account through the profile you set up in T17 to T19. Never paste an access key into a file, a commit or chat. You also need Python 3, <code>pytest</code>, <code>shellcheck</code>, <code>git</code> and <code>gh</code> (the GitHub command-line tool). The commands below run in Git Bash on your Windows laptop. Git Bash has no <code>zip</code> command by default, so this guide uses Python's built-in <code>zipfile</code> module instead. On the Linux lab machine, type <code>python3</code> wherever this guide says <code>python</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Command</th>
+<th>Ready when the output is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Your account</td>
+<td><code>aws sts get-caller-identity --query Account --output text</code></td>
+<td>your own 12-digit account number</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td><code>aws s3api head-bucket --bucket citypulse-&lt;name&gt;-&lt;rand4&gt;</code></td>
+<td>no error (newer CLI versions print a small JSON with <code>BucketRegion</code>)</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td><code>aws iam list-policies --scope Local --query "Policies[?PolicyName=='citypulse-pipeline-s3'].Arn" --output text</code></td>
+<td>one ARN starting with <code>arn:aws:iam::</code></td>
+</tr>
+<tr>
+<td>VM</td>
+<td><code>aws ec2 describe-instances --query "Reservations[].Instances[].State.Name" --output text</code></td>
+<td><code>stopped</code> for your T19 machine</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td><code>shellcheck --version</code> and <code>python -m pytest --version</code></td>
+<td>a version line from each</td>
+</tr>
+<tr>
+<td>Repo</td>
+<td><code>git status</code></td>
+<td>a clean working tree on your branch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS</td>
+<td>Amazon Web Services, Amazon's rented computing platform.</td>
+</tr>
+<tr>
+<td>AWS CLI</td>
+<td>The <code>aws</code> command-line tool. You type <code>aws &lt;service&gt; &lt;action&gt;</code>.</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>The AWS service that runs your code only when something calls it. You pay for run time.</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>The code you give Lambda. Here it is one Python file.</td>
+</tr>
+<tr>
+<td>Handler</td>
+<td>The function inside that file which Lambda calls, written <code>handler(event, context)</code>.</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td>The language version Lambda uses, here <code>python3.12</code>.</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management, which controls who may do what in AWS.</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>An identity that a service can take on for a while. It has a trust policy and permission policies.</td>
+</tr>
+<tr>
+<td>Trust policy</td>
+<td>The part of a role that names who may take it, such as <code>lambda.amazonaws.com</code>.</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>A JSON document that lists allowed actions and the resources they apply to.</td>
+</tr>
+<tr>
+<td>Least privilege</td>
+<td>Granting only the permissions a job needs.</td>
+</tr>
+<tr>
+<td>Access key</td>
+<td>A long-lived secret key pair. This ticket forbids it in the function.</td>
+</tr>
+<tr>
+<td>Environment variable</td>
+<td>A named setting stored with the function, such as <code>CITYPULSE_BUCKET</code>.</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>AWS file storage.</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>A container in S3. Yours is named <code>citypulse-&lt;name&gt;-&lt;rand4&gt;</code>.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>One stored file in a bucket.</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>The full path of an object inside a bucket.</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>The start of a key, such as <code>raw/openmeteo-aq/</code>.</td>
+</tr>
+<tr>
+<td>boto3</td>
+<td>The Python library for calling AWS services.</td>
+</tr>
+<tr>
+<td><code>put_object</code></td>
+<td>The boto3 call that saves one object.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>A text format for structured data, made of <code>key: value</code> pairs.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>A web address that answers requests with data.</td>
+</tr>
+<tr>
+<td>EventBridge Scheduler</td>
+<td>The AWS timer service that calls a target on a schedule.</td>
+</tr>
+<tr>
+<td>Rate expression</td>
+<td>Schedule text such as <code>rate(30 minutes)</code>.</td>
+</tr>
+<tr>
+<td>Invoke</td>
+<td>Call a function so that it runs.</td>
+</tr>
+<tr>
+<td>CloudWatch Logs</td>
+<td>Where Lambda stores the lines your function prints.</td>
+</tr>
+<tr>
+<td>Log group</td>
+<td>A named set of logs, here <code>/aws/lambda/citypulse-fetch</code>.</td>
+</tr>
+<tr>
+<td>REPORT line</td>
+<td>The log line that gives duration, billed duration and memory for one run.</td>
+</tr>
+<tr>
+<td>Billed duration</td>
+<td>The run time Lambda charges for, rounded up to the next millisecond.</td>
+</tr>
+<tr>
+<td>GB-second</td>
+<td>One gigabyte of memory used for one second. Lambda's compute unit.</td>
+</tr>
+<tr>
+<td>EC2</td>
+<td>AWS's virtual machine service.</td>
+</tr>
+<tr>
+<td>gp3 volume</td>
+<td>A disk attached to a virtual machine, billed per GB-month.</td>
+</tr>
+<tr>
+<td>Break-even</td>
+<td>The point at which two costs are equal.</td>
+</tr>
+<tr>
+<td>Pricing calculator</td>
+<td>The AWS web tool at calculator.aws for estimating monthly costs.</td>
+</tr>
+<tr>
+<td>Idempotent</td>
+<td>Running an operation twice leaves the same result as running it once.</td>
+</tr>
+<tr>
+<td><code>set -euo pipefail</code></td>
+<td>A Bash safety line. It stops the script on an error, an unset variable or a failed pipe step.</td>
+</tr>
+<tr>
+<td>shellcheck</td>
+<td>A tool that finds mistakes in shell scripts.</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>The Python test runner.</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Continuous integration: GitHub runs your tests and shellcheck on each pull request.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge your branch, reviewed by a squad-mate.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The AWS data-centre area. This guide assumes <code>ap-south-1</code> (Mumbai); use the region you used in T17 to T19.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p>The trainer runs five test cases and checks five acceptance criteria. The criteria are: at least two scheduled runs in the logs, each with a matching object in the bucket; the role is <code>citypulse-fetch-fn</code> and no access key appears; both monthly figures come from the calculator with arithmetic and a break-even statement; the account ID in the evidence is your own; and the schedule is <code>rate(30 minutes)</code> or disabled.</p>
+<p><strong>TC1, the function configuration.</strong></p>
+<div class="hl"><pre><span></span><code>aws lambda get-function-configuration --function-name citypulse-fetch --query &#39;{Role:Role,Env:Environment.Variables,Timeout:Timeout,Mem:MemorySize}&#39;
+</code></pre></div>
+
+<ul>
+<li><code>aws lambda get-function-configuration</code> reads the settings of the function.</li>
+<li><code>--function-name citypulse-fetch</code> names the function.</li>
+<li><code>--query</code> picks out fields. Inside the braces, <code>Role:Role</code> means "a field called Role, taken from the Role setting". The same pattern applies to the other fields.</li>
+</ul>
+<p>Passing output:</p>
+<div class="hl"><pre><span></span><code>{
+    &quot;Role&quot;: &quot;arn:aws:iam::123456789012:role/citypulse-fetch-fn&quot;,
+    &quot;Env&quot;: {
+        &quot;CITYPULSE_BUCKET&quot;: &quot;citypulse-example-k9x2&quot;
+    },
+    &quot;Timeout&quot;: 60,
+    &quot;Mem&quot;: 256
+}
+</code></pre></div>
+
+<p>The role must end with <code>role/citypulse-fetch-fn</code>. <code>Env</code> must hold only <code>CITYPULSE_BUCKET</code>, and <code>AQI_URL</code> is allowed too. <code>Timeout</code> must be 60 and <code>Mem</code> must be 256. The bucket name and account number above are made up. Yours will differ.</p>
+<p>A failing output usually has one of three causes. If <code>Env</code> contains <code>AWS_ACCESS_KEY_ID</code>, you stored a key, so remove it. If <code>Env</code> is <code>null</code>, the variable was never set, which means <code>deploy.sh</code> missed the <code>--environment</code> flag. If <code>Timeout</code> is 3, you created the function without <code>--timeout 60</code>.</p>
+<p><strong>TC2, the scheduled runs in the logs.</strong></p>
+<div class="hl"><pre><span></span><code>aws logs tail /aws/lambda/citypulse-fetch --since 1h | grep -c &#39;wrote s3://&#39;
+</code></pre></div>
+
+<ul>
+<li><code>aws logs tail</code> prints the recent lines in one log group.</li>
+<li><code>--since 1h</code> limits the output to the last hour.</li>
+<li><code>|</code> is the pipe. It sends the lines into the next command as input.</li>
+<li><code>grep -c</code> counts the lines that match the text.</li>
+<li><code>'wrote s3://'</code> is the text to match. This is why your handler must print that exact text.</li>
+</ul>
+<p>Passing output (the trainer needs a number of at least 2):</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws logs tail /aws/lambda/citypulse-fetch --since 1h | grep -c &#x27;wrote s3://&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2&quot;}]}"></div>
+
+<p>A result of 0 means the handler does not print that text, or no run has happened. A result of 1 usually means only your manual invoke ran, so the schedule has not fired yet.</p>
+<p><strong>TC3, the objects in the bucket.</strong></p>
+<div class="hl"><pre><span></span><code>aws s3 ls s3://&lt;bucket&gt;/raw/openmeteo-aq/ --recursive
+</code></pre></div>
+
+<ul>
+<li><code>aws s3 ls</code> lists objects under a prefix.</li>
+<li><code>--recursive</code> goes into every sub-folder, which here are the <code>date=</code> folders.</li>
+</ul>
+<p>Passing output has at least two lines ending in <code>fetch_HHMM.json</code>, about five or thirty minutes apart. An example line looks like <code>2027-01-12 09:00:03  12345 raw/openmeteo-aq/date=2027-01-12/fetch_0900.json</code>. Replace <code>&lt;bucket&gt;</code> with your own bucket name. An empty result means the wrong bucket or a wrong prefix. One line only means both runs wrote the same minute, or only one run has happened.</p>
+<p><strong>TC4, the schedule.</strong></p>
+<div class="hl"><pre><span></span><code>aws scheduler get-schedule --name citypulse-fetch-30m --query &#39;{s:ScheduleExpression,st:State}&#39;
+</code></pre></div>
+
+<ul>
+<li><code>aws scheduler get-schedule</code> reads one schedule by name.</li>
+<li>The query returns the expression as <code>s</code> and the state as <code>st</code>.</li>
+</ul>
+<p>Passing output is <code>{"s": "rate(30 minutes)", "st": "ENABLED"}</code> or the same with <code>"st": "DISABLED"</code>. If you see <code>rate(5 minutes)</code>, you forgot step Y2-T23.7. If you see <code>ResourceNotFoundException</code>, the name does not match exactly.</p>
+<p><strong>TC5, the cost document.</strong> Open <code>docs/cloud-cost.md</code> and check by eye. There must be two calculator links, two monthly totals in rupees or US dollars, arithmetic lines and a break-even statement. A missing date next to the links is a fail.</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T23.1</td>
+<td>Every student</td>
+<td>Create role <code>citypulse-fetch-fn</code> with Lambda trust. Attach the bucket policy and basic logging. No access key.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T23.2</td>
+<td>Backend</td>
+<td>Write <code>handler.py</code> and <code>tests/test_handler_key.py</code>.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T23.3</td>
+<td>QA/DevOps</td>
+<td>Write <code>deploy.sh</code>, shellcheck clean.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T23.4</td>
+<td>Every student</td>
+<td>Deploy to your account. Invoke once. Record the REPORT line.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T23.5</td>
+<td>Every student</td>
+<td>Create the 5-minute schedule with a scheduler role. Save two runs of evidence.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T23.6</td>
+<td>Data</td>
+<td>Write <code>docs/cloud-cost.md</code> with calculator figures and break-even.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T23.7</td>
+<td>Every student</td>
+<td>Set the schedule to <code>rate(30 minutes)</code> or disable it before 20:30.</td>
+<td>5m</td>
+</tr>
+<tr>
+<td>Y2-T23.8</td>
+<td>Tech Lead</td>
+<td>Merge the PR with green CI and check each member's account ID.</td>
+<td>10m</td>
+</tr>
+</tbody>
+</table>
+<p>Every student must do T23.1, T23.4, T23.5 and T23.7, because each deployment is individual. Choose the piece that matches your squad role for the code, so your commits show real work. Backend students own T23.2, QA/DevOps students own T23.3 and Data students own T23.6.</p>
+<p>Use the branch name <code>y2-t23-&lt;name&gt;-fetch-lambda</code>. Example commit messages, in the order you would make them:</p>
+<ol>
+<li>Add fetch handler that writes raw JSON to the bucket</li>
+<li>Add key-format test for the fetch handler</li>
+<li>Add deploy script for citypulse-fetch</li>
+<li>Add T23 deploy and invoke evidence</li>
+<li>Add scheduled-run logs and bucket listing for T23</li>
+<li>Add monthly cost comparison for VM and Lambda</li>
+<li>Set citypulse-fetch-30m to rate(30 minutes) and save schedule output</li>
+</ol>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<h4 id="y2-t231-create-the-functions-role">Y2-T23.1: Create the function's role</h4>
+<p><strong>Goal.</strong> A role named <code>citypulse-fetch-fn</code> that Lambda can take on, with permission to write the bucket prefix and to write logs. There is no access key.</p>
+<p><strong>The idea.</strong> A role has two parts. The trust policy says who may wear the role. The permission policies say what the role may do.</p>
+<p><strong>Stage 1, the trust policy.</strong> Save this as <code>infra/function/trust.json</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lambda.amazonaws.com&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Each line says the following. <code>Effect</code> allows the statement. <code>Principal</code> names Lambda as the service allowed to wear the role. <code>Action</code> names the wearing action, <code>sts:AssumeRole</code>. Test it with <code>python -m json.tool infra/function/trust.json</code>. Expected output is the same JSON, reformatted. An error with a line number means a missing comma.</p>
+<p><strong>Stage 2, create the role.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-fetch-fn<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://infra/function/trust.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span>Role.Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><code>create-role</code> makes the role. <code>file://</code> tells the CLI to read the JSON from a file. <code>--query Role.Arn --output text</code> prints only the ARN. Expected output: one line such as <code>arn:aws:iam::&lt;your account&gt;:role/citypulse-fetch-fn</code>.</p>
+<p><strong>Stage 3, the logging permission.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-fetch-fn<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+</code></pre></div>
+
+<p>This attaches AWS's standard logging policy. It prints nothing when it succeeds.</p>
+<p><strong>Stage 4, the bucket permission.</strong> Paste the ARN from the Before you start check into the command:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-fetch-fn<span class="w"> </span>--policy-arn<span class="w"> </span>&lt;ARN<span class="w"> </span>of<span class="w"> </span>citypulse-pipeline-s3&gt;
+</code></pre></div>
+
+<p>The D15 walk-through writes an inline policy instead. Your ticket names the policy <code>citypulse-pipeline-s3</code>, so attach that one. Check that it allows <code>s3:PutObject</code> only on the <code>raw/openmeteo-aq/</code> prefix.</p>
+<p><strong>Test.</strong> Run <code>aws iam list-attached-role-policies --role-name citypulse-fetch-fn --query "AttachedPolicies[].PolicyName" --output text</code>. Expected output: both policy names. A role has no access key, so none is created.</p>
+<div class="box box-trap"><div class="box-h">Trap: A new role is refused</div><p>Lambda sometimes rejects a role that was created seconds ago. If <code>create-function</code> later says the role cannot be assumed, wait 20 seconds and run the command again.</p></div>
+
+<h4 id="y2-t232-write-the-handler-and-its-test">Y2-T23.2: Write the handler and its test</h4>
+<p><strong>Goal.</strong> <code>infra/function/handler.py</code> that fetches, checks, saves and logs. <code>tests/test_handler_key.py</code> that tests the key format.</p>
+<p><strong>Technique first: a date to text.</strong> <code>strftime</code> turns a date into text using codes. <code>%Y</code> is the four-digit year, <code>%m</code> the month, <code>%d</code> the day, <code>%H</code> the hour and <code>%M</code> the minute.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2027</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;fetch_%H%M.json&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>fetch_0900.json</code>. The code is standard library only.</p>
+<p><strong>Stage 1, imports and client.</strong> Create <code>infra/function/handler.py</code> with these lines. Copy the API address string from your <code>src/citypulse/fetch.py</code> into <code>AQI_URL</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">AQI_URL</span> <span class="o">=</span> <span class="s2">&quot;&lt;paste the address from fetch.py&gt;&quot;</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>  <span class="c1"># created once per container, reused on warm starts</span>
+</code></pre></div>
+
+<p><code>os.environ</code> reads the settings that Lambda passes in. <code>boto3.client("s3")</code> sits at module level, so it is built once when the container starts. Test with <code>python -c "import ast; ast.parse(open('infra/function/handler.py').read())"</code>. No output means the syntax is valid.</p>
+<p><strong>Stage 2, the key.</strong> Add this function. It is separate so that the test can call it without making a network request:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_key</span><span class="p">(</span><span class="n">now</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;raw/openmeteo-aq/date=%Y-%m-</span><span class="si">%d</span><span class="s2">/fetch_%H%M.json&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The function takes a time and returns the key as text. The key depends only on the minute, so two runs in the same minute write the same object.</p>
+<p><strong>Stage 3, fetch and check.</strong> Add this function:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_body</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">AQI_URL</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API returned </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>  <span class="c1"># raises ValueError if the body is not JSON</span>
+    <span class="k">return</span> <span class="n">body</span>
+</code></pre></div>
+
+<p><code>urlopen</code> raises an error for most failed HTTP codes already. The <code>if</code> check makes the rule explicit for any non-200 reply. The <code>json.loads</code> line is only a check, and it raises an error if the body is not JSON. Errors must be raised, not caught, so that the run is marked as failed.</p>
+<p><strong>Stage 4, the handler.</strong> Fill in the three TODO lines. Try them yourself before you use the hints after the code:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">fetch_body</span><span class="p">()</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">make_key</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">))</span>
+    <span class="n">bucket</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CITYPULSE_BUCKET&quot;</span><span class="p">]</span>
+    <span class="c1"># TODO 1: call s3.put_object with Bucket=bucket, Key=key and Body=body</span>
+    <span class="c1"># TODO 2: print one line in this exact shape: wrote s3://&lt;bucket&gt;/&lt;key&gt; bytes=&lt;n&gt;</span>
+    <span class="c1"># TODO 3: return {&quot;key&quot;: key, &quot;bytes&quot;: len(body)}</span>
+</code></pre></div>
+
+<p>The printed text must start with <code>wrote s3://</code>, because TC2 counts that text. Hints: <code>put_object</code> takes keyword arguments, and <code>len(body)</code> gives the byte count. An f-string can build the printed line.</p>
+<p><strong>Stage 5, the test.</strong> Create <code>tests/test_handler_key.py</code> at the repository root:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_key</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_key_for_0900_utc</span><span class="p">():</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2027</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">make_key</span><span class="p">(</span><span class="n">now</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;raw/openmeteo-aq/date=2027-01-12/fetch_0900.json&quot;</span>
+</code></pre></div>
+
+<p>Add two more tests yourself, one for 17:05 UTC and one for 00:00 UTC. Run them from the repository root with <code>PYTHONPATH=infra/function python -m pytest tests/test_handler_key.py -q</code>. <code>PYTHONPATH</code> tells Python where to find <code>handler.py</code>. Expected output: <code>3 passed</code>. Pytest must have <code>boto3</code> installed, because the test imports the handler. Install it with <code>pip install boto3 pytest</code>.</p>
+<h4 id="y2-t233-write-the-deploy-script">Y2-T23.3: Write the deploy script</h4>
+<p><strong>Goal.</strong> <code>infra/function/deploy.sh</code> that zips the handler, creates the function the first time, updates it afterwards, and waits until it is active.</p>
+<p><strong>Technique first: <code>set -euo pipefail</code>.</strong> The three flags make a script stricter. <code>-e</code> stops at the first failing command. <code>-u</code> stops if you use a variable that is not set. <code>-o pipefail</code> makes a pipeline fail if any step fails. Without them, a broken deploy can look like a success.</p>
+<p><strong>Stage 1, the header.</strong> Create the file with:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">FN</span><span class="o">=</span>citypulse-fetch
+</code></pre></div>
+
+<p><code>cd "$(dirname "$0")"</code> moves into the folder that holds the script, so the zip paths are right whatever folder you run it from. <code>FN</code> stores the function name in one place.</p>
+<p><strong>Stage 2, the zip.</strong></p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>zipfile<span class="w"> </span>-c<span class="w"> </span><span class="k">function</span>.zip<span class="w"> </span>handler.py
+</code></pre></div>
+
+<p><code>-c</code> creates an archive called <code>function.zip</code> containing <code>handler.py</code>. Test it with <code>python -m zipfile -l function.zip</code>. Expected output lists <code>handler.py</code>. Add <code>function.zip</code> to <code>.gitignore</code>, because the zip is a build product and should not be committed.</p>
+<p><strong>Stage 3, create or update.</strong> Lambda needs a different command the first time and every time after. Fill in the TODO:</p>
+<div class="hl"><pre><span></span><code><span class="k">if</span><span class="w"> </span>aws<span class="w"> </span>lambda<span class="w"> </span>get-function<span class="w"> </span>--function-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FN</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>aws<span class="w"> </span>lambda<span class="w"> </span>update-function-code<span class="w"> </span>--function-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FN</span><span class="s2">&quot;</span><span class="w"> </span>--zip-file<span class="w"> </span>fileb://function.zip
+<span class="k">else</span>
+<span class="w">  </span><span class="c1"># TODO: aws lambda create-function with these flags:</span>
+<span class="w">  </span><span class="c1">#   --runtime python3.12  --handler handler.handler</span>
+<span class="w">  </span><span class="c1">#   --role &lt;ARN of citypulse-fetch-fn&gt;  --memory-size 256  --timeout 60</span>
+<span class="w">  </span><span class="c1">#   --environment &quot;Variables={CITYPULSE_BUCKET=&lt;your bucket&gt;}&quot;</span>
+<span class="w">  </span><span class="c1">#   --zip-file fileb://function.zip</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<p><code>get-function</code> succeeds if the function exists. The <code>&gt;/dev/null 2&gt;&amp;1</code> part hides its output. <code>--handler handler.handler</code> means file <code>handler</code>, function <code>handler</code>. Get the role ARN with <code>aws iam get-role --role-name citypulse-fetch-fn --query Role.Arn --output text</code>. The <code>Variables={...}</code> syntax sets one environment variable. Do not add any AWS key here.</p>
+<p><strong>Stage 4, wait.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>lambda<span class="w"> </span><span class="nb">wait</span><span class="w"> </span><span class="k">function</span>-updated-v2<span class="w"> </span>--function-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FN</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deployed </span><span class="nv">$FN</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>wait</code> blocks until Lambda has finished creating or updating the function. This matters on the update path, because the function is already "active" while the new code is still being installed. Expected last line: <code>deployed citypulse-fetch</code>.</p>
+<p><strong>Test.</strong> Run <code>bash -n infra/function/deploy.sh</code>. It checks syntax only and prints nothing when the syntax is valid. Then run <code>shellcheck infra/function/deploy.sh</code>. It must print nothing. A warning such as <code>SC2086</code> usually means a variable needs double quotes.</p>
+<h4 id="y2-t234-deploy-and-invoke-once">Y2-T23.4: Deploy and invoke once</h4>
+<p><strong>Goal.</strong> Your function exists in your account, runs once by hand, and you have recorded its REPORT line and your account ID.</p>
+<p><strong>Stage 1, deploy.</strong> Run <code>bash infra/function/deploy.sh</code>. The first run creates the function. Run it again later to see the update path.</p>
+<p><strong>Stage 2, check the state.</strong> Run <code>aws lambda get-function-configuration --function-name citypulse-fetch --query State --output text</code>. Expected output: <code>Active</code>.</p>
+<p><strong>Stage 3, invoke.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>lambda<span class="w"> </span>invoke<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>out.json
+cat<span class="w"> </span>out.json
+</code></pre></div>
+
+<p><code>invoke</code> calls the function once and waits for the answer. The terminal shows <code>"StatusCode": 200</code> when the call succeeded, and no <code>FunctionError</code> line. <code>out.json</code> holds the returned value, such as <code>{"key": "...", "bytes": 12345}</code>. <code>cat</code> prints the file.</p>
+<p><strong>Stage 4, the REPORT line.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>logs<span class="w"> </span>tail<span class="w"> </span>/aws/lambda/citypulse-fetch<span class="w"> </span>--since<span class="w"> </span>10m<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>REPORT
+</code></pre></div>
+
+<p>The <code>grep REPORT</code> part keeps only the lines with that word. Expected output is one line with <code>Duration</code>, <code>Billed Duration</code>, <code>Memory Size</code> and <code>Max Memory Used</code>. Copy the billed duration and max memory into your notes for T23.6.</p>
+<p><strong>Stage 5, your account ID.</strong> Save the identity for the evidence: <code>mkdir -p docs/evidence/&lt;name&gt;</code> and then <code>aws sts get-caller-identity &gt; docs/evidence/&lt;name&gt;/T23-account.txt</code>. Replace <code>&lt;name&gt;</code> with your folder name.</p>
+<p><strong>Test.</strong> <code>aws s3 ls s3://&lt;bucket&gt;/raw/openmeteo-aq/ --recursive</code> lists the new object.</p>
+<div class="box box-trap"><div class="box-h">Trap: An invoke that fails quietly</div><p>If <code>out.json</code> holds an error message, the status code may still show 200 for some errors. Read the log lines with the command above and look for <code>Task timed out</code> or a traceback.</p></div>
+
+<h4 id="y2-t235-schedule-two-runs-and-save-evidence">Y2-T23.5: Schedule two runs and save evidence</h4>
+<p><strong>Goal.</strong> A schedule that calls the function every five minutes, two scheduled runs in the logs and bucket listing, and the evidence files.</p>
+<p><strong>Technique first: an invoke role.</strong> The scheduler calls the function with its own role. That role must trust <code>scheduler.amazonaws.com</code>. Its permission policy allows only <code>lambda:InvokeFunction</code> on your function.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One scheduled run, end to end&quot;, &quot;nodes&quot;: [&quot;EventBridge Scheduler&quot;, &quot;Lambda function&quot;, &quot;Open-Meteo&quot;, &quot;S3 bucket&quot;, &quot;CloudWatch Logs&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;invoke&quot;, &quot;note&quot;: &quot;The scheduler calls the function with its scheduler role.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;GET air quality&quot;, &quot;note&quot;: &quot;The handler asks the API for Bengaluru readings.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;JSON body&quot;, &quot;note&quot;: &quot;The API returns the hourly values.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 3, &quot;label&quot;: &quot;put_object&quot;, &quot;note&quot;: &quot;The handler saves the body under raw/openmeteo-aq/.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 4, &quot;label&quot;: &quot;log lines&quot;, &quot;note&quot;: &quot;The handler prints the wrote line, and Lambda writes the REPORT line.&quot;}]}"></div>
+
+<p><strong>Stage 1, the scheduler role.</strong> Save this trust policy as <code>sched-trust.json</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scheduler.amazonaws.com&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Then run <code>aws iam create-role --role-name citypulse-scheduler --assume-role-policy-document file://sched-trust.json</code>. Write a policy file <code>sched-invoke.json</code> with <code>"Action": "lambda:InvokeFunction"</code> and <code>"Resource"</code> set to your function's ARN, then attach it with <code>aws iam put-role-policy --role-name citypulse-scheduler --policy-name invoke-fetch --policy-document file://sched-invoke.json</code>.</p>
+<p><strong>Stage 2, the schedule.</strong> Set the two ARNs as variables and create the schedule:</p>
+<div class="hl"><pre><span></span><code><span class="nv">FN_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>lambda<span class="w"> </span>get-function<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>--query<span class="w"> </span>Configuration.FunctionArn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-scheduler<span class="w"> </span>--query<span class="w"> </span>Role.Arn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>scheduler<span class="w"> </span>create-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--schedule-expression<span class="w"> </span><span class="s2">&quot;rate(5 minutes)&quot;</span><span class="w"> </span>--flexible-time-window<span class="w"> </span><span class="nv">Mode</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target<span class="w"> </span><span class="s2">&quot;Arn=</span><span class="nv">$FN_ARN</span><span class="s2">,RoleArn=</span><span class="nv">$ROLE_ARN</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>$(...)</code> runs a command and stores its output in a variable. <code>Mode=OFF</code> means the run happens at the exact time. Expected output: a <code>ScheduleArn</code>. The name <code>citypulse-fetch-30m</code> is required by the ticket, even though the rate starts at five minutes.</p>
+<p><strong>Stage 3, wait and look.</strong> Wait at least ten minutes. Then run <code>aws logs tail /aws/lambda/citypulse-fetch --since 30m</code>. Look for <code>wrote s3://</code> lines about five minutes apart. Your manual invoke from T23.4 happened before the schedule existed, so the scheduled runs are the later ones.</p>
+<p><strong>Stage 4, save the evidence.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>logs<span class="w"> </span>tail<span class="w"> </span>/aws/lambda/citypulse-fetch<span class="w"> </span>--since<span class="w"> </span>30m<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T23-logs.txt
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucket&gt;/raw/openmeteo-aq/<span class="w"> </span>--recursive<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T23-bucket.txt
+</code></pre></div>
+
+<p><code>&gt;</code> writes the output into a file instead of the screen. Take a screenshot of the log lines as well, and save it in the same folder.</p>
+<p><strong>Test.</strong> Open both files. The log file must hold at least two scheduled <code>wrote s3://</code> lines. The bucket file must list objects with <code>fetch_HHMM.json</code> names.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reusing the function&#x27;s role</div><p>The scheduler cannot use <code>citypulse-fetch-fn</code>. A role that trusts only <code>lambda.amazonaws.com</code> is refused. Use the scheduler role.</p></div>
+
+<h4 id="y2-t236-write-docscloud-costmd">Y2-T23.6: Write docs/cloud-cost.md</h4>
+<p><strong>Goal.</strong> A document with two monthly figures from the AWS pricing calculator, with links, a date, arithmetic and a break-even statement.</p>
+<p><strong>Technique first: the arithmetic.</strong> Lambda bills GB-seconds. Work out the monthly GB-seconds with this trace, using made-up numbers. Replace them with your own measured figures.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Monthly Lambda usage with made-up numbers&quot;, &quot;code&quot;: [&quot;invocations = 48 * 30&quot;, &quot;billed_s = 0.9&quot;, &quot;gb = 256 / 1024&quot;, &quot;gb_seconds = invocations * billed_s * gb&quot;, &quot;price = 0.00002&quot;, &quot;compute = gb_seconds * price&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;invocations&quot;, &quot;1440&quot;]], &quot;note&quot;: &quot;48 runs a day for 30 days gives 1,440 runs a month.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;invocations&quot;, &quot;1440&quot;], [&quot;billed_s&quot;, &quot;0.9&quot;]], &quot;note&quot;: &quot;0.9 is a made-up billed time. Use your own REPORT figure, divided by 1,000.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;invocations&quot;, &quot;1440&quot;], [&quot;billed_s&quot;, &quot;0.9&quot;], [&quot;gb&quot;, &quot;0.25&quot;]], &quot;note&quot;: &quot;256 MB divided by 1,024 gives 0.25 GB.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;gb_seconds&quot;, &quot;324.0&quot;]], &quot;note&quot;: &quot;1,440 times 0.9 times 0.25 is 324 GB-seconds.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;price&quot;, &quot;0.00002&quot;]], &quot;note&quot;: &quot;A placeholder price. Take the real price from the calculator, not from here.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;compute&quot;, &quot;0.00648&quot;]], &quot;note&quot;: &quot;Compute cost is GB-seconds times the price. Requests are added separately.&quot;}]}"></div>
+
+<p><strong>Stage 1, the table.</strong> Create <code>docs/cloud-cost.md</code> with a table that has one row per student: name, billed milliseconds, max memory used, Lambda monthly and VM monthly.</p>
+<p><strong>Stage 2, the calculator.</strong> Open calculator.aws. Choose the same region as your deployment (Asia Pacific (Mumbai) if you used ap-south-1). Enter the Lambda figures: 1,440 requests a month, your billed duration in milliseconds, and 256 MB of memory. Copy the link and write today's date next to it. If the calculator shows a free tier line, write it down as a separate line.</p>
+<p><strong>Stage 3, the VM.</strong> Add a second estimate in the same region for a <code>t3.micro</code> instance running 730 hours a month, with an 8 GB gp3 volume. Copy that link too, and write its date. Record both monthly totals and the currency.</p>
+<p><strong>Stage 4, break-even.</strong> Use these formulas:</p>
+<div class="hl"><pre><span></span><code>cost per invocation = Lambda monthly / 1,440
+break-even invocations = VM monthly / cost per invocation
+</code></pre></div>
+
+<p>Here is a made-up example to check your method. If the VM costs 1,000 units a month and one invocation costs 0.02 units, the break-even is 1,000 / 0.02 = 50,000 invocations a month. Write your own sentence in this form: "At N invocations a month the two costs are equal. The fetch runs 1,440 times a month, so the cheaper option is <Lambda or the VM>, because <your figures>."</p>
+<p><strong>Test.</strong> Check that each total can be recomputed from the lines above it, and that both links and dates are present.</p>
+<h4 id="y2-t237-slow-the-schedule-before-2030">Y2-T23.7: Slow the schedule before 20:30</h4>
+<p><strong>Goal.</strong> The schedule is <code>rate(30 minutes)</code> or disabled, and its details are saved.</p>
+<p>Set the ARNs again, because <code>update-schedule</code> replaces the whole definition:</p>
+<div class="hl"><pre><span></span><code><span class="nv">FN_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>lambda<span class="w"> </span>get-function<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>--query<span class="w"> </span>Configuration.FunctionArn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-scheduler<span class="w"> </span>--query<span class="w"> </span>Role.Arn<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>scheduler<span class="w"> </span>update-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--schedule-expression<span class="w"> </span><span class="s2">&quot;rate(30 minutes)&quot;</span><span class="w"> </span>--flexible-time-window<span class="w"> </span><span class="nv">Mode</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target<span class="w"> </span><span class="s2">&quot;Arn=</span><span class="nv">$FN_ARN</span><span class="s2">,RoleArn=</span><span class="nv">$ROLE_ARN</span><span class="s2">&quot;</span><span class="w"> </span>--state<span class="w"> </span>DISABLED
+aws<span class="w"> </span>scheduler<span class="w"> </span>get-schedule<span class="w"> </span>--name<span class="w"> </span>citypulse-fetch-30m<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T23-schedule.txt
+</code></pre></div>
+
+<p><code>--state DISABLED</code> stops the runs. Leave it out if you want the schedule to keep running every 30 minutes. Either choice passes TC4. Expected output of <code>update-schedule</code> is a <code>ScheduleArn</code>. Open <code>T23-schedule.txt</code> and check that the expression is <code>rate(30 minutes)</code>.</p>
+<h4 id="y2-t238-merge-through-a-reviewed-pull-request">Y2-T23.8: Merge through a reviewed pull request</h4>
+<p><strong>Goal.</strong> Your files are on a branch, the PR has green CI and a squad-mate's approval, and the Tech Lead merges it. You do not merge your own PR.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>y2-t23-&lt;name&gt;-fetch-lambda
+git<span class="w"> </span>add<span class="w"> </span>infra/function<span class="w"> </span>tests/test_handler_key.py<span class="w"> </span>docs/cloud-cost.md<span class="w"> </span>docs/evidence/&lt;name&gt;
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add fetch handler that writes raw JSON to the bucket&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>y2-t23-&lt;name&gt;-fetch-lambda
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Y2-T23: scheduled fetch function&quot;</span><span class="w"> </span>--body-file<span class="w"> </span>pr.md
+</code></pre></div>
+
+<p><code>checkout -b</code> creates and switches to a new branch. <code>add</code> stages files. <code>commit -m</code> records them with a message. <code>push -u</code> sends the branch to GitHub. <code>gh pr create --body-file</code> opens the PR with the text in <code>pr.md</code>, a file you write outside the repository. Commit separately, following the list of example messages above. Never commit a key, a <code>.env</code> file or <code>function.zip</code>.</p>
+<p><strong>Test.</strong> <code>git log --oneline -7</code> lists your commits. The PR page shows the CI checks, and each must be green.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>Run the five test cases in order: TC1, TC2, TC3, TC4, then open TC5's document. Paste each output into the PR under Evidence. Then run the local checks:</p>
+<div class="hl"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>infra/function<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests<span class="w"> </span>-q
+shellcheck<span class="w"> </span>infra/function/deploy.sh
+</code></pre></div>
+
+<p>Expected output: pytest reports all tests passed, and shellcheck prints nothing.</p>
+<p>Use this structure for the PR description. Write each heading's text yourself:</p>
+<div class="hl"><pre><span></span><code>## What
+One sentence on what this PR adds.
+
+## Why
+The ticket&#39;s reason, in your own words.
+
+## How to test
+The commands a reviewer runs, in order.
+
+## Evidence
+Paste the outputs of TC1 to TC5, and the account ID file. Attach the screenshot.
+
+## Checklist
+- [ ] pytest and shellcheck are green
+- [ ] TC1 to TC5 pass
+- [ ] No access key in code, env or repo
+</code></pre></div>
+
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] <code>handler.py</code>, <code>deploy.sh</code> and the test are merged through a reviewed PR with green CI. You know it when the PR shows an approval and green checks, and <code>git log --oneline</code> on main lists your commits.</li>
+<li>[ ] Every student has the function deployed in their own account, with at least two scheduled runs evidenced. You know it when <code>T23-account.txt</code> matches <code>aws sts get-caller-identity</code>, and <code>T23-logs.txt</code> has two scheduled lines.</li>
+<li>[ ] The schedule is slowed or disabled, and no managed database is left running. You know it when <code>T23-schedule.txt</code> shows <code>rate(30 minutes)</code> or <code>DISABLED</code>, and <code>aws rds describe-db-instances --query "DBInstances[].DBInstanceIdentifier" --output text</code> prints nothing.</li>
+<li>[ ] Evidence is in <code>docs/evidence/&lt;name&gt;/T23-*</code>. You know it when <code>ls docs/evidence/&lt;name&gt;/</code> shows the logs, bucket, schedule and account files, plus your screenshot.</li>
+<li>[ ] The LMS field for Y2-T23 is updated by 23:59. You know it when your LMS record shows the update time. Only the trainer moves the ticket to Done.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create-function</code> says the role cannot be assumed</td>
+<td>The role is seconds old</td>
+<td>Wait 20 seconds and retry</td>
+</tr>
+<tr>
+<td><code>put_object</code> fails with AccessDenied</td>
+<td>The policy resource does not match the bucket or the <code>raw/openmeteo-aq/*</code> prefix</td>
+<td>Check the policy ARN and the resource line, then reattach</td>
+</tr>
+<tr>
+<td>TC1 shows <code>Env: null</code></td>
+<td><code>--environment</code> was missing in <code>create-function</code></td>
+<td>Run <code>update-function-configuration</code> with the variable</td>
+</tr>
+<tr>
+<td>TC2 returns 0 but runs happen</td>
+<td>The printed line does not start with <code>wrote s3://</code></td>
+<td>Fix the print line in <code>handler.py</code>, then redeploy</td>
+</tr>
+<tr>
+<td>Logs show <code>Task timed out</code></td>
+<td>Timeout left at the default 3 seconds, or the API is slow</td>
+<td>Set <code>--timeout 60</code> and keep the 20-second request limit</td>
+</tr>
+<tr>
+<td>Scheduled runs fail, with no runs logged</td>
+<td>The scheduler role lacks <code>lambda:InvokeFunction</code>, or it trusts the wrong service</td>
+<td>Fix the role policy or trust file, then wait for the next tick</td>
+</tr>
+<tr>
+<td>TC3 shows only one object</td>
+<td>Both runs wrote the same minute, or only one run has happened</td>
+<td>Check the times, and wait for a second run five minutes later</td>
+</tr>
+<tr>
+<td><code>zip: command not found</code> in Git Bash</td>
+<td>Git Bash has no <code>zip</code></td>
+<td>Use <code>python -m zipfile -c</code> as shown</td>
+</tr>
+<tr>
+<td>TC4 shows <code>rate(5 minutes)</code> at the end</td>
+<td>The update step was skipped</td>
+<td>Run the <code>update-schedule</code> command from T23.7</td>
+</tr>
+<tr>
+<td>Evidence shows the wrong account ID</td>
+<td>The CLI used another profile</td>
+<td>Set the right profile, then rerun the identity check</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p><strong>Q1 (why). Why is a scheduled function cheaper than a virtual machine for this fetch?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The fetch runs for about two seconds every 30 minutes. Lambda bills only for the GB-seconds and requests used, so the monthly cost is a small number. A virtual machine is billed for every hour it is switched on, which is about 730 hours a month, and it still needs patching when idle. For this workload, pay-per-use is much cheaper. The calculator figures show it, and the break-even count shows how far the workload is from the point where the VM would win.</p></details>
+
+<p><strong>Q2 (trade-off). What do you trade away by choosing Lambda, and how would you decide if the workload changed?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Lambda caps a run at 15 minutes and gives less control of the environment. Each cold start also adds a delay. In return you get no server to patch and no idle cost. If the job grew to run for longer than 15 minutes, or ran nearly all day, I would compare the monthly figures again and consider a container service or a VM. I would base that choice on the calculator numbers, not on habit.</p></details>
+
+<p><strong>Q3 (what you did). Which part did you build, and how do you know it works?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Describe the subtask you owned in your own words, name the file and the test that covers it, and give the command that proves it. For example, you might say you wrote the key function and its test, ran <code>pytest</code> in CI, and then checked TC3 in the bucket listing. Your viva answer should match your own commits in the PR, so review them before the viva.</p></details>
+
+<p><strong>Q4 (why). Why does the object key depend only on the minute, and what happens on a retry?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The key is built from the date and the minute. If a retry happens in the same minute, the same key is written again and the object is replaced, so the bucket does not fill with duplicates. This makes the write idempotent, meaning running it twice leaves the same result. A retry in a later minute does create a new object, and that is expected, because it is a new reading.</p></details>
+
+<p><strong>Q5 (why). Why must the handler raise an error on bad data, rather than catch it and return success?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>If the handler catches the error and returns success, CloudWatch records a successful run, and the bad data goes unnoticed. When the handler raises the error, the invocation is marked as failed. The failure then shows in the logs and in the error metric. An honest failure is more useful than a quiet success, because the team can see it and fix it.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which setting lets the fetch function write to the bucket without any access key?&quot;, &quot;opts&quot;: [&quot;An access key stored in an environment variable&quot;, &quot;The execution role, whose policy allows s3:PutObject on the raw prefix&quot;, &quot;A public write permission on the whole bucket&quot;, &quot;An administrator password written into handler.py&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The execution role is an identity that Lambda takes on, and AWS gives temporary credentials for it. A stored key is forbidden. Public write access is unsafe, and a password in code leaks.&quot;}, {&quot;q&quot;: &quot;TC2 prints 0, yet the logs show that the function ran. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The timeout is set to 60 seconds&quot;, &quot;The memory is set to 256 MB&quot;, &quot;The printed line does not contain the text wrote s3://&quot;, &quot;The schedule is set to rate(30 minutes)&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;grep -c counts only lines that contain the exact text. A handler that prints a different message runs fine but scores 0. The timeout and memory settings are correct values, and the schedule has no effect on the text printed.&quot;}, {&quot;q&quot;: &quot;A function runs 1,440 times a month, bills 0.5 seconds per run, and has 512 MB of memory. How many GB-seconds does it bill per month?&quot;, &quot;opts&quot;: [&quot;180&quot;, &quot;1,440&quot;, &quot;360,000&quot;, &quot;360&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;512 MB is 0.5 GB. 1,440 times 0.5 seconds is 720 seconds, and 720 times 0.5 GB is 360 GB-seconds. The 360,000 answer forgets to convert megabytes to gigabytes, and 180 divides by the wrong factor.&quot;}]}"></div>
+
+<h2 id="y2-t24-draw-deployed-architecture-script-teardown-write-10-point-eda">Y2-T24 · Draw deployed architecture, script teardown, write 10-point EDA</h2>
+<p><em>Session 24 · phase M5 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>CityPulse is the platform your squad is building. It collects Bengaluru city data, such as air quality, and keeps it in the cloud. Cloud services charge for everything that is running, so a forgotten virtual machine or a scheduled job can cost money while nobody is looking. This ticket asks for two things that protect the client from that and from bad conclusions.</p>
+<p>The first is ops hygiene. Every resource you own gets a tag, which is a label such as <code>Owner</code> with your name, so you can find it later. You draw a diagram of what is really deployed, not what you planned. You also write a teardown script that removes your resources in a safe order, and a recreate script that builds them again. The teardown script starts in dry-run mode, which prints what it would delete and changes nothing.</p>
+<p>The second is the first look at the data. Zillow Offers was a home-buying business that in 2021 bought houses using a pricing model that assumed a recent trend would carry on. The housing market changed, the company lost a great deal of money and it closed the business. The lesson is that a trend is not proof. You must check volatility, which is how much the numbers jump about, and regime change, which is when the underlying conditions shift and old patterns stop applying.</p>
+<p>So every observation in your notebook needs a chart, a number and a "So what:" line that names the action someone should take.</p>
+<p>The client's programme manager wants three things: a diagram that matches the account, a one-command teardown, and ten observations that each stand up to a hard question. Your trainer will check each of them.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p>You need these merged on <code>main</code> before you begin: the IAM policies and roles in <code>infra/iam/</code>, the upload script <code>src/citypulse/upload.py</code>, the VM scripts in <code>infra/vm/</code>, the function scripts in <code>infra/function/</code>, and the docs <code>docs/cloud-runbook.md</code> and <code>docs/cloud-cost.md</code>. These come from tickets T17 to T23. You also need clean air-quality data with at least three weeks of hourly rows, both in your bucket under <code>clean/aqi/date=.../</code> and locally at <code>data/clean/aq_clean.parquet</code>.</p>
+<p>Run these checks from the squad repository on the lab machine (Linux bash) or in Git Bash on your laptop.</p>
+<ul>
+<li>Merged files are present. Run <code>git pull</code> then <code>ls infra/iam infra/vm infra/function docs/cloud-runbook.md docs/cloud-cost.md</code>. You are ready when every folder and file is listed with no "No such file" error.</li>
+<li>AWS CLI is signed in to your own account. Run <code>aws sts get-caller-identity --query Arn --output text</code>. You are ready when it prints an ARN containing your own user or role name and not someone else's.</li>
+<li>Your function exists. Run <code>aws lambda get-function --function-name citypulse-fetch --query Configuration.FunctionName --output text</code>. You are ready when it prints <code>citypulse-fetch</code>.</li>
+<li>shellcheck is installed. Run <code>shellcheck --version</code>. You are ready when it prints a version number. On the lab machine, install it with your package manager, for example <code>sudo apt install shellcheck</code>.</li>
+<li>Python has the data libraries. Run <code>python3 -c "import pandas, pyarrow, matplotlib; print('ok')"</code>. You are ready when it prints <code>ok</code>. If it says <code>ModuleNotFoundError</code>, install the missing package with <code>pip install pandas pyarrow matplotlib</code>.</li>
+<li>Jupyter is installed. Run <code>jupyter nbconvert --version</code>. You are ready when it prints a version number. Install with <code>pip install jupyter</code> if needed.</li>
+<li>The clean data is there. Run <code>python3 -c "import pandas as pd; print(len(pd.read_parquet('data/clean/aq_clean.parquet')))"</code>. You are ready when it prints a row count of several hundred or more.</li>
+<li>draw.io is available. Open diagrams.net in a browser or install the desktop app. You are ready when a blank diagram opens.</li>
+</ul>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resource</td>
+<td>Any thing in the cloud account that you create and pay for, such as a bucket, a function or a VM.</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>A container in S3, Amazon's object storage, that holds files called objects.</td>
+</tr>
+<tr>
+<td>S3 versioning</td>
+<td>A bucket setting that keeps old copies of each object. Deleting a versioned bucket needs extra steps.</td>
+</tr>
+<tr>
+<td>Delete marker</td>
+<td>A placeholder that S3 adds when you delete an object in a versioned bucket. The old versions still exist.</td>
+</tr>
+<tr>
+<td>Lambda function</td>
+<td>A small piece of code that AWS runs when triggered, without you managing a server.</td>
+</tr>
+<tr>
+<td>VM, EC2 instance</td>
+<td>A virtual machine: a computer rented from AWS. Its ID looks like <code>i-0abc123example</code>.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>A group of AWS data centres. This course uses <code>ap-south-1</code>, Mumbai.</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>A rule that triggers your function at set times. In AWS this is an EventBridge rule.</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management: the AWS system that controls who and what may do which action.</td>
+</tr>
+<tr>
+<td>IAM role</td>
+<td>An identity that a service, such as a function, uses to act. It has policies that list what it may do.</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>A document that lists allowed or denied actions on named resources.</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>The role or user that an action runs as. You draw it on the diagram arrows.</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>The rules two machines use to talk, such as HTTPS or SSH.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>A key and value stuck on a resource, such as <code>Owner=ananya</code>.</td>
+</tr>
+<tr>
+<td>Owner tag, Project tag</td>
+<td>Tags that say who owns a resource and which project it belongs to.</td>
+</tr>
+<tr>
+<td>ARN</td>
+<td>Amazon Resource Name: a long unique address for one resource.</td>
+</tr>
+<tr>
+<td>Tagging API</td>
+<td>The AWS service that lists resources by their tags. The command is <code>resourcegroupstaggingapi</code>.</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td>Command-line interface: the <code>aws</code> command you type in a terminal.</td>
+</tr>
+<tr>
+<td>Flag</td>
+<td>An option on a command, such as <code>--region</code> or <code>--apply</code>.</td>
+</tr>
+<tr>
+<td>Dry run</td>
+<td>A mode that prints each change it would make, but makes none.</td>
+</tr>
+<tr>
+<td>Teardown, recreate</td>
+<td>Removing all your resources, then building them again from scripts.</td>
+</tr>
+<tr>
+<td>Idempotent</td>
+<td>Running a step twice leaves the same result as running it once.</td>
+</tr>
+<tr>
+<td>Shell, bash</td>
+<td>The program that reads and runs your commands. Bash is the most common one.</td>
+</tr>
+<tr>
+<td>Script</td>
+<td>A text file of shell commands that runs in order.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a command returns. 0 means success; anything else means failure.</td>
+</tr>
+<tr>
+<td>Pipe, <code>\|</code></td>
+<td>Sends the output of one command into the next.</td>
+</tr>
+<tr>
+<td><code>head -20</code></td>
+<td>Shows only the first 20 lines of its input.</td>
+</tr>
+<tr>
+<td>shellcheck</td>
+<td>A tool that checks shell scripts for common mistakes and prints a code such as SC2086.</td>
+</tr>
+<tr>
+<td>Quoting</td>
+<td>Wrapping a variable in double quotes, as in <code>"$NAME"</code>, so spaces or odd characters do not split it.</td>
+</tr>
+<tr>
+<td>CRLF</td>
+<td>Windows line endings. Bash can fail on them, so save scripts with Unix (LF) endings.</td>
+</tr>
+<tr>
+<td>Git Bash</td>
+<td>A bash shell that runs on Windows, installed with Git for Windows.</td>
+</tr>
+<tr>
+<td>Jupyter notebook</td>
+<td>A <code>.ipynb</code> file of code cells, text cells and their outputs.</td>
+</tr>
+<tr>
+<td>nbconvert</td>
+<td>A Jupyter tool that converts notebooks, and with <code>--execute</code> runs every cell in order.</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>A compact column-based file format that pandas reads with <code>read_parquet</code>.</td>
+</tr>
+<tr>
+<td>pandas DataFrame</td>
+<td>A table in memory, with named columns and one row per record.</td>
+</tr>
+<tr>
+<td>Coverage table</td>
+<td>A count of rows per location per day, which shows gaps in the data.</td>
+</tr>
+<tr>
+<td>UTC, IST</td>
+<td>Coordinated Universal Time, and Indian Standard Time, which is UTC plus five hours and thirty minutes.</td>
+</tr>
+<tr>
+<td><code>ts_utc</code></td>
+<td>The timestamp column in the clean data, stored in UTC.</td>
+</tr>
+<tr>
+<td>Hour of day</td>
+<td>The hour a reading was taken, after converting to IST.</td>
+</tr>
+<tr>
+<td>Axis label</td>
+<td>The text beside a chart axis, such as "Hour of day (IST)".</td>
+</tr>
+<tr>
+<td>Observation</td>
+<td>One finding with a chart, a number and an action.</td>
+</tr>
+<tr>
+<td>n</td>
+<td>The number of rows behind a figure. It shows how much evidence you have.</td>
+</tr>
+<tr>
+<td>So what</td>
+<td>The line that states the action a finding implies, and who would take it.</td>
+</tr>
+<tr>
+<td>Initials</td>
+<td>Your initials at the start of an observation, so the squad can see who wrote it.</td>
+</tr>
+<tr>
+<td>EDA</td>
+<td>Exploratory data analysis: looking at data in a structured way before drawing conclusions.</td>
+</tr>
+<tr>
+<td>Volatility</td>
+<td>How much a number jumps around from one reading to the next.</td>
+</tr>
+<tr>
+<td>Regime change</td>
+<td>A shift in the conditions that generated the data, so older patterns stop applying.</td>
+</tr>
+<tr>
+<td>Commit, pull request (PR)</td>
+<td>A saved set of changes in Git, and a proposal to merge a branch, which a squad-mate reviews.</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Continuous integration: automatic checks that run when a PR is opened.</td>
+</tr>
+<tr>
+<td>Evidence pack</td>
+<td>The files and outputs you collect to prove a ticket's work.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>Your trainer checks every acceptance criterion and runs every test case. Here is what each one means and what you will see.</p>
+<p><strong>Acceptance criterion 1: the diagram matches reality.</strong> The trainer picks any two boxes on your diagram. Both must exist in your account, under the same names. Nothing drawn may be undeployed.</p>
+<p><strong>Acceptance criterion 2: the tag list.</strong> <code>docs/evidence/&lt;name&gt;/T24-tags.txt</code> must list every bucket, function, role and instance you own, with <code>Owner</code> and <code>Project</code> tags.</p>
+<p><strong>Acceptance criterion 3: dry-run teardown.</strong> <code>bash infra/teardown.sh &lt;name&gt;</code> with no <code>--apply</code> prints a <code>DRY</code> line for every resource, in order, and changes nothing. <code>shellcheck</code> passes on both scripts.</p>
+<p><strong>Acceptance criterion 4: the notebook.</strong> <code>notebooks/eda.ipynb</code> has exactly 10 numbered observations. Each has a chart directly above it, and a sentence with a number and a <code>So what:</code> action.</p>
+<p><strong>Acceptance criterion 5: the hour axis.</strong> Every hour-of-day chart is labelled IST and computed from <code>ts_utc</code> plus five hours and thirty minutes.</p>
+<p><strong>Acceptance criterion 6: authorship.</strong> Each student wrote at least two observations, marked with their initials.</p>
+<p><strong>TC1: dry run and shellcheck.</strong>
+The command is:</p>
+<p><code>bash infra/teardown.sh &lt;name&gt; | head -20; shellcheck infra/teardown.sh infra/recreate.sh</code></p>
+<ul>
+<li><code>bash infra/teardown.sh &lt;name&gt;</code> runs your script with the name as its first argument. <code>&lt;name&gt;</code> is your own name as used in the tags.</li>
+<li><code>| head -20</code> sends the output to <code>head</code>, which shows only the first 20 lines. The script may stop early with a "broken pipe" message once <code>head</code> has finished. That is expected.</li>
+<li><code>;</code> runs the next command whether or not the first one succeeded.</li>
+<li><code>shellcheck infra/teardown.sh infra/recreate.sh</code> checks both scripts. It prints nothing when they are clean.</li>
+</ul>
+<p>Passing looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash infra/teardown.sh ananya | head -20&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [schedule] aws events remove-targets --rule citypulse-fetch-schedule --ids fetch-target --region ap-south-1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [schedule] aws events delete-rule --name citypulse-fetch-schedule --region ap-south-1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [function] aws lambda delete-function --function-name citypulse-fetch --region ap-south-1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [instances] aws ec2 terminate-instances --region ap-south-1 --instance-ids i-0abc123example&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [bucket] aws s3api delete-object --bucket ananya-citypulse-raw --key raw/example.json --version-id 3HL4kqtJlcpXroDTDmJ&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [bucket] aws s3api delete-bucket --bucket ananya-citypulse-raw --region ap-south-1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [roles] aws iam detach-role-policy --role-name ananya-citypulse-fetch-role --policy-arn arn:aws:iam::123456789012:policy/example&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;DRY [roles] aws iam delete-role --role-name ananya-citypulse-fetch-role&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;shellcheck infra/teardown.sh infra/recreate.sh&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}]}"></div>
+
+<p>The names, keys and IDs will be yours, and you will see one line per object version and per policy. The order must be schedule, function, instances, bucket and roles. <code>shellcheck</code> printed nothing, and the exit code <code>0</code> confirms that it passed.</p>
+<p>A failing run looks different. If the file is missing, you see <code>bash: infra/teardown.sh: No such file or directory</code>. The usual cause is that you are in the wrong folder. Run <code>pwd</code> and move to the repository root. If shellcheck reports something like <code>SC2086 (info): Double quote to prevent globbing and word splitting</code>, a variable is not quoted. If it reports <code>SC1017</code>, the file has Windows line endings. Convert it to LF and run it again.</p>
+<p><strong>TC2: the resources exist.</strong>
+The trainer runs two commands on your screen after you point at the diagram boxes:</p>
+<p><code>aws lambda get-function --function-name citypulse-fetch</code>
+<code>aws s3api head-bucket --bucket &lt;bucket&gt;</code></p>
+<ul>
+<li><code>aws lambda get-function</code> asks Lambda for the function's details. <code>--function-name</code> gives the name.</li>
+<li><code>aws s3api head-bucket</code> asks S3 whether the bucket exists and that you may access it. <code>--bucket</code> gives its name.</li>
+</ul>
+<p>Passing means both print their details, or <code>head-bucket</code> prints nothing and exits with 0. Failing looks like <code>An error occurred (ResourceNotFoundException) when calling the GetFunction operation: Function not found</code>, or <code>An error occurred (404) when calling the HeadBucket operation: Not Found</code>. Either means the diagram draws something that is not in your account. Fix the diagram or deploy the missing resource.</p>
+<p><strong>TC3: the notebook executes.</strong>
+The command is:</p>
+<p><code>jupyter nbconvert --to notebook --execute notebooks/eda.ipynb --output /tmp/eda_check.ipynb</code></p>
+<ul>
+<li><code>jupyter nbconvert</code> is the Jupyter converter.</li>
+<li><code>--to notebook</code> writes a notebook as output.</li>
+<li><code>--execute</code> runs every code cell from top to bottom.</li>
+<li><code>--output /tmp/eda_check.ipynb</code> writes the executed copy to a temporary location. On Windows, Git Bash maps <code>/tmp</code> to a temporary folder, so the copy is written there.</li>
+</ul>
+<p>Passing ends with a line such as <code>[NbConvertApp] Writing ... bytes to /tmp/eda_check.ipynb</code> and no error. Failing usually shows <code>FileNotFoundError: [Errno 2] No such file or directory: 'data/clean/aq_clean.parquet'</code>. This happens because nbconvert runs each notebook from its own folder. Use <code>../data/clean/aq_clean.parquet</code> in the notebook.</p>
+<p><strong>TC4: the observation count.</strong>
+The command is:</p>
+<p><code>grep -c 'So what:' notebooks/eda.ipynb</code></p>
+<ul>
+<li><code>grep</code> searches for text.</li>
+<li><code>-c</code> prints a count of matching lines, not of matches.</li>
+<li><code>'So what:'</code> is the text searched for, with the exact capitals and colon.</li>
+</ul>
+<p>Passing prints a number of 10 or more. Failing prints a smaller number. Check that every observation has <code>So what:</code> in its markdown cell, and that the spelling and capitals match exactly. Two <code>So what:</code> on one line count only once.</p>
+<p><strong>TC5: the so-what question.</strong>
+The trainer asks "so what?" about one observation. Passing means you name a concrete action and who would take it, for example "the squad checks the sensor for that station before the next demo". Failing means you repeat the finding, or you say "monitor the data". The action must be something a named person could do.</p>
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T24.1</td>
+<td>Every student</td>
+<td>Upload your draft D03 evidence pack to the LMS at the 09:00 gate. Your trainer lists gaps with fix dates.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T24.2</td>
+<td>Every student</td>
+<td>Tag every resource you own. Save the tag list to <code>docs/evidence/&lt;name&gt;/T24-tags.txt</code>.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T24.3</td>
+<td>Tech Lead</td>
+<td>Draw <code>docs/architecture.drawio</code> and export <code>docs/architecture.png</code>, with each arrow numbered.</td>
+<td>40m</td>
+</tr>
+<tr>
+<td>Y2-T24.4</td>
+<td>QA/DevOps</td>
+<td>Write <code>infra/teardown.sh</code> and <code>infra/recreate.sh</code>. Make them shellcheck clean.</td>
+<td>45m</td>
+</tr>
+<tr>
+<td>Y2-T24.5</td>
+<td>Every student</td>
+<td>Run the dry run in your account. Confirm each listed resource is yours.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T24.6</td>
+<td>Data</td>
+<td>Build the notebook skeleton with the coverage table as cell 1.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T24.7</td>
+<td>Every student</td>
+<td>Write two observations, each with a chart, a number, n and <code>So what:</code>.</td>
+<td>60m</td>
+</tr>
+<tr>
+<td>Y2-T24.8</td>
+<td>Scrum/Docs</td>
+<td>Open the PR <code>feat/T24-arch-eda</code> and prepare three observations and one surprise for the 14:45 demo.</td>
+<td>15m</td>
+</tr>
+</tbody>
+</table>
+<p>Your squad decides who does which role, so check the roster with your squad. For commit evidence, take one piece that is clearly yours. Good choices are the dry-run work for the scripts, the diagram arrows, or your own two observations. Every student must produce their own tag list, dry-run output and two observations, so those always show your contribution.</p>
+<p>Branch name: <code>feat/T24-arch-eda</code>. Create it from an up-to-date <code>main</code> with <code>git switch -c feat/T24-arch-eda</code>. Your work goes through a pull request with at least one squad-mate's approval. Do not merge your own PR.</p>
+<p>Example commit messages, in the order you might make them:</p>
+<ol>
+<li><code>docs: add T24 tag list for &lt;name&gt;</code></li>
+<li><code>docs: export architecture diagram and PNG</code></li>
+<li><code>infra: add dry-run teardown with labelled DRY lines</code></li>
+<li><code>infra: add teardown steps for schedule and function</code></li>
+<li><code>infra: quote variables so shellcheck passes</code></li>
+<li><code>infra: add recreate script skeleton</code></li>
+<li><code>data: add EDA notebook with coverage table</code></li>
+<li><code>eda: add observations 3 and 7 with IST hour chart</code></li>
+</ol>
+<p>These are examples of the style. Write your own messages to describe what each commit really does.</p>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<h4 id="y2-t241-gate-upload-of-the-d03-evidence-pack">Y2-T24.1: Gate upload of the D03 evidence pack</h4>
+<p>The goal is to put a draft of your D03 evidence on the LMS before the 09:00 gate, so your trainer can list gaps and give fix dates. This is not a coding step.</p>
+<p>Collect the files you have for IAM, storage, compute and serverless into one folder, then check each one opens. Use <code>ls</code> to list them:</p>
+<p><code>ls docs/evidence/&lt;name&gt;/</code></p>
+<ul>
+<li><code>ls</code> lists the files in a folder.</li>
+<li><code>docs/evidence/&lt;name&gt;/</code> is the folder you will create in T24.2.</li>
+</ul>
+<p>You should see the files you already have. Upload them using the LMS instructions from your trainer. This guide does not describe the upload page, so follow what your trainer shows you.</p>
+<p>Test: the upload confirmation appears and the file list on the LMS matches your folder.</p>
+<h4 id="y2-t242-tag-all-your-resources">Y2-T24.2: Tag all your resources</h4>
+<p>The goal is that every bucket, function, role and instance you own carries <code>Owner</code> and <code>Project</code> tags. Tags are how the teardown script finds your resources later, so this step matters for T24.4 and T24.5.</p>
+<p>First, a small example of the tag filter. Suppose you tagged one bucket with <code>Owner=ananya</code>. The command below lists every tagged resource with that owner:</p>
+<p><code>aws resourcegroupstaggingapi get-resources --tag-filters Key=Owner,Values=ananya --region ap-south-1 --query 'ResourceTagMappingList[].ResourceARN'</code></p>
+<ul>
+<li><code>aws resourcegroupstaggingapi get-resources</code> asks the Tagging API for resources.</li>
+<li><code>--tag-filters Key=Owner,Values=ananya</code> keeps only resources whose <code>Owner</code> tag is <code>ananya</code>. Replace <code>ananya</code> with your own name.</li>
+<li><code>--region ap-south-1</code> names the region where you work.</li>
+<li><code>--query 'ResourceTagMappingList[].ResourceARN'</code> prints only the ARN of each match. The square brackets make a list. The single quotes stop the shell from changing the expression.</li>
+</ul>
+<p>Expected output is a JSON list of ARNs, for example <code>["arn:aws:s3:::ananya-citypulse-raw"]</code>. Resources without the tag will not appear, so this list tells you what still needs tagging.</p>
+<p>Now produce the file the ticket asks for. The tag list needs the tags themselves, so change the query to show them:</p>
+<p><code>aws resourcegroupstaggingapi get-resources --tag-filters Key=Owner,Values=ananya --region ap-south-1 --query 'ResourceTagMappingList[].{ARN:ResourceARN,Tags:Tags}' --output json &gt; docs/evidence/ananya/T24-tags.txt</code></p>
+<ul>
+<li><code>--query '...{ARN:ResourceARN,Tags:Tags}'</code> builds one object per resource, with its ARN and its list of tags.</li>
+<li><code>--output json</code> prints JSON.</li>
+<li><code>&gt; docs/evidence/ananya/T24-tags.txt</code> writes the output to a file. Create the folder first with <code>mkdir -p docs/evidence/ananya</code>. The <code>-p</code> flag creates parent folders as needed.</li>
+</ul>
+<p>Test: open the file and check that every bucket, function, role and instance you own appears with <code>Owner</code> and <code>Project</code> in its <code>Tags</code>.</p>
+<p>Tagging: if a resource is missing, or lacks <code>Project</code>, add the tag with the command for its type. Use the <code>Project</code> value your squad agreed, for example <code>citypulse</code>.</p>
+<ul>
+<li>Lambda: <code>aws lambda tag-resource --resource &lt;function-arn&gt; --tags Owner=ananya,Project=citypulse</code></li>
+<li>EC2 instance: <code>aws ec2 create-tags --resources i-0abc123example --tags Key=Owner,Value=ananya Key=Project,Value=citypulse</code></li>
+<li>IAM role: <code>aws iam tag-role --role-name &lt;role-name&gt; --tags Key=Owner,Value=ananya Key=Project,Value=citypulse</code></li>
+<li>S3 bucket: <code>aws s3api put-bucket-tagging --bucket &lt;bucket&gt; --tagging 'TagSet=[{Key=Owner,Value=ananya},{Key=Project,Value=citypulse}]'</code></li>
+</ul>
+<p>Warning on S3: <code>put-bucket-tagging</code> replaces the whole tag set. If the bucket already has tags, first read them with <code>aws s3api get-bucket-tagging --bucket &lt;bucket&gt;</code> and include them in your new <code>TagSet</code>. Otherwise you delete them.</p>
+<p>If a resource type does not appear in the Tagging API output, read its tags with its own command, for example <code>aws iam list-role-tags --role-name &lt;role-name&gt;</code> or <code>aws lambda list-tags --resource &lt;function-arn&gt;</code>.</p>
+<p>Note that IAM is a global service, so roles may not appear when you query <code>ap-south-1</code>; try <code>--region us-east-1</code> for roles, or use <code>aws iam list-role-tags</code> as above.</p>
+<p>Test: rerun the query. The count of ARNs should match the number of resources you own.</p>
+<h4 id="y2-t243-draw-the-architecture">Y2-T24.3: Draw the architecture</h4>
+<p>The goal is a diagram in <code>docs/architecture.drawio</code>, exported to <code>docs/architecture.png</code>. The flow is: sources, then Lambda or VM, then the bucket with <code>raw/</code> and <code>clean/</code> folders, then SQLite and the notebook. Every arrow is numbered and labelled with its protocol and identity.</p>
+<p>Draw the boxes first. Use the exact names from your account. Here is an example of the labels for one arrow:</p>
+<p><code>2 HTTPS PUT, identity: citypulse-fetch role</code></p>
+<ul>
+<li><code>2</code> is the arrow number.</li>
+<li><code>HTTPS PUT</code> is the protocol: the request method and the secure web protocol used.</li>
+<li><code>identity: citypulse-fetch role</code> is the IAM role the call runs as. This arrow is the function writing to the bucket, so AWS checks that role. The arrow from a public data source into the function is, for example, <code>1 HTTPS GET, identity: none (public API)</code>; if your source needs an API key, say so instead.</li>
+</ul>
+<p>Create the other arrows the same way. Each arrow answers two questions: how do the two sides talk, and who is allowed to make the call. Include the S3 write from the function, the read from the VM, and the notebook's read of the clean file.</p>
+<p>Export: in draw.io, choose File, then Export as, then PNG, and save as <code>docs/architecture.png</code>. Save the source with File, then Save as, to <code>docs/architecture.drawio</code>.</p>
+<p>Test: the spot-check in TC2 uses the box names, so each name must match the console or CLI name exactly. If you see a box you cannot find with <code>aws</code>, remove it or deploy it.</p>
+<h4 id="y2-t244-write-the-teardown-and-recreate-scripts">Y2-T24.4: Write the teardown and recreate scripts</h4>
+<p>The goal is a script that removes your resources in the order schedule, function, instances, bucket versions, then roles and policies. The recreate script does the reverse. The full order matters because some resources depend on others. A role cannot be deleted while a policy is attached to it.</p>
+<p>Run this on the lab machine (Linux bash) or in Git Bash. Build the script in the stages below. Each stage is a fragment to add to the same file, <code>infra/teardown.sh</code>.</p>
+<p><strong>Stage 1: the header and the dry-run switch.</strong></p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">:?usage: teardown.sh &lt;name&gt; [--apply]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">APPLY</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;--apply&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nv">APPLY</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<ul>
+<li><code>#!/usr/bin/env bash</code> tells the system to run the file with bash.</li>
+<li><code>set -euo pipefail</code> makes the script stop on the first error (<code>-e</code>), stop on an unset variable (<code>-u</code>), and treat a failed command inside a pipe as a failure (<code>-o pipefail</code>).</li>
+<li><code>NAME="${1:?...}"</code> stores the first argument, your name. The <code>:?</code> stops the script with the message if no argument is given.</li>
+<li><code>APPLY="no"</code> is the default. Only <code>--apply</code> as the second argument changes it.</li>
+<li><code>[[ "${2:-}" == "--apply" ]]</code> tests the second argument. The <code>:-</code> gives an empty value when no second argument exists, which avoids the error from <code>set -u</code>.</li>
+</ul>
+<p>Test: run <code>bash infra/teardown.sh</code> with no argument. You should see your usage message and the script should stop.</p>
+<p><strong>Stage 2: the run helper.</strong> This is the key idea. Every change goes through one function, which either prints or does the change.</p>
+<div class="hl"><pre><span></span><code>run<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">label</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">shift</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APPLY</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;yes&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;APPLY [</span><span class="nv">$label</span><span class="s2">]&quot;</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DRY [</span><span class="nv">$label</span><span class="s2">] </span><span class="nv">$*</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<ul>
+<li><code>run()</code> defines a function named <code>run</code>.</li>
+<li><code>local label="$1"; shift</code> stores the first argument as a label, such as <code>schedule</code>, and then removes it from the list. <code>shift</code> moves the other arguments down by one.</li>
+<li>In dry-run mode the <code>else</code> branch prints <code>DRY [label]</code> and the command. <code>$*</code> expands to the whole command as text.</li>
+<li>In apply mode, <code>"$@"</code> runs the command with its arguments kept separate.</li>
+</ul>
+<p>Test: add one line below the function, <code>run schedule echo hello</code>, then run <code>bash infra/teardown.sh ananya</code>. You should see <code>DRY [schedule] echo hello</code>. Remove the test line before you go on.</p>
+<p><strong>Stage 3: the schedule.</strong> A rule must lose its targets before you delete it. Find the rule name first:</p>
+<p><code>aws events list-rules --name-prefix citypulse --region ap-south-1 --query 'Rules[].Name' --output text</code></p>
+<ul>
+<li><code>aws events list-rules</code> lists scheduled rules.</li>
+<li><code>--name-prefix citypulse</code> keeps only rules whose name starts with <code>citypulse</code>.</li>
+<li><code>--query 'Rules[].Name' --output text</code> prints the names one per line, without JSON.</li>
+</ul>
+<p>Use the name from your T23 deployment. Then add the calls below, with your rule name in place of <code>citypulse-fetch-schedule</code>:</p>
+<div class="hl"><pre><span></span><code><span class="nv">SCHEDULE</span><span class="o">=</span><span class="s2">&quot;citypulse-fetch-schedule&quot;</span>
+run<span class="w"> </span>schedule<span class="w"> </span>aws<span class="w"> </span>events<span class="w"> </span>remove-targets<span class="w"> </span>--rule<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SCHEDULE</span><span class="s2">&quot;</span><span class="w"> </span>--ids<span class="w"> </span>fetch-target<span class="w"> </span>--region<span class="w"> </span>ap-south-1
+run<span class="w"> </span>schedule<span class="w"> </span>aws<span class="w"> </span>events<span class="w"> </span>delete-rule<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SCHEDULE</span><span class="s2">&quot;</span><span class="w"> </span>--region<span class="w"> </span>ap-south-1
+</code></pre></div>
+
+<ul>
+<li><code>SCHEDULE="..."</code> stores the rule name once, so you change it in one place.</li>
+<li><code>remove-targets</code> detaches the function from the rule. <code>--ids</code> names the target; use the ID you saw with <code>aws events list-targets-by-rule --rule "$SCHEDULE"</code>.</li>
+<li><code>delete-rule</code> removes the rule. It must come after <code>remove-targets</code>, or AWS refuses.</li>
+</ul>
+<p>Test: run the script with a name. You should see two <code>DRY [schedule]</code> lines in that order.</p>
+<p><strong>Stage 4: the function and the instances.</strong> Deleting the function is one call:</p>
+<div class="hl"><pre><span></span><code>run<span class="w"> </span><span class="k">function</span><span class="w"> </span>aws<span class="w"> </span>lambda<span class="w"> </span>delete-function<span class="w"> </span>--function-name<span class="w"> </span>citypulse-fetch<span class="w"> </span>--region<span class="w"> </span>ap-south-1
+</code></pre></div>
+
+<ul>
+<li><code>delete-function</code> removes the function. Its name is the one from <code>get-function</code> in TC2.</li>
+</ul>
+<p>For instances, look up your own VMs by their tag. This is a read-only lookup, so it is safe in dry-run mode:</p>
+<div class="hl"><pre><span></span><code>mapfile<span class="w"> </span>-t<span class="w"> </span>IDS<span class="w"> </span>&lt;<span class="w"> </span>&lt;<span class="o">(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--region<span class="w"> </span>ap-south-1<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Owner,Values=</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Name=instance-state-name,Values=running,stopped&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[].Instances[].InstanceId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\t&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="o">)</span>
+<span class="k">for</span><span class="w"> </span>id<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">IDS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">  </span>run<span class="w"> </span>instances<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>terminate-instances<span class="w"> </span>--region<span class="w"> </span>ap-south-1<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$id</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<ul>
+<li><code>describe-instances</code> lists instances. <code>--filters "Name=tag:Owner,Values=$NAME"</code> keeps only instances tagged with your name, so the lookup depends on your T24.2 work.</li>
+<li><code>Name=instance-state-name,Values=running,stopped</code> keeps only instances that are running or stopped.</li>
+<li><code>--output text | tr '\t' '\n'</code> turns the tab-separated output into one ID per line.</li>
+<li><code>mapfile -t IDS &lt; &lt;(...)</code> reads those lines into an array called <code>IDS</code>. <code>mapfile</code> needs bash 4 or newer, which the lab machine and Git Bash have.</li>
+<li><code>[ -n "$id" ] || continue</code> skips an empty line, which some AWS CLI versions print when nothing matches.</li>
+<li><code>for id in "${IDS[@]}"</code> loops over each ID. The quotes keep each ID as one word.</li>
+</ul>
+<p>Warning: <code>terminate-instances</code> deletes the VM, unlike a stop. The ticket allows terminating only the T19 VM, and only when your D03 compute evidence is complete. Remember that as written, <code>--apply</code> would run every stage of the script, including the function, bucket and roles, so do not use it for this decision (see T24.5).</p>
+<p>Test: run the dry-run. You should see one <code>DRY [instances]</code> line per instance, and none if the lookup finds no instance.</p>
+<p><strong>Stage 5: the bucket versions.</strong> In a versioned bucket, <code>aws s3 rm</code> only adds delete markers. The old versions remain, and S3 refuses to delete the bucket while they exist. So you must list and delete every version, and every delete marker (listed under <code>DeleteMarkers</code> in the same output, with the same Key and VersionId fields). First look at what is there:</p>
+<p><code>aws s3api list-object-versions --bucket "$BUCKET" --query 'Versions[].[Key,VersionId]' --output text | head -5</code></p>
+<ul>
+<li><code>list-object-versions</code> lists every stored version of every object.</li>
+<li><code>--query 'Versions[].[Key,VersionId]'</code> prints the object key and version ID as a pair.</li>
+<li><code>--output text</code> prints one pair per line.</li>
+<li><code>| head -5</code> shows only the first five lines, so you can see the shape of the output.</li>
+</ul>
+<p>Write your loop with <code>run bucket aws s3api delete-object --bucket "$BUCKET" --key &lt;key&gt; --version-id &lt;id&gt;</code> for each pair, then one final line with <code>run bucket aws s3api delete-bucket --bucket "$BUCKET" --region ap-south-1</code>. Set <code>BUCKET</code> near the top of your script, as you did for <code>SCHEDULE</code>. In dry-run mode the loop prints one line per version, and an empty bucket prints none for the versions.</p>
+<p>Test: run the dry-run. The <code>DRY [bucket]</code> lines must come after the instance lines, and the delete-bucket line must come last among the bucket lines.</p>
+<p><strong>Stage 6: roles and policies.</strong> AWS refuses to delete a role that still has attached or inline policies, so detach them first. Find your roles with a tag filter:</p>
+<p><code>aws iam list-role-tags --role-name "$ROLE" --query "Tags[?Key=='Owner' &amp;&amp; Value=='$NAME'].Value" --output text</code></p>
+<ul>
+<li><code>aws iam list-roles --query 'Roles[].RoleName' --output text</code> first gives every role name in the account; loop over those as <code>$ROLE</code>.</li>
+<li><code>list-role-tags</code> returns one role's tags. The <code>Tags[?...]</code> part is a filter that keeps the <code>Owner</code> tag only if its value equals your name. The <code>$NAME</code> is expanded by the shell inside the double quotes.</li>
+<li>If this prints your name, the role is yours; if it prints nothing, skip that role. Use this check inside your loop.</li>
+</ul>
+<p>For each role, you then need the commands:</p>
+<div class="hl"><pre><span></span><code>run<span class="w"> </span>roles<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>detach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROLE</span><span class="s2">&quot;</span><span class="w"> </span>--policy-arn<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$POLICY_ARN</span><span class="s2">&quot;</span>
+run<span class="w"> </span>roles<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>delete-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROLE</span><span class="s2">&quot;</span><span class="w"> </span>--policy-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INLINE</span><span class="s2">&quot;</span>
+run<span class="w"> </span>roles<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>delete-role<span class="w"> </span>--role-name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROLE</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>detach-role-policy</code> removes a managed policy from the role. Its ARN comes from <code>aws iam list-attached-role-policies --role-name "$ROLE"</code>.</li>
+<li><code>delete-role-policy</code> removes an inline policy, which is written in the role itself. Names come from <code>aws iam list-role-policies --role-name "$ROLE"</code>.</li>
+<li><code>delete-role</code> removes the role. It must come last for that role.</li>
+</ul>
+<p>Note that <code>list-roles</code> does not return tags, so a filter on tags inside it matches nothing. Use this instead: list the role names, then keep those whose <code>Owner</code> tag matches.</p>
+<p>Write the loop over roles yourself, in the same style as the instances loop (read <code>Owner</code> for each role, then run the three commands only for yours). In dry-run mode you should see every detach and delete printed, in that order for each role.</p>
+<p><strong>Stage 7: shellcheck.</strong> Run <code>shellcheck infra/teardown.sh</code>. A typical message is:</p>
+<p><code>In infra/teardown.sh line 14:</code>
+<code>SC2086 (info): Double quote to prevent globbing and word splitting.</code></p>
+<ul>
+<li><code>In infra/teardown.sh line 14</code> names the file and the line.</li>
+<li><code>SC2086</code> is the rule code. Search for it on the shellcheck wiki for an explanation.</li>
+<li>The message says a variable is unquoted. Change <code>$BUCKET</code> to <code>"$BUCKET"</code> and run shellcheck again.</li>
+</ul>
+<p>Repeat until the command prints nothing. Shellcheck also checks <code>recreate.sh</code>.</p>
+<p><strong>The recreate script.</strong> Write <code>infra/recreate.sh</code> as the reverse of the teardown. It creates the resources in the order roles, bucket, function, instance, schedule. Use the exact commands from <code>docs/cloud-runbook.md</code>, which your squad wrote in T17 to T23. The bucket needs the region, for example:</p>
+<p><code>aws s3api create-bucket --bucket "$BUCKET" --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1</code></p>
+<ul>
+<li><code>create-bucket</code> makes the bucket.</li>
+<li><code>--create-bucket-configuration LocationConstraint=ap-south-1</code> is required for any region other than <code>us-east-1</code>.</li>
+</ul>
+<p>Test: <code>shellcheck infra/recreate.sh</code> prints nothing.</p>
+<p>Teardown order as a moving sequence:</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Order of the teardown&quot;, &quot;nodes&quot;: [&quot;Schedule&quot;, &quot;Function&quot;, &quot;Instances&quot;, &quot;Bucket&quot;, &quot;Roles&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;stop the trigger&quot;, &quot;note&quot;: &quot;The schedule goes first, so nothing starts a new run while you remove things.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;delete the function&quot;, &quot;note&quot;: &quot;With no trigger, the function can be deleted safely.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;terminate the VM&quot;, &quot;note&quot;: &quot;Only the T19 VM, and only with --apply after your evidence check.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;label&quot;: &quot;empty and delete the bucket&quot;, &quot;note&quot;: &quot;Every version goes before the bucket itself.&quot;}]}"></div>
+
+<h4 id="y2-t245-run-the-dry-run-in-your-account">Y2-T24.5: Run the dry run in your account</h4>
+<p>The goal is to confirm that every line the dry run lists is one of your own resources, before anything is deleted.</p>
+<p>Run <code>bash infra/teardown.sh &lt;name&gt; &gt; docs/evidence/&lt;name&gt;/T24-teardown-dry.txt</code>. The <code>&gt;</code> writes the output to the evidence file.</p>
+<p>Read the file line by line. For each <code>DRY</code> line, check the name against your tag list from T24.2. If a line names a resource you do not own, stop, do not run <code>--apply</code>, and tell your trainer.</p>
+<p>Do not run <code>teardown.sh --apply</code> in this ticket: as written it runs every stage and would delete your function, bucket and roles. If your D03 compute evidence is complete and you decide to terminate the T19 VM, do that one resource directly with <code>aws ec2 terminate-instances --region ap-south-1 --instance-ids &lt;id&gt;</code>, or add a stage switch to your script first. Everything else stays until later tickets need it.</p>
+<p>Test: the file exists, every line is listed in your tag file, and no resource was changed. You can confirm no change by checking that the Lambda function still exists with <code>aws lambda get-function --function-name citypulse-fetch</code>.</p>
+<h4 id="y2-t246-the-notebook-skeleton-with-a-coverage-table">Y2-T24.6: The notebook skeleton with a coverage table</h4>
+<p>The goal is <code>notebooks/eda.ipynb</code> with cell 1 as a coverage table. Coverage shows rows per location per day, so a day with gaps is not compared unfairly with a complete one.</p>
+<p>Install the notebook tools if needed with <code>pip install jupyter pandas pyarrow matplotlib</code>. Start Jupyter with <code>jupyter notebook</code> from the repository root, then create <code>notebooks/eda.ipynb</code> with the New menu. Here is the coverage code for cell 1. It assumes your columns are named <code>location_id</code> and <code>ts_utc</code>. Check with <code>print(df.columns)</code> first, and change names to match yours.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../data/clean/aq_clean.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts_ist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts_utc&quot;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">&quot;Asia/Kolkata&quot;</span><span class="p">)</span>
+<span class="n">coverage</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;location_id&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts_ist&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">])</span>
+              <span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coverage</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">7</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;incomplete location-days:&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">coverage</span> <span class="o">&lt;</span> <span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</code></pre></div>
+
+<ul>
+<li><code>../data/clean/aq_clean.parquet</code> starts with <code>../</code>. The notebook runs from its own folder, so the path must go up one level. This is the TC3 trap.</li>
+<li><code>pd.read_parquet(...)</code> reads the clean file. It needs <code>pyarrow</code> installed.</li>
+<li><code>pd.to_datetime(df["ts_utc"], utc=True)</code> turns the text into timestamps labelled UTC. <code>.dt.tz_convert("Asia/Kolkata")</code> shows the same moments in IST.</li>
+<li><code>groupby([...])</code> groups rows by location and by the IST calendar date. <code>.size()</code> counts the rows in each group.</li>
+<li><code>.unstack(fill_value=0)</code> makes one row per location and one column per date. Missing combinations show 0.</li>
+<li><code>print(coverage.iloc[:, -7:])</code> prints the last seven date columns. <code>iloc</code> selects by position.</li>
+<li><code>(coverage &lt; 24).sum().sum()</code> counts the cells with fewer than 24 readings. It is a count of incomplete location-days.</li>
+<li>This assumes one row per location per hour. If your clean data holds several pollutants per hour in separate rows, the counts will exceed 24 and hide gaps, so count distinct hours per day instead (for example with <code>nunique</code> on the hour).</li>
+</ul>
+<p>Expected output: a small table, then a line such as <code>incomplete location-days: 12</code>. Your number depends on your data.</p>
+<p>Test: run the cell. It must print the table with no error.</p>
+<h4 id="y2-t247-two-observations">Y2-T24.7: Two observations</h4>
+<p>The goal is two observations of your own, each with a chart directly above it, a number, n, the date range and a <code>So what:</code> line.</p>
+<p><strong>The hour-of-day axis.</strong> Any chart by hour must use IST. The ticket says to compute it from <code>ts_utc</code> plus five and a half hours. Here is one way:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../data/clean/aq_clean.parquet&quot;</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts_utc&quot;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;hour_ist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+</code></pre></div>
+
+<ul>
+<li><code>pd.to_datetime(df["ts_utc"], utc=True)</code> gives UTC timestamps.</li>
+<li><code>pd.Timedelta(hours=5, minutes=30)</code> is a time gap of five hours and thirty minutes.</li>
+<li><code>+</code> moves each timestamp forward by that gap.</li>
+<li><code>.dt.hour</code> takes the hour from the shifted time, so <code>hour_ist</code> is the IST hour.</li>
+</ul>
+<p>India has no daylight saving time, so this gives the same hours as <code>tz_convert("Asia/Kolkata")</code>. Use either, and say which in your notebook. Taking <code>.dt.hour</code> before the shift is the classic mistake. It puts the evening peak in the wrong hour.</p>
+<p><strong>The chart.</strong> Group by hour and draw a bar chart with the count and the mean:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">by_hour</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hour_ist&quot;</span><span class="p">)[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">by_hour</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">by_hour</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0072B2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Hour of day (IST)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Mean value&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mean value by hour, IST&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<ul>
+<li><code>groupby("hour_ist")</code> splits the rows by hour. <code>["value"]</code> picks the reading column. Use your own column name.</li>
+<li><code>.agg(["mean", "count"])</code> gives two columns: the mean and the number of rows per hour. The count is your <code>n</code>.</li>
+<li><code>plt.subplots(figsize=(10, 4))</code> creates one figure and one axes.</li>
+<li><code>ax.bar(...)</code> draws one bar per hour.</li>
+<li><code>ax.set(xlabel="Hour of day (IST)")</code> sets the x-axis label. This is the IST label the acceptance criterion checks.</li>
+</ul>
+<p>Expected output: a bar chart, one bar per hour, with the axis labelled IST.</p>
+<p><strong>The observation cell.</strong> Put a markdown cell directly below the chart cell. Use this structure, and write your own sentence:</p>
+<p><code>**Observation 3 (initials).** Between [first date] and [last date] IST, the [n] readings [finding with one number]. So what: [action], taken by [named role or person].</code></p>
+<p>The fictional example below is about a different dataset, a bicycle-sharing trip log, to show the shape only:</p>
+<p><code>**Observation 2 (AB).** Between 1 and 31 March, the 4,210 trips from the Indiranagar docks averaged 14.2 minutes. So what: the operations lead moves two spare bikes to that dock before 17:00.</code></p>
+<p>Each part matters. The chart comes right above, the date range and n show the evidence, one number carries the finding, and the <code>So what:</code> names an action and who takes it.</p>
+<p>Test: run the notebook. Each chart appears directly above its observation. Count the <code>So what:</code> lines with <code>grep -c 'So what:' notebooks/eda.ipynb</code>.</p>
+<h4 id="y2-t248-open-the-pr">Y2-T24.8: Open the PR</h4>
+<p>The goal is one pull request, <code>feat/T24-arch-eda</code>, with the diagram, scripts and notebook, and with the notebook outputs saved.</p>
+<p>Run <code>git status</code> to check your changes, then <code>git add</code> each file, <code>git commit -m "..."</code> with a clear message, and <code>git push -u origin feat/T24-arch-eda</code>. Open the PR with <code>gh pr create</code> or on GitHub. Use the template in the next section.</p>
+<p>Test: CI runs on the PR. Its checks should show green. A squad-mate reviews and approves before anyone merges.</p>
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run every test case yourself, in order, before you open the PR. Keep the output for the evidence.</p>
+<ol>
+<li>TC1: <code>bash infra/teardown.sh &lt;name&gt; | head -20; shellcheck infra/teardown.sh infra/recreate.sh</code>. Save the output to <code>docs/evidence/&lt;name&gt;/T24-teardown-dry.txt</code>.</li>
+<li>TC2: run both <code>aws</code> commands from the trainer's list, for your own bucket and function.</li>
+<li>TC3: <code>jupyter nbconvert --to notebook --execute notebooks/eda.ipynb --output /tmp/eda_check.ipynb</code>. Check that it ends with no error.</li>
+<li>TC4: <code>grep -c 'So what:' notebooks/eda.ipynb</code>. Check the count is 10 or more.</li>
+<li>TC5: prepare the answer for one of your observations. Say the action and who would take it, out loud.</li>
+</ol>
+<p>Paste your evidence into the PR. Use this template:</p>
+<div class="hl"><pre><span></span><code>## What
+One sentence: the diagram, teardown and recreate scripts, and the notebook with 10 observations.
+
+## Why
+The client needs the deployed stack drawn accurately, a one-command dry run before any deletion, and evidence-backed observations.
+
+## How to test
+1. bash infra/teardown.sh &lt;name&gt; | head -20
+2. shellcheck infra/teardown.sh infra/recreate.sh
+3. jupyter nbconvert --to notebook --execute notebooks/eda.ipynb --output /tmp/eda_check.ipynb
+4. grep -c &#39;So what:&#39; notebooks/eda.ipynb
+
+## Evidence
+Paste the DRY output, the shellcheck result, the nbconvert ending, and the grep count.
+Add the architecture PNG.
+
+## Checklist
+- [ ] Tags listed in docs/evidence/&lt;name&gt;/T24-tags.txt
+- [ ] shellcheck clean on both scripts
+- [ ] Notebook runs top to bottom
+- [ ] Two observations with my initials
+</code></pre></div>
+
+<p>Paste real output, not a description of it. A screenshot of the diagram is useful too.</p>
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] <code>architecture.drawio</code>, <code>architecture.png</code>, <code>teardown.sh</code>, <code>recreate.sh</code> and <code>eda.ipynb</code> are merged through a reviewed PR, and CI is green. You know it when the PR shows an approval and the checks are green before merge.</li>
+<li>[ ] Every resource you own is tagged with <code>Owner</code> and <code>Project</code>. You know it when the tag file lists every bucket, function, role and instance, and the count matches your account.</li>
+<li>[ ] Dry-run teardown evidence is saved by every student. You know it when <code>docs/evidence/&lt;name&gt;/T24-teardown-dry.txt</code> exists and every line names your own resource.</li>
+<li>[ ] The notebook has 10 observations, each with a chart, a number and <code>So what:</code>. You know it when <code>grep -c 'So what:'</code> prints 10 or more and each chart sits above its text.</li>
+<li>[ ] The D03 evidence pack draft is on the LMS, with gaps listed. You know it when the LMS shows your upload and the trainer's gap list.</li>
+<li>[ ] The PR link is in the LMS Y2-T24 field by 23:59 on the same day. You know it when the link is in the field and it opens.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bash: infra/teardown.sh: No such file or directory</code></td>
+<td>You are in the wrong folder.</td>
+<td>Run <code>pwd</code>, move to the repository root, then run again.</td>
+</tr>
+<tr>
+<td>shellcheck prints <code>SC1017</code> or CRLF messages</td>
+<td>The file was saved with Windows line endings.</td>
+<td>Convert to LF in your editor, then rerun shellcheck.</td>
+</tr>
+<tr>
+<td>Dry run lists a resource you do not own</td>
+<td>Its tag is missing or wrong, so the filter picked it up, or the name is typed wrongly.</td>
+<td>Check the tag with the list command, fix the tag or the variable, and rerun the dry run.</td>
+</tr>
+<tr>
+<td><code>DRY [instances]</code> line is missing</td>
+<td>The VM is not tagged <code>Owner=&lt;name&gt;</code>, or it is terminated already.</td>
+<td>Tag it as in T24.2 and check its state with <code>aws ec2 describe-instances</code>.</td>
+</tr>
+<tr>
+<td>Bucket delete fails with <code>BucketNotEmpty</code></td>
+<td>Old versions or delete markers still exist in the versioned bucket.</td>
+<td>List versions with <code>list-object-versions</code>, delete each one, then delete the bucket.</td>
+</tr>
+<tr>
+<td>Role delete fails with <code>DeleteConflict</code></td>
+<td>A policy is still attached to the role.</td>
+<td>Detach managed policies and delete inline policies before <code>delete-role</code>.</td>
+</tr>
+<tr>
+<td>nbconvert shows <code>FileNotFoundError</code> for the parquet file</td>
+<td>The notebook path is relative to the notebook folder.</td>
+<td>Use <code>../data/clean/aq_clean.parquet</code> in the notebook.</td>
+</tr>
+<tr>
+<td><code>grep -c 'So what:'</code> prints fewer than 10</td>
+<td>A <code>So what:</code> is missing, spelled differently, or in a code cell.</td>
+<td>Put each one in a markdown cell with the exact capitals and colon.</td>
+</tr>
+<tr>
+<td>Hour chart peaks at the wrong time</td>
+<td>The hour was taken from UTC before the shift.</td>
+<td>Add 5 hours and 30 minutes first, then take <code>.dt.hour</code>, and label the axis IST.</td>
+</tr>
+<tr>
+<td><code>aws s3api put-bucket-tagging</code> removes existing tags</td>
+<td>It replaces the whole tag set.</td>
+<td>Read the current tags with <code>get-bucket-tagging</code> and include them in the new <code>TagSet</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p>The trainer asks five questions. Each answer below shows the reasoning. Give your own examples from your work.</p>
+<p><strong>Q1. Why does the teardown script run a dry run first, and why does it use the order it does?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The dry run prints every change without making it, so you can check each name against your tag list before anything is deleted. The order follows dependencies. The schedule goes first so nothing starts a new run while you remove things. Deleting the function while its trigger still exists would leave a rule firing at nothing, and roles go last because a role is still in use until the resources that depend on it are gone. The <code>--apply</code> switch makes the destructive step a deliberate second action.</p></details>
+
+<p><strong>Q2. What is the trade-off between stopping a VM and terminating it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Stopping keeps the disk and the configuration, so you can start it again, but it still costs for storage. Terminating deletes the VM and its root disk, which stops most charges, but you cannot get it back, and you must recreate it from the scripts. This ticket allows terminate only for the T19 VM, and only after the compute evidence is complete, because that choice cannot be undone.</p></details>
+
+<p><strong>Q3. Why convert the timestamps to IST before grouping by hour, and how does the chart show that?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The readings are stored in UTC. If you group by the UTC hour, an evening peak in Bengaluru appears five and a half hours earlier than it really happened, so the story is wrong. Adding five hours and thirty minutes, then taking the hour, gives the local hour. India has no daylight saving time, so the shift is constant. The chart's x-axis is labelled "Hour of day (IST)" so a reader knows which clock it uses.</p></details>
+
+<p><strong>Q4. What did you personally do in this ticket, and how would someone check it in Git?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A strong answer names the specific things you built, such as the dry-run helper, one ordered teardown step, your tag list, or your two observations, and the commit that holds each one. It points to the commit messages and the review on the PR. It also says what you checked yourself, such as the dry-run output in your account. Write your own version from your own commits. Do not describe work you did not do.</p></details>
+
+<p><strong>Q5. How would you know the architecture diagram is accurate?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>I would spot-check it. I pick two or three boxes and run a read-only command for each, such as <code>aws lambda get-function</code> or <code>aws s3api head-bucket</code>. If the name in the diagram matches the account, that box is real. A box that fails the check is removed from the diagram or deployed. The diagram is a claim about the account, so it must be checked against the account, not against what we intended to build.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Why does teardown.sh print DRY lines unless --apply is given?&quot;, &quot;opts&quot;: [&quot;So the script runs faster on large accounts&quot;, &quot;So you can check every name before anything is deleted&quot;, &quot;So AWS can hide errors from the output&quot;, &quot;So the resources are created again automatically&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The dry run only prints each change, so you can compare it with your tag list. Running with --apply is the step that deletes, which is why it is a separate choice.&quot;}, {&quot;q&quot;: &quot;Why must a versioned S3 bucket have its old versions deleted before the bucket is deleted?&quot;, &quot;opts&quot;: [&quot;Because the bucket name cannot be reused otherwise&quot;, &quot;Because aws s3 rm deletes the bucket automatically&quot;, &quot;Because S3 refuses to delete a bucket that still holds versions&quot;, &quot;Because versions are stored in IAM roles&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;aws s3 rm only adds delete markers in a versioned bucket, so the old versions remain. The distractor about aws s3 rm is tempting, but it does not remove versions.&quot;}, {&quot;q&quot;: &quot;The notebook runs and cannot find data/clean/aq_clean.parquet. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The parquet file is corrupted&quot;, &quot;Jupyter does not support parquet&quot;, &quot;nbconvert runs the notebook from its own folder, so the path must go up one level&quot;, &quot;The file must be saved as CSV&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;nbconvert runs each notebook from the notebooks folder, so a path that starts with data/ is looked up in the wrong place. Using ../data/ points to the right file.&quot;}]}"></div>
+
+<h2 id="y2-t25-y2-d03-defend-three-secured-cloud-labs-then-tear-down">Y2-T25 · Y2-D03: defend three secured cloud labs, then tear down</h2>
+<p><em>Session 25 · phase M4 · 8 points</em></p>
+<h3 id="the-ticket-in-plain-words_2">The ticket in plain words</h3>
+<p>This ticket closes Project 4, the cloud part of CityPulse. CityPulse is a platform that collects and shows data about Bengaluru. In the last few sessions you built three cloud labs. The identity lab is a restricted login for the data pipeline. The storage lab is a private bucket. The compute or serverless lab is a virtual machine or a function. Each must work, be locked down, and cost nothing when idle.</p>
+<p>The description tells a short story about three mistakes the cohort made. A secret key was committed to Git. A bucket could be read by anyone on the internet. A virtual machine was left running and kept billing. This ticket adds automated guards that would have caught those mistakes, and it makes you clean up after yourself.</p>
+<p>You get a strict three-minute screen-share in which you run the commands live in your own account. The trainer then runs five test cases against the squad repository.</p>
+<p>Read the whole guide once before you touch the cloud console, then collect evidence as you go rather than reconstructing it at the end.</p>
+<h3 id="before-you-start_2">Before you start</h3>
+<p>Your squad must already have these merged to main: Y2-T22, Y2-T23 and Y2-T24. From your own earlier work, you need the T17 policy and test matrix, the T18 private versioned bucket with its clean/ partitions, the T19 VM runbook with cron evidence, a T23 function that has run at least twice on its schedule, and the T24 tags and teardown dry run.</p>
+<p>You need these tools and accounts:</p>
+<ul>
+<li><strong>Git and Git Bash</strong> on your Windows laptop. Run every command in this ticket from the repository root in Git Bash, unless a step says otherwise.</li>
+<li><strong>AWS CLI version 2</strong>, with a profile named <code>citypulse-pipeline</code>. Keys live in <code>~/.aws/credentials</code>, never in the repository.</li>
+<li><strong>gitleaks</strong> and <strong>pre-commit</strong>, covered in T25.3.</li>
+<li><strong>GitHub CLI</strong> (<code>gh</code>), signed in to your GitHub account.</li>
+<li><strong>LMS access</strong>, for the evidence upload.</li>
+</ul>
+<p>If a tool does not show the output on the right, fix it first.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>You are ready when you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git --version</code></td>
+<td>A line starting <code>git version 2.</code></td>
+</tr>
+<tr>
+<td><code>aws --version</code></td>
+<td>A line starting <code>aws-cli/2.</code></td>
+</tr>
+<tr>
+<td><code>aws sts get-caller-identity --profile citypulse-pipeline</code></td>
+<td>JSON with an <code>Arn</code> ending in <code>user/citypulse-pipeline</code></td>
+</tr>
+<tr>
+<td><code>gitleaks version</code></td>
+<td>A version number, with no error</td>
+</tr>
+<tr>
+<td><code>pre-commit --version</code></td>
+<td>A line starting <code>pre-commit</code> and a version</td>
+</tr>
+<tr>
+<td><code>gh auth status</code></td>
+<td>A line saying you are logged in to github.com</td>
+</tr>
+</tbody>
+</table>
+<h3 id="words-you-need_2">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>The account that a program or person uses to ask AWS for something.</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management, the AWS service that defines identities and what they may do.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>A named set of AWS credentials in your local AWS configuration, chosen with <code>--profile</code>.</td>
+</tr>
+<tr>
+<td>ARN</td>
+<td>Amazon Resource Name, a unique text address for an AWS identity or resource.</td>
+</tr>
+<tr>
+<td>Scoped identity</td>
+<td>An identity limited to the few actions it needs, and nothing more.</td>
+</tr>
+<tr>
+<td>AccessDenied</td>
+<td>The AWS error that means the identity is not allowed to do that action.</td>
+</tr>
+<tr>
+<td>Access key</td>
+<td>A pair of text values that let a program sign in as an identity. Long-lived keys are risky.</td>
+</tr>
+<tr>
+<td>Static key</td>
+<td>An access key stored in a file or setting that never changes, which is the thing to avoid on a VM or function.</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>A container for stored files in Amazon S3. Its files sit under keys, which work like folder paths.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>One stored file in a bucket, identified by its key, which is its path inside the bucket.</td>
+</tr>
+<tr>
+<td>Public-access block</td>
+<td>A bucket setting that stops the bucket and its objects being made public.</td>
+</tr>
+<tr>
+<td>Anonymous access</td>
+<td>A request made with no identity at all, as an anonymous visitor on the internet would make it.</td>
+</tr>
+<tr>
+<td>HTTP status code</td>
+<td>The three-digit answer a web server sends, such as 200 for success or 403 for forbidden.</td>
+</tr>
+<tr>
+<td>Security group</td>
+<td>A set of firewall rules that control which network traffic may reach a virtual machine.</td>
+</tr>
+<tr>
+<td>Port 22</td>
+<td>The network port used by SSH, the remote login protocol for Linux machines.</td>
+</tr>
+<tr>
+<td>0.0.0.0/0</td>
+<td>A network range meaning every address on the internet. Open port 22 to it is a serious risk.</td>
+</tr>
+<tr>
+<td>Elastic IP</td>
+<td>A fixed public IP address that AWS rents to you. It keeps billing when it is not attached to a running machine.</td>
+</tr>
+<tr>
+<td>EBS volume</td>
+<td>The disk attached to a virtual machine. It keeps billing even when the machine is stopped.</td>
+</tr>
+<tr>
+<td>Secret</td>
+<td>Any value that proves who you are, such as a key, a token or a password.</td>
+</tr>
+<tr>
+<td>gitleaks</td>
+<td>A tool that scans files and Git history for secrets.</td>
+</tr>
+<tr>
+<td>Git history</td>
+<td>The full list of commits in a repository, including commits that deleted something later.</td>
+</tr>
+<tr>
+<td>Rotation</td>
+<td>Replacing a secret with a new one, and disabling the old one, so that the old value no longer works.</td>
+</tr>
+<tr>
+<td>Deactivate</td>
+<td>Turn an access key off without deleting it, so that it can no longer sign in.</td>
+</tr>
+<tr>
+<td>pre-commit hook</td>
+<td>A check that runs automatically when you try to make a commit, and blocks the commit if it fails.</td>
+</tr>
+<tr>
+<td>Teardown</td>
+<td>Deleting the resources that cost money once the lab is finished.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>A fixed name on one commit, such as <code>v0.4.0</code>, which marks a version.</td>
+</tr>
+<tr>
+<td>GitHub Release</td>
+<td>A published version attached to a tag, with a title and notes. Made with the <code>gh</code> command-line tool.</td>
+</tr>
+<tr>
+<td>Commit SHA</td>
+<td>The unique code that identifies one commit, shown as a short string of letters and digits.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_2">How your trainer checks it</h3>
+<p>Five test cases check most of the six acceptance criteria. The rest are checked from your repository and the LMS.</p>
+<h4 id="tc1-identity-works-and-cannot-write-to-the-secret-prefix">TC1: identity works and cannot write to the secret prefix</h4>
+<p>The trainer's steps are in two commands, which you run in your own account on screen.</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>x<span class="w"> </span>s3://&lt;bucket&gt;/secret/x<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline
+</code></pre></div>
+
+<ul>
+<li><code>aws</code> starts the AWS command-line tool.</li>
+<li><code>sts</code> is the security token service. <code>get-caller-identity</code> asks AWS who you are right now. It is the first thing to show, so the trainer knows which identity is speaking.</li>
+<li><code>--profile citypulse-pipeline</code> tells the tool to use the named set of credentials, not the default ones. Without it you may run as an administrator, which proves nothing.</li>
+<li><code>s3 cp x s3://&lt;bucket&gt;/secret/x</code> copies the local file <code>x</code> into the bucket under the <code>secret/</code> prefix. The <code>&lt;bucket&gt;</code> is your bucket's name from your README.</li>
+</ul>
+<p>Create the local file first with <code>echo "test" &gt; x</code>. The copy must be refused. Lines starting with <code>$</code> are commands you type.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity --profile citypulse-pipeline&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;UserId\&quot;: \&quot;AIDAEXAMPLEID\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Account\&quot;: \&quot;123456789012\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Arn\&quot;: \&quot;arn:aws:iam::123456789012:user/citypulse-pipeline\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws s3 cp x s3://example-bucket/secret/x --profile citypulse-pipeline&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;upload failed: ./x to s3://example-bucket/secret/x An error occurred (AccessDenied) when calling the PutObject operation: Access Denied&quot;}]}"></div>
+
+<p>The values are fictional; yours will differ. If the copy succeeds and prints <code>upload: ./x to s3://...</code>, the test fails. The usual cause is a policy from T17 that allows <code>s3:PutObject</code> on the whole bucket instead of only on the prefixes it needs. If the ARN shown is not <code>citypulse-pipeline</code>, you used the wrong profile. If you see <code>Unable to locate credentials</code>, the profile is missing from <code>~/.aws/credentials</code>.</p>
+<h4 id="tc2-anonymous-access-to-an-object-returns-403">TC2: anonymous access to an object returns 403</h4>
+<p>The trainer runs this command on a private object in your bucket, using the object's web address.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span>&lt;object-url&gt;
+</code></pre></div>
+
+<ul>
+<li><code>curl</code> sends a web request with no login, so it is anonymous.</li>
+<li><code>-s</code> hides the progress meter.</li>
+<li><code>-o /dev/null</code> discards the response body. <code>/dev/null</code> is a place that throws away anything written to it.</li>
+<li><code>-w '%{http_code}'</code> prints only the three-digit status code. The quotes stop the shell reading the braces.</li>
+<li><code>&lt;object-url&gt;</code> has the form <code>https://&lt;bucket&gt;.s3.&lt;region&gt;.amazonaws.com/&lt;key&gt;</code>.</li>
+</ul>
+<p>A passing run prints exactly this and nothing else:</p>
+<div class="hl"><pre><span></span><code>403
+</code></pre></div>
+
+<p>A 200 means the public can read the object, the public-bucket mistake from the case study. A 404 usually means the bucket name or address is wrong, so the test proved nothing. Note that on a private bucket a missing key also gives 403, so copy the URL of an object that really exists. <code>000</code> usually means no network or a mistyped domain.</p>
+<h4 id="tc3-gitleaks-finds-nothing-in-the-whole-history">TC3: gitleaks finds nothing in the whole history</h4>
+<p>The trainer runs the scan from the repository root.</p>
+<div class="hl"><pre><span></span><code>gitleaks<span class="w"> </span>detect<span class="w"> </span>--source<span class="w"> </span>.<span class="w"> </span>--log-opts<span class="o">=</span>--all
+</code></pre></div>
+
+<ul>
+<li><code>gitleaks detect</code> scans the contents and history of a repository for secrets.</li>
+<li><code>--source .</code> scans the current folder.</li>
+<li><code>--log-opts=--all</code> passes <code>--all</code> to <code>git log</code>, so every branch and commit is scanned. A key deleted later is still in the history.</li>
+</ul>
+<p>A passing run prints a log line ending <code>no leaks found</code>. A failing run prints a line such as <code>leaks found: 1</code> with the file and commit. Never copy the secret into evidence. The fix is in the T25.3 section below: deactivate the key and show the rotation outside Git.</p>
+<h4 id="tc4-teardown-leaves-nothing-that-costs-money">TC4: teardown leaves nothing that costs money</h4>
+<p>The trainer runs <code>bash scripts/teardown_check.sh</code> after your teardown. Read the script before the review so nothing surprises you on screen.</p>
+<p>A passing run shows an empty Instances section, an empty unattached IPs list, and a bucket line ending <code>True</code>, which means its public-access block is on. No schedule from T23 may remain.</p>
+<p>A failing run lists a stopped instance, which means the teardown skipped that machine, usually because its owner tag does not match the name you passed. A bucket line ending <code>False</code> means its public-access block is off.</p>
+<h4 id="tc5-the-tag-and-the-release-exist">TC5: the tag and the release exist</h4>
+<p>The trainer runs this on the main branch.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>-l<span class="w"> </span>v0.4.0<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gh<span class="w"> </span>release<span class="w"> </span>view<span class="w"> </span>v0.4.0
+</code></pre></div>
+
+<ul>
+<li><code>git tag -l v0.4.0</code> lists tags whose names match <code>v0.4.0</code>.</li>
+<li><code>&amp;&amp;</code> runs the second command only if the first one exits without error.</li>
+<li><code>gh release view v0.4.0</code> prints the release title, its tag and its notes.</li>
+</ul>
+<p><code>git tag -l</code> exits successfully even when nothing matches, so <code>&amp;&amp;</code> still runs <code>gh</code>. Read the first command's output too. Empty output means no tag. A <code>release not found</code> message means the tag exists but no Release was created.</p>
+<h4 id="the-acceptance-criteria-that-tests-do-not-cover">The acceptance criteria that tests do not cover</h4>
+<ul>
+<li><strong>Three labs working, 3/3.</strong> The trainer watches live output, not an old screenshot.</li>
+<li><strong>Security proof for each lab.</strong> AccessDenied, a 403, no port 22 open to 0.0.0.0/0, and no static keys. Check the port rule with <code>aws ec2 describe-security-groups --filters "Name=ip-permission.from-port,Values=22" "Name=ip-permission.cidr,Values=0.0.0.0/0" --query "SecurityGroups[].GroupId" --output text</code>. An empty result means no match. A group listed here may have port 22 and <code>0.0.0.0/0</code> on two different rules, so open the group with <code>describe-security-groups --group-ids &lt;id&gt;</code> to confirm. For the function, <code>aws lambda get-function-configuration --function-name &lt;name&gt; --query Environment</code> shows environment variables, and no key-like names should appear there.</li>
+<li><strong>Lessons-learned entry.</strong> Your entry in <code>docs/lessons-learned.md</code> must name a specific automated check.</li>
+</ul>
+<h3 id="split-the-work_2">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T25.1</td>
+<td>Every student</td>
+<td>Finalise <code>docs/evidence/&lt;name&gt;/D03.md</code>, with timestamped output, screenshot links and SHAs. Upload to LMS before 18:30.</td>
+<td>30m</td>
+</tr>
+<tr>
+<td>Y2-T25.2</td>
+<td>Every student</td>
+<td>Present three minutes live: identity, storage, compute or serverless.</td>
+<td>3m</td>
+</tr>
+<tr>
+<td>Y2-T25.3</td>
+<td>QA/DevOps</td>
+<td>Commit the gitleaks pre-commit config. Run the full-history scan live.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T25.4</td>
+<td>Every student</td>
+<td>Teardown the schedule, function and VM (not the bucket). Save the check output.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T25.5</td>
+<td>Every student</td>
+<td>Add your <code>docs/lessons-learned.md</code> entry naming an automated check.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T25.6</td>
+<td>Scrum/Docs</td>
+<td>Add the README "Kept resources" list with a monthly cost estimate.</td>
+<td>5m</td>
+</tr>
+<tr>
+<td>Y2-T25.7</td>
+<td>Tech Lead</td>
+<td>Merge through a reviewed PR, tag <code>v0.4.0</code>, create the Release.</td>
+<td>10m</td>
+</tr>
+</tbody>
+</table>
+<p>Your evidence, presentation, teardown run and lessons-learned entry are personal, so make the commits for them yourself. Your commits show your contribution through files that carry your name, such as <code>docs/evidence/&lt;name&gt;/</code>. If you are QA/DevOps, make the T25.3 commits yourself too.</p>
+<p>Work on one branch, <code>feat/T25-d03</code>, created from up-to-date main:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/T25-d03
+</code></pre></div>
+
+<p>Here is a suggested order of commit messages. Use your own wording and your own changes.</p>
+<ol>
+<li><code>docs(evidence): add D03 section stubs for identity, storage and compute</code></li>
+<li><code>ci(security): add gitleaks pre-commit hook</code></li>
+<li><code>docs(evidence): add timestamped CLI output and commit SHAs to D03</code></li>
+<li><code>chore(teardown): record teardown check output for &lt;name&gt;</code></li>
+<li><code>docs(lessons): add lessons-learned entry naming the gitleaks check</code></li>
+<li><code>docs(readme): list kept resources with monthly cost estimate</code></li>
+<li><code>docs(evidence): link screenshots for the live review</code></li>
+</ol>
+<h3 id="do-it-step-by-step_2">Do it, step by step</h3>
+<p>Subtasks follow the ticket's order, but do T25.3 first, because a leaked key changes everything. Capture T25.1 evidence before the T25.4 teardown removes what you are proving, and run the teardown only after your live review, because the review must show the labs working.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;What happens in the live review&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;AWS account&quot;, &quot;Squad repository&quot;, &quot;Trainer&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;identity and storage commands&quot;, &quot;note&quot;: &quot;Your laptop asks AWS who you are and tries a write that must be refused.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;AccessDenied&quot;, &quot;note&quot;: &quot;AWS refuses the write, and the error appears on your screen.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;git push of evidence&quot;, &quot;note&quot;: &quot;Your evidence, scan results and teardown output go into the repository.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;review and test cases&quot;, &quot;note&quot;: &quot;The trainer reads the evidence and runs the five test cases.&quot;}]}"></div>
+
+<h4 id="y2-t253-gitleaks-and-the-pre-commit-hook">Y2-T25.3: gitleaks and the pre-commit hook</h4>
+<p>Do this first. A scanner that runs only once at the end finds mistakes too late.</p>
+<p><strong>Stage 1. Check the scanner.</strong> Run <code>gitleaks version</code>. If it fails, install gitleaks from its official releases page and reopen Git Bash.</p>
+<p><strong>Stage 2. Write the hook configuration.</strong> Create <code>.pre-commit-config.yaml</code> at the repository root. A pre-commit configuration lists the external hook repositories to run. Here is the structure. You fill in the two values marked with angle brackets.</p>
+<div class="hl"><pre><span></span><code><span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/gitleaks/gitleaks</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;release tag from the gitleaks releases page&gt;</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitleaks</span>
+</code></pre></div>
+
+<ul>
+<li><code>repos:</code> lists the hook sources. <code>repo:</code> is the address of one of them.</li>
+<li><code>rev:</code> pins the hook to one release tag, so it cannot change without notice. Copy the tag from the gitleaks releases page.</li>
+<li><code>hooks:</code> and <code>id: gitleaks</code> name the hook to run.</li>
+</ul>
+<p><strong>Stage 3. Install the hook and test it.</strong> Install pre-commit once, then install the hook into your local clone:</p>
+<div class="hl"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pre-commit
+pre-commit<span class="w"> </span>install
+pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</code></pre></div>
+
+<ul>
+<li><code>pip install pre-commit</code> installs the tool.</li>
+<li><code>pre-commit install</code> writes a hook into <code>.git/hooks</code>, so every commit runs the checks first.</li>
+<li><code>pre-commit run --all-files</code> runs every hook now. The gitleaks line should end <code>Passed</code>.</li>
+</ul>
+<p><strong>Stage 4. Run the scan on full history.</strong> This is TC3. Run <code>gitleaks detect --source . --log-opts=--all</code>. The last line should end <code>no leaks found</code>. Run it live in front of the trainer, then paste the result into the pull request description.</p>
+<p><strong>If gitleaks finds a leak.</strong> Do not paste the secret anywhere. Use the AWS command line to find the key by its ID, deactivate it, and create a replacement outside Git:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>list-access-keys<span class="w"> </span>--user-name<span class="w"> </span>&lt;user&gt;<span class="w"> </span>--profile<span class="w"> </span>&lt;admin-profile&gt;
+aws<span class="w"> </span>iam<span class="w"> </span>update-access-key<span class="w"> </span>--user-name<span class="w"> </span>&lt;user&gt;<span class="w"> </span>--access-key-id<span class="w"> </span>&lt;key-id&gt;<span class="w"> </span>--status<span class="w"> </span>Inactive<span class="w"> </span>--profile<span class="w"> </span>&lt;admin-profile&gt;
+</code></pre></div>
+
+<ul>
+<li><code>list-access-keys</code> prints the key IDs and their status for one user. It never prints the secret part.</li>
+<li><code>update-access-key</code> with <code>--status Inactive</code> turns the key off. The old value no longer works, even though it is still in the history.</li>
+<li><code>--profile &lt;admin-profile&gt;</code> names a profile that has permission to manage keys. Your pipeline profile usually cannot do this, which is correct.</li>
+</ul>
+<p>Show the status list with the key <code>Inactive</code>, and the new key set up in your local profile, never in the repository. Rerun gitleaks. The history keeps the old value, so the deactivation is the fix.</p>
+<h4 id="y2-t251-the-evidence-pack">Y2-T25.1: the evidence pack</h4>
+<p>The evidence pack is one file, <code>docs/evidence/&lt;name&gt;/D03.md</code>. Replace <code>&lt;name&gt;</code> with your own name in the folder path, using the same spelling the squad uses.</p>
+<p><strong>Stage 1. Make the folder.</strong> <code>mkdir -p docs/evidence/&lt;name&gt;</code> creates the folder and any missing parents. The <code>-p</code> flag stops it failing if the folder already exists.</p>
+<p><strong>Stage 2. Create the three section headings.</strong> One each for identity, storage, and compute or serverless. Write them yourself.</p>
+<p><strong>Stage 3. Capture a timestamp.</strong> Run <code>date -u +"%Y-%m-%dT%H:%M:%SZ"</code>. <code>-u</code> uses UTC, and each <code>%</code> code prints one part of the date. It prints something like <code>2026-11-17T10:04:12Z</code>. Put this above each block of pasted output.</p>
+<p><strong>Stage 4. Capture a commit SHA.</strong> Run <code>git rev-parse --short HEAD</code>. It prints the short SHA of the commit you are on, such as <code>a1b2c3d</code>. Record it under the section that uses that version of your code.</p>
+<p><strong>Stage 5. Save output while you watch it.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>docs/evidence/&lt;name&gt;/D03-identity.txt
+</code></pre></div>
+
+<ul>
+<li><code>|</code> passes the left command's output to the right.</li>
+<li><code>tee</code> shows the output on screen and writes it to the file. <code>-a</code> appends instead of overwriting.</li>
+</ul>
+<p>Check with <code>cat docs/evidence/&lt;name&gt;/D03-identity.txt</code>. It should match the JSON on screen.</p>
+<p>Upload the finished <code>D03.md</code> to the LMS by the deadline in the ticket, before 18:30. Keep the same file in the repository, so the two copies match.</p>
+<h4 id="y2-t252-the-three-minute-screen-share">Y2-T25.2: the three-minute screen-share</h4>
+<p>The trainer gives you three minutes. Plan for the time, not for every possible question.</p>
+<p><strong>Stage 1. Write a run-sheet.</strong> Make a plain text list, outside the repository, with three blocks (identity, storage, compute). Each holds its commands and one sentence of explanation.</p>
+<p><strong>Stage 2. Rehearse the timing.</strong> Run the sheet once. Record the start and end with <code>date</code>. If a block runs over, cut the explanation, never the command.</p>
+<p><strong>Stage 3. Rehearse the order.</strong> Practise identity, then storage, then compute, aloud. Explain each result in one sentence.</p>
+<h4 id="y2-t254-teardown">Y2-T25.4: teardown</h4>
+<p>The teardown deletes the schedule, the function and the virtual machine. It keeps the bucket. Run the dry run first, every time.</p>
+<p><strong>Stage 1. Read the usage line.</strong> Run <code>head -n 20 infra/teardown.sh</code> to see the first 20 lines. Check the argument order, because your squad's copy may differ from the book's example.</p>
+<p><strong>Stage 2. Check that the bucket is not touched.</strong> Run <code>grep -n "s3" infra/teardown.sh</code>. <code>-n</code> prints line numbers. If any line deletes a bucket, stop and fix the script first. The T24 version of the script also had stages for the bucket and for roles; this ticket keeps the bucket (and the <code>citypulse-pipeline</code> user and policy), so remove or skip those stages, or ask your trainer which flag your squad's copy uses.</p>
+<p><strong>Stage 3. Dry run.</strong> Run <code>bash infra/teardown.sh &lt;name&gt;</code>. Read every line that says what it would delete (your squad's script may mark these lines <code>DRY:</code> or similar). Each line should name something tagged with your own name. If a line names something you do not recognise, stop.</p>
+<p><strong>Stage 4. Apply.</strong> Run <code>bash infra/teardown.sh &lt;name&gt; --apply</code>. The flag <code>--apply</code> makes the script perform the same steps for real.</p>
+<p><strong>Stage 5. Save the check output.</strong> Run:</p>
+<div class="hl"><pre><span></span><code>bash<span class="w"> </span>scripts/teardown_check.sh<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/D03-teardown.txt
+cat<span class="w"> </span>docs/evidence/&lt;name&gt;/D03-teardown.txt
+</code></pre></div>
+
+<p><code>&gt;</code> writes the output to the file, replacing any old copy. <code>cat</code> prints it so you can check it before committing. The output must match TC4.</p>
+<div class="box box-trap"><div class="box-h">Trap: Stopped machines still bill</div><p>A stopped virtual machine stops charging for compute, but its disk and any Elastic IP still cost money. Check with <code>aws ec2 describe-addresses</code> for an IP with no <code>InstanceId</code> shown, and make sure the teardown terminates the machine rather than only stopping it. A terminated instance can stay visible in the list as <code>terminated</code> for about an hour. The criterion is no running or stopped instances.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A failed rerun</div><p>The script stops at the first failing command. If you already deleted the schedule, the second run fails on that step (your script may name it <code>delete-schedule</code>). Read the error, confirm what is already gone, and carry on from that point. Do not delete the bucket to make the script pass.</p></div>
+
+<h4 id="y2-t255-the-lessons-learned-entry">Y2-T25.5: the lessons-learned entry</h4>
+<p>The entry must be about your own experience. It must name one specific automated check. Open <code>docs/lessons-learned.md</code> and read two existing entries from classmates so that you match the format, but do not copy their text.</p>
+<p>Each entry needs four parts, in your own words: a heading with your name and date; what went wrong or nearly did; the impact; and the automated check (tool and command) that would have caught it.</p>
+<p>Here is a fictional example about a different project, to show the shape only. A parking-sensor student once saved a test password in a sample config file. The impact would have been an exposed account. The pre-commit hook running gitleaks on every commit would have blocked the commit at once. Write your own entry about your own lab, not this one.</p>
+<p>Commit the file with a message such as <code>docs(lessons): add lessons-learned entry naming the gitleaks check</code>.</p>
+<h4 id="y2-t256-the-readme-kept-resources-list">Y2-T25.6: the README kept-resources list</h4>
+<p>The README lists what you keep after teardown. Scrum/Docs owns this subtask, but every student should check that the list matches their own account.</p>
+<p>Write a table with resource, name, reason kept and monthly estimate, for the bucket, the <code>citypulse-pipeline</code> user and the policy. Price storage with the AWS Pricing Calculator (calculator.aws) in Asia Pacific (Mumbai), <code>ap-south-1</code>. Write the date you checked the prices.</p>
+<p>Do not invent a figure you have not calculated.</p>
+<h4 id="y2-t257-merge-tag-and-release">Y2-T25.7: merge, tag and release</h4>
+<p>This is the Tech Lead's subtask. Other students should check it, not run it alone.</p>
+<p><strong>Stage 1. Open the pull request.</strong> Push the branch with <code>git push -u origin feat/T25-d03</code>, then open the PR with <code>gh pr create</code>. The <code>-u</code> flag links the local branch to the remote one, so later pushes need no extra arguments.</p>
+<p><strong>Stage 2. Get the review and merge.</strong> A squad-mate approves, CI is green, and nobody merges their own PR.</p>
+<p><strong>Stage 3. Tag main.</strong> After the merge:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v0.4.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;P4 cloud labs&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.4.0
+</code></pre></div>
+
+<ul>
+<li><code>git tag -a v0.4.0</code> creates an annotated tag, which stores a message, the tagger and the date. <code>-m</code> gives the message.</li>
+<li><code>git push origin v0.4.0</code> sends the tag to GitHub. A tag only on your computer does not count.</li>
+</ul>
+<p><strong>Stage 4. Create the Release.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>release<span class="w"> </span>create<span class="w"> </span>v0.4.0<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;P4 cloud labs&quot;</span><span class="w"> </span>--notes<span class="w"> </span><span class="s2">&quot;Cloud labs for P4: identity, storage and compute, with teardown evidence.&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh release create v0.4.0</code> creates a Release for that tag. <code>--title</code> and <code>--notes</code> set its title and description.</li>
+</ul>
+<p>Check it with TC5: <code>git tag -l v0.4.0 &amp;&amp; gh release view v0.4.0</code>.</p>
+<h3 id="prove-it-before-review_2">Prove it before review</h3>
+<p>Run every test case yourself, in order, and save each output to your evidence folder.</p>
+<ol>
+<li>TC1: the identity and write-refusal commands, with the output showing your pipeline ARN and AccessDenied.</li>
+<li>TC2: the curl command on a private object, with the output <code>403</code>.</li>
+<li>TC3: <code>gitleaks detect --source . --log-opts=--all</code>, with <code>no leaks found</code>.</li>
+<li>TC4: <code>bash scripts/teardown_check.sh</code>, with the checks in the right state.</li>
+<li>TC5: <code>git tag -l v0.4.0 &amp;&amp; gh release view v0.4.0</code>, with the tag and the Release.</li>
+</ol>
+<p>Then write the pull-request description under the five headings below, pasting real evidence.</p>
+<div class="hl"><pre><span></span><code>#### What
+One short sentence: the ticket and the files you changed.
+
+#### Why
+Why this ticket matters for the P4 review.
+
+#### How to test
+The five test cases, in order, as commands the reviewer can run.
+
+#### Evidence
+The output of TC1 to TC5 (pasted or linked), the D03.md file path and the commit SHAs.
+
+#### Checklist
+- [ ] Every test case passes on my own run
+- [ ] No secret appears in any file or in this description
+- [ ] D03-teardown.txt is committed
+- [ ] My lessons-learned entry names an automated check
+</code></pre></div>
+
+<p>Paste log excerpts and output directly, and link the screenshots. Never show the secret part of a key.</p>
+<h3 id="definition-of-done_2">Definition of done</h3>
+<ul>
+<li>[ ] <strong>D03.md evidence pack is on LMS and in the repository for every student.</strong> You know this is true when the LMS shows your upload and <code>git ls-files docs/evidence/&lt;name&gt;/D03.md</code> prints the path.</li>
+<li>[ ] <strong>Live review is scored on the D03 rubric for every student, and P4 is marked done for the squad.</strong> You know this when the trainer's score appears on the LMS for you.</li>
+<li>[ ] <strong>gitleaks is clean, and the pre-commit hook is committed.</strong> You know this when <code>gitleaks detect --source . --log-opts=--all</code> prints <code>no leaks found</code> and <code>git ls-files .pre-commit-config.yaml</code> prints the file.</li>
+<li>[ ] <strong>Teardown is done, and the teardown_check output is committed for each student.</strong> You know this when <code>git ls-files docs/evidence/&lt;name&gt;/D03-teardown.txt</code> prints the file and its Instances section is empty.</li>
+<li>[ ] <strong>lessons-learned.md is complete, and v0.4.0 is released.</strong> You know this when your entry appears in the file and <code>gh release view v0.4.0</code> prints the Release.</li>
+<li>[ ] <strong>Failed labs have fix evidence posted before Thu 21 Jan 18:30.</strong> You know this from the posting time on the LMS or the PR.</li>
+</ul>
+<h3 id="what-goes-wrong_2">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC1 prints an ARN that is not <code>citypulse-pipeline</code>.</td>
+<td>The command ran without <code>--profile</code>, so default credentials were used.</td>
+<td>Add <code>--profile citypulse-pipeline</code> to every AWS command.</td>
+</tr>
+<tr>
+<td>TC1 copy prints <code>upload: ./x to s3://...</code>.</td>
+<td>The T17 policy allows writes too widely.</td>
+<td>Narrow the policy to the prefixes the pipeline needs.</td>
+</tr>
+<tr>
+<td>TC2 prints <code>200</code>.</td>
+<td>The object or bucket is public.</td>
+<td>Turn on the public-access block, remove public-read permissions, rerun TC2.</td>
+</tr>
+<tr>
+<td>TC2 prints <code>000</code>, or nothing.</td>
+<td>No network, or a mistyped domain.</td>
+<td>Check the connection and copy the object URL from the console.</td>
+</tr>
+<tr>
+<td>gitleaks prints <code>leaks found: 1</code>.</td>
+<td>A key was committed earlier and is still in the history.</td>
+<td>Deactivate the key, show the rotation outside Git, rerun gitleaks.</td>
+</tr>
+<tr>
+<td><code>$'\r': command not found</code> from a script.</td>
+<td>The script has Windows line endings.</td>
+<td>Ask the squad to fix the file in the repository. Do not commit a private copy.</td>
+</tr>
+<tr>
+<td>teardown_check.sh lists a stopped instance.</td>
+<td>The owner tag does not match the name passed to the teardown.</td>
+<td>Check the tag with <code>aws ec2 describe-instances</code>, then dry run and apply again.</td>
+</tr>
+<tr>
+<td>teardown_check.sh shows a bucket line ending <code>False</code>.</td>
+<td>The public-access block is off for that bucket.</td>
+<td>Turn the block on, then rerun the check.</td>
+</tr>
+<tr>
+<td>TC5 prints nothing for <code>git tag -l v0.4.0</code>.</td>
+<td>The tag was never pushed, or never created.</td>
+<td>Create it on main and run <code>git push origin v0.4.0</code>.</td>
+</tr>
+<tr>
+<td><code>gh release view v0.4.0</code> says release not found.</td>
+<td>The tag exists but the Release does not.</td>
+<td>Run <code>gh release create v0.4.0</code>, then rerun TC5.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_2">Defend it in the viva</h3>
+<p>The trainer asks five questions. Answer in your own words, and use your own evidence. Do not copy the model answers as your personal history.</p>
+<p><strong>Question 1: Why must the identity test show AccessDenied, rather than just a successful sign-in?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A sign-in shows only that the identity exists. AccessDenied shows that AWS actually refused a forbidden action, so the limit is proven, not assumed.</p></details>
+
+<p><strong>Question 2: Why do you keep the bucket but delete the function and the virtual machine? Name the trade-off.</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The bucket holds data the analytics sprint needs. The function and VM cost money while idle. The trade-off is a small storage cost in exchange for keeping the data. The teardown check proves nothing else remains.</p></details>
+
+<p><strong>Question 3: Walk me through what you personally did in this ticket.</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name your own commits by SHA, the file each one changed, and the command you ran to check it. Prepare these from your own git log before the viva.</p></details>
+
+<p><strong>Question 4: Why is removing a leaked key in a new commit not enough?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Git keeps every earlier commit, so anyone who clones the repository can recover the key. Deactivating it in AWS stops it signing in. Rewriting history is a team decision and does not replace rotation.</p></details>
+
+<p><strong>Question 5: What does the 403 in TC2 prove, and what would a 200 mean?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The 403 means AWS refused a request with no identity, so the public cannot read the object. A 200 would repeat the public-bucket mistake from the case study.</p></details>
+
+<h3 id="check-yourself_2">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which command shows which identity your shell is using for the pipeline lab?&quot;, &quot;opts&quot;: [&quot;aws s3 ls&quot;, &quot;aws sts get-caller-identity --profile citypulse-pipeline&quot;, &quot;gitleaks version&quot;, &quot;git tag -l v0.4.0&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;get-caller-identity asks AWS who the profile is. aws s3 ls lists buckets, but it does not say which identity made the call, and gitleaks and git tag do not talk to AWS at all.&quot;}, {&quot;q&quot;: &quot;Your curl command prints 200 for a private object in your bucket. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The -w flag is written in the wrong place.&quot;, &quot;The teardown script ran before the test.&quot;, &quot;A scheduled function ran twice in a row.&quot;, &quot;The object or its bucket is readable by anyone on the internet.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A 200 means the request succeeded without any identity. A misplaced -w flag would change the output format, and a schedule or teardown does not change who may read an object.&quot;}, {&quot;q&quot;: &quot;You removed a leaked key from the newest commit. What must you still do?&quot;, &quot;opts&quot;: [&quot;Deactivate the key in AWS and show the rotation outside Git.&quot;, &quot;Nothing, because the newest commit is clean.&quot;, &quot;Delete the whole repository and make a new one.&quot;, &quot;Run the teardown script to remove the key.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Git history keeps the old commit, so the key can still be read. Deactivating it in AWS stops it working, which is the real fix. Deleting the repository or running teardown does not stop the key from working.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="K07.html"><small>Previous</small>Capstone tickets T20–T22: the DSA track, part 1</a><a class="nx" href="K09.html"><small>Next</small>Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

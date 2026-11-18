@@ -1,0 +1,986 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 12 — Cloud fundamentals and IAM on AWS · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D12" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 4 · Days 11–15 · Pipelines and cloud</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a class="cur" href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 4 · Days 11–15 · Pipelines and cloud</p><h1>Day 12 — Cloud fundamentals and IAM on AWS</h1><p class="sub">You will be able to explain how AWS decides whether a request is allowed, write a least-privilege policy for one bucket, and prove it with a test script that checks both allowed and denied actions.</p><p class="meta">88 min read · practice quiz · 4 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D12.mp4?v=1794463972"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Renting a cloud server is like booking a lab bench by the hour. You choose the building (a region), you pay for the time you use, and you can give the bench back when you finish. IAM is the lab's key-card system. Every person and every program gets a card, and each card opens only the doors its job needs.</p>
+<p>Today you lock down a new AWS account. You set up a safe admin identity, create a restricted identity for the CityPulse pipeline, prove that it can write to two folders and nothing else, and set a spending alarm so a forgotten resource does not become a surprise bill.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Computer and server.</strong> A computer is a machine that runs programs. A server is a computer that waits for requests from other programs and answers them. CityPulse will eventually have a server that receives air-quality readings.</p>
+<p><strong>Cloud.</strong> "The cloud" means computers that belong to a provider, kept in data centres, which you rent over the internet. You pay for the hours or the storage you use, and you can start or stop them.</p>
+<p><strong>Terminal and command.</strong> The terminal is a text window. You type a command and press Enter, and the program prints its reply. In <code>aws sts get-caller-identity</code>, the program is <code>aws</code>. The words after it, <code>sts</code> and <code>get-caller-identity</code>, are arguments that say which service and which question.</p>
+<p><strong>Flag.</strong> A flag is an option that changes how a command behaves. Flags start with one dash (<code>-r</code>) or two (<code>--output</code>). A flag often takes a value: <code>--output text</code> means "print plain text".</p>
+<p><strong>Variable and export.</strong> A variable stores a value under a name. <code>NAME=asha</code> stores the text <code>asha</code> under the name <code>NAME</code>, and <code>$NAME</code> reads it back. Putting <code>export</code> in front makes the variable visible to programs started from the same terminal. That is how the <code>aws</code> program learns which profile to use.</p>
+<p><strong>File, folder and path.</strong> A file holds data. A folder (directory) holds files and other folders. A path names a location. <code>infra/iam/asha/pipeline-policy.json</code> is the file <code>pipeline-policy.json</code> inside <code>asha</code>, inside <code>iam</code>, inside <code>infra</code>.</p>
+<p><strong>JSON.</strong> JSON is a text format for structured data. Curly braces <code>{ }</code> hold named values, square brackets <code>[ ]</code> hold lists, and each name is followed by a colon. For example, <code>{"Effect": "Allow"}</code> says that <code>Effect</code> has the value <code>Allow</code>. AWS policies and most CLI output use JSON.</p>
+<p><strong>API, SDK and CLI.</strong> An API is a defined way for one program to ask another to do something. Each AWS action, such as storing a file, is an API call. The CLI (command-line interface) is the <code>aws</code> program, which makes those calls for you when you type commands. An SDK is a library that makes the same calls from code. <code>boto3</code> is the AWS SDK for Python.</p>
+<p><strong>Identity.</strong> An identity is who is making a call. A user is a long-lived identity for a person or a script. A role is an identity that someone or something borrows for a while.</p>
+<p><strong>Policy, permission, action and resource.</strong> A policy is a JSON document that lists permissions. A permission says that one identity may perform one action on one resource. An action is an operation written as a service and a name, such as <code>s3:PutObject</code> (put a file into S3). A resource is the thing acted on.</p>
+<p><strong>ARN.</strong> An ARN (Amazon Resource Name) is the unique address of an AWS resource. <code>arn:aws:s3:::citypulse-asha-7k2q</code> names a bucket. The empty fields between the colons are the region and account, which bucket ARNs leave blank.</p>
+<p><strong>Region and availability zone.</strong> A region is a geographic area with its own data centres, such as <code>ap-south-1</code> (Mumbai). An availability zone (AZ) is an isolated data centre inside a region, so a fault in one should not take down the others. A resource lives in one region, and the console shows only the region you have selected.</p>
+<p><strong>Bucket, object and prefix.</strong> S3 is AWS file storage. A bucket is a container with a globally unique name. An object is a stored file. An object's key is its full name inside the bucket, such as <code>raw/readings.csv</code>. The <code>raw/</code> part is a prefix. S3 has no real folders, so a prefix only looks like one.</p>
+<p><strong>Access key.</strong> An access key is a pair of strings, an ID and a secret. It lets a script or the CLI sign its calls. It works like a username and password for programs, so the secret must never be shared or committed to Git.</p>
+<p><strong>MFA.</strong> Multi-factor authentication asks for a second proof when you sign in, usually a six-digit code from an authenticator app on your phone. It protects an account even if the password leaks.</p>
+<p><strong>Budget.</strong> A budget is a spending limit you set. It sends emails when spending passes a percentage of the limit. It does not stop anything by itself.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="cloud-models-and-regions">Cloud models and regions</h3>
+<p><strong>What it is.</strong> Cloud computing rents compute, storage and services over the internet. The service models differ in how much you manage. With IaaS (infrastructure as a service) you manage virtual machines, which is EC2 in this course. With PaaS or serverless you manage only your code, which is Lambda later in the module. With SaaS you just use finished software. A useful picture: IaaS is renting an empty flat, PaaS a furnished flat, and SaaS a hotel room.</p>
+<p><strong>Why CityPulse uses it.</strong> CityPulse must keep running when interns' laptops are switched off. The lab machines cannot guarantee that. AWS region <code>ap-south-1</code> is the closest to Bengaluru, which gives lower latency and keeps the data in India. Azure and Google Cloud are allowed only with trainer sign-off for this cohort. An on-premises server gives full control, but it has a high upfront cost, no elastic scaling, and someone must maintain the hardware.</p>
+<p><strong>How it works.</strong> Under the shared responsibility model, AWS secures the physical infrastructure, and you secure your identities, data and settings. On EC2 you patch the operating system yourself. On Lambda, AWS does.</p>
+<p>Set up your admin CLI profile and look at the regions:</p>
+<div class="hl"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span>asha
+aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">-admin&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">-admin&quot;</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+aws<span class="w"> </span>ec2<span class="w"> </span>describe-regions<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Regions[].RegionName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<ul>
+<li><code>NAME=asha</code> stores your first name in a variable. Use lowercase, because the bucket names must be lowercase too.</li>
+<li><code>aws configure --profile "$NAME-admin"</code> asks you four questions: an access key ID, a secret access key, a default region and an output format. It saves the answers under a named profile called <code>asha-admin</code>. The double quotes make sure <code>$NAME</code> expands before the name is built.</li>
+<li><code>export AWS_PROFILE=... AWS_REGION=...</code> sets two variables for this terminal only. Every <code>aws</code> command you run afterwards uses the <code>asha-admin</code> profile and the <code>ap-south-1</code> region.</li>
+<li><code>aws sts get-caller-identity</code> asks AWS who you are. <code>--query Arn</code> returns only the field named <code>Arn</code>, and <code>--output text</code> prints it without JSON. The expected result ends in <code>:user/asha-admin</code>. If it ends in <code>:root</code>, stop, because you are using the root account.</li>
+<li><code>aws ec2 describe-regions</code> lists the regions your account can use. <code>--query 'Regions[].RegionName'</code> keeps only the names. The output is a single line of names separated by spaces, and <code>ap-south-1</code> appears among them.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Creating resources in the wrong region</div><p>The CLI and console default to other regions if you do not set one. Set <code>AWS_REGION=ap-south-1</code> in every new terminal before you create anything. A resource made in <code>us-east-1</code> will not appear when you look in <code>ap-south-1</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Assuming the cloud is secure by default</div><p>AWS gives you the tools, not the protection. You must set up access rules, encryption and network settings yourself. A new account with no rules still needs a careful owner.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Leaving resources running</div><p>A forgotten virtual machine or a public storage bucket costs money every hour. Check the budget at the end of each lab and stop or delete what you no longer need.</p></div>
+
+<h3 id="aws-iam-users-roles-and-policies">AWS IAM (users, roles and policies)</h3>
+<p><strong>What it is.</strong> AWS Identity and Access Management controls access to every AWS API call. A user is a long-lived identity for a person or a script. A role is an identity that is assumed temporarily, and it hands out short-lived credentials. A policy is a JSON document that allows or denies actions on resources. Every call is denied unless a policy allows it.</p>
+<p><strong>Why CityPulse uses it.</strong> The pipeline must run as <code>citypulse-pipeline</code>, not as an admin, because the client's security reviewer requires it. CloudTrail records every call by identity, so you can later find your own <code>PutObject</code> or <code>AccessDenied</code> event. The alternatives are weaker. Sharing the admin user's keys means that one leak exposes the whole account. The managed policy <code>AmazonS3FullAccess</code> grants every bucket and every delete, so it fails the no-wildcard rule the course uses.</p>
+<p><strong>How it works.</strong> A policy does nothing until it is attached to a user or a role. When that identity makes a call, IAM checks every attached policy. An explicit Deny wins. Otherwise an explicit Allow is needed. If nothing matches, the answer is Deny.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One API call, one decision&quot;, &quot;nodes&quot;: [&quot;Your CLI&quot;, &quot;IAM&quot;, &quot;S3 bucket&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;signed request&quot;, &quot;note&quot;: &quot;The CLI sends the call and its signature to IAM, which works out who is calling.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;check policies&quot;, &quot;note&quot;: &quot;IAM reads every policy attached to that identity and applies the rules.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;allowed call&quot;, &quot;note&quot;: &quot;Only if an Allow matches and no Deny does, the request reaches the bucket.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;result&quot;, &quot;note&quot;: &quot;The bucket answers, and the CLI prints the result.&quot;}]}"></div>
+
+<p>If no Allow matches, IAM answers at the second arrow with AccessDenied, and the bucket never receives the request.</p>
+<p>Check which identity your terminal is using:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;UserId\&quot;: \&quot;AIDAEXAMPLEID\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Account\&quot;: \&quot;123456789012\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Arn\&quot;: \&quot;arn:aws:iam::123456789012:user/asha-admin\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}]}"></div>
+
+<p>The command prints three fields. <code>UserId</code> is an internal ID. <code>Account</code> is the 12-digit account number, which is the billing and isolation boundary. <code>Arn</code> says that the caller is the user <code>asha-admin</code> in that account. Check this before every IAM change, because the wrong identity is the most common cause of confusing results.</p>
+<p>The policy that lets the pipeline write and read two prefixes looks like this. Replace the bucket name with yours.</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListOnlyPipelinePrefixes&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::citypulse-asha-7k2q&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;StringLike&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;s3:prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;raw/*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;clean/*&quot;</span><span class="p">]}}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ReadWritePipelineObjects&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;arn:aws:s3:::citypulse-asha-7k2q/raw/*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;arn:aws:s3:::citypulse-asha-7k2q/clean/*&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li><code>"Version": "2012-10-17"</code> is the fixed version string of the policy language. Copy it exactly. It is not a date you choose.</li>
+<li><code>"Statement": [ ... ]</code> is a list of rules. IAM reads all of them.</li>
+<li><code>"Sid"</code> is a label you choose, so that a reader and the error messages can name the statement. It has no effect on the decision.</li>
+<li><code>"Effect": "Allow"</code> says that the statement grants permission. The other possible value is <code>Deny</code>.</li>
+<li><code>"Action": "s3:ListBucket"</code> is one operation: listing the names of objects in a bucket. The first statement has one action, so it is a plain string rather than a list.</li>
+<li><code>"Resource": "arn:aws:s3:::citypulse-asha-7k2q"</code> is the bucket itself, with no slash and no object name. <code>ListBucket</code> must name the bucket, not the objects inside it.</li>
+<li><code>"Condition"</code> narrows the statement. <code>StringLike</code> means "matches a pattern with <code>*</code>", and <code>s3:prefix</code> is the prefix the caller asked to list. So the listing is allowed only for <code>raw/...</code> or <code>clean/...</code>.</li>
+<li><code>"Action": ["s3:PutObject", "s3:GetObject"]</code> is a list of two actions. The second statement uses a list because it covers two actions on the same resources.</li>
+<li>The two <code>Resource</code> entries end in <code>/raw/*</code> and <code>/clean/*</code>. Object actions take the bucket, then a slash, then a prefix pattern, so <code>/*</code> means "any object under this prefix".</li>
+</ul>
+<p>The expected output of a successful check is <code>ListBucket</code> accepted for <code>raw/</code>, and a file uploaded under <code>raw/</code> appearing in the listing.</p>
+<div class="box box-trap"><div class="box-h">Trap: ListBucket on the object pattern</div><p>Writing <code>arn:aws:s3:::citypulse-asha-7k2q/*</code> for <code>s3:ListBucket</code> never matches. <code>ListBucket</code> takes the bucket ARN. Object actions take the bucket ARN followed by <code>/prefix/*</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Wildcards that are too broad</div><p><code>s3:*</code> or <code>"Resource": "*"</code> fails the course gate. Name each action and scope each ARN.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Keys in code</div><p>Never put access keys in a Python file, a <code>.env</code> file or a Git commit. Keep them only in <code>aws configure --profile</code>.</p></div>
+
+<h3 id="least-privilege-and-mfa">Least privilege and MFA</h3>
+<p><strong>What it is.</strong> Least privilege means each identity gets only the permissions its job needs. A leaked credential then has a small blast radius. Multi-factor authentication adds a second proof, an authenticator code, to sign-in. It protects the root user and human admins even if a password leaks.</p>
+<p><strong>Why CityPulse uses it.</strong> If the <code>citypulse-pipeline</code> key leaks, the attacker can only read and write two prefixes in one bucket. Root can close the account and change billing, so Y2-T16 requires root MFA and no root access keys at any time. A tested deny matrix also proves that the policy denies what it should, which the client's reviewer asked for. The alternatives are weaker. A broad policy that you plan to tighten later usually stays broad. SMS codes are better than nothing, but a SIM swap can capture them. An authenticator app is preferred.</p>
+<p><strong>How it works.</strong> A policy is proven only when the expected denials return <code>AccessDenied</code>. The course script <code>infra/iam/test_access.sh</code> runs six real commands as the pipeline user. Two must be allowed and four must be denied.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-uo<span class="w"> </span>pipefail
+<span class="nv">B</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+check<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">want</span><span class="o">=</span><span class="nv">$1</span><span class="w"> </span>out<span class="w"> </span>got
+<span class="w">  </span><span class="nb">shift</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">out</span><span class="o">=</span><span class="k">$(</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">got</span><span class="o">=</span>allow
+<span class="w">  </span><span class="k">elif</span><span class="w"> </span>grep<span class="w"> </span>-qE<span class="w"> </span><span class="s1">&#39;AccessDenied|not authorized&#39;</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;</span><span class="nv">$out</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">got</span><span class="o">=</span>deny
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nv">got</span><span class="o">=</span>error
+<span class="w">  </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$got</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$want</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PASS </span><span class="nv">$want</span><span class="s2">: </span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;FAIL want=</span><span class="nv">$want</span><span class="s2"> got=</span><span class="nv">$got</span><span class="s2">: </span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="o">}</span>
+<span class="nb">echo</span><span class="w"> </span>probe<span class="w"> </span>&gt;<span class="w"> </span>/tmp/probe.txt
+check<span class="w"> </span>allow<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>/tmp/probe.txt<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/raw/probe.txt&quot;</span>
+check<span class="w"> </span>allow<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/raw/&quot;</span>
+check<span class="w"> </span>deny<span class="w">  </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>/tmp/probe.txt<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/secret/probe.txt&quot;</span>
+check<span class="w"> </span>deny<span class="w">  </span>aws<span class="w"> </span>s3api<span class="w"> </span>delete-object<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span>--key<span class="w"> </span>raw/probe.txt
+check<span class="w"> </span>deny<span class="w">  </span>aws<span class="w"> </span>s3<span class="w"> </span>ls
+check<span class="w"> </span>deny<span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>list-users
+</code></pre></div>
+
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the first line. It tells the system to run the file with Bash.</li>
+<li><code>set -uo pipefail</code> changes how Bash behaves. <code>-u</code> stops on an unset variable, which catches typos. <code>-o pipefail</code> makes a pipeline fail if any part fails. The script deliberately does not use <code>-e</code>, because a failing command is exactly what it wants to test.</li>
+<li><code>B=$1</code> stores the first argument, the bucket name, in <code>B</code>. <code>export AWS_PROFILE=citypulse-pipeline</code> makes the script test as the pipeline user, whatever your terminal was set to.</li>
+<li><code>check() { ... }</code> defines a function. Everything inside the braces runs when you call <code>check</code>.</li>
+<li><code>local want=$1 out got</code> declares three variables that exist only inside the function. <code>want</code> is the expected result, <code>out</code> is the output, <code>got</code> is the actual result.</li>
+<li><code>shift</code> removes the first argument, so <code>"$@"</code> now holds only the command to run.</li>
+<li><code>if out=$("$@" 2&gt;&amp;1); then</code> runs the command. <code>$(...)</code> captures its output into <code>out</code>. <code>2&gt;&amp;1</code> sends error text into the same capture, so the error message can be read. The <code>then</code> branch runs if the command exited successfully.</li>
+<li><code>grep -qE 'AccessDenied|not authorized' &lt;&lt;&lt;"$out"</code> searches the captured text for either message. <code>-q</code> prints nothing and sets the exit code, and <code>-E</code> allows the <code>|</code> alternative.</li>
+<li><code>else got=error</code> covers everything else: a typo, a missing file, a network problem. The script does not call those a deny.</li>
+<li><code>echo "PASS $want: $*"</code> prints the expected result and the command, which is the line you will read as evidence.</li>
+<li>Each <code>check</code> line passes the wanted result, then the command. The first is <code>check allow aws s3 cp ...</code>, which uploads <code>probe.txt</code> under <code>raw/</code>.</li>
+</ul>
+<p>Expected output, one line per check:</p>
+<div class="hl"><pre><span></span><code>PASS allow: aws s3 cp /tmp/probe.txt s3://citypulse-asha-7k2q/raw/probe.txt
+PASS allow: aws s3 ls s3://citypulse-asha-7k2q/raw/
+PASS deny: aws s3 cp /tmp/probe.txt s3://citypulse-asha-7k2q/secret/probe.txt
+PASS deny: aws s3api delete-object --bucket citypulse-asha-7k2q --key raw/probe.txt
+PASS deny: aws s3 ls
+PASS deny: aws iam list-users
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Counting every error as a deny</div><p>If the script treated any failure as a deny, a typo in the bucket name would show as a PASS. The <code>grep</code> for <code>AccessDenied</code> is what keeps the matrix honest. Keep it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Running the tests as admin</div><p>With the admin profile, every case passes, and the result proves nothing. Run <code>aws sts get-caller-identity</code> first. It must show <code>user/citypulse-pipeline</code>.</p></div>
+
+<div class="box box-tip"><div class="box-h">Tip: Explain the deny lines out loud</div><p>In a viva, examiners ask why a deny case matters. The answer: a policy that only shows its allows has not been tested for what it blocks.</p></div>
+
+<h3 id="budgets">Budgets</h3>
+<p><strong>What it is.</strong> AWS Budgets tracks actual and forecast spending against a limit you set. It sends email alerts at thresholds you choose. It does not stop resources.</p>
+<p><strong>Why CityPulse uses it.</strong> Interns run virtual machines and storage on personal accounts, and a forgotten <code>t3.micro</code> or public traffic costs real money. Y2-T16 makes a US$5 budget, with 80% and 100% alerts, a precondition: no alarm, no cloud lab. The alternatives are less suitable. A CloudWatch billing alarm works, but it uses an older approach based on estimated charges in <code>us-east-1</code>. Checking Cost Explorer by hand works only if someone remembers to look.</p>
+<p><strong>How it works.</strong> The budget compares month-to-date spend with the limit. Billing data updates a few times a day, so the alert is a safety net, not a live meter.</p>
+<div class="hl"><pre><span></span><code><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">N80</span><span class="o">=</span><span class="s1">&#39;{&quot;NotificationType&quot;:&quot;ACTUAL&quot;,&quot;ComparisonOperator&quot;:&quot;GREATER_THAN&quot;,&quot;Threshold&quot;:80,&quot;ThresholdType&quot;:&quot;PERCENTAGE&quot;}&#39;</span>
+<span class="nv">N100</span><span class="o">=</span><span class="s1">&#39;{&quot;NotificationType&quot;:&quot;ACTUAL&quot;,&quot;ComparisonOperator&quot;:&quot;GREATER_THAN&quot;,&quot;Threshold&quot;:100,&quot;ThresholdType&quot;:&quot;PERCENTAGE&quot;}&#39;</span>
+<span class="nv">SUB</span><span class="o">=</span><span class="s1">&#39;[{&quot;SubscriptionType&quot;:&quot;EMAIL&quot;,&quot;Address&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$ALERT_EMAIL</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}]&#39;</span>
+aws<span class="w"> </span>budgets<span class="w"> </span>create-budget<span class="w"> </span>--account-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ACCOUNT_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--budget<span class="w"> </span><span class="s1">&#39;{&quot;BudgetName&quot;:&quot;citypulse-monthly&quot;,&quot;BudgetLimit&quot;:{&quot;Amount&quot;:&quot;5&quot;,&quot;Unit&quot;:&quot;USD&quot;},&quot;TimeUnit&quot;:&quot;MONTHLY&quot;,&quot;BudgetType&quot;:&quot;COST&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--notifications-with-subscribers<span class="w"> </span><span class="s2">&quot;[{\&quot;Notification\&quot;:</span><span class="nv">$N80</span><span class="s2">,\&quot;Subscribers\&quot;:</span><span class="nv">$SUB</span><span class="s2">},{\&quot;Notification\&quot;:</span><span class="nv">$N100</span><span class="s2">,\&quot;Subscribers\&quot;:</span><span class="nv">$SUB</span><span class="s2">}]&quot;</span>
+aws<span class="w"> </span>budgets<span class="w"> </span>describe-budgets<span class="w"> </span>--account-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ACCOUNT_ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Budgets[].[BudgetName,BudgetLimit.Amount]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>Before you run it, set <code>ALERT_EMAIL</code> to an address you read every day, for example <code>ALERT_EMAIL=you@example.com</code>.</p>
+<ul>
+<li><code>ACCOUNT_ID=$(...)</code> runs the command in brackets and stores its output, your 12-digit account number, in a variable.</li>
+<li><code>N80=</code> and <code>N100=</code> store JSON for two alerts. Each says: fire when the actual spend is greater than 80 per cent, or 100 per cent, of the limit.</li>
+<li><code>SUB=</code> stores a JSON list with one subscriber, an email address. The <code>"'"$ALERT_EMAIL"'"</code> pattern closes the single quotes, inserts the variable, and reopens them.</li>
+<li><code>aws budgets create-budget</code> creates the budget. <code>--account-id</code> says which account.</li>
+<li><code>--budget</code> is the budget definition. It names the budget <code>citypulse-monthly</code>, sets the limit to 5 US dollars, repeats monthly, and tracks cost.</li>
+<li><code>--notifications-with-subscribers</code> attaches the two alerts and their email subscriber. The backslashes at line ends continue the command on the next line. The <code>\"</code> sequences put literal double quotes inside the double-quoted string.</li>
+<li><code>aws budgets describe-budgets</code> lists the budgets. <code>--query</code> keeps the name and the limit, and <code>--output text</code> prints them on one line.</li>
+</ul>
+<p>Expected output of the last line: <code>citypulse-monthly</code> followed by <code>5.0</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Believing a budget stops spending</div><p>A budget only alerts. You must stop or delete resources yourself.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: The admin user cannot see billing</div><p>An IAM admin cannot see billing data until the root user turns on IAM access to billing in the account settings. If the budget page is empty for <code>asha-admin</code>, check that setting.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Alerts sent to an unread inbox</div><p>An alert that nobody reads is useless. Use an address you check daily, and look for any confirmation message AWS sends to it.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook builds a small role for an ingest server. The server should be able to write sensor readings into one bucket and nothing else. The sample account and names in the workbook are examples, so use your own values in the lab.</p>
+<p><strong>Step 1: Confirm the identity.</strong> The workbook starts with <code>aws sts get-caller-identity</code>, which prints a user ARN and an account number. The output confirms that the CLI acts as a user in the account where you want to build. Nothing is created yet.</p>
+<p><strong>Step 2: Write the trust policy.</strong> A role has two policies. The trust policy says who may assume the role. The permissions policy says what the role may do. This is the trust policy, saved as <code>trust.json</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ec2.amazonaws.com&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li><code>"Principal": {"Service": "ec2.amazonaws.com"}</code> names the caller allowed to assume the role. Here it is the EC2 service, which runs the ingest job. No human and no key is named.</li>
+<li><code>"Action": "sts:AssumeRole"</code> is the one action the trust policy grants: borrowing the role's temporary credentials.</li>
+<li>The rest is the same structure you met in the policy above: a version, a list of statements, and an effect.</li>
+</ul>
+<p><strong>Step 3: Create the role.</strong> The workbook creates the role with the trust policy:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-ingest<span class="w"> </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
+</code></pre></div>
+
+<ul>
+<li><code>aws iam create-role</code> creates a role. <code>--role-name</code> gives it a name.</li>
+<li><code>--assume-role-policy-document file://trust.json</code> reads the trust policy from the file. The <code>file://</code> prefix tells the CLI to read the value from a file rather than treat the text as the policy itself.</li>
+</ul>
+<p>The output is JSON with <code>"Arn": "arn:aws:iam::&lt;account&gt;:role/citypulse-ingest"</code>. The role exists but has no permissions yet. That is intentional. You add permissions deliberately in the next step, instead of starting broad and trimming later.</p>
+<p><strong>Step 4: Write the scoped policy.</strong> The permissions policy, saved as <code>citypulse-ingest-policy.json</code>, allows exactly one action on one bucket:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::citypulse-readings/*&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>The action is a list with one entry, <code>s3:PutObject</code>, which writes an object. Reading and deleting are not granted.</li>
+<li>The resource is the bucket <code>citypulse-readings</code>, followed by <code>/*</code>, which means every object in it. This is an object action, so the pattern has the <code>/*</code> suffix.</li>
+</ul>
+<p>The workbook checks the file with a short Python script, <code>validate_policy.py</code>. It asserts that the action list is exactly <code>["s3:PutObject"]</code> and that there is no <code>*</code> in it. Its output looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 validate_policy.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;effect : Allow&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;action : [&#x27;s3:PutObject&#x27;]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;resource: arn:aws:s3:::citypulse-readings/*&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;least-privilege checks: PASS&quot;}]}"></div>
+
+<p>Each line prints one part of the statement. <code>effect : Allow</code> confirms the statement grants access. The <code>action</code> line shows exactly one action. The <code>resource</code> line shows the bucket and object pattern. The last line appears only when every <code>assert</code> in the script passed. If an <code>assert</code> fails, Python stops with an error message naming the failed check.</p>
+<p><strong>Step 5: Attach and read back.</strong> The policy is attached to the role as an inline policy, which means it belongs only to this role:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-ingest<span class="w"> </span>--policy-name<span class="w"> </span>write-readings<span class="w"> </span>--policy-document<span class="w"> </span>file://citypulse-ingest-policy.json
+aws<span class="w"> </span>iam<span class="w"> </span>get-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-ingest<span class="w"> </span>--policy-name<span class="w"> </span>write-readings<span class="w"> </span>--query<span class="w"> </span>PolicyDocument.Statement<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Action
+</code></pre></div>
+
+<ul>
+<li><code>put-role-policy</code> attaches the policy. <code>--policy-name write-readings</code> names it inside the role.</li>
+<li><code>get-role-policy</code> reads it back. <code>--query PolicyDocument.Statement[0].Action</code> returns the action of the first statement, so you can confirm what was saved.</li>
+</ul>
+<p>The workbook prints the action in its listing as <code>["s3:PutObject"]</code>. The workbook writes <code>-query</code> with one dash. Use two dashes, <code>--query</code>, as in every other command.</p>
+<p><strong>Step 6: Simulate the decisions.</strong> The simulator tests what a role could do without touching real data:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>simulate-principal-policy<span class="w"> </span>--policy-source-arn<span class="w"> </span>arn:aws:iam::&lt;account&gt;:role/citypulse-ingest<span class="w"> </span>--action-names<span class="w"> </span>s3:PutObject<span class="w"> </span>s3:DeleteObject<span class="w"> </span>--resource-arns<span class="w"> </span>arn:aws:s3:::citypulse-readings/jan.csv<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;EvaluationResults[].[EvalActionName,EvalDecision]&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>--policy-source-arn</code> names the role to test.</li>
+<li><code>--action-names</code> lists the actions to test. <code>--resource-arns</code> names the object they would act on.</li>
+<li><code>--query</code> prints each action with its decision.</li>
+</ul>
+<p>The expected output is <code>s3:PutObject</code> with <code>allowed</code>, and <code>s3:DeleteObject</code> with <code>implicitDeny</code>. <code>implicitDeny</code> means that no statement allows the action, so the default applies. The role can write readings but cannot delete them.</p>
+<p><strong>Step 7: Get the ARN for the server.</strong> Finally, the workbook reads the role ARN:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-ingest<span class="w"> </span>--query<span class="w"> </span>Role.Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>The output is the ARN alone, <code>arn:aws:iam::&lt;account&gt;:role/citypulse-ingest</code>. An EC2 server does not take a role directly. You wrap the role in an instance profile, and the server then receives temporary credentials at boot. No access key is stored on disk.</p>
+<div class="box box-trap"><div class="box-h">Trap: Attaching the role to a server directly</div><p>A role is not attached to an EC2 instance as it is. It goes into an instance profile, which is a container for the role. Look up instance profiles in the EC2 course material before you set one up.</p></div>
+
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>This lab builds the <code>citypulse-pipeline</code> identity. It uses a group, which is how teams normally share permissions. Your bucket is <code>citypulse-asha-7k2q</code> in the examples. Replace <code>asha</code> and the random suffix with your own values, and use the same name everywhere.</p>
+<h3 id="step-1-confirm-your-identity-and-region">Step 1: Confirm your identity and region</h3>
+<p><strong>What you do.</strong> Set your profile and region, then ask AWS who you are.</p>
+<div class="hl"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span>asha
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">-admin&quot;</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+aws<span class="w"> </span>configure<span class="w"> </span>get<span class="w"> </span>region
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The first line ends in <code>:user/asha-admin</code>. The second line prints <code>ap-south-1</code>.</p>
+<p><strong>How you know it worked.</strong> The ARN is your admin user, not <code>:root</code>. Nothing else in this lab should run with root.</p>
+<h3 id="step-2-create-a-group-to-hold-the-permissions">Step 2: Create a group to hold the permissions</h3>
+<p><strong>What you do.</strong> Create the group. Permissions go to the group, and users join it later.</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-group<span class="w"> </span>--group-name<span class="w"> </span>citypulse-pipeline-group
+aws<span class="w"> </span>iam<span class="w"> </span>get-group<span class="w"> </span>--group-name<span class="w"> </span>citypulse-pipeline-group<span class="w"> </span>--query<span class="w"> </span>Group.GroupName<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The first command prints JSON with <code>"GroupName": "citypulse-pipeline-group"</code>. The second prints the group name alone.</p>
+<p><strong>How you know it worked.</strong> The second command succeeds. An empty group has no members yet, which is correct at this stage.</p>
+<h3 id="step-3-write-a-least-privilege-policy">Step 3: Write a least-privilege policy</h3>
+<p><strong>What you do.</strong> Save the JSON policy from the Day 12 section as <code>infra/iam/asha/pipeline-policy.json</code>, with your bucket name. Check the JSON syntax, check for wildcards, then create the policy.</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>json.tool<span class="w"> </span>infra/iam/asha/pipeline-policy.json<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;JSON OK&quot;</span>
+grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;&quot;\*&quot;|s3:\*&#39;</span><span class="w"> </span>infra/iam/asha/pipeline-policy.json
+aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span>--policy-name<span class="w"> </span>citypulse-pipeline-s3<span class="w"> </span>--policy-document<span class="w"> </span>file://infra/iam/asha/pipeline-policy.json<span class="w"> </span>--query<span class="w"> </span>Policy.Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The first line prints <code>JSON OK</code>. The <code>grep</code> prints nothing, because it found no <code>"*"</code> or <code>s3:*</code>. The last command prints a policy ARN that ends in <code>:policy/citypulse-pipeline-s3</code>.</p>
+<p><strong>How you know it worked.</strong> The <code>grep</code> returns no lines and the policy ARN appears. If <code>grep</code> prints a line, you have a wildcard. Fix the file and run the <code>create-policy</code> command again with a new policy name, because a policy name can exist only once.</p>
+<h3 id="step-4-create-the-user-and-put-it-in-the-group">Step 4: Create the user and put it in the group</h3>
+<p><strong>What you do.</strong> Create the user, add it to the group, and attach the policy to the group.</p>
+<div class="hl"><pre><span></span><code><span class="nv">ACCT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>iam<span class="w"> </span>add-user-to-group<span class="w"> </span>--group-name<span class="w"> </span>citypulse-pipeline-group<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>iam<span class="w"> </span>attach-group-policy<span class="w"> </span>--group-name<span class="w"> </span>citypulse-pipeline-group<span class="w"> </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="nv">$ACCT</span><span class="s2">:policy/citypulse-pipeline-s3&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The user command prints JSON with <code>"UserName": "citypulse-pipeline"</code>. The other two commands print nothing when they succeed.</p>
+<p><strong>How you know it worked.</strong> Run <code>aws iam list-attached-group-policies --group-name citypulse-pipeline-group --query 'AttachedPolicies[].PolicyName' --output text</code>. It must print <code>citypulse-pipeline-s3</code>.</p>
+<h3 id="step-5-configure-a-cli-profile-for-the-new-user">Step 5: Configure a CLI profile for the new user</h3>
+<p><strong>What you do.</strong> Create an access key while you are still the admin. Then store it in a new profile. Use the admin profile for this step only.</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><strong>What you should see.</strong> <code>create-access-key</code> prints JSON with the secret. Copy the <code>AccessKeyId</code> and <code>SecretAccessKey</code> straight into the <code>aws configure</code> prompts, then set the region to <code>ap-south-1</code> and the output to <code>json</code>. The last command ends in <code>:user/citypulse-pipeline</code>.</p>
+<p><strong>How you know it worked.</strong> The ARN shows the pipeline user, not your admin user. The secret is shown only once. Never paste it into chat, a screenshot, a README or Git.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting to switch profiles</div><p>If <code>AWS_PROFILE</code> still says <code>asha-admin</code>, later tests run as admin and every case passes. Use <code>--profile citypulse-pipeline</code> on each command, or run <code>export AWS_PROFILE=citypulse-pipeline</code> after you finish the admin work.</p></div>
+
+<h3 id="step-6-prove-the-boundary-holds">Step 6: Prove the boundary holds</h3>
+<p><strong>What you do.</strong> Run the test script. Pass your bucket name as the first argument.</p>
+<div class="hl"><pre><span></span><code>bash<span class="w"> </span>infra/iam/test_access.sh<span class="w"> </span>citypulse-asha-7k2q
+</code></pre></div>
+
+<p><strong>What you should see.</strong> Six lines, each starting with <code>PASS</code>: two <code>allow</code> lines and four <code>deny</code> lines. The deny lines are the <code>secret/</code> upload, the <code>delete-object</code>, the bucket listing with no bucket name, and <code>iam list-users</code>.</p>
+<p><strong>How you know it worked.</strong> All six lines start with <code>PASS</code>, and none starts with <code>FAIL</code>. Screenshot the output for Y2-T17, because the ticket asks for it.</p>
+<h3 id="step-7-clean-up">Step 7: Clean up</h3>
+<p><strong>What you do.</strong> Remove the test object and any access key you no longer need. Stop anything else you started.</p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>asha-admin
+aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://citypulse-asha-7k2q/raw/probe.txt
+aws<span class="w"> </span>iam<span class="w"> </span>list-access-keys<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AccessKeyMetadata[].AccessKeyId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+aws<span class="w"> </span>iam<span class="w"> </span>delete-access-key<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--access-key-id<span class="w"> </span>&lt;key-id-from-the-list&gt;
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The <code>rm</code> prints a <code>delete:</code> line. The list prints one key ID, and the delete command prints nothing.</p>
+<p><strong>How you know it worked.</strong> <code>list-access-keys</code> returns nothing. The group, the user and the policy can stay if your Y2-T17 ticket needs them, which it does for the attachment. Ask your trainer before you remove them. Then open the budget page and confirm that nothing is running.</p>
+<div class="box box-tip"><div class="box-h">Tip: Full removal order</div><p>If you do remove everything, the order matters. Delete the access key, remove the user from the group, delete the user, detach the policy from the group, delete the group, and delete the policy last. AWS refuses a deletion while something still depends on the item.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"IAM Policy Evaluator for the CityPulse Data Lake" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Single Allow that matches the request</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Action wildcard s3:* matches s3:PutObject</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Explicit Deny beats a broad Allow</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>No matching statement defaults to Deny</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 68 of the 100 points. The other 32 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K06.html#y2-t17-create-least-privilege-iam-identity-for-citypulse-pipeline">Y2-T17 · Create least-privilege IAM identity for citypulse-pipeline</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic in this section, asked in the order given. Each question describes a small CityPulse situation, such as a team, a symptom or a constraint, and asks you to choose the decision that fits it. The pass mark is 70 per cent, which means seven correct answers out of ten. Your skill score for the day keeps your first attempt only, so a second attempt helps you learn but does not change the score. Read each topic below before the quiz, then use its practice questions to check yourself.</p>
+<p>Answer every case-study question with the same four steps. First, read the last line of the question before anything else, because it says what is being asked, such as the first step, the most secure choice or the best fix. Second, underline the facts in the scenario that matter, such as the service, the bucket, the region or who needs access. Third, eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about AWS that simply do not answer the question. Fourth, watch for three words: "most", "first" and "best". They mean that more than one option may be partly right, and you must pick the one that fits this situation most closely.</p>
+<p>If you are stuck between two options, ask which one would still be wrong after the scenario changed a little. The answer that depends on the exact facts given is usually right.</p>
+<h3 id="iam-roles">IAM roles</h3>
+<p><strong>What it is.</strong> A role is an identity with no password and no permanent key of its own. Another identity, or an AWS service, assumes the role, which means it asks AWS for temporary credentials that expire after a set time. The response contains an access key ID, a secret, a session token and an expiry time. A role has two policies. The trust policy says who may assume it. The permissions policy says what the role may do once it has been assumed. The difference is easiest to see in a trust policy:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ec2.amazonaws.com&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<p>This statement lets the EC2 service borrow the role. It says nothing about S3. A separate permissions policy, such as one allowing <code>s3:PutObject</code> on one bucket, decides what the borrowed credentials can do. If the trust statement were removed, nobody could assume the role, even though its permissions would still exist.</p>
+<p><strong>How it shows up in a case study.</strong> CityPulse's ingest job runs on a server in <code>ap-south-1</code> and writes sensor readings to the <code>citypulse-readings</code> bucket. A student first stored an access key in a file on the server. A reviewer asks for that file to go. The right design is a role whose trust policy names the EC2 service and whose permissions policy allows only <code>s3:PutObject</code> on the readings bucket. The role is attached to the server through an instance profile, so the server receives temporary credentials at boot and no key sits on disk. Both designs can write readings, so the question is which one leaves no long-lived secret that could leak. Only the role design removes that secret.</p>
+<div class="box box-trap"><div class="box-h">Trap: Rotating a key instead of using a role</div><p>Rotating a long-lived key every month still leaves a secret on the server for the whole month. A role removes the stored secret altogether.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A nightly ingest job runs on an EC2 server and must write readings to one bucket. The team does not want any permanent access key stored on the server&#x27;s disk. Which setup fits best?&quot;, &quot;opts&quot;: [&quot;Store an administrator&#x27;s access key in a configuration file on the server&quot;, &quot;Attach a role to the server through an instance profile, with a policy that allows only writing to that bucket&quot;, &quot;Create a user for the server and rotate its access key every month&quot;, &quot;Share the root account&#x27;s password with the ingest script&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The instance profile supplies temporary credentials from the role, so no key is stored on disk. The tempting wrong answer is the monthly rotation, which still leaves a long-lived key on the server between rotations.&quot;}, {&quot;q&quot;: &quot;A developer says that a role is safe because its permissions policy is narrow. A reviewer notices that the role&#x27;s trust policy names every account in the organisation as a principal. What is the main risk?&quot;, &quot;opts&quot;: [&quot;The narrow permissions policy stops the role from doing anything useful&quot;, &quot;The role can only be assumed by administrators, which blocks the job&quot;, &quot;The trust policy is ignored once the permissions policy is narrow&quot;, &quot;Any identity that matches the trust policy can assume the role and use its narrow permissions&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Narrow permissions limit what the role can do, but the trust policy decides who may borrow it. The tempting wrong answer is the third option, which assumes a narrow permissions policy makes the trust policy irrelevant.&quot;}, {&quot;q&quot;: &quot;A team wants a laptop script to act as the pipeline role for one afternoon. Which mechanism lets the script&#x27;s identity borrow the role for that time?&quot;, &quot;opts&quot;: [&quot;The script&#x27;s identity calls sts:AssumeRole on the role, and the role&#x27;s trust policy allows that identity&quot;, &quot;The role is copied into the script&#x27;s folder as a JSON file&quot;, &quot;The script creates a permanent user that takes the role&#x27;s name&quot;, &quot;The role&#x27;s permissions policy lists the script&#x27;s name, so IAM accepts it&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Assuming a role is the borrowing step, and the trust policy must allow the caller. The tempting wrong answer is the last option, because a permissions policy says what the role can do, not who may use it.&quot;}]}"></div>
+
+<h3 id="least-privilege">Least privilege</h3>
+<p><strong>What it is.</strong> Least privilege means that each identity gets only the actions and resources its job calls, and nothing wider. You start from the real calls the job makes, grant exactly those, and then test that other calls are denied. A policy that works but is broad still counts as a failure. The table compares two ways of letting a job read summaries.</p>
+<div class="hl"><pre><span></span><code>Policy                                        What a leaked key can do
+s3:GetObject on citypulse-raw/summaries/*     Read the summaries, nothing else
+s3:* on *                                     Read, change and delete anything in every bucket
+</code></pre></div>
+
+<p>Both policies let the job read its summaries, so both look correct on a normal day. Least privilege is judged by what a leaked credential could do. The second policy fails that test, which is why reviewers look for wildcards in actions and resources before they approve anything.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse reporting service reads daily summaries from the <code>summaries/</code> folder of the <code>citypulse-raw</code> bucket. During development, a teammate attaches the managed policy <code>AmazonS3FullAccess</code> so that nothing blocks the work. The project's rule is that the policy must name each action and scope each resource, and that the denied cases must be tested. The right fix is a policy with <code>s3:GetObject</code> on the summaries prefix, followed by a test that a write is denied. Development is not an exception. A key used in development can leak too, and the broad policy usually stays in place after the demo ends.</p>
+<div class="box box-trap"><div class="box-h">Trap: Keeping the broad policy for the demo</div><p>A broad policy that is meant to be tightened later usually stays broad. Write the narrow policy first and test it.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The CityPulse reporting service reads daily summaries from the summaries/ folder of the citypulse-raw bucket. A teammate proposes AmazonS3FullAccess to save time during development. What is the best response?&quot;, &quot;opts&quot;: [&quot;Accept it, because development environments do not need least privilege&quot;, &quot;Accept it, because the broad policy is removed automatically before production&quot;, &quot;Reject it, write a policy that allows s3:GetObject on the summaries/ prefix only, and test that writes are denied&quot;, &quot;Accept it, because read access without writes is harmless when MFA is on&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Least privilege means one action on one prefix, with denials tested. The tempting wrong answer is the first option, because a leaked development key can read and delete just as a production key can.&quot;}, {&quot;q&quot;: &quot;A job needs to list the names of objects under the logs/ prefix of a bucket and nothing else. Which statement is closest to least privilege?&quot;, &quot;opts&quot;: [&quot;Action s3:ListBucket on the bucket ARN, with a condition that limits s3:prefix to logs/*&quot;, &quot;Action s3:* on the bucket ARN, because listing needs other actions too&quot;, &quot;Action s3:ListBucket on arn:aws:s3:::* so that the job can list any bucket it is given later&quot;, &quot;Action * on Resource * for simplicity during the lab&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;ListBucket takes the bucket ARN, and the prefix condition narrows the listing. The tempting wrong answer is the third option, whose resource wildcard reaches every bucket in the account.&quot;}, {&quot;q&quot;: &quot;A user has permission to read and write objects in citypulse-raw. The job only reads. Which change is the least-privilege fix?&quot;, &quot;opts&quot;: [&quot;Remove the GetObject permission, because reading is the riskier action&quot;, &quot;Keep both, because least privilege counts resources and not actions&quot;, &quot;Replace both actions with s3:* so the policy is easier to read&quot;, &quot;Remove the PutObject permission and keep only the action the job needs&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Least privilege removes any action the job does not call. The tempting wrong answer is removing the read, which would break the job and does nothing to reduce the write risk.&quot;}]}"></div>
+
+<h3 id="root-account-security">Root account security</h3>
+<p><strong>What it is.</strong> The root user is the identity created together with the AWS account. It has unrestricted access to everything in the account, including billing and closing the account itself. IAM policies cannot limit it. The protections are a multi-factor authentication (MFA) device on the root user, no root access keys, and daily work done by an IAM admin user instead. MFA asks for a code from an authenticator app as a second proof when you sign in. An access key is a long-lived secret that a script can use without any password prompt, so a root access key is the most dangerous kind of key, because nothing can restrict it. The IAM credential report lists every identity, including root, with its MFA and access key status. Checking that report is a quick way to confirm the protections are in place.</p>
+<p><strong>How it shows up in a case study.</strong> A new CityPulse account owner wants a deployment script to run without any prompt. A teammate suggests creating a root access key for the script, because it is the quickest option. The safe design is different. Root keeps MFA and has no access keys. The script runs as an IAM admin user with MFA for setup work, and the pipeline uses a role or a scoped user whose policy names only the calls it needs. The reasoning is that a leaked root key cannot be restricted or contained by any policy, so it must never exist, however convenient it looks on the day it is created.</p>
+<div class="box box-trap"><div class="box-h">Trap: Creating a root key and limiting it with a policy</div><p>IAM policies do not apply to the root user, so a policy cannot limit a root key. Do not create one.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A new account owner wants a deployment script to run without prompts and suggests creating an access key for the root user. What should you advise?&quot;, &quot;opts&quot;: [&quot;Create the root key but store it in a private Git repository&quot;, &quot;Refuse the root key, and use an IAM admin user with MFA for setup and a scoped role or user for the script&quot;, &quot;Create the root key and delete it after the first run&quot;, &quot;Create the root key and limit it with an IAM policy&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Root keys cannot be restricted by IAM policies, and a leaked root key cannot be contained. The tempting wrong answer is the last option, because IAM policies do not apply to the root user.&quot;}, {&quot;q&quot;: &quot;Which setup best protects the root user of a new AWS account?&quot;, &quot;opts&quot;: [&quot;A shared password in the team wiki and a root access key for the CI server&quot;, &quot;A root access key stored in the CLI profile and used every day for billing&quot;, &quot;An MFA device on the root user, and no root access keys at any time&quot;, &quot;The root password written on a sticky note near the desk&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Root needs MFA and no access keys. The tempting wrong answer is the second option, because a stored root key looks like a convenience but creates a secret that IAM cannot restrict.&quot;}, {&quot;q&quot;: &quot;A colleague signs in as root every day because it is quicker than switching to an admin user. Which change protects the account best and keeps the work possible?&quot;, &quot;opts&quot;: [&quot;Do daily work as an IAM admin user with MFA, and sign in as root only for the few tasks that need it&quot;, &quot;Keep signing in as root, but choose a longer password&quot;, &quot;Share the root login with the whole team so that anyone can recover the account&quot;, &quot;Turn off MFA on the admin user so that root and admin work the same way&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Daily work belongs to an admin user with MFA, and root is kept for tasks that require it. The tempting wrong answer is the longer password, which does nothing about root&#x27;s unrestricted access.&quot;}]}"></div>
+
+<h3 id="regions-and-availability-zones">Regions and availability zones</h3>
+<p><strong>What it is.</strong> A region is a geographic area with its own AWS data centres, such as <code>ap-south-1</code> in Mumbai. An availability zone (AZ) is an isolated data centre inside one region, with a letter after the region name, such as <code>ap-south-1a</code>. Most resources, such as virtual servers and storage volumes, are created in one region and are listed only when that region is selected in the console or the CLI. IAM is different. Users and roles are global and are not tied to a region. You can list the zones of a region with this command:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--region<span class="w"> </span>ap-south-1<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>The output is one line of zone names, such as <code>ap-south-1a</code>. The command shows where a region's zones are. It does not show where your resources are, which is why the region selector matters.</p>
+<p><strong>How it shows up in a case study.</strong> A team's shared test server was created in <code>ap-south-1</code>. A teammate has the console set to a different region and reports that the server has disappeared. The server has not been deleted, because the console lists only the resources of the selected region. The teammate should first check the region selector and then look at the list in <code>ap-south-1</code>. Changing the availability zone does not help, because an AZ is a place inside one region and cannot reveal a server created in another. A design decision follows from the same fact. If the team wants the data to stay in India, it must create the resources in <code>ap-south-1</code> and confirm the region before every create.</p>
+<div class="box box-trap"><div class="box-h">Trap: Blaming the availability zone</div><p>An AZ is one data centre inside a region. A missing resource is almost always a region selector problem, not an AZ problem.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team&#x27;s shared test server was created in ap-south-1 (Mumbai). A teammate has the console set to us-west-2 and reports that the server has disappeared. What should the teammate check first?&quot;, &quot;opts&quot;: [&quot;Whether the budget alarm deleted the server automatically&quot;, &quot;Whether AWS moved the server to a different account&quot;, &quot;Whether the server is listed under the root user&quot;, &quot;Whether the region selector is set to ap-south-1, where the server was created&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Resources belong to one region, and the console shows only the selected region. The tempting wrong answer is the first option, because a budget alarm sends emails and does not delete anything.&quot;}, {&quot;q&quot;: &quot;A service must keep running when one data centre in a region fails. Which design is closest to what availability zones provide?&quot;, &quot;opts&quot;: [&quot;Run the whole service in one availability zone and back up the disk each day&quot;, &quot;Spread the service across two or more availability zones in the same region&quot;, &quot;Run the service in one region on a single laptop in the office&quot;, &quot;Run the service on a server that is moved by hand whenever a fault appears&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;AZs are isolated data centres inside one region, so spreading across them tolerates the loss of one. The tempting wrong answer is the first option, because a daily backup helps recovery but does not keep the service running during the fault.&quot;}, {&quot;q&quot;: &quot;The CityPulse data must stay in India. Which decision addresses this requirement most directly?&quot;, &quot;opts&quot;: [&quot;Pick the region closest to a team member&#x27;s laptop in Europe&quot;, &quot;Pick any availability zone and hope AWS keeps the data local&quot;, &quot;Create the resources in ap-south-1 and check the region selector before creating anything&quot;, &quot;Create the resources in us-east-1 and turn on MFA&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The region decides where the data is stored, so choosing ap-south-1 keeps it in India. The tempting wrong answer is the second option, because an AZ is inside a region and does not change where the data lives.&quot;}]}"></div>
+
+<h3 id="execution-roles">Execution roles</h3>
+<p><strong>What it is.</strong> An execution role is the role a service assumes so that it can act on your behalf when your code runs. A Lambda function, for example, runs with an execution role. Its trust policy names the service, and its permissions policy lists what the function needs, such as writing logs and reading one object. The trust statement for a Lambda function looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lambda.amazonaws.com&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<p>The function borrows the role each time it runs. The person who deployed the function does not pass their own rights to it. Giving the role the deployer's admin rights is the easiest fix when a permission error appears, and it is also the widest permission on offer. Each new error should be answered by adding the one action and the one resource that the function really calls.</p>
+<p><strong>How it shows up in a case study.</strong> A Lambda function writes logs and reads one object from <code>citypulse-raw</code>. Its execution role was created with the deployer's admin rights, because that removed every error during testing. A reviewer points out that the function can now delete any bucket in the account. The fix is to replace the admin rights with a policy that names the log actions and the one object's ARN. The function is then tested with a denied case, such as a delete. The reasoning is that the function's identity is the role, so the policy on the role is the only thing that decides what the function can do.</p>
+<div class="box box-trap"><div class="box-h">Trap: Giving the execution role the deployer&#x27;s rights</div><p>The function then inherits everything the deployer can do. The execution role should hold only what the function calls.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A serverless function writes its logs and reads one object from a bucket. Who should hold those permissions?&quot;, &quot;opts&quot;: [&quot;The execution role that the function&#x27;s service assumes, with a policy limited to logs and that object&quot;, &quot;The developer&#x27;s admin user, which the function will borrow when it is deployed&quot;, &quot;The root account, so that the function never gets an access denied error&quot;, &quot;Every person on the team through one shared group&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The execution role is what the service assumes, and its policy limits what the function can do. The tempting wrong answer is the second option, which gives the function a person&#x27;s admin rights and breaks least privilege.&quot;}, {&quot;q&quot;: &quot;An execution role&#x27;s trust policy names the Lambda service, and its permissions policy allows dynamodb:PutItem on one table. A new engineer edits the trust policy so that it names a human user instead. What does this change?&quot;, &quot;opts&quot;: [&quot;Nothing, because trust policies only label the role&quot;, &quot;The table permission is widened to every table in the account&quot;, &quot;The function can no longer assume its role, so its calls fail, while the permissions policy stays the same&quot;, &quot;The role becomes public, and anyone on the internet can use it&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The trust policy decides which principal may assume the role. Once the service is removed, the function cannot assume the role at all. The tempting wrong answer is the first option, which treats the trust policy as a label with no effect.&quot;}, {&quot;q&quot;: &quot;A team gives a function&#x27;s execution role the deployer&#x27;s admin rights to avoid debugging permission errors. Which principle is broken, and what is the fix?&quot;, &quot;opts&quot;: [&quot;The principle of MFA, fixed by adding a second factor to the function&quot;, &quot;Least privilege, fixed by a policy that names only the actions and resources the function calls&quot;, &quot;The principle of regions, fixed by moving the function to another region&quot;, &quot;The principle of default allow, fixed by adding an explicit Allow for everything&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Admin rights exceed what the function needs. The tempting wrong answer is the first option, because MFA guards people who sign in and does not limit what a function may do.&quot;}]}"></div>
+
+<h3 id="policy-evaluation">Policy evaluation</h3>
+<p><strong>What it is.</strong> When an identity makes a request, IAM collects every policy attached to that identity and applies three rules in order. First, an explicit Deny that matches wins at once. Second, an explicit Allow that matches is needed. Third, if neither exists, the request is denied by default. The order of the statements inside the policies does not matter, and neither does how specific a statement looks. The table shows three requests against the same policy.</p>
+<div class="hl"><pre><span></span><code>Attached statement                               Request                              Result
+Allow s3:GetObject on reports/*                  s3:GetObject reports/q1.csv          Allowed
+Allow s3:GetObject on reports/*                  s3:GetObject reports/secret/a.csv    Allowed
+Deny s3:GetObject on reports/secret/*            s3:GetObject reports/secret/a.csv    Denied, the Deny wins
+Allow s3:GetObject on reports/* only             s3:PutObject reports/q1.csv          Denied by default
+</code></pre></div>
+
+<p>The last row is the default. Nothing forbids the write, but nothing allows it either, so IAM answers Deny.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse user has an Allow for <code>s3:DeleteObject</code> on the reports bucket, which was added by one team. A second policy, attached by the security team, has an explicit Deny for <code>s3:DeleteObject</code> on <code>reports/archive/*</code>. The user deletes an archive file and is refused. A student might blame the order of the policies or say that the more specific rule was ignored. Neither is the reason. The explicit Deny matches, and an explicit Deny wins over any Allow. The fix is a policy change that the security team agrees, not a change to the order of the statements.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading the first matching statement as the answer</div><p>IAM does not stop at the first match. It checks every attached policy for a matching Deny before it looks for an Allow.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;One policy allows s3:DeleteObject on the reports bucket. A second policy explicitly denies s3:DeleteObject on reports/archive/*. A user deletes reports/archive/2025.csv. What is the outcome?&quot;, &quot;opts&quot;: [&quot;Allowed, because the Allow appears first when the policies are listed&quot;, &quot;Allowed, because the more specific policy is ignored&quot;, &quot;Allowed only when the user is signed in with MFA&quot;, &quot;Denied, because the explicit Deny matches and wins over any Allow&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An explicit Deny wins regardless of order or specificity. The tempting wrong answer is the first option, which assumes the first matching statement decides the request.&quot;}, {&quot;q&quot;: &quot;A request matches no statement in any attached policy. Nothing forbids it, but nothing allows it either. What does IAM return?&quot;, &quot;opts&quot;: [&quot;AccessDenied only if a Deny statement exists somewhere&quot;, &quot;Denied, because the default answer is deny when no Allow matches&quot;, &quot;Allowed, because nothing forbids the action&quot;, &quot;Allowed with a warning recorded in CloudTrail&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The default is deny when no Allow matches. The tempting wrong answer is the third option, which treats the absence of a Deny as permission.&quot;}, {&quot;q&quot;: &quot;A policy statement allows s3:GetObject and s3:PutObject on a bucket, but a Deny statement applies s3:* to the same bucket only when the request is outside ap-south-1, through the condition aws:RequestedRegion. A user makes a PutObject request from us-east-1. What happens?&quot;, &quot;opts&quot;: [&quot;Allowed, because the Allow has no condition and is listed first&quot;, &quot;Allowed, because conditions apply only to Allow statements&quot;, &quot;Denied, because the Deny condition matches a request outside ap-south-1 and an explicit Deny wins&quot;, &quot;Allowed only when the request also carries an s3:prefix value&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The Deny condition matches, so the explicit Deny wins over the Allow. The tempting wrong answer is the first option, which trusts the Allow because it is listed first and has no condition.&quot;}]}"></div>
+
+<h3 id="cross-account-access">Cross-account access</h3>
+<p><strong>What it is.</strong> Cross-account access lets an identity in one AWS account use resources in another. The owning account creates a role whose trust policy names the other account, and the role carries the permissions the outsider needs. The other account then gives its own identity permission to call <code>sts:AssumeRole</code> on that role. Both sides must agree. The caller assumes the role, receives temporary credentials, and uses them to reach the resource. The trust statement in the owning account looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;AWS&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::111122223333:root&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Here <code>:root</code> means the whole account 111122223333, which is the trusted account, not its root user. The trusted account still has to allow its own identity to make the call. Without that second step, the caller is refused even though the trust statement is correct.</p>
+<p><strong>How it shows up in a case study.</strong> A partner's application in account C must read a report bucket owned by CityPulse in account A. The owner creates a role in account A that trusts account C and can read the bucket. The partner's application still gets AccessDenied when it tries to assume the role. The reviewer checks the trust policy first and finds it correct. The missing step is on the caller side, where the identity in account C needs an Allow for <code>sts:AssumeRole</code> on that role's ARN. The reasoning is that each account controls only its own side, so a correct trust policy cannot compensate for a missing caller permission.</p>
+<div class="box box-trap"><div class="box-h">Trap: Configuring only one side</div><p>A correct trust policy alone does nothing if the caller has no permission to assume the role. Both accounts must be set.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A developer in account A must read objects from a bucket owned by account B. Account B creates a role whose trust policy names account A. Which other step is needed for the developer to use the role?&quot;, &quot;opts&quot;: [&quot;Allow the developer&#x27;s identity in account A to call sts:AssumeRole on that role&quot;, &quot;Give the developer account B&#x27;s root password&quot;, &quot;Copy the bucket into account A so the trust policy is no longer needed&quot;, &quot;Create a role in account A with the same name as account B&#x27;s role&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Both accounts must agree, and account A must allow its own identity to make the call. The tempting wrong answer is the last option, because a role in account A with the same name is a different role and has no access to account B&#x27;s bucket.&quot;}, {&quot;q&quot;: &quot;A partner&#x27;s application in account C gets AccessDenied when it assumes a role in account A. The role&#x27;s trust policy lists account C. What is the most likely missing step?&quot;, &quot;opts&quot;: [&quot;The role needs a new name that begins with the partner&#x27;s account number&quot;, &quot;The partner must sign in as root to make the call&quot;, &quot;The bucket must be moved to ap-south-1&quot;, &quot;The identity in account C does not have an Allow for sts:AssumeRole on that role&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The caller side must allow the call, and the trust policy already names account C. The tempting wrong answer is the third option, which mixes up region with account ownership.&quot;}, {&quot;q&quot;: &quot;Why does a cross-account role need its trust policy and the caller&#x27;s permission together?&quot;, &quot;opts&quot;: [&quot;Because IAM will not read the permissions policy otherwise&quot;, &quot;Because each account decides its own side: the owner trusts the caller, and the caller is allowed to ask&quot;, &quot;Because the trust policy is copied to the caller&#x27;s account automatically&quot;, &quot;Because the caller must belong to the same group as the role&#x27;s owner&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Each account controls only its own side, so both are needed. The tempting wrong answer is the fourth option, because groups do not cross account boundaries.&quot;}]}"></div>
+
+<h3 id="iam-groups">IAM groups</h3>
+<p><strong>What it is.</strong> A group is a collection of users that holds policies. Each member inherits every policy attached to the group. You attach a read-only policy to the group once, and when a person joins or changes team, you add or remove them from the group. A group is not an identity. It cannot sign in, make calls or be assumed, so it cannot appear as the principal in a trust policy. These commands show the usual pattern:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>add-user-to-group<span class="w"> </span>--group-name<span class="w"> </span>analysts<span class="w"> </span>--user-name<span class="w"> </span>asha
+aws<span class="w"> </span>iam<span class="w"> </span>list-groups-for-user<span class="w"> </span>--user-name<span class="w"> </span>asha<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Groups[].GroupName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>The second command prints <code>analysts</code>, which confirms the membership. A policy attached directly to the user is a separate thing, and it stays in place when the user leaves the group.</p>
+<p><strong>How it shows up in a case study.</strong> Six analysts need the same read-only access to a bucket. The team first attaches the policy to each analyst separately, which works but means six edits for every change. Next quarter, two analysts move teams and one new analyst joins, so the policy must be checked for three people. A group solves this: one policy on the group, and membership changes only. A later problem appears when a user is removed from the group and can still read the bucket. The cause is a policy attached directly to the user, which removing group membership does not change.</p>
+<div class="box box-trap"><div class="box-h">Trap: Attaching the policy to each user</div><p>It works on the day you set it up, but every future change must be repeated for each person. Attach it to a group instead.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Six analysts need the same read-only access to a bucket. Two will move to other teams next quarter and one new analyst will join. Which setup needs the least maintenance?&quot;, &quot;opts&quot;: [&quot;One group with the read-only policy attached, and users added to or removed from the group&quot;, &quot;A separate read-only policy copied onto each analyst&quot;, &quot;A role named analysts that each analyst must type into the console&quot;, &quot;The root account, shared among the six analysts&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A group holds the policy, so each membership change is a single step. The tempting wrong answer is the second option, which works today but multiplies the work for every change.&quot;}, {&quot;q&quot;: &quot;A developer writes a trust policy so that a team group can assume a role, and AWS refuses the policy. Why?&quot;, &quot;opts&quot;: [&quot;Groups cannot hold policies, so the trust policy has nothing to read&quot;, &quot;Groups can be used in trust policies only in ap-south-1&quot;, &quot;Trust policies need a 12-digit number for each group&quot;, &quot;A group is not an identity that can call AWS or be assumed, so it cannot be named as the principal&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A trust policy names an identity, such as a user, a role, an account or a service. The tempting wrong answer is the first option, which is true of nothing relevant, because groups do hold policies.&quot;}, {&quot;q&quot;: &quot;A user was added to the analysts group, but still gets AccessDenied for a bucket action that the group policy allows. Which check is most useful first?&quot;, &quot;opts&quot;: [&quot;Remove the user from the group and add them again the next day&quot;, &quot;Attach AdministratorAccess to the user so that the question does not arise&quot;, &quot;Confirm the caller with get-caller-identity, then look for an explicit Deny that also applies to the user&quot;, &quot;Rename the group to match the bucket name&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The caller check catches the wrong profile, and an explicit Deny overrides group Allows. The tempting wrong answer is the second option, which hides the problem and widens the user&#x27;s rights.&quot;}]}"></div>
+
+<h3 id="policy-conditions">Policy conditions</h3>
+<p><strong>What it is.</strong> A <code>Condition</code> block narrows an Allow, or a Deny, using a context key. A context key is a fact about the request, such as the prefix a listing asks for, the IP address of the caller or the region a request targets. An operator compares the key with a value. <code>StringLike</code> compares text and allows <code>*</code> in the value. If a key is missing from the request, a positive operator such as <code>StringLike</code> does not match, so an Allow with that condition does not apply. Here is a statement that allows listing only under <code>logs/</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::citypulse-raw&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;StringLike&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;s3:prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logs/*&quot;</span><span class="p">}}}</span>
+</code></pre></div>
+
+<p>A listing request with a prefix of <code>logs/2026/</code> is allowed, because that prefix matches <code>logs/*</code>. A listing request with no prefix at all is not allowed, because there is no prefix to compare.</p>
+<p><strong>How it shows up in a case study.</strong> A monitoring tool lists the whole <code>citypulse-raw</code> bucket with no prefix and is refused. The team had written a <code>StringLike</code> condition on <code>s3:prefix</code> for <code>logs/*</code>, and they assumed the condition was generous. The reasoning is that the condition checks a value the request did not supply. The tool must send a prefix, such as <code>logs/</code>, and the team should decide whether listing the bucket root is allowed at all. With a positive operator such as <code>StringLike</code>, a condition whose key is missing does not become a match.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting a missing key to match</div><p>A listing with no prefix has no <code>s3:prefix</code> value. The condition does not match, so the Allow does not apply.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A policy allows s3:ListBucket on the bucket with a StringLike condition on s3:prefix for raw/*. A tool lists the bucket root with no prefix. What happens?&quot;, &quot;opts&quot;: [&quot;Allowed, because the Allow has no value for the prefix to contradict&quot;, &quot;Denied, because the condition has no prefix value to match&quot;, &quot;Allowed, because raw/* matches an empty value&quot;, &quot;Allowed only when MFA is present in the request&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A missing key does not match, so the Allow does not apply and the request is denied. The tempting wrong answer is the third option, which assumes a wildcard pattern accepts an empty value.&quot;}, {&quot;q&quot;: &quot;A policy must allow actions only from the company&#x27;s office network, identified by aws:SourceIp. Which element holds this rule?&quot;, &quot;opts&quot;: [&quot;A Condition block with the IpAddress operator and the office range in aws:SourceIp&quot;, &quot;The Sid, because a label controls network access&quot;, &quot;The Version, which is set to the office range&quot;, &quot;The Resource, written as the office IP address&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Conditions compare request facts, and the source address is a request fact. The tempting wrong answer is the fourth option, because Resource names what is acted on, not where the caller is.&quot;}, {&quot;q&quot;: &quot;A statement uses StringLike on s3:prefix with the value logs/*. A caller lists logs/2026/. Is the condition met?&quot;, &quot;opts&quot;: [&quot;No, because the listing is deeper than logs/&quot;, &quot;No, because StringLike cannot match a prefix&quot;, &quot;Yes, but only if the Resource names the object logs/2026/&quot;, &quot;Yes, because logs/2026/ matches the pattern logs/*&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The * in StringLike matches any run of characters, including slashes, so the deeper prefix matches. The tempting wrong answer is the first option, which assumes * stops at a slash.&quot;}]}"></div>
+
+<h3 id="permissions-boundaries">Permissions boundaries</h3>
+<p><strong>What it is.</strong> A permissions boundary is a managed policy attached to a user or role as its maximum. The effective permissions are the overlap between the identity's own policies and the boundary. A boundary grants nothing by itself, and it can only reduce what an identity can do. The overlap works like this:</p>
+<div class="hl"><pre><span></span><code>Identity policy allows:   s3:GetObject, s3:PutObject
+Boundary allows:          s3:GetObject
+Effective permissions:    s3:GetObject
+</code></pre></div>
+
+<p>The identity can read but not write, even though its own policy names the write. Developers use boundaries to delegate safely. A team lead lets a developer create roles, and a boundary limits every role the developer creates, so a later broad policy cannot widen them past the boundary.</p>
+<p><strong>How it shows up in a case study.</strong> A developer is allowed to create roles for the pipeline, but the team lead wants each role to stay within S3 actions. A tempting plan is to add an explicit Allow for <code>s3:*</code> to each new role, which is the opposite of what the team needs. The team sets a permissions boundary that allows only S3 actions and applies it to the roles the developer creates. The reasoning is that the boundary sets a ceiling. A policy attached later cannot exceed that ceiling, because the effective permissions are the overlap.</p>
+<div class="box box-trap"><div class="box-h">Trap: Thinking a boundary opens access</div><p>A boundary never adds a permission. If an identity has no identity policy, the boundary alone leaves it with nothing.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team lead lets a developer create roles and attach policies, but wants every role the developer creates to stay within S3 actions, even if a broader policy is attached later. Which feature provides that ceiling?&quot;, &quot;opts&quot;: [&quot;A permissions boundary, set as the maximum for every role the developer creates&quot;, &quot;A trust policy that lists the developer as a principal&quot;, &quot;A tag on each role with the value s3-only&quot;, &quot;An explicit Allow for s3:* on each role&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A permissions boundary sets a maximum that later policies cannot exceed. The tempting wrong answer is the fourth option, which grants more rather than limiting.&quot;}, {&quot;q&quot;: &quot;An identity has a policy that allows s3:PutObject and a permissions boundary that allows only s3:GetObject. Which action is effective?&quot;, &quot;opts&quot;: [&quot;Neither action, because PutObject is outside the boundary and GetObject is not granted by the identity policy&quot;, &quot;PutObject only, because identity policies always win&quot;, &quot;GetObject only, because the boundary grants it&quot;, &quot;Both actions, because a boundary only adds permissions&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The effective permissions are the overlap, and the two sets do not overlap. The tempting wrong answer is the second option, which assumes the identity policy always takes precedence.&quot;}, {&quot;q&quot;: &quot;A boundary allows s3:* on all buckets. The identity has no identity policy at all. What can it do?&quot;, &quot;opts&quot;: [&quot;Everything the boundary allows, because a boundary alone grants permissions&quot;, &quot;Everything in S3, because the boundary is a grant&quot;, &quot;S3 read actions only, because boundaries are read-only&quot;, &quot;Nothing, because a boundary grants nothing by itself and there is no identity policy to overlap with&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A boundary is a ceiling, and it needs an identity policy to grant anything. The tempting wrong answer is the first option, which treats a boundary as a grant.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The questions below mix all ten topics and are harder than the ones above. Each one combines two ideas.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An EC2 ingest server must write to a bucket through a role. The role&#x27;s permissions policy allows s3:PutObject on that bucket, but its trust policy names lambda.amazonaws.com as the principal. The server cannot get credentials from the role. What is the cause?&quot;, &quot;opts&quot;: [&quot;The permissions policy is too narrow, because roles need s3:* to be assumed&quot;, &quot;The role is regional, so it must be recreated in the server&#x27;s region&quot;, &quot;The trust policy does not name the EC2 service, so the server cannot assume the role&quot;, &quot;The role needs an access key stored on the server&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The trust policy decides who may assume the role, and it names the wrong service. The tempting wrong answer is the first option, which blames the permissions policy, but that only decides what the role can do after it is assumed.&quot;}, {&quot;q&quot;: &quot;A job must read one input object and write results under results/ in citypulse-raw. Which policy is closest to least privilege?&quot;, &quot;opts&quot;: [&quot;s3:* on arn:aws:s3:::citypulse-raw/*&quot;, &quot;s3:GetObject and s3:PutObject on arn:aws:s3:::citypulse-raw/*&quot;, &quot;s3:GetObject on the input&#x27;s ARN and s3:PutObject on arn:aws:s3:::* for flexibility&quot;, &quot;s3:GetObject on the input object&#x27;s ARN, and s3:PutObject on arn:aws:s3:::citypulse-raw/results/* only&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each action is scoped to the one object or prefix the job uses. The tempting wrong answer is the second option, which is shorter but lets the job read and overwrite the whole bucket.&quot;}, {&quot;q&quot;: &quot;A reviewer asks how the team proves that the root user has no access keys and has MFA. Which evidence is strongest?&quot;, &quot;opts&quot;: [&quot;The IAM credential report, which shows root&#x27;s MFA and access key status, plus CloudTrail records of root sign-ins&quot;, &quot;A screenshot of the root user&#x27;s profile page with a green tick&quot;, &quot;A statement from the team lead that root is not used&quot;, &quot;The root password stored in a sealed envelope in the office&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The credential report shows the status of root directly, and CloudTrail shows whether root was used. The tempting wrong answer is the second option, which shows the state at one moment with no record of use.&quot;}, {&quot;q&quot;: &quot;An app server runs in ap-south-1, and its data bucket was created by mistake in us-east-1. Which consequence should the team expect?&quot;, &quot;opts&quot;: [&quot;The bucket is deleted once the budget alarm passes 80 per cent&quot;, &quot;The app stops until the bucket&#x27;s availability zone is changed&quot;, &quot;Data moves between regions, which adds latency and cost, so the bucket should be recreated in ap-south-1 beside the app&quot;, &quot;Nothing changes, because the data location is the same in every region&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Data lives in the region where the bucket was created, so each read crosses regions. The tempting wrong answer is the fourth option, which confuses the global bucket name with where the data is stored.&quot;}, {&quot;q&quot;: &quot;A Lambda function now fails with AccessDenied on a second bucket after its execution role was narrowed. What is the right response?&quot;, &quot;opts&quot;: [&quot;Attach AdministratorAccess to the execution role until the release is over&quot;, &quot;Read the error, add only the one action on the one new bucket if the job really needs it, and retest with a denied case&quot;, &quot;Create a root access key for the function to use&quot;, &quot;Move the function to a different region&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Least privilege is restored one permission at a time, with a test. The tempting wrong answer is the first option, which replaces the narrow policy with the widest one.&quot;}, {&quot;q&quot;: &quot;A policy allows s3:* on all resources. A second policy explicitly denies s3:DeleteBucket on citypulse-raw. A third policy allows s3:DeleteBucket on citypulse-raw. A user deletes the bucket. What happens?&quot;, &quot;opts&quot;: [&quot;Allowed, because the third policy is the most specific one&quot;, &quot;Allowed, because the first policy allows everything&quot;, &quot;Allowed, because two Allows outnumber one Deny&quot;, &quot;Denied, because the explicit Deny matches and wins over every Allow&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An explicit Deny that matches always wins. The tempting wrong answer is the third option, which counts statements rather than applying the rule.&quot;}, {&quot;q&quot;: &quot;A vendor&#x27;s application in account C assumes role R in account A. The vendor&#x27;s identity policy allows sts:AssumeRole on R, but R&#x27;s trust policy names only account B. What happens?&quot;, &quot;opts&quot;: [&quot;The call is denied, because the trust policy of R does not name account C&quot;, &quot;The call is allowed, because the vendor&#x27;s own policy is enough&quot;, &quot;The call is allowed, because the vendor is outside account A&quot;, &quot;The call succeeds for one hour and then fails&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The trust policy decides who may assume the role, and account C is not named. The tempting wrong answer is the first option, which ignores the owner&#x27;s side of the agreement.&quot;}, {&quot;q&quot;: &quot;A user was removed from the reviewers group, yet can still write to a bucket. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The group was deleted automatically when the user left&quot;, &quot;The bucket is in a different region from the group&quot;, &quot;A policy is still attached directly to the user, and removing group membership does not change it&quot;, &quot;The user has MFA enabled on their account&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Direct attachments are separate from group membership and stay in place. The tempting wrong answer is the fourth option, because MFA affects sign-in, not what an identity may do.&quot;}, {&quot;q&quot;: &quot;A policy allows s3:GetObject on the bucket with a condition that aws:SourceIp equals the office range. A user reads from home through a VPN that exits from a different range. What happens?&quot;, &quot;opts&quot;: [&quot;Allowed, because the user has a valid access key&quot;, &quot;Allowed, because the Allow matches the action and the resource&quot;, &quot;Allowed after the user signs in with MFA&quot;, &quot;Denied, because the condition is not met, so the Allow does not apply&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A condition narrows an Allow, and an unmet condition means the Allow does not apply. The tempting wrong answer is the second option, which ignores the condition.&quot;}, {&quot;q&quot;: &quot;A developer&#x27;s permissions boundary allows s3:GetObject and s3:ListBucket. The developer&#x27;s identity policy allows s3:GetObject only. The developer then attaches a new policy that allows s3:DeleteObject. Which actions are effective?&quot;, &quot;opts&quot;: [&quot;All three actions, because attaching a policy overrides the boundary&quot;, &quot;Only GetObject, because it appears in both the boundary and the identity policy&quot;, &quot;Only DeleteObject, because it is the newest policy&quot;, &quot;Only ListBucket, because the boundary is stronger than the identity policy&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The effective permissions are the overlap, and DeleteObject is outside the boundary. The tempting wrong answer is the first option, which assumes a new attachment widens the boundary.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a medium Python problem called IAM Policy Evaluator for the CityPulse Data Lake. It is marked by visible tests and hidden tests. Your file may use only the Python standard library, and each test run has a limit of 30 seconds and 128 MB. The problem is about permission decisions, so it looks like AWS, but the only skills it needs are wildcard matching, booleans, dictionaries, loops and exact string comparison.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse data-lake team protects the <code>citypulse-raw</code> S3 bucket with IAM-style policies. For each API request, your code must decide whether the request is permitted. A request has an action, such as <code>s3:PutObject</code>, and a resource, such as the ARN of one object. A policy is a list of statements. Each statement has an effect, which is either <code>"Allow"</code> or <code>"Deny"</code>, an action pattern and a resource pattern.</p>
+<p><strong>Your task.</strong> You write three module-level functions. The starter file already contains their names, and it imports <code>fnmatch</code> above them. Keep the names and the parameters exactly as they are.</p>
+<ul>
+<li><code>_match(pattern, value)</code> returns <code>bool</code>. It returns <code>True</code> when the wildcard <code>pattern</code> matches <code>value</code>. Use <code>fnmatch.fnmatch</code>, as the statement says, so that <code>*</code> matches any run of characters and a prefix wildcard such as <code>s3:Get*</code> matches <code>s3:GetObject</code>.</li>
+<li><code>statement_matches(statement, request)</code> returns <code>bool</code>. It returns <code>True</code> when the statement's <code>action</code> pattern and its <code>resource</code> pattern both match the request's <code>action</code> and <code>resource</code>.</li>
+<li><code>evaluate_policy(statements, request)</code> returns the string <code>"Allow"</code> or the string <code>"Deny"</code>. It applies the AWS precedence rules, which are listed below.</li>
+</ul>
+<p><strong>Every rule in the statement, in plain English:</strong></p>
+<ul>
+<li><code>_match</code> returns <code>True</code> when the pattern matches the value, and <code>False</code> otherwise.</li>
+<li>A statement matches a request only when its action pattern matches the request's action and its resource pattern matches the request's resource. Both must match. A matching action with a non-matching resource does not match.</li>
+<li>An explicit Deny that matches always wins. If any matching statement has the effect <code>"Deny"</code>, the answer is <code>"Deny"</code>, whatever the other statements say and wherever they sit in the list.</li>
+<li>If no matching Deny exists, the answer is <code>"Allow"</code> only when at least one matching Allow exists.</li>
+<li>If neither exists, the answer is the implicit <code>"Deny"</code>. This includes the case where the list of statements is empty.</li>
+<li>The answer is exactly one of the two strings, <code>"Allow"</code> or <code>"Deny"</code>.</li>
+<li>The statement's example shows <code>action</code> and <code>resource</code> as single pattern strings. It does not say whether a real statement may hold a list of patterns, so the lab probably does not use lists. If you are unsure, ask your trainer. Also, <code>fnmatch</code> treats <code>?</code> (one character) and <code>[abc]</code> (one of these characters) as special, as well as <code>*</code>. The statement only shows <code>*</code>, but <code>fnmatch.fnmatch</code> handles all of them for you, so do not write your own matcher.</li>
+<li>The statement gives one example. It has an Allow for <code>s3:*</code> on <code>*</code> and a Deny for <code>s3:DeleteObject</code> on <code>*</code>. A delete request on an object in <code>citypulse-raw</code> returns <code>"Deny"</code>, because the Deny matches and wins.</li>
+</ul>
+<p><strong>Limits.</strong> 30 seconds and 128 MB for each run.</p>
+<p><strong>Scoring.</strong> The visible tests are worth 68 points in total. Each one is shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single Allow that matches the request</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Action wildcard s3:* matches s3:PutObject</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Explicit Deny beats a broad Allow</td>
+<td>18</td>
+</tr>
+<tr>
+<td>No matching statement defaults to Deny</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>There are also <strong>3 hidden tests worth 32 points</strong> together. The platform runs them after you submit, and you cannot see their inputs. A hidden test checks a case that the visible tests do not show. Together, the visible tests and the hidden tests make 100 points, so a solution that passes only the visible tests stops at 68.</p>
+<p>Hidden tests decide the top marks because they are the only place where a careless rule can still be caught. A solution that always answers <code>"Deny"</code> passes the default test and fails the Allow tests. A solution that checks only the action fails a resource case that the visible tests did not show. Since you cannot see the hidden cases, the rules in the statement are your only guide, so you must test every one of them yourself.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that has nothing to do with the lab's data. Work out how each one maps to the three functions, but do not assemble these examples into the lab's functions.</p>
+<p><strong>Wildcard matching with <code>fnmatch.fnmatch</code>.</strong> The <code>fnmatch</code> module compares a name with a pattern in which <code>*</code> means any run of characters, including none.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fnmatch</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="s2">&quot;photos/cat.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;photos/*&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="s2">&quot;photos/cat.png&quot;</span><span class="p">,</span> <span class="s2">&quot;photos/*.jpg&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The first line prints <code>True</code>, because <code>photos/cat.jpg</code> starts with <code>photos/</code>. The second prints <code>False</code>, because the file ends in <code>.png</code>. The function also treats case the way the operating system does. On Windows it ignores case, so <code>fnmatch.fnmatch("Cat.JPG", "*.jpg")</code> returns <code>True</code> there. On most Linux systems the same call returns <code>False</code>. Test the case you care about, and do not assume either behaviour.</p>
+<p><strong>A real <code>bool</code> from a comparison.</strong> A <code>bool</code> has two values, <code>True</code> and <code>False</code>. In Python, <code>bool</code> is a subclass of <code>int</code>, so <code>True</code> also counts as the integer 1 in some checks.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>True</code>, <code>True</code>, <code>False</code> and <code>True</code>. The first line returns a real bool from a comparison. The second line is <code>True</code> because <code>bool</code> is a kind of <code>int</code>. The third is <code>False</code>, because the integer 2 is not a bool. The fourth needs its brackets: without them, <code>3 &gt; 2 is True</code> is read as a chained comparison and prints <code>False</code>. Use <code>is True</code> and <code>is False</code> in your own checks, so that a value such as <code>1</code> cannot pass as <code>True</code> by accident.</p>
+<p><strong>Reading a dictionary safely.</strong> A dictionary maps keys to values. Square brackets raise <code>KeyError</code> when a key is missing, while <code>get</code> returns a default instead.</p>
+<div class="hl"><pre><span></span><code><span class="n">ticket</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;zone&quot;</span><span class="p">:</span> <span class="s2">&quot;north&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ticket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;zone&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ticket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;seat&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ticket</span><span class="p">[</span><span class="s2">&quot;zone&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>north</code>, <code>unknown</code> and <code>north</code>. The second line does not crash, because <code>get</code> supplies the default. If you wrote <code>ticket["seat"]</code> instead, Python would stop with a <code>KeyError</code>. Use <code>get</code> whenever a key might be absent, and use brackets when a missing key is a real error.</p>
+<p><strong>Using <code>and</code> and <code>or</code> on booleans.</strong> <code>and</code> gives <code>True</code> only when both sides are <code>True</code>. <code>or</code> gives <code>True</code> when at least one side is.</p>
+<div class="hl"><pre><span></span><code><span class="n">room_open</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">has_key</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">room_open</span> <span class="ow">and</span> <span class="n">has_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">room_open</span> <span class="ow">or</span> <span class="n">has_key</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>False</code>, then <code>True</code>. A rule that needs two conditions to hold uses <code>and</code>. A rule that needs either one uses <code>or</code>.</p>
+<p><strong>Checking a list with a loop and <code>any</code>.</strong> A loop visits each item. <code>any</code> returns <code>True</code> when at least one item in a sequence is true, and it stops as soon as it finds one.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;first large reading:&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">break</span>
+</code></pre></div>
+
+<p>The first line prints <code>True</code>. The loop prints <code>first large reading: 12</code>, then <code>break</code> leaves the loop at once, so the 7 after it is never looked at. A <code>return</code> inside a function does the same thing for the whole function, which lets you stop as soon as the answer is known.</p>
+<p><strong>Exact string comparison and picking a string.</strong> Python compares strings letter by letter, and case matters. A conditional expression chooses one of two values.</p>
+<div class="hl"><pre><span></span><code><span class="n">level</span> <span class="o">=</span> <span class="s2">&quot;Warn&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;warn&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alert&quot;</span> <span class="k">if</span> <span class="mi">90</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="k">else</span> <span class="s2">&quot;Calm&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>False</code>, because <code>"Warn"</code> and <code>"warn"</code> differ, and then <code>Alert</code>. A result that must be exactly one of two words should be built with an expression like the second line, so that its spelling is fixed.</p>
+<p><strong>How the ideas map to the lab.</strong> <code>_match</code> needs the first two ideas, because it must return a real <code>bool</code> from a wildcard test. <code>statement_matches</code> needs dictionary reading and <code>and</code>, because both the action and the resource must match. <code>evaluate_policy</code> needs a loop with an early return, exact string results, and a default. Check each idea against the statement's rules before you combine them.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table lists the rules a hidden test could check. The first column quotes the rule as the statement gives it, in plain words. The third column tells you how to check your own solution before you submit.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_match</code> uses fnmatch, so <code>*</code> matches any run of characters</td>
+<td>Compares the two strings with <code>==</code>, so <code>s3:*</code> never matches <code>s3:PutObject</code></td>
+<td><code>_match("s3:*", "s3:PutObject") is True</code></td>
+</tr>
+<tr>
+<td><code>s3:Get*</code> is a prefix wildcard</td>
+<td>Treats the pattern as one fixed word</td>
+<td><code>_match("s3:Get*", "s3:GetObject") is True</code> and <code>_match("s3:Get*", "s3:PutObject") is False</code></td>
+</tr>
+<tr>
+<td><code>_match</code> returns a <code>bool</code></td>
+<td>Returns a match object, a string or <code>1</code></td>
+<td>Use <code>is True</code> and <code>is False</code>, not <code>==</code> with a number</td>
+</tr>
+<tr>
+<td>A statement matches only when action and resource both match</td>
+<td>Checks the action and forgets the resource, or the reverse</td>
+<td>A matching action with a different resource gives <code>statement_matches(...) is False</code></td>
+</tr>
+<tr>
+<td>An explicit Deny that matches always wins</td>
+<td>Returns <code>"Allow"</code> at the first matching Allow</td>
+<td>Put a matching Deny last, then first, and expect <code>"Deny"</code> both times</td>
+</tr>
+<tr>
+<td>A Deny wins wherever it sits in the list</td>
+<td>Stops at the first matching statement of either kind</td>
+<td>Reverse the statements list and compare the two answers</td>
+</tr>
+<tr>
+<td><code>"Allow"</code> only if a matching Allow exists</td>
+<td>Returns <code>"Allow"</code> when nothing matches</td>
+<td>Give a request that only a different action matches, and expect <code>"Deny"</code></td>
+</tr>
+<tr>
+<td>The implicit answer is <code>"Deny"</code>, including for an empty list</td>
+<td>Returns <code>None</code>, an empty string or raises an error</td>
+<td><code>evaluate_policy([], request) == "Deny"</code></td>
+</tr>
+<tr>
+<td>The answer is exactly <code>"Allow"</code> or <code>"Deny"</code></td>
+<td>Returns <code>True</code> and <code>False</code>, or lowercase words</td>
+<td>Compare with <code>== "Allow"</code> and check the spelling of every string</td>
+</tr>
+<tr>
+<td>Patterns can contain more than one <code>*</code></td>
+<td>Handles only one wildcard, usually the first</td>
+<td>Test a pattern such as <code>arn:aws:s3:::*/raw/*</code> against one object path</td>
+</tr>
+<tr>
+<td>An Allow and a Deny that both match</td>
+<td>Lets the Allow win because it appears first</td>
+<td>Put the Allow first and the Deny second, and expect <code>"Deny"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two rows are not in the statement, so treat them as habits rather than rules. The statement does not talk about mutation, but a careless solution might sort or edit the input list, which would change the next test. Check that your functions leave the statements and the request as they were, by copying them before the call and comparing afterwards. The statement also says nothing about rounding. This lab has no numbers in its answers, so rounding does not apply, and no round call should appear in your file.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Note the names, the parameters and the import. Do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any logic. The statement's own example gives one expected answer, and the first visible test gives another.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Make each one state a single expected answer.</li>
+<li>Implement one function at a time. Start with <code>_match</code>, because the other two depend on it. Run the asserts after each function, and stop to fix any failure before you go on.</li>
+<li>Check the types and the exact strings last. Confirm that the <code>bool</code> functions return <code>True</code> or <code>False</code>, and that <code>evaluate_policy</code> returns exactly <code>"Allow"</code> or <code>"Deny"</code>.</li>
+<li>Run the visible tests. Read every failure message, because each one names the test that failed and the points it carries.</li>
+<li>Submit once, and only when every row of your table passes.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The problem below is a twin. It is set in a library, not in AWS, and it uses a different precedence rule, so it is not a copy of the lab. It still needs wildcard matching, dictionary access, a loop with an early return and whole-number arithmetic.</p>
+<p><strong>Library loan periods.</strong> A library lends each book category for a set number of days. You receive <code>rules</code>, a list of dictionaries. Each dictionary has a <code>match</code> key, which is a wildcard pattern for the category, and a <code>days</code> key, which is the loan length. The rules are checked in list order, and the first rule whose pattern matches the category decides the loan. If no rule matches, the loan lasts 14 days. Write <code>loan_days(rules, category)</code>, which returns an <code>int</code>.</p>
+<p>The library also charges a late fee. Write <code>late_fee(days_late, pence_per_day)</code>, which returns the fee as a whole number of pence. A book that is not late has a fee of 0, including a negative number of days. Otherwise the fee is the number of late days multiplied by the daily rate.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fnmatch</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">loan_days</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rules</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">rule</span><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="n">rule</span><span class="p">[</span><span class="s2">&quot;days&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="mi">14</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">late_fee</span><span class="p">(</span><span class="n">days_late</span><span class="p">,</span> <span class="n">pence_per_day</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">days_late</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">days_late</span> <span class="o">*</span> <span class="n">pence_per_day</span>
+
+
+<span class="n">rules</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="s2">&quot;reference/*&quot;</span><span class="p">,</span> <span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="s2">&quot;fiction/*&quot;</span><span class="p">,</span> <span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="s2">&quot;fiction/crime&quot;</span><span class="p">,</span> <span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">loan_days</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="s2">&quot;reference/atlas&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">loan_days</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="s2">&quot;fiction/crime&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">21</span>
+<span class="k">assert</span> <span class="n">loan_days</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="s2">&quot;music&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">14</span>
+<span class="k">assert</span> <span class="n">loan_days</span><span class="p">([],</span> <span class="s2">&quot;music&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">14</span>
+<span class="k">assert</span> <span class="n">loan_days</span><span class="p">([{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="s2">&quot;fiction/crime&quot;</span><span class="p">,</span> <span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}],</span> <span class="s2">&quot;fiction/crime&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">assert</span> <span class="n">late_fee</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">80</span>
+<span class="k">assert</span> <span class="n">late_fee</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">late_fee</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">late_fee</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">int</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import fnmatch</code> loads the standard-library module that compares a name with a wildcard pattern.</li>
+<li><code>def loan_days(rules, category):</code> defines the function with two inputs.</li>
+<li><code>for rule in rules:</code> visits the rules in list order. Order matters here. The lab's rule is different, so do not carry this habit over.</li>
+<li><code>if fnmatch.fnmatch(category, rule["match"]):</code> asks whether the category fits this rule's pattern. The answer is <code>True</code> or <code>False</code>.</li>
+<li><code>return rule["days"]</code> ends the function at once with the first matching period. The later rules are never read, which is why the more general <code>fiction/*</code> rule beats the more specific <code>fiction/crime</code> rule when it comes first.</li>
+<li><code>return 14</code> runs only when the loop finishes without a return. That means no rule matched, so the default applies.</li>
+<li><code>def late_fee(days_late, pence_per_day):</code> defines the second function.</li>
+<li><code>if days_late &lt;= 0:</code> and <code>return 0</code> cover a book that is not late, including negative input. The fee is 0 in both cases.</li>
+<li><code>return days_late * pence_per_day</code> multiplies two whole numbers, so the result is a whole number of pence.</li>
+<li>Each <code>assert</code> line states one expected answer. If one is wrong, Python stops and names the failing line.</li>
+<li>The last <code>print</code> runs only when every assert has passed. Its expected output is <code>all checks passed</code>.</li>
+</ul>
+<p>The trace below steps through <code>loan_days</code> for the category <code>fiction/crime</code>. It uses the same loop as the function above.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Choosing a loan period by the first matching rule&quot;, &quot;code&quot;: [&quot;for rule in rules:&quot;, &quot;    if fnmatch.fnmatch(category, rule[\&quot;match\&quot;]):&quot;, &quot;        return rule[\&quot;days\&quot;]&quot;, &quot;return 14&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;]], &quot;note&quot;: &quot;Before the loop starts, nothing is decided. The function has the rules and the category.&quot;}, {&quot;line&quot;: 1, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;], [&quot;rule&quot;, &quot;{\&quot;match\&quot;: \&quot;reference/*\&quot;, \&quot;days\&quot;: 3}&quot;]], &quot;note&quot;: &quot;The loop takes the first rule.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;], [&quot;rule&quot;, &quot;{\&quot;match\&quot;: \&quot;reference/*\&quot;, \&quot;days\&quot;: 3}&quot;]], &quot;note&quot;: &quot;fnmatch compares the category with reference/*. The answer is False, so the body is skipped.&quot;}, {&quot;line&quot;: 1, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;], [&quot;rule&quot;, &quot;{\&quot;match\&quot;: \&quot;fiction/*\&quot;, \&quot;days\&quot;: 21}&quot;]], &quot;note&quot;: &quot;The loop moves on to the second rule.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;], [&quot;rule&quot;, &quot;{\&quot;match\&quot;: \&quot;fiction/*\&quot;, \&quot;days\&quot;: 21}&quot;]], &quot;note&quot;: &quot;fnmatch compares the category with fiction/*. The answer is True.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;category&quot;, &quot;\&quot;fiction/crime\&quot;&quot;], [&quot;rule&quot;, &quot;{\&quot;match\&quot;: \&quot;fiction/*\&quot;, \&quot;days\&quot;: 21}&quot;]], &quot;note&quot;: &quot;The function returns 21 at once. The third rule is never read.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>Write two functions in a file of your own. The first is <code>trip_summary(trips)</code>. Each trip is a dictionary with a <code>bike</code> name, a <code>minutes</code> value and a <code>km</code> value. The function returns a dictionary with three keys. The <code>count</code> is the number of trips. The <code>total_km</code> is the sum of the distances, rounded to one decimal place at the end and not before. The <code>median_minutes</code> is the median of the trip durations, found with <code>statistics.median</code>. For an empty list, <code>count</code> is 0, <code>total_km</code> is <code>0.0</code> and <code>median_minutes</code> is <code>None</code>.</p>
+<p>The second function is <code>busiest_bikes(trips, n)</code>. It returns a list of the first <code>n</code> bike names, sorted by the number of trips each bike made, most trips first. Two bikes with the same number of trips are ordered by name, alphabetically. If <code>n</code> is larger than the number of bikes, return all of them. For an empty list, return an empty list.</p>
+<p>Your file must make these assert lines pass:</p>
+<div class="hl"><pre><span></span><code><span class="n">trips</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;total_km&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">7.8</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;median_minutes&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">([])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;total_km&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;median_minutes&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">(</span><span class="n">trips</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">([{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B9&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B4&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B4&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B9&quot;</span><span class="p">}],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B9&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">([],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">trips</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;total_km&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;median_minutes&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trip</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">trip</span> <span class="ow">in</span> <span class="n">trips</span><span class="p">)</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="p">[</span><span class="n">trip</span><span class="p">[</span><span class="s2">&quot;minutes&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">trip</span> <span class="ow">in</span> <span class="n">trips</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">trips</span><span class="p">),</span>
+        <span class="s2">&quot;total_km&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s2">&quot;median_minutes&quot;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">minutes</span><span class="p">),</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">busiest_bikes</span><span class="p">(</span><span class="n">trips</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">trip</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">trip</span> <span class="ow">in</span> <span class="n">trips</span><span class="p">)</span>
+    <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">bike</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">counts</span><span class="p">[</span><span class="n">bike</span><span class="p">],</span> <span class="n">bike</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ranked</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="n">trips</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;total_km&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">7.8</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">trips</span><span class="p">)[</span><span class="s2">&quot;median_minutes&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">([])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;total_km&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;median_minutes&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">(</span><span class="n">trips</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">([{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B9&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B4&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B4&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;B9&quot;</span><span class="p">}],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B9&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busiest_bikes</span><span class="p">([],</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="n">four</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="n">m</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">trip_summary</span><span class="p">(</span><span class="n">four</span><span class="p">)[</span><span class="s2">&quot;median_minutes&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div></details>
+
+<p>The sort key in the solution is a tuple. Python sorts tuples item by item, so <code>-counts[bike]</code> puts the bike with the most trips first, and the bike name breaks any tie in alphabetical order.</p>
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Confirm that the three function names and their parameters match the starter file exactly, and that you have not added a <code>print</code> or an input prompt to the submitted file.</li>
+<li>Confirm that <code>_match</code> and <code>statement_matches</code> return <code>True</code> or <code>False</code>, and not a truthy value such as a match object.</li>
+<li>Confirm that <code>evaluate_policy</code> returns exactly the string <code>"Allow"</code> or the string <code>"Deny"</code>, with the same spelling and capital letter.</li>
+<li>Check a matching Deny placed last in the list, and then placed first, and expect <code>"Deny"</code> both times.</li>
+<li>Check that an empty statements list returns <code>"Deny"</code>.</li>
+<li>Check a pattern with a prefix wildcard, such as <code>s3:Get*</code>, against one action that matches and one that does not.</li>
+<li>Check that a statement whose action matches but whose resource does not gives no match.</li>
+<li>Check that your functions do not change the statements or the request they were given.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<h3 id="why-not-use-the-root-account-for-everything">Why not use the root account for everything?</h3>
+<p>Root has unrestricted access, and IAM policies cannot limit it. If root keys or the root password leak, the damage cannot be contained by a policy. For daily work, I use an admin IAM user with MFA, and I keep root locked behind its own MFA device with no access keys. I use root only for the few tasks that require it, such as changing billing settings.</p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Root has unrestricted access, and IAM policies cannot limit it, so a leaked root key cannot be contained. For daily work I use an IAM admin user with MFA. Root keeps MFA and has no access keys. I use root only for the few tasks that require it, such as changing account-level billing settings.</p></details>
+
+<h3 id="what-is-the-difference-between-a-user-a-group-and-a-role">What is the difference between a user, a group and a role?</h3>
+<p>A user is a long-lived identity for a person or a script, with its own credentials. A group is a container for users, and it holds policies that its members inherit. A role is an identity that is assumed for a time, and it hands out temporary credentials. The difference matters because a role does not carry a permanent secret.</p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>A user is a long-lived identity for one person or script, with its own credentials. A group is a container for users, so policies attached to it apply to every member. A role is assumed for a limited time and hands out temporary credentials. A role has no permanent secret, which is why services use roles.</p></details>
+
+<h3 id="a-request-was-denied-how-do-you-find-out-why">A request was denied. How do you find out why?</h3>
+<p>I start by confirming the identity with <code>get-caller-identity</code>, because the wrong profile is the most common cause. Then I check CloudTrail event history, filtered by the user name, which shows the exact call and the error. Next I use <code>simulate-principal-policy</code> to test the decision without touching data. Finally I check whether an explicit Deny is attached somewhere.</p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>I start by confirming the identity with the caller check, because the wrong profile is the most common cause. Then I look up the call in CloudTrail event history, filtered by the user name, to see the exact error. I use the policy simulator to test the decision without touching data. Last, I search for an explicit Deny, because it overrides any Allow.</p></details>
+
+<h3 id="how-do-you-know-your-policy-is-least-privilege">How do you know your policy is least privilege?</h3>
+<p>I list every action the job really calls, and I scope each action to one resource. I check the policy file for wildcards with a script before I upload it. Then I run a test script that checks both directions: the allowed calls must pass, and the forbidden calls must return AccessDenied. A policy is proven only when its denials are tested.</p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>I list the actions the job really calls, and I scope each one to a single resource. I check the file for wildcards before I upload it. Then I test both directions with a script, so the allowed calls pass and the forbidden calls return AccessDenied. A policy is only proven when its denials are tested as well.</p></details>
+
+<h3 id="why-doesnt-a-budget-stop-spending">Why doesn't a budget stop spending?</h3>
+<p>A budget measures actual and forecast spending against a limit, and it sends an alert when a threshold is crossed. It does not stop resources, because stopping them is a decision that belongs to the owner. Billing data updates a few times a day, so the alert is a safety net, not a real-time meter. I respond to an alert by stopping or deleting the resources that are running.</p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>A budget measures spending against a limit and sends an alert when a threshold is crossed. It does not stop anything, because that decision belongs to the owner. Billing data updates a few times a day, so the alert is a safety net rather than a live meter. When I get an alert, I stop or delete the resources that are running.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command, flag or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aws configure --profile NAME</code></td>
+<td>Saves keys, region and output format under a named profile</td>
+</tr>
+<tr>
+<td><code>aws configure get region</code></td>
+<td>Prints the region the current profile uses</td>
+</tr>
+<tr>
+<td><code>export AWS_PROFILE=NAME</code></td>
+<td>Makes later <code>aws</code> commands use that profile</td>
+</tr>
+<tr>
+<td><code>export AWS_REGION=ap-south-1</code></td>
+<td>Sets the default region for this terminal</td>
+</tr>
+<tr>
+<td><code>aws sts get-caller-identity</code></td>
+<td>Shows which identity and account the CLI is using</td>
+</tr>
+<tr>
+<td><code>aws ec2 describe-regions</code></td>
+<td>Lists the regions the account can use</td>
+</tr>
+<tr>
+<td><code>--query</code></td>
+<td>Filters JSON output with a path such as <code>Role.Arn</code></td>
+</tr>
+<tr>
+<td><code>--output text</code></td>
+<td>Prints plain text instead of JSON</td>
+</tr>
+<tr>
+<td><code>file://path</code></td>
+<td>Reads a parameter's value from a file</td>
+</tr>
+<tr>
+<td><code>aws iam create-group --group-name</code></td>
+<td>Creates a group that holds permissions</td>
+</tr>
+<tr>
+<td><code>aws iam create-policy --policy-name --policy-document</code></td>
+<td>Creates a customer-managed policy</td>
+</tr>
+<tr>
+<td><code>aws iam create-user --user-name</code></td>
+<td>Creates a long-lived user</td>
+</tr>
+<tr>
+<td><code>aws iam add-user-to-group</code></td>
+<td>Puts a user into a group</td>
+</tr>
+<tr>
+<td><code>aws iam attach-group-policy --policy-arn</code></td>
+<td>Attaches a policy to a group</td>
+</tr>
+<tr>
+<td><code>aws iam create-access-key --user-name</code></td>
+<td>Makes an access key pair; the secret is shown once</td>
+</tr>
+<tr>
+<td><code>aws iam create-role --assume-role-policy-document</code></td>
+<td>Creates a role with its trust policy</td>
+</tr>
+<tr>
+<td><code>aws iam put-role-policy</code> and <code>get-role-policy</code></td>
+<td>Writes and reads an inline policy on a role</td>
+</tr>
+<tr>
+<td><code>aws iam simulate-principal-policy</code></td>
+<td>Tests allow and deny decisions without touching data</td>
+</tr>
+<tr>
+<td><code>aws budgets create-budget</code> and <code>describe-budgets</code></td>
+<td>Creates and lists spending budgets</td>
+</tr>
+<tr>
+<td><code>python3 -m json.tool FILE</code></td>
+<td>Checks that a JSON file is valid</td>
+</tr>
+<tr>
+<td><code>bash infra/iam/test_access.sh BUCKET</code></td>
+<td>Runs the six allow and deny checks</td>
+</tr>
+<tr>
+<td><code>fnmatchcase(name, pattern)</code></td>
+<td>Case-sensitive wildcard match, where <code>*</code> matches any text</td>
+</tr>
+<tr>
+<td>Explicit Deny, then explicit Allow, then default deny</td>
+<td>How IAM decides a request</td>
+</tr>
+<tr>
+<td><code>ListBucket</code> takes the bucket ARN</td>
+<td>Object actions take <code>bucket/prefix/*</code></td>
+</tr>
+<tr>
+<td>No <code>s3:*</code> and no <code>"Resource": "*"</code></td>
+<td>Keeps the policy within least privilege</td>
+</tr>
+<tr>
+<td>No root access keys, MFA on root</td>
+<td>Protects the account owner</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;IAM user&quot;, &quot;a&quot;: &quot;A long-lived identity for a person or a script, with its own credentials.&quot;}, {&quot;q&quot;: &quot;IAM role&quot;, &quot;a&quot;: &quot;An identity that is assumed for a time and gives temporary credentials.&quot;}, {&quot;q&quot;: &quot;Trust policy&quot;, &quot;a&quot;: &quot;The part of a role that says who may assume it.&quot;}, {&quot;q&quot;: &quot;Explicit Deny&quot;, &quot;a&quot;: &quot;A statement that forbids an action, which overrides any Allow.&quot;}, {&quot;q&quot;: &quot;Default deny&quot;, &quot;a&quot;: &quot;The answer when no statement allows the request.&quot;}, {&quot;q&quot;: &quot;ListBucket resource&quot;, &quot;a&quot;: &quot;The bucket ARN with no slash, not the objects inside it.&quot;}, {&quot;q&quot;: &quot;Permissions boundary&quot;, &quot;a&quot;: &quot;A ceiling on what an identity can ever be granted.&quot;}, {&quot;q&quot;: &quot;Availability zone&quot;, &quot;a&quot;: &quot;An isolated data centre inside one AWS region.&quot;}, {&quot;q&quot;: &quot;Shared responsibility&quot;, &quot;a&quot;: &quot;AWS secures the infrastructure, and you secure identities, data and settings.&quot;}, {&quot;q&quot;: &quot;Budget&quot;, &quot;a&quot;: &quot;A spending limit that sends alerts, but does not stop resources.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D11.html"><small>Previous</small>Day 11 — Data pipelines and data-quality checks</a><a class="nx" href="D13.html"><small>Next</small>Day 13 — Object storage with S3 and boto3</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

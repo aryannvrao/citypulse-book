@@ -1,0 +1,605 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python from zero, part 1: values, text, decisions and loops · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="F1" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 1 · Foundations</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a class="cur" href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 1 · Foundations</p><h1>Python from zero, part 1: values, text, decisions and loops</h1><p class="sub">You will be able to write short Python programs that store values, change text, make decisions and repeat work, and read the error message when one fails.</p><p class="meta">30 min read · practice quiz · 4 animations · 8 tested solutions</p><video class="vid" controls preload="metadata" src="videos/F1.mp4?v=1794463923"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#what-a-program-is">What a program is</a></li><li><a href="#values-and-types">Values and types</a></li><li><a href="#variables">Variables</a></li><li><a href="#arithmetic">Arithmetic</a></li><li><a href="#text">Text</a></li><li><a href="#comparisons-and-logic">Comparisons and logic</a></li><li><a href="#decisions">Decisions</a></li><li><a href="#loops">Loops</a></li><li><a href="#reading-error-messages">Reading error messages</a></li><li><a href="#practise">Practise</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#flashcards">Flashcards</a></li><li><a href="#what-comes-next">What comes next</a></li></ol></details><h2 id="what-a-program-is">What a program is</h2>
+<p>A program is a list of instructions. The computer carries them out one at a time, from the top of the file to the bottom, unless an instruction tells it to jump somewhere else. A recipe works the same way: you read step one, do it, then read step two.</p>
+<p>Python is a language for writing those instructions. The program that reads your Python and carries it out is called the <strong>interpreter</strong>. You talk to it in two ways.</p>
+<p><strong>Interactive mode.</strong> You type one line, the interpreter runs it straight away and shows the result. To start it, open a terminal. A terminal is a window where you type commands and the computer answers in text. Type <code>python</code> and press Enter. A prompt made of three arrows, <code>&gt;&gt;&gt;</code>, appears. Type <code>2 + 3</code> and press Enter, and the answer <code>5</code> appears underneath. Type <code>exit()</code> and press Enter to leave.</p>
+<div class="hl"><pre><span></span><code>$ python
+&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; exit()
+</code></pre></div>
+
+<p>In this block, the first line is what you type after the <code>$</code> sign. The <code>$</code> is the terminal's prompt and you do not type it. The <code>&gt;&gt;&gt;</code> lines are what Python shows you while it is running.</p>
+<p><strong>Script mode.</strong> You save your instructions in a file and run the whole file at once. A file is a named block of data kept on disk. A file whose name ends in <code>.py</code> is a Python file. Create a file called <code>hello.py</code> in a folder of your choice, and put these two lines in it:</p>
+<div class="hl"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CityPulse&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>name = "CityPulse"</code> stores the text <code>CityPulse</code> in a <strong>variable</strong> called <code>name</code>. A variable is a name that points at a value. The <code>=</code> sign means "store this in", not "is equal to". You will meet the real equality test later.</li>
+<li><code>print("Hello from", name)</code> calls a <strong>function</strong>. A function is a named action that you run by writing its name followed by round brackets. <code>print</code> shows its contents on the screen. The two things inside the brackets are separated by a comma, and <code>print</code> puts a space between them.</li>
+</ul>
+<p>To run the file, go to the folder that holds it in the terminal and type this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python hello.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Hello from CityPulse&quot;}]}"></div>
+
+<p><code>python</code> starts the interpreter. <code>hello.py</code> tells it which file to read. Python runs the file from top to bottom and prints <code>Hello from CityPulse</code>. On Windows, if <code>python</code> is not recognised, try <code>py hello.py</code> instead. Both start the same interpreter.</p>
+<p>Any line that starts with <code>#</code> is a <strong>comment</strong>. Python ignores comments. Use them to explain your own code:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## This line is ignored by Python.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This line runs.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="box box-tip"><div class="box-h">Tip: Test in the interactive mode first</div><p>When you are unsure what an expression does, type it into interactive mode. You will see the result before you commit it to a file.</p></div>
+
+<h2 id="values-and-types">Values and types</h2>
+<p>A <strong>value</strong> is a piece of data: a number, a piece of text, or a yes-or-no answer. Every value has a <strong>type</strong>, which decides what you can do with it. Python has five types that you will use in this course:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it holds</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>whole numbers, positive, negative or zero</td>
+<td><code>42</code>, <code>-7</code>, <code>0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>numbers with a decimal point</td>
+<td><code>3.5</code>, <code>0.0</code>, <code>2.0</code></td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td>text, also called a string</td>
+<td><code>"PM2.5"</code>, <code>'air'</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td>yes or no</td>
+<td><code>True</code>, <code>False</code></td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>no value at all</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that <code>2.0</code> is a float even though it is a whole number. The decimal point is what makes it a float. Notice too that <code>True</code> and <code>False</code> start with capital letters. Python will not recognise <code>true</code>.</p>
+<p>The function <code>type()</code> tells you the type of a value. Put the value inside the brackets:</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;NoneType&#39;&gt;
+</code></pre></div>
+
+<p>Each <code>print</code> line asks Python for the type of one value and shows it. The text <code>&lt;class 'int'&gt;</code> means "the class int". In Python, a class and a type mean the same thing for this course. <code>NoneType</code> is the type of <code>None</code>.</p>
+<p>Python can change one type into another. The function <code>int()</code> converts text into a whole number, <code>float()</code> converts into a decimal number, and <code>str()</code> converts into text:</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;2.5&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>43</code>, <code>5.0</code> and <code>42!</code>. The first line turns the text <code>"42"</code> into the number 42 and adds 1. The second line turns the text <code>"2.5"</code> into 2.5 and doubles it, which gives a float. The third line turns the number 42 into text and adds an exclamation mark.</p>
+<div class="box box-trap"><div class="box-h">Trap: Quotes change the type</div><p><code>42</code> is a number. <code>"42"</code> is text. The text version looks the same on the screen, but <code>"42" + 1</code> fails with an error because Python will not add text to a number. Use <code>int("42") + 1</code> to convert first.</p></div>
+
+<h2 id="variables">Variables</h2>
+<p>A variable is a name that you attach to a value. You create or change a variable with the <strong>assignment</strong> statement, which is a single equals sign:</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">readings</span> <span class="o">=</span> <span class="n">readings</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>4</code>.</p>
+<p>Line by line:</p>
+<ul>
+<li><code>readings = 3</code> creates a variable called <code>readings</code> and stores the number 3 in it.</li>
+<li><code>readings = readings + 1</code> works out the right-hand side first. <code>readings</code> is 3, so <code>readings + 1</code> is 4. Then it stores the 4 back into <code>readings</code>. The old value is replaced.</li>
+<li><code>print(readings)</code> shows what the variable holds now, which is 4.</li>
+</ul>
+<p>Names you choose must follow four rules. They can use letters, digits and underscores. They cannot start with a digit, so <code>2nd_reading</code> is not allowed. They cannot contain spaces, so use <code>air_quality</code> rather than <code>air quality</code>. They are <strong>case sensitive</strong>, so <code>Readings</code> and <code>readings</code> are two different names. Also avoid the reserved words that Python uses for itself, such as <code>if</code>, <code>for</code> and <code>while</code>.</p>
+<p>Use names that describe the data. <code>station_id</code> is far easier to read in a viva than <code>x</code>.</p>
+<h2 id="arithmetic">Arithmetic</h2>
+<p>Python does arithmetic with these operators:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>add</td>
+<td><code>7 + 2</code></td>
+<td><code>9</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>subtract</td>
+<td><code>7 - 2</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>multiply</td>
+<td><code>7 * 2</code></td>
+<td><code>14</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>divide, always gives a float</td>
+<td><code>7 / 2</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>floor division, keeps the whole part</td>
+<td><code>7 // 2</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>remainder after division</td>
+<td><code>7 % 2</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>power</td>
+<td><code>2 ** 5</code></td>
+<td><code>32</code></td>
+</tr>
+</tbody>
+</table>
+<p>Try this program:</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output, one line for each <code>print</code>: <code>3.5</code>, <code>3</code>, <code>1</code>, <code>32</code>, <code>14</code>, <code>20</code>, <code>-4</code> and <code>2</code>.</p>
+<p>Line by line:</p>
+<ul>
+<li><code>7 / 2</code> is ordinary division, so the answer is 3.5 and it is a float.</li>
+<li><code>7 // 2</code> divides and throws away the part after the point. The answer is 3.</li>
+<li><code>7 % 2</code> gives the remainder. Seven is three lots of two with one left over.</li>
+<li><code>2 ** 5</code> means 2 multiplied by itself 5 times, which is 32.</li>
+<li><code>2 + 3 * 4</code> gives 14, because multiplication is done before addition.</li>
+<li><code>(2 + 3) * 4</code> gives 20, because the brackets are done first.</li>
+<li><code>-7 // 2</code> gives -4. Floor division rounds down towards minus infinity, so the answer is further from zero than you might expect. This is the case that catches people out.</li>
+<li><code>-7 % 3</code> gives 2. In Python the remainder always has the same sign as the divisor, which is 3 here.</li>
+</ul>
+<p>The order of operations is the usual school order. Brackets come first, then <code>**</code>, then <code>*</code>, <code>/</code>, <code>//</code> and <code>%</code> from left to right, then <code>+</code> and <code>-</code> from left to right.</p>
+<p>The remainder operator <code>%</code> is very useful. <code>reading % 2 == 0</code> is a test for an even number, and you will use it in the practice problems.</p>
+<div class="box box-trap"><div class="box-h">Trap: Division always gives a float</div><p><code>6 / 2</code> gives <code>3.0</code>, not <code>3</code>. If you need a whole number, use <code>//</code>. Hidden tests in the graded lab may check the type of the answer as well as its value. In Python <code>3.0 == 3</code> is <code>True</code>, but <code>type(3.0)</code> is <code>float</code>, so a strict type check on an integer answer fails.</p></div>
+
+<h2 id="text">Text</h2>
+<p>Text is written inside quotation marks. Single quotes and double quotes both work, but the closing mark must match the opening one: <code>"air"</code> and <code>'air'</code> are fine, <code>"air'</code> is an error.</p>
+<p>Each character in a string has a position called an <strong>index</strong>. The first position is 0, not 1. Count from zero, and you will avoid most off-by-one errors. The word <code>CityPulse</code> has these positions:</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Character</td>
+<td>C</td>
+<td>i</td>
+<td>t</td>
+<td>y</td>
+<td>P</td>
+<td>u</td>
+<td>l</td>
+<td>s</td>
+<td>e</td>
+</tr>
+</tbody>
+</table>
+<p>Square brackets with an index pick out one character:</p>
+<div class="hl"><pre><span></span><code><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;CityPulse&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Expected output: <code>C</code>, <code>P</code> and <code>e</code>.</p>
+<p><code>word[-1]</code> uses a negative index. Negative numbers count from the end, so <code>-1</code> is the last character, <code>-2</code> is the one before it, and so on.</p>
+<p>A <strong>slice</strong> takes a piece of the string. It uses a colon inside the brackets, with a start and a stop: <code>text[start:stop]</code>. The start is included and the stop is not. Watch how the next program works:</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Slicing a string&quot;, &quot;code&quot;: [&quot;word = \&quot;CityPulse\&quot;&quot;, &quot;first = word[0:4]&quot;, &quot;last = word[-5:]&quot;, &quot;print(len(word))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;word&quot;, &quot;\&quot;CityPulse\&quot;&quot;]], &quot;note&quot;: &quot;Store the text. Each character has a position, starting at 0.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;word&quot;, &quot;\&quot;CityPulse\&quot;&quot;], [&quot;first&quot;, &quot;\&quot;City\&quot;&quot;]], &quot;note&quot;: &quot;word[0:4] takes positions 0, 1, 2 and 3. Position 4 is not included.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;word&quot;, &quot;\&quot;CityPulse\&quot;&quot;], [&quot;first&quot;, &quot;\&quot;City\&quot;&quot;], [&quot;last&quot;, &quot;\&quot;Pulse\&quot;&quot;]], &quot;note&quot;: &quot;word[-5:] starts five places from the end and runs to the end.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;word&quot;, &quot;\&quot;CityPulse\&quot;&quot;], [&quot;first&quot;, &quot;\&quot;City\&quot;&quot;], [&quot;last&quot;, &quot;\&quot;Pulse\&quot;&quot;]], &quot;note&quot;: &quot;len(word) counts the characters, which is 9.&quot;}]}"></div>
+
+<p>If you leave out the start, slicing begins at the start of the text, so <code>word[:4]</code> also gives <code>City</code>. If you leave out the stop, it runs to the end, so <code>word[5:]</code> gives <code>ulse</code>. Expected output of <code>print(len(word))</code> is <code>9</code>. The function <code>len()</code> returns the length of any sequence, including text.</p>
+<p>Text values have <strong>methods</strong>. A method is a function that belongs to a value. You call it with a dot after the value, like <code>text.upper()</code>. The methods you will use most are these:</p>
+<div class="hl"><pre><span></span><code><span class="n">raw</span> <span class="o">=</span> <span class="s2">&quot;  PM2.5, NO2, O3  &quot;</span>
+<span class="n">clean</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">,</span> <span class="s2">&quot;NO2&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bengaluru&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bengaluru&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PM2.5&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;PM&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PM2.5&quot;</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;air-quality&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CityPulse&quot;</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Pulse&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CityPulse&quot;</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Ozone&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>PM2.5, NO2, O3
+[&#39;PM2.5&#39;, &#39; NO2&#39;, &#39; O3&#39;]
+PM2.5, NO2
+bengaluru
+BENGALURU
+True
+True
+air quality
+4
+-1
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>raw.strip()</code> removes spaces from both ends of the text. It does not touch the spaces in the middle. The result is stored in <code>clean</code>.</li>
+<li><code>clean.split(",")</code> cuts the text at each comma and gives a <strong>list</strong>, which is a numbered collection of values written in square brackets. The output shows <code>['PM2.5', ' NO2', ' O3']</code>. The second and third items still begin with a space, because <code>split</code> only cuts. It does not clean. You would call <code>strip</code> on each one to remove those spaces.</li>
+<li><code>", ".join([...])</code> does the reverse. It joins the items of a list, putting <code>", "</code> between them.</li>
+<li><code>lower()</code> returns a copy of the text in lower case, and <code>upper()</code> returns it in upper case.</li>
+<li><code>startswith("PM")</code> and <code>endswith("5")</code> return <code>True</code> or <code>False</code>, depending on how the text begins or ends.</li>
+<li><code>replace("-", " ")</code> swaps every hyphen for a space.</li>
+<li><code>find("Pulse")</code> returns the position where <code>Pulse</code> starts, which is 4. If the text is not found, <code>find</code> returns <code>-1</code>. Remember that <code>-1</code> is a signal, not a position, so check for it before you use the result as an index.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Methods do not change the original</div><p><code>word.upper()</code> returns a new string and leaves <code>word</code> alone. A line that calls <code>word.upper()</code> by itself does nothing useful. Write <code>word = word.upper()</code> to keep the result.</p></div>
+
+<p>Finally, the <strong>f-string</strong> lets you put variables into text. Put the letter <code>f</code> before the opening quote, then wrap each variable name in curly brackets:</p>
+<div class="hl"><pre><span></span><code><span class="n">station</span> <span class="o">=</span> <span class="s2">&quot;S1&quot;</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Station </span><span class="si">{</span><span class="n">station</span><span class="si">}</span><span class="s2"> has </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> readings&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average: </span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>Station S1 has 12 readings</code> and <code>Average: 0.67</code>. Inside the braces, Python replaces the name with the value it holds. In the second line, <code>:.2f</code> is a format instruction. It means "show this float with two digits after the point", so 0.6666 becomes 0.67.</p>
+<h2 id="comparisons-and-logic">Comparisons and logic</h2>
+<p>A <strong>comparison</strong> asks a question about two values and gives back a <code>bool</code>. The comparison operators are <code>==</code> (equal to), <code>!=</code> (not equal to), <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> (less than or equal to) and <code>&gt;=</code>.</p>
+<p>Two more keywords combine yes-or-no answers. <code>and</code> is true only when both sides are true. <code>or</code> is true when at least one side is true. <code>not</code> turns true into false and false into true. The word <code>in</code> checks whether something is inside another thing.</p>
+<div class="hl"><pre><span></span><code><span class="n">aqi</span> <span class="o">=</span> <span class="mi">72</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqi</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqi</span> <span class="o">==</span> <span class="mi">72</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">50</span> <span class="o">&lt;</span> <span class="n">aqi</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqi</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">aqi</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">aqi</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PM&quot;</span> <span class="ow">in</span> <span class="s2">&quot;PM2.5&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NO2&quot;</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">,</span> <span class="s2">&quot;O3&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Expected output: <code>True</code>, <code>True</code>, <code>True</code>, <code>False</code>, <code>False</code>, <code>True</code> and <code>False</code>.</p>
+<p>Line by line:</p>
+<ul>
+<li><code>aqi &gt; 50</code> is true, because 72 is greater than 50.</li>
+<li><code>aqi == 72</code> is true. Note the double equals sign. A single <code>=</code> stores a value, and <code>==</code> asks a question.</li>
+<li><code>50 &lt; aqi &lt;= 100</code> checks two things at once. Python reads it as "50 is less than aqi, and aqi is at most 100". Both are true.</li>
+<li><code>aqi &gt; 50 and aqi &lt; 60</code> is false, because the first part is true and the second part, 72 is less than 60, is false.</li>
+<li><code>not aqi &gt; 50</code> turns the true answer into false.</li>
+<li><code>"PM" in "PM2.5"</code> is true, because <code>PM</code> appears inside the text.</li>
+<li><code>"NO2" in ["PM2.5", "O3"]</code> is false, because <code>in</code> checks the items of the list and <code>NO2</code> is not one of them.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: Use short circuits on purpose</div><p>In <code>x != 0 and 10 / x &gt; 1</code>, Python checks the left side first. If it is false, Python does not run the right side, so there is no division by zero. Order your tests so the safe check comes first.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: One equals sign is not a test</div><p><code>if aqi = 72:</code> is a syntax error. Python will not guess that you meant <code>==</code>. Use two equals signs for a comparison.</p></div>
+
+<h2 id="decisions">Decisions</h2>
+<p>An <strong>if</strong> statement runs a block of code only when a condition is true. A <strong>block</strong> is a group of lines that belong together. In Python, a block is marked by <strong>indentation</strong>, which means the spaces at the start of a line. Use four spaces for each level. Every line in the same block must have the same indentation.</p>
+<div class="hl"><pre><span></span><code><span class="n">aqi</span> <span class="o">=</span> <span class="mi">72</span>
+<span class="k">if</span> <span class="n">aqi</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;good&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">aqi</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;moderate&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;poor&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>moderate</code>.</p>
+<p>Line by line:</p>
+<ul>
+<li><code>if aqi &lt;= 50:</code> asks the question. The colon at the end is required. It starts the block.</li>
+<li><code>print("good")</code> is indented, so it belongs to the <code>if</code>. It runs only when the question is true.</li>
+<li><code>elif</code> means "otherwise, if". Python tests it only when every earlier test was false. The word is short for "else if".</li>
+<li><code>else:</code> has no question. It runs when none of the earlier tests were true.</li>
+</ul>
+<p>Python reads the tests in order and runs the first branch that is true, then skips the rest. Here 72 is not less than or equal to 50, so the first branch is skipped. 72 is less than or equal to 100, so the <code>elif</code> branch runs and prints <code>moderate</code>. The <code>else</code> branch is skipped.</p>
+<div class="box box-trap"><div class="box-h">Trap: A missing colon or wrong indentation stops the program</div><p>Forgetting the colon after <code>if</code> gives a <code>SyntaxError</code>. A line that is indented in the wrong place gives an <code>IndentationError</code>, which is a kind of syntax error. Python checks the whole file before it runs anything, so a single bad line stops the whole program.</p></div>
+
+<h2 id="loops">Loops</h2>
+<p>A <strong>loop</strong> repeats a block of code. A <code>for</code> loop goes through a sequence one item at a time. A sequence is anything ordered that you can step through, such as text or a list. The variable after <code>for</code> takes each item in turn.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">&quot;AQI&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>A</code>, <code>Q</code>, <code>I</code>, then <code>0</code>, <code>1</code>, <code>2</code>, then <code>2</code>, <code>5</code>, <code>8</code>.</p>
+<p><code>range()</code> makes a sequence of whole numbers. <code>range(3)</code> gives 0, 1 and 2. The stop value is never included, which is the same rule as slicing. <code>range(2, 10, 3)</code> starts at 2, adds 3 each time, and stops before 10. That gives 2, 5 and 8.</p>
+<p>A <strong>while</strong> loop repeats as long as a condition stays true:</p>
+<div class="hl"><pre><span></span><code><span class="n">countdown</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">while</span> <span class="n">countdown</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">countdown</span><span class="p">)</span>
+    <span class="n">countdown</span> <span class="o">=</span> <span class="n">countdown</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>3</code>, <code>2</code>, <code>1</code>, <code>done</code>. The loop tests <code>countdown &gt; 0</code> before each round. When <code>countdown</code> reaches 0, the test is false, the loop stops, and the last line runs.</p>
+<p>Inside a loop, two keywords change the flow. <code>continue</code> skips the rest of this round and moves to the next item. <code>break</code> leaves the loop completely.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output: <code>7</code>. The number 4 is even, so <code>continue</code> skips it. The number 7 is odd and not above 10, so it is printed. The number 10 is even, so it is skipped. The number 13 is odd but above 10, so <code>break</code> ends the loop before anything else is printed.</p>
+<h3 id="the-accumulator-pattern">The accumulator pattern</h3>
+<p>Many programs collect a result over many rounds. A variable that starts with a neutral value and grows inside a loop is called an <strong>accumulator</strong>. Here it adds up the readings:</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">58</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>165</code> and <code>55.0</code>. The variable <code>total</code> starts at zero, so it is a safe starting point for addition. Each round adds one reading to it. After the loop, <code>total</code> holds the sum, and dividing by <code>len(readings)</code>, which is 3, gives the average.</p>
+<p>The next trace shows how the variables change in the accumulator. Watch <code>total</code> grow one step at a time.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;An accumulator adds up a list&quot;, &quot;code&quot;: [&quot;total = 0&quot;, &quot;for value in [42, 65, 58]:&quot;, &quot;    total = total + value&quot;, &quot;print(total)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;total&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;Start the accumulator at zero.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;total&quot;, &quot;0&quot;], [&quot;value&quot;, &quot;42&quot;]], &quot;note&quot;: &quot;The loop takes the first item from the list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;total&quot;, &quot;42&quot;], [&quot;value&quot;, &quot;42&quot;]], &quot;note&quot;: &quot;Add 42 to the running total and store the result.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;total&quot;, &quot;42&quot;], [&quot;value&quot;, &quot;65&quot;]], &quot;note&quot;: &quot;Back to the top of the loop with the next item.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;total&quot;, &quot;107&quot;], [&quot;value&quot;, &quot;65&quot;]], &quot;note&quot;: &quot;The running total is now 42 plus 65.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;total&quot;, &quot;107&quot;], [&quot;value&quot;, &quot;58&quot;]], &quot;note&quot;: &quot;The third and last item.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;total&quot;, &quot;165&quot;], [&quot;value&quot;, &quot;58&quot;]], &quot;note&quot;: &quot;The running total is now 107 plus 58.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;total&quot;, &quot;165&quot;], [&quot;value&quot;, &quot;58&quot;]], &quot;note&quot;: &quot;The list has no items left, so the loop ends.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;total&quot;, &quot;165&quot;], [&quot;value&quot;, &quot;58&quot;]], &quot;note&quot;: &quot;print shows 165.&quot;}]}"></div>
+
+<p>Now a loop with a decision inside it. This is the pattern you will see in most graded problems: go through the data, test each item, and do something different depending on the answer.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;An if and elif chain inside a loop&quot;, &quot;code&quot;: [&quot;readings = [12, 80, 150]&quot;, &quot;for aqi in readings:&quot;, &quot;    if aqi &lt;= 50:&quot;, &quot;        label = \&quot;good\&quot;&quot;, &quot;    elif aqi &lt;= 100:&quot;, &quot;        label = \&quot;moderate\&quot;&quot;, &quot;    else:&quot;, &quot;        label = \&quot;poor\&quot;&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;readings&quot;, &quot;[12, 80, 150]&quot;]], &quot;note&quot;: &quot;Store the three readings in a list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;aqi&quot;, &quot;12&quot;]], &quot;note&quot;: &quot;The loop takes the first reading.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;aqi&quot;, &quot;12&quot;]], &quot;note&quot;: &quot;The test 12 &lt;= 50 is true.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;aqi&quot;, &quot;12&quot;], [&quot;label&quot;, &quot;\&quot;good\&quot;&quot;]], &quot;note&quot;: &quot;The first branch runs, and the elif and else are skipped.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;aqi&quot;, &quot;80&quot;], [&quot;label&quot;, &quot;\&quot;good\&quot;&quot;]], &quot;note&quot;: &quot;Second round. label still holds the old value until it is set again.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;aqi&quot;, &quot;80&quot;], [&quot;label&quot;, &quot;\&quot;good\&quot;&quot;]], &quot;note&quot;: &quot;The test 80 &lt;= 50 is false, so Python moves on.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;aqi&quot;, &quot;80&quot;], [&quot;label&quot;, &quot;\&quot;good\&quot;&quot;]], &quot;note&quot;: &quot;The test 80 &lt;= 100 is true.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;aqi&quot;, &quot;80&quot;], [&quot;label&quot;, &quot;\&quot;moderate\&quot;&quot;]], &quot;note&quot;: &quot;Only one branch runs in each round.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;aqi&quot;, &quot;150&quot;], [&quot;label&quot;, &quot;\&quot;moderate\&quot;&quot;]], &quot;note&quot;: &quot;Third round.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;aqi&quot;, &quot;150&quot;], [&quot;label&quot;, &quot;\&quot;moderate\&quot;&quot;]], &quot;note&quot;: &quot;The test 150 &lt;= 50 is false.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;aqi&quot;, &quot;150&quot;], [&quot;label&quot;, &quot;\&quot;moderate\&quot;&quot;]], &quot;note&quot;: &quot;The test 150 &lt;= 100 is also false.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;aqi&quot;, &quot;150&quot;], [&quot;label&quot;, &quot;\&quot;moderate\&quot;&quot;]], &quot;note&quot;: &quot;Neither test was true, so the else branch runs.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;aqi&quot;, &quot;150&quot;], [&quot;label&quot;, &quot;\&quot;poor\&quot;&quot;]], &quot;note&quot;: &quot;The else branch sets the label to poor.&quot;}]}"></div>
+
+<p>The thresholds 50 and 100 are used here as a worked example. Use the values your lab gives you, not these, when you write your own code.</p>
+<div class="box box-trap"><div class="box-h">Trap: The infinite loop</div><p>A <code>while</code> loop that never changes the value it tests will run forever. If <code>countdown = countdown - 1</code> were missing from the countdown example, the number would stay at 3 and the program would never finish. In the terminal, press Ctrl and C together to stop a running program.</p></div>
+
+<h2 id="reading-error-messages">Reading error messages</h2>
+<p>Every beginner sees errors. A program that fails prints a <strong>traceback</strong>, which is a report of where it failed. Read it from the bottom up:</p>
+<ol>
+<li>The last line gives the error type, such as <code>NameError</code>, and a message that explains it.</li>
+<li>The lines above it show the file name and the line number where Python stopped.</li>
+<li>The line of code is printed under the file name, so you can compare it with what you meant to write.</li>
+</ol>
+<p>For example, if <code>hello.py</code> contains <code>print(greting)</code> on line 3, Python shows this:</p>
+<div class="hl"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;hello.py&quot;, line 3, in &lt;module&gt;
+    print(greting)
+NameError: name &#39;greting&#39; is not defined
+</code></pre></div>
+
+<p>The last line says the problem is a <code>NameError</code>. The name <code>greting</code> is not defined anywhere. The line number tells you where to look. The fix is to correct the spelling to <code>greeting</code>, or to store a value in that name before you use it.</p>
+<p>Five errors appear over and over in this course. Learn to recognise them:</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Usually means</th>
+<th>Example that causes it</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SyntaxError</code></td>
+<td>The code is not valid Python. The wording of the message changes between versions.</td>
+<td><code>if 3 &gt; 2</code> with no colon</td>
+<td>Add the missing colon, bracket or quote.</td>
+</tr>
+<tr>
+<td><code>NameError</code></td>
+<td>You used a name that was never stored, often because of a typo.</td>
+<td><code>print(greting)</code></td>
+<td>Check the spelling, or assign the variable first.</td>
+</tr>
+<tr>
+<td><code>TypeError</code></td>
+<td>You combined two types that do not work together.</td>
+<td><code>1 + "2"</code> gives <code>unsupported operand type(s) for +: 'int' and 'str'</code></td>
+<td>Convert one value with <code>int()</code> or <code>str()</code>.</td>
+</tr>
+<tr>
+<td><code>IndexError</code></td>
+<td>You asked for a position that does not exist.</td>
+<td><code>"AQI"[5]</code> gives <code>string index out of range</code></td>
+<td>Remember positions run from 0 to <code>len(text) - 1</code>.</td>
+</tr>
+<tr>
+<td><code>ValueError</code></td>
+<td>The right type was given, but the value makes no sense for the operation.</td>
+<td><code>int("abc")</code> gives <code>invalid literal for int() with base 10: 'abc'</code></td>
+<td>Check the text before you convert it.</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>SyntaxError</code> is different from the other four. Python finds it before running anything, so the program does not start at all. The other four appear while the program is running, so the lines before the error may already have done their work.</p>
+<div class="box box-key"><div class="box-h">Key fact: Start with the line number</div><p>The message tells you what went wrong. The line number tells you where. Go to that line first. If it looks correct, look at the line just above it, because a missing colon or bracket on the line before often causes the error to appear one line later.</p></div>
+
+<h2 id="practise">Practise</h2>
+<p>Try each problem before you read its answer. Write your function in a file, then add the test code under it and run the file. If every <code>assert</code> line passes, Python prints nothing and simply finishes. An <code>assert</code> is a check that says "this must be true". If one check fails, Python stops and prints <code>AssertionError</code> with the line number of the failed check.</p>
+<p>The answers include edge cases. An <strong>edge case</strong> is an unusual input, such as an empty string, zero, a negative number or a tie. Hidden tests in the graded lab use these cases, so practise them now.</p>
+<h3 id="problem-1-is_even">Problem 1: is_even</h3>
+<p>Write <code>is_even(n)</code>. It returns <code>True</code> when the whole number <code>n</code> is even, and <code>False</code> otherwise. For example, <code>is_even(4)</code> returns <code>True</code> and <code>is_even(-3)</code> returns <code>False</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>Line by line. <code>def is_even(n):</code> defines a function called <code>is_even</code> that takes one input, which it calls <code>n</code>. The indented line below is the function body. <code>return</code> sends a result back to whoever called the function. <code>n % 2 == 0</code> computes the remainder, then asks whether it is zero. The answer is already <code>True</code> or <code>False</code>, so there is no need for an <code>if</code>. The asserts check a positive even number, zero, a negative odd number and a positive odd number. Zero is even, and Python handles negative remainders correctly, so <code>-3 % 2</code> gives 1, and the result is <code>False</code>.</p></details>
+
+<h3 id="problem-2-word_count">Problem 2: word_count</h3>
+<p>Write <code>word_count(sentence)</code>. It returns how many words the sentence contains, where words are separated by spaces. Extra spaces at the start, end or middle must not be counted as words. For example, <code>word_count("sensor data arrived")</code> returns <code>3</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">word_count</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+<span class="k">assert</span> <span class="n">word_count</span><span class="p">(</span><span class="s2">&quot;sensor data arrived&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">word_count</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">word_count</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">word_count</span><span class="p">(</span><span class="s2">&quot;  one   two &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div>
+
+<p>Line by line. <code>sentence.split()</code> with no argument splits at any run of spaces and throws away empty pieces. The empty text and the text of spaces both give an empty list, so <code>len</code> returns 0. The text <code>"  one   two "</code> gives the list <code>['one', 'two']</code>, so the answer is 2. Passing <code>","</code> to <code>split</code> would be wrong here, because the words are not separated by commas.</p></details>
+
+<h3 id="problem-3-clean_station_id">Problem 3: clean_station_id</h3>
+<p>Write <code>clean_station_id(text)</code>. It removes spaces from both ends and changes the letters to upper case. For example, <code>clean_station_id("  s1 ")</code> returns <code>"S1"</code>. An empty string returns an empty string.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clean_station_id</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">clean_station_id</span><span class="p">(</span><span class="s2">&quot;  s1 &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;S1&quot;</span>
+<span class="k">assert</span> <span class="n">clean_station_id</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+<span class="k">assert</span> <span class="n">clean_station_id</span><span class="p">(</span><span class="s2">&quot;Ab2&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;AB2&quot;</span>
+</code></pre></div>
+
+<p>Line by line. <code>text.strip()</code> removes the spaces at both ends. The dot then calls <code>upper()</code> on the result, so the methods are chained, left to right. Each method returns a new string, which is why the chain works without storing anything in between. The asserts check normal input, empty input and input that is already mixed case.</p></details>
+
+<h3 id="problem-4-grade_aqi">Problem 4: grade_aqi</h3>
+<p>Write <code>grade_aqi(value)</code>. It returns <code>"good"</code> when the value is 50 or less, <code>"moderate"</code> when it is more than 50 and up to 100, and <code>"poor"</code> when it is more than 100. The boundary values 50 and 100 belong to the lower band. For example, <code>grade_aqi(51)</code> returns <code>"moderate"</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grade_aqi</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;good&quot;</span>
+    <span class="k">elif</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;moderate&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;poor&quot;</span>
+
+<span class="k">assert</span> <span class="n">grade_aqi</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span>
+<span class="k">assert</span> <span class="n">grade_aqi</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span>
+<span class="k">assert</span> <span class="n">grade_aqi</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;moderate&quot;</span>
+<span class="k">assert</span> <span class="n">grade_aqi</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;moderate&quot;</span>
+<span class="k">assert</span> <span class="n">grade_aqi</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;poor&quot;</span>
+</code></pre></div>
+
+<p>Line by line. The first test uses <code>&lt;=</code>, so 50 itself falls into the "good" band. The <code>elif</code> tests 100 with <code>&lt;=</code>, so 100 falls into "moderate". The <code>else</code> catches everything above 100. Each <code>return</code> ends the function straight away, so only one branch can give an answer. The five asserts test each side of both boundaries, which is where hidden tests usually look.</p></details>
+
+<h3 id="problem-5-sum_positive">Problem 5: sum_positive</h3>
+<p>Write <code>sum_positive(numbers)</code>. It adds up only the numbers in the list that are greater than zero. Zero and negative numbers are ignored. If the list is empty, or contains no positive numbers, the answer is <code>0</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sum_positive</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">assert</span> <span class="n">sum_positive</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">sum_positive</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">assert</span> <span class="n">sum_positive</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">sum_positive</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p>Line by line. <code>total</code> is an accumulator that starts at zero. The loop visits each number in turn. The <code>if</code> lets only the positive numbers into the sum. Because the accumulator starts at zero, an empty list or a list with no positive numbers returns zero without any special case. The <code>return</code> is at the level of the <code>for</code>, not inside it, so the function returns only after the loop has finished. Putting it inside the loop is a common mistake, and it would return after the first item.</p></details>
+
+<h3 id="problem-6-initials">Problem 6: initials</h3>
+<p>Write <code>initials(name)</code>. It returns the first letter of each word in upper case, joined together with no spaces. For example, <code>initials("ada lovelace")</code> returns <code>"AL"</code>. Extra spaces must be ignored, and an empty string returns an empty string.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">initials</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">assert</span> <span class="n">initials</span><span class="p">(</span><span class="s2">&quot;ada lovelace&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;AL&quot;</span>
+<span class="k">assert</span> <span class="n">initials</span><span class="p">(</span><span class="s2">&quot;  grace   brewster hopper &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;GBH&quot;</span>
+<span class="k">assert</span> <span class="n">initials</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</code></pre></div>
+
+<p>Line by line. <code>result</code> is an accumulator for text, and it starts as the empty string. <code>name.split()</code> gives the words without any empty pieces, so <code>word[0]</code> always exists. <code>word[0]</code> is the first character, and <code>upper()</code> makes it a capital. Adding it to <code>result</code> grows the text one letter at a time. For empty input, <code>split()</code> gives an empty list, the loop never runs, and the empty string is returned.</p></details>
+
+<h3 id="problem-7-digit_sum">Problem 7: digit_sum</h3>
+<p>Write <code>digit_sum(n)</code>. It returns the sum of the digits of a whole number. For example, <code>digit_sum(123)</code> returns <code>6</code>. A negative number uses the digits of its size, so <code>digit_sum(-905)</code> returns <code>14</code>. <code>digit_sum(0)</code> returns <code>0</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">digit_sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">assert</span> <span class="n">digit_sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">digit_sum</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">assert</span> <span class="n">digit_sum</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+<span class="k">assert</span> <span class="n">digit_sum</span><span class="p">(</span><span class="o">-</span><span class="mi">905</span><span class="p">)</span> <span class="o">==</span> <span class="mi">14</span>
+<span class="k">assert</span> <span class="n">digit_sum</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p>Line by line. <code>abs(n)</code> gives the size of the number without its sign, so the rest of the function only works with positive numbers. <code>n % 10</code> gives the last digit, because the remainder after dividing by ten is the final digit. <code>n // 10</code> removes that last digit. The <code>while</code> loop repeats until <code>n</code> is 0. For 123, the rounds add 3, then 2, then 1, so the total is 6. For 0, the loop never runs, and the total stays at 0, which is correct.</p></details>
+
+<h3 id="problem-8-longest_word">Problem 8: longest_word</h3>
+<p>Write <code>longest_word(sentence)</code>. It returns the longest word in the sentence, where words are separated by spaces. If two words have the same length, return the first one. An empty sentence returns an empty string. For example, <code>longest_word("air quality index")</code> returns <code>"quality"</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">longest_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">best</span><span class="p">):</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">word</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+<span class="k">assert</span> <span class="n">longest_word</span><span class="p">(</span><span class="s2">&quot;air quality index&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;quality&quot;</span>
+<span class="k">assert</span> <span class="n">longest_word</span><span class="p">(</span><span class="s2">&quot;cat dog&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span>
+<span class="k">assert</span> <span class="n">longest_word</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+<span class="k">assert</span> <span class="n">longest_word</span><span class="p">(</span><span class="s2">&quot;  a bb  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;bb&quot;</span>
+</code></pre></div>
+
+<p>Line by line. <code>best</code> starts as the empty string, which has length 0, so the first real word always beats it. The <code>&gt;</code> is strict. A word of the same length as the current best does not replace it, which is why the first of two equal words wins. The test <code>"cat dog"</code> checks this tie. The loop variable <code>word</code> is a piece of text from <code>split()</code>, and <code>len(word)</code> measures it.</p></details>
+
+<h2 id="check-yourself">Check yourself</h2>
+<p>Each question asks what a short program prints. Work it out on paper before you read the reason. The correct answer is marked with a star in the quiz itself.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;What does print(7 // 2) show?&quot;, &quot;opts&quot;: [&quot;3.5&quot;, &quot;3&quot;, &quot;4&quot;, &quot;2&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;// is floor division and keeps only the whole part, so the answer is 3. / would give 3.5, and 4 would mean rounding up, which // never does.&quot;}, {&quot;q&quot;: &quot;What does print(2 + 3 * 4) show?&quot;, &quot;opts&quot;: [&quot;14&quot;, &quot;20&quot;, &quot;24&quot;, &quot;9&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Multiplication is done before addition, so 3 * 4 is 12 and 2 + 12 is 14. The answer 20 comes only if the addition is done first, which Python does not do without brackets.&quot;}, {&quot;q&quot;: &quot;What does print(\&quot;PM2.5\&quot;.lower()) show?&quot;, &quot;opts&quot;: [&quot;PM2.5&quot;, &quot;Pm2.5&quot;, &quot;&#x27;pm2.5&#x27;&quot;, &quot;pm2.5&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;lower() returns every letter in lower case. The quotes are not printed, because print shows the text itself. The quoted option is tempting because it looks like a Python string, but print does not show the quote marks.&quot;}, {&quot;q&quot;: &quot;Given word = \&quot;CityPulse\&quot;, what does print(word[-5:]) show?&quot;, &quot;opts&quot;: [&quot;City&quot;, &quot;ityPulse&quot;, &quot;Pulse&quot;, &quot;Puls&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The index -5 counts five places from the end, and the slice runs to the end, which gives the last five characters, Pulse. ityPulse is eight characters, which is what word[-8:] would give, so it is the tempting mistake.&quot;}, {&quot;q&quot;: &quot;What does print(len(\&quot;air quality\&quot;)) show?&quot;, &quot;opts&quot;: [&quot;11&quot;, &quot;10&quot;, &quot;12&quot;, &quot;9&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The word air has 3 letters, the space makes 1, and quality has 7. The total is 11. The space is a character, and forgetting it gives 10.&quot;}, {&quot;q&quot;: &quot;What does print(10 % 4) show?&quot;, &quot;opts&quot;: [&quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;2.5&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The remainder after dividing 10 by 4 is 2, because 4 goes into 10 twice with 2 left over. 2.5 is the answer to 10 / 4, which uses a different operator.&quot;}, {&quot;q&quot;: &quot;What does print(\&quot;1\&quot; + \&quot;1\&quot;) show?&quot;, &quot;opts&quot;: [&quot;2&quot;, &quot;TypeError&quot;, &quot;error, because + needs numbers&quot;, &quot;11&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Both values are text, so + joins them into one piece of text, 11. The result is still text, but print does not show quote marks. The answer 2 would need the values to be numbers.&quot;}, {&quot;q&quot;: &quot;Inside a for loop over \&quot;AQI\&quot;, the body says: if ch equals \&quot;Q\&quot;, break, otherwise print ch. What is printed?&quot;, &quot;opts&quot;: [&quot;A Q I&quot;, &quot;Q I&quot;, &quot;I&quot;, &quot;A&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The first letter A is not Q, so it is printed. The second letter Q triggers break, which leaves the loop, so I is never reached. Q I is wrong because the loop does not continue after break.&quot;}, {&quot;q&quot;: &quot;After total = 0, a loop adds each number in [2, 3, 4] to total. What does print(total) show?&quot;, &quot;opts&quot;: [&quot;9&quot;, &quot;3&quot;, &quot;24&quot;, &quot;4&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The accumulator adds 2, then 3, then 4, giving 9. The answer 24 would come from multiplying the numbers, and 4 is only the last value in the list.&quot;}, {&quot;q&quot;: &quot;What does print(not 5 &gt; 3 or 2 == 2) show?&quot;, &quot;opts&quot;: [&quot;False&quot;, &quot;2&quot;, &quot;True&quot;, &quot;None&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Comparisons are done first, then not, then or. The left side is not (5 &gt; 3), which is False. The right side, 2 == 2, is True, and or is true when either side is true. The most tempting answer is False, which people give when they apply not to the whole line.&quot;}]}"></div>
+
+<h2 id="flashcards">Flashcards</h2>
+<p>Use these to test yourself. Read the front, say the back out loud, then check it.</p>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;integer division&quot;, &quot;a&quot;: &quot;7 // 2 gives 3. It keeps the whole part and drops the rest.&quot;}, {&quot;q&quot;: &quot;remainder&quot;, &quot;a&quot;: &quot;7 % 2 gives 1, the amount left over after dividing by 2.&quot;}, {&quot;q&quot;: &quot;index&quot;, &quot;a&quot;: &quot;The position of a character in text. Positions start at 0.&quot;}, {&quot;q&quot;: &quot;negative index&quot;, &quot;a&quot;: &quot;A position counted from the end. -1 is the last character.&quot;}, {&quot;q&quot;: &quot;slice&quot;, &quot;a&quot;: &quot;text[start:stop] gives the characters from start up to, but not including, stop.&quot;}, {&quot;q&quot;: &quot;method&quot;, &quot;a&quot;: &quot;A function that belongs to a value and is called with a dot, such as text.upper().&quot;}, {&quot;q&quot;: &quot;f-string&quot;, &quot;a&quot;: &quot;Text with an f before the quote. Names in curly brackets are replaced with their values.&quot;}, {&quot;q&quot;: &quot;accumulator&quot;, &quot;a&quot;: &quot;A variable that starts at zero or empty and grows inside a loop.&quot;}, {&quot;q&quot;: &quot;range(3)&quot;, &quot;a&quot;: &quot;Gives 0, 1 and 2. The stop value is never included.&quot;}, {&quot;q&quot;: &quot;traceback&quot;, &quot;a&quot;: &quot;The error report Python prints. Read the last line for the error type, then find the line number.&quot;}]}"></div>
+
+<h2 id="what-comes-next">What comes next</h2>
+<p>You now have the building blocks: values, text, decisions and loops. Part 2 puts them to work with lists, dictionaries and functions, which are the tools the graded lab needs. Practise the eight problems in this chapter again without looking at the answers. If you can write each one from a blank file, you are ready for the next part.</p><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="G0.html"><small>Previous</small>The game plan: how this course is scored and how to come first</a><a class="nx" href="F2.html"><small>Next</small>Python from zero, part 2: lists, dictionaries and functions</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,1236 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 3 — Talking to APIs: HTTP, curl and jq · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D03" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 2 · Days 1–5 · Tools and teamwork</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a class="cur" href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 2 · Days 1–5 · Tools and teamwork</p><h1>Day 3 — Talking to APIs: HTTP, curl and jq</h1><p class="sub">You will be able to fetch a JSON API with curl, check its status code before trusting the body, and turn the JSON into CSV rows with jq, while keeping API keys out of your scripts and Git history.</p><p class="meta">86 min read · practice quiz · 6 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D03.mp4?v=1794464683"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li><li><a href="#notes-on-the-sources">Notes on the sources</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you learn how a program asks another computer for data. A weather service, an air-quality service or a station network can publish readings at a web address, and your script can ask for them the same way a browser asks for a web page. You will use two command-line tools to do this. curl sends the request and collects the reply. jq opens the reply, which is structured data, and keeps only the fields you need. By the end you will be able to run a script that fetches air-quality readings for Bengaluru, refuses to write anything if the request failed, and appends one clean CSV row to a daily file.</p>
+<p>Think of an HTTP call as ordering at a counter. You state what you want, you get a receipt code that says whether the order worked, and then you get a tray with the food on it. The receipt code is the status code. The tray is the body.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section explains the words you will meet today. Read it once before you open a terminal.</p>
+<p><strong>Terminal.</strong> A window where you type text commands and the computer types text back. On Windows the course uses a Bash shell inside Git Bash or a similar tool. The terminal is the only place you need for today.</p>
+<p><strong>Command.</strong> A line you type that asks the computer to run a program. The first word names the program. The rest are arguments, which tell the program what to do. In <code>curl -s "https://example.com"</code>, the program is <code>curl</code>, <code>-s</code> is an option and the quoted text is an argument.</p>
+<p><strong>Flag.</strong> An option that changes how a program behaves. Flags usually start with one dash for a short form (<code>-s</code>) or two dashes for a long form (<code>--fail</code>). Each one changes a single behaviour. You will see many of them today.</p>
+<p><strong>File.</strong> A named block of data stored on disk. A script is a file of commands. A CSV file is a file of rows of text.</p>
+<p><strong>Variable.</strong> A name that holds a value. In Bash you write <code>URL="https://example.com"</code> to store the text, and you write <code>$URL</code> to read it back. The dollar sign means "the value stored under this name".</p>
+<p><strong>Function.</strong> A named piece of code that takes inputs, does work and gives back a result. You will write Python functions in the graded lab later in this chapter.</p>
+<p><strong>Server.</strong> A program that waits for requests and sends replies. An API is a server that is designed to be called by other programs. The server runs somewhere else, often in a data centre, and your script is the client.</p>
+<p><strong>API.</strong> Application Programming Interface. It is a set of agreed web addresses and rules for asking a program for data. Think of it as a menu with fixed item names.</p>
+<p><strong>URL.</strong> Uniform Resource Locator. The web address of one resource. A URL has a scheme (<code>https</code>), a host (the server name, such as <code>air-quality-api.open-meteo.com</code>), a path (<code>/v1/air-quality</code>) and an optional query string after a question mark.</p>
+<p><strong>Query string.</strong> The part of a URL after <code>?</code>. It is a list of <code>name=value</code> pairs joined by <code>&amp;</code>. For example, <code>latitude=12.97&amp;longitude=77.59</code> asks for data at one place.</p>
+<p><strong>HTTP.</strong> Hypertext Transfer Protocol. It is the set of rules that a client and a server follow when they exchange requests and replies. A request has a method (such as GET), a URL, headers and sometimes a body. A reply has a status code, headers and sometimes a body.</p>
+<p><strong>Method.</strong> The verb at the start of an HTTP request. GET asks for data. POST sends data to be created or processed. Most of today's examples use GET.</p>
+<p><strong>Status code.</strong> A three-digit number in the reply. 200 means OK. 401 means the server wants credentials you did not send or could not verify. 404 means the URL does not exist. 500 means the server failed. The number is the server's receipt.</p>
+<p><strong>Header.</strong> A line of metadata sent with a request or reply, written as <code>Name: value</code>. Examples are <code>Content-Type: application/json</code>, which says the body is JSON, and <code>X-API-Key: ...</code>, which carries a key.</p>
+<p><strong>Body.</strong> The main content of a request or reply. For a JSON API the body is usually a JSON document.</p>
+<p><strong>JSON.</strong> JavaScript Object Notation. It is a text format for structured data. It has objects written in curly braces with <code>"key": value</code> pairs, arrays written in square brackets, and values that are strings, numbers, <code>true</code>, <code>false</code> or <code>null</code>. A reading might look like <code>{"pollutant": "PM2.5", "value": 42.1}</code>.</p>
+<p><strong>CSV.</strong> Comma-Separated Values. A plain text file where each line is one row and commas separate the values. The first line is often a header with the column names.</p>
+<p><strong>stdout and stderr.</strong> Every program has two output channels. Standard output (stdout) carries the normal result. Standard error (stderr) carries messages. Keeping them apart stops error text from being mixed into your data. You send a message to stderr with <code>&gt;&amp;2</code>.</p>
+<p><strong>Pipe.</strong> The vertical bar <code>|</code>. It takes the stdout of the command on the left and feeds it to the stdin (standard input) of the command on the right. <code>curl ... | jq ...</code> means "send the body curl gets into jq".</p>
+<p><strong>Redirect.</strong> The <code>&gt;</code> and <code>&gt;&gt;</code> symbols. <code>&gt;</code> writes the output to a file and replaces the file. <code>&gt;&gt;</code> adds the output to the end of the file.</p>
+<p><strong>Exit code.</strong> A number a program returns when it finishes. 0 means success. Any other number means failure. Bash stores the exit code of the last command in <code>$?</code>. A script can stop with <code>exit 1</code>.</p>
+<p><strong>Environment variable.</strong> A named value that a program inherits from the shell it runs in. You read it with <code>$NAME</code>. Environment variables are the usual place to put secrets such as API keys, because the script can read them without the secret being written into the script.</p>
+<p><strong>Git and Git history.</strong> Git records every version of your files as commits. Anything committed, even if you delete it later, stays in the history unless you rewrite it. This matters for secrets.</p>
+<p><strong>.gitignore.</strong> A file that lists names Git must not track. A line <code>.env</code> in <code>.gitignore</code> tells Git to ignore your local secrets file.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="http-and-json">HTTP and JSON</h3>
+<p>HTTP is the protocol and JSON is the data format. Together they are the usual way a modern web API works. CityPulse uses this pattern because the air-quality sources it needs, such as Open-Meteo and OpenAQ, publish their data only through HTTP JSON APIs. There is no file to download by hand and no page to scrape.</p>
+<p>The alternatives have problems the course wants you to avoid. Downloading a CSV file by hand is fine for one analysis, but it cannot run every 30 minutes on a schedule. Scraping an HTML page works when no API exists, but it breaks whenever the page layout changes, and it may break the site's terms of use. An API gives you a stable contract, so the script can rely on it.</p>
+<p>A request is made of a method, a URL with a query string, headers and sometimes a body. A reply has a status line, headers and the body. The lesson's rule is simple. Look at the status first. You trust the body only when the status is 200.</p>
+<div class="box box-key"><div class="box-h">Key fact: Check the status before the body</div><p>A 404 or a 500 can still come with a body, often an error message in HTML or JSON. Reading that body as data gives you nonsense. Always check the status code first.</p></div>
+
+<p>Here is the anatomy of the Open-Meteo request the lesson uses. The slide breaks the URL across lines for display. In a script it must be one line, or it must be held in a quoted variable:</p>
+<div class="hl"><pre><span></span><code>https://air-quality-api.open-meteo.com/v1/air-quality?latitude=12.97&amp;longitude=77.59&amp;current=pm2_5,pm10&amp;timezone=Asia%2FKolkata
+</code></pre></div>
+
+<p>Line by line, reading the URL from left to right:</p>
+<ul>
+<li><code>https://</code> is the scheme. It means the request is encrypted with TLS, the same protection a bank website uses.</li>
+<li><code>air-quality-api.open-meteo.com</code> is the host. This is the server name.</li>
+<li><code>/v1/air-quality</code> is the path. It names the resource on that server.</li>
+<li><code>?</code> starts the query string.</li>
+<li><code>latitude=12.97</code> and <code>longitude=77.59</code> are two parameters that select a place near Bengaluru.</li>
+<li><code>current=pm2_5,pm10</code> asks for two values, PM2.5 and PM10, in the current block of the reply. The comma separates the two names.</li>
+<li><code>timezone=Asia%2FKolkata</code> asks for times in the Kolkata time zone. The slash in <code>Asia/Kolkata</code> is written as <code>%2F</code>. This is URL encoding: a slash has a special meaning in a URL, so it is replaced by its code.</li>
+</ul>
+<p>The slide's warning covers two common mistakes. Forgetting to URL-encode values such as <code>Asia/Kolkata</code> gives the server a different request from the one you meant. Leaving a URL unquoted in the shell lets the shell read the <code>&amp;</code> as "run this in the background", which cuts your URL in half. Always wrap the URL in double quotes.</p>
+<div class="box box-trap"><div class="box-h">Trap: Unquoted URLs</div><p>In <code>curl https://example.com/a?x=1&amp;y=2</code>, the shell sees <code>&amp;</code> and runs <code>curl ...</code> in the background with only part of the URL. Wrap every URL in quotes: <code>curl "https://example.com/a?x=1&amp;y=2"</code>.</p></div>
+
+<h3 id="curl">curl</h3>
+<p>curl is a command-line HTTP client. You give it a URL and it sends a request, then prints or saves the reply. It is installed on the lab machines already, and it works inside cron, which is the scheduler you will use in the next lesson. That is why CityPulse uses it for the first fetcher instead of a Python library. The alternatives are Postman, which is good for exploring by hand but cannot run unattended, and wget, which handles simple downloads but is less convenient for capturing status codes and headers.</p>
+<p>curl has many flags. Here are the ones the lesson uses, with what each does:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-s</code></td>
+<td>Silent. Hides the progress meter so the output is clean.</td>
+</tr>
+<tr>
+<td><code>-o FILE</code></td>
+<td>Output. Saves the body to FILE. <code>-o /dev/null</code> throws the body away.</td>
+</tr>
+<tr>
+<td><code>-w FORMAT</code></td>
+<td>Write-out. Prints information about the transfer after it ends. <code>-w '%{http_code}'</code> prints the status code.</td>
+</tr>
+<tr>
+<td><code>-D -</code></td>
+<td>Dump headers. Writes the reply headers to stdout. The <code>-</code> means stdout.</td>
+</tr>
+<tr>
+<td><code>--max-time 20</code></td>
+<td>Gives up after 20 seconds in total.</td>
+</tr>
+<tr>
+<td><code>-f</code> or <code>--fail</code></td>
+<td>Makes curl exit with an error when the server returns an HTTP error code.</td>
+</tr>
+<tr>
+<td><code>-H 'Name: value'</code></td>
+<td>Adds a header to the request.</td>
+</tr>
+</tbody>
+</table>
+<p>The slide's core command is this one:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-D<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>curl</code> is the program.</li>
+<li><code>-s</code> hides the progress meter, so only real output appears.</li>
+<li><code>-D -</code> prints the reply headers to stdout. The dash means "stdout".</li>
+<li><code>-o /dev/null</code> discards the body. <code>/dev/null</code> is a special file that accepts anything and keeps nothing.</li>
+<li><code>"$URL"</code> is the URL held in the variable <code>URL</code>, quoted so the shell does not split it.</li>
+<li><code>| head -5</code> pipes the output into <code>head</code>, which shows only the first five lines.</li>
+</ul>
+<p>Expect to see the status line first, such as <code>HTTP/2 200</code>, then a few header lines such as the content type. The exact headers depend on the server. The body is not shown because you discarded it.</p>
+<p>The workbook's version of the same idea uses a status-only check:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}\n&#39;</span><span class="w"> </span>https://air-quality-api.open-meteo.com/v1/nope
+</code></pre></div>
+
+<p>Line by line: <code>-o /dev/null</code> throws the body away, <code>-w '%{http_code}\n'</code> prints only the status code followed by a newline, and the URL points at a path that does not exist. You should see a 404-style code on its own line, not a page of text. This tells you the endpoint is wrong, not that the data is missing.</p>
+<p>The next example is the one the course gives for the first real fetcher. It is the core of <code>scripts/fetch_once.sh</code>:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nv">URL</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">URL</span><span class="k">:-</span><span class="nv">https</span><span class="p">://air-quality-api.open-meteo.com/v1/air-quality?latitude=12.97&amp;longitude=77.59&amp;current=pm2_5,pm10&amp;timezone=Asia%2FKolkata</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">TMP</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>mktemp<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;rm -f &quot;$TMP&quot;&#39;</span><span class="w"> </span>EXIT
+<span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>--max-time<span class="w"> </span><span class="m">20</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP</span><span class="s2">&quot;</span><span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$STATUS</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;200&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: HTTP </span><span class="nv">$STATUS</span><span class="s2"> from </span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: </span><span class="k">$(</span>wc<span class="w"> </span>-c<span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> bytes&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the "shebang". It tells the system to run this file with Bash.</li>
+<li><code>URL="${URL:-...}"</code> sets <code>URL</code> to the value already in the environment if there is one, and to the Open-Meteo address if there is not. The <code>:-</code> means "use the default when the variable is empty or unset". This lets a squad change the source without editing the script.</li>
+<li><code>TMP="$(mktemp)"</code> creates a new empty temporary file with a unique name and stores its path in <code>TMP</code>. The <code>$(...)</code> runs the command and substitutes its output.</li>
+<li><code>trap 'rm -f "$TMP"' EXIT</code> says: whenever this script exits, for any reason, delete the temporary file. This is cleanup that happens even when the script fails.</li>
+<li><code>STATUS="$(curl ... -w '%{http_code}' "$URL")"</code> runs curl. The body goes into <code>$TMP</code> because of <code>-o</code>. The status code goes to stdout because of <code>-w</code>, and the <code>$(...)</code> captures it into <code>STATUS</code>. <code>--max-time 20</code> makes curl give up after 20 seconds.</li>
+<li><code>if [ "$STATUS" != "200" ]; then</code> checks whether the status is anything other than 200. The <code>[ ... ]</code> is the test command, and <code>!=</code> means "not equal".</li>
+<li><code>echo "ERROR: ..." &gt;&amp;2</code> writes the error to stderr, so it cannot be mistaken for data.</li>
+<li><code>exit 1</code> stops the script with exit code 1. Nothing after this line runs, so the CSV is never touched.</li>
+<li><code>echo "OK: $(wc -c &lt; "$TMP") bytes"</code> prints the byte count of the body. <code>wc -c</code> counts bytes and <code>&lt;</code> feeds the file in.</li>
+</ul>
+<p>Expected output on success is one line such as <code>OK: 512 bytes</code>. The exact number depends on the reply. On an unknown URL the script prints <code>ERROR: HTTP 404 from ...</code> on stderr and exits with code 1. You can check the exit code with <code>echo $?</code> straight after running it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Status 000 is not a 0</div><p>When curl cannot reach the server at all, for example because the name cannot be resolved, the network is down or the request timed out, the status code it prints is <code>000</code>. This is a failure, not a valid status. Report it as an error. Do not treat it as data.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: No timeout means a stuck script</div><p>Without <code>--max-time</code>, a server that accepts the connection and then goes silent can hang your script for a very long time. A scheduled job that hangs is worse than one that fails. Always set a limit.</p></div>
+
+<p>The term block below shows the <code>000</code> case and the exit code that curl gives for it. The domain name <code>.invalid</code> is reserved and never resolves, so you can use it to test failure safely:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s -o out.json -w &#x27;%{http_code}\\n&#x27; https://no-such-host.invalid/&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;000&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;6&quot;}]}"></div>
+
+<p>The first line prints <code>000</code> because no reply arrived. The second line prints <code>6</code>, which is curl's exit code for "could not resolve host". Your script can test for this, and any non-zero exit code is a failure.</p>
+<h3 id="jq">jq</h3>
+<p>jq reads JSON from stdin or from a file and runs a filter on it. A filter is a small expression that selects, checks or reshapes the data. jq can also print raw strings and CSV rows, which makes it the bridge between an API reply and a data file. CityPulse uses jq for the reshaping step because it keeps the fetcher in Bash with no extra runtime. The alternatives are grep and sed on raw JSON, which look quick but break when key order or whitespace changes, and the Python <code>json</code> module, which you will use from Day 10 onwards.</p>
+<p>The main jq ideas are these:</p>
+<ul>
+<li><code>.</code> is the whole input.</li>
+<li><code>.key</code> is the value stored under <code>key</code>.</li>
+<li><code>.key.inner</code> goes down two levels.</li>
+<li><code>.[]</code> or <code>.items[]</code> loops over every element of an array and outputs each one.</li>
+<li><code>|</code> inside a filter pipes one filter's output into the next, in the same way as the shell pipe.</li>
+<li><code>select(condition)</code> keeps the input only when the condition is true.</li>
+<li><code>-r</code> prints strings without their JSON quotes.</li>
+<li><code>-e</code> makes jq set its exit code from the last output: a null or false result gives a non-zero exit.</li>
+<li><code>--arg name value</code> passes a shell value into the filter as <code>$name</code>.</li>
+<li><code>@csv</code> turns an array into one CSV line with quoting.</li>
+</ul>
+<p>The lesson's validate-and-append code shows several of these together:</p>
+<div class="hl"><pre><span></span><code><span class="nv">LOC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOC</span><span class="k">:-</span><span class="nv">Bengaluru</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">OUT</span><span class="o">=</span><span class="s2">&quot;data/raw/</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span><span class="s2">.csv&quot;</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/raw
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.current.pm2_5 != null and .current.pm10 != null&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: required field missing in response&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
+<span class="k">fi</span>
+<span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;timestamp,location,pm2_5,pm10&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+jq<span class="w"> </span>-r<span class="w"> </span>--arg<span class="w"> </span>loc<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOC</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;[.current.time, $loc, .current.pm2_5, .current.pm10] | @csv&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMP</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+tail<span class="w"> </span>-3<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>LOC="${LOC:-Bengaluru}"</code> gives the location name a default, as with <code>URL</code>.</li>
+<li><code>OUT="data/raw/$(date +%F).csv"</code> builds a file name from today's date. <code>date +%F</code> prints the date as <code>2026-11-17</code>, so the output file is one file per day.</li>
+<li><code>mkdir -p data/raw</code> creates the folder if it is missing. The <code>-p</code> means "no error if it exists, and create parent folders too".</li>
+<li><code>if ! jq -e '...' "$TMP" &gt; /dev/null; then</code> runs jq on the body. The <code>!</code> inverts the result, so the branch runs when jq fails. <code>&gt; /dev/null</code> hides jq's output because you only want its exit code.</li>
+<li><code>.current.pm2_5 != null and .current.pm10 != null</code> is the filter. <code>!=</code> means "not equal" and <code>null</code> is JSON's empty value. The filter is true only if both fields exist and have values.</li>
+<li><code>exit 2</code> gives this failure its own code, so a caller can tell "bad body" from "bad status" (exit 1).</li>
+<li><code>[ -s "$OUT" ] || echo '...' &gt; "$OUT"</code> writes the header row only if the file is missing or empty. <code>-s</code> is true when the file exists and has content. <code>||</code> runs the right side only when the left side fails.</li>
+<li><code>jq -r --arg loc "$LOC" '...' "$TMP" &gt;&gt; "$OUT"</code> runs the CSV filter. <code>-r</code> removes quotes from the output string, <code>--arg loc</code> makes <code>$loc</code> available inside the filter, and <code>&gt;&gt;</code> appends one line to the day file.</li>
+<li>The filter <code>[.current.time, $loc, .current.pm2_5, .current.pm10] | @csv</code> builds an array of four values and turns it into one line.</li>
+<li><code>tail -3 "$OUT"</code> shows the last three lines so you can check what was written.</li>
+</ul>
+<p>The expected output for a first run is the header followed by one row, such as <code>timestamp,location,pm2_5,pm10</code> on one line and then a row beginning with the time string from the API. The row uses the values from that moment, so your numbers will differ.</p>
+<div class="box box-trap"><div class="box-h">Trap: Forgetting -r</div><p>Without <code>-r</code>, jq prints the CSV line as a JSON string, with escaped quotes and a surrounding pair of quotes. The file then contains lines that no CSV reader can parse. Add <code>-r</code> whenever the output is raw text.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Without -e, nulls slip through</div><p>Without <code>-e</code>, jq exits with 0 even when the filter returns <code>null</code>. The check then never fails, and rows with missing values are appended to the file. Use <code>-e</code> for every validation.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Shell variables inside the filter</div><p>Writing <code>'[.current.time, "$LOC"]'</code> puts the shell text into the filter with the quotes mixed up. Pass shell values with <code>--arg</code> and refer to them as <code>$loc</code> inside the filter.</p></div>
+
+<p>The flow below shows the whole path a request takes. Each arrow is one hand-off between two programs:</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One fetch from request to CSV row&quot;, &quot;nodes&quot;: [&quot;curl on your computer&quot;, &quot;Open-Meteo server&quot;, &quot;jq on your computer&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;GET /v1/air-quality&quot;, &quot;note&quot;: &quot;curl sends the method, the path and the query string to the server.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;200 and a JSON body&quot;, &quot;note&quot;: &quot;The server sends back a status line, headers and the body.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;body through the pipe&quot;, &quot;note&quot;: &quot;The body goes to jq, which checks the fields and selects the values.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;one CSV line&quot;, &quot;note&quot;: &quot;jq prints the chosen values as one quoted CSV row.&quot;}]}"></div>
+
+<p>Notice that the body crosses the network once, and every later step works on the local copy. You can run the jq step again and again without calling the server again, which is why the lesson saves the body to <code>$TMP</code> first.</p>
+<p>The next term block shows what jq does to the reply in the workbook. It uses the station service the course runs at <code>localhost:8008</code>. The reply is trimmed to two fields per reading:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s &#x27;http://localhost:8008/v1/readings?station=7&#x27; | jq -c &#x27;.readings[] | {pollutant, value}&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{\&quot;pollutant\&quot;:\&quot;PM2.5\&quot;,\&quot;value\&quot;:42.1}&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{\&quot;pollutant\&quot;:\&quot;NO2\&quot;,\&quot;value\&quot;:18.7}&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{\&quot;pollutant\&quot;:\&quot;PM2.5\&quot;,\&quot;value\&quot;:47.9}&quot;}]}"></div>
+
+<p>Line by line: <code>curl -s ...</code> fetches the readings for station 7 and prints the JSON. The pipe sends that JSON to jq. <code>.readings[]</code> loops over each reading in the array. <code>{pollutant, value}</code> builds a new object that keeps only those two keys, which is shorthand for <code>{pollutant: .pollutant, value: .value}</code>. The <code>-c</code> flag keeps each object on a single line (without it jq spreads each object over several lines). The output has one line per reading, and the order follows the array.</p>
+<h3 id="environment-variables-for-secrets">Environment variables for secrets</h3>
+<p>An environment variable is a named value that a process inherits from its shell. A script reads it with <code>$NAME</code>. CityPulse keeps API keys in environment variables, not in scripts, because a key written into a script is copied into Git history the first time you commit it. The course's rule is that the repository contains only <code>.env.example</code>, which lists the variable names with empty values. Each person copies it to <code>.env</code>, fills in the real values and restricts the file so only they can read it.</p>
+<p>The alternatives are the common real-world leak, a key hard-coded in the script, which is never acceptable here, and AWS Secrets Manager, which is right for production services later in the programme but is too much for a lab script.</p>
+<p>The course's loading commands are these:</p>
+<div class="hl"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.env
+<span class="nb">set</span><span class="w"> </span>-a<span class="p">;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.env<span class="p">;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>+a
+:<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">OPENAQ_API_KEY</span><span class="p">:?set OPENAQ_API_KEY in .env</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>cp .env.example .env</code> copies the template to a new file called <code>.env</code>. The <code>&amp;&amp;</code> runs the next command only if the copy succeeds.</li>
+<li><code>chmod 600 .env</code> changes the file permissions so only the owner can read and write it. <code>600</code> is the octal code for that. Then edit the file to add your real key.</li>
+<li><code>set -a</code> turns on automatic export, so every variable assigned from now on is passed to child programs.</li>
+<li><code>source .env</code> runs the lines of <code>.env</code> in the current shell, so each <code>NAME=value</code> becomes a variable.</li>
+<li><code>set +a</code> turns automatic export off again.</li>
+<li><code>: "${OPENAQ_API_KEY:?set OPENAQ_API_KEY in .env}"</code> is a check. The colon is a command that does nothing. <code>${NAME:?message}</code> makes Bash stop with the message if the variable is empty or unset. Expect the script to stop with your message if you forgot to fill in the key.</li>
+</ul>
+<p>The lesson then sends the key in a header, not in the URL:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key: </span><span class="nv">$OPENAQ_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;https://api.openaq.org/v3/locations?coordinates=12.97,77.59&amp;radius=10000&amp;limit=1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.results[0].name&#39;</span>
+</code></pre></div>
+
+<p>Line by line: <code>-H "X-API-Key: $OPENAQ_API_KEY"</code> adds the header with the key's value filled in by the shell. The backslash at the end of the first line joins it to the second line. The URL asks for one monitoring location near the centre of Bengaluru. The pipe sends the reply to jq, and <code>.results[0].name</code> takes the name of the first result. The output is one quoted name, such as <code>"Some Station Name"</code>. The name depends on what the server returns.</p>
+<p>Two checks prove the key is not in your repository:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>check-ignore<span class="w"> </span>.env
+git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-inE<span class="w"> </span><span class="s1">&#39;api[_-]?key|token&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+
+<p>Line by line: <code>git check-ignore .env</code> prints <code>.env</code> if Git ignores that file. If it prints nothing, the file is not ignored and you must fix <code>.gitignore</code> before you do anything else. The second command shows every change in every commit on every branch. <code>git log -p --all</code> prints the changes, <code>grep -inE</code> searches them for the words <code>api_key</code>, <code>api-key</code>, <code>apikey</code> or <code>token</code>, ignoring case (<code>-i</code>), showing line numbers (<code>-n</code>) and using extended patterns (<code>-E</code>). <code>head</code> shows the first matches. The course expects you to see variable names only, such as <code>OPENAQ_API_KEY</code> in <code>.env.example</code>, and never a key value.</p>
+<div class="box box-trap"><div class="box-h">Trap: Deleting a key does not remove it from history</div><p>If a key was committed, a later commit that deletes it still leaves the key in the history. Anyone who clones the repository can read it. Rotate the key with the provider straight away. Rotating means creating a new key and disabling the old one.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: bash -x prints your secrets</div><p><code>bash -x</code> prints every expanded command before it runs. A command that uses <code>$OPENAQ_API_KEY</code> is printed with the real key. Never paste traced output into a chat, a ticket or a public place.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Create .gitignore before .env</div><p>If you create <code>.env</code> before you add it to <code>.gitignore</code>, a quick <code>git add .</code> can stage it. Add <code>.env</code> to <code>.gitignore</code> first, then create the file.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook takes you through a station service with a short script. It is the clearest way to see the whole cycle once. The station service runs at <code>http://localhost:8008</code>, so start it before you begin. Each step below has a goal, the command, an explanation and the output.</p>
+<h3 id="step-1-check-the-endpoint-answers">Step 1: check the endpoint answers</h3>
+<p>Goal: confirm the endpoint and the station id are valid before you parse anything.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;HTTP %{http_code}\n&#39;</span><span class="w"> </span><span class="s1">&#39;http://localhost:8008/v1/readings?station=7&#39;</span>
+</code></pre></div>
+
+<p>Line by line: <code>-s</code> hides the progress meter. <code>-o /dev/null</code> throws away the body, because you only need the status. <code>-w 'HTTP %{http_code}\n'</code> prints the word <code>HTTP</code> and the status code followed by a newline. The URL asks for station 7.</p>
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>HTTP 200
+</code></pre></div>
+
+<p>A 200 means the endpoint and the station are valid.</p>
+<h3 id="step-2-look-at-the-raw-body">Step 2: look at the raw body</h3>
+<p>Goal: see the shape of the data before you decide what to keep.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;http://localhost:8008/v1/readings?station=7&#39;</span>
+</code></pre></div>
+
+<p>This time the body is printed, because there is no <code>-o</code> flag. Output begins like this:</p>
+<div class="hl"><pre><span></span><code>{
+  &quot;station_id&quot;: 7, &quot;name&quot;: &quot;MG Road&quot;, &quot;readings&quot;: [
+    { &quot;ts&quot;: &quot;2026-06-01T08:00:00Z&quot;, &quot;pollutant&quot;: &quot;PM2.5&quot;, &quot;value&quot;: 42.1, &quot;unit&quot;: &quot;ug/m3&quot; },
+    ...
+</code></pre></div>
+
+<p>The body is one object. It has a <code>station_id</code>, a <code>name</code> and a <code>readings</code> array. Each reading has a time stamp, a pollutant, a value and a unit. Knowing this structure tells you the jq path to use: <code>.readings</code> for the array, and <code>.pollutant</code> or <code>.value</code> for each item.</p>
+<h3 id="step-3-pick-two-fields-with-jq">Step 3: pick two fields with jq</h3>
+<p>Goal: keep only the fields CityPulse stores from each reading.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;http://localhost:8008/v1/readings?station=7&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;.readings[] | {pollutant, value}&#39;</span>
+</code></pre></div>
+
+<p>Line by line: <code>curl -s</code> fetches the body and sends it into the pipe. <code>.readings[]</code> loops over the array. <code>{pollutant, value}</code> builds a smaller object with only those two keys. The output is one small object per reading, as shown in the jq section above.</p>
+<h3 id="step-4-filter-with-select">Step 4: filter with select</h3>
+<p>Goal: keep only the PM2.5 readings above the 40 watch level.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;http://localhost:8008/v1/readings?station=7&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.readings[] | select(.pollutant==&quot;PM2.5&quot; and .value &gt; 40) | .value&#39;</span>
+</code></pre></div>
+
+<p>Line by line: the first line fetches the readings. The second line loops over the readings, keeps only those where the pollutant is <code>PM2.5</code> and the value is above 40, and then outputs just the value. The <code>and</code> joins the two conditions, so both must be true. The <code>==</code> in jq tests for equality. The <code>&gt;</code> tests for greater than. The output is:</p>
+<div class="hl"><pre><span></span><code>42.1
+47.9
+</code></pre></div>
+
+<p>Only the two PM2.5 readings above 40 survive. The NO2 reading at 18.7 is dropped.</p>
+<h3 id="step-5-reshape-into-csv-rows">Step 5: reshape into CSV rows</h3>
+<p>Goal: flatten each reading into a row with the station id, time, pollutant and value.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;http://localhost:8008/v1/readings?station=7&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.station_id as $s | .readings[] | [$s, .ts, .pollutant, .value] | @csv&#39;</span>
+</code></pre></div>
+
+<p>Line by line: <code>.station_id as $s</code> stores the station id in a jq variable called <code>$s</code>. The pipe then loops over the readings, and each reading is turned into an array of four values. The <code>$s</code> is repeated on every row because each reading needs it. <code>@csv</code> turns each array into one quoted CSV line. The <code>-r</code> stops jq from printing the lines as JSON strings. Output:</p>
+<div class="hl"><pre><span></span><code>7,&quot;2026-06-01T08:00:00Z&quot;,&quot;PM2.5&quot;,42.1
+7,&quot;2026-06-01T08:00:00Z&quot;,&quot;NO2&quot;,18.7
+7,&quot;2026-06-01T09:00:00Z&quot;,&quot;PM2.5&quot;,47.9
+</code></pre></div>
+
+<p><code>@csv</code> puts quotes around every string, so the time stamps and pollutant names are quoted. The numbers are not quoted.</p>
+<h3 id="step-6-loop-over-stations-and-skip-failures">Step 6: loop over stations and skip failures</h3>
+<p>Goal: fetch several stations in one run and skip any that return an error.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">99</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">code</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/tmp/r.json<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}&quot;</span><span class="w"> </span><span class="s2">&quot;http://localhost:8008/v1/readings?station=</span><span class="nv">$s</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$code</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;200&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">n</span><span class="o">=</span><span class="k">$(</span>jq<span class="w"> </span><span class="s1">&#39;.readings | length&#39;</span><span class="w"> </span>/tmp/r.json<span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;station </span><span class="nv">$s</span><span class="s2">: </span><span class="nv">$code</span><span class="s2"> (</span><span class="nv">$n</span><span class="s2"> readings)&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;station </span><span class="nv">$s</span><span class="s2">: </span><span class="nv">$code</span><span class="s2"> (skipped)&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>Line by line: <code>for s in 7 42 9 99; do</code> runs the body once per station id. <code>code=$(...)</code> captures the status code. <code>-w "%{http_code}"</code> prints only the code, and <code>$(...)</code> stores it. The <code>if</code> branch runs when the code is <code>200</code>. Inside it, <code>jq '.readings | length'</code> counts the readings. <code>length</code> is a jq function that counts the elements of an array. The <code>else</code> branch prints a skip message, which keeps one bad station from stopping the others. The <code>done</code> closes the loop.</p>
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>station 7: 200 (3 readings)
+station 42: 200 (2 readings)
+station 9: 200 (2 readings)
+station 99: 404 (skipped)
+</code></pre></div>
+
+<p>Station 99 is skipped because it returned 404, and the run carries on.</p>
+<p>Note that the workbook writes to <code>/tmp/r.json</code>, which is a fixed name. A real script should use <code>mktemp</code> as the lesson's <code>fetch_once.sh</code> does.</p>
+<h3 id="step-7-run-the-whole-pull">Step 7: run the whole pull</h3>
+<p>Goal: fetch every station and append all the rows to one CSV file.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nv">API</span><span class="o">=</span><span class="s2">&quot;http://localhost:8008/v1/readings&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;station_id,ts,pollutant,value&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>readings.csv
+<span class="k">for</span><span class="w"> </span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">9</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>curl<span class="w"> </span>-sf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$API</span><span class="s2">?station=</span><span class="nv">$s</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.station_id as $s | .readings[] | [$s,.ts,.pollutant,.value] | @csv&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;&gt;<span class="w"> </span>readings.csv
+<span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;wrote </span><span class="k">$((</span><span class="w"> </span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>readings.csv<span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">))</span><span class="s2"> rows&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>set -euo pipefail</code> makes the script stop on any error (<code>-e</code>), on any unset variable (<code>-u</code>) and on any failure inside a pipe (<code>pipefail</code>). This is strict mode, and it stops a half-finished run from being reported as a success. <code>API=...</code> stores the endpoint. <code>echo "station_id,ts,pollutant,value" &gt; readings.csv</code> writes the header and replaces any old file. The loop calls each station. <code>curl -sf</code> is silent and uses <code>--fail</code>, so an HTTP error makes curl exit non-zero, and <code>set -e</code> then stops the script. <code>&gt;&gt; readings.csv</code> appends each station's rows. The final line counts the lines in the file with <code>wc -l</code> and subtracts one for the header.</p>
+<p>Output:</p>
+<div class="hl"><pre><span></span><code>wrote 7 rows
+</code></pre></div>
+
+<p>Running <code>head -3 readings.csv</code> shows the header and the first two data rows, matching the workbook's sample.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>This lab follows the seven steps set for today. You will use the Open-Meteo URL from the slides. The URL you need is the one in the tools section above. Create a folder for today, open a terminal inside it and keep every file in that folder.</p>
+<h3 id="step-1-see-the-raw-http-exchange">Step 1: see the raw HTTP exchange</h3>
+<p>What you do: ask for only the status line and headers, and throw away the body.</p>
+<p>Type this, with the URL in a variable first so you can reuse it:</p>
+<div class="hl"><pre><span></span><code><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://air-quality-api.open-meteo.com/v1/air-quality?latitude=12.97&amp;longitude=77.59&amp;current=pm2_5,pm10&amp;timezone=Asia%2FKolkata&#39;</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-D<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</code></pre></div>
+
+<p>What you should see: a status line such as <code>HTTP/2 200</code>, then a few header lines. You know it worked if the first line starts with <code>HTTP</code> and includes <code>200</code>. If the first line includes a 404 or 500, the URL has a problem. Fix it before going on.</p>
+<h3 id="step-2-send-query-parameters">Step 2: send query parameters</h3>
+<p>What you do: change the query string and see the server respond to it. Write the parameters separately so each one is readable:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;https://air-quality-api.open-meteo.com/v1/air-quality&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;latitude=12.97&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;longitude=77.59&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;current=pm2_5,pm10&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;timezone=Asia/Kolkata&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}\n&#39;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null
+</code></pre></div>
+
+<p>What you should see: <code>200</code> on its own line. The <code>-G</code> flag turns the <code>--data-urlencode</code> values into a query string on the URL, and <code>--data-urlencode</code> encodes each value, so <code>Asia/Kolkata</code> becomes <code>Asia%2FKolkata</code> without you typing the code by hand. You know it worked if the status is 200 and no error text appears.</p>
+<h3 id="step-3-send-a-request-header">Step 3: send a request header</h3>
+<p>What you do: send a header with the request. The course sends an API key this way. You do not have a key for this lab, so send a standard header that every server accepts:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}\n&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>What you should see: <code>200</code>. The <code>-H</code> flag adds a header line to the request. <code>Accept: application/json</code> tells the server you want JSON in reply. Later, for a key, you use the same flag with <code>-H "X-API-Key: $OPENAQ_API_KEY"</code>. You know it worked if the status code is still 200 and you can see the header in the verbose output if you add <code>-v</code>.</p>
+<h3 id="step-4-save-a-json-payload-and-pretty-print-it">Step 4: save a JSON payload and pretty-print it</h3>
+<p>What you do: save the body to a file, then print it with indentation so you can read it.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>payload.json
+jq<span class="w"> </span>.<span class="w"> </span>payload.json
+</code></pre></div>
+
+<p>What you should see: <code>payload.json</code> is written with no output from curl. Then jq prints the same JSON with indentation, one key per line. The dot filter <code>.</code> means "the whole input", so jq prints it cleanly. You know it worked if <code>payload.json</code> exists and the output starts with <code>{</code>.</p>
+<h3 id="step-5-navigate-into-the-json">Step 5: navigate into the JSON</h3>
+<p>What you do: pull out the <code>current</code> block, its keys and one value.</p>
+<div class="hl"><pre><span></span><code>jq<span class="w"> </span><span class="s1">&#39;.current&#39;</span><span class="w"> </span>payload.json
+jq<span class="w"> </span><span class="s1">&#39;.current | keys&#39;</span><span class="w"> </span>payload.json
+jq<span class="w"> </span><span class="s1">&#39;.current.pm2_5&#39;</span><span class="w"> </span>payload.json
+</code></pre></div>
+
+<p>What you should see: the first command prints the <code>current</code> object. The second prints a list of its key names in a sorted array, which includes <code>time</code>, <code>pm2_5</code> and <code>pm10</code>. The third prints a single number. The <code>keys</code> function gives you the names, which is useful when you are not sure what is inside a block. You know it worked if the value printed by the third command matches the <code>pm2_5</code> line in the first.</p>
+<h3 id="step-6-filter-and-select-fields">Step 6: filter and select fields</h3>
+<p>What you do: check that a required field exists and that a condition holds. jq's exit code tells you the result, so you can test it in the shell:</p>
+<div class="hl"><pre><span></span><code>jq<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.current.pm2_5 != null&#39;</span><span class="w"> </span>payload.json<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;exit </span><span class="nv">$?</span><span class="s2">&quot;</span>
+jq<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.current.pm10 != null and .current.pm2_5 &gt;= 0&#39;</span><span class="w"> </span>payload.json<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;exit </span><span class="nv">$?</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>What you should see: <code>exit 0</code> on both lines when the fields are present and valid. If you change the filter to ask for a field that does not exist, such as <code>.current.no_such_field != null</code>, the exit code becomes <code>1</code>. You know it worked if the codes match what the data says.</p>
+<p>To practise <code>select()</code> on a file you control, make a small file and filter it:</p>
+<div class="hl"><pre><span></span><code><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s&#39;</span><span class="w"> </span><span class="s1">&#39;{&quot;readings&quot;:[{&quot;pollutant&quot;:&quot;PM2.5&quot;,&quot;value&quot;:42.1},{&quot;pollutant&quot;:&quot;NO2&quot;,&quot;value&quot;:18.7}]}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>sample.json
+jq<span class="w"> </span><span class="s1">&#39;.readings[] | select(.pollutant==&quot;PM2.5&quot;) | .value&#39;</span><span class="w"> </span>sample.json
+</code></pre></div>
+
+<p>What you should see: <code>42.1</code>. The <code>printf '%s'</code> writes the text exactly as given, and the <code>&gt;</code> redirect saves it to <code>sample.json</code>. The filter keeps the one reading whose pollutant is PM2.5.</p>
+<h3 id="step-7-reshape-to-the-citypulse-csv">Step 7: reshape to the CityPulse CSV</h3>
+<p>What you do: build the row for one reading, then write the header once and append rows to the day's file.</p>
+<div class="hl"><pre><span></span><code><span class="nv">LOC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LOC</span><span class="k">:-</span><span class="nv">Bengaluru</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">OUT</span><span class="o">=</span><span class="s2">&quot;data/raw/</span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span><span class="s2">.csv&quot;</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/raw
+<span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;timestamp,location,pm2_5,pm10&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+jq<span class="w"> </span>-r<span class="w"> </span>--arg<span class="w"> </span>loc<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOC</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;[.current.time, $loc, .current.pm2_5, .current.pm10] | @csv&#39;</span><span class="w"> </span>payload.json<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+tail<span class="w"> </span>-3<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>What you should see: the header line, then one row such as <code>"2026-11-17T10:00","Bengaluru",...</code>, where <code>@csv</code> quotes the strings and leaves the numbers bare. Run the last two lines again and the file gains a second row, but the header is not written again, because the file already has content. You know it worked if the header appears once and the rows follow in order.</p>
+<div class="box box-tip"><div class="box-h">Tip: Build the script from the lab</div><p>Put the seven steps together in <code>scripts/fetch_once.sh</code> using the core script from the tools section. Add a <code>chmod +x</code> to make it executable, run it twice, then check the day's CSV has one header and two rows. Then run it with <code>URL=https://air-quality-api.open-meteo.com/v1/nope ./scripts/fetch_once.sh</code> and check the exit code with <code>echo $?</code>, which should print <code>1</code>.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Reshape a CityPulse API payload like jq (APIs/JSON)" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Plucks station ids in document order</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Plucks the numeric values</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Mean value rounded to 2 decimals</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Highest value, tie broken by station id (ST2 &lt; ST3)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 70 of the 100 points. The other 30 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K02.html#y2-t05-write-scriptsfetch_oncesh-curl-jq-to-datarawdatecsv">Y2-T05 · Write scripts/fetch_once.sh: curl + jq to data/raw/&lt;date&gt;.csv</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The real Day Quiz has ten case-study multiple-choice questions, one for each topic below, in the same order. Each question gives a short scenario from a CityPulse team and asks what to do or what is true. The pass mark is 70%. The first attempt is what your skill score keeps, so a second attempt does not replace it. Take the first attempt slowly.</p>
+<p>Use the same method for every question. Read the last line first, because it tells you what is being asked: the best command, the most likely cause, or the first thing to check. Then go back to the scenario and underline the facts that matter, such as the status code, the flag already used, or the name of a field. Next, eliminate options. Many wrong options are true in general, for example "-s hides the progress meter", but they do not fix the problem in the scenario. Finally, watch three words. "Most" asks you to rank causes. "First" asks what to do before anything else. "Best" asks you to choose between several answers that would work, and to pick the cleanest one.</p>
+<h3 id="plain-get-requests-with-curl">Plain GET requests with curl</h3>
+<p><strong>What it is.</strong> A GET request asks a server for data. It is curl's default method, so <code>curl "$URL"</code> with no method flag sends a GET. curl then prints the reply body to stdout, which is your terminal unless you send it somewhere else.</p>
+<div class="hl"><pre><span></span><code>$ curl -s &quot;https://api.example.org/v1/items&quot;
+{&quot;items&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;Pune&quot;}]}
+</code></pre></div>
+
+<p>The output is the body exactly as the server sent it. curl has not created a file. Three flags are often confused here. <code>-s</code> hides the progress meter, and it changes only what you see. <code>-o FILE</code> saves the body to FILE. <code>-O</code> saves the body to a file named after the last part of the URL. A GET only reads data, so repeating it is safe.</p>
+<p><strong>How it shows up in a case study.</strong> The Y2 squad has a fetch step that runs <code>curl -s "$URL"</code> at the start of the day. The terminal shows a long JSON line, and the next step fails because <code>items.json</code> does not exist. The data is arriving, so the URL is right and the method is correct for reading. Nothing told curl where to put the body. Adding <code>-o items.json</code> writes the body to the file, and the next step finds it. Changing the method to POST would send a request the server does not expect.</p>
+<div class="box box-trap"><div class="box-h">Trap: Quiet does not mean saved</div><p>Adding <code>-s</code> does not save anything. It only hides the progress meter. Without <code>-o</code>, <code>-O</code> or a shell redirect, the body goes to the terminal and no file is written.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your script runs curl -s \&quot;https://api.example.org/v1/items\&quot;, and the next line reads items.json, which does not exist. The server returns the right JSON. Which change makes the file appear?&quot;, &quot;opts&quot;: [&quot;Add -X POST to the command&quot;, &quot;Add -o items.json to the command&quot;, &quot;Add -G to the command&quot;, &quot;Replace -s with -v&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;-o items.json writes the body to the file. -X POST changes the method, which this read does not need. -G and -v do not save anything.&quot;}, {&quot;q&quot;: &quot;A colleague says that because the command uses -s, curl runs quietly and saves the reply to a file called items. Which statement about curl -s \&quot;https://api.example.org/v1/items\&quot; is true?&quot;, &quot;opts&quot;: [&quot;It saves the body to a file named items&quot;, &quot;It sends a HEAD request and prints nothing&quot;, &quot;It sends a POST request and saves the reply&quot;, &quot;It sends a GET request and prints the body to the terminal&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Plain curl sends GET and writes the body to stdout. -s removes only the progress meter. The tempting wrong answer is the saved file, which needs -o or -O.&quot;}, {&quot;q&quot;: &quot;A monitoring script must keep the body of a GET for station data in station.json, with no progress bar. Which single command does this?&quot;, &quot;opts&quot;: [&quot;curl -s -o station.json \&quot;https://api.example.org/v1/station\&quot;&quot;, &quot;curl -s -d station.json \&quot;https://api.example.org/v1/station\&quot;&quot;, &quot;curl -s \&quot;https://api.example.org/v1/station\&quot; -H station.json&quot;, &quot;curl -s -X DELETE -o station.json \&quot;https://api.example.org/v1/station\&quot;&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;-o station.json saves the body and -s keeps the output clean. -d sends the text station.json as a POST body, -H sends it as a header, and -X DELETE asks the server to delete the station.&quot;}]}"></div>
+
+<h3 id="pulling-a-field-from-every-array-item">Pulling a field from every array item</h3>
+<p><strong>What it is.</strong> jq reads JSON from a pipe or a file and applies a filter. <code>.readings</code> selects the array. <code>[]</code> breaks the array into its elements, and each element passes on to the rest of the filter. <code>.value</code> then picks one field from each element.</p>
+<div class="hl"><pre><span></span><code>$ echo &#39;{&quot;readings&quot;:[{&quot;value&quot;:42.1},{&quot;value&quot;:18.7}]}&#39; | jq &#39;.readings[].value&#39;
+42.1
+18.7
+</code></pre></div>
+
+<p>The output has one value per line, in array order. The field name comes after the element, not after the array. The filter <code>.readings.value</code> fails, because it asks an array for a key called value. jq reports <code>Cannot index array with string "value"</code>. The filter <code>.readings[]</code> on its own prints whole objects, not the values.</p>
+<p><strong>How it shows up in a case study.</strong> Ana receives a readings payload, and she wants a list of pollutant names for a report. She writes <code>jq '.readings.pollutant'</code> and gets an error that mentions indexing an array. The error tells her the field name is in the wrong place. The fix is to loop first and then select the field: <code>.readings[].pollutant</code>. Her list then holds one name per reading, in the same order as the payload.</p>
+<div class="box box-trap"><div class="box-h">Trap: Missing brackets</div><p><code>.readings.value</code> looks as if it should loop over the readings. It does not. Without <code>[]</code>, jq asks the array for a key, and arrays do not have keys.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A payload holds {\&quot;readings\&quot;:[{\&quot;station\&quot;:\&quot;ST1\&quot;,\&quot;value\&quot;:10.0},{\&quot;station\&quot;:\&quot;ST2\&quot;,\&quot;value\&quot;:30.0}]}. Ravi needs the station name from each reading, one per line. Which filter does this?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.readings.station&#x27;&quot;, &quot;jq &#x27;.readings[]&#x27;&quot;, &quot;jq &#x27;.readings[].station&#x27;&quot;, &quot;jq &#x27;.readings | keys&#x27;&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;[] loops the array and .station picks the field from each element. The tempting wrong answer is .readings[], which prints whole objects. keys prints index numbers for an array.&quot;}, {&quot;q&quot;: &quot;Mei&#x27;s payload is {\&quot;data\&quot;:[{\&quot;pm2_5\&quot;:12.5},{\&quot;pm2_5\&quot;:null},{\&quot;pm2_5\&quot;:30.1}]}. She needs all three values in order, including the null. Which filter does this?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.data[].pm2_5&#x27;&quot;, &quot;jq &#x27;.data.pm2_5&#x27;&quot;, &quot;jq &#x27;.pm2_5[]&#x27;&quot;, &quot;jq &#x27;.data[] | select(.pm2_5)&#x27;&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;.data[].pm2_5 outputs every value in order, including null. The select version drops the null reading, which breaks the rule. .data.pm2_5 fails on an array.&quot;}, {&quot;q&quot;: &quot;Tomas runs jq &#x27;.readings[].value&#x27; on the reply {\&quot;readings\&quot;:[]}. Which output does he see?&quot;, &quot;opts&quot;: [&quot;The number 0&quot;, &quot;The text null&quot;, &quot;An error saying the array is empty&quot;, &quot;Nothing at all&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An empty array has no elements, so the loop produces no output. Counting would need length, and an empty array is not an error for this filter.&quot;}]}"></div>
+
+<h3 id="sending-a-json-body-with-post">Sending a JSON body with POST</h3>
+<p><strong>What it is.</strong> A POST request sends data to the server, usually to create or process something. In curl, <code>-X POST</code> sets the method, <code>-H "Content-Type: application/json"</code> tells the server that the body is JSON, and <code>-d</code> supplies the body. Using <code>-d</code> alone also sends a POST, but <code>-X POST</code> makes the intent clear.</p>
+<div class="hl"><pre><span></span><code>$ curl -s -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;city&quot;:&quot;Pune&quot;}&#39; &quot;$URL&quot;
+</code></pre></div>
+
+<p>The body travels inside the request, not in the URL. The <code>-G</code> flag is the trap. With <code>-G</code>, every <code>-d</code> value is appended to the URL as a query string, and the request stays a GET. The server then receives no body.</p>
+<p><strong>How it shows up in a case study.</strong> A squad registers a new station by sending JSON to the stations endpoint. Their script runs <code>curl -G -d '{"name":"MG Road"}' "$URL"</code>. The log shows the station name inside the URL, and no station is created. The request is a GET with the data in the query string. The fix is to remove <code>-G</code>, add <code>-X POST</code> and send the header, so the body travels in the request.</p>
+<div class="box box-trap"><div class="box-h">Trap: The -G flag</div><p>Adding <code>-G</code> because the command has data in it turns the data into a query string. A GET with a query string is still a GET, and the body is empty.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script must create a reading by sending a JSON object to an API as a POST, with the data in the request body and not in the URL. Which command does this?&quot;, &quot;opts&quot;: [&quot;curl -G -d &#x27;{\&quot;station\&quot;:7}&#x27; \&quot;$URL\&quot;&quot;, &quot;curl -X POST -H \&quot;Content-Type: application/json\&quot; -d &#x27;{\&quot;station\&quot;:7}&#x27; \&quot;$URL\&quot;&quot;, &quot;curl -s -H \&quot;Accept: application/json\&quot; \&quot;$URL\&quot;&quot;, &quot;curl -d \&quot;$URL\&quot; &#x27;{\&quot;station\&quot;:7}&#x27;&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;-X POST sets the method, the Content-Type header describes the body and -d carries it. The tempting wrong answer is -G, which moves the data into the URL. The Accept header describes the reply, not the body.&quot;}, {&quot;q&quot;: &quot;A teammate says that -d with JSON is enough and the other flags are decoration. Which statement is right for sending {\&quot;city\&quot;:\&quot;Pune\&quot;} to a server that reads the body by its declared type?&quot;, &quot;opts&quot;: [&quot;-X POST is decoration, because -d always sends a GET&quot;, &quot;The Content-Type header is never needed for a POST&quot;, &quot;-d sends a POST, but the Content-Type header tells the server how to read the body, so keep it&quot;, &quot;-G is required whenever -d is used&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-d implies POST, but without the header the server may not read the body as JSON. The tempting wrong answer is that -X POST is unnecessary. It is harmless and clear.&quot;}, {&quot;q&quot;: &quot;Ana&#x27;s script runs curl -G -d &#x27;{\&quot;name\&quot;:\&quot;Koramangala\&quot;}&#x27; \&quot;$URL\&quot;. Afterwards no station exists, and her log shows the name in the URL. What is the cause?&quot;, &quot;opts&quot;: [&quot;-G turned the data into a query string on a GET request, so no body was sent&quot;, &quot;The name is too long for a URL&quot;, &quot;The server needs -X DELETE first&quot;, &quot;-d cannot send JSON, so she needs -F&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;-G is the cause. The URL length is not the issue. The server receives a read request with no body, so nothing is created.&quot;}]}"></div>
+
+<h3 id="reading-a-401-status">Reading a 401 status</h3>
+<p><strong>What it is.</strong> The first digit of a status code is a class. 2xx means success, 4xx means the client sent something the server rejects, and 5xx means the server failed. A 401 Unauthorized reply means the server does not accept the credentials: none were sent, or they are wrong or expired. Despite its name, 401 is about who you are. A 403 Forbidden means the server knows who you are and refuses this action. A 404 means no resource lives at that URL.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s -o /dev/null -w &#x27;%{http_code}\\n&#x27; -H \&quot;X-API-Key: $OPENAQ_API_KEY\&quot; \&quot;$URL\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;401&quot;}]}"></div>
+
+<p>The output is one number. A 401 tells you to check the key, not the jq filter, because the filter has not run yet.</p>
+<p><strong>How it shows up in a case study.</strong> The squad's fetch script worked last week. Today the same URL returns 401, and nobody has changed the script. The request reaches the server, which rejects the credentials. The body and the jq filter come after the status check, so they are not the cause. The likely reasons are an expired key, a key that was rotated, or an empty value in the <code>.env</code> file that the script loads.</p>
+<div class="box box-trap"><div class="box-h">Trap: 401 is not a jq problem</div><p>A typo in a jq filter appears only after a 200 status, and a wrong path usually gives 404. A 401 always points to credentials.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The fetch script printed HTTP 401 for a URL that returned 200 last week. The script has not changed. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The jq filter has a typo&quot;, &quot;The URL needs a trailing slash&quot;, &quot;The body is larger than before&quot;, &quot;The key is missing, wrong or expired&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;401 is about credentials. The tempting wrong answer is the jq filter, but jq never runs before the status check, so it cannot produce a 401.&quot;}, {&quot;q&quot;: &quot;Ming&#x27;s script gets 403 Forbidden from the readings endpoint, although the same key works on other endpoints. Which statement is right?&quot;, &quot;opts&quot;: [&quot;The key is missing, so the status should be 401&quot;, &quot;The server knows the key but does not allow this request, so check the permissions for that resource&quot;, &quot;The URL does not match a resource, so check the path&quot;, &quot;The server failed, so retry later&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;403 means the identity is known and not allowed. The tempting wrong answer is 401, which is about a missing or rejected key.&quot;}, {&quot;q&quot;: &quot;A cron job prints HTTP 401 for every station. The developer edits the jq filter and runs it again, and the message is still 401. What should the developer do next?&quot;, &quot;opts&quot;: [&quot;Change the jq filter again&quot;, &quot;Add -G to the curl command&quot;, &quot;Check that the key variable is loaded and valid, for example with set -a and source, then retry&quot;, &quot;Increase --max-time&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The key is what the server rejected. --max-time handles slow replies, and -G changes where data goes.&quot;}]}"></div>
+
+<h3 id="sending-keys-in-a-header">Sending keys in a header</h3>
+<p><strong>What it is.</strong> Many APIs read a key from a request header, a line such as <code>X-API-Key: value</code>. In curl, <code>-H</code> adds one header. The header travels with the request, and it is not part of the address.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key: </span><span class="nv">$OPENAQ_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;https://api.openaq.org/v3/locations?limit=1&quot;</span>
+</code></pre></div>
+
+<p>The shell fills in the variable before curl runs, so the key value is sent in the header. Your shell history records the text you typed, which contains the variable name and not the value. Keys in the URL are different. A URL is written into server logs, proxy logs, browser history and shared links, so a key placed there can be read later. HTTPS protects the key while it travels between your computer and the server, but it does not protect a URL that is logged afterwards.</p>
+<p><strong>How it shows up in a case study.</strong> A developer copies an example that puts the key in the URL, as <code>?api_key=...</code>. The squad's shared log then contains the key in plain text. The reasoning has two parts. First, move the key to a header so that future requests keep it out of the address. Second, treat the logged key as exposed and rotate it with the provider, because the log has already spread it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Literal keys in commands or scripts</div><p>Typing the key value into a command puts it in your history. Writing it into a script puts it into Git history at the next commit. Use the variable name in both places.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Priya&#x27;s script contains the line KEY=k_demo_123 and sends it with -H \&quot;X-API-Key: $KEY\&quot;. She commits the file, then deletes the line in a new commit. Which statement is true?&quot;, &quot;opts&quot;: [&quot;The key is still in the Git history, so it must be rotated with the provider&quot;, &quot;The key is gone, because the newest commit has no key&quot;, &quot;The key is safe, because -H hides the value&quot;, &quot;The key is safe, because the file ends in .sh&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;git log shows every earlier change. Deleting a line does not remove it from history. The tempting wrong answer is that only the newest commit matters.&quot;}, {&quot;q&quot;: &quot;Ben&#x27;s command uses -H \&quot;X-API-Key: $OPENAQ_API_KEY\&quot;. He asks why the value does not appear in his shell history. Which explanation fits?&quot;, &quot;opts&quot;: [&quot;The header flag encrypts the key on your computer&quot;, &quot;The shell never writes commands to history&quot;, &quot;The history records the text typed, which holds the variable name, and the value is filled in only when the command runs&quot;, &quot;bash -x hides the key&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The shell expands the variable at run time, so the history holds the name. bash -x does the opposite and prints the expanded key, which is a separate trap.&quot;}, {&quot;q&quot;: &quot;A URL with ?token= in it is written into a shared log. Which change keeps the credential out of the log without changing the data returned?&quot;, &quot;opts&quot;: [&quot;Add -G to the curl command&quot;, &quot;Send the token in a header, such as -H \&quot;Authorization: Bearer $TOKEN\&quot;, if the API accepts that&quot;, &quot;Replace -s with -v&quot;, &quot;Add --max-time 5&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A header keeps the credential out of the address. -v prints request headers too, so it makes the leak worse. --max-time limits time, not secrecy.&quot;}]}"></div>
+
+<h3 id="filtering-with-select">Filtering with select</h3>
+<p><strong>What it is.</strong> <code>select(condition)</code> passes its input through only when the condition is true, and drops it otherwise. Inside a filter, you usually loop first with <code>[]</code>, so that select tests one element at a time. You can combine tests with <code>and</code> and <code>or</code>, compare with <code>==</code>, <code>!=</code>, <code>&gt;</code> and <code>&lt;</code>, and then pipe the result to a field.</p>
+<div class="hl"><pre><span></span><code>$ echo &#39;{&quot;readings&quot;:[{&quot;pollutant&quot;:&quot;PM2.5&quot;,&quot;value&quot;:42.1},{&quot;pollutant&quot;:&quot;NO2&quot;,&quot;value&quot;:18.7}]}&#39; | jq &#39;.readings[] | select(.value &gt; 40) | .pollutant&#39;
+&quot;PM2.5&quot;
+</code></pre></div>
+
+<p>The loop sends each reading into select. Only the PM2.5 reading passes, and <code>.pollutant</code> prints its name. The output keeps quotes because there is no <code>-r</code>. Inside a filter, a single <code>=</code> is assignment, not a comparison. The filter <code>select(.pollutant = "PM2.5")</code> assigns, and the result of an assignment is the updated object, which jq treats as true, so every reading is kept.</p>
+<p><strong>How it shows up in a case study.</strong> Bilal writes <code>jq '.readings | select(.value &gt; 40) | .value'</code> and gets an error that mentions indexing an array. He has applied select to the whole array, not to each reading. Adding <code>[]</code> after <code>.readings</code> sends each reading into the test separately. He then uses <code>==</code> to compare pollutant names.</p>
+<div class="box box-trap"><div class="box-h">Trap: One equals sign</div><p>In jq, <code>=</code> assigns and does not compare. A select built with <code>=</code> keeps everything, and the output looks plausible until you count the rows.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Nadia wants the value of every reading above 40 from a readings array. Which filter is correct?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.readings | select(.value &gt; 40)&#x27;&quot;, &quot;jq &#x27;.readings[] | .value &gt; 40&#x27;&quot;, &quot;jq &#x27;.readings[] | select(.value = 40)&#x27;&quot;, &quot;jq &#x27;.readings[] | select(.value &gt; 40) | .value&#x27;&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The loop, the test and the field each have a place. The first option tests the whole array. The second prints true or false for each reading, and nothing is filtered.&quot;}, {&quot;q&quot;: &quot;A reply holds PM2.5 and NO2 readings. Which filter prints only the NO2 values, one per line?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.readings[] | select(.pollutant == \&quot;NO2\&quot;) | .value&#x27;&quot;, &quot;jq &#x27;.readings[] | select(.pollutant = \&quot;NO2\&quot;) | .value&#x27;&quot;, &quot;jq &#x27;.readings[] | select(.pollutant != \&quot;PM2.5\&quot;)&#x27;&quot;, &quot;jq &#x27;.readings | select(.pollutant == \&quot;NO2\&quot;)&#x27;&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;== compares. The second option assigns and keeps every reading. The third keeps NO2 but prints whole objects, and the fourth applies select to the array.&quot;}, {&quot;q&quot;: &quot;The filter is jq &#x27;.readings[] | select(.pollutant == \&quot;PM2.5\&quot; and .value &gt; 40 or .value &gt; 100) | .value&#x27;. The readings are PM2.5 at 30 and NO2 at 150. Which values are printed?&quot;, &quot;opts&quot;: [&quot;30 and 150&quot;, &quot;30 only&quot;, &quot;Nothing&quot;, &quot;150 only&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;and binds more tightly than or, so the test is (PM2.5 and above 40) or above 100. The PM2.5 at 30 fails both parts. The NO2 at 150 passes the second part. The tempting wrong answer is reading the filter from left to right.&quot;}]}"></div>
+
+<h3 id="viewing-only-the-headers">Viewing only the headers</h3>
+<p><strong>What it is.</strong> Headers describe the reply: its type, its size and more. To see them without the body, use <code>-D -</code> to print the headers to stdout and <code>-o /dev/null</code> to throw the body away.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-D<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</code></pre></div>
+
+<p>The output starts with a status line such as <code>HTTP/2 200</code>, followed by header lines such as <code>content-type</code>. The exact lines depend on the server. <code>-I</code> is a shorter option that sends a HEAD request, which asks for headers only. Some servers answer HEAD differently from GET, so <code>-D -</code> is the safer check when you need to match what a GET returns. <code>-w '%{http_code}'</code> prints only the status code, and it never prints headers.</p>
+<p><strong>How it shows up in a case study.</strong> Sana wants to check the content type before parsing a reply. She runs <code>curl -s -o /dev/null -w '%{http_code}\n' "$URL"</code> and sees only <code>200</code>. The command is working, but <code>-w</code> prints the status and nothing else. She changes the command to <code>-D -</code> so the headers appear.</p>
+<div class="box box-trap"><div class="box-h">Trap: Status is not headers</div><p><code>-w '%{http_code}'</code> prints one number, the status code. Headers need <code>-D -</code>.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Omar needs the Content-Type and length the server sends for the readings endpoint, without seeing the body. Which command does this?&quot;, &quot;opts&quot;: [&quot;curl -s -o /dev/null -w &#x27;%{http_code}\\n&#x27; \&quot;$URL\&quot;&quot;, &quot;curl -s \&quot;$URL\&quot; | head -c 400&quot;, &quot;curl -s -D - -o /dev/null \&quot;$URL\&quot;&quot;, &quot;curl -s -X DELETE \&quot;$URL\&quot;&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-D - prints the headers and -o /dev/null discards the body. The first option prints only the status code. The second shows the start of the body, and the fourth deletes data.&quot;}, {&quot;q&quot;: &quot;A colleague says curl -s -I \&quot;$URL\&quot; always gives the same output as curl -s -D - -o /dev/null \&quot;$URL\&quot;. What is the best reply?&quot;, &quot;opts&quot;: [&quot;Yes, they are the same in every case&quot;, &quot;No, -I deletes the data on the server&quot;, &quot;No, -I prints the body and hides the headers&quot;, &quot;Usually, but -I sends a HEAD request, and some servers answer HEAD differently, so check with a GET when it matters&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The best answer is the careful one. -I is HEAD, and the other form is GET. The tempting wrong answer is that they always match.&quot;}, {&quot;q&quot;: &quot;Sana&#x27;s check prints 404 for a URL copied from the slides. Which action is the first thing to try?&quot;, &quot;opts&quot;: [&quot;Add -D - to see the headers of the 404&quot;, &quot;Check the path and the query string, because 404 means no resource lives at that address&quot;, &quot;Increase --max-time, because 404 is a timeout&quot;, &quot;Save the body to out.json&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;404 means the address does not match a resource, so the path comes first. --max-time handles slow replies, and saving the body does not change the status.&quot;}]}"></div>
+
+<h3 id="counting-with-length">Counting with length</h3>
+<p><strong>What it is.</strong> <code>length</code> counts the elements of an array, the keys of an object, or the characters of a string. <code>keys</code> gives the names, not the count. For an array, <code>keys</code> gives the index numbers 0, 1, 2 and so on.</p>
+<div class="hl"><pre><span></span><code>$ echo &#39;{&quot;readings&quot;:[{&quot;v&quot;:1},{&quot;v&quot;:2},{&quot;v&quot;:3}]}&#39; | jq &#39;.readings | length&#39;
+3
+</code></pre></div>
+
+<p>The output is the count. If you replace <code>length</code> with <code>keys</code>, the output is a list of index numbers such as <code>[0, 1, 2]</code>. That list has three items, but it is not the count. <code>.readings[] | length</code> gives something else again: the number of keys inside each reading, one number per line.</p>
+<p><strong>How it shows up in a case study.</strong> Lina's log line should say how many readings a station returned. Her log reads <code>[0,1,2]</code>. She used <code>keys</code>, which prints index numbers. Changing the filter to <code>.readings | length</code> prints the count. Her reasoning is that the count must be one number, not a list.</p>
+<div class="box box-trap"><div class="box-h">Trap: Keys are not a count</div><p><code>keys</code> on an array prints indices, so the output looks like a list of numbers that could be a count. Use <code>length</code> when you need the number.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A log line must say how many readings a station returned. The readings array is not empty. Which filter prints the number?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.readings | length&#x27;&quot;, &quot;jq &#x27;.readings | keys&#x27;&quot;, &quot;jq &#x27;.readings[] | length&#x27;&quot;, &quot;jq &#x27;.count&#x27;&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;length gives the element count. The tempting wrong answer is keys, which prints indices. The third option counts keys inside each reading, and the fourth reads a field that may not exist.&quot;}, {&quot;q&quot;: &quot;A reply is {\&quot;station_id\&quot;:7,\&quot;readings\&quot;:[]}. Which output does jq &#x27;.readings | length&#x27; print?&quot;, &quot;opts&quot;: [&quot;An error, because the array is empty&quot;, &quot;0&quot;, &quot;null&quot;, &quot;[]&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;An empty array has length zero, and the output is the number 0. An empty array is not an error, and null is what a missing key gives.&quot;}, {&quot;q&quot;: &quot;Which filter prints the number of keys in the object {\&quot;a\&quot;:1,\&quot;b\&quot;:2}?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.[]&#x27;&quot;, &quot;jq &#x27;keys&#x27;&quot;, &quot;jq &#x27;select(.a)&#x27;&quot;, &quot;jq &#x27;length&#x27;&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;length on an object counts its keys. keys prints the names, and .[] prints the values.&quot;}]}"></div>
+
+<h3 id="failing-a-script-on-http-errors-with-fail">Failing a script on HTTP errors with --fail</h3>
+<p><strong>What it is.</strong> By default, curl treats any finished transfer as success, even when the server answers with an HTTP error. The exit code is 0. With <code>-f</code> or <code>--fail</code>, curl exits with code 22 when the status is 400 or above, and it does not print the error page as if it were data.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s -o /dev/null \&quot;https://api.example.org/v1/nope\&quot;; echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -sf -o /dev/null \&quot;https://api.example.org/v1/nope\&quot;; echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;22&quot;}]}"></div>
+
+<p>The first exit code is 0 because the transfer finished. The second is 22 because of <code>-f</code>. Under <code>set -e</code>, a non-zero exit stops the script. <code>-s</code> hides the progress meter and leaves the exit code alone.</p>
+<p><strong>How it shows up in a case study.</strong> Oscar's pull script runs <code>curl -s "$API"</code> and pipes the result to jq. The script uses <code>set -euo pipefail</code>. During an outage, the server returns HTTP 500 with an HTML page. The script does not stop at the HTTP step, and jq fails later with a parse error that does not name the cause. Oscar adds <code>-f</code>, so curl exits with 22 and the script stops at the right place.</p>
+<div class="box box-trap"><div class="box-h">Trap: Silent does not mean strict</div><p><code>-s</code> only hides the progress output. A script with <code>-s</code> alone carries on after a 500, and that is the failure this trap describes.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A script runs curl -sf \&quot;$URL\&quot; against a server that answers HTTP 500. Which exit code does curl return?&quot;, &quot;opts&quot;: [&quot;0&quot;, &quot;22&quot;, &quot;1&quot;, &quot;6&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;-f makes curl exit with 22 for HTTP errors of 400 and above. Plain curl would return 0 here. 6 means the host could not be resolved, and 1 means an unsupported protocol, so neither is the HTTP-error code.&quot;}, {&quot;q&quot;: &quot;Dev&#x27;s script runs curl -s -o \&quot;$TMP\&quot; \&quot;$URL\&quot; and must not treat a 404 response as data. Which change is right?&quot;, &quot;opts&quot;: [&quot;Add -G&quot;, &quot;Replace -s with -v&quot;, &quot;Remove the -o flag&quot;, &quot;Add -f so that curl exits non-zero on the 404&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-f is the flag for HTTP errors. -G moves data into the URL. -v prints more detail and does not change the exit code. Removing -o prints the body, which is the wrong fix.&quot;}, {&quot;q&quot;: &quot;Which statement about curl -s is correct?&quot;, &quot;opts&quot;: [&quot;It makes curl exit non-zero on HTTP errors&quot;, &quot;It makes curl retry failed requests&quot;, &quot;It only hides the progress meter, so it does not change the exit code&quot;, &quot;It makes curl skip the body&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;-s affects only the progress meter. The tempting wrong answer is that silence means failure handling, which needs -f.&quot;}]}"></div>
+
+<h3 id="the-anatomy-of-an-http-exchange">The anatomy of an HTTP exchange</h3>
+<p><strong>What it is.</strong> An HTTP request has a request line, headers and an optional body. The request line holds the method, the path and the query string. Each header is a <code>Name: value</code> line. A reply has a status line, headers and an optional body. A blank line separates the headers from the body.</p>
+<div class="hl"><pre><span></span><code>GET /v1/items?city=Pune HTTP/1.1
+Host: api.example.org
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{&quot;items&quot;:[]}
+</code></pre></div>
+
+<p>The request tells the server what to fetch and which replies the client accepts. The reply tells the client whether the request worked and what the body is. HTTP/2 carries the same parts, and curl shows them with lowercase header names.</p>
+<p><strong>How it shows up in a case study.</strong> Ruth's script searches the JSON body for the word "error" to decide whether a request failed. One day the server returned a 500 status with a body that did not contain that word. The script treated the reply as good and wrote bad rows. The status line is the HTTP receipt, and the body is data. The script should check the status first, then check the fields it needs.</p>
+<div class="box box-trap"><div class="box-h">Trap: The status is not in the body</div><p>The status code lives in the status line. curl exposes it through <code>-w '%{http_code}'</code>. A body can contain any text, including words that look like errors.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which part of an HTTP request tells the server which reply formats the client accepts?&quot;, &quot;opts&quot;: [&quot;The Accept header, written as Name: value&quot;, &quot;The path, such as /v1/items&quot;, &quot;The query string after the question mark&quot;, &quot;The method, such as GET&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Accept is a header. The path names the resource, the query string passes parameters, and the method is the verb. The tempting wrong answer is the query string, which only passes parameters.&quot;}, {&quot;q&quot;: &quot;A reply starts with HTTP/1.1 200 OK, then headers, then the body {\&quot;error\&quot;:\&quot;quota exceeded\&quot;}. Which statement is right?&quot;, &quot;opts&quot;: [&quot;The request failed, because the body contains an error field&quot;, &quot;The status code 200 is inside the body&quot;, &quot;The Content-Type header is the status code&quot;, &quot;The request worked at HTTP level, so the script must check the error field in the data&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The status line says the HTTP exchange worked. The body can still carry an application problem, so the script must read that field. The tempting wrong answer treats the body word as the status.&quot;}, {&quot;q&quot;: &quot;Which list gives the parts of an HTTP request in the right order?&quot;, &quot;opts&quot;: [&quot;Status line, headers, body, method&quot;, &quot;Request line with the method, path and query string, then headers, then an optional body&quot;, &quot;Body, headers, request line&quot;, &quot;Query string, method, status line, body&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The request line comes first, then headers, then the optional body. The tempting wrong answer is the status line, which belongs to the reply.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The questions below mix the ten topics, one each, and are harder than the ones above.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate runs curl -s -o out.json -X GET \&quot;$URL\&quot; and then curl -s \&quot;$URL\&quot; | jq &#x27;.items | length&#x27;. Both commands succeed. Which statement about the second command is true?&quot;, &quot;opts&quot;: [&quot;It saves the items to a file named out.json&quot;, &quot;It sends a POST and prints the count&quot;, &quot;It sends a HEAD request, so no count is printed&quot;, &quot;It sends a GET, passes the body through the pipe to jq, and writes no file&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The file belongs to the first command only. The second sends a GET and prints the count from jq. The tempting wrong answer attaches the file to the second command.&quot;}, {&quot;q&quot;: &quot;A reply has readings where one value is null. Lena wants the average of the non-null values using jq alone. Which filter does this?&quot;, &quot;opts&quot;: [&quot;jq &#x27;[.readings[].value | select(. != null)] | add / length&#x27;&quot;, &quot;jq &#x27;.readings[].value | add / length&#x27;&quot;, &quot;jq &#x27;.readings | add / length&#x27;&quot;, &quot;jq &#x27;[.readings[].value] | length&#x27;&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The brackets collect the values, select drops the null, add sums them and length counts them. The tempting wrong answer applies the arithmetic to each value on its own, which fails.&quot;}, {&quot;q&quot;: &quot;Pedro&#x27;s team must send a JSON reading as a POST and save the reply in reply.json. Which command does this?&quot;, &quot;opts&quot;: [&quot;curl -s -X POST -H \&quot;Content-Type: application/json\&quot; -d &#x27;{\&quot;v\&quot;:1}&#x27; -o reply.json \&quot;$URL\&quot;&quot;, &quot;curl -s -G -H \&quot;Content-Type: application/json\&quot; -d &#x27;{\&quot;v\&quot;:1}&#x27; -o reply.json \&quot;$URL\&quot;&quot;, &quot;curl -s -X POST -d &#x27;{\&quot;v\&quot;:1}&#x27; -o \&quot;$URL\&quot; reply.json&quot;, &quot;curl -s -X POST -H \&quot;Content-Type: application/json\&quot; \&quot;$URL\&quot; -d reply.json&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The first option sets the method, declares the body and saves the reply. -G makes the data a query string on a GET. The last two use the wrong arguments for -o and -d.&quot;}, {&quot;q&quot;: &quot;A nightly job that worked for months now prints 401 for every station. The team rotated the key yesterday, and the job still loads the old one. What is the best next step?&quot;, &quot;opts&quot;: [&quot;Change the jq filter to skip 401 replies&quot;, &quot;Add --max-time 60 so the job waits for the server&quot;, &quot;Load the new key into the job&#x27;s environment and check that the variable is set before the request&quot;, &quot;Switch the request to POST&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;401 means the key is not accepted, and the old key was rotated. The tempting wrong answer is a timeout, which does nothing for credentials.&quot;}, {&quot;q&quot;: &quot;Which statement about sending a key is most accurate?&quot;, &quot;opts&quot;: [&quot;A key in the URL is safe, because HTTPS encrypts the whole address everywhere&quot;, &quot;A header is hidden from the server by curl&quot;, &quot;The -H flag encrypts the value on your computer&quot;, &quot;HTTPS protects the key in transit, but a key in the URL can still end up in server and proxy logs, so a header is safer&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;HTTPS protects the data on the wire, not the logs kept by servers and proxies. The tempting wrong answer is that HTTPS makes URLs safe everywhere.&quot;}, {&quot;q&quot;: &quot;Which filter prints the count of PM2.5 readings above 40 in {\&quot;readings\&quot;:[{\&quot;p\&quot;:\&quot;PM2.5\&quot;,\&quot;v\&quot;:42.1},{\&quot;p\&quot;:\&quot;NO2\&quot;,\&quot;v\&quot;:45.0},{\&quot;p\&quot;:\&quot;PM2.5\&quot;,\&quot;v\&quot;:38.0}]}?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.readings | select(.p == \&quot;PM2.5\&quot;) | length&#x27;&quot;, &quot;jq &#x27;[.readings[] | select(.p == \&quot;PM2.5\&quot; and .v &gt; 40)] | length&#x27;&quot;, &quot;jq &#x27;[.readings[] | select(.p = \&quot;PM2.5\&quot;)] | length&#x27;&quot;, &quot;jq &#x27;.readings[] | select(.p == \&quot;PM2.5\&quot; and .v &gt; 40) | length&#x27;&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The brackets collect the matches and length counts them, which gives 1. The third option assigns, so it keeps every reading and prints 3. The fourth applies length to the number 42.1 instead of counting readings.&quot;}, {&quot;q&quot;: &quot;Which command asks for the headers only, in one request, without downloading a body?&quot;, &quot;opts&quot;: [&quot;curl -s -I \&quot;$URL\&quot;&quot;, &quot;curl -s -D - -o /dev/null \&quot;$URL\&quot;&quot;, &quot;curl -s -o /dev/null -w &#x27;%{http_code}\\n&#x27; \&quot;$URL\&quot;&quot;, &quot;curl -s \&quot;$URL\&quot; | head -c 400&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;-I sends a HEAD request, which returns headers and no body. The second option still downloads the body and throws it away. The last option downloads the body and shows its start.&quot;}, {&quot;q&quot;: &quot;A reply is {\&quot;stations\&quot;:{\&quot;ST1\&quot;:{\&quot;ok\&quot;:true},\&quot;ST2\&quot;:{\&quot;ok\&quot;:false},\&quot;ST3\&quot;:{\&quot;ok\&quot;:true}}}. Which filter prints 3?&quot;, &quot;opts&quot;: [&quot;jq &#x27;.stations | keys&#x27;&quot;, &quot;jq &#x27;.stations[] | length&#x27;&quot;, &quot;jq &#x27;.stations | length&#x27;&quot;, &quot;jq &#x27;.stations | .[]&#x27;&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;stations is an object with three keys, and length counts them. keys prints the names, and the other two print a value for each station.&quot;}, {&quot;q&quot;: &quot;A deploy script runs curl -s \&quot;$URL\&quot; | jq ... under set -euo pipefail. A 503 sometimes returns an HTML page, and jq fails with a confusing parse error. Which change makes the script stop at the HTTP step?&quot;, &quot;opts&quot;: [&quot;Add -G&quot;, &quot;Replace -s with -v&quot;, &quot;Add -X POST&quot;, &quot;Add -f, so curl exits with 22 before jq reads the page&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-f makes curl fail on the HTTP error, and pipefail and set -e stop the script there. The tempting wrong answer is -v, which prints more but does not change the exit code.&quot;}, {&quot;q&quot;: &quot;A script reads the status with -w &#x27;%{http_code}&#x27; and gets 200. It must fetch page 3 of a list, keeping the same method and headers. Which part of the request changes?&quot;, &quot;opts&quot;: [&quot;The method&quot;, &quot;The query string after the question mark&quot;, &quot;The Accept header&quot;, &quot;The status line&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Paging is passed as a query parameter, such as page=3. The status line belongs to the reply, and changing headers or the method is not needed.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p>The graded lab is a Python problem with three functions. You are working on a scenario in which you <code>curl</code> the CityPulse readings API and then reshape its JSON inside a Python client. The API returns a JSON string shaped like this: an object with a <code>city</code> and a <code>readings</code> list, where each reading has a <code>station</code>, a <code>pollutant</code> and a <code>value</code>.</p>
+<p>Write these three functions in the starter file. The starter file starts with <code>import json</code>.</p>
+<ul>
+<li><code>pluck(payload_json, key)</code> takes the payload as a string and a key name, and returns a list. The list holds the <code>key</code> value from each entry of <code>readings</code>, in document order. This is the same as the jq filter <code>.readings[].&lt;key&gt;</code>.</li>
+<li><code>avg_value(payload_json)</code> returns the mean of every reading's <code>value</code>, rounded with <code>round(x, 2)</code>. When there are no readings, it returns <code>0.0</code>.</li>
+<li><code>worst_station(payload_json)</code> returns the <code>station</code> of the reading with the highest <code>value</code>. If two readings share the highest value, the one with the smaller station id wins, so ascending order decides ties. When there are no readings, it returns <code>None</code>.</li>
+</ul>
+<p>The statement gives this example:</p>
+<div class="hl"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="s1">&#39;{&quot;city&quot;:&quot;M&quot;,&quot;readings&quot;:[{&quot;station&quot;:&quot;ST1&quot;,&quot;value&quot;:10.0},{&quot;station&quot;:&quot;ST2&quot;,&quot;value&quot;:30.0}]}&#39;</span>
+<span class="n">avg_value</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>       <span class="c1"># -&gt; 20.0</span>
+<span class="n">worst_station</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>   <span class="c1"># -&gt; &#39;ST2&#39;</span>
+</code></pre></div>
+
+<p>The statement is the only source of rules. Every rule above comes from it, and the example is the first check you should run.</p>
+<p>The limits are 30 seconds of run time and 128 MB of memory. Your code must parse the payload string with <code>json</code>, which is part of the standard library, and must not need any file, network or input.</p>
+<p>The scoring has two parts. The visible tests are worth 70 points in total, and you can see them:</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plucks station ids in document order</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Plucks the numeric values</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Mean value rounded to 2 decimals</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Highest value, tie broken by station id (ST2 &lt; ST3)</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>The hidden tests are two tests worth 30 points together. You cannot see their input. A hidden test is a check the platform runs against your functions after you submit, with inputs the statement does not show you. They decide the top marks, because a solution that passes the visible tests but mishandles an empty list, a tie, or an unusual order can still lose those 30 points. That is why the rest of this section pushes you to test the rules yourself, not only the example.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>The three functions need a small set of Python ideas. Each one is taught below with a tiny example that has nothing to do with the lab's data. Do not put these examples together to build the lab's functions. Their purpose is to show each idea on its own.</p>
+<p><strong>Parsing a JSON string.</strong> <code>json.loads</code> takes a string and returns Python objects. A JSON object becomes a dictionary, a JSON array becomes a list and a JSON number becomes an int or a float.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">shop</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;aisles&quot;: [{&quot;name&quot;: &quot;dairy&quot;, &quot;items&quot;: 4}]}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shop</span><span class="p">[</span><span class="s2">&quot;aisles&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>   <span class="c1"># dairy</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">shop</span><span class="p">[</span><span class="s2">&quot;aisles&quot;</span><span class="p">]))</span>        <span class="c1"># &lt;class &#39;list&#39;&gt;</span>
+</code></pre></div>
+
+<p>Expected output: <code>dairy</code>, then <code>&lt;class 'list'&gt;</code>.</p>
+<p><strong>Reading a key that may be missing.</strong> <code>dict.get(key, default)</code> returns the value when the key exists and the default when it does not. Plain <code>d[key]</code> raises a <code>KeyError</code> in that case.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apples&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apples&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pears&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># 0</span>
+</code></pre></div>
+
+<p><strong>Filtering a list with a comprehension.</strong> A list comprehension builds a new list in one line. The <code>if</code> part keeps only the items that pass the test, and the order stays the same.</p>
+<div class="hl"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># [2, 4]</span>
+</code></pre></div>
+
+<p><strong>Dividing and rounding.</strong> <code>/</code> always gives a float in Python 3. <code>round(x, 2)</code> rounds to two decimal places. Python rounds a value that sits exactly halfway to the even neighbour, so <code>round(2.5)</code> gives 2 and <code>round(3.5)</code> gives 4.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>   <span class="c1"># 5.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>                   <span class="c1"># 0.33</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.5</span><span class="p">))</span>            <span class="c1"># 2 4</span>
+</code></pre></div>
+
+<p><strong>Checking for an empty collection.</strong> <code>if not items:</code> is true for an empty list, an empty dictionary and <code>None</code>. Use it before dividing by <code>len</code>, because dividing by zero raises <code>ZeroDivisionError</code>.</p>
+<div class="hl"><pre><span></span><code><span class="n">groups</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nothing to average&quot;</span><span class="p">)</span>   <span class="c1"># nothing to average</span>
+</code></pre></div>
+
+<p><strong>Sorting with a key and a tie-break.</strong> <code>sorted(items, key=...)</code> sorts by the value the key function returns. A tuple as the key sorts by its first part and then its second part. A minus sign flips a number to sort in descending order.</p>
+<div class="hl"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;al&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;cy&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="c1">## [(&#39;al&#39;, 9), (&#39;bo&#39;, 5), (&#39;cy&#39;, 5)]</span>
+</code></pre></div>
+
+<p>The first part sorts by score from high to low. The second part breaks ties by the name, from A to Z.</p>
+<p><strong>Testing types.</strong> <code>isinstance(x, int)</code> checks the type. <code>bool</code> is a subclass of <code>int</code>, so <code>isinstance(True, int)</code> is <code>True</code>. To exclude booleans from a number check, test for <code>bool</code> first.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>             <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span>            <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)))</span>     <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Slicing and negative indexes.</strong> <code>text[1:3]</code> takes the characters from index 1 up to, but not including, index 3. A negative index counts from the end, so index -1 is the last item.</p>
+<div class="hl"><pre><span></span><code><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;harbour&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>     <span class="c1"># arb</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      <span class="c1"># r</span>
+</code></pre></div>
+
+<p><strong>The median.</strong> <code>statistics.median</code> returns the middle value of a sorted list. With an even number of values it returns the average of the two middle values, as a float.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>   <span class="c1"># 4.0</span>
+</code></pre></div>
+
+<p><strong>Placeholders in SQL.</strong> The <code>sqlite3</code> module lets you pass values to a query with <code>?</code> placeholders, which keeps the values separate from the SQL text. The values go in a tuple.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select ? + ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>   <span class="c1"># (7,)</span>
+</code></pre></div>
+
+<p>This lab does not need <code>sqlite3</code>, but the same placeholder rule protects you whenever a value comes from outside your program.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below is a rule from the statement, or a fact the statement gives you. For each one, the table names the mistake a careless solution makes and a way to check your own work. Use the rows as a list of tests to write.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pluck</code> returns values "in document order"</td>
+<td>Sorts the values, or puts them in a set, which loses order and repeats</td>
+<td>Use a payload where the station ids are not in alphabetical order and check the list matches the array order</td>
+</tr>
+<tr>
+<td><code>pluck</code> returns "the list of key values from each entry of readings"</td>
+<td>Returns the whole reading, or looks in the top level instead of inside <code>readings</code></td>
+<td>Compare <code>len(pluck(p, "value"))</code> with the number of readings in the payload</td>
+</tr>
+<tr>
+<td><code>pluck</code> takes any <code>key</code> the caller gives</td>
+<td>Hard-codes "station" or "value" and ignores the argument</td>
+<td>Call it with both <code>"station"</code> and <code>"value"</code> on the same payload and check both lists</td>
+</tr>
+<tr>
+<td><code>avg_value</code> returns "the mean of every reading's value"</td>
+<td>Averages only the first reading, or averages the station names</td>
+<td>Compute the mean of your own three values by hand and compare</td>
+</tr>
+<tr>
+<td><code>avg_value</code> rounds with <code>round(x, 2)</code></td>
+<td>Rounds each value before averaging, or truncates with <code>int</code></td>
+<td>Round only the final mean, and check a case where the two methods would differ</td>
+</tr>
+<tr>
+<td><code>avg_value</code> returns <code>0.0</code> when there are no readings</td>
+<td>Returns the integer <code>0</code>, or raises <code>ZeroDivisionError</code></td>
+<td>Check <code>avg_value</code> of an empty readings list with <code>isinstance(result, float)</code> as well as <code>== 0.0</code></td>
+</tr>
+<tr>
+<td><code>worst_station</code> returns "the station with the highest value"</td>
+<td>Returns the value, not the station id</td>
+<td>Check that the result is the string id, such as <code>'ST2'</code></td>
+</tr>
+<tr>
+<td>"break ties by station id ascending"</td>
+<td>Keeps the first maximum in document order, or the last one</td>
+<td>Use two readings with the same highest value, the later one having the smaller id, and check the smaller id wins</td>
+</tr>
+<tr>
+<td><code>worst_station</code> returns <code>None</code> when there are no readings</td>
+<td>Returns <code>""</code>, <code>0</code> or raises <code>IndexError</code></td>
+<td>Check <code>worst_station</code> of an empty payload with <code>is None</code></td>
+</tr>
+<tr>
+<td>The payload is "a JSON string"</td>
+<td>Searches the text by hand, or calls <code>eval</code></td>
+<td>Parse with <code>json.loads</code>, and test a payload with spaces and line breaks</td>
+</tr>
+<tr>
+<td>The statement shows <code>value</code> as a number such as <code>42.0</code></td>
+<td>Converts values in a way that changes them, or assumes they are always floats</td>
+<td>Use the example values, and test with an integer value too, such as <code>10</code></td>
+</tr>
+<tr>
+<td>The statement does not say what happens with a non-number <code>value</code></td>
+<td>Invents a rule, such as skipping strings silently</td>
+<td>Do not invent behaviour. Test only the cases the statement describes</td>
+</tr>
+<tr>
+<td>The statement does not ask you to change the input</td>
+<td>Modifies the parsed data while working on it</td>
+<td>Call each function twice on the same string and check the second answer equals the first</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Note the exact names, the arguments and the <code>import json</code> line. Do not change the names.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function body. Use the example in the statement and check each result against the value the statement gives.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table. Work out each expected value by hand before you run anything. If your hand calculation and the test disagree, check the hand calculation first.</li>
+<li>Implement one function at a time. After each function, run the asserts. Stop when a function fails, and fix that function before you start the next one.</li>
+<li>Check types and rounding last. Look at <code>isinstance</code> for the float result, and make sure rounding happens once, at the end.</li>
+<li>Run the visible tests. Read any failure message closely, because the platform reports which test failed.</li>
+<li>Submit once. Before you submit, make sure the file contains exactly the three functions and no leftover prints or test code that could fail on import.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The problem below is a different domain with the same skills. It is not the platform's problem. A parcel-tracking API returns a JSON string. Its top level is an object with a <code>parcels</code> list, and each parcel has a <code>code</code> (text), a <code>status</code> (text) and a <code>weight_kg</code> (a number).</p>
+<p>Write three functions. Each takes one argument, the payload string.</p>
+<ul>
+<li><code>delivered_codes(payload_json)</code> returns a list of the <code>code</code> values of the parcels whose <code>status</code> is <code>"delivered"</code>, in document order. It returns <code>[]</code> when there are no parcels.</li>
+<li><code>mean_weight(payload_json)</code> returns the mean <code>weight_kg</code> of the delivered parcels only, rounded with <code>round(x, 2)</code>. It returns <code>0.0</code> when no parcel is delivered.</li>
+<li><code>lightest_code(payload_json)</code> returns the <code>code</code> of the delivered parcel with the lowest <code>weight_kg</code>. Parcels that are not delivered are ignored. If two delivered parcels share the lowest weight, the smaller code in ascending order wins. It returns <code>None</code> when no parcel is delivered.</li>
+</ul>
+<p>The solution below is complete. Read it after you have tried the problem yourself.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">delivered_codes</span><span class="p">(</span><span class="n">payload_json</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">parcel</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">if</span> <span class="n">parcel</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;delivered&quot;</span><span class="p">:</span>
+            <span class="n">codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parcel</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">codes</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mean_weight</span><span class="p">(</span><span class="n">payload_json</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;weight_kg&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="p">[])</span>
+               <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;delivered&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">weights</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lightest_code</span><span class="p">(</span><span class="n">payload_json</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+    <span class="n">best_code</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">best_weight</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">parcel</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">if</span> <span class="n">parcel</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;delivered&quot;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">parcel</span><span class="p">[</span><span class="s2">&quot;weight_kg&quot;</span><span class="p">]</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">parcel</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">best_weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">best_weight</span> <span class="ow">or</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">best_weight</span> <span class="ow">and</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="n">best_code</span><span class="p">):</span>
+            <span class="n">best_weight</span> <span class="o">=</span> <span class="n">w</span>
+            <span class="n">best_code</span> <span class="o">=</span> <span class="n">code</span>
+    <span class="k">return</span> <span class="n">best_code</span>
+
+
+<span class="n">PAYLOAD</span> <span class="o">=</span> <span class="s1">&#39;{&quot;parcels&quot;: [{&quot;code&quot;: &quot;P-14&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 2.5}, {&quot;code&quot;: &quot;P-02&quot;, &quot;status&quot;: &quot;lost&quot;, &quot;weight_kg&quot;: 4.0}, {&quot;code&quot;: &quot;P-09&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 4.0}, {&quot;code&quot;: &quot;P-05&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 1.0}, {&quot;code&quot;: &quot;P-30&quot;, &quot;status&quot;: &quot;lost&quot;, &quot;weight_kg&quot;: 0.5}]}&#39;</span>
+<span class="n">TIE_ORDER</span> <span class="o">=</span> <span class="s1">&#39;{&quot;parcels&quot;: [{&quot;code&quot;: &quot;P-88&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 3.0}, {&quot;code&quot;: &quot;P-11&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 3.0}]}&#39;</span>
+<span class="n">THIRDS</span> <span class="o">=</span> <span class="s1">&#39;{&quot;parcels&quot;: [{&quot;code&quot;: &quot;P-1&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 1.0}, {&quot;code&quot;: &quot;P-2&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 2.0}, {&quot;code&quot;: &quot;P-3&quot;, &quot;status&quot;: &quot;delivered&quot;, &quot;weight_kg&quot;: 2.0}]}&#39;</span>
+<span class="n">EMPTY</span> <span class="o">=</span> <span class="s1">&#39;{&quot;parcels&quot;: []}&#39;</span>
+<span class="n">NO_KEY</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
+<span class="n">ONE</span> <span class="o">=</span> <span class="s1">&#39;{&quot;parcels&quot;: [{&quot;code&quot;: &quot;P-7&quot;, &quot;status&quot;: &quot;lost&quot;, &quot;weight_kg&quot;: 0.5}]}&#39;</span>
+
+<span class="k">assert</span> <span class="n">delivered_codes</span><span class="p">(</span><span class="n">PAYLOAD</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;P-14&quot;</span><span class="p">,</span> <span class="s2">&quot;P-09&quot;</span><span class="p">,</span> <span class="s2">&quot;P-05&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">mean_weight</span><span class="p">(</span><span class="n">PAYLOAD</span><span class="p">)</span> <span class="o">==</span> <span class="mf">2.5</span>
+<span class="k">assert</span> <span class="n">lightest_code</span><span class="p">(</span><span class="n">PAYLOAD</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;P-05&quot;</span>
+
+<span class="k">assert</span> <span class="n">lightest_code</span><span class="p">(</span><span class="n">TIE_ORDER</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;P-11&quot;</span>
+<span class="k">assert</span> <span class="n">delivered_codes</span><span class="p">(</span><span class="n">TIE_ORDER</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;P-88&quot;</span><span class="p">,</span> <span class="s2">&quot;P-11&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">mean_weight</span><span class="p">(</span><span class="n">THIRDS</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.67</span>
+
+<span class="k">assert</span> <span class="n">delivered_codes</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">mean_weight</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mean_weight</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">lightest_code</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="k">assert</span> <span class="n">delivered_codes</span><span class="p">(</span><span class="n">NO_KEY</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">lightest_code</span><span class="p">(</span><span class="n">NO_KEY</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="k">assert</span> <span class="n">delivered_codes</span><span class="p">(</span><span class="n">ONE</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">mean_weight</span><span class="p">(</span><span class="n">ONE</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">lightest_code</span><span class="p">(</span><span class="n">ONE</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+</code></pre></div>
+
+<p>Line by line, the important parts are these.</p>
+<ul>
+<li><code>import json</code> gives the program the JSON reader, and <code>json.loads(payload_json)</code> turns the string into a dictionary. Each function starts with that line.</li>
+<li><code>data.get("parcels", [])</code> returns the list, or an empty list when the key is missing. That is why <code>NO_KEY</code> returns an empty result and does not crash.</li>
+<li>In <code>delivered_codes</code>, <code>parcel.get("status") == "delivered"</code> keeps only the delivered parcels. Because the loop runs in array order, the codes come out in document order.</li>
+<li>In <code>mean_weight</code>, the comprehension collects the weight of each delivered parcel only. The <code>if not weights</code> check comes before the division, so a payload with no delivered parcel returns <code>0.0</code> and never reaches <code>ZeroDivisionError</code>.</li>
+<li><code>round(sum(weights) / len(weights), 2)</code> rounds once, at the end. For <code>PAYLOAD</code>, the delivered weights are 2.5, 4.0 and 1.0. They add up to 7.5, and 7.5 divided by 3 is 2.5. For <code>THIRDS</code>, 5.0 divided by 3 is 1.666..., which rounds to 1.67.</li>
+<li>In <code>lightest_code</code>, the <code>continue</code> skips any parcel that is not delivered, so a lighter lost parcel such as <code>P-30</code> can never win. The first condition, <code>best_weight is None</code>, accepts the first delivered parcel. The second, <code>w &lt; best_weight</code>, replaces the best when a parcel is lighter. The third handles a tie: a parcel with the same weight replaces the best only when its code is smaller.</li>
+<li>The <code>or</code> order matters. When <code>best_weight</code> is <code>None</code>, Python stops at the first test and never compares <code>code</code> with <code>best_code</code>, which is also <code>None</code> at that point.</li>
+<li><code>assert</code> lines are the checks. Each one prints nothing when it passes and stops the program with an error when it fails. The <code>is None</code> test is used for empty results because <code>None</code> is compared by identity.</li>
+</ul>
+<p>The trace below steps through <code>lightest_code</code> on the tie payload, where the first parcel is <code>P-88</code> and the second is <code>P-11</code>. Both are delivered and weigh 3.0.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Keeping the lightest delivered parcel with a tie rule&quot;, &quot;code&quot;: [&quot;parcels = [(\&quot;P-88\&quot;, \&quot;delivered\&quot;, 3.0), (\&quot;P-11\&quot;, \&quot;delivered\&quot;, 3.0)]&quot;, &quot;best_code, best_weight = None, None&quot;, &quot;for code, status, w in parcels:&quot;, &quot;    if status != \&quot;delivered\&quot;:&quot;, &quot;        continue&quot;, &quot;    if best_weight is None or w &lt; best_weight or (w == best_weight and code &lt; best_code):&quot;, &quot;        best_weight = w&quot;, &quot;        best_code = code&quot;, &quot;print(best_code)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;parcels&quot;, &quot;2 items&quot;]], &quot;note&quot;: &quot;The payload has been read into a list of two parcels.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;best_code&quot;, &quot;None&quot;], [&quot;best_weight&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;Start with no best parcel.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;code&quot;, &quot;\&quot;P-88\&quot;&quot;], [&quot;status&quot;, &quot;\&quot;delivered\&quot;&quot;], [&quot;w&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;The loop takes the first parcel.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;status&quot;, &quot;\&quot;delivered\&quot;&quot;]], &quot;note&quot;: &quot;The status is delivered, so the test is false and continue is not run.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;w&quot;, &quot;3.0&quot;], [&quot;best_weight&quot;, &quot;None&quot;]], &quot;note&quot;: &quot;best_weight is None, so the first test is true straight away.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;best_weight&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;The first parcel becomes the best so far.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;best_code&quot;, &quot;\&quot;P-88\&quot;&quot;]], &quot;note&quot;: &quot;The first parcel&#x27;s code is stored.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;code&quot;, &quot;\&quot;P-11\&quot;&quot;], [&quot;status&quot;, &quot;\&quot;delivered\&quot;&quot;], [&quot;w&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;The loop takes the second parcel.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;status&quot;, &quot;\&quot;delivered\&quot;&quot;]], &quot;note&quot;: &quot;Delivered again, so it is not skipped.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;w&quot;, &quot;3.0&quot;], [&quot;best_weight&quot;, &quot;3.0&quot;], [&quot;code&quot;, &quot;\&quot;P-11\&quot;&quot;], [&quot;best_code&quot;, &quot;\&quot;P-88\&quot;&quot;]], &quot;note&quot;: &quot;w &lt; best_weight is false, but the weights tie and \&quot;P-11\&quot; is smaller than \&quot;P-88\&quot;, so the test is true.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;best_weight&quot;, &quot;3.0&quot;]], &quot;note&quot;: &quot;The weight is stored again, unchanged.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;best_code&quot;, &quot;\&quot;P-11\&quot;&quot;]], &quot;note&quot;: &quot;The tie goes to the smaller code, so P-11 replaces P-88.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;best_code&quot;, &quot;\&quot;P-11\&quot;&quot;]], &quot;note&quot;: &quot;The loop has ended, so the answer P-11 is used.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a second twin problem, from a different domain. A sports league API returns a JSON string. Its top level is an object with a <code>matches</code> list. Each match has a <code>team</code> (text) and <code>points</code> (a whole number).</p>
+<p>Write two functions.</p>
+<ul>
+<li><code>tally_points(payload_json)</code> returns a dictionary that maps each team name to the total of its points. It returns <code>{}</code> when there are no matches.</li>
+<li><code>top_team(payload_json)</code> returns the team name with the highest total. If two teams share the highest total, the team whose name comes first alphabetically wins. It returns <code>None</code> when there are no matches.</li>
+</ul>
+<p>Make the following asserts pass. The payloads are defined in the statement, so you can run the asserts as they are once your functions exist.</p>
+<div class="hl"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: [{&quot;team&quot;: &quot;Blue&quot;, &quot;points&quot;: 3}, {&quot;team&quot;: &quot;Red&quot;, &quot;points&quot;: 1}, {&quot;team&quot;: &quot;Blue&quot;, &quot;points&quot;: 0}, {&quot;team&quot;: &quot;Green&quot;, &quot;points&quot;: 3}, {&quot;team&quot;: &quot;Red&quot;, &quot;points&quot;: 3}]}&#39;</span>
+<span class="n">T</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: [{&quot;team&quot;: &quot;Zed&quot;, &quot;points&quot;: 2}, {&quot;team&quot;: &quot;Amy&quot;, &quot;points&quot;: 2}]}&#39;</span>
+<span class="n">E</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: []}&#39;</span>
+
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Blue&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Zed&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Amy&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Amy&quot;</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>Try the problem before you open this box.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tally_points</span><span class="p">(</span><span class="n">payload_json</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matches&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">team</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;team&quot;</span><span class="p">]</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">team</span><span class="p">]</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">team</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;points&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">totals</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_team</span><span class="p">(</span><span class="n">payload_json</span><span class="p">):</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">totals</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">totals</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">best</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">totals</span><span class="p">[</span><span class="n">team</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">totals</span><span class="p">[</span><span class="n">best</span><span class="p">]:</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">team</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+
+<span class="n">M</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: [{&quot;team&quot;: &quot;Blue&quot;, &quot;points&quot;: 3}, {&quot;team&quot;: &quot;Red&quot;, &quot;points&quot;: 1}, {&quot;team&quot;: &quot;Blue&quot;, &quot;points&quot;: 0}, {&quot;team&quot;: &quot;Green&quot;, &quot;points&quot;: 3}, {&quot;team&quot;: &quot;Red&quot;, &quot;points&quot;: 3}]}&#39;</span>
+<span class="n">T</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: [{&quot;team&quot;: &quot;Zed&quot;, &quot;points&quot;: 2}, {&quot;team&quot;: &quot;Amy&quot;, &quot;points&quot;: 2}]}&#39;</span>
+<span class="n">E</span> <span class="o">=</span> <span class="s1">&#39;{&quot;matches&quot;: []}&#39;</span>
+
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Blue&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Zed&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Amy&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Amy&quot;</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">tally_points</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">top_team</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+</code></pre></div>
+
+<p>The solution walks the matches once and adds each team's points into a dictionary. The <code>totals.get(team, 0)</code> call starts a new team at zero. <code>top_team</code> then checks the teams in alphabetical order, because <code>sorted</code> returns the names in that order. The strict <code>&gt;</code> keeps the first team it sees at a given total, which is the alphabetically first one, so a tie goes to "Amy" over "Zed".</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Check that the starter file still has <code>import json</code> at the top and that the three function names and their arguments match the statement exactly.</li>
+<li>Check that <code>pluck</code> returns a list, and that the list follows the order of the <code>readings</code> array, not alphabetical order.</li>
+<li>Check that <code>pluck</code> works with a key other than <code>"station"</code>, such as <code>"value"</code>, on the same payload.</li>
+<li>Check that <code>avg_value</code> returns <code>0.0</code> as a float when the readings list is empty.</li>
+<li>Check that <code>avg_value</code> rounds only the final mean, with <code>round(x, 2)</code>, and that your hand-worked value matches.</li>
+<li>Check that <code>worst_station</code> returns the station id as a string, not the value.</li>
+<li>Check that <code>worst_station</code> breaks a tie by the smaller station id, using two readings with the same highest value and the later one having the smaller id.</li>
+<li>Check that <code>worst_station</code> returns <code>None</code> for an empty payload, and that your file has no test code or print statements that could fail on import.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p>These five questions are the kind an interviewer or viva examiner asks about this day. Answer them in your own words, and try to say each answer in under 30 seconds.</p>
+<details class="box box-answer"><summary>Why do you check the status code before reading the body?</summary><p>Because an HTTP reply can carry a body whatever its status. A 404 or 500 often includes an error message, and if you parse that as data the script produces wrong rows without warning. Checking the status first means the script trusts the body only for a 200. Anything else is treated as a failure, the body is discarded and the script exits with code 1, so the CSV is never touched.</p></details>
+
+<details class="box box-answer"><summary>What does jq -e do, and why does the script use it?</summary><p>The -e flag sets jq's exit code from the output. A null or false result gives a non-zero exit code, and a true result gives zero. Without it, jq returns zero even when a field is null, so bad rows would be appended. The script uses it to check that pm2_5 and pm10 exist before writing anything. When the check fails, the script exits with code 2, which is a different code from a bad status, so a caller can tell the two failures apart.</p></details>
+
+<details class="box box-answer"><summary>How do you keep an API key out of the repository?</summary><p>The key lives in a .env file that Git ignores, and the repository contains only .env.example with the variable names. The script loads the file with set -a, source and set +a, then checks the variable is set with a default-error expansion. The key is sent in a header rather than the URL. Before you push, you check that git check-ignore .env prints the file name and that git log for key-like words shows only variable names, never values.</p></details>
+
+<details class="box box-answer"><summary>Why does the fetcher set a timeout and capture the status with -w?</summary><p>A server that accepts a connection and then stops replying would hang a scheduled job forever, so --max-time gives curl a hard limit. The -w flag prints only the status code to stdout, which lets the script store it in a variable with command substitution, while the body goes to a temporary file. This keeps the status and the data separate, so the script can test the status and then read the body only when it is valid.</p></details>
+
+<details class="box box-answer"><summary>When would you use Python instead of curl and jq?</summary><p>You would move to Python when the logic becomes too complex to read as a one-line filter, when you need to combine several sources, or when you need to test each part on its own. The course moves to Python from Day 10 onwards. A Python fetcher can use the standard library's HTTP tools and the json module and can be unit tested with assert statements. The curl and jq fetcher stays useful because it has no extra runtime and runs anywhere the shell does.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curl URL</code></td>
+<td>Sends a GET request and prints the body</td>
+<td><code>curl "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Hides the progress meter</td>
+<td><code>curl -s "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-o FILE</code></td>
+<td>Saves the body to a file</td>
+<td><code>curl -s "$URL" -o payload.json</code></td>
+</tr>
+<tr>
+<td><code>-o /dev/null</code></td>
+<td>Throws the body away</td>
+<td><code>curl -s -o /dev/null "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-w '%{http_code}'</code></td>
+<td>Prints only the status code</td>
+<td><code>curl -s -o /dev/null -w '%{http_code}\n' "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-D -</code></td>
+<td>Prints the reply headers to stdout</td>
+<td><code>curl -s -D - -o /dev/null "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-G</code></td>
+<td>Puts <code>-d</code> data in the URL as a query string</td>
+<td><code>curl -G --data-urlencode "timezone=Asia/Kolkata" "$URL"</code></td>
+</tr>
+<tr>
+<td><code>--data-urlencode</code></td>
+<td>Encodes one value for a query string</td>
+<td><code>--data-urlencode "timezone=Asia/Kolkata"</code></td>
+</tr>
+<tr>
+<td><code>-H 'Name: value'</code></td>
+<td>Adds a request header</td>
+<td><code>-H "X-API-Key: $OPENAQ_API_KEY"</code></td>
+</tr>
+<tr>
+<td><code>-X POST</code></td>
+<td>Sets the request method</td>
+<td><code>curl -X POST ...</code></td>
+</tr>
+<tr>
+<td><code>-d 'data'</code></td>
+<td>Sends a request body</td>
+<td><code>-d '{"city":"Pune"}'</code></td>
+</tr>
+<tr>
+<td><code>--max-time 20</code></td>
+<td>Gives up after 20 seconds</td>
+<td><code>curl --max-time 20 "$URL"</code></td>
+</tr>
+<tr>
+<td><code>-f</code> or <code>--fail</code></td>
+<td>Exits non-zero on HTTP errors</td>
+<td><code>curl -sf "$URL"</code></td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>Exit code of the last command</td>
+<td><code>echo $?</code></td>
+</tr>
+<tr>
+<td><code>jq .</code></td>
+<td>Pretty-prints JSON</td>
+<td><code>jq . payload.json</code></td>
+</tr>
+<tr>
+<td><code>jq '.key'</code></td>
+<td>Reads a field</td>
+<td><code>jq '.current.pm2_5' payload.json</code></td>
+</tr>
+<tr>
+<td><code>jq '.[]'</code></td>
+<td>Loops over an array</td>
+<td><code>jq '.readings[]'</code></td>
+</tr>
+<tr>
+<td><code>select(...)</code></td>
+<td>Keeps elements that pass a test</td>
+<td><code>select(.value &gt; 40)</code></td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>Counts array elements or object keys</td>
+<td><code>jq '.readings \| length'</code></td>
+</tr>
+<tr>
+<td><code>jq -r</code></td>
+<td>Prints raw strings without quotes</td>
+<td><code>jq -r '.name'</code></td>
+</tr>
+<tr>
+<td><code>jq -e</code></td>
+<td>Sets exit code from the result</td>
+<td><code>jq -e '.current.pm2_5 != null'</code></td>
+</tr>
+<tr>
+<td><code>jq --arg name value</code></td>
+<td>Passes a shell value into the filter as <code>$name</code></td>
+<td><code>jq --arg loc "$LOC"</code></td>
+</tr>
+<tr>
+<td><code>@csv</code></td>
+<td>Turns an array into one CSV line</td>
+<td><code>[.a, .b] \| @csv</code></td>
+</tr>
+<tr>
+<td><code>\|</code></td>
+<td>Pipes stdout into the next command</td>
+<td><code>curl ... \| jq ...</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code> and <code>&gt;&gt;</code></td>
+<td>Redirect output, replacing or appending</td>
+<td><code>... &gt;&gt; data/raw/2026-11-17.csv</code></td>
+</tr>
+<tr>
+<td><code>&gt;&amp;2</code></td>
+<td>Sends a message to stderr</td>
+<td><code>echo "ERROR" &gt;&amp;2</code></td>
+</tr>
+<tr>
+<td><code>mktemp</code></td>
+<td>Creates a unique temporary file</td>
+<td><code>TMP="$(mktemp)"</code></td>
+</tr>
+<tr>
+<td><code>trap ... EXIT</code></td>
+<td>Runs a command when the script exits</td>
+<td><code>trap 'rm -f "$TMP"' EXIT</code></td>
+</tr>
+<tr>
+<td><code>set -euo pipefail</code></td>
+<td>Stops a script on errors</td>
+<td>Top of a strict script</td>
+</tr>
+<tr>
+<td><code>chmod 600 .env</code></td>
+<td>Makes a file readable only by its owner</td>
+<td><code>chmod 600 .env</code></td>
+</tr>
+<tr>
+<td><code>set -a</code> / <code>set +a</code></td>
+<td>Export every variable set between them</td>
+<td><code>set -a; source .env; set +a</code></td>
+</tr>
+<tr>
+<td><code>${NAME:?message}</code></td>
+<td>Stops with a message if NAME is empty</td>
+<td><code>: "${OPENAQ_API_KEY:?set it}"</code></td>
+</tr>
+<tr>
+<td><code>git check-ignore FILE</code></td>
+<td>Prints the file if Git ignores it</td>
+<td><code>git check-ignore .env</code></td>
+</tr>
+<tr>
+<td><code>git log -p --all</code></td>
+<td>Shows every change in every commit</td>
+<td><code>git log -p --all \| grep -inE 'api[_-]?key'</code></td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Use the data</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Credentials missing or not accepted</td>
+<td>Check the key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Known user, not allowed</td>
+<td>Check permissions</td>
+</tr>
+<tr>
+<td>404</td>
+<td>URL does not exist</td>
+<td>Check the path</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server failed</td>
+<td>Retry later or report</td>
+</tr>
+<tr>
+<td>000</td>
+<td>No reply at all</td>
+<td>Treat as an error</td>
+</tr>
+<tr>
+<td>Exit 1</td>
+<td>Bad HTTP status in the script</td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>Exit 2</td>
+<td>Required field missing in the body</td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>Exit 6</td>
+<td>curl could not resolve the host</td>
+<td>Check the network or the name</td>
+</tr>
+<tr>
+<td>Exit 22</td>
+<td>curl <code>--fail</code> saw an HTTP error</td>
+<td>Check the URL and key</td>
+</tr>
+<tr>
+<td>Exit 28</td>
+<td>curl timed out</td>
+<td>Check the server or raise the limit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;HTTP status&quot;, &quot;a&quot;: &quot;The three-digit code in the reply that says whether the request worked. Check it before you trust the body.&quot;}, {&quot;q&quot;: &quot;000 from curl&quot;, &quot;a&quot;: &quot;No reply arrived at all, for example a DNS failure or a timeout. Treat it as an error.&quot;}, {&quot;q&quot;: &quot;-o /dev/null&quot;, &quot;a&quot;: &quot;Discard the response body, so only the status or headers are kept.&quot;}, {&quot;q&quot;: &quot;-w &#x27;%{http_code}&#x27;&quot;, &quot;a&quot;: &quot;Print only the HTTP status code to stdout, with no body.&quot;}, {&quot;q&quot;: &quot;-f or --fail&quot;, &quot;a&quot;: &quot;Make curl exit non-zero when the server returns an HTTP error.&quot;}, {&quot;q&quot;: &quot;--max-time&quot;, &quot;a&quot;: &quot;Limit the total time a request may take, so a stuck server cannot hang a script.&quot;}, {&quot;q&quot;: &quot;.readings[]&quot;, &quot;a&quot;: &quot;Loop over every element of the readings array in jq.&quot;}, {&quot;q&quot;: &quot;select(condition)&quot;, &quot;a&quot;: &quot;Keep only the jq input for which the condition is true.&quot;}, {&quot;q&quot;: &quot;jq -e&quot;, &quot;a&quot;: &quot;Set jq&#x27;s exit code from the result, so null or false fails the script.&quot;}, {&quot;q&quot;: &quot;@csv with -r&quot;, &quot;a&quot;: &quot;Turn a jq array into one correctly quoted CSV line with raw output.&quot;}, {&quot;q&quot;: &quot;Environment variable&quot;, &quot;a&quot;: &quot;A named value a process inherits from its shell, used to keep secrets out of code.&quot;}]}"></div>
+
+<h2 id="notes-on-the-sources">Notes on the sources</h2>
+<p>The course slides and the workbook use different examples. The slides build <code>scripts/fetch_once.sh</code> against Open-Meteo, a public air-quality API. The workbook walks through a station service that the course runs at <code>localhost:8008</code>. The lab steps follow the slides, and the worked example follows the workbook, so the two sets of commands look different on purpose. Both use the same tools and the same patterns.</p><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D02.html"><small>Previous</small>Day 2 — Linux and the command line</a><a class="nx" href="D04.html"><small>Next</small>Day 4 — Bash scripting and cron automation</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,911 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 22 — Ensembles, error analysis and model cards · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D22" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 6 · Days 21–25 · Models, APIs, containers</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a class="cur" href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 6 · Days 21–25 · Models, APIs, containers</p><h1>Day 22 — Ensembles, error analysis and model cards</h1><p class="sub">You will be able to combine several models into one, find the rows and groups where it fails, and write a model card that states its limits.</p><p class="meta">79 min read · practice quiz · 15 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D22.mp4?v=1794465716"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>A single model makes mistakes that often differ from row to row. Combine several models and some of those mistakes cancel out. Today you build ensembles (groups of models), measure the errors row by row and group by group, and write a model card, which is a short document that tells a reviewer what the model is for and where it fails. Think of a school where one teacher's mark for a pupil is unreliable: the head asks three teachers, averages their marks, and then checks which classes are marked worst. That is the whole day. CityPulse needs this because officers will act on pollution forecasts, and they need to know when to trust them.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Terminal.</strong> A text window where you type a command and press Enter. The computer runs it and prints the result underneath.</p>
+<p><strong>Command.</strong> A line you type at the terminal prompt, such as <code>python3 boost.py</code>. The first word is the program, the rest are its inputs.</p>
+<p><strong>File and folder.</strong> A file holds text or data. A folder (also called a directory) holds files. A path such as <code>reports/ml/test_predictions.parquet</code> names a file by its folders.</p>
+<p><strong>Python and a script.</strong> Python is a programming language. A script is a text file of Python instructions, saved with the extension <code>.py</code>. Running <code>python3 boost.py</code> reads the file and carries out its lines from top to bottom.</p>
+<p><strong>Variable.</strong> A name that holds a value. <code>a = 10</code> stores the number 10 under the name <code>a</code>. Later lines can use <code>a</code>.</p>
+<p><strong>List and dictionary.</strong> A list is an ordered collection in square brackets: <code>[10, 20, 30]</code>. Position 0 is the first item. A dictionary is a collection of key-value pairs in curly brackets: <code>{"A": 2}</code> stores the value 2 under the key <code>"A"</code>.</p>
+<p><strong>Loop.</strong> Repeats a block of lines for each item. <code>for x in [1, 2]:</code> runs the indented lines twice, with <code>x</code> set to 1, then 2. Indentation (the spaces at the start of a line) shows which lines belong to the loop.</p>
+<p><strong>Function.</strong> A named, reusable action. <code>abs(-3)</code> is a built-in function that returns 3. A function can also be defined by you with <code>def</code>.</p>
+<p><strong>Library.</strong> Code written by other people that you bring in with <code>import</code>. Install one with <code>pip install</code>. This course uses four: scikit-learn (imported as <code>sklearn</code>) for models, pandas (<code>pd</code>) for tables, joblib for saving models, and PyYAML (<code>yaml</code>) for reading and writing YAML text files.</p>
+<p><strong>DataFrame.</strong> pandas' name for a table with named columns and numbered rows.</p>
+<p><strong>Model, training and prediction.</strong> A model is a rule learned from data. Training means fitting the model to rows where the answer is known. Prediction means asking the trained model for answers on new rows.</p>
+<p><strong>Train/test split.</strong> You hold back some rows (the test set) and do not show them to the model during training. Scores on the test set are an honest estimate of how the model will do on new data.</p>
+<p><strong>Error measures.</strong> Given the actual value and the predicted value for each row:</p>
+<ul>
+<li>The <strong>residual</strong> is actual minus predicted. In this course, a positive residual means the model under-predicted.</li>
+<li>The <strong>MAE</strong> (mean absolute error) is the average of the absolute residuals. It is the average size of the miss, in the same units as the target.</li>
+<li>The <strong>bias</strong> here means the mean of the signed errors. Near zero means the errors cancel out. Note that the word "bias" also has a second meaning in statistics; in this chapter it always means the mean signed error.</li>
+</ul>
+<p><strong>Decision tree.</strong> A model that answers a question by following a sequence of yes/no splits, such as "is the hour above 17?", until it reaches a leaf that gives the answer.</p>
+<p><strong>Overfitting.</strong> A model that memorises the training rows and does badly on new rows.</p>
+<p><strong>Ensemble.</strong> A combination of several models whose outputs are merged into one answer.</p>
+<p><strong>Random seed.</strong> A number, written as <code>random_state=42</code>, that fixes the random choices a model makes. Using the same seed gives the same result each run, so your numbers can be checked against the course.</p>
+<p><strong>IST.</strong> Indian Standard Time, which is UTC plus 5 hours 30 minutes. In code it is written <code>Asia/Kolkata</code>.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="random-forests-and-gradient-boosting">Random forests and gradient boosting</h3>
+<p>A <strong>random forest</strong> trains many decision trees, each on a bootstrap sample. A bootstrap sample is drawn with replacement from the training rows, so each tree sees a slightly different set. The trees are independent of each other, and the forest averages their predictions. Averaging reduces variance: a single tree's answer swings when the data changes, and the average swings less. CityPulse uses it because trees capture effects such as the evening rush peak that a straight-line model needs hand-made features to capture.</p>
+<p><strong>Gradient boosting</strong> works the other way. It adds shallow trees one after another. Each new tree is fitted to the errors left by the trees so far, so the team gets better at the cases it still gets wrong. This reduces bias. <code>HistGradientBoostingRegressor</code> groups (bins) each numeric feature into a fixed number of buckets before fitting, which makes it fast on large tables.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Averaging two forecast lists position by position&quot;, &quot;code&quot;: [&quot;a = [10, 20]&quot;, &quot;b = [12, 18]&quot;, &quot;avg = []&quot;, &quot;for x, y in zip(a, b):&quot;, &quot;    avg.append((x + y) / 2)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;a&quot;, &quot;[10, 20]&quot;]], &quot;note&quot;: &quot;Create the first list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;a&quot;, &quot;[10, 20]&quot;], [&quot;b&quot;, &quot;[12, 18]&quot;]], &quot;note&quot;: &quot;Create the second list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;a&quot;, &quot;[10, 20]&quot;], [&quot;b&quot;, &quot;[12, 18]&quot;], [&quot;avg&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Start with an empty list for the averages.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;x&quot;, &quot;10&quot;], [&quot;y&quot;, &quot;12&quot;], [&quot;avg&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;zip pairs up position 0 of each list.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;x&quot;, &quot;10&quot;], [&quot;y&quot;, &quot;12&quot;], [&quot;avg&quot;, &quot;[11.0]&quot;]], &quot;note&quot;: &quot;(10 + 12) / 2 is 11.0, and it is added to avg.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;x&quot;, &quot;20&quot;], [&quot;y&quot;, &quot;18&quot;], [&quot;avg&quot;, &quot;[11.0]&quot;]], &quot;note&quot;: &quot;zip moves on to position 1.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;x&quot;, &quot;20&quot;], [&quot;y&quot;, &quot;18&quot;], [&quot;avg&quot;, &quot;[11.0, 19.0]&quot;]], &quot;note&quot;: &quot;(20 + 18) / 2 is 19.0.&quot;}]}"></div>
+
+<p>The animation above shows the averaging step that the graded lab uses. Press play and watch <code>x</code> and <code>y</code> change as the loop moves along the two lists.</p>
+<p>The slide code for the comparison is below. It assumes <code>cfg</code>, <code>train</code> and <code>cv</code> were built by an earlier script, <code>tune.py</code>, so you cannot run it on its own yet.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingRegressor</span><span class="p">,</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_pipeline</span>
+<span class="c1">## cfg, train and cv are built exactly as in tune.py (same rows, same folds)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;rf&quot;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="s2">&quot;histgb&quot;</span><span class="p">:</span> <span class="n">HistGradientBoostingRegressor</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">pipe</span> <span class="o">=</span> <span class="n">build_pipeline</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">est</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">train</span><span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]],</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">)</span>
+    <span class="n">mae</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: CV MAE </span><span class="si">{</span><span class="n">mae</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">mae</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  fit </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s/fold&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li>The first two <code>from ... import</code> lines bring in the two ensemble models and the cross-validation function. <code>from</code> names the library, <code>import</code> names the parts you want.</li>
+<li><code>from src.pipeline import build_pipeline</code> brings in a function from the project's own <code>src</code> folder. It builds the preprocessing steps and the model in one object.</li>
+<li>The comment line is for you, not the computer. Python ignores anything after <code>#</code>.</li>
+<li><code>models = { ... }</code> is a dictionary. The keys <code>"rf"</code> and <code>"histgb"</code> are short labels for printing.</li>
+<li><code>n_estimators=300</code> means 300 trees. <code>min_samples_leaf=5</code> stops a tree splitting until a leaf holds at least 5 rows, which curbs overfitting and file size. <code>n_jobs=-1</code> uses all your processor cores. <code>random_state=42</code> fixes the seed.</li>
+<li><code>max_iter=300</code> means 300 boosting stages and <code>learning_rate=0.05</code> sets how much each stage changes the answer.</li>
+<li>The <code>for</code> loop runs once per model. <code>set_params(model=est)</code> swaps the model in the pipeline for <code>est</code> and keeps every other step the same. This is what makes the comparison fair.</li>
+<li><code>cross_validate</code> trains and tests on each fold (each split of the data) and returns the scores in <code>r</code>. <code>cv=cv</code> reuses the same folds for each model.</li>
+<li><code>scoring="neg_mean_absolute_error"</code> makes scikit-learn return the MAE as a negative number, because its convention is that a higher score is better. The next line flips the sign back.</li>
+<li>The <code>print</code> line shows the mean and standard deviation of the fold MAEs, and the average fit time per fold.</li>
+</ul>
+<p>When the course runs this on its data, it prints one line for each model. The exact numbers depend on the data, so compare your numbers with the course output, not with anybody else's.</p>
+<div class="box box-trap"><div class="box-h">Trap: Comparing on different folds or rows</div><p>An ensemble may look better only because it was scored on another split. Always reuse the same <code>cv</code> object and the same training window as the baseline. A difference smaller than the fold standard deviation is a tie. Report it as a tie.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Unlimited tree depth</div><p>A random forest with no depth or leaf limit can grow very large trees. That makes the file big and slow to load. Set <code>min_samples_leaf</code> to 5 or more, as the slide does.</p></div>
+
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;From two models to one ensemble and its errors&quot;, &quot;nodes&quot;: [&quot;Model A&quot;, &quot;Model B&quot;, &quot;Averaging step&quot;, &quot;Residuals&quot;, &quot;City MAE report&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;forecast list&quot;, &quot;note&quot;: &quot;Model A hands over its rainfall forecasts for the test days.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;forecast list&quot;, &quot;note&quot;: &quot;Model B hands over its forecasts, in the same day order.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;ensemble forecast&quot;, &quot;note&quot;: &quot;The averaging step outputs one forecast per day, then the actual rainfall is subtracted from it.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;label&quot;: &quot;errors per city&quot;, &quot;note&quot;: &quot;Each residual is made absolute and averaged per city.&quot;}]}"></div>
+
+<h3 id="slice-based-error-analysis">Slice-based error analysis</h3>
+<p>An overall MAE can hide a group that is badly served. Slice-based error analysis splits the test rows into groups (slices), such as each station or each hour of the day, and reports the count, MAE and bias for each. A small slice can look bad by chance, so the count matters too.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;reports/ml/test_predictions.parquet&quot;</span><span class="p">)</span>    <span class="c1"># station, ts, y_true, y_pred</span>
+<span class="n">pred</span><span class="p">[</span><span class="s2">&quot;err&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;y_true&quot;</span><span class="p">]</span>                      <span class="c1"># bias &gt; 0: over-predicts</span>
+<span class="n">pred</span><span class="p">[</span><span class="s2">&quot;hour_ist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">&quot;Asia/Kolkata&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+<span class="n">overall</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;err&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">by</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;station&quot;</span><span class="p">,</span> <span class="s2">&quot;hour_ist&quot;</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="p">)[</span><span class="s2">&quot;err&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">bias</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">[</span><span class="s2">&quot;note&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;insufficient&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;mae&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;worst </span><span class="si">{</span><span class="n">by</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> MAE </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs overall </span><span class="si">{</span><span class="n">overall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import pandas as pd</code> loads pandas and gives it the short name <code>pd</code>.</li>
+<li><code>pd.read_parquet(...)</code> reads a Parquet file, a compact table format, into a DataFrame called <code>pred</code>. The file holds the test predictions saved by an earlier step.</li>
+<li><code>pred["err"] = pred["y_pred"] - pred["y_true"]</code> creates a new column. Square brackets pick a column by name. This line uses prediction minus actual, which is the opposite sign to the residual used in the next section. The comment says so: a positive bias means over-prediction.</li>
+<li><code>pd.to_datetime(pred["ts"])</code> turns the text timestamps into date-time values. <code>.dt.tz_convert("Asia/Kolkata")</code> converts them to IST, and <code>.dt.hour</code> keeps only the hour. Without the conversion, the hours would be in UTC and would not match officers' clocks.</li>
+<li><code>overall</code> is the MAE across all test rows, for comparison with each slice.</li>
+<li><code>for by in ("station", "hour_ist"):</code> runs the block twice, once grouping by station and once by hour.</li>
+<li><code>groupby(by)</code> splits the rows into groups. <code>agg(...)</code> computes three numbers per group: <code>n</code> is the row count (<code>"size"</code>), <code>mae</code> is a small function that averages the absolute errors, and <code>bias</code> is the mean signed error.</li>
+<li><code>.round(2)</code> rounds the table to two decimal places.</li>
+<li><code>t["note"]</code> marks each group with fewer than 100 rows as <code>insufficient</code>. <code>map</code> looks up each True or False value in the dictionary given.</li>
+<li><code>sort_values("mae", ascending=False)</code> puts the worst group first.</li>
+<li>The first <code>print</code> shows the top five rows. The second prints the worst group and compares its MAE with the overall figure. <code>\n</code> adds a blank line.</li>
+</ul>
+<p>The output has one table per grouping, with the worst groups at the top. You know it worked when the station table shows one row per station and an <code>n</code> column that adds up to the number of test rows.</p>
+<p>The Technology in Action workbook uses the same idea with a shorter script. It groups absolute errors by station and sorts them. Its result was station ST-04 with a MAE of 6.13, against an overall MAE of 5.18.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Summing absolute errors for each group&quot;, &quot;code&quot;: [&quot;groups = [\&quot;A\&quot;, \&quot;B\&quot;, \&quot;A\&quot;]&quot;, &quot;actual = [10, 10, 20]&quot;, &quot;predicted = [12, 7, 17]&quot;, &quot;totals = {}&quot;, &quot;for g, a, p in zip(groups, actual, predicted):&quot;, &quot;    totals[g] = totals.get(g, 0) + abs(a - p)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;groups&quot;, &quot;[\&quot;A\&quot;, \&quot;B\&quot;, \&quot;A\&quot;]&quot;]], &quot;note&quot;: &quot;Three parallel lists, one row per position.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;groups&quot;, &quot;[\&quot;A\&quot;, \&quot;B\&quot;, \&quot;A\&quot;]&quot;], [&quot;actual&quot;, &quot;[10, 10, 20]&quot;]], &quot;note&quot;: &quot;The actual values.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;groups&quot;, &quot;[\&quot;A\&quot;, \&quot;B\&quot;, \&quot;A\&quot;]&quot;], [&quot;actual&quot;, &quot;[10, 10, 20]&quot;], [&quot;predicted&quot;, &quot;[12, 7, 17]&quot;]], &quot;note&quot;: &quot;The predictions for the same rows.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;totals&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The running totals start empty.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;a&quot;, &quot;10&quot;], [&quot;p&quot;, &quot;12&quot;], [&quot;totals&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Row 1 belongs to group A.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;a&quot;, &quot;10&quot;], [&quot;p&quot;, &quot;12&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: 2}&quot;]], &quot;note&quot;: &quot;get returns 0 for a new key, so abs(10 - 12) = 2 is stored.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;B\&quot;&quot;], [&quot;a&quot;, &quot;10&quot;], [&quot;p&quot;, &quot;7&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: 2}&quot;]], &quot;note&quot;: &quot;Row 2 belongs to group B.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;B\&quot;&quot;], [&quot;a&quot;, &quot;10&quot;], [&quot;p&quot;, &quot;7&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: 2, \&quot;B\&quot;: 3}&quot;]], &quot;note&quot;: &quot;abs(10 - 7) = 3 is stored under B.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;a&quot;, &quot;20&quot;], [&quot;p&quot;, &quot;17&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: 2, \&quot;B\&quot;: 3}&quot;]], &quot;note&quot;: &quot;Row 3 belongs to group A again.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;g&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;a&quot;, &quot;20&quot;], [&quot;p&quot;, &quot;17&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: 5, \&quot;B\&quot;: 3}&quot;]], &quot;note&quot;: &quot;The A total grows from 2 to 5.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Slicing training predictions</div><p>Slices must use test-window rows only. Training and cross-validation predictions are too optimistic and will hide the real weak spots.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Grouping by UTC hour</div><p>If you group by the raw hour, a spike at 18:00 IST shows up at 12:30 UTC and gets blamed on the wrong band. Convert to <code>Asia/Kolkata</code> first.</p></div>
+
+<h3 id="model-cards-and-explainability">Model cards and explainability</h3>
+<p>A <strong>model card</strong> is a short document, introduced by Mitchell and colleagues in 2019. It states the model's details, its intended and out-of-scope uses, the training data, metrics overall and by slice, limitations and ethical considerations. It works like the leaflet inside a medicine box.</p>
+<p>Two tools give evidence for the "why" in the card.</p>
+<p><strong>Permutation importance</strong> shuffles one raw input column in the test inputs, keeps the others as they are, and measures how much the MAE rises. Repeating the shuffle ten times gives a mean and a standard deviation. Because it measures reliance on the test data, it is not biased toward columns with many distinct values in the way a tree's built-in importance is.</p>
+<p><strong>A partial dependence plot (PDP)</strong> varies one input across its range, averages the predictions, and draws the resulting curve. It shows the shape of the effect.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span><span class="o">,</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">PartialDependenceDisplay</span><span class="p">,</span> <span class="n">permutation_importance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.features</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_target</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;models/model_v1.joblib&quot;</span><span class="p">)</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">add_target</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;path&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]])</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;split&quot;</span><span class="p">][</span><span class="s2">&quot;test_start&quot;</span><span class="p">],</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Kolkata&quot;</span><span class="p">)]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]]),</span> <span class="n">test</span><span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">)</span>
+<span class="n">imp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">importances_mean</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">importances_std</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># MAE rise when shuffled</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">PartialDependenceDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;humidity&quot;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">figure_</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;docs/img/pdp_humidity.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>joblib.load(...)</code> reads the saved model file, <code>models/model_v1.joblib</code>, back into memory as the same pipeline object you trained. This is how the API will use it.</li>
+<li><code>yaml.safe_load(open("config.yaml"))</code> reads the project's settings file. <code>open</code> returns a handle to the file, and <code>safe_load</code> turns the YAML text into a dictionary.</li>
+<li><code>add_target(...)</code> adds the target column, and <code>.dropna(subset=...)</code> removes rows where the target is missing.</li>
+<li><code>test = df[df["ts"] &gt;= ...]</code> keeps only the rows at or after the test start date, in IST.</li>
+<li><code>X</code> holds the inputs and <code>y</code> holds the answers. <code>drop(columns=...)</code> removes the target column from the inputs.</li>
+<li><code>permutation_importance(...)</code> does the shuffling. <code>n_repeats=10</code> shuffles each column ten times. <code>random_state=42</code> fixes the shuffle.</li>
+<li>The DataFrame <code>imp</code> stores the mean and standard deviation for each column, with the column names as row labels.</li>
+<li><code>sort_values</code> puts the largest reliance first. The comment reminds you what the numbers mean.</li>
+<li><code>PartialDependenceDisplay.from_estimator(...)</code> builds the PDP for the column <code>humidity</code>. It must be a raw input column, because the pipeline takes raw inputs.</li>
+<li><code>savefig(...)</code> writes the picture to a PNG file. <code>dpi=150</code> sets the resolution and <code>bbox_inches="tight"</code> trims the white border.</li>
+</ul>
+<p>Expect a table of five rows, each with a mean and std, and a PNG file in <code>docs/img/</code>. If the folder <code>docs/img</code> does not exist, the save step fails, so create it first.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading importance as causation</div><p>Permutation importance shows how much this model relies on a column. It does not show how much that column changes air quality in the real world.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A card that names the wrong file</div><p>The card must name <code>models/model_v1.joblib</code> exactly, the file the API loads. A card that points at another file documents a model nobody is serving.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The goal is the Technology in Action build: predict PM2.5 (fine particles) from the other pollutants, the hour and the station, then test whether gradient boosting beats simple baselines, find the weak station, and write the card. The numbers below are the workbook's own output.</p>
+<h3 id="step-1-build-the-table-and-split-it">Step 1: build the table and split it</h3>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;features.csv&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;station&quot;</span><span class="p">,</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span><span class="s2">&quot;no2&quot;</span><span class="p">,</span><span class="s2">&quot;o3&quot;</span><span class="p">,</span><span class="s2">&quot;pm10&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pm25&quot;</span><span class="p">]</span>
+<span class="n">Xtr</span><span class="p">,</span><span class="n">Xte</span><span class="p">,</span><span class="n">ytr</span><span class="p">,</span><span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train:&quot;</span><span class="p">,</span> <span class="n">Xtr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;test:&quot;</span><span class="p">,</span> <span class="n">Xte</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line: <code>pd.read_csv</code> loads the CSV table. <code>X</code> takes five columns, the inputs, and <code>y</code> takes the target column <code>pm25</code>. <code>train_test_split</code> shuffles and cuts the rows into training and test parts. <code>test_size=0.2</code> holds back 20 percent, and the seed makes the cut repeatable. <code>print</code> shows the shapes, meaning (rows, columns).</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 pipeline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;train: (1600, 5) test: (400, 5) target: pm25&quot;}]}"></div>
+
+<p>The workbook's printed line ends with <code>target: pm25</code>, but the code shown does not print that part. If your output stops after the shapes, the code is right and the line in the workbook is extra.</p>
+<h3 id="step-2-two-baselines">Step 2: two baselines</h3>
+<p>The workbook trains a <code>DummyRegressor</code> that always predicts the training mean, and a <code>DecisionTreeRegressor</code> with <code>max_depth=4</code>, which is a single small tree. The mean baseline scored a MAE of 9.64 and the single tree 6.51. The ensemble has to beat 6.51 to justify its extra complexity.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 baseline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;mean baseline MAE: 9.64&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;single tree MAE: 6.51&quot;}]}"></div>
+
+<h3 id="step-3-gradient-boosting">Step 3: gradient boosting</h3>
+<p>The workbook fits <code>GradientBoostingRegressor(random_state=42)</code>, which by default uses 100 trees and a learning rate of 0.1. It prints the test MAE and those settings.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 boost.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;gradient boosting MAE: 5.18&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;n_estimators: 100 lr: 0.1&quot;}]}"></div>
+
+<p>Line by line in short: the <code>fit</code> call trains on <code>Xtr</code> and <code>ytr</code>. <code>predict</code> gives <code>pred</code> for the test rows. <code>mean_absolute_error</code> compares them with <code>yte</code>. <code>gb.n_estimators_</code> reads the number of trees actually used, and <code>gb.learning_rate</code> reads the setting back.</p>
+<h3 id="step-4-residuals">Step 4: residuals</h3>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">yte</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">pred</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bias (mean resid):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">resid</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;worst miss:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">resid</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;resid std:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Line by line: <code>numpy</code> (<code>np</code>) does the fast array maths. <code>yte.values</code> strips the labels and gives a plain array of actual values. Subtracting <code>pred</code> gives the residuals, actual minus predicted. <code>resid.mean()</code> is the bias. <code>np.abs(resid).max()</code> is the largest absolute miss. <code>resid.std()</code> is the spread of the errors.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 errors.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;bias (mean resid): 0.17&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;worst miss: 21.8&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;resid std: 6.55&quot;}]}"></div>
+
+<p>A bias of 0.17 means almost no systematic skew. The worst miss of 21.8 shows that one row was far off, which the average hides.</p>
+<h3 id="step-5-to-7-slices-importances-and-the-card">Step 5 to 7: slices, importances and the card</h3>
+<p>In step 5 the workbook groups absolute errors by station and finds ST-04 worst at a MAE of 6.13, above the overall 5.18. In step 6 it prints <code>feature_importances_</code> for the gradient boosting model: pm10 at 0.575, hour at 0.284, no2 at 0.109, o3 at 0.025 and station at 0.007. In step 7 it writes a card with the metrics, limits and the ST-04 finding to <code>card.yaml</code>, then reads it back and prints the model name and the count of limits, which is 3.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 model_card.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;MODEL CARD: citypulse-pm25-gbr&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;known limits: 3&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A hand-typed card</div><p><code>model_card.py</code> writes whatever numbers are typed into its dictionary. It does not compute them. Copy the numbers from your own run, not from the workbook.</p></div>
+
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The lab has seven steps. The worked example above holds the code. You run the same scripts, and you check your numbers against the course output. The workbook does not label its steps with these exact names, so the mapping below is our reading of it.</p>
+<h3 id="step-1-rebuild-the-modelling-table">Step 1: rebuild the modelling table</h3>
+<p>Create <code>pipeline.py</code> with the code from the worked example, then run it from the project folder.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 pipeline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;train: (1600, 5) test: (400, 5) target: pm25&quot;}]}"></div>
+
+<p>You know it worked when the shapes are 1600 rows for training and 400 for testing. The workbook uses <code>python3</code> here and <code>python</code> in its later steps. Use whichever command your machine accepts.</p>
+<h3 id="step-2-train-two-models">Step 2: train two models</h3>
+<p>Train the two baselines: the mean predictor and the depth-4 tree. You know it worked when you see a mean baseline MAE of 9.64 and a single tree MAE of 6.51.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 baseline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;mean baseline MAE: 9.64&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;single tree MAE: 6.51&quot;}]}"></div>
+
+<h3 id="step-3-compare-on-the-test-set">Step 3: compare on the test set</h3>
+<p>Train the gradient boosting model and compare its test MAE with the two baselines. You should see 5.18 from <code>boost.py</code>. Write the three numbers in one table. The ensemble only earns its place if it is clearly lower than 6.51.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 boost.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;gradient boosting MAE: 5.18&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;n_estimators: 100 lr: 0.1&quot;}]}"></div>
+
+<h3 id="step-4-read-the-feature-importances">Step 4: read the feature importances</h3>
+<p>The importance script uses the trained model <code>gb</code>, which only exists inside the boosting script. Put the importance lines in the same file as the training lines, or the script fails with a name error. Expect pm10 at the top with 0.575, and check that the ranking matches physical sense: particulate matter and rush-hour timing should dominate.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 importance.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    pm10 0.575&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    hour 0.284&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     no2 0.109&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;      o3 0.025&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; station 0.007&quot;}]}"></div>
+
+<h3 id="step-5-analyse-the-residuals">Step 5: analyse the residuals</h3>
+<p>Run the residual script. You know it worked when the bias is close to 0 and the worst miss is printed as a single number. Then run the station grouping. You should see ST-04 at the top with a MAE of 6.13.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 errors.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;bias (mean resid): 0.17&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;worst miss: 21.8&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;resid std: 6.55&quot;}]}"></div>
+
+<h3 id="step-6-plot-predicted-against-actual">Step 6: plot predicted against actual</h3>
+<p>The course sources do not give code for this step, so the snippet below is a standard matplotlib example and is not a course file. It needs <code>pip install matplotlib</code>, and it reuses <code>yte</code> and <code>pred</code> from the same script.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">yte</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yte</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">yte</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yte</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;actual pm25&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;predicted pm25&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;predicted_vs_actual.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>scatter</code> draws one dot per test row, at its actual value on the horizontal axis and its predicted value on the vertical. <code>plot</code> draws the red diagonal, where a perfect prediction would sit. <code>savefig</code> writes the image. You know it worked when a PNG appears in the folder, and most dots sit close to the red line, with a few far away.</p>
+<h3 id="step-7-write-the-model-card">Step 7: write the model card</h3>
+<p>Run <code>model_card.py</code>, then open <code>card.yaml</code> in a text editor. You know it worked when the terminal prints <code>MODEL CARD: citypulse-pm25-gbr</code> and <code>known limits: 3</code>, and the file lists the metrics and the ST-04 limit.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 model_card.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;MODEL CARD: citypulse-pm25-gbr&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;known limits: 3&quot;}]}"></div>
+
+<p>The course asks for a file called <code>MODEL_CARD.md</code> with seven sections, and the workbook writes <code>card.yaml</code>. The sources name the seven sections but do not list them here, so check your course's template before you write the Markdown file.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"CityPulse: ensemble predictions and sliced error" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>average 3 models' predictions</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>signed residuals</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>MAE sliced by station</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>single-point ensemble</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 75 of the 100 points. The other 25 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K10.html#y2-t36-demo-day-1-cri-1-compare-ensembles-and-slice-errors">Y2-T36 · Demo Day 1 + CRI 1; compare ensembles and slice errors</a></li>
+<li><a href="K10.html#y2-t37-write-model_cardmd-with-slice-metrics-and-pick-final-model_v1">Y2-T37 · Write MODEL_CARD.md with slice metrics and pick final model_v1</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic in this section and in the same order. Each question describes a CityPulse team with a model, a symptom or a constraint, and asks for the right next step or the right reading of a result. The pass mark is 70%. Your first attempt is the one the skill score keeps, so a second try does not replace a weak first score.</p>
+<p>Every question has four options and only one is correct. The wrong options are often true statements in general that do not fix the problem in the scenario. Four habits help. Read the last line first, so you know what is being asked. Note the facts in the scenario that matter, such as the number of rows, the group size, the split and the time zone. Eliminate options that are true but do not answer this scenario. Watch for three words: "most" asks for the strongest of several true answers, "first" asks for the step that comes before the others, and "best" asks for the option that fits the constraint in the scenario, not the most sophisticated one.</p>
+<h3 id="random-forests">Random forests</h3>
+<p><strong>What it is.</strong> A random forest is a group of decision trees whose answers are averaged. A decision tree predicts by asking a chain of yes/no questions about the inputs, such as "is the hour after 17?", and stops at a leaf that holds a value. One tree is unstable: change a few training rows and its questions change. A random forest trains many trees, each on a <strong>bootstrap sample</strong>. A bootstrap sample is drawn with replacement from the training rows, so each tree sees a different mix, with some rows repeated and others left out. For a regression forest, the prediction is the average of the trees' predictions.</p>
+<p>Here is the averaging step for three trees that predict 12, 15 and 9 minutes for the same row:</p>
+<div class="hl"><pre><span></span><code><span class="n">tree_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">tree_predictions</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree_predictions</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>12.0</code>. Averaging reduces variance, which means the answer swings less when the training rows change. Two settings matter most. <code>n_estimators</code> sets how many trees are trained. <code>min_samples_leaf</code> sets the smallest number of rows a leaf may hold, so a larger value gives smaller trees.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team's forest predicts the 30-minute rise in PM2.5 more accurately than a single tree. But the saved file is 400 MB and takes minutes to load, which breaks the API's start-up time. The forest's averaging already keeps variance low, so adding trees is not the fix. The leaves are the problem: a tree with one row per leaf stores far too much. Setting <code>min_samples_leaf</code> to 5 or more shrinks each tree, and the team keeps the tree count where cross-validation stops improving.</p>
+<div class="box box-trap"><div class="box-h">Trap: A forest is not boosting</div><p>Trees in a forest are trained independently, each on its own bootstrap sample, so no tree corrects another tree's mistakes. An option that says each new tree fixes the one before describes gradient boosting, not a forest.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A random forest for regression averages 300 trees, each trained on a bootstrap sample. The team wants fewer wild swings in the prediction when the training rows change. Which explanation fits?&quot;, &quot;opts&quot;: [&quot;Each tree is trained on the full data, so all the trees agree&quot;, &quot;The forest keeps the single best tree and discards the rest&quot;, &quot;Averaging trees whose errors differ lowers the variance of the forest&quot;, &quot;Each new tree is fitted to the errors of the trees before it&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Averaging trees trained on different bootstrap samples reduces variance. The boosting option is the tempting wrong one, because it also uses many trees, but those trees are not independent.&quot;}, {&quot;q&quot;: &quot;A forest model file is very large and slow to load, and its leaves hold one row each. Which setting most directly reduces the file size?&quot;, &quot;opts&quot;: [&quot;learning_rate=0.05&quot;, &quot;min_samples_leaf=5 or more&quot;, &quot;random_state=42&quot;, &quot;n_jobs=-1&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;min_samples_leaf stops a tree splitting until each leaf holds at least that many rows, so the trees stay small. n_jobs only changes training speed, and learning_rate belongs to boosting.&quot;}, {&quot;q&quot;: &quot;A colleague reports a forest&#x27;s MAE as 2.0 on the training rows and 6.5 on the held-out rows. What does this gap most likely show?&quot;, &quot;opts&quot;: [&quot;The forest is the best model available for every station&quot;, &quot;The bootstrap sampling has a bug and should be removed&quot;, &quot;The held-out rows contain wrong values in the target column&quot;, &quot;The forest has memorised its training rows more than it generalises&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A large gap between training and held-out error is a sign of overfitting. The tempting wrong answer blames the bootstrap, but the sampling is the mechanism that makes the forest generalise.&quot;}]}"></div>
+
+<h3 id="gradient-boosting">Gradient boosting</h3>
+<p><strong>What it is.</strong> Gradient boosting builds its trees in order. The first tree makes a rough prediction. The second tree is fitted to what the first got wrong, which are the residuals. The third is fitted to what the first two still get wrong, and so on. Each tree is shallow and weak alone. The final answer is a start value plus a small share of each tree's correction, and that share is the <code>learning_rate</code>. A smaller learning rate usually needs more stages. <code>HistGradientBoostingRegressor</code> groups each numeric feature into bins (buckets) before fitting, which makes it fast on large tables.</p>
+<div class="hl"><pre><span></span><code><span class="n">prediction</span> <span class="o">=</span> <span class="mf">20.0</span>                       <span class="c1"># a simple starting guess</span>
+<span class="k">for</span> <span class="n">correction</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">]:</span>     <span class="c1"># corrections from three stages</span>
+    <span class="n">prediction</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">correction</span>      <span class="c1"># learning_rate is 0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>22.25</code>. The first stage adds 2.0, the second adds 0.5 and the third takes off 0.25. Each stage moves the answer only part of the way, which is why the rate matters.</p>
+<p><strong>How it shows up in a case study.</strong> A team adds a boosting model after its forest. Its training MAE falls at every stage, but its held-out MAE starts rising after about 400 stages. The model is now following noise in the training rows. The right step is to choose a stage count from cross-validated error on the same folds, and to stop adding stages just because training error still falls.</p>
+<div class="box box-trap"><div class="box-h">Trap: Boosting is not averaging</div><p>Boosting trees depend on each other, so too many stages can overfit. Adding trees to a random forest rarely hurts. Choosing the largest stage count because training error keeps falling is the wrong reason.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A boosting model&#x27;s training MAE falls at every stage, but its held-out MAE rises after stage 250. Which action is best supported by this?&quot;, &quot;opts&quot;: [&quot;Choose a stage count near the point where held-out error stops improving&quot;, &quot;Add more stages, because training error is still falling&quot;, &quot;Set the learning rate to zero so every stage has equal weight&quot;, &quot;Use one deep tree that memorises the rows&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Held-out error is the honest signal, and its rise after stage 250 is overfitting. Falling training error is the tempting wrong reason to add stages.&quot;}, {&quot;q&quot;: &quot;A team says its gradient boosting model is the same as its forest, because both use many trees. Which statement corrects them?&quot;, &quot;opts&quot;: [&quot;Both train each tree on a bootstrap sample of the same size, so they are identical&quot;, &quot;Both average independent trees, so their settings can be swapped&quot;, &quot;In boosting each tree is fitted to the errors left by earlier trees, so the trees depend on each other&quot;, &quot;Boosting trees are always deeper than forest trees&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The trees in boosting are sequential and dependent, and that is the key contrast. The tempting wrong answer relies on the surface similarity of \&quot;many trees\&quot;, and the depth claim is not true in general.&quot;}, {&quot;q&quot;: &quot;A boosting model with learning_rate 0.5 reaches its best held-out MAE at 40 stages. The team lowers the learning rate to 0.05. What should they expect?&quot;, &quot;opts&quot;: [&quot;The best count stays at 40, because the learning rate does not matter&quot;, &quot;The best count usually rises, because each stage moves the prediction less&quot;, &quot;The model stops working, because the rate must be above 1&quot;, &quot;The model turns into a random forest&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A smaller learning rate shrinks each stage, so more stages are usually needed to reach the same fit. The claim that the rate does not matter is the tempting wrong answer.&quot;}]}"></div>
+
+<h3 id="feature-importance">Feature importance</h3>
+<p><strong>What it is.</strong> A feature is an input column. Feature importance is a number that says how much a model relies on a column. Tree models have a built-in value, <code>feature_importances_</code>, computed from the training data: it adds up how much each column's splits reduced error. A column with many distinct values gets more chances to be split on, so it tends to score high. <strong>Permutation importance</strong> works on held-out rows instead. It shuffles one column, which breaks that column's link to each row, and measures how much the error rises. A column the model relies on causes a large rise.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>pm10 (original)</th>
+<th>pm10 (shuffled)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>70</td>
+</tr>
+<tr>
+<td>2</td>
+<td>55</td>
+<td>40</td>
+</tr>
+<tr>
+<td>3</td>
+<td>70</td>
+<td>55</td>
+</tr>
+</tbody>
+</table>
+<p>If the MAE rises from 5.2 to 9.8 after this shuffle, the rise of 4.6 is the importance of pm10 for this run. Repeating the shuffle gives a mean and a standard deviation.</p>
+<p><strong>How it shows up in a case study.</strong> A reviewer asks which input drives a CityPulse forecast. The built-in ranking puts a <code>timestamp_id</code> column first, and that column has hundreds of distinct values. The team should check permutation importance on the held-out test rows, because the built-in measure is computed on training data and favours columns with many distinct values. Only the held-out measure shows how much the error rises when a column is broken.</p>
+<div class="box box-trap"><div class="box-h">Trap: High importance is not cause</div><p>Importance shows how much the model relies on a column. It does not show that the column causes the outcome in the real world. A station or an id can rank high because it separates training rows, not because it changes air quality.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A forest&#x27;s built-in importance ranks a `timestamp_id` column first, and that column has 900 distinct values. On held-out rows, permutation importance ranks it fifth. What is the best explanation?&quot;, &quot;opts&quot;: [&quot;The held-out rows are wrong and should be dropped&quot;, &quot;The timestamp causes most of the pollution in the city&quot;, &quot;Permutation importance is always wrong for tree models&quot;, &quot;The built-in measure favours columns with many distinct values, so its top rank is partly an artefact&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The built-in measure is computed on training data and favours high-cardinality columns. The causal reading is the tempting wrong option, because importance is a reliance measure and not a cause.&quot;}, {&quot;q&quot;: &quot;A permutation table shows that shuffling `o3` raises the MAE by 0.02, and shuffling `pm10` raises it by 4.1. Which claim does the table support?&quot;, &quot;opts&quot;: [&quot;The model&#x27;s held-out error depends much more on pm10 than on o3&quot;, &quot;Lowering pm10 by 4 units lowers the pollution by 4 units&quot;, &quot;The o3 column has no effect on air quality at any station&quot;, &quot;The model uses pm10 and no other column&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The table reports how much error rises when a column is shuffled, so it describes reliance. The causal claim is the tempting wrong option, and the claim that pm10 is the only column misreads a ranking.&quot;}, {&quot;q&quot;: &quot;A team wants to show which input matters most in the saved model to a reviewer who does not know machine learning. Which measure should it use, and where?&quot;, &quot;opts&quot;: [&quot;Built-in feature_importances_ on the training rows, because it is free&quot;, &quot;The coefficient of each column in a straight-line model, because a tree has none&quot;, &quot;Permutation importance on held-out test rows, reported as a mean and a standard deviation over repeats&quot;, &quot;The number of times each column appears in the training file&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Permutation importance on held-out rows avoids the bias toward training data, and the repeats give a spread. The free built-in value is the tempting wrong option, because it is computed on training data.&quot;}]}"></div>
+
+<h3 id="residuals-and-bias">Residuals and bias</h3>
+<p><strong>What it is.</strong> A residual is the gap between the actual value and the prediction for one row: residual = actual minus predicted. A positive residual means the model under-predicted, and a negative one means it over-predicted. In this chapter, bias is the mean of the residuals. A bias near zero means positive and negative errors cancel out. MAE is the mean of the absolute residuals, so it measures size and ignores direction. The two can tell different stories:</p>
+<div class="hl"><pre><span></span><code><span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="n">gaps</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="n">p</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gaps</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>[-4, 2, 3]</code>. The bias is (-4 + 2 + 3) / 3, which is about 0.33. The MAE is (4 + 2 + 3) / 3, which is 3.0. The bias is small only because the errors cancel. The MAE shows that the typical miss is three units.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team reports a bias of 0.1 and calls the model unbiased. An officer asks about one row during a dust storm, where the forecast was 21 units below the actual value. The mean hides that miss. The report should add the worst absolute residual and the standard deviation of the residuals, and it should check which rows produced the large misses.</p>
+<div class="box box-trap"><div class="box-h">Trap: A small mean is not accuracy</div><p>A bias near zero does not mean the model is accurate. Large errors of opposite sign can cancel. Reporting only the mean residual hides both the worst miss and the spread.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;On the test rows, the mean residual is +0.05 and the MAE is 8.4. A colleague says the model is accurate to within 0.05. What is the best reply?&quot;, &quot;opts&quot;: [&quot;Agreed, the mean residual is the accuracy&quot;, &quot;The mean cancels errors of both signs, so the MAE of 8.4 is the size of a typical miss&quot;, &quot;The MAE must be wrong, because it is larger than the bias&quot;, &quot;The residual should be predicted minus actual, so 8.4 is the answer&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Bias is an average of signed errors, which can cancel. MAE measures the typical size of a miss. Treating the bias as accuracy is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A residual is actual minus predicted. One row has actual 52 and predicted 61. What is the residual, and what does it mean?&quot;, &quot;opts&quot;: [&quot;9, the model under-predicted by 9&quot;, &quot;-9, the model under-predicted by 9&quot;, &quot;113, the model over-predicted by 113&quot;, &quot;-9, the model over-predicted by 9&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;52 minus 61 is -9, and a negative residual means over-prediction. The tempting wrong answer is the positive 9 with under-prediction, because the size is right but the direction is wrong.&quot;}, {&quot;q&quot;: &quot;A card reports a mean residual of 0.17, a residual standard deviation of 6.5 and a worst absolute residual of 21.8. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The mean shows little systematic skew, but single rows can still miss by a large amount&quot;, &quot;The model is unsafe to publish because its worst miss is above 20&quot;, &quot;The worst residual means the model is wrong on 21.8 percent of rows&quot;, &quot;A mean of 0.17 proves that no row was badly predicted&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Bias measures systematic skew, while the spread and the worst miss measure single-row errors. The claim that the model is unsafe goes beyond what these numbers establish, so it is the tempting wrong answer.&quot;}]}"></div>
+
+<h3 id="slicing-errors-by-group">Slicing errors by group</h3>
+<p><strong>What it is.</strong> Slicing splits the test rows into groups and computes the same error for each group. A slice might be one station or one IST hour. Each group gets a count, an MAE and often a bias. The example below uses six rows with a station and an absolute error:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;station&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ST-01&quot;</span><span class="p">,</span> <span class="s2">&quot;ST-01&quot;</span><span class="p">,</span> <span class="s2">&quot;ST-04&quot;</span><span class="p">,</span> <span class="s2">&quot;ST-04&quot;</span><span class="p">,</span> <span class="s2">&quot;ST-04&quot;</span><span class="p">,</span> <span class="s2">&quot;ST-02&quot;</span><span class="p">],</span>
+                      <span class="s2">&quot;abs_err&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]})</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station&quot;</span><span class="p">)[</span><span class="s2">&quot;abs_err&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output has one row per station, sorted by name:</p>
+<div class="hl"><pre><span></span><code>         n  mae
+station
+ST-01    2  5.0
+ST-02    1  3.0
+ST-04    3  8.0
+</code></pre></div>
+
+<p>The counts add up to 6, the number of rows. The count matters as much as the MAE, because a group with one row can look bad by chance.</p>
+<p><strong>How it shows up in a case study.</strong> The overall test MAE is 5.2, which the team thinks is acceptable. A slice table shows ST-04 at an MAE of 8.1 from 340 rows, and the 18 to 21 IST band at an MAE of 11.8 from only 18 rows. The reviewer asks what to write. ST-04 becomes a finding with its count. The 18-row band is flagged as insufficient evidence, but it is still named as a risk. Neither group is removed, and the model is not retrained on those rows.</p>
+<div class="box box-trap"><div class="box-h">Trap: Slicing without the count</div><p>A slice with few rows can look terrible by chance. Flag it with its count rather than hiding it. Also convert timestamps to IST before grouping by hour, because a UTC hour puts an evening spike in the wrong band.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team groups test errors by IST hour. The 19:00 band has an MAE of 14.2 from 9 rows, and the overall MAE is 5.5. What should the write-up do with this band?&quot;, &quot;opts&quot;: [&quot;Remove it, because it is noise&quot;, &quot;Report only the overall MAE, which is the honest summary&quot;, &quot;Report the band with its count, flag it as insufficient evidence, and name it as a possible risk&quot;, &quot;Retrain the model on the rows in that band so the MAE drops&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A slice with 9 rows is thin evidence, so its count and flag must be shown, and the band still counts as a risk. Removing it or retraining on the test rows hides evidence, which is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;The slice script takes the hour from a raw timestamp stored in UTC. A spike at 18:00 IST appears in the 12:30 UTC row. What problem does this cause?&quot;, &quot;opts&quot;: [&quot;The MAE is computed on the wrong number of rows&quot;, &quot;The spike is attributed to an hour band that does not match officers&#x27; clocks, so the finding points at the wrong time&quot;, &quot;The model is retrained on IST rows automatically&quot;, &quot;The bias flips sign for every hour&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;18:00 IST is 12:30 UTC, so grouping in UTC puts the spike in the wrong band. The row count is unaffected, which is why the count-based option is the tempting wrong one.&quot;}, {&quot;q&quot;: &quot;A model card&#x27;s slice table is being prepared for the next release. Which rule must hold for the slice findings to be honest?&quot;, &quot;opts&quot;: [&quot;Use the training rows, because they are the largest group&quot;, &quot;Use cross-validation predictions, because they are the most stable&quot;, &quot;Slice the training and test predictions together, so the table has more rows&quot;, &quot;Slice only held-out test-window predictions, and show the count for each group&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Training predictions are too optimistic, and cross-validation predictions are not the final test window that the card reports, so slices on them can hide the real weak spots. Pooling them with the test rows is the tempting wrong option, because it enlarges the groups.&quot;}]}"></div>
+
+<h3 id="ensemble-diversity">Ensemble diversity</h3>
+<p><strong>What it is.</strong> Diversity means the models in an ensemble make different errors. Averaging helps only when the errors point in different directions or fall on different rows. If two models make the same error on every row, averaging them returns that error unchanged. Diversity can come from different algorithms, different training samples or different input columns.</p>
+<div class="hl"><pre><span></span><code><span class="n">model_a_errors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">model_b_errors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">avg_errors</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">model_a_errors</span><span class="p">,</span> <span class="n">model_b_errors</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">avg_errors</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>[5.0, -3.0, 4.0]</code>. The average is the same as either model, so the second model adds nothing. If the second model's errors were <code>[1, -6, 7]</code> instead, the average would be different, and it would be worth checking on held-out rows.</p>
+<p><strong>How it shows up in a case study.</strong> A team has three forests trained on the same rows and inputs, differing only by random seed. Their test errors are almost identical on every row. The team proposes adding two more forests to the average to improve the card. The reply is that the extra forests add little, because they repeat the same mistakes. More diversity would come from different inputs or algorithms, and the cost of each extra model should be weighed against the gain.</p>
+<div class="box box-trap"><div class="box-h">Trap: More models is not better</div><p>Copies of a good model average to nearly the same error. Averaging can also hurt when one member is much weaker than the others. Adding members is only worth it when they make different mistakes.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Two gradient boosting models use the same rows and inputs and differ only in their random seed. Their predictions agree to within 0.01 on every row. Which statement about averaging them is correct?&quot;, &quot;opts&quot;: [&quot;Averaging them gives almost no gain, because their errors are nearly the same&quot;, &quot;Averaging them will halve the MAE&quot;, &quot;Averaging them is impossible, because seeds cannot be combined&quot;, &quot;Averaging them always adds the seed difference to the error&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Nearly identical predictions have nearly identical errors, so averaging cancels very little. The claim that the MAE halves is the tempting wrong answer, because halving needs errors that cancel.&quot;}, {&quot;q&quot;: &quot;An ensemble averages a strong model with MAE 5.0 and a weak model with MAE 12.0. Their errors differ on most rows. What is the most sensible expectation?&quot;, &quot;opts&quot;: [&quot;The average&#x27;s MAE is exactly 8.5, the mean of the two MAEs&quot;, &quot;The average is always better than 5.0, whatever the errors&quot;, &quot;The average may beat 5.0, but the weak model can drag it back, so it must be checked on held-out rows&quot;, &quot;The average is always worse than the strong model&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The MAE of an average is not the average of the MAEs, so the exact 8.5 claim is wrong. The result depends on how the errors line up, which is why held-out rows decide it.&quot;}, {&quot;q&quot;: &quot;A team has three models with nearly identical errors and wants more diversity. Which change is most likely to add real diversity?&quot;, &quot;opts&quot;: [&quot;Train three copies of the same tree with three different seeds&quot;, &quot;Train models on different algorithms or input sets, then check the average on held-out rows&quot;, &quot;Add a fourth copy of the best model to the average&quot;, &quot;Average the three models&#x27; training errors instead of their predictions&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Different algorithms or inputs make different mistakes, and that is what averaging needs. Adding a copy of the best model is the tempting wrong answer, because it looks like more work for the same result.&quot;}]}"></div>
+
+<h3 id="intended-use">Intended use</h3>
+<p><strong>What it is.</strong> A model card has an intended-use section that names the users, the decision, the inputs and the time scale. Its out-of-scope section names uses the model was not built or tested for. Both must be specific enough for a reviewer to test. A vague phrase such as "for air quality" cannot be tested. A specific phrase can be checked against the data.</p>
+<div class="hl"><pre><span></span><code>Intended use: ward officers use the next-hour PM2.5 estimate to decide on same-day advisories.
+Inputs: station, hour, no2, o3, pm10.
+Out of scope: individual medical advice, enforcement against one factory, forecasts beyond six hours.
+</code></pre></div>
+
+<p>Each line can be checked. A reviewer can ask whether the team tested an hourly forecast, whether officers were the users, and whether six hours was the horizon in the test.</p>
+<p><strong>How it shows up in a case study.</strong> A draft card says its intended use is "air quality monitoring across India". A reviewer asks for the decision it supports and the rows it was tested on. The test covered one station for one week. The team narrows the intended use to the decision, the station and the period it was tested on, and lists out-of-scope uses such as other cities and monsoon months.</p>
+<div class="box box-trap"><div class="box-h">Trap: Vague is not broader</div><p>Writing "for everyone" or "for air quality" feels safe, but it gives a reviewer nothing to check. A vague claim is not a wider claim. It is an untestable one.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A card for a PM2.5 model says only: \&quot;Intended use: air quality.\&quot; Which edit makes the statement testable?&quot;, &quot;opts&quot;: [&quot;Add \&quot;and related health topics\&quot; to widen the audience&quot;, &quot;Shorten it to \&quot;air\&quot;&quot;, &quot;Replace it with the model&#x27;s file size&quot;, &quot;Name the users, the decision, the inputs and the time horizon, for example ward officers, a same-day advisory, five input columns and the next hour&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A testable intended use names users, decision, inputs and horizon. Widening the audience is the tempting wrong option, because it adds claims without making any of them checkable.&quot;}, {&quot;q&quot;: &quot;A card is written for an hourly PM2.5 forecast. Which item belongs in its out-of-scope section?&quot;, &quot;opts&quot;: [&quot;The station codes used as inputs&quot;, &quot;Using the forecast as the only basis for a clinical treatment decision&quot;, &quot;The date range of the training rows&quot;, &quot;The model&#x27;s learning rate&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Out-of-scope lists uses the model was not built or tested for. Listing the inputs describes the model, not a misuse, so it is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A reviewer asks why the card names ward officers as users and not the general public. What is the best reply?&quot;, &quot;opts&quot;: [&quot;The officers&#x27; decision and the tested inputs were checked, while public use was never tested and would need its own evaluation&quot;, &quot;The public is less important than officers&quot;, &quot;The card must name the largest possible audience&quot;, &quot;Naming the public is only needed when the model is a web app&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A card names only the uses it was built and tested for. Naming the largest possible audience is the tempting wrong answer, because breadth is not evidence.&quot;}]}"></div>
+
+<h3 id="disaggregated-metrics">Disaggregated metrics</h3>
+<p><strong>What it is.</strong> Disaggregated metrics report the same metric for each important group, with the count for each group. An overall MAE is one number for the whole test set. A disaggregated table shows the MAE and the count for each station or each IST band. A large group can dominate the overall figure, so a weak small group can stay hidden.</p>
+<div class="hl"><pre><span></span><code>Group        n     MAE
+ST-01      140     4.9
+ST-04      120     8.1
+Overall    400     5.2   (all six stations)
+</code></pre></div>
+
+<p>Only two of the six stations are shown in this extract. The overall row is the figure for every station together, which is why it can look fine while one station is much worse.</p>
+<p><strong>How it shows up in a case study.</strong> A card reports only the overall MAE of 5.2 and calls the model fair across stations. A reviewer asks for the breakdown. The team computes the per-station MAE and finds ST-04 at 8.1 from 120 rows. The card must add the table, state the gap and drop the word "fair" unless the evidence supports it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Fair needs evidence</div><p>Reporting only the overall metric and calling the model fair is a common mistake. Fairness needs evidence for each group, and the overall figure cannot supply it.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A card reports an overall MAE of 5.2 across six stations. Station ST-04 has an MAE of 8.1 from 120 of the 400 test rows. Which statement is supported?&quot;, &quot;opts&quot;: [&quot;The model is fair because the overall MAE is under 6&quot;, &quot;ST-04 is noise, since it is only 30 percent of the rows&quot;, &quot;The overall figure hides a group that is much worse, so the card must show the per-station figures&quot;, &quot;The overall MAE must be recomputed without ST-04&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A large group can keep the overall figure low while one group is much worse. Calling ST-04 noise because it is 30 percent of the rows is the tempting wrong answer, since 120 rows is not a tiny group.&quot;}, {&quot;q&quot;: &quot;A card says the model works well everywhere. Which addition turns that claim into evidence a reviewer can check?&quot;, &quot;opts&quot;: [&quot;A longer description of the features&quot;, &quot;The model file size in megabytes&quot;, &quot;The Python version used in training&quot;, &quot;A table of MAE and n for each station and each IST hour band&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A per-group MAE with its count can be checked against the data. A longer feature description is the tempting wrong answer, because it describes the model without saying how well it performs.&quot;}, {&quot;q&quot;: &quot;A slice has 18 rows and an MAE of 11.8, while the overall MAE is 6.0. What should the disaggregated table show for it?&quot;, &quot;opts&quot;: [&quot;Hide the row so the table looks clean&quot;, &quot;The row with its n of 18, flagged as insufficient evidence&quot;, &quot;The row merged into another band without saying so&quot;, &quot;Only the overall figure, because small groups are unreliable&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The row and its count must be shown, with a flag. Hiding or merging it is the tempting wrong answer, because it removes evidence the reviewer needs.&quot;}]}"></div>
+
+<h3 id="choosing-the-number-of-trees">Choosing the number of trees</h3>
+<p><strong>What it is.</strong> The number of trees is a setting. A forest uses <code>n_estimators</code>, and <code>HistGradientBoostingRegressor</code> uses <code>max_iter</code> for its stages. More trees in a random forest reduce variance, but the gain flattens out, and each extra tree costs fit time and file size. The rule this chapter uses is cross-validation on the same folds. Pick the smallest count after which the mean MAE improves by no more than the fold standard deviation.</p>
+<div class="hl"><pre><span></span><code>trees   CV MAE (mean)   fold std   fit time per fold
+100     5.60            0.40       2.1 s
+300     5.12            0.40       6.3 s
+1000    5.10            0.40       20.8 s
+</code></pre></div>
+
+<p>Going from 100 to 300 trees improves the MAE by 0.48, which is more than the fold standard deviation of 0.40, so 300 is needed. Going from 300 to 1000 improves it by only 0.02, which is inside the standard deviation, so 300 is the choice.</p>
+<p><strong>How it shows up in a case study.</strong> A team trains a forest with 1000 trees. Each fold takes 20 seconds, and the model file is 480 MB. The MAE is only 0.02 better than with 300 trees, which is smaller than the fold standard deviation. The API must load the file quickly. The team picks 300 and writes the rule in its notes, so a reviewer can see why.</p>
+<div class="box box-trap"><div class="box-h">Trap: The best score on one split</div><p>Choosing the largest count because it scores best on one split is the usual mistake. One split is a noisy estimate, and the gain may be inside the noise. The extra trees still cost fit time and file size.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A forest with 300 trees has a CV MAE of 5.12 \u00b1 0.40. With 1000 trees it is 5.10 \u00b1 0.41, and the file is three times larger. Which choice is best?&quot;, &quot;opts&quot;: [&quot;Keep 300, because the 0.02 gain is inside the fold standard deviation&quot;, &quot;Choose 1000, because the lower mean is always better&quot;, &quot;Choose 1000, because file size does not matter for the API&quot;, &quot;Choose the count with the slowest fit time&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A difference smaller than the fold standard deviation is a tie, so the cheaper model wins. Choosing 1000 for the lower mean is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;Which statement about the number of stages in boosting is correct?&quot;, &quot;opts&quot;: [&quot;More stages always help, so the largest count should be picked&quot;, &quot;The stage count does not affect boosting performance&quot;, &quot;The stage count is irrelevant once the learning rate is set&quot;, &quot;Too many stages can overfit, so the count is tuned on held-out folds like any other setting&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Boosting can overfit with too many stages, so the count is a tuned setting. The claim that more stages always help is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A team picks 2000 trees for a forest because that setting had the best score on one split. What is the main weakness of that choice?&quot;, &quot;opts&quot;: [&quot;The forest cannot use more than 500 trees&quot;, &quot;The choice makes the bootstrap samples too small&quot;, &quot;One split is a single noisy estimate, and the extra trees cost time and size for little measured gain&quot;, &quot;The forest stops averaging once it has more than 1000 trees&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;One split can be noisy, and 2000 trees add cost. The claim that a forest cannot use more than 500 trees is false, which makes it a tempting but wrong answer.&quot;}]}"></div>
+
+<h3 id="training-data-and-limits">Training data and limits</h3>
+<p><strong>What it is.</strong> The training-data section of a model card says where the rows came from, the date range, how many rows there were, which columns were features, how the train and test split was made, and what the data does not cover. The limits follow from the coverage. If the data covers one week in January, the card must say the model has not seen other seasons, and that its accuracy there is unknown. A limit states what was not covered. It does not claim that the model is accurate everywhere.</p>
+<div class="hl"><pre><span></span><code>Training data: CityPulse readings, one week of January, 1,600 training rows and 400 test rows.
+Features: station, hour, no2, o3, pm10. Split: 80/20 with random seed 42.
+Limits: no monsoon-season rows; ST-04 has the highest error; no per-prediction uncertainty.
+</code></pre></div>
+
+<p><strong>How it shows up in a case study.</strong> A card reports an excellent MAE and says the model is ready for the whole year. The training data covers one week in January. A reviewer asks for the training-data section. The team states the date range and the row counts. It adds the limit that there are no monsoon rows, so accuracy in those months is unknown, and it recommends retraining with monsoon data before the claim is extended.</p>
+<div class="box box-trap"><div class="box-h">Trap: Facts without limits</div><p>Describing the data without the limits that follow from it is the usual mistake. A card that gives the rows but not the gaps lets a reader assume coverage the model never had.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A card&#x27;s training data comes from two stations, ST-01 and ST-02, between March and May. The team proposes to use the model at all six stations in December. What must the card say?&quot;, &quot;opts&quot;: [&quot;The model works for all six stations, since it has learned pollution in general&quot;, &quot;The model has no evidence for four unseen stations or for winter months, so those uses are out of scope&quot;, &quot;Nothing, because the test MAE already covers the other stations&quot;, &quot;The model is ready, because it has two stations of data&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Coverage limits define the uses that were never tested. Assuming the model generalises to unseen stations and seasons is the tempting wrong answer, and two stations of data are not evidence for six.&quot;}, {&quot;q&quot;: &quot;Which set of facts belongs in a training-data section?&quot;, &quot;opts&quot;: [&quot;The learning rate, the tree count and the Python version only&quot;, &quot;The model&#x27;s average prediction on one holiday only&quot;, &quot;The model file name and nothing about the data&quot;, &quot;The source, date range, row counts, feature columns, the split, and the limits the data implies&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The section describes the data and the limits that follow from it. The model settings are the tempting wrong answer, because they describe the model rather than the data.&quot;}, {&quot;q&quot;: &quot;A training-data section reads only: \&quot;Trained on CityPulse readings.\&quot; Which problem is most serious?&quot;, &quot;opts&quot;: [&quot;The reader cannot judge coverage, so the metrics cannot be trusted or questioned&quot;, &quot;The word CityPulse is not a real dataset name&quot;, &quot;The card is too short for the file format&quot;, &quot;The section must be written in capital letters&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Without dates, row counts and limits, the reader cannot tell what the metrics cover. The naming complaint is the tempting slip, because it sounds like a real issue but is not the serious one.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>Ten mixed questions, one per topic, harder than the ones above. Answer them without the explanations first.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A random forest and a gradient boosting model, both with 300 trees, are compared on the same folds. The forest&#x27;s CV MAE is 5.3 \u00b1 0.5 and boosting&#x27;s is 5.0 \u00b1 0.6, and the forest&#x27;s fit time is half of boosting&#x27;s. Under the one-standard-deviation rule, which choice is best?&quot;, &quot;opts&quot;: [&quot;Boosting, because its mean is lower and the rule is only about means&quot;, &quot;The forest, because boosting is never allowed in a card&quot;, &quot;Either, since the gap is inside the fold spread, so the faster forest is the sensible choice unless another reason applies&quot;, &quot;Neither, because two different models cannot be compared&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The 0.3 gap is inside both fold standard deviations, so it is a tie and fit time decides. Choosing boosting for the lower mean is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A boosting model&#x27;s held-out MAE improves from stage 50 to stage 200 and then rises slowly. The team lowers the learning rate from 0.1 to 0.02. What should it expect about the best stage count?&quot;, &quot;opts&quot;: [&quot;It should move to a higher number of stages, because smaller steps need more of them&quot;, &quot;It should fall, because each step is smaller&quot;, &quot;It should stay at 200, because only the rate matters&quot;, &quot;It should become zero, because boosting cannot use small rates&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A smaller learning rate shrinks each stage, so more stages are needed to reach a similar fit. The claim that the count should fall is the tempting reverse.&quot;}, {&quot;q&quot;: &quot;A permutation table shows station_code raising MAE by 0.9 \u00b1 0.1 and pm10 by 3.2 \u00b1 0.3 on held-out rows. The built-in importance ranks station_code first. Which conclusion is best to write?&quot;, &quot;opts&quot;: [&quot;Station_code causes most of the variation in pollution across the city&quot;, &quot;pm10 has no effect on the model&quot;, &quot;The built-in ranking is more reliable, so the held-out result should be dropped&quot;, &quot;On held-out data the model relies more on pm10 than on station_code, and the built-in ranking is computed on training data&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Held-out permutation importance is the reliance measure, and the built-in value is computed on training data. The causal claim is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A model&#x27;s test residuals (actual minus predicted) have a mean of -0.4, a standard deviation of 6.8 and a worst absolute value of 30.1. Which sentence should the card contain?&quot;, &quot;opts&quot;: [&quot;The model over-predicts on every row by 0.4&quot;, &quot;The mean shows a small systematic over-prediction, while the spread and the worst miss show wide variation with at least one large miss&quot;, &quot;The model has no errors above 0.4&quot;, &quot;The worst miss is the bias, so the bias should be reported as 30.1&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A negative mean means over-prediction on average, not on every row, and the spread and worst miss must be reported. The claim about every row is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;The test window has 400 rows. ST-04 has 14 rows and an MAE of 12.5, while the overall MAE is 5.2. A colleague proposes removing ST-04 from the test window because it spoils the average. What is the correct reply?&quot;, &quot;opts&quot;: [&quot;Agree, since removing a bad group makes the honest score better&quot;, &quot;Agree, but only after ST-04 is retrained&quot;, &quot;Refuse, because removing test rows corrupts the test; report the group with its count and flag it as insufficient evidence&quot;, &quot;Agree, since 14 rows is below the training minimum&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Removing rows from the test window hides evidence and biases the score. Presenting the removal as cleaning is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;Three models have test MAEs of 5.0, 5.1 and 5.2, and their errors are almost identical on every row. What does averaging them most likely achieve?&quot;, &quot;opts&quot;: [&quot;Almost nothing beyond the best single model, because the average inherits the shared errors&quot;, &quot;A MAE below 4.0, because three models always beat one&quot;, &quot;A MAE of exactly 5.1, the mean of the three&quot;, &quot;A larger error than 5.2, because averaging always adds error&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Shared errors do not cancel, so the average stays close to any one of them. The claim of a MAE below 4.0 is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A card&#x27;s intended use reads: \&quot;Ward officers may use the forecast to decide on same-day PM2.5 advisories at the six CityPulse stations, using five inputs, with hourly updates.\&quot; Which out-of-scope item is most useful to add?&quot;, &quot;opts&quot;: [&quot;Officers may view the forecast on a phone&quot;, &quot;The model uses the station code as an input&quot;, &quot;The forecast is updated hourly&quot;, &quot;Use of the forecast for individual medical decisions, or at stations and seasons the test data did not cover&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Out-of-scope names misuse beyond the tested coverage. Restating the inputs or the update frequency is part of the intended use, not an out-of-scope item.&quot;}, {&quot;q&quot;: &quot;A report gives MAE by IST band. The 06:00 to 09:00 band has MAE 4.1 from 500 rows. The 21:00 to 24:00 band has MAE 9.8 from 35 rows, and the overall MAE is 5.2. What is the best summary for the reviewer?&quot;, &quot;opts&quot;: [&quot;The model is fair across the day, since the morning band is good&quot;, &quot;The late band is much worse, but 35 rows is thin evidence, so report its count, flag it and name it as a risk to check&quot;, &quot;The late band should be dropped to match the morning band&quot;, &quot;The overall MAE of 5.2 shows that the bands are equal&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Report the group with its count, and do not conclude fairness or drop the group. Calling the model fair from the morning band alone is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A team compares a forest with 100 trees (CV MAE 5.60 \u00b1 0.40) and with 300 trees (CV MAE 5.12 \u00b1 0.40). The 300-tree version takes twice the fit time. Under the team&#x27;s rule, what is the best reading?&quot;, &quot;opts&quot;: [&quot;Keep 100, because doubling the fit time is never worth it&quot;, &quot;Keep 300, but only because it has more trees&quot;, &quot;Keep 300, because the 0.48 gain is larger than the fold standard deviation of 0.40, so it is a real improvement&quot;, &quot;Keep either, because both scores are below 6&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The gain exceeds the fold standard deviation, so it is real and worth the cost. Preferring the cheaper model regardless is the tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;A training-data section reads: \&quot;Trained on CityPulse readings, 1 to 7 January, 1,600 rows, five feature columns, 80/20 split.\&quot; A reviewer asks what is missing. What is the best answer?&quot;, &quot;opts&quot;: [&quot;The limits that follow from the coverage: no monsoon-season rows, no other stations or cities, and no uncertainty estimates&quot;, &quot;The Python version used for training&quot;, &quot;The learning rate and the tree count&quot;, &quot;Nothing, because the section is complete&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A training section needs the coverage limits, not only the data facts. The claim that nothing is missing is the tempting wrong answer, because the facts look complete when the gaps are not stated.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>Scenario.</strong> A CityPulse model card must show more than one error number. It has to show where the model is weak. So the team averages several models into one ensemble, then slices the errors by station and by hour. You write three small functions that do the averaging, the subtraction and the grouping.</p>
+<p><strong>Limits.</strong> Each run may use 30 seconds and 128 MB of memory.</p>
+<p><strong>The three functions.</strong> The starter file has these names, with the parameters in this order:</p>
+<ul>
+<li><code>ensemble_mean(predictions)</code></li>
+<li><code>predictions</code> is a list with one inner list per model. All the inner lists have the same length.</li>
+<li>Return one list. Position 0 of the result is the mean of position 0 across all the models, and so on for each position.</li>
+<li>Round each value in the result to 2 decimals.</li>
+<li>The statement's example: three models giving <code>[40.0, 50.0]</code>, <code>[44.0, 46.0]</code> and <code>[46.0, 54.0]</code> produce <code>[43.33, 50.0]</code>.</li>
+<li><code>residuals(actual, predicted)</code></li>
+<li>Return actual minus predicted for each row. Keep the sign.</li>
+<li>Round each value to 2 decimals.</li>
+<li>A positive residual means the model under-predicted.</li>
+<li><code>mae_by_group(actual, predicted, groups)</code></li>
+<li><code>groups[i]</code> is the label of row <code>i</code>, such as a station id or an hour.</li>
+<li>Return a dictionary from each label to the mean absolute error of the rows that carry that label.</li>
+<li>Round each MAE to 2 decimals.</li>
+<li>The keys of the dictionary must be in sorted order.</li>
+<li>The statement's example: <code>actual</code> of 50, 60, 70, 80, <code>predicted</code> of 48, 64, 69, 75, and groups A, A, B, B give <code>{'A': 3.0, 'B': 3.0}</code>.</li>
+</ul>
+<p><strong>Marks.</strong> The visible tests and their points are:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>average 3 models' predictions</td>
+<td>20</td>
+</tr>
+<tr>
+<td>signed residuals</td>
+<td>20</td>
+</tr>
+<tr>
+<td>MAE sliced by station</td>
+<td>25</td>
+</tr>
+<tr>
+<td>single-point ensemble</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>The visible tests add up to 75 points.</p>
+<p><strong>Hidden tests.</strong> There are three hidden tests, worth 25 points together. The platform runs them when you submit, and it does not show you their inputs. They usually use inputs that the visible tests do not show. They decide the top marks: a solution can pass all four visible tests and still lose the 25 hidden points, because it breaks on an input you did not try. The only defence is to write your own checks for every rule in the statement. The method below shows how.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is shown on data that has nothing to do with CityPulse. Run each example in a Python shell, then try the same idea on the lab's data yourself.</p>
+<p><strong>Pairing lists with <code>zip</code>.</strong> <code>zip</code> pairs item 0 of one list with item 0 of the next, then item 1 with item 1, and it stops at the shorter list.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>ax</code>, <code>by</code> and <code>cz</code> on three lines. <code>zip(*lists)</code> takes a list of lists apart into separate arguments, so <code>list(zip(*[["a", "b"], ["c", "d"], ["e", "f"]]))</code> gives <code>[('a', 'c', 'e'), ('b', 'd', 'f')]</code>. The star is what makes the outer list separate.</p>
+<p><strong>Averaging with <code>sum</code> and <code>len</code>.</strong> The mean of a group of numbers is their sum divided by how many there are.</p>
+<div class="hl"><pre><span></span><code><span class="n">takings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">takings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">takings</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>100.0</code>. The <code>/</code> operator always returns a float, even when the division is exact. An empty list has a length of 0, and dividing by 0 raises <code>ZeroDivisionError</code>, so a function must deal with empty input before it divides.</p>
+<p><strong>Rounding with <code>round</code>.</strong> <code>round</code> takes a number and the count of decimal places.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># 3.33</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.675</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>    <span class="c1"># 2.67</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>        <span class="c1"># 7</span>
+</code></pre></div>
+
+<p>The second line gives 2.67, not 2.68, because 2.675 is stored as a value slightly below 2.675. The third line gives the integer 7, not 7.0. Round once, at the end of a calculation, rather than on every step.</p>
+<p><strong>Sorting with <code>sorted</code> and a key.</strong> <code>sorted</code> returns a new sorted list and leaves the original alone. The <code>key</code> argument says what to compare.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="s2">&quot;pear&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">({</span><span class="s2">&quot;kiwi&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}))</span>
+</code></pre></div>
+
+<p>The output is <code>['fig', 'pear', 'apple']</code> and then <code>['date', 'kiwi']</code>. With <code>key=len</code>, the words are compared by length. Sorting a dictionary gives its keys in order, which is how you produce sorted keys.</p>
+<p><strong>Reading a dictionary with <code>get</code>.</strong> <code>get</code> returns the stored value, or a default when the key is missing. It does not add the key.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tea&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;milk&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;milk&quot;</span> <span class="ow">in</span> <span class="n">stock</span><span class="p">)</span>        <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Absolute value.</strong> <code>abs</code> removes the sign of a number. A mean absolute error takes <code>abs</code> of each error before it averages them.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="mf">4.5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>4.5 4.5</code>.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table covers the rules that the statement states. The statement does not mention empty input, ties or boundaries, so it gives no rule for them. If the starter file's docstring adds a rule, treat it as a statement rule and add a row.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ensemble_mean</code> takes the mean across models, position by position</td>
+<td>Averages each model's list, or returns only the first model's list</td>
+<td>Give three one-value models, such as <code>[[1.0], [2.0], [6.0]]</code>, and work out the answer by hand before you run it</td>
+</tr>
+<tr>
+<td>Each ensemble value is rounded to 2 decimals</td>
+<td>Rounds each model's prediction before averaging, or returns strings</td>
+<td>Compare with the rounded version of your own unrounded mean; the values must be numbers</td>
+</tr>
+<tr>
+<td>The predictions are equal-length lists, one per model</td>
+<td>Uses only the first list's length and misses positions that the other models have</td>
+<td>Use a three-model input and check that the result has as many values as each inner list</td>
+</tr>
+<tr>
+<td><code>residuals</code> is actual minus predicted</td>
+<td>Takes predicted minus actual, which flips every sign</td>
+<td>Take one row by hand and compute its residual on paper before you run the code</td>
+</tr>
+<tr>
+<td>The residuals are signed</td>
+<td>Takes absolute values, so the direction of the error is lost</td>
+<td>Find a row where the model over-predicts; its residual must be negative</td>
+</tr>
+<tr>
+<td><code>mae_by_group</code> returns the mean absolute error</td>
+<td>Returns the mean of the signed errors, which is the bias, so errors of +3 and -3 cancel to 0</td>
+<td>Use errors of +3 and -3 in one group; the MAE must be 3.0</td>
+</tr>
+<tr>
+<td><code>groups[i]</code> labels row <code>i</code></td>
+<td>Pairs the lists in the wrong order, or sorts the rows before pairing them</td>
+<td>Check the statement's example: it must give A of 3.0 and B of 3.0 with the groups in the order given</td>
+</tr>
+<tr>
+<td>The keys are in sorted order</td>
+<td>Returns the keys in the order they first appeared</td>
+<td>Check that <code>list(result)</code> equals <code>sorted(result)</code></td>
+</tr>
+<tr>
+<td>The MAE is rounded to 2 decimals</td>
+<td>Rounds every row's error before taking the mean, which changes the result</td>
+<td>Compute the exact mean first, then round once at the end</td>
+</tr>
+<tr>
+<td>A single-point ensemble (a visible test)</td>
+<td>Divides by a fixed number of models instead of counting the models it was given</td>
+<td>Give one model and expect its own values back, rounded to 2 decimals</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li><strong>Read the starter file.</strong> Note the three names, their parameter order and any docstring. Do not rename anything.</li>
+<li><strong>Write the statement's examples as assert lines first.</strong> Each example gives an input and an expected output, so each assert is a copy of the example with the expected value. Run the file now. The asserts fail, because nothing is written yet. That is expected.</li>
+<li><strong>Add your own asserts for every row of the rules table.</strong> Use small inputs that you can work out by hand. Write the expected answer on paper before you run anything.</li>
+<li><strong>Implement one function at a time.</strong> Start with the simplest. After each function, run the asserts. Do not move on while one of them fails.</li>
+<li><strong>Check types and rounding last.</strong> Every number should be a float rounded to 2 decimals, and the keys of the dictionary should be in sorted order.</li>
+<li><strong>Run the visible tests.</strong> Read each failure message. A wrong value and a wrong type need different fixes.</li>
+<li><strong>Submit once.</strong> Submit when your own asserts and the visible tests all pass, not before.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>This twin problem uses a different domain: pH readings from lakes. It needs the same skills as the lab: a loop that builds totals, a dictionary of results, sorting with a key, rounding at the end, and skipping invalid values. pH measures how acid or alkaline water is, on a scale from 0 to 14, where 7 is neutral.</p>
+<p><strong>Statement.</strong> A reading is a dictionary with a <code>lake</code> name and a <code>ph</code> value.</p>
+<ul>
+<li><code>clean_readings(rows)</code> keeps only the rows whose <code>ph</code> is a real number (an int or a float, but not a boolean and not a string) from 0 to 14 inclusive. A missing <code>ph</code> does not count as a number. Return the kept rows in their original order.</li>
+<li><code>average_by_lake(rows)</code> returns a dictionary from each lake name to the mean <code>ph</code> of its rows, rounded to 1 decimal. The keys are in sorted order. A lake with no rows does not appear.</li>
+<li><code>top_lakes(averages, k)</code> returns the names of the <code>k</code> lakes with the highest averages. Ties are ordered alphabetically by name. If there are fewer than <code>k</code> lakes, return all of them.</li>
+</ul>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clean_readings</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep rows whose ph is a real number from 0 to 14 inclusive.&quot;&quot;&quot;</span>
+    <span class="n">kept</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">ph</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ph&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ph</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ph</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ph</span> <span class="o">&lt;=</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kept</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average_by_lake</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mean pH per lake, rounded to 1 decimal, keys in sorted order.&quot;&quot;&quot;</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">lake</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;lake&quot;</span><span class="p">]</span>
+        <span class="n">total</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lake</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">lake</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;ph&quot;</span><span class="p">],</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">lake</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">lake</span><span class="p">,</span> <span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">totals</span><span class="o">.</span><span class="n">items</span><span class="p">())}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_lakes</span><span class="p">(</span><span class="n">averages</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Names of the k highest averages, ties broken alphabetically.&quot;&quot;&quot;</span>
+    <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">averages</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ranked</span><span class="p">[:</span><span class="n">k</span><span class="p">]]</span>
+
+
+<span class="c1">## clean_readings</span>
+<span class="k">assert</span> <span class="n">clean_readings</span><span class="p">([{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="s2">&quot;7.2&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">clean_readings</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">clean_readings</span><span class="p">([{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">clean_readings</span><span class="p">([{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="c1">## average_by_lake</span>
+<span class="k">assert</span> <span class="n">average_by_lake</span><span class="p">([{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Bhimtal&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Nainital&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Bhimtal&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">6.6</span><span class="p">}])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Bhimtal&quot;</span><span class="p">:</span> <span class="mf">6.8</span><span class="p">,</span> <span class="s2">&quot;Nainital&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">}</span>
+<span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="n">average_by_lake</span><span class="p">([{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Nainital&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;lake&quot;</span><span class="p">:</span> <span class="s2">&quot;Bhimtal&quot;</span><span class="p">,</span> <span class="s2">&quot;ph&quot;</span><span class="p">:</span> <span class="mf">6.6</span><span class="p">}])</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Bhimtal&quot;</span><span class="p">,</span> <span class="s2">&quot;Nainital&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">average_by_lake</span><span class="p">([])</span> <span class="o">==</span> <span class="p">{}</span>
+
+<span class="c1">## top_lakes</span>
+<span class="k">assert</span> <span class="n">top_lakes</span><span class="p">({</span><span class="s2">&quot;Bhimtal&quot;</span><span class="p">:</span> <span class="mf">6.8</span><span class="p">,</span> <span class="s2">&quot;Nainital&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s2">&quot;Sukhna&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">},</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Nainital&quot;</span><span class="p">,</span> <span class="s2">&quot;Sukhna&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">top_lakes</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">top_lakes</span><span class="p">({},</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_lakes</span><span class="p">({</span><span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Run the file. If every assert passes, it prints <code>all checks passed</code> and nothing else.</p>
+<p><strong>Line by line, for <code>clean_readings</code>.</strong></p>
+<ul>
+<li><code>row.get("ph")</code> reads the value, and gives <code>None</code> when the key is missing. A missing value then fails the type test instead of crashing the function.</li>
+<li><code>isinstance(ph, bool)</code> is checked first, because <code>bool</code> is a subclass of <code>int</code>. <code>isinstance(True, int)</code> is <code>True</code>. Without this check, <code>True</code> would count as the number 1.</li>
+<li><code>not isinstance(ph, (int, float))</code> skips strings such as <code>"7.2"</code>. They look like numbers, but they are text.</li>
+<li><code>0 &lt;= ph &lt;= 14</code> keeps both ends of the range, because the statement says inclusive.</li>
+<li><code>kept.append(row)</code> keeps the original dictionary, so the output has the same rows in the same order.</li>
+</ul>
+<p><strong>Line by line, for <code>average_by_lake</code>.</strong></p>
+<ul>
+<li><code>totals</code> stores a pair of (sum, count) for each lake.</li>
+<li><code>totals.get(lake, (0.0, 0))</code> returns a pair of zeros for a lake that is new, which is the same idea as a running total that starts at zero.</li>
+<li>The loop adds the reading to the sum and adds one to the count.</li>
+<li>The dictionary comprehension goes over <code>sorted(totals.items())</code>, so the lakes come out in alphabetical order. For each lake it divides the sum by the count, and it rounds once, at the end.</li>
+</ul>
+<p><strong>Line by line, for <code>top_lakes</code>.</strong></p>
+<ul>
+<li><code>key=lambda item: (-item[1], item[0])</code> sorts by the average, largest first, because the average is negated. Ties are then sorted by name.</li>
+<li><code>ranked[:k]</code> takes the first <code>k</code> items. If there are fewer than <code>k</code> items, the slice gives all of them.</li>
+<li>The list comprehension keeps only the name. The <code>_</code> is the usual name for a value you do not need.</li>
+</ul>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Building a running total and count for each lake&quot;, &quot;code&quot;: [&quot;rows = [{\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 7.5}, {\&quot;lake\&quot;: \&quot;B\&quot;, \&quot;ph\&quot;: 6.0}, {\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 6.5}]&quot;, &quot;totals = {}&quot;, &quot;for row in rows:&quot;, &quot;    lake = row[\&quot;lake\&quot;]&quot;, &quot;    total, count = totals.get(lake, (0.0, 0))&quot;, &quot;    totals[lake] = (total + row[\&quot;ph\&quot;], count + 1)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;rows&quot;, &quot;[3 dictionaries]&quot;]], &quot;note&quot;: &quot;Three readings, two from lake A and one from lake B.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;totals&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Start with no lakes.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 7.5}&quot;]], &quot;note&quot;: &quot;The loop takes the first reading.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 7.5}&quot;], [&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;]], &quot;note&quot;: &quot;The lake name is read from the row.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;total&quot;, &quot;0.0&quot;], [&quot;count&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;A is new, so get returns the default pair (0.0, 0).&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;total&quot;, &quot;0.0&quot;], [&quot;count&quot;, &quot;0&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (7.5, 1)}&quot;]], &quot;note&quot;: &quot;Store 0.0 + 7.5 and 0 + 1 under A.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;B\&quot;, \&quot;ph\&quot;: 6.0}&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (7.5, 1)}&quot;]], &quot;note&quot;: &quot;The second reading is from lake B.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;B\&quot;, \&quot;ph\&quot;: 6.0}&quot;], [&quot;lake&quot;, &quot;\&quot;B\&quot;&quot;]], &quot;note&quot;: &quot;Read the lake name.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;B\&quot;&quot;], [&quot;total&quot;, &quot;0.0&quot;], [&quot;count&quot;, &quot;0&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (7.5, 1)}&quot;]], &quot;note&quot;: &quot;B is new too, so it starts at zero.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;B\&quot;&quot;], [&quot;total&quot;, &quot;0.0&quot;], [&quot;count&quot;, &quot;0&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (7.5, 1), \&quot;B\&quot;: (6.0, 1)}&quot;]], &quot;note&quot;: &quot;Store 6.0 under B with a count of 1.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 6.5}&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (7.5, 1), \&quot;B\&quot;: (6.0, 1)}&quot;]], &quot;note&quot;: &quot;The third reading is lake A again.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;{\&quot;lake\&quot;: \&quot;A\&quot;, \&quot;ph\&quot;: 6.5}&quot;], [&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;]], &quot;note&quot;: &quot;Read the lake name.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;total&quot;, &quot;7.5&quot;], [&quot;count&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;get returns the stored pair for A.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;lake&quot;, &quot;\&quot;A\&quot;&quot;], [&quot;total&quot;, &quot;7.5&quot;], [&quot;count&quot;, &quot;1&quot;], [&quot;totals&quot;, &quot;{\&quot;A\&quot;: (14.0, 2), \&quot;B\&quot;: (6.0, 1)}&quot;]], &quot;note&quot;: &quot;7.5 + 6.5 is 14.0, and the count rises to 2.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a new twin problem about library late fines. A loan is a dictionary with a <code>member</code> name and a <code>days_late</code> value. Write <code>fines_by_member(loans, rate)</code>:</p>
+<ul>
+<li>A loan with <code>days_late</code> of 0 or less costs nothing and is skipped.</li>
+<li>The fine for a loan is <code>days_late</code> multiplied by <code>rate</code>.</li>
+<li>Add up the fines for each member. Round each member's total to 2 decimals, once, at the end.</li>
+<li>Return a dictionary from member name to total fine, with the keys in sorted order.</li>
+</ul>
+<p>Make these asserts pass:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}],</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([],</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">}],</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Meera&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}],</span> <span class="mf">0.333</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Meera&quot;</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.333</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fines_by_member</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Total fine per member, rounded once at the end, keys in sorted order.&quot;&quot;&quot;</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">loan</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="n">late</span> <span class="o">=</span> <span class="n">loan</span><span class="p">[</span><span class="s2">&quot;days_late&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">late</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">totals</span><span class="p">[</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">late</span> <span class="o">*</span> <span class="n">rate</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">member</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">totals</span><span class="p">[</span><span class="n">member</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">totals</span><span class="p">)}</span>
+
+
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}],</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([],</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Zoya&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">}],</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;Meera&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}],</span> <span class="mf">0.333</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Meera&quot;</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">fines_by_member</span><span class="p">([{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;days_late&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="mf">0.333</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The loop skips loans with no lateness. It adds each fine to a running total for the member, using <code>get</code> with a default of 0.0 for a new member. The dictionary comprehension then rounds each total once, at the end, and walks the members in sorted order. The last check matters most: rounding each fine to 2 decimals first would give 0.33 three times, which is 0.99, not 1.0.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Each of the three functions has the exact name and the parameter order from the starter file.</li>
+<li><code>ensemble_mean</code> returns one value per position, not one value per model.</li>
+<li><code>residuals</code> keeps the sign and uses actual minus predicted.</li>
+<li><code>mae_by_group</code> takes absolute values before it averages, and returns its keys in sorted order.</li>
+<li>Every returned number is rounded to 2 decimals, and the rounding happens once, at the end of the calculation.</li>
+<li>Your code does not change the input lists. Sorting a list in place would change the caller's data, so use <code>sorted</code> instead.</li>
+<li>A one-model input returns its own values, rounded to 2 decimals.</li>
+<li>You have run your own asserts for every row of the rules table, not only the statement's examples.</li>
+<li>The file runs cleanly on import, with no leftover test code that reads input or prints in the middle of the functions.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p><strong>Q1. Why does a random forest use bootstrap samples?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Each tree sees a different random sample of the training rows, drawn with replacement. Because the trees see different data, their errors differ, and averaging them lowers the variance of the forest. Without this variation, every tree would make the same error, and the average would gain nothing.</p></details>
+
+<p><strong>Q2. How does gradient boosting differ from a random forest?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A random forest trains independent trees in parallel and averages them. Gradient boosting trains shallow trees one after another, and each new tree is fitted to the errors left by the trees before it. The forest mainly reduces variance, and boosting mainly reduces bias. For that reason the two need different tuning.</p></details>
+
+<p><strong>Q3. Why did you slice the errors by station and hour, when the overall MAE was already known?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>An overall MAE averages away local failures. A model can have a reasonable average and still be badly wrong for one station or one time band. Slicing shows where it fails, and the count for each slice shows how much evidence supports the finding. Officers act per ward and hour, so that is the level at which the risk matters.</p></details>
+
+<p><strong>Q4. A slice has only 12 rows and a very high MAE. What do you do?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>I report the slice with its count and flag it as insufficient evidence, because 12 rows can look terrible by chance. I do not remove it, and I do not retrain on the test rows to improve it. I would collect more data for that group before drawing a firm conclusion.</p></details>
+
+<p><strong>Q5. What belongs in a model card, and why does it matter?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A model card states what the model is for, what it is not for, what data it was trained on, the metrics overall and by slice, and its known limits. It matters because a reviewer or officer can only trust a model when they know where it is weak. A card with specific numbers and named segments lets someone check the claims, while a vague card does not.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RandomForestRegressor(n_estimators=300)</code></td>
+<td>Trains 300 trees on bootstrap samples and averages them</td>
+<td><code>min_samples_leaf=5</code> limits leaf size</td>
+</tr>
+<tr>
+<td><code>HistGradientBoostingRegressor(max_iter=300, learning_rate=0.05)</code></td>
+<td>Adds 300 binned, shallow trees in sequence</td>
+<td><code>learning_rate</code> sets how much each stage changes</td>
+</tr>
+<tr>
+<td><code>GradientBoostingRegressor(random_state=42)</code></td>
+<td>Boosting with default 100 stages and learning rate 0.1</td>
+<td><code>n_estimators_</code> reads the trees used</td>
+</tr>
+<tr>
+<td><code>cross_validate(..., scoring="neg_mean_absolute_error")</code></td>
+<td>Scores each fold with MAE as a negative number</td>
+<td>Negate the result to get MAE</td>
+</tr>
+<tr>
+<td><code>set_params(model=est)</code></td>
+<td>Swaps the estimator in a pipeline, keeping other steps</td>
+<td>Keeps the comparison fair</td>
+</tr>
+<tr>
+<td><code>feature_importances_</code></td>
+<td>Built-in tree importance, computed on training data</td>
+<td>Biased toward high-cardinality columns</td>
+</tr>
+<tr>
+<td><code>permutation_importance(..., n_repeats=10)</code></td>
+<td>Shuffles a column on test data and measures MAE rise</td>
+<td>Reports mean and std</td>
+</tr>
+<tr>
+<td><code>PartialDependenceDisplay.from_estimator</code></td>
+<td>Plots the average effect of one input</td>
+<td>Use a raw input column</td>
+</tr>
+<tr>
+<td>residual</td>
+<td>Actual minus predicted</td>
+<td>Positive means under-predicted</td>
+</tr>
+<tr>
+<td>bias (in this chapter)</td>
+<td>Mean of signed errors</td>
+<td>Near 0 means no systematic skew</td>
+</tr>
+<tr>
+<td>MAE</td>
+<td>Mean of absolute errors</td>
+<td>Same units as the target</td>
+</tr>
+<tr>
+<td><code>groupby(...).agg(n="size", ...)</code></td>
+<td>Count and metrics per group</td>
+<td>Flag groups with n below 100</td>
+</tr>
+<tr>
+<td><code>tz_convert("Asia/Kolkata")</code></td>
+<td>Converts timestamps to IST</td>
+<td>Group by the hour in IST</td>
+</tr>
+<tr>
+<td><code>zip(a, b)</code></td>
+<td>Pairs items by position</td>
+<td><code>zip(*forecasts)</code> pairs across many lists</td>
+</tr>
+<tr>
+<td><code>dict.get(key, 0)</code></td>
+<td>Returns a stored value or a default</td>
+<td>Builds running totals</td>
+</tr>
+<tr>
+<td><code>joblib.load(...)</code></td>
+<td>Reads a saved model back</td>
+<td><code>models/model_v1.joblib</code></td>
+</tr>
+<tr>
+<td><code>yaml.safe_load(open(...))</code></td>
+<td>Reads a YAML settings file</td>
+<td>Returns a dictionary</td>
+</tr>
+<tr>
+<td>Rule: test-window rows only</td>
+<td>Slices and importances use held-out rows</td>
+<td>Never training predictions</td>
+</tr>
+<tr>
+<td>Rule: state limits with numbers</td>
+<td>Each limit names a number and a segment</td>
+<td>ST-04, MAE 6.13</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;ensemble&quot;, &quot;a&quot;: &quot;A combination of several models whose outputs are merged into one answer.&quot;}, {&quot;q&quot;: &quot;bootstrap sample&quot;, &quot;a&quot;: &quot;A sample of training rows drawn with replacement, so some rows repeat and some are left out.&quot;}, {&quot;q&quot;: &quot;bagging&quot;, &quot;a&quot;: &quot;Training models on bootstrap samples and averaging them, which mainly lowers variance.&quot;}, {&quot;q&quot;: &quot;gradient boosting&quot;, &quot;a&quot;: &quot;Adding shallow trees in sequence, each fitted to the errors left by the earlier ones.&quot;}, {&quot;q&quot;: &quot;residual&quot;, &quot;a&quot;: &quot;Actual value minus predicted value for one row.&quot;}, {&quot;q&quot;: &quot;bias (this chapter)&quot;, &quot;a&quot;: &quot;The mean of the signed errors; near zero means no systematic skew.&quot;}, {&quot;q&quot;: &quot;slice&quot;, &quot;a&quot;: &quot;A group of test rows, such as one station or one IST hour, whose errors are reported separately.&quot;}, {&quot;q&quot;: &quot;permutation importance&quot;, &quot;a&quot;: &quot;The rise in MAE when one input column is shuffled on held-out data.&quot;}, {&quot;q&quot;: &quot;partial dependence plot&quot;, &quot;a&quot;: &quot;A curve showing how the average prediction changes as one input varies.&quot;}, {&quot;q&quot;: &quot;model card&quot;, &quot;a&quot;: &quot;A short document stating a model&#x27;s use, data, metrics by slice and known limits.&quot;}, {&quot;q&quot;: &quot;out-of-scope use&quot;, &quot;a&quot;: &quot;A use the model was not built or tested for, which the card must name.&quot;}, {&quot;q&quot;: &quot;IST&quot;, &quot;a&quot;: &quot;Indian Standard Time, UTC plus 5 hours 30 minutes, written Asia/Kolkata in code.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D21.html"><small>Previous</small>Day 21 — scikit-learn pipelines, features and tuning</a><a class="nx" href="D23.html"><small>Next</small>Day 23 — Building REST APIs with FastAPI</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

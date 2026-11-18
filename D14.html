@@ -1,0 +1,1054 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 14 — Virtual machines: EC2, SSH and hardening · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D14" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 4 · Days 11–15 · Pipelines and cloud</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a class="cur" href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 4 · Days 11–15 · Pipelines and cloud</p><h1>Day 14 — Virtual machines: EC2, SSH and hardening</h1><p class="sub">You will be able to launch a tagged cloud server that accepts SSH only from your own IP address and your own key, harden its SSH settings, prove the result, and shut everything down cleanly.</p><p class="meta">98 min read · practice quiz · 12 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D14.mp4?v=1794464268"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you rent a computer that sits in an Amazon data centre and control it from your laptop. Think of it as renting a flat and holding the only key. Every flat has a gate, and anyone on the street can knock on it. So you will close the gate to everyone except your own address, make sure only your key opens the door, switch off the older, weaker ways of getting in, and then check each change with a command. By the end you will be able to launch the server, connect to it, prove it is locked down, and delete what you created so that you are not billed for it.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section defines every word the day depends on. Read it once before the tools section.</p>
+<p><strong>Computer and server.</strong> A computer is a machine that runs programs. A server is a computer that runs programs for other computers to use, and it normally stays switched on. Your laptop is a computer. A web server that answers website requests is a server.</p>
+<p><strong>Cloud and virtual machine.</strong> The cloud means renting computers, storage and other services from a company over the internet. A virtual machine (VM) is a computer that exists as software running on someone else's physical hardware. The VM behaves like a real computer: it has its own operating system, its own files and its own network address. Amazon Web Services (AWS) is the company used in this course, and its VM service is called EC2.</p>
+<p><strong>Terminal.</strong> The terminal is a window where you type text instead of clicking. Everything in today's lab happens in a terminal. On Windows, use Git Bash or WSL so that the commands in this chapter work as written.</p>
+<p><strong>Command.</strong> A command is one line of text that the computer runs. For example, <code>ls</code> lists the files in the current folder. The program that reads and runs your commands is called the shell.</p>
+<p><strong>Flag.</strong> A flag is an option added to a command. Flags usually start with a dash. In <code>ls -l</code>, the <code>-l</code> is a flag that asks for a long listing. In <code>aws ec2 describe-instances --instance-ids i-123</code>, the <code>--instance-ids</code> flag says which instance you mean, and <code>i-123</code> is its value.</p>
+<p><strong>Variable.</strong> A variable is a named box that holds a value. <code>NAME=asha</code> puts the text asha into a box called NAME. Writing <code>$NAME</code> later means "the value in that box". Variables exist only in the terminal session where you set them, so if you open a new terminal you must set them again.</p>
+<p><strong>File and directory.</strong> A file holds data. A directory is a folder that holds files. The symbol <code>~</code> means your home directory. <code>~/.ssh</code> is a directory in your home folder that holds SSH keys.</p>
+<p><strong>Server, IP address and port.</strong> Every machine on a network has an IP address, which works like a postal address. A public IP address can be reached from the internet. A port is a numbered door on that machine. A service listens on a port, and clients connect to it. SSH uses port 22.</p>
+<p><strong>CIDR notation.</strong> CIDR is a short way to write a range of IP addresses. <code>203.0.113.47/32</code> means exactly one address. <code>0.0.0.0/0</code> means every address, which is the whole internet. You will meet both in this chapter.</p>
+<p><strong>Firewall and security group.</strong> A firewall is software that allows or blocks network traffic according to rules. An AWS security group is a firewall attached to a VM. Its rules say which ports and which source addresses may connect in.</p>
+<p><strong>Key pair.</strong> A key pair is two linked files. The private key is secret and stays on your computer. The public key can be shared and is stored on the server. Only the matching private key can prove that you are the owner of the public key. This is how SSH logs you in without a password.</p>
+<p><strong>SSH.</strong> SSH stands for Secure Shell. It gives you an encrypted connection to a remote machine's shell, so you can type commands there as if you were sitting in front of it. The SSH server program is called <code>sshd</code>. The <code>d</code> stands for daemon, which means a program that runs in the background and waits for connections.</p>
+<p><strong>Patching.</strong> Patching means installing updated software that fixes known security bugs. Ubuntu provides updates through a package manager, the program that installs and upgrades software.</p>
+<p><strong>Stateful.</strong> A stateful firewall remembers the connections it has allowed. If it lets your SSH connection in, it automatically lets the replies go back out. You do not need a separate outbound rule for those replies.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="amazon-ec2">Amazon EC2</h3>
+<p><strong>What it is.</strong> EC2 rents virtual machines by the second. You choose an image, which is a saved copy of an operating system with software already installed, called an AMI (Amazon Machine Image). You choose a size, called an instance type. The instance type <code>t3.micro</code> is a small, low-cost size. You also choose network rules and a login key. Each running VM is called an instance.</p>
+<p><strong>Why CityPulse uses it.</strong> The CityPulse pipeline needs an always-on Linux host that runs <code>cron</code>. Cron is a scheduler that runs commands at fixed times, such as every 15 minutes. Your laptop cannot be relied on for that. The pipeline script <code>run_pipeline.sh</code>, its Python virtual environment and the <code>sqlite3</code> database all run unchanged on Ubuntu 24.04, so the move to the cloud needs no rewrite. A <code>t3.micro</code> in the Mumbai region <code>ap-south-1</code> is cheap, and the habit of tagging and stopping it teaches cost control.</p>
+<p>The slides list three alternatives. AWS Lambda has no server to patch and is billed per run, but it has time limits and packaging constraints, and it arrives later in the course. Amazon Lightsail offers simpler fixed-price VMs, but it hides the security groups and roles that this course wants you to learn. ECS with Fargate runs containers, which is better for many services but needs Docker and more setup, and it is covered in Year III.</p>
+<p><strong>How it works.</strong> One command, <code>run-instances</code>, combines an image, a size, network rules, a login key and an AWS identity into one running server. Tags are labels such as <code>Owner=asha</code> that make each resource easy to find when you need to count its cost or tear it down. Stopping an instance halts compute charges, but the disk is kept. Terminating an instance deletes it, and the disk goes with it.</p>
+<p><strong>The slide code.</strong> The slide code is shown below with its line breaks restored. Each line is explained after the block.</p>
+<div class="hl"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span>asha<span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="nv">$NAME</span>-admin<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+<span class="nv">AMI</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span>--name<span class="w"> </span>/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id<span class="w"> </span>--query<span class="w"> </span>Parameter.Value<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-names<span class="w"> </span><span class="s2">&quot;citypulse-ssh-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;SecurityGroups[0].GroupId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span>--image-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AMI</span><span class="s2">&quot;</span><span class="w"> </span>--instance-type<span class="w"> </span>t3.micro<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--key-name<span class="w"> </span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--security-group-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metadata-options<span class="w"> </span><span class="nv">HttpTokens</span><span class="o">=</span>required,HttpEndpoint<span class="o">=</span>enabled<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tag-specifications<span class="w"> </span><span class="s2">&quot;ResourceType=instance,Tags=[{Key=Owner,Value=</span><span class="nv">$NAME</span><span class="s2">},{Key=Project,Value=citypulse},{Key=Env,Value=lab}]&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Instances[0].InstanceId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>ec2<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>instance-running<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].[State.Name,PublicIpAddress]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+<span class="c1">## end of day:</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>stop-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ol>
+<li><code>NAME=asha</code> stores your name in the variable NAME. <code>export</code> makes the variables after it visible to programs started from this terminal, including the <code>aws</code> program. <code>AWS_PROFILE=$NAME-admin</code> tells the AWS tool which saved set of credentials to use. <code>AWS_REGION=ap-south-1</code> selects the Mumbai region.</li>
+<li><code>AMI=$(...)</code> runs the command inside the brackets and stores its output in AMI. The command asks AWS Systems Manager for the official Ubuntu 24.04 image ID. <code>--query Parameter.Value</code> picks out just the value from the JSON reply, and <code>--output text</code> prints it as plain text. Using the official parameter avoids a random image published by a stranger.</li>
+<li><code>SG_ID=$(...)</code> looks up the ID of the security group you created in lab step 2. <code>--group-names</code> takes a name, and <code>--query 'SecurityGroups[0].GroupId'</code> takes the first match's ID.</li>
+<li><code>ID=$(aws ec2 run-instances ...)</code> starts the VM. <code>--image-id</code> gives the image. <code>--instance-type t3.micro</code> gives the size. <code>--key-name</code> names the public key AWS installs on the VM. <code>--security-group-ids</code> attaches the firewall. The backslash <code>\</code> at the end of a line tells the shell that the command continues on the next line.</li>
+<li><code>--iam-instance-profile Name=citypulse-pipeline</code> attaches the role for the VM. The profile must already exist, which is set up in the instance roles part of the slides. If it is missing, the launch fails.</li>
+<li><code>--metadata-options HttpTokens=required</code> forces IMDSv2, which is the session-token version of the instance metadata service. You will see why in the instance roles section.</li>
+<li><code>--tag-specifications</code> attaches three tags to the instance. <code>Owner</code> tells you whose VM it is, and <code>Env=lab</code> marks it as a lab resource.</li>
+<li><code>--query 'Instances[0].InstanceId'</code> picks the new instance's ID, and the ID is stored in ID.</li>
+<li><code>aws ec2 wait instance-running</code> pauses until the instance reports the running state. Without it, the next command might run too early.</li>
+<li><code>describe-instances</code> prints the state and public IP address. You should see one line such as <code>running 13.200.45.67</code>. The address will be different for you.</li>
+<li><code>stop-instances</code> halts the instance at the end of the day. The <code># end of day:</code> line is a comment. The shell ignores anything after <code>#</code>.</li>
+</ol>
+<div class="box box-trap"><div class="box-h">Trap: Leaving the VM running overnight</div><p>A running <code>t3.micro</code> is billed every second, even if nobody uses it. Stop it by 15:30 and check the console, filtered by the <code>Owner</code> tag, to be sure nothing else is running.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Picking a random community image</div><p>Resolve the official Ubuntu image from the SSM parameter, as the slide does. Do not search for an image by name, because anyone can publish one.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Hard-coding the public IP</div><p>Stopping and starting an instance changes its public IP address. Look it up again after each start with <code>describe-instances</code>. Never write the address into a script.</p></div>
+
+<h3 id="ssh-keys-and-security-groups">SSH keys and security groups</h3>
+<p><strong>What it is.</strong> A key pair logs you in. AWS stores the public half and installs it on the VM. The private half stays in a <code>.pem</code> or key file on your laptop. The security group is the firewall that decides who may reach the VM at all.</p>
+<p><strong>Why CityPulse uses it.</strong> Internet-facing SSH with passwords is attacked within minutes by automated scanners that try common passwords. The lesson requires key-only login. Restricting port 22 to <code>&lt;your-ip&gt;/32</code> removes the server from the reach of nearly every scanner. Setting <code>PermitRootLogin no</code> and <code>KbdInteractiveAuthentication no</code> closes the remaining easy routes in.</p>
+<p>The slides list three alternatives. AWS Systems Manager Session Manager opens no inbound port at all, but it needs an agent and extra IAM setup. EC2 Instance Connect pushes short-lived keys, but it still needs port 22 open. Opening port 22 to <code>0.0.0.0/0</code> is easy from anywhere, but it fails the course gate.</p>
+<p><strong>How it works.</strong> The private key never leaves your laptop. The security group filters traffic before it reaches the VM. The sshd drop-in file disables password and root logins. Before you reload sshd, you check the config file for errors and keep one session open, so that a mistake does not lock you out.</p>
+<p><strong>The slide code.</strong> The following block is the key, security group and sshd part of the slides, with line breaks restored.</p>
+<div class="hl"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span>asha<span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="nv">$NAME</span>-admin<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/citypulse-<span class="nv">$NAME</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">@citypulse&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>import-key-pair<span class="w"> </span>--key-name<span class="w"> </span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--public-key-material<span class="w"> </span><span class="s2">&quot;fileb://</span><span class="nv">$HOME</span><span class="s2">/.ssh/citypulse-</span><span class="nv">$NAME</span><span class="s2">.pub&quot;</span>
+<span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w"> </span>--group-name<span class="w"> </span><span class="s2">&quot;citypulse-ssh-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;SSH from operator IP only&quot;</span><span class="w"> </span>--query<span class="w"> </span>GroupId<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span>--group-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--protocol<span class="w"> </span>tcp<span class="w"> </span>--port<span class="w"> </span><span class="m">22</span><span class="w"> </span>--cidr<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://checkip.amazonaws.com<span class="k">)</span><span class="s2">/32&quot;</span>
+<span class="c1">## on the VM, keeping this session open:</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/ssh/sshd_config.d/99-citypulse.conf<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">PasswordAuthentication no</span>
+<span class="s">PermitRootLogin no</span>
+<span class="s">KbdInteractiveAuthentication no</span>
+<span class="s">EOF</span>
+sudo<span class="w"> </span>sshd<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>ssh
+sudo<span class="w"> </span>sshd<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;passwordauthentication|permitrootlogin|kbdinteractive&#39;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ol>
+<li>Sets the NAME variable and the AWS profile and region, as before.</li>
+<li><code>ssh-keygen</code> creates a key pair on your laptop. <code>-t ed25519</code> chooses the modern ed25519 algorithm. <code>-f ~/.ssh/citypulse-$NAME</code> sets the file path for the private key. The public key is saved next to it with <code>.pub</code> added. <code>-C</code> adds a comment, which is a label stored inside the public key so you can recognise it later.</li>
+<li><code>import-key-pair</code> uploads the public key to AWS under the name <code>citypulse-$NAME</code>. <code>--public-key-material</code> takes the public key content. The <code>fileb://</code> prefix means "read this file as raw bytes", and <code>$HOME</code> is your home directory.</li>
+<li><code>create-security-group</code> makes a new, empty firewall. <code>--description</code> is a note for humans. <code>--query GroupId --output text</code> prints just the ID, which is stored in SG_ID. A new security group has no inbound rules, so everything is blocked until you add one.</li>
+<li><code>authorize-security-group-ingress</code> adds one inbound rule. <code>--protocol tcp</code> and <code>--port 22</code> allow SSH. <code>--cidr</code> sets the source. <code>$(curl -s https://checkip.amazonaws.com)</code> runs <code>curl</code>, which fetches a web page, and <code>-s</code> hides its progress meter. The page returns your current public IP. <code>/32</code> makes the rule cover that single address.</li>
+<li>The <code># on the VM</code> line is a comment for you. The text after <code>sudo tee</code> is run on the VM, not on your laptop. <code>sudo</code> runs the next command with administrator rights. <code>tee</code> writes its input to a file, and <code>&gt;/dev/null</code> hides the copy that <code>tee</code> would otherwise print to the screen.</li>
+<li><code>&lt;&lt;'EOF'</code> starts a "here document". Every line until the next <code>EOF</code> is sent to <code>tee</code> as file content. Quoting <code>'EOF'</code> stops the shell from changing <code>$</code> signs inside the text.</li>
+<li>The three lines inside the file turn off password logins, root logins and keyboard-interactive logins, which is another way of typing a password.</li>
+<li><code>sudo sshd -t</code> checks the configuration for syntax errors and prints nothing when it is valid. The <code>&amp;&amp;</code> means "only if the previous command succeeded". <code>systemctl reload ssh</code> tells the running SSH service to read the new config without dropping existing connections.</li>
+<li><code>sudo sshd -T</code> prints the effective settings that sshd will really use. <code>grep -Ei</code> filters the lines. <code>-E</code> allows the <code>|</code> alternatives, and <code>-i</code> ignores upper and lower case.</li>
+</ol>
+<div class="box box-trap"><div class="box-h">Trap: A drop-in file can be overridden</div><p>sshd uses the first value it reads for each setting. Files in <code>sshd_config.d</code> are read in name order, so an earlier file such as <code>00-something.conf</code> can override your <code>99-citypulse.conf</code>. Always confirm with <code>sshd -T</code>, not by reading your own file.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Reloading with a typo</div><p>If you reload sshd with a broken config and close your only session, you cannot get back in. Run <code>sshd -t</code> first, and keep one session open until a second, new session has logged in successfully.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Loose key permissions</div><p>SSH refuses a private key that others can read. The key you make with <code>ssh-keygen</code> is already restricted. If you copy a key somewhere else, restore the restriction with <code>chmod 600</code> (owner can read and write) or <code>chmod 400</code> (owner can only read). Never commit a key to Git.</p></div>
+
+<h3 id="instance-roles">Instance roles</h3>
+<p><strong>What it is.</strong> An instance role is an IAM role attached to an EC2 instance through an instance profile. IAM, which stands for Identity and Access Management, controls who may do what to which AWS resource. A role is a set of permissions that software can use temporarily. Software on the VM asks the instance metadata service (IMDS) for short-lived credentials. Those credentials rotate automatically, so no permanent access key is stored on disk.</p>
+<p><strong>Why CityPulse uses it.</strong> Gate T19 forbids long-lived keys on the VM. The folder <code>~/.aws</code> must not exist, and no <code>AWS_ACCESS_KEY_ID</code> variable may be set. The role reuses the policy <code>citypulse-pipeline-s3</code>, so the VM has the same scoped access as the user from the previous ticket. IMDSv2 protects against credential-theft tricks in which an attacker makes the server fetch its own credentials. The slides mention a well-known breach in which that technique was used.</p>
+<p>The alternatives are copying the user's keys onto the VM, which works but never expires and leaks with any disk snapshot, or putting secrets in environment variables, which are still long-lived keys. IAM Roles Anywhere is for servers outside AWS and is not needed for an EC2 host.</p>
+<p><strong>How it works.</strong> A role has two policies. The trust policy says who may take the role, here the EC2 service. The permissions policy says what the role may do. The instance profile carries the role onto the VM. Once there, the AWS CLI and the Python library boto3 ask IMDSv2 for credentials automatically.</p>
+<p><strong>The slide code.</strong> The following block creates the role and attaches it to the instance, then checks the VM. Line breaks are restored.</p>
+<div class="hl"><pre><span></span><code><span class="nv">ACCT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--assume-role-policy-document<span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;ec2.amazonaws.com&quot;},&quot;Action&quot;:&quot;sts:AssumeRole&quot;}]}&#39;</span>
+aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="nv">$ACCT</span><span class="s2">:policy/citypulse-pipeline-s3&quot;</span>
+aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>ec2<span class="w"> </span>associate-iam-instance-profile<span class="w"> </span>--instance-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>citypulse-pipeline
+aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-metadata-options<span class="w"> </span>--instance-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--http-tokens<span class="w"> </span>required<span class="w"> </span>--http-endpoint<span class="w"> </span>enabled
+<span class="c1">## on the VM: no stored keys, yet AWS calls work</span>
+ls<span class="w"> </span>-la<span class="w"> </span>~/.aws<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;no ~/.aws&quot;</span>
+env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>AWS_ACCESS_KEY_ID<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;no key variable&quot;</span>
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>Line by line:</p>
+<ol>
+<li><code>aws sts get-caller-identity</code> asks AWS who you are. <code>--query Account</code> picks the 12-digit account number, and it is stored in ACCT.</li>
+<li><code>create-role</code> makes the role. <code>--role-name</code> is its name. The JSON after <code>--assume-role-policy-document</code> is the trust policy. <code>"Service":"ec2.amazonaws.com"</code> means the EC2 service may take this role. The single quotes keep the JSON together for the shell, and the backslash continues the line.</li>
+<li><code>attach-role-policy</code> adds the permissions policy to the role. <code>--policy-arn</code> is the full name of the policy. An ARN (Amazon Resource Name) is a unique address for an AWS object.</li>
+<li><code>create-instance-profile</code> makes the container that carries a role onto a VM.</li>
+<li><code>add-role-to-instance-profile</code> puts the role inside that profile.</li>
+<li><code>associate-iam-instance-profile</code> attaches the profile to your running instance, using <code>$ID</code>.</li>
+<li><code>modify-instance-metadata-options</code> changes an existing instance to require IMDSv2 (<code>--http-tokens required</code>) and keeps the metadata endpoint on.</li>
+<li>On the VM, <code>ls -la ~/.aws</code> lists the hidden folder with details. <code>2&gt;/dev/null</code> hides the error if the folder does not exist, and <code>||</code> runs the <code>echo</code> only when <code>ls</code> failed. A success message means no stored keys.</li>
+<li><code>env</code> prints the environment variables, and <code>grep AWS_ACCESS_KEY_ID</code> shows only the one you care about. <code>||</code> again runs the message if nothing matched.</li>
+<li><code>get-caller-identity --query Arn</code> prints who the VM is now. The answer should contain <code>assumed-role/citypulse-pipeline</code>, not <code>user/</code>.</li>
+</ol>
+<p>Expected output from the last command looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity --query Arn --output text&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;arn:aws:sts::123456789012:assumed-role/citypulse-pipeline/i-0a1b2c3d4e5f6a7b8&quot;}]}"></div>
+
+<p>Here the <code>123456789012</code> is a placeholder for your 12-digit account number, and the <code>i-...</code> part is your instance ID.</p>
+<p>The next diagram shows where the temporary credentials come from.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;How the VM gets temporary credentials&quot;, &quot;nodes&quot;: [&quot;EC2 instance and CLI&quot;, &quot;Instance metadata service&quot;, &quot;AWS services&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;ask for a session token&quot;, &quot;note&quot;: &quot;The CLI on the VM first asks the metadata service for a token. This is the IMDSv2 step.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;session token&quot;, &quot;note&quot;: &quot;The service answers only requests that carry the token, which blocks many theft tricks.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;ask for role credentials&quot;, &quot;note&quot;: &quot;The CLI presents the token and asks which role this VM holds.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;short-lived keys&quot;, &quot;note&quot;: &quot;The service returns keys that expire after a short time and are replaced automatically.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;signed request&quot;, &quot;note&quot;: &quot;The CLI calls AWS with those keys, and AWS checks the role&#x27;s permissions.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Attaching the policy to the user, not the role</div><p>The policy <code>citypulse-pipeline-s3</code> must be attached to the role with <code>attach-role-policy</code>. Attaching it to the user <code>citypulse-pipeline</code> does nothing for the VM.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Leftover credentials override the role</div><p>If <code>~/.aws/credentials</code> exists on the VM, the CLI uses it instead of the role. Delete the file. The gate checks that it does not exist.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Launching too early</div><p>A new instance profile may not be visible for a few seconds. If the launch fails with a message about the profile, wait and retry.</p></div>
+
+<h3 id="runbooks">Runbooks</h3>
+<p><strong>What it is.</strong> A runbook is a written document of step-by-step procedures that you can copy and paste, for example how to launch, connect, deploy, stop and recover a system. A good runbook is tested by someone other than its author and is stored in the same repository as the code, so that it is reviewed like code.</p>
+<p><strong>Why CityPulse uses it.</strong> When an intern's IP address changes or sshd breaks, the fix must be found in minutes, not rediscovered. The slides also cite the October 2021 outage at Facebook, in which engineers were locked out of their own systems because the recovery path was not ready. Gate T19 requires <code>docs/cloud-runbook.md</code> with five sections, and each section must be dry-run and initialled by a squad member.</p>
+<p>The alternatives are tribal knowledge, which fails when the expert is absent; full automation with Terraform or SSM documents, which is best long term but still needs recovery steps that a human can run; and wiki pages far from the code, which drift out of date and are not reviewed in pull requests.</p>
+<p><strong>How it works.</strong> Each section starts from a symptom, gives a quick diagnosis, and then gives exact commands to fix and verify. The recovery section for a changed public IP looks like this, with line breaks restored.</p>
+<div class="hl"><pre><span></span><code><span class="c1">## Symptom: ssh to the VM times out after moving networks</span>
+<span class="nv">NAME</span><span class="o">=</span>asha<span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="nv">$NAME</span>-admin<span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-south-1
+<span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-names<span class="w"> </span><span class="s2">&quot;citypulse-ssh-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;SecurityGroups[0].GroupId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">OLD</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;SecurityGroups[0].IpPermissions[?FromPort==`22`].IpRanges[0].CidrIp&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<span class="nv">NEW</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://checkip.amazonaws.com<span class="k">)</span><span class="s2">/32&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;rule allows </span><span class="nv">$OLD</span><span class="s2">, you are </span><span class="nv">$NEW</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>revoke-security-group-ingress<span class="w"> </span>--group-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--protocol<span class="w"> </span>tcp<span class="w"> </span>--port<span class="w"> </span><span class="m">22</span><span class="w"> </span>--cidr<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OLD</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span>--group-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--protocol<span class="w"> </span>tcp<span class="w"> </span>--port<span class="w"> </span><span class="m">22</span><span class="w"> </span>--cidr<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NEW</span><span class="s2">&quot;</span>
+<span class="nv">IP</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Owner,Values=</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Name=instance-state-name,Values=running&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].PublicIpAddress&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/citypulse-<span class="nv">$NAME</span><span class="w"> </span>ubuntu@<span class="s2">&quot;</span><span class="nv">$IP</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;aws sts get-caller-identity --query Arn --output text&#39;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ol>
+<li>The first line starting with <code>#</code> is a heading for the reader. It is not run.</li>
+<li>The first two commands set the variables again, because a new terminal starts empty.</li>
+<li><code>OLD=$(...)</code> reads the address currently allowed on port 22. The <code>--query</code> expression filters the rules to those whose <code>FromPort</code> is 22. The backticks inside the quotes are part of the JMESPath query language that <code>--query</code> uses, and they mark a literal number.</li>
+<li><code>NEW=</code> builds your new address in the same <code>/32</code> form.</li>
+<li><code>echo</code> prints both addresses so that you can read them before anything changes.</li>
+<li><code>revoke-security-group-ingress</code> removes the old rule. This is the only removal in the block.</li>
+<li><code>authorize-security-group-ingress</code> adds the rule for the new address.</li>
+<li><code>describe-instances --filters</code> finds the running instance tagged with your name. <code>Name=tag:Owner,Values=...</code> matches the tag set at launch.</li>
+<li><code>ssh -i</code> connects with your key. The text in quotes is run on the VM, and it proves the role is still working.</li>
+</ol>
+<div class="box box-trap"><div class="box-h">Trap: Steps that cannot be run</div><p>A step such as "fix the security group" is not a runbook step. Write the exact command with its variables, as the block above does.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A runbook never tested</div><p>A runbook that has never been run is a guess. Have a teammate dry-run each section and initial it before you rely on it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Opening 0.0.0.0/0 temporarily</div><p>It is tempting to open port 22 to everyone "just for now" to recover. Do not do it. Replace the <code>/32</code> rule instead, because temporary rules are the ones that get forgotten.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>This example uses the names from the Technology in Action workbook: an instance called <code>citypulse-worker</code>, a <code>t3.small</code> size, the Amazon Linux user <code>ec2-user</code>, and a security group <code>sg-0cp42</code>. The lab later in this chapter uses the names from the course slides, which are <code>citypulse-$NAME</code>, <code>t3.micro</code> and <code>ubuntu</code>. The commands have the same shape, so the example shows you the method.</p>
+<p><strong>Goal.</strong> Connect to a VM that is reachable only from your own IP, using a key that has been locked down.</p>
+<p><strong>Step 1: lock the private key.</strong> Run the following command on your laptop.</p>
+<div class="hl"><pre><span></span><code>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>citypulse-worker.pem
+</code></pre></div>
+
+<p><code>chmod</code> changes the permissions of a file. The number <code>400</code> means the owner can read the file and nobody can write or execute it. The workbook's <code>400</code> and the slides' <code>600</code> both pass, because SSH only refuses keys that group members or other users can read.</p>
+<p><strong>Step 2: open port 22 to your IP.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--group-id<span class="w"> </span>sg-0cp42<span class="w"> </span>--protocol<span class="w"> </span>tcp<span class="w"> </span>--port<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cidr<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>ifconfig.me<span class="k">)</span><span class="s2">/32&quot;</span>
+</code></pre></div>
+
+<p>This adds a single inbound rule. <code>ifconfig.me</code> is a website that returns your public IP address, the same job that <code>checkip.amazonaws.com</code> does in the lab. The rule allows SSH from that address and no other.</p>
+<p><strong>Step 3: connect.</strong></p>
+<div class="hl"><pre><span></span><code>ssh<span class="w"> </span>-i<span class="w"> </span>citypulse-worker.pem<span class="w"> </span>ec2-user@54.12.9.108
+</code></pre></div>
+
+<p><code>ssh</code> opens the connection. <code>-i citypulse-worker.pem</code> tells it which private key to use. <code>ec2-user@54.12.9.108</code> means "log in as the user <code>ec2-user</code> at this address". The first time you connect, ssh asks whether you trust the host, and you type <code>yes</code>. The output then ends with a prompt that looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ssh -i citypulse-worker.pem ec2-user@54.12.9.108&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Are you sure you want to continue connecting (yes/no)? yes&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[ec2-user@citypulse-worker ~]$ uptime&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; 09:14:02 up 3 min,  1 user,  load average: 0.08, 0.03, 0.01&quot;}]}"></div>
+
+<p>The <code>uptime</code> command shows how long the machine has been running. A small uptime shows that you are on a freshly booted machine. The <code>~</code> in the prompt means you are in your home directory.</p>
+<p><strong>Step 4: check the result.</strong> The rules should now show only SSH from your address. The slide example also keeps port 443 open for the API, but that port is not part of the lab.</p>
+<div class="box box-key"><div class="box-h">Key fact: Why the worked example matters</div><p>Every later step depends on three facts: the key file is private, the security group allows only one address, and the server accepts only key-based logins. You check each one with a command, not by trusting that it worked.</p></div>
+
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Work through these seven steps in order. Step 2 must come before step 3, because the launch needs the security group ID. Use the names from the course slides, since the checks below rely on them.</p>
+<p>Before you start, open a terminal and check that you have the AWS command-line tool, which is the program called <code>aws</code>. Run <code>aws --version</code>. You should see a line beginning with <code>aws-cli/</code>. Your course set-up gave you an AWS profile named after you, such as <code>asha-admin</code>. If the profile is missing, stop and ask your instructor. Do not create new credentials yourself.</p>
+<p>Every new terminal needs the variables set again. Run <code>NAME=asha; export AWS_PROFILE=$NAME-admin AWS_REGION=ap-south-1</code> each time, and use your own name in place of <code>asha</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Mixing up the two versions</div><p>Some reference material describes a <code>t3.small</code> instance with the user <code>ec2-user</code> and an RSA key. That is the workbook version. The lab uses the names and commands in this chapter. If a name in your terminal does not match, check which version you copied from.</p></div>
+
+<h3 id="step-1-create-a-key-pair">Step 1: Create a key pair</h3>
+<p><strong>What you do.</strong> Make a new ed25519 key pair on your laptop, then upload the public half to AWS.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/citypulse-<span class="nv">$NAME</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">@citypulse&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>import-key-pair<span class="w"> </span>--key-name<span class="w"> </span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--public-key-material<span class="w"> </span><span class="s2">&quot;fileb://</span><span class="nv">$HOME</span><span class="s2">/.ssh/citypulse-</span><span class="nv">$NAME</span><span class="s2">.pub&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> <code>ssh-keygen</code> prints two lines starting with <code>Your identification has been saved</code> and <code>Your public key has been saved</code>. <code>import-key-pair</code> prints JSON with your key name and a fingerprint, which is a short code that identifies the key.</p>
+<p><strong>How you know it worked.</strong> Run <code>aws ec2 describe-key-pairs --key-names "citypulse-$NAME"</code>. It should list one key pair with the same name. The file <code>~/.ssh/citypulse-asha</code> (with your name) exists on your laptop, and the <code>.pub</code> file beside it holds the public key.</p>
+<h3 id="step-2-create-a-tight-security-group">Step 2: Create a tight security group</h3>
+<p><strong>What you do.</strong> Create an empty firewall for your VM and add one rule that allows SSH from your current IP address only.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w"> </span>--group-name<span class="w"> </span><span class="s2">&quot;citypulse-ssh-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;SSH from operator IP only&quot;</span><span class="w"> </span>--query<span class="w"> </span>GroupId<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span>--group-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--protocol<span class="w"> </span>tcp<span class="w"> </span>--port<span class="w"> </span><span class="m">22</span><span class="w"> </span>--cidr<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://checkip.amazonaws.com<span class="k">)</span><span class="s2">/32&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> The first command prints nothing, because its output went into <code>SG_ID</code>. The second prints JSON that contains your rule. Its CIDR ends in <code>/32</code>.</p>
+<p><strong>How you know it worked.</strong> Run this:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;SecurityGroups[0].IpPermissions[*].[FromPort,IpRanges[0].CidrIp]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>The output should be one line: <code>22</code> followed by your address and <code>/32</code>. If you see <code>0.0.0.0/0</code>, delete the rule and fix the command before you go on.</p>
+<h3 id="step-3-launch-a-t3micro">Step 3: Launch a t3.micro</h3>
+<p><strong>What you do.</strong> Start a small VM with your key, your firewall, the instance profile and IMDSv2.</p>
+<p><strong>What you type.</strong> Use the launch block from the EC2 section above, exactly as written. Its first lines set <code>NAME</code>, look up the Ubuntu image, and look up <code>$SG_ID</code>. The launch line then creates the instance.</p>
+<p><strong>What you should see.</strong> The launch returns an instance ID that starts with <code>i-</code>. The wait command returns without output when the instance is running. The describe line prints <code>running</code> and an IP address.</p>
+<p><strong>How you know it worked.</strong> The describe line shows <code>running</code> as the state. If the launch fails with a message about <code>citypulse-pipeline</code>, the instance profile does not exist yet. Create it using the instance roles block, then retry. Stop the lab there if you cannot get the profile to appear, and ask for help rather than removing the profile line silently.</p>
+<h3 id="step-4-connect-over-ssh">Step 4: Connect over SSH</h3>
+<p><strong>What you do.</strong> Find the VM's current IP address and open a shell on it.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">IP</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].PublicIpAddress&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/citypulse-<span class="nv">$NAME</span><span class="w"> </span>ubuntu@<span class="s2">&quot;</span><span class="nv">$IP</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> On the first connection, ssh shows a fingerprint and asks whether you want to continue. Type <code>yes</code>. Then the prompt changes to something like <code>ubuntu@ip-10-0-1-23:~$</code>. The user name before the <code>@</code> is <code>ubuntu</code>, which is the default user on Ubuntu images.</p>
+<p><strong>How you know it worked.</strong> Run <code>hostname</code> and <code>whoami</code>. The output should show a host name that starts with <code>ip-</code> and the user <code>ubuntu</code>. Type <code>exit</code> to return to your laptop's prompt.</p>
+<div class="box box-trap"><div class="box-h">Trap: Key permissions warning</div><p>If ssh says that the key is unprotected and refuses it, run <code>chmod 600 ~/.ssh/citypulse-$NAME</code> and try again. <code>ssh-keygen</code> normally sets this for you.</p></div>
+
+<h3 id="step-5-patch-and-harden-sshd">Step 5: Patch and harden sshd</h3>
+<p><strong>What you do.</strong> Install pending updates on the VM, then apply the sshd drop-in from the SSH section. Keep your first session open while you do it.</p>
+<p><strong>What you type.</strong> On the VM, in your open session:</p>
+<div class="hl"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/ssh/sshd_config.d/99-citypulse.conf<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">PasswordAuthentication no</span>
+<span class="s">PermitRootLogin no</span>
+<span class="s">KbdInteractiveAuthentication no</span>
+<span class="s">EOF</span>
+sudo<span class="w"> </span>sshd<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>ssh
+</code></pre></div>
+
+<p><code>apt-get update</code> refreshes the list of available packages. <code>apt-get upgrade -y</code> installs the newer versions, and <code>-y</code> answers yes to the question it would otherwise ask. The upgrade can take a few minutes.</p>
+<p><strong>What you should see.</strong> The update prints a list of packages being fetched and then returns to the prompt. <code>sshd -t</code> prints nothing when the config is valid. <code>systemctl reload ssh</code> prints nothing on success.</p>
+<p><strong>How you know it worked.</strong> <code>sshd -t</code> printing nothing is the test. If it prints an error with a line number, fix that line before reloading. Do not close your first session until step 6 is complete.</p>
+<h3 id="step-6-verify-the-hardening">Step 6: Verify the hardening</h3>
+<p><strong>What you do.</strong> Check the effective sshd settings on the VM, then prove from your laptop that a password login is refused.</p>
+<p><strong>What you type.</strong> On the VM:</p>
+<div class="hl"><pre><span></span><code>sudo<span class="w"> </span>sshd<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;passwordauthentication|permitrootlogin|kbdinteractive&#39;</span>
+</code></pre></div>
+
+<p>On your laptop, in a second terminal, with <code>$IP</code> set as in step 4:</p>
+<div class="hl"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">PubkeyAuthentication</span><span class="o">=</span>no<span class="w"> </span>-o<span class="w"> </span><span class="nv">PreferredAuthentications</span><span class="o">=</span>password<span class="w"> </span>ubuntu@<span class="s2">&quot;</span><span class="nv">$IP</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> On the VM, the three lines show <code>no</code> for each setting. On the laptop, the password test fails with a message that ends in <code>Permission denied (publickey).</code>. The <code>-o</code> options switch off key login and ask only for a password, so the test really checks password logins.</p>
+<p><strong>How you know it worked.</strong> Your key login in the first session still works, and the password attempt is refused. Finally, check the rules once more with the step 2 command and confirm that only your <code>/32</code> rule exists. A second, fresh key login is the strongest proof: open a new terminal and connect with the key before you close the first session.</p>
+<h3 id="step-7-terminate-and-clean-up">Step 7: Terminate and clean up</h3>
+<p><strong>What you do.</strong> Delete the VM and the resources you created, so that no charges continue after the lab. Terminating deletes the instance and its disk. This is permanent. Stop is the daily option from the slides, and terminate is for when the lab is finished.</p>
+<p><strong>What you type.</strong> On your laptop:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>terminate-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>instance-terminated<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>delete-security-group<span class="w"> </span>--group-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span>
+aws<span class="w"> </span>ec2<span class="w"> </span>delete-key-pair<span class="w"> </span>--key-name<span class="w"> </span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> <code>terminate-instances</code> prints the state <code>shutting-down</code>. The wait returns when the state is <code>terminated</code>. The delete commands print nothing on success.</p>
+<p><strong>How you know it worked.</strong> Run <code>aws ec2 describe-instances --instance-ids "$ID" --query 'Reservations[0].Instances[0].State.Name' --output text</code>. It should print <code>terminated</code>. If <code>delete-security-group</code> reports a dependency error, the instance was still using the group. Wait for the termination to finish and try again. Last, run <code>aws ec2 describe-key-pairs --key-names "citypulse-$NAME"</code>. It should now report that the key pair does not exist. The local files in <code>~/.ssh</code> are yours to keep or delete.</p>
+<div class="box box-trap"><div class="box-h">Trap: Terminating when you meant to stop</div><p>A stopped instance keeps its disk, and you can start it again tomorrow. A terminated instance is gone. Check the state you want before you type the command.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Auditing the CityPulse EC2 Security Group" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Exact CIDR match on an open port</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>0.0.0.0/0 allows any source</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Port not covered by any rule is blocked</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Only world-open ports are listed</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Flag SSH (22) open to the world</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 76 of the 100 points. The other 24 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K06.html#y2-t19-run-pipeline-on-hardened-vm-writing-to-bucket-via-instance-role">Y2-T19 · Run pipeline on hardened VM writing to bucket via instance role</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The real Day Quiz has ten case-study multiple-choice questions, one on each topic below, in the same order. The pass mark is 70%. Only your first attempt is kept for your skill score, so treat the first attempt as the real test. Read each topic once, try the quiz block that follows it, and only then read the WHY lines.</p>
+<p>Each question gives a short scenario, such as a team, a symptom or a constraint, and then one question. Answer it in this order.</p>
+<ol>
+<li>Read the last line first. It tells you what is asked: the cause, the safest step, the cheapest option or the first thing to do.</li>
+<li>Underline the facts in the scenario that matter. A port that is open to everyone, a key file with the wrong permissions or a stopped instance often decide the answer.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about a different problem.</li>
+<li>Watch for three words. "Most" means several options are sensible and you must choose the strongest. "First" means the order of steps matters. "Best" means the answer must meet every constraint in the scenario, not just one of them.</li>
+</ol>
+<p>The quiz blocks use the same format as the real quiz. Each WHY line explains the right answer and why the most tempting wrong option fails.</p>
+<h3 id="ssh-keys">SSH keys</h3>
+<p><strong>What it is.</strong> SSH is a login that uses two linked files instead of a password. You make both files on your laptop with <code>ssh-keygen</code>. The private file has no extension and stays on your laptop. The public file ends in <code>.pub</code> and can be shared. The server keeps the public half. When you connect, SSH proves that you hold the private half without sending it across the network, so no password is typed.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ssh-keygen -t ed25519 -f ~/.ssh/citypulse-asha -C \&quot;asha@citypulse\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Your identification has been saved in /home/asha/.ssh/citypulse-asha&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Your public key has been saved in /home/asha/.ssh/citypulse-asha.pub&quot;}]}"></div>
+
+<p>The <code>-t ed25519</code> option chooses a modern key type. The <code>-f</code> option sets the file name, and <code>-C</code> adds a label to the public key. In AWS there are two ways to get a key pair. <code>create-key-pair</code> makes both halves inside AWS and returns the private key once, in the command output. <code>import-key-pair</code> uploads a public key that you made yourself, so the private half never leaves your laptop. If you lose a private key that AWS created, AWS cannot give it back.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse engineer's laptop is stolen. She had imported her public key into AWS, and her team lead asks whether AWS can re-send the private key so she can log in from a new laptop. The reasoning is simple. AWS never held the private key, so there is nothing to re-send. The fix is a new key pair made on the new laptop. Its public half is then added to the VM while an existing session is still open, and the new login is tested before the old key is retired.</p>
+<div class="box box-trap"><div class="box-h">Trap: Believing AWS keeps a copy of your private key</div><p>AWS keeps only the public half. A lost private key cannot be downloaded again. Keep the private file safe, and never commit it to Git.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse engineer&#x27;s laptop is stolen. She made her key with ssh-keygen and imported the public half into AWS. Her colleague says AWS can send the private key to her again from the console. What is correct?&quot;, &quot;opts&quot;: [&quot;AWS can send the private key to her from the console at any time.&quot;, &quot;The private key existed only on the laptop, so she must make a new key pair and import its public half.&quot;, &quot;AWS keeps the private key on the VM, so the VM can send it back to her.&quot;, &quot;The public key contains the private key, so she can rebuild the private file from it.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;AWS holds only the public half, so there is nothing to recover. The tempting wrong answer says the VM keeps a copy, but the private key never leaves the laptop it was made on.&quot;}, {&quot;q&quot;: &quot;A team lead wants a key for a new VM. Nobody should ever need a copy of a private key that AWS created. Which approach meets this?&quot;, &quot;opts&quot;: [&quot;Run aws ec2 create-key-pair and share the output file with the whole team.&quot;, &quot;Run aws ec2 delete-key-pair and then reuse the old private file.&quot;, &quot;Run ssh-add on the VM so that it holds the private key.&quot;, &quot;Run ssh-keygen on your laptop, then run aws ec2 import-key-pair with the .pub file.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;import-key-pair uploads only the public half, so the private key stays on your laptop. The tempting wrong answer is create-key-pair, which returns the private key once, so sharing its output spreads the secret.&quot;}, {&quot;q&quot;: &quot;A script on your laptop fails with \&quot;Permission denied (publickey)\&quot;. You find that the -i option points at the .pub file, not the private file. What is the correct fix?&quot;, &quot;opts&quot;: [&quot;Point -i at the private file, which has no .pub ending.&quot;, &quot;Add the .pub file to the VM with chmod 644 so that it can be read.&quot;, &quot;Ask AWS to create a new private key, because the current one is damaged.&quot;, &quot;Turn on password logins so that the script can continue without a key.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The -i option needs the private key, and the public file cannot prove that you own it. The tempting wrong answer, turning on passwords, weakens the server and removes the protection the key gives.&quot;}]}"></div>
+
+<h3 id="key-file-permissions">Key file permissions</h3>
+<p><strong>What it is.</strong> Every file has permissions that say who may read, write or run it. On Linux they appear in <code>ls -l</code>. The three groups are the owner, the group and everyone else. A number such as 600 is a short form. Each digit adds up the rights: 4 is read, 2 is write and 1 is run. So 6 means read and write, 4 means read only, and 0 means nothing. OpenSSH checks the private key before it uses it, and refuses a key that the group or other users can read.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ls -l ~/.ssh/citypulse-asha&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;-rw------- 1 asha asha 411 citypulse-asha&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;chmod 644 ~/.ssh/citypulse-asha&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ssh -i ~/.ssh/citypulse-asha ubuntu@203.0.113.7&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;@ WARNING: UNPROTECTED PRIVATE KEY FILE! @&quot;}]}"></div>
+
+<p>The <code>chmod</code> command changes the mode. <code>chmod 600</code> gives the owner read and write, and removes everyone else's access. <code>chmod 400</code> gives the owner read only. Both are accepted. A mode of 644 lets everyone read the file, so SSH refuses it. Renaming or moving a file does not change its mode.</p>
+<p><strong>How it shows up in a case study.</strong> A student copies her key from a shared lab PC to her own laptop, then renames it to end in <code>.pem</code>. SSH now refuses the key with a warning about unprotected permissions. Her teaching assistant tells her that the rename caused the problem. The reasoning is that the rename did not change the mode. The mode was already too open when the file was copied. The fix is <code>chmod 600</code> on the renamed file, and then <code>ls -l</code> to confirm that the group and others have no access.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing 777 or 644 because the command runs</div><p>A <code>chmod</code> command that runs is not the same as a correct one. 777 gives everyone write and run access. 644 still lets everyone read a private key. Only 600 or 400 is correct for a private key.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate sees that SSH refuses a key with mode 0640, which lets the group read it. He proposes chmod 777 and says the problem is solved because everyone can now use the key. What is the best reply?&quot;, &quot;opts&quot;: [&quot;Agree, because a mode of 777 gives full access and SSH accepts any mode with full access.&quot;, &quot;Agree only if the file is renamed to end in .pem first.&quot;, &quot;Reject it. 777 lets everyone write and run the key. Use 600 or 400 so that only the owner has access.&quot;, &quot;Reject it, because the group must be able to read a private key for it to work.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;SSH needs the private key to be private, and 777 is the opposite of that. The tempting wrong answer treats \&quot;everyone can use it\&quot; as success, when the key is then open to any user on the machine.&quot;}, {&quot;q&quot;: &quot;A key was copied from a shared PC and now has mode 644. SSH refuses it. You want the smallest correct change that keeps the key private to you. Which command?&quot;, &quot;opts&quot;: [&quot;chmod 600 on the private key file, then run ssh again.&quot;, &quot;chmod 666 on the private key file, because the owner needs to write to it.&quot;, &quot;chmod 644 on the .pub file, because the server checks the public key first.&quot;, &quot;Rename the private key file to a .txt extension and then run ssh.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;chmod 600 removes group and other access and changes nothing else. The tempting wrong answer changes the .pub file, which is not the file SSH is refusing.&quot;}, {&quot;q&quot;: &quot;You rename a private key from citypulse-asha to citypulse-asha.pem and move it into a new folder with mv. Its mode was 644 before the change. SSH now refuses it. Which explanation and fix are correct?&quot;, &quot;opts&quot;: [&quot;The rename changed the mode to 644, so rename the file back to fix it.&quot;, &quot;SSH refuses every .pem file, so convert the key to a .txt file.&quot;, &quot;The move removed the owner&#x27;s read permission, so the key must be created again on AWS.&quot;, &quot;The rename and move do not change the mode, which was already 644. Run chmod 600 on the file.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A rename or a move keeps the mode, so the problem existed before the change. The tempting wrong answer blames the rename, which is a common but mistaken belief.&quot;}]}"></div>
+
+<h3 id="security-groups">Security groups</h3>
+<p><strong>What it is.</strong> A security group is a stateful firewall attached to an EC2 instance. Each inbound rule names a protocol, a port or range of ports, and a source written as a CIDR range. A new security group has no inbound rules, so all inbound traffic is blocked until you add one. "Stateful" means that when a rule lets a connection in, the reply traffic is allowed back out automatically. A CIDR range such as <code>203.0.113.47/32</code> means exactly one address, and <code>10.0.0.0/16</code> means every address from 10.0.0.0 to 10.0.255.255.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws ec2 authorize-security-group-ingress --group-id sg-0cp42 --protocol tcp --port 22 --cidr 203.0.113.47/32&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Return\&quot;: true,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    ...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}]}"></div>
+
+<p>The command prints JSON. The <code>Return</code> field is <code>true</code> when the rule was added. A rule for port 22 with a source of <code>/32</code> admits one machine. The same port with a source of <code>10.0.0.0/16</code> admits every machine inside that private network.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse ingest VM and a database VM share a VPC. A junior engineer adds the rule TCP 22 from the VPC range, so that the database VM can also reach the ingest VM. The team asks whether this is acceptable. The reasoning is that the range includes every machine in the VPC, not only the one that needs access. Any compromised machine in the network could then try SSH. The correct rule names one source only, such as the bastion's own <code>/32</code> address, and the team checks the rule set after each change.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using a private range because it looks safe</div><p>A private range such as 10.0.0.0/16 is not private to a single machine. Read the range out as a list of addresses before you accept it.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The operator&#x27;s laptop has the address 198.51.100.20. A teammate proposes the inbound rule TCP 22 from 198.51.100.0/24, which is wider, \&quot;in case the laptop&#x27;s address changes\&quot;. What is the best response?&quot;, &quot;opts&quot;: [&quot;Accept it, because a /24 range is narrower than the whole internet and therefore safe.&quot;, &quot;Reject it. A /24 covers 256 addresses. Use 198.51.100.20/32, and update that one rule when the address changes.&quot;, &quot;Accept it, because the group also needs port 22 open for the replies.&quot;, &quot;Reject it, because security groups cannot use a /24 range at all.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A /24 includes 256 addresses, so it admits machines the team did not mean to allow. The tempting wrong answer compares it with the whole internet, which is a different question from who should reach port 22.&quot;}, {&quot;q&quot;: &quot;A security group was created an hour ago and has no rules added. A developer says that the VM is in the team&#x27;s VPC, so SSH from the office should already work. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The VPC opens port 22 automatically from its own range, so SSH should work.&quot;, &quot;Outbound traffic is blocked, so the replies to SSH cannot leave the VM.&quot;, &quot;A new group allows inbound SSH from the operator&#x27;s address by default.&quot;, &quot;A new group has no inbound rules, so all inbound traffic is blocked until a rule is added.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A new security group blocks all inbound traffic until a rule is added. The tempting wrong answer assumes the VPC opens port 22 for you, which it does not.&quot;}, {&quot;q&quot;: &quot;A security group allows TCP 22 from the operator&#x27;s /32. The operator asks whether an outbound rule is also needed for the server&#x27;s replies to reach the laptop. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;Yes, add an outbound rule for TCP 22 to the operator&#x27;s /32, or the replies will be dropped.&quot;, &quot;Yes, add an outbound rule for all ports to 0.0.0.0/0, or the session will hang.&quot;, &quot;No. The security group is stateful, so replies to an allowed connection are allowed back automatically.&quot;, &quot;No, because replies to SSH always use a different port, which is open by default.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The security group tracks the connection, so the replies need no separate rule. The tempting wrong answer is the first one, which treats the security group as if it were stateless and needed a matching outbound rule.&quot;}]}"></div>
+
+<h3 id="hardening-sshd">Hardening sshd</h3>
+<p><strong>What it is.</strong> sshd is the SSH server program. Its main settings live in <code>/etc/ssh/sshd_config</code>. Ubuntu also reads small drop-in files from <code>/etc/ssh/sshd_config.d/</code>. Three settings matter for CityPulse. <code>PasswordAuthentication no</code> turns off password logins. <code>PermitRootLogin no</code> stops anyone from logging in directly as the root user. <code>KbdInteractiveAuthentication no</code> turns off another way of typing a password. After you change a setting, <code>sudo sshd -t</code> checks the syntax and prints nothing when the file is valid. <code>sudo sshd -T</code> prints the settings that sshd will really use.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;sudo sshd -T | grep -Ei &#x27;passwordauthentication|permitrootlogin&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;passwordauthentication no&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;permitrootlogin no&quot;}]}"></div>
+
+<p>sshd uses the first value it finds for each setting. Files in the drop-in folder are read in name order, so a file called <code>10-defaults.conf</code> is read before <code>99-citypulse.conf</code>. A later file with the same setting has no effect.</p>
+<p><strong>How it shows up in a case study.</strong> An engineer adds <code>99-citypulse.conf</code> with <code>PasswordAuthentication no</code>, runs <code>sshd -t</code>, and reloads the service. A reviewer agrees the change is done. A second engineer runs <code>sshd -T</code> and sees <code>passwordauthentication yes</code>. The reasoning points to an earlier drop-in that sets the value first. The correct next step is to find that line, make the two files agree, reload, and check the effective value again with <code>sshd -T</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Trusting your own file instead of sshd -T</div><p>Your file may not be the setting that wins. Confirm the effective value with <code>sshd -T</code> before you claim the hardening works.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An engineer adds 99-citypulse.conf with PasswordAuthentication no. The syntax check prints nothing, and the service is reloaded. A second engineer runs sshd -T and sees passwordauthentication yes. What is the most likely cause, and what should be done next?&quot;, &quot;opts&quot;: [&quot;An earlier drop-in, such as 10-defaults.conf, sets the value first. Find it, make the files agree, reload, and check again with sshd -T.&quot;, &quot;The reload did not run, so restart the VM, which always rereads the drop-in files.&quot;, &quot;The file must end in .txt for sshd to read it, so rename it and reload.&quot;, &quot;The syntax check is not a valid test, so ignore it and trust the reviewer.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;sshd uses the first value it reads, and files are read in name order, so an earlier file wins. The tempting wrong answer is restarting the VM, which does not change which file sets the value first.&quot;}, {&quot;q&quot;: &quot;You need to change the SSH settings on a VM that only you can reach. Which order is safest?&quot;, &quot;opts&quot;: [&quot;Reload ssh, then look at the file for typos, then close your session.&quot;, &quot;Restart the VM, then check the file for typos, then log in again.&quot;, &quot;Make the change, run sshd -t, keep your current session open, reload, and open a new session that logs in with your key.&quot;, &quot;Delete the existing sshd_config so that only your drop-in is read, then reload ssh.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The syntax check comes first, and the open session is your way back in if the new settings lock you out. The tempting wrong answer, closing the session after the reload, removes that way back in.&quot;}, {&quot;q&quot;: &quot;A VM must refuse passwords but still accept your key. Which setting, and which check, confirm this?&quot;, &quot;opts&quot;: [&quot;PermitRootLogin yes, checked with sshd -t, because a passing test means the setting is active.&quot;, &quot;PasswordAuthentication yes, checked with sshd -T, because a yes value makes key login stricter.&quot;, &quot;PubkeyAuthentication no, checked with systemctl status ssh, because the status shows the login method.&quot;, &quot;PasswordAuthentication no, checked with sshd -T, which prints the effective value.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The effective value shown by sshd -T is the proof. The tempting wrong answer is sshd -t, which checks only the syntax and does not show which value is in force.&quot;}]}"></div>
+
+<h3 id="ec2-pricing">EC2 pricing</h3>
+<p><strong>What it is.</strong> EC2 charges for an instance while it runs, billed by the second. It also charges for the storage that the instance's disk uses. A stopped instance has no compute charge, but its disk still exists, so the storage charge continues. Terminating the instance deletes the instance and, by default, its root disk, so both charges stop (an extra volume that you attached yourself may survive, so check for one). Some other charges, such as those for public IP addresses, may continue after a stop, so check the current AWS pricing pages before you rely on an exact figure.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Compute charge</th>
+<th>Disk (storage) charge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance running</td>
+<td>Yes, by the second</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Instance stopped</td>
+<td>No</td>
+<td>Yes, the disk is kept</td>
+</tr>
+<tr>
+<td>Instance terminated</td>
+<td>No</td>
+<td>No, the disk is deleted</td>
+</tr>
+</tbody>
+</table>
+<p>Here is a simple way to estimate running hours. A VM that runs all day, every day, for 30 days runs 24 times 30, which is 720 hours. A VM stopped at 15:30 each day runs far fewer hours, but only if somebody remembers to stop it.</p>
+<p><strong>How it shows up in a case study.</strong> A lab team stops its CityPulse VM at 15:30 each day, but the bill still shows storage charges. Their manager asks whether the VM is free while it is stopped. The reasoning is that a stop removes the compute charge only. To remove the storage charge too, the team must terminate the VM, and that deletes the disk. The team therefore keeps the VM stopped during the course, and terminates it only when the lab is finished and the data has been copied elsewhere.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming a stopped instance is free</div><p>A stopped instance keeps its disk, and the disk is still charged. Only termination removes the disk.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A VM was stopped at 15:30 yesterday and started again this morning. A teammate says the VM cost nothing overnight because it was off. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The VM was free overnight, because stopping an instance removes all of its charges.&quot;, &quot;The VM was billed for every hour overnight at the full running rate.&quot;, &quot;The VM was free overnight, but its disk was deleted, so the data is gone.&quot;, &quot;Compute charges stopped overnight, but the disk attached to the VM was still charged.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Stopping halts the compute charge while the disk remains. The tempting wrong answer says the VM was free, which ignores the storage that the stop does not remove.&quot;}, {&quot;q&quot;: &quot;A lab is finished, and the team wants to end all charges for it. Nothing needs to be kept on the VM. Which action should they take?&quot;, &quot;opts&quot;: [&quot;Stop the instance and leave it for next week, when the lab may be resumed.&quot;, &quot;Terminate the instance, which deletes the instance and its disk so that the charges stop.&quot;, &quot;Change the instance to the smallest size, so that the compute charge is lower.&quot;, &quot;Remove the security group, so that the instance cannot be billed while it runs.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Only termination deletes the disk, which removes the storage charge. The tempting wrong answer is stopping, which keeps the disk and its charge.&quot;}, {&quot;q&quot;: &quot;A monthly bill for a CityPulse lab is larger than expected. The VM ran all day, every day, for a 30-day month because nobody stopped it. Which estimate of its running hours is right, and why?&quot;, &quot;opts&quot;: [&quot;About 720 hours, because 24 hours a day times 30 days is 720.&quot;, &quot;About 30 hours, because a VM is billed once a day.&quot;, &quot;About 240 hours, because a VM runs only during the working day.&quot;, &quot;About 72 hours, because billing stops after the first three days.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;24 times 30 is 720. The tempting wrong answer, 240, assumes the VM ran only during working hours, but nobody stopped it, so it ran all day.&quot;}]}"></div>
+
+<h3 id="instance-hardening">Instance hardening</h3>
+<p><strong>What it is.</strong> Hardening means removing what you do not need, so that an attacker has fewer ways in. The attack surface is the set of all those ways: every open port, every enabled login method, every running service and every unpatched package. For a single VM, hardening means closing ports that are not needed, turning off logins that are not needed, stopping services that are not used, and installing security updates. The <code>ss</code> command shows what is listening.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;sudo ss -tlnp&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;LISTEN 0 128 0.0.0.0:22 0.0.0.0:* users:((\&quot;sshd\&quot;,pid=812))&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;LISTEN 0 511 0.0.0.0:8000 0.0.0.0:* users:((\&quot;python3\&quot;,pid=1507))&quot;}]}"></div>
+
+<p>The second line shows a service listening on port 8000. Its output is shortened here for clarity. If nothing in the pipeline uses that service, it is attack surface, even if nobody has tried to reach it yet. Hardening is also not a one-time task. New security bugs are found all the time, so updates must be applied regularly, for example with <code>sudo apt-get upgrade</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A demo of a CityPulse dashboard needs port 8000 open. The team opens it to 0.0.0.0/0 and says it will close later. A month later the port is still open, and the dashboard service is still running. The reasoning is that a temporary rule is one that is forgotten. The better approach is to open the port only from the audience's network range, and to close the rule and stop the service as soon as the demo ends. The change is recorded in the runbook so that anyone can see it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Opening everything for convenience and calling it temporary</div><p>Temporary rules are the ones that get forgotten. Close the rule as part of the task, and write the closing step in the runbook.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse VM is configured correctly for its job, but the team has not installed any updates for four months. A manager says the VM is hardened, so no more work is needed. What is the best reply?&quot;, &quot;opts&quot;: [&quot;The manager is right, because hardening is a one-off step that cannot be repeated.&quot;, &quot;The manager is right, because updates only add features and never change security.&quot;, &quot;The manager is wrong. Hardening includes keeping software patched, because new security bugs are found all the time.&quot;, &quot;The manager is right, because a VM with no open ports cannot be attacked.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Patching closes known bugs in the software that is already installed. The tempting wrong answer says that no open ports means no attack, but an attacker can use unpatched software through a port that is open.&quot;}, {&quot;q&quot;: &quot;Which change best reduces the attack surface of the ingest VM, without changing what the pipeline needs?&quot;, &quot;opts&quot;: [&quot;Stop a service that the pipeline does not use, and close the port that nothing connects to.&quot;, &quot;Open port 22 to 0.0.0.0/0 so that the monitoring tool can connect from anywhere.&quot;, &quot;Install a second database server on the same VM so that the first one has a backup.&quot;, &quot;Turn on password logins as a backup in case the key is lost.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Removing an unused service and an unused port reduces the ways in. The tempting wrong answer, turning on passwords, adds a login method that scanners try first.&quot;}, {&quot;q&quot;: &quot;A demo needs port 8080 reachable by an audience on the office network, which is a /24 range. A teammate suggests opening 8080 to 0.0.0.0/0 and closing it later. What is the best approach?&quot;, &quot;opts&quot;: [&quot;Open 8080 to 0.0.0.0/0 and write the closing date in a comment in the security group.&quot;, &quot;Open 8080 only from the office /24 range, then remove the rule and stop the service when the demo ends, recording the steps in the runbook.&quot;, &quot;Open all ports to 0.0.0.0/0, so that nothing is blocked during the demo.&quot;, &quot;Leave the rule in place and rely on the instance stopping at 15:30.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The narrow range meets the demo&#x27;s need, and the removal step makes the rule temporary in practice. The tempting wrong answer records a date but leaves the whole internet able to reach the port.&quot;}]}"></div>
+
+<h3 id="user-data-bootstrap">User data bootstrap</h3>
+<p><strong>What it is.</strong> User data is a script or piece of text that you give to AWS when you launch an instance. On the first boot, a service called cloud-init runs it, with administrator rights. This is useful for setting up packages and folders, so that each new VM starts in the same state. You pass the script with <code>--user-data</code>:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span>--image-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AMI</span><span class="s2">&quot;</span><span class="w"> </span>--instance-type<span class="w"> </span>t3.micro<span class="w"> </span>--user-data<span class="w"> </span>file://bootstrap.sh
+</code></pre></div>
+
+<p>A simple script might install a package and create a folder. User data is not private. Anyone who has permission to read the instance's attributes can read its user data, so it must never hold a password, a token or a private key. The script also runs only once, at the first boot. Editing it in the repository later changes nothing on a running VM.</p>
+<p><strong>How it shows up in a case study.</strong> A new engineer proposes putting the database password in the user-data script, so that the VM can connect as soon as it boots. The team reviews the idea. The reasoning is that anyone who can describe the instance could read the password, and the password would stay in the instance's record. The better approach is an instance role for AWS access, and a secret store or a prompt for anything else. The team also notes that the script runs only once, so a change to it needs a new instance or a manual run.</p>
+<div class="box box-trap"><div class="box-h">Trap: Putting a password or key in user data</div><p>User data can be read by anyone with permission to describe the instance. A secret placed there must be treated as exposed.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A developer wants the VM to connect to the database on its first boot. The developer proposes writing the database password into the user-data script. What is the correct reply?&quot;, &quot;opts&quot;: [&quot;Good plan, because user data is deleted after the first boot.&quot;, &quot;Good plan, because only the root user can read user data.&quot;, &quot;Good plan, if the script is stored in a private Git repository.&quot;, &quot;Bad plan. Anyone who can describe the instance can read its user data, so the password would be exposed. Use an instance role or a secret store instead.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;User data is readable through the instance&#x27;s attributes, so it is not a safe place for secrets. The tempting wrong answer is the private repository, which protects the copy in Git but not the copy stored with the instance.&quot;}, {&quot;q&quot;: &quot;A VM was launched with a user-data script that creates a folder. The team later edits the script in the repository and expects the running VM to pick up the change. What happens?&quot;, &quot;opts&quot;: [&quot;The running VM reruns the new script at once.&quot;, &quot;Nothing happens to the running VM, because the script runs once on the first boot. A new instance or a manual run is needed.&quot;, &quot;The VM reruns the script every hour, so the change arrives within the hour.&quot;, &quot;The VM reruns the script every time it is stopped and started.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;User data is an instance-level script that runs once at first boot. The tempting wrong answer assumes it runs on every stop and start, which it does not by default.&quot;}, {&quot;q&quot;: &quot;A team lead wants every new CityPulse VM to install the same packages during its first boot, with as little manual work as possible. Which setup meets the request?&quot;, &quot;opts&quot;: [&quot;Store the package list in a database that the VM reads at login.&quot;, &quot;Copy the packages from your laptop to the VM every morning.&quot;, &quot;Pass a script with the install commands as user data at launch, so that the first boot runs them.&quot;, &quot;Put the install commands in your ~/.aws folder, which the VM reads at boot.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Passing the script as user data makes the first boot install the packages without anyone typing them. The tempting wrong answer, copying packages by hand each morning, is manual work that the request was meant to remove.&quot;}]}"></div>
+
+<h3 id="private-subnet-egress">Private subnet egress</h3>
+<p><strong>What it is.</strong> A subnet is a range of addresses inside a VPC. A private subnet has no route from the internet, and its machines have no public IP address, so nothing outside can start a connection to them. A NAT gateway sits in a public subnet and lets machines in the private subnet start outbound connections, for example to download updates. The replies come back through the gateway, but no one outside can start a new connection inward. This is why the private subnet is considered protected.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws ec2 describe-route-tables --route-table-ids rtb-0priv --query &#x27;RouteTables[0].Routes[*].[DestinationCidrBlock,NatGatewayId]&#x27; --output text&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;10.0.0.0/16 None&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0.0.0.0/0 nat-0a1b2c3d4e5f6a7b8&quot;}]}"></div>
+
+<p>The first line is the local route, which covers traffic inside the VPC (it has no NAT gateway, so the query prints <code>None</code>). The second line shows that the default route for the private subnet points to a NAT gateway, not to an internet gateway. The route table is the part that makes a subnet private or public. If you need a shell on a private machine without opening any inbound port, AWS Systems Manager Session Manager is the alternative.</p>
+<p><strong>How it shows up in a case study.</strong> An ingest VM in a private subnet cannot download operating system updates. A teammate proposes giving the VM a public IP and opening port 80 to 0.0.0.0/0, so that the updates can arrive. The reasoning is that the VM needs outbound access only. A NAT gateway in a public subnet provides that, and it leaves inbound connections closed. The team changes the route table, and checks the update command again.</p>
+<div class="box box-trap"><div class="box-h">Trap: Giving a private machine a public IP to fix an update problem</div><p>A public IP and an open port remove the protection the private subnet gives. Fix outbound access with a NAT gateway instead.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A VM in a private subnet cannot download operating system updates. The team wants the smallest change that allows downloads and allows no new connections from the internet. Which change should it make?&quot;, &quot;opts&quot;: [&quot;Point the subnet&#x27;s default route at a NAT gateway in a public subnet.&quot;, &quot;Give the VM a public IP and open inbound port 80 from 0.0.0.0/0.&quot;, &quot;Move the VM into a public subnet and open every port, so that the updates can arrive.&quot;, &quot;Attach a second security group that allows all inbound traffic.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A NAT gateway forwards outbound traffic, and replies return through it. The tempting wrong answer, a public IP with an open port, makes the machine reachable from the whole internet.&quot;}, {&quot;q&quot;: &quot;An engineer needs a shell on a VM in a private subnet. She plans to open port 22 from her office /32. A colleague says there is an option with no inbound port at all. Which option is it?&quot;, &quot;opts&quot;: [&quot;Open port 22 to the VPC range, so that the connection stays inside the network.&quot;, &quot;Attach an Elastic IP address to the VM, so that port 22 is reachable from the office.&quot;, &quot;Use the NAT gateway, which accepts SSH connections from the office.&quot;, &quot;Use AWS Systems Manager Session Manager, which needs the SSM agent and IAM permissions but no inbound port.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Session Manager opens a connection from the instance outward to AWS, so no inbound port is needed. The tempting wrong answer, an Elastic IP, makes the machine reachable from the internet, which the private subnet was designed to prevent.&quot;}, {&quot;q&quot;: &quot;A team asks which device carries the outbound update traffic from a private VM to the internet. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;The VM&#x27;s own public IP, because the VM must have one to send any traffic.&quot;, &quot;The NAT gateway in a public subnet, which forwards the VM&#x27;s outbound traffic.&quot;, &quot;The internet gateway directly, because the private subnet is attached to it.&quot;, &quot;The inbound rules of the security group, because those rules control all traffic.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The private subnet&#x27;s default route points at the NAT gateway, which forwards the traffic. The tempting wrong answer is the internet gateway, which the private subnet does not route to.&quot;}]}"></div>
+
+<h3 id="access-management">Access management</h3>
+<p><strong>What it is.</strong> Access management decides who or what may perform which actions on which AWS resources. The principle of least privilege says to grant only the permissions that a job needs. An IAM user has long-lived access keys. An IAM role has no permanent keys. A service, such as an EC2 instance, takes the role and receives temporary credentials, which AWS rotates automatically. The identity that a VM uses appears in the output of a simple command:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity --query Arn --output text&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;arn:aws:sts::123456789012:assumed-role/citypulse-pipeline/i-0a1b2c3d4e5f6a7b8&quot;}]}"></div>
+
+<p>The word <code>assumed-role</code> shows that the VM is using a role. If the output says <code>user/</code>, the VM is using a person's keys, which is the wrong setup for a server.</p>
+<p><strong>How it shows up in a case study.</strong> A script on the ingest VM fails with AccessDenied when it writes to the bucket. The team attached the policy to the IAM user <code>citypulse-pipeline</code>, so the VM's role still lacks the permission. A teammate proposes copying the operator's access keys onto the VM as a quick fix. The reasoning is that those keys never expire and leak with any disk snapshot. The correct fix is to attach the policy to the role with <code>attach-role-policy</code>, and to check the identity output again.</p>
+<div class="box box-trap"><div class="box-h">Trap: Copying a user&#x27;s access keys onto the VM</div><p>Keys copied to a VM never expire, and they leak through disk snapshots and backups. Use an instance role instead.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse script on a VM fails with AccessDenied when it writes to the S3 bucket. The team attached the policy citypulse-pipeline-s3 to the IAM user citypulse-pipeline. What is the correct step?&quot;, &quot;opts&quot;: [&quot;Copy the user&#x27;s access keys onto the VM and keep them there.&quot;, &quot;Give the user the AdministratorAccess policy, so that every request passes.&quot;, &quot;Attach the policy to the role citypulse-pipeline with attach-role-policy, because the VM uses the role, not the user.&quot;, &quot;Remove the instance profile, so that the script uses the laptop&#x27;s credentials.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The VM takes the role, so the permission must be on the role. The tempting wrong answer is to copy the user&#x27;s keys, which is unsafe because a copied key can be leaked and never expires.&quot;}, {&quot;q&quot;: &quot;A VM only needs to read one folder in an S3 bucket. Which permission setup follows least privilege?&quot;, &quot;opts&quot;: [&quot;Attach AdministratorAccess to the role, so that future needs are covered.&quot;, &quot;Attach a policy that allows only the read actions on that one folder of the bucket.&quot;, &quot;Attach a policy that allows all S3 actions on all buckets, to be safe.&quot;, &quot;Give the role the same policy as the root account, because it is the simplest option.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Least privilege grants the minimum the job needs, which is reading one folder. The tempting wrong answer is the broad policy, which is simpler to write but grants far more than the job requires.&quot;}, {&quot;q&quot;: &quot;Why does an instance role avoid the risk of leaked keys in a disk snapshot?&quot;, &quot;opts&quot;: [&quot;The snapshot encrypts the role&#x27;s keys with the operator&#x27;s password.&quot;, &quot;Roles store their keys in a locked file that snapshots skip.&quot;, &quot;The role can be used only from the operator&#x27;s /32 address.&quot;, &quot;The VM holds no permanent keys. It holds temporary credentials that expire and rotate, so a snapshot contains nothing that stays valid.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The credentials are short-lived and are fetched from the metadata service, so there is no long-lived secret to copy. The tempting wrong answer, the locked file, describes a storage method that does not exist for roles.&quot;}]}"></div>
+
+<h3 id="config-drift">Config drift</h3>
+<p><strong>What it is.</strong> Config drift is the gap between the settings that a server should have, as recorded in its runbook or code, and the settings it really has. It happens when someone edits a file on the server by hand, changes a setting in the console, or skips a step. Drift is dangerous because the next rebuild, made from the recorded version, loses the change or repeats the old mistake. You can detect drift by checking the effective settings on the server. The <code>sshd -T</code> command is the example used in this course.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;sudo sshd -T | grep -i ^passwordauthentication&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;passwordauthentication yes&quot;}]}"></div>
+
+<p>If the runbook says <code>PasswordAuthentication no</code>, this output shows drift. The fix is to find where the value is set, make the recorded version match the intended setting, and check the live value again.</p>
+<p><strong>How it shows up in a case study.</strong> An engineer rebuilds the CityPulse VM from the runbook. Afterwards, a password login succeeds. The team checks <code>sshd -T</code> and finds that password logins are on. The reasoning is that someone had edited the old VM's configuration during an incident and never recorded it. The rebuild followed the runbook, so it did not include the change. The team records the intended setting in the runbook and the drop-in file, then runs the check again.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming a console change is documented</div><p>A change made by hand is not documented until someone writes it into the runbook or the code.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The runbook says PasswordAuthentication no. On a rebuilt VM, sshd -T shows passwordauthentication yes. A teammate says the runbook must be wrong because the VM was rebuilt correctly. What is the best next step?&quot;, &quot;opts&quot;: [&quot;Treat it as config drift. Find where the yes value comes from, make the code and runbook state the intended setting, then check again with sshd -T.&quot;, &quot;Trust the teammate and delete the runbook section, because the server is the real truth.&quot;, &quot;Restart the VM, so that the setting returns to the runbook value.&quot;, &quot;Change the runbook to say yes, so that the two documents match.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The runbook records the intended setting, so the live value is the one to correct. The tempting wrong answer, changing the runbook to match the server, records the mistake as the plan.&quot;}, {&quot;q&quot;: &quot;Someone changed the SSH settings on a VM by hand last month and did not record the change. The VM is still running, and the next rebuild from the runbook will not contain the change. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The change is safe, because the VM runs the new setting, so the drift is already fixed.&quot;, &quot;The change is safe if the VM is stopped for a day, because stopping resets the drift.&quot;, &quot;This is config drift. The live server differs from the recorded setting, so the change must be written into the runbook or the code and the live settings checked.&quot;, &quot;This is key rotation, so the fix is to generate a new key pair and leave the configuration alone.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Drift means the record and the running server disagree. The tempting wrong answer says the change is safe because the server works, but the next rebuild will lose it.&quot;}, {&quot;q&quot;: &quot;Which practice is most likely to prevent config drift on a CityPulse VM over the next year?&quot;, &quot;opts&quot;: [&quot;Make most changes in the AWS console, because the console keeps a history.&quot;, &quot;Make every change through the repository or the runbook, then rebuild and dry-run the runbook regularly.&quot;, &quot;Turn off the sshd configuration file, so that there is nothing to drift.&quot;, &quot;Keep one long-running VM and never rebuild it, so that no runbook is needed.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Recording changes in code and testing rebuilds keeps the record and the server in step. The tempting wrong answer, the console, shows API activity but does not document the intended configuration.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>These ten questions mix the topics and are harder than the ones above. Each one combines two or three clues from the scenario. Answer all ten before you read any WHY line.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A student&#x27;s private key file was lost. She still has the .pub file, and she has a working login from her old laptop. She wants to log in from a new laptop. Which plan is correct?&quot;, &quot;opts&quot;: [&quot;Ask AWS to re-send the private key, because the public key was imported from it.&quot;, &quot;Rename the .pub file to remove its extension, and use it as the private key on the new laptop.&quot;, &quot;Generate a new key pair on the new laptop, then add its public half to the VM&#x27;s authorised keys while the old session is still open, and test the new login.&quot;, &quot;Run aws ec2 create-key-pair with the same name, which returns the old private key once more.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A new key pair is the only way to get a new private key, and an open session lets her add the new public key safely. The tempting wrong answers all assume AWS can supply a private key that it never held.&quot;}, {&quot;q&quot;: &quot;A private key is committed to a shared Git repository by mistake. The file&#x27;s mode was 600 on the laptop. A teammate says the mode protects it because Git keeps permissions. What is the correct response?&quot;, &quot;opts&quot;: [&quot;Keep the key, because the repository is private and the mode is 600.&quot;, &quot;Commit it again at mode 600, because Git stores the mode and protects the file.&quot;, &quot;Change the mode to 600 in the repository and leave the key where it is.&quot;, &quot;Remove the key from the repository, treat it as leaked and replace it with a new key pair, and give access through an instance role or a secret store.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Git keeps the history, and it does not protect a secret from people who can read the repository. The tempting wrong answer relies on the file mode, which Git does not enforce for a private key.&quot;}, {&quot;q&quot;: &quot;A CityPulse ingest VM must accept port 443 from anywhere for its API, and port 22 only from the operator&#x27;s /32. A junior adds TCP 22 from 10.0.0.0/16, so that the team&#x27;s bastion host can connect as well. What is the best response?&quot;, &quot;opts&quot;: [&quot;Accept it, because the bastion is inside the network and so the rule is safe.&quot;, &quot;Reject it. The range admits every machine in 10.0.0.0/16, so use the bastion&#x27;s own /32 address if it must connect.&quot;, &quot;Accept it, because the range also covers the port 443 rule.&quot;, &quot;Reject it, because security groups cannot allow port 22 from a private range at all.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A private range includes every machine in it, not only the bastion. The tempting wrong answer is the belief that private means safe.&quot;}, {&quot;q&quot;: &quot;The file 00-team.conf sets PasswordAuthentication yes. Your 99-citypulse.conf sets PasswordAuthentication no. You run sshd -t, reload, and then sshd -T. What result do you expect, and what do you do?&quot;, &quot;opts&quot;: [&quot;The output shows yes, because the earlier file wins. Change or remove the line in 00-team.conf, reload, and check sshd -T again.&quot;, &quot;The output shows no, because the later file wins, so nothing else is needed.&quot;, &quot;The output shows yes, because sshd -t is wrong, so reinstall OpenSSH.&quot;, &quot;The output shows no, because the reload was not needed, so close your session.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;sshd uses the first value it reads, and 00 is read before 99. The tempting wrong answer assumes the newer or later file overrides the earlier one.&quot;}, {&quot;q&quot;: &quot;Your team&#x27;s ingest VM has been stopped every night for a week and started every morning. A manager wants the monthly bill cut by the largest amount for a lab that is finished and no longer needs its data. Which action does this?&quot;, &quot;opts&quot;: [&quot;Stop it every night, because a stop removes the disk charge as well.&quot;, &quot;Keep it running with a smaller instance type, because the disk is then free.&quot;, &quot;Change its security group to a stricter one, which removes the bill.&quot;, &quot;Terminate the instance once the lab is finished, so that the instance and its disk are deleted and the charges stop.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Only termination removes the disk, and the data is no longer needed. The tempting wrong answer is the nightly stop, which saves compute but keeps the disk charge.&quot;}, {&quot;q&quot;: &quot;An ingest VM runs a dashboard on port 8000 that nobody has used for two months. The pipeline needs only port 22 from the operator&#x27;s /32 and port 443 for the API. Updates run monthly. Which change reduces the attack surface most and keeps the job working?&quot;, &quot;opts&quot;: [&quot;Keep port 8000 open, because the dashboard might be needed later.&quot;, &quot;Stop the dashboard service, close port 8000 in the security group, and keep the monthly updates running.&quot;, &quot;Open port 8000 to 0.0.0.0/0 so that the dashboard can be monitored by anyone.&quot;, &quot;Move the dashboard to port 22, so that the existing SSH rule covers it.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Removing both the service and the port removes the attack path, and updates keep the rest patched. The tempting wrong answer keeps an unused port open for a possible future need.&quot;}, {&quot;q&quot;: &quot;A bootstrap script in user data installs packages and creates a folder. Two weeks later a new engineer finds that the script contains an API token used by a monitoring tool. What should the team do first?&quot;, &quot;opts&quot;: [&quot;Keep the token, because only the monitoring tool reads user data.&quot;, &quot;Move the token into a comment in the script, because comments are hidden from readers.&quot;, &quot;Treat the token as exposed. Revoke and replace it, then take it out of user data and fetch it through the instance role or a secret store.&quot;, &quot;Delete the instance, because the token cannot be removed from user data without deleting the VM.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Anyone who could describe the instance could read the token, so it must be revoked first, not hidden. The tempting wrong answer is deleting the instance, which does not undo the exposure of the token.&quot;}, {&quot;q&quot;: &quot;A private ingest VM must call a public weather API over HTTPS. The VM must not accept any new connection from the internet. Which route and rules meet this?&quot;, &quot;opts&quot;: [&quot;Point the private subnet&#x27;s default route at a NAT gateway in a public subnet, and allow outbound HTTPS in the security group.&quot;, &quot;Give the VM a public IP and allow inbound 443 from 0.0.0.0/0.&quot;, &quot;Attach an internet gateway directly to the private subnet&#x27;s route table, and keep inbound closed.&quot;, &quot;Remove every route, because the VM can call the API through its own loopback address.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The NAT gateway lets the VM start outbound connections and receive replies without inbound access. The tempting wrong answer is a public IP, which makes the VM reachable from the internet.&quot;}, {&quot;q&quot;: &quot;A script on the VM needs to write to a bucket. A teammate proposes copying the operator&#x27;s access keys into the VM&#x27;s environment, and says the fix is temporary and the keys will be removed later. What is the correct response?&quot;, &quot;opts&quot;: [&quot;Accept it, because environment variables are never stored on disk.&quot;, &quot;Accept it, if the keys are removed within a week.&quot;, &quot;Accept it, because access keys expire after one hour.&quot;, &quot;Reject it. The keys do not expire, they carry the operator&#x27;s access, and they leak through snapshots. Attach the policy to the instance role instead.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A long-lived key is still a long-lived key in an environment variable, and it can be copied from memory or a snapshot. The tempting wrong answer is the belief that a temporary plan makes a permanent key safe.&quot;}, {&quot;q&quot;: &quot;The runbook says PasswordAuthentication no. Monitoring shows a password login last night from an unexpected address. sshd -T on the VM shows passwordauthentication yes. A teammate says the monitoring is noisy and the runbook is probably wrong. What is the strongest response?&quot;, &quot;opts&quot;: [&quot;Accept the teammate&#x27;s view and close the ticket, because monitoring is often noisy.&quot;, &quot;Treat the live setting as evidence. The server differs from the record, so find the cause, restore the intended setting, record it, and review the login.&quot;, &quot;Update the runbook to say yes, because the server is always right.&quot;, &quot;Wait for the next rebuild, which will set the password option correctly.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The live setting and the login both point to drift and a possible intrusion, so the team must investigate. The tempting wrong answer, updating the runbook, records the wrong setting as the intended one.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem. You write four functions in a starter file. The platform runs your functions against visible tests, which you can see, and then against hidden tests, which you cannot see. This section explains the task, the Python ideas it needs, the rules that careless solutions miss, a method you can repeat, and a worked twin problem. A twin problem has a different domain and different data, but it uses the same skills. You will not find a solution to the real task here, so you must write that yourself.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse ingest server runs on EC2. Before it goes live, you must audit the inbound rules of its security group. Each rule is a dictionary with three keys: <code>from_port</code> and <code>to_port</code>, which are whole numbers, and <code>cidr</code>, which is text. For example, <code>{"from_port": 22, "to_port": 22, "cidr": "0.0.0.0/0"}</code> is one rule.</p>
+<p>You must write four functions in the starter file. The starter file defines their names already, so keep them exactly as given.</p>
+<ul>
+<li><code>_in_range(rule, port)</code> returns <code>True</code> or <code>False</code>. It returns <code>True</code> when <code>port</code> is within the rule's range from <code>from_port</code> to <code>to_port</code>, including both ends.</li>
+<li><code>port_allowed(rules, port, source_cidr)</code> returns <code>True</code> or <code>False</code>. It returns <code>True</code> when some rule covers <code>port</code> <strong>and</strong> its <code>cidr</code> is either <code>"0.0.0.0/0"</code> or exactly equal to <code>source_cidr</code>. Otherwise it returns <code>False</code>.</li>
+<li><code>world_open_ports(rules)</code> returns a list. The list holds the distinct ports that are exposed to <code>"0.0.0.0/0"</code>, sorted in ascending order.</li>
+<li><code>has_open_ssh(rules)</code> returns <code>True</code> or <code>False</code>. It returns <code>True</code> when port 22 can be reached from <code>"0.0.0.0/0"</code>.</li>
+</ul>
+<p>The statement's example is this. With the single rule that opens port 22 to <code>"0.0.0.0/0"</code>, <code>port_allowed</code> for port 22 and the source <code>"203.0.113.7/32"</code> returns <code>True</code>, because the world rule allows any source. <code>world_open_ports</code> returns <code>[22]</code>, and <code>has_open_ssh</code> returns <code>True</code>, which is a red flag for hardening.</p>
+<p><strong>The rules, one by one.</strong></p>
+<ul>
+<li>A rule covers every port from <code>from_port</code> up to <code>to_port</code>, including both of those ports. A rule from 80 to 82 covers 80, 81 and 82.</li>
+<li>A rule where <code>from_port</code> and <code>to_port</code> are equal covers exactly one port.</li>
+<li>A <code>cidr</code> of <code>"0.0.0.0/0"</code> allows any source. This includes the source you pass in.</li>
+<li>Any other <code>cidr</code> must match <code>source_cidr</code> exactly, as text. The address <code>203.0.113.7/32</code> is not the same as <code>203.0.113.70/32</code>, and it is not the same as <code>203.0.113.7</code>.</li>
+<li><code>port_allowed</code> needs both conditions on the same rule. A world rule on another port does not help, and a rule on the right port with a different source does not help.</li>
+<li><code>world_open_ports</code> counts only rules whose <code>cidr</code> is <code>"0.0.0.0/0"</code>. A rule with a private range or a single address is ignored, even if it covers the same ports.</li>
+<li>Each port appears once in the output of <code>world_open_ports</code>, even if two or more rules expose it.</li>
+<li>The output of <code>world_open_ports</code> is sorted in ascending order.</li>
+<li><code>has_open_ssh</code> looks at port 22 only, and only at rules whose <code>cidr</code> is <code>"0.0.0.0/0"</code>. A rule whose range covers port 22 counts, even if 22 is not its first port.</li>
+<li><code>_in_range</code>, <code>port_allowed</code> and <code>has_open_ssh</code> return <code>bool</code>. <code>world_open_ports</code> returns a <code>list</code>.</li>
+</ul>
+<p><strong>Limits and scoring.</strong> Each run is limited to 30 seconds and 128 MB of memory. The visible tests are worth 76 points in total. The hidden tests are two tests worth 24 points together. Together they make up the 100 points of the lab.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exact CIDR match on an open port</td>
+<td>16</td>
+</tr>
+<tr>
+<td>0.0.0.0/0 allows any source</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Port not covered by any rule is blocked</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Only world-open ports are listed</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Flag SSH (22) open to the world</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What hidden tests are.</strong> A hidden test is a test whose inputs and expected outputs are not shown to you. The platform runs it after you submit. You see only whether it passed or failed. Hidden tests exist to check the rules that the visible examples do not show, such as overlapping ranges, boundary ports, empty lists and near-miss addresses. There are two hidden tests here, and together they are worth 24 points. They decide whether you reach the top mark, because a solution that passes only the visible tests scores at most 76 points. Read the rules list above with that in mind.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>This section teaches the Python ideas that the four functions use. Each example uses different data from the lab, so it is safe to try. Do not combine these examples into a solution. Write the functions yourself, and use the examples only to check how an idea behaves.</p>
+<p><strong>Chained comparisons.</strong> Python lets you write a range check as one expression. Both ends are included when you use <code>&lt;=</code>.</p>
+<div class="hl"><pre><span></span><code><span class="n">temperature</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">18</span> <span class="o">&lt;=</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">24</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">18</span> <span class="o">&lt;=</span> <span class="mi">24</span> <span class="o">&lt;=</span> <span class="mi">24</span><span class="p">)</span>            <span class="c1"># True, the upper end is included</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">18</span> <span class="o">&lt;=</span> <span class="mi">25</span> <span class="o">&lt;=</span> <span class="mi">24</span><span class="p">)</span>            <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Reading a dictionary value.</strong> Use square brackets to read a key that you know is there. Use <code>get</code> with a default when the key may be missing.</p>
+<div class="hl"><pre><span></span><code><span class="n">basket</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pears&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;plums&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basket</span><span class="p">[</span><span class="s2">&quot;pears&quot;</span><span class="p">])</span>           <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kiwis&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># 0, because the key is missing</span>
+</code></pre></div>
+
+<p><strong>Combining conditions.</strong> <code>and</code> gives <code>True</code> only when both sides are <code>True</code>. <code>or</code> gives <code>True</code> when either side is. Python stops early when the answer is already known, so the second side is not evaluated in some cases.</p>
+<div class="hl"><pre><span></span><code><span class="n">is_weekend</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_holiday</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_weekend</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_holiday</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_weekend</span> <span class="ow">or</span> <span class="n">is_holiday</span><span class="p">)</span>        <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Testing whether any item matches.</strong> <code>any</code> returns <code>True</code> as soon as one item in an iterable is true. It returns <code>False</code> when none is.</p>
+<div class="hl"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">))</span>   <span class="c1"># True, because 95 is above 90</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">99</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">))</span>   <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Exact text comparison.</strong> <code>==</code> compares text character by character, and it is case-sensitive.</p>
+<div class="hl"><pre><span></span><code><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&quot;Apple&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit</span> <span class="o">==</span> <span class="s2">&quot;Apple&quot;</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span><span class="p">)</span>     <span class="c1"># False, the capital A differs</span>
+</code></pre></div>
+
+<p><strong>Collecting distinct values in a set.</strong> A set keeps each value once, and it has no order. <code>set</code> turns an iterable into a set.</p>
+<div class="hl"><pre><span></span><code><span class="n">letters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">letters</span><span class="p">))</span>      <span class="c1"># [&#39;a&#39;, &#39;b&#39;, &#39;n&#39;], each letter once</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">))</span>         <span class="c1"># 3</span>
+</code></pre></div>
+
+<p><strong>Sorting and filtering a list.</strong> <code>sorted</code> returns a new list in ascending order, and the original list is not changed. A list comprehension builds a list from a loop with an optional <code>if</code>.</p>
+<div class="hl"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">]</span>
+<span class="n">long_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">long_words</span><span class="p">))</span>   <span class="c1"># [&#39;apple&#39;, &#39;kiwi&#39;, &#39;pear&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>                <span class="c1"># the original order is unchanged</span>
+</code></pre></div>
+
+<p><strong>Sorting distinct values together.</strong> Combining <code>set</code> and <code>sorted</code> gives a sorted list with no duplicates. Note that <code>sorted</code> always returns a list, even when its input is a set.</p>
+<div class="hl"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">numbers</span><span class="p">)))</span>  <span class="c1"># [2, 5, 9]</span>
+</code></pre></div>
+
+<p><strong>Membership tests.</strong> <code>in</code> returns <code>True</code> when a value is inside a list, a set or a string.</p>
+<div class="hl"><pre><span></span><code><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;green&quot;</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">)</span>     <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Booleans are numbers too.</strong> <code>True</code> and <code>False</code> belong to the <code>bool</code> type, which is a subclass of <code>int</code>. So <code>isinstance(True, int)</code> is <code>True</code>, and <code>True == 1</code> is also <code>True</code>. The comparison <code>is True</code> checks the identity of the value, which is stricter.</p>
+<div class="hl"><pre><span></span><code><span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>   <span class="c1"># True, because bool is a subclass of int</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span>       <span class="c1"># False, the type is bool</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>               <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flag</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>            <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Calling one function from another.</strong> A function can call another function you wrote. This keeps each function short and easy to test.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_evens</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count_evens</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span>   <span class="c1"># 2</span>
+</code></pre></div>
+
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below comes from the wording of the statement. The last column gives a check you can run on your own solution. Write the expected value on paper before you run the check.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Covers every port from <code>from_port</code> to <code>to_port</code>, both included</td>
+<td>Uses <code>range(from_port, to_port)</code> or <code>port &lt; to_port</code>, so the last port is missed</td>
+<td>Rule 80 to 82: ports 80 and 82 are covered, 83 is not</td>
+</tr>
+<tr>
+<td>A rule with equal ends covers one port</td>
+<td>Requires <code>from_port &lt; to_port</code>, so a single-port rule never matches</td>
+<td>Rule 22 to 22 with port 22 gives <code>True</code></td>
+</tr>
+<tr>
+<td>The <code>cidr</code> must be <code>"0.0.0.0/0"</code> or exactly <code>source_cidr</code></td>
+<td>Matches by prefix or by <code>in</code>, so <code>203.0.113.7/32</code> seems to match <code>203.0.113.70/32</code></td>
+<td>Rule for <code>203.0.113.7/32</code> against source <code>203.0.113.70/32</code> gives <code>False</code></td>
+</tr>
+<tr>
+<td>A <code>"0.0.0.0/0"</code> rule allows any source</td>
+<td>Checks the source anyway, so a world rule fails for a source it should allow</td>
+<td>World rule for port 443 with source <code>198.51.100.9/32</code> gives <code>True</code></td>
+</tr>
+<tr>
+<td>Both conditions must hold on the same rule</td>
+<td>Returns <code>True</code> when one rule matches the port and a different rule matches the source</td>
+<td>Rule 22 to 22 from <code>/32</code> and rule 443 from <code>0.0.0.0/0</code>: port 443 with a different <code>/32</code> gives <code>True</code>, port 22 with a different <code>/32</code> gives <code>False</code></td>
+</tr>
+<tr>
+<td>A port not covered by any rule is blocked</td>
+<td>Returns <code>True</code> whenever the rules list is not empty</td>
+<td>Rule on 22 only, asked about port 80, gives <code>False</code></td>
+</tr>
+<tr>
+<td><code>world_open_ports</code> lists only world-open ports</td>
+<td>Includes ports from private or single-address rules</td>
+<td>One world rule on 80 and one <code>/32</code> rule on 443 gives <code>[80]</code></td>
+</tr>
+<tr>
+<td>Each port appears once</td>
+<td>Returns a port twice when two rules overlap</td>
+<td>Rules 80 to 81 and 81 to 82, both world-open, give <code>[80, 81, 82]</code></td>
+</tr>
+<tr>
+<td>The output is sorted in ascending order</td>
+<td>Returns the ports in the order the rules were listed</td>
+<td>Rules listing 3389 and then 22 give <code>[22, 3389]</code></td>
+</tr>
+<tr>
+<td><code>has_open_ssh</code> checks port 22 inside a range</td>
+<td>Checks only <code>from_port == 22</code>, so a range from 20 to 25 is missed</td>
+<td>Rule 20 to 25 open to the world gives <code>True</code></td>
+</tr>
+<tr>
+<td><code>has_open_ssh</code> needs the world <code>cidr</code></td>
+<td>Returns <code>True</code> for any rule that covers 22</td>
+<td>Rule for 22 from a <code>/32</code> gives <code>False</code></td>
+</tr>
+<tr>
+<td>Return types: <code>bool</code> and <code>list</code></td>
+<td>Returns <code>1</code>, <code>0</code> or <code>None</code>, which fail an <code>is True</code> check</td>
+<td>Use <code>assert result is True</code> and <code>assert result is False</code></td>
+</tr>
+<tr>
+<td><code>world_open_ports</code> returns a list</td>
+<td>Returns a set or tuple, which does not equal a list</td>
+<td>Use <code>assert result == [22]</code> and <code>isinstance(result, list)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The statement does not mention an empty rules list, or changing the rules. The rows above come from the wording of the statement. Still, check an empty list, because <code>[]</code> should give <code>False</code> from <code>port_allowed</code> and <code>has_open_ssh</code>, and <code>[]</code> from <code>world_open_ports</code>. Also avoid changing the list you were given. If you want a sorted copy, use <code>sorted</code>, which leaves the original list as it is.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Note the four function names, their parameters and whether it imports anything. Keep the names exactly as given.</li>
+<li>Write the examples from the statement as <code>assert</code> lines first. Work out each expected value by hand before you write it.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Write the expected value on paper first.</li>
+<li>Implement one function at a time. Start with the smallest function, because the others depend on it. Run the asserts after each change, and fix the first failure before you go on.</li>
+<li>Check the types last. Use <code>is True</code> and <code>is False</code> for the booleans, and check that the list result is a list. The lab has no rounding, so you do not need to round anything. If another lab asks for rounding, round once, at the end.</li>
+<li>Run the visible tests. Read any failure message, and find the assert line that matches it.</li>
+<li>Submit once, when every assert you wrote passes and the visible tests pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p><strong>The task.</strong> A study-room desk in a library keeps a list of bookings. Each booking is a dictionary with <code>room</code> (a whole number), <code>start_hour</code> (a whole number), <code>end_hour</code> (a whole number), and <code>booked_by</code> (text). A booking covers the hours from <code>start_hour</code> up to but not including <code>end_hour</code>. So a booking from 9 to 11 covers hours 9 and 10, and hour 11 is free again. Write these four functions.</p>
+<ul>
+<li><code>is_booked_at(booking, hour)</code> returns <code>True</code> when the booking covers <code>hour</code>, and <code>False</code> otherwise.</li>
+<li><code>room_free(bookings, room, hour)</code> returns <code>True</code> when no booking for <code>room</code> covers <code>hour</code>.</li>
+<li><code>busy_rooms(bookings, hour)</code> returns a sorted list of the distinct room numbers that are booked at <code>hour</code>. It returns <code>[]</code> when none are.</li>
+<li><code>hours_booked(bookings, room)</code> returns the number of hours the room is booked in total. An hour that is booked twice counts once.</li>
+</ul>
+<p>The solution below is complete and has been checked by hand.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_booked_at</span><span class="p">(</span><span class="n">booking</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">booking</span><span class="p">[</span><span class="s2">&quot;start_hour&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="n">booking</span><span class="p">[</span><span class="s2">&quot;end_hour&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">room_free</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bookings</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;room&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">room</span> <span class="ow">and</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">busy_rooms</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="n">rooms</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;room&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bookings</span> <span class="k">if</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">hour</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">rooms</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hours_booked</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="n">room</span><span class="p">):</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bookings</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;room&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">room</span><span class="p">:</span>
+            <span class="n">hours</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s2">&quot;start_hour&quot;</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="s2">&quot;end_hour&quot;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>
+
+
+<span class="n">bookings</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Ben&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Chen&quot;</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">bookings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">9</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">bookings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">bookings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">11</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">bookings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+
+<span class="k">assert</span> <span class="n">room_free</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">room_free</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">room_free</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+
+<span class="k">assert</span> <span class="n">busy_rooms</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busy_rooms</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">busy_rooms</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">busy_rooms</span><span class="p">([],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="k">assert</span> <span class="n">hours_booked</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">hours_booked</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">hours_booked</span><span class="p">(</span><span class="n">bookings</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">zero</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Dee&quot;</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">hours_booked</span><span class="p">(</span><span class="n">zero</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">is_booked_at</span><span class="p">(</span><span class="n">zero</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">14</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+
+<span class="n">double</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Eve&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;room&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;start_hour&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;end_hour&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;booked_by&quot;</span><span class="p">:</span> <span class="s2">&quot;Fay&quot;</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">hours_booked</span><span class="p">(</span><span class="n">double</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p><strong>Explanation, line by line.</strong></p>
+<ul>
+<li><code>is_booked_at</code> uses a chained comparison. <code>start_hour &lt;= hour</code> includes the start hour, and <code>hour &lt; end_hour</code> excludes the end hour. A booking from 9 to 11 therefore gives <code>True</code> for 9 and 10, and <code>False</code> for 11. A booking from 14 to 14 covers nothing, because no hour is both 14 or later and before 14.</li>
+<li><code>room_free</code> loops over the bookings. The <code>and</code> checks the room first, and then asks whether the booking covers the hour. The function returns <code>False</code> at the first match. If the loop finishes without a match, the final <code>return True</code> runs.</li>
+<li><code>busy_rooms</code> builds a set with a set comprehension. The comprehension keeps only the room numbers of bookings that cover the hour, and a set removes repeats. <code>sorted</code> then returns the list in ascending order. An empty set becomes an empty list.</li>
+<li><code>hours_booked</code> creates an empty set called <code>hours</code>. For each booking in the right room, <code>range(start, end)</code> gives the covered hours, and <code>update</code> adds them to the set. An hour already in the set is not added twice. <code>len(hours)</code> counts the distinct hours.</li>
+<li>The <code>zero</code> and <code>double</code> cases test the edges. The zero case shows that an empty booking gives 0, and the double case shows that two identical bookings count their hour once.</li>
+</ul>
+<p>Running the block prints nothing and raises no error. If an assert fails, Python prints a traceback that names the line that failed.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Adding up the hours one room is booked&quot;, &quot;code&quot;: [&quot;def hours_booked(bookings, room):&quot;, &quot;    hours = set()&quot;, &quot;    for b in bookings:&quot;, &quot;        if b[\&quot;room\&quot;] == room:&quot;, &quot;            hours.update(range(b[\&quot;start_hour\&quot;], b[\&quot;end_hour\&quot;]))&quot;, &quot;    return len(hours)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 2, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;hours&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;Start with an empty set. A set keeps each hour only once.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 9 to 11}&quot;], [&quot;hours&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The first booking in the list.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 9 to 11}&quot;], [&quot;hours&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;This booking is for room 1, so the check passes.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 9 to 11}&quot;], [&quot;hours&quot;, &quot;{9, 10}&quot;]], &quot;note&quot;: &quot;range(9, 11) gives 9 and 10. The end hour 11 is not included.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 2, 10 to 12}&quot;], [&quot;hours&quot;, &quot;{9, 10}&quot;]], &quot;note&quot;: &quot;The second booking, which is for room 2.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 2, 10 to 12}&quot;], [&quot;hours&quot;, &quot;{9, 10}&quot;]], &quot;note&quot;: &quot;2 is not 1, so the check fails and the update line is skipped.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 10 to 13}&quot;], [&quot;hours&quot;, &quot;{9, 10}&quot;]], &quot;note&quot;: &quot;The third booking, which is for room 1.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 10 to 13}&quot;], [&quot;hours&quot;, &quot;{9, 10}&quot;]], &quot;note&quot;: &quot;This booking is for room 1, so the check passes.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;b&quot;, &quot;{room 1, 10 to 13}&quot;], [&quot;hours&quot;, &quot;{9, 10, 11, 12}&quot;]], &quot;note&quot;: &quot;range(10, 13) gives 10, 11 and 12. Hour 10 is already in the set, so only 11 and 12 are added.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;room&quot;, &quot;1&quot;], [&quot;hours&quot;, &quot;{9, 10, 11, 12}&quot;], [&quot;result&quot;, &quot;4&quot;]], &quot;note&quot;: &quot;The loop has finished. len(hours) is 4, so the function returns 4.&quot;}]}"></div>
+
+<p>The trace uses the same <code>bookings</code> list as the test above, and its result of 4 matches <code>hours_booked(bookings, 1) == 4</code>.</p>
+<h3 id="your-turn">Your turn</h3>
+<p><strong>The task.</strong> A food bank keeps a shelf list. Each item is a dictionary with <code>name</code> (text) and <code>qty</code> (a whole number). Write these three functions.</p>
+<ul>
+<li><code>is_low(item, threshold)</code> returns <code>True</code> when <code>qty</code> is strictly less than <code>threshold</code>. An item with a quantity equal to the threshold is not low.</li>
+<li><code>low_items(items, threshold)</code> returns a list of the names of the low items, sorted alphabetically from A to Z. It returns <code>[]</code> when none are low.</li>
+<li><code>average_qty(items)</code> returns the average of the <code>qty</code> values, rounded to 2 decimal places. It returns <code>0.0</code> for an empty list.</li>
+</ul>
+<p>Here are the asserts that your solution must pass. The stock list is defined first.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;beans&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;atta&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">is_low</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_low</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;atta&quot;</span><span class="p">,</span> <span class="s2">&quot;rice&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">([],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">average_qty</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span> <span class="o">==</span> <span class="mf">5.33</span>
+<span class="k">assert</span> <span class="n">average_qty</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>The solution below uses only the standard library. It contains the three functions and the asserts above, so it can be run on its own.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_low</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;qty&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">low_items</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">is_low</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average_qty</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;qty&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">stock</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rice&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;beans&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;atta&quot;</span><span class="p">,</span> <span class="s2">&quot;qty&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">is_low</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_low</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;atta&quot;</span><span class="p">,</span> <span class="s2">&quot;rice&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">low_items</span><span class="p">([],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">average_qty</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span> <span class="o">==</span> <span class="mf">5.33</span>
+<span class="k">assert</span> <span class="n">average_qty</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+</code></pre></div>
+
+<p><code>is_low</code> compares with <code>&lt;</code>, so a quantity equal to the threshold gives <code>False</code>. <code>low_items</code> builds a list of names with a comprehension that uses <code>is_low</code>, then sorts it. <code>average_qty</code> returns <code>0.0</code> for an empty list before it divides, which avoids dividing by zero. Otherwise it sums the quantities and divides by the count, and <code>round</code> gives two decimal places. The total is 16 and the count is 3, so the average is 5.333..., which rounds to 5.33.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>The four function names and their parameters match the starter file exactly.</li>
+<li><code>_in_range</code>, <code>port_allowed</code> and <code>has_open_ssh</code> return <code>True</code> or <code>False</code>, and <code>world_open_ports</code> returns a list.</li>
+<li>Every range check includes both <code>from_port</code> and <code>to_port</code>.</li>
+<li>The <code>cidr</code> test is an exact text match, plus the special value <code>"0.0.0.0/0"</code> that allows any source.</li>
+<li><code>port_allowed</code> checks the port and the source on the same rule, not on two different rules.</li>
+<li><code>world_open_ports</code> counts only world rules, lists each port once, and sorts the result in ascending order.</li>
+<li><code>has_open_ssh</code> checks whether port 22 falls inside a rule's range, not only the first port of the rule.</li>
+<li>Your own asserts for an empty list and for each row of the rules table all pass, and the list you were given is not changed.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<details class="box box-answer"><summary>Why is port 22 limited to your /32 and not left open to the internet?</summary><p>Port 22 is the door to the VM's shell, so an open door can be found and attacked by automated scanners within minutes. Limiting the rule to <code>/32</code> means only your single address can even see the port, and the scanners see nothing. Key-only login and disabled root login then protect the door if someone does reach it. I would say that the firewall and the sshd settings are two separate layers, and that each one covers the other's failure.</p></details>
+
+<details class="box box-answer"><summary>Why does the VM use an instance role instead of stored access keys?</summary><p>An instance role gives the VM temporary credentials that AWS rotates automatically, so there is no permanent key on disk to steal. A key copied to the VM never expires, and it leaks with any disk snapshot or backup. The role uses the same scoped policy as the user, so the access is no broader than before. IMDSv2 also protects the credentials from theft by a request forgery trick.</p></details>
+
+<details class="box box-answer"><summary>What do sshd -t and sshd -T do, and why keep a session open?</summary><p>The command <code>sshd -t</code> checks the configuration file for syntax errors and prints nothing when it is valid. The command <code>sshd -T</code> prints the effective settings that sshd will actually use, which matters because the first value read wins. I keep one session open so that if the new config locks me out, the open session is my way back in to fix it. Reloading only after both checks passes reduces the chance of a lockout to nearly zero.</p></details>
+
+<details class="box box-answer"><summary>Why does a stopped instance still cost money?</summary><p>Stopping halts the compute charges, because the instance is no longer running on a host. The disk stays attached and keeps its data, and storage is billed separately, so the cost does not drop to zero. Some public address charges may also apply, depending on current pricing. For that reason I stop instances at the end of the day, and terminate them when the lab is finished and the disk is no longer needed.</p></details>
+
+<details class="box box-answer"><summary>What makes a runbook useful during an incident?</summary><p>A useful runbook starts from a symptom, gives a quick diagnosis, and then gives exact commands with their variables filled in. Each section has been dry-run by someone other than the author, so it is known to work under pressure. It is stored in the repository next to the code, so it is reviewed in pull requests and stays current. An incident is the wrong time to discover that a step says "fix the security group" and nothing more.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command or rule</th>
+<th>What it does</th>
+<th>When you use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NAME=asha; export AWS_PROFILE=$NAME-admin AWS_REGION=ap-south-1</code></td>
+<td>Sets your name, AWS profile and region for this terminal</td>
+<td>At the start of every terminal session</td>
+</tr>
+<tr>
+<td><code>ssh-keygen -t ed25519 -f PATH -C COMMENT</code></td>
+<td>Creates an ed25519 key pair on your laptop</td>
+<td>Lab step 1</td>
+</tr>
+<tr>
+<td><code>aws ec2 import-key-pair --key-name NAME --public-key-material fileb://PATH</code></td>
+<td>Uploads a public key to AWS</td>
+<td>Lab step 1</td>
+</tr>
+<tr>
+<td><code>aws ec2 create-security-group --group-name NAME --description TEXT</code></td>
+<td>Creates an empty firewall with no inbound rules</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>aws ec2 authorize-security-group-ingress --cidr IP/32 --port 22 --protocol tcp</code></td>
+<td>Adds one inbound rule</td>
+<td>Lab step 2, and recovery</td>
+</tr>
+<tr>
+<td><code>aws ec2 revoke-security-group-ingress</code></td>
+<td>Removes an inbound rule</td>
+<td>Recovery, when your IP changes</td>
+</tr>
+<tr>
+<td><code>curl -s https://checkip.amazonaws.com</code></td>
+<td>Prints your current public IP address</td>
+<td>Building a <code>/32</code> rule</td>
+</tr>
+<tr>
+<td><code>aws ssm get-parameter --name PARAM --query Parameter.Value --output text</code></td>
+<td>Reads the official Ubuntu image ID</td>
+<td>Launch</td>
+</tr>
+<tr>
+<td><code>aws ec2 run-instances --instance-type t3.micro --key-name --security-group-ids --iam-instance-profile</code></td>
+<td>Starts a VM with its key, firewall and role</td>
+<td>Lab step 3</td>
+</tr>
+<tr>
+<td><code>--metadata-options HttpTokens=required</code></td>
+<td>Forces IMDSv2</td>
+<td>Every launch</td>
+</tr>
+<tr>
+<td><code>--tag-specifications</code></td>
+<td>Attaches labels such as Owner and Env</td>
+<td>Every launch</td>
+</tr>
+<tr>
+<td><code>aws ec2 wait instance-running</code></td>
+<td>Waits until the VM is running</td>
+<td>After launch</td>
+</tr>
+<tr>
+<td><code>aws ec2 describe-instances --query</code></td>
+<td>Reads state, IP address and tags</td>
+<td>Connecting and checking</td>
+</tr>
+<tr>
+<td><code>aws ec2 stop-instances</code></td>
+<td>Halts compute charges, keeps the disk</td>
+<td>End of day</td>
+</tr>
+<tr>
+<td><code>aws ec2 terminate-instances</code></td>
+<td>Deletes the instance and its disk permanently</td>
+<td>Lab step 7 only</td>
+</tr>
+<tr>
+<td><code>ssh -i KEY user@IP</code></td>
+<td>Logs in with a key</td>
+<td>Lab step 4</td>
+</tr>
+<tr>
+<td><code>chmod 600</code> or <code>chmod 400</code></td>
+<td>Restricts a key file to its owner</td>
+<td>Any key file</td>
+</tr>
+<tr>
+<td><code>sudo sshd -t</code></td>
+<td>Checks sshd config syntax</td>
+<td>Before every reload</td>
+</tr>
+<tr>
+<td><code>sudo sshd -T</code></td>
+<td>Prints the effective sshd settings</td>
+<td>Verifying hardening</td>
+</tr>
+<tr>
+<td><code>sudo systemctl reload ssh</code></td>
+<td>Reloads sshd without dropping sessions</td>
+<td>After a config change</td>
+</tr>
+<tr>
+<td><code>PasswordAuthentication no</code></td>
+<td>Turns off password logins</td>
+<td>sshd drop-in</td>
+</tr>
+<tr>
+<td><code>PermitRootLogin no</code></td>
+<td>Stops root logging in over SSH</td>
+<td>sshd drop-in</td>
+</tr>
+<tr>
+<td><code>aws sts get-caller-identity --query Arn</code></td>
+<td>Shows which identity the CLI is using</td>
+<td>Verifying the role</td>
+</tr>
+<tr>
+<td><code>0.0.0.0/0</code></td>
+<td>Means every address on the internet</td>
+<td>Never for port 22</td>
+</tr>
+<tr>
+<td><code>/32</code></td>
+<td>Means exactly one address</td>
+<td>SSH rules</td>
+</tr>
+<tr>
+<td>Python <code>range(a, b + 1)</code></td>
+<td>Includes both ends of a port range</td>
+<td>Port problems</td>
+</tr>
+<tr>
+<td>Python <code>ipaddress.ip_network(cidr, strict=False)</code></td>
+<td>Parses a CIDR range</td>
+<td>Source checks</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;ssh-keygen -t ed25519&quot;, &quot;a&quot;: &quot;Creates an ed25519 key pair; the private file has no extension and the public file ends in .pub.&quot;}, {&quot;q&quot;: &quot;Private key location&quot;, &quot;a&quot;: &quot;It stays on your laptop. AWS keeps only the public half.&quot;}, {&quot;q&quot;: &quot;chmod 600&quot;, &quot;a&quot;: &quot;Makes the key readable and writable by its owner only, so SSH accepts it.&quot;}, {&quot;q&quot;: &quot;Security group&quot;, &quot;a&quot;: &quot;A stateful firewall attached to an instance; new groups have no inbound rules.&quot;}, {&quot;q&quot;: &quot;/32&quot;, &quot;a&quot;: &quot;A CIDR range of exactly one IP address.&quot;}, {&quot;q&quot;: &quot;0.0.0.0/0&quot;, &quot;a&quot;: &quot;Every IP address on the internet. Never allow SSH from it.&quot;}, {&quot;q&quot;: &quot;sshd -t&quot;, &quot;a&quot;: &quot;Checks the sshd config syntax and prints nothing when it is valid.&quot;}, {&quot;q&quot;: &quot;sshd -T&quot;, &quot;a&quot;: &quot;Prints the effective sshd settings. The first value read for a setting wins.&quot;}, {&quot;q&quot;: &quot;Instance role&quot;, &quot;a&quot;: &quot;An IAM role on an EC2 VM that gives temporary, rotating credentials instead of stored keys.&quot;}, {&quot;q&quot;: &quot;IMDSv2&quot;, &quot;a&quot;: &quot;The session-token version of the instance metadata service, which blocks many credential-theft tricks.&quot;}, {&quot;q&quot;: &quot;stop-instances&quot;, &quot;a&quot;: &quot;Halts compute charges and keeps the disk. Terminating deletes the instance permanently.&quot;}, {&quot;q&quot;: &quot;Runbook&quot;, &quot;a&quot;: &quot;A tested, copy-pasteable document of exact commands for launch, connect, stop and recovery.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D13.html"><small>Previous</small>Day 13 — Object storage with S3 and boto3</a><a class="nx" href="D15.html"><small>Next</small>Day 15 — Serverless and cost awareness</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

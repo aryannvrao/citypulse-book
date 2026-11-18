@@ -1,0 +1,984 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 27 — Observability: logs, uptime and SLOs · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D27" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 7 · Days 26–29 · Shipping it</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a class="cur" href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 7 · Days 26–29 · Shipping it</p><h1>Day 27 — Observability: logs, uptime and SLOs</h1><p class="sub">You will be able to make an API write queryable request logs, check its uptime from outside, and turn a log file into an SLI, an error budget and a p99 latency.</p><p class="meta">92 min read · practice quiz · 6 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D27.mp4?v=1794464102"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Observability means working out what a running program is doing from the records it leaves behind. CityPulse is an API, a program that other programs call over the internet to ask for data. Today you make it observable in three ways. Every request writes one structured log line that a tool can count. An outside checker calls the API every minute and alerts the team when it stops answering. The logs then feed numbers that score reliability: an SLI (the measured success rate), an SLO (the target you promise) and an error budget (the failures that target still allows).</p>
+<p>Think of a monthly mobile data plan. The SLO is the plan, the error budget is the data you have left, and when it runs out you stop streaming until next month.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>File and command.</strong> A file is a named block of text or data kept on your disk, such as <code>access.log</code>. A command is a line of text you type into a terminal, the window where you give instructions to the computer. On Windows the course uses Git Bash, a terminal that understands the commands in this chapter.</p>
+<p><strong>Program, script, variable, function.</strong> A program is a set of instructions a computer follows. A script is a short program kept in a file, such as <code>sli.py</code>. A variable is a name that stores a value: after <code>total = 5000</code>, the name <code>total</code> stands for 5000. A function is a named, reusable block of code. You call it with brackets, so <code>len(rows)</code> returns how many items the list <code>rows</code> holds. A list is an ordered group of values in square brackets, such as <code>[200, 503, 201]</code>.</p>
+<p><strong>Server, request, response, URL.</strong> A server is a program that waits for requests and answers them. A request is a message a client sends, and the answer is the response. Each request goes to a URL, a web address such as <code>https://citypulse-api-xxxxxxxx-el.a.run.app/v1/health</code>. The part after the host name, <code>/v1/health</code>, is the path. A path the server handles is an endpoint.</p>
+<p><strong>Status codes.</strong> Every response carries a three-digit HTTP status code. Codes starting with 2 mean success, such as 200 (OK) and 201 (created). Codes starting with 4 mean the caller made a mistake, such as 404 (not found). Codes starting with 5 mean the server failed, such as 500 (internal error) or 503 (service unavailable). This split decides who is to blame, and therefore which failures count against the service.</p>
+<p><strong>Latency.</strong> Latency is the time one request takes. It is measured in milliseconds (ms), thousandths of a second.</p>
+<p><strong>JSON.</strong> JSON (JavaScript Object Notation) is a text format for structured data. A JSON object is a set of named fields inside curly braces, such as <code>{"path": "/v1/predict", "status": 200}</code>. Each name is a key, and the quotes are required. A line that is valid JSON can be read by a tool field by field.</p>
+<p><strong>Logs.</strong> A log is a record a program writes about what it did, usually one line per event. A text log reads like a sentence. A structured log uses a fixed format, such as JSON, so tools can search by field.</p>
+<p><strong>Average and percentile.</strong> The average (mean) adds all the values and divides by how many there are. A percentile is the value below which a given share of values fall. The p99 is the latency that 99 out of 100 requests beat. The median is the p50. Percentiles expose the slow tail that a few users suffer, which an average hides.</p>
+<p><strong>Monitoring, probe, health check.</strong> Monitoring means watching a system over time. A probe is an automatic request sent to check something. A health check is a probe of a special endpoint that reports whether the service is working.</p>
+<p><strong>Production.</strong> Production is the live system that real users depend on. A copy on your laptop is not production.</p>
+<p><strong>Command-line tools used here.</strong> <code>curl</code> sends a request from the terminal and prints the response. <code>jq</code> reads JSON and prints the parts you select. <code>grep</code> searches text for a pattern. <code>wc -l</code> counts lines. <code>sort</code> puts lines in order, and <code>uniq -c</code> counts repeated lines. A pipe, written <code>|</code>, sends the output of one command into the next. An exit code is the number a command returns when it finishes: 0 means success and anything else means failure.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="structured-logging-and-log-queries">Structured logging and log queries</h3>
+<p><strong>What it is.</strong> Structured logging means each log line is a JSON object with named fields such as <code>path</code>, <code>status</code> and <code>latency_ms</code>. A cloud log explorer parses those fields, so you can filter and count requests exactly instead of reading text by eye. A saved query is a filter kept in the console and also in a text file in the repository, so anyone can run it again.</p>
+<p><strong>Why CityPulse uses it.</strong> The CityPulse API runs on Google Cloud Run, a service that runs your program in a container (a sealed package holding the program and what it needs). The request-logging middleware (code that wraps every request) already writes <code>path</code>, <code>status</code>, <code>latency_ms</code> and <code>request_id</code>. Cloud Logging turns each line into fields under <code>jsonPayload</code>. The alternatives are CloudWatch Logs Insights, the same idea on AWS with different query syntax; ELK or OpenSearch, which is powerful but a cluster you must run and pay for; and <code>grep</code> on downloaded logs, which is fine once but cannot be saved or shared.</p>
+<p><strong>How it works.</strong> The container writes JSON to standard output, the text stream a program prints to. The platform ships each line to a log store. Because each line is valid JSON, its keys become searchable fields.</p>
+<p>The two saved queries from the course are stored as text:</p>
+<div class="hl"><pre><span></span><code>## docs/queries/errors_5xx.txt  (Logs Explorer, last 24 h, summarise by jsonPayload.path)
+resource.type=&quot;cloud_run_revision&quot;
+resource.labels.service_name=&quot;citypulse-api&quot;
+jsonPayload.status&gt;=500
+</code></pre></div>
+
+<p>The first line is a comment. The Logs Explorer ignores it, and it tells the reader what the query is for. The second line keeps only entries from Cloud Run revisions (the versions of a deployed service). The third line keeps only entries for the service <code>citypulse-api</code>. The fourth line keeps entries whose <code>status</code> field is 500 or more, written <code>&gt;=</code>. Lines in this language are combined with AND, so an entry must pass every line. Summarising by <code>jsonPayload.path</code> groups the matches by path. An empty result means no server errors in the last 24 hours.</p>
+<div class="hl"><pre><span></span><code>## docs/queries/slow_predict.txt
+resource.type=&quot;cloud_run_revision&quot;
+resource.labels.service_name=&quot;citypulse-api&quot;
+jsonPayload.path=&quot;/v1/predict&quot;
+jsonPayload.latency_ms&gt;500
+</code></pre></div>
+
+<p>The first three lines work as before. <code>jsonPayload.path="/v1/predict"</code> uses <code>=</code> for equality and quotes around text. <code>jsonPayload.latency_ms&gt;500</code> uses <code>&gt;</code> for greater than, with no quotes because the value is a number. The result is every prediction request slower than 500 ms.</p>
+<p>The same kind of filter works on a local file. In the terminal:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;jq -c &#x27;select(.status&gt;=500)&#x27; access.log | wc -l&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;3&quot;}]}"></div>
+
+<p><code>jq</code> reads each line of <code>access.log</code> as JSON. The quoted program <code>select(.status&gt;=500)</code> keeps only the lines whose <code>status</code> field is 500 or more, where <code>.status</code> means "the status field of this object". The <code>-c</code> flag prints each kept object on one line (without it jq spreads an object over several lines and <code>wc -l</code> would overcount). The pipe passes the kept lines to <code>wc -l</code>, which counts them. The output <code>3</code> means three server errors are in the file.</p>
+<div class="box box-key"><div class="box-h">Key fact: Logs are a table</div><p>Each JSON line is one row, and each key is one column. Filtering and counting are then ordinary table operations.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Mixing print text with JSON</div><p>A plain <code>print("cache warmed")</code> line is not JSON. The platform stores it in <code>textPayload</code>, so a filter on <code>jsonPayload.status</code> never sees it. Log only JSON from request handlers.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Buffered output</div><p>Python can hold printed text in memory before sending it, so logs can go missing after a crash. Set <code>PYTHONUNBUFFERED=1</code> in the environment or pass <code>flush=True</code> to <code>print</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Logging secrets</div><p>Never log request bodies, passwords or keys. Log only ids, status, latency and version.</p></div>
+
+<h3 id="uptime-monitoring-and-alerting">Uptime monitoring and alerting</h3>
+<p><strong>What it is.</strong> An uptime check is an external probe. It calls a URL on a schedule and records whether the answer was correct. An alert policy turns repeated failures into a notification to people, and sends a recovery notice when the check passes again. Because the probe runs outside the service, it sees what a client sees, including DNS problems (the system that turns a name into an address) and TLS problems (the encryption used by https).</p>
+<p><strong>Why CityPulse uses it.</strong> If CityPulse stops overnight, the squad currently learns about it from an angry dashboard team at BBMP, the Bengaluru city corporation. The course setup checks <code>/v1/health</code> every minute, requires the response body to contain <code>ok</code>, uses a 10-second timeout, and alerts after 2 consecutive failures. The alert goes to a shared email alias and the squad channel, with a runbook link (a document saying what to do). The alternatives are UptimeRobot, a free outside checker that is independent of the cloud; CloudWatch Synthetics or Azure Availability tests, which are the native versions on other platforms; and manual checking, which fails at 2 a.m.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One uptime check, seen from outside&quot;, &quot;nodes&quot;: [&quot;Uptime checker&quot;, &quot;CityPulse API&quot;, &quot;Squad channel&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;GET /v1/health&quot;, &quot;note&quot;: &quot;Every minute the checker calls the health URL from outside the service.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;200 with ok in body&quot;, &quot;note&quot;: &quot;The API answers. The check passes only if the status is 200 and the body contains ok.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;2 failures in a row&quot;, &quot;note&quot;: &quot;After two failed checks the alert posts to the shared channel with a runbook link.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;label&quot;: &quot;check passes again&quot;, &quot;note&quot;: &quot;A recovery notice tells the team the service is back.&quot;}]}"></div>
+
+<p>The flow shows one probe travelling out and back, and the alert travelling to people. Each arrow is a message: the request, the answer, and the two notifications. Only the third arrow waits for two failures.</p>
+<p><strong>How the alert test works.</strong> To prove the alert fires, you take public access away, time how long the alert takes, and restore access. The course runs it with these commands, which are rejoined here from lines the slides split:</p>
+<div class="hl"><pre><span></span><code><span class="nv">URL</span><span class="o">=</span>https://citypulse-api-xxxxxxxx-el.a.run.app<span class="w">   </span><span class="c1"># from the README, the Live link</span>
+curl<span class="w"> </span>-fsS<span class="w"> </span>-m<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">/v1/health&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;&quot;ok&quot;&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>UP
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;stop: </span><span class="k">$(</span>date<span class="w"> </span>-Iseconds<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>docs/alert-test.md
+gcloud<span class="w"> </span>run<span class="w"> </span>services<span class="w"> </span>remove-iam-policy-binding<span class="w"> </span>citypulse-api<span class="w"> </span>--region<span class="w"> </span>asia-south1<span class="w"> </span>--member<span class="o">=</span>allUsers<span class="w"> </span>--role<span class="o">=</span>roles/run.invoker
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alert: &lt;time from notification&gt;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>docs/alert-test.md
+gcloud<span class="w"> </span>run<span class="w"> </span>services<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>citypulse-api<span class="w"> </span>--region<span class="w"> </span>asia-south1<span class="w"> </span>--member<span class="o">=</span>allUsers<span class="w"> </span>--role<span class="o">=</span>roles/run.invoker
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;restored: </span><span class="k">$(</span>date<span class="w"> </span>-Iseconds<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>docs/alert-test.md
+</code></pre></div>
+
+<p>Line by line. <code>URL=...</code> stores the address in a variable called <code>URL</code>; there must be no spaces around the <code>=</code> in bash. The text after <code>#</code> is a comment. <code>curl -fsS -m 10 "$URL/v1/health"</code> sends the request. <code>-f</code> makes curl exit with an error on a 4xx or 5xx reply. <code>-s</code> hides the progress meter, and <code>-S</code> still shows error messages. <code>-m 10</code> gives up after 10 seconds. The double quotes keep the URL in one piece, and <code>$URL</code> inserts the variable's value. The pipe <code>|</code> sends the body to <code>grep -q '"ok"'</code>, which looks for the text <code>"ok"</code> and stays silent (<code>-q</code>). It exits with 0 only if it finds it. <code>&amp;&amp; echo UP</code> prints <code>UP</code> only when the previous command exited with 0. You should see <code>UP</code> while the service is public.</p>
+<p><code>echo "stop: $(date -Iseconds)"</code> prints a line containing the current time; <code>$(...)</code> runs <code>date</code> and inserts its output, and <code>-Iseconds</code> prints a timestamp such as <code>2027-03-09T10:15:00+05:30</code>. <code>| tee -a docs/alert-test.md</code> shows the line on screen and appends it (<code>-a</code>) to the file. <code>remove-iam-policy-binding</code> removes the permission that lets everyone (<code>allUsers</code>) call the service, using the role <code>roles/run.invoker</code>. <code>--region</code> names the Google Cloud region and <code>--member</code> names who the permission is for. <code>&gt;&gt;</code> appends a line to a file, whereas a single <code>&gt;</code> would overwrite it. The add command restores the permission. After the removal, the curl line does not print <code>UP</code>, because a refused request fails the <code>-f</code> check (<code>-S</code> still shows curl's error message).</p>
+<div class="box box-trap"><div class="box-h">Trap: Checking only for status 200</div><p>An error page can come back with status 200. Match the body too, as the <code>grep</code> in the test does.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Alerting one person</div><p>An alert in one student's inbox is lost when that person is ill. Use a shared alias and the squad channel.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Never testing the alert</div><p>An alert you have not triggered may not work. Run the fire test and record the stop and alert timestamps.</p></div>
+
+<h3 id="slis-slos-and-error-budgets">SLIs, SLOs and error budgets</h3>
+<p><strong>What they are.</strong> An SLI (service-level indicator) is a measured ratio, such as the share of <code>/v1/predict</code> requests answered successfully under 500 ms. An SLO (service-level objective) is the target for that ratio over a stated window, such as 99% over 7 days. The error budget is the amount of failure the target still allows: 100% minus the target, applied to the number of valid requests. CityPulse writes the SLO as a promise for the dashboard team, and the budget as a rule for the squad: when the budget is spent, stop new features and fix reliability.</p>
+<p><strong>The course's definitions.</strong> Good events are requests that are not 5xx and finish under 500 ms. Valid requests are all <code>/v1/predict</code> requests except client errors (4xx), and <code>/v1/health</code> is excluded entirely. Three alternatives were rejected. A raw uptime percentage ignores slow answers and errors while the server is up. An average latency hides the slow tail. A 100% target is impossible and leaves no budget for any change.</p>
+<p>The window's data is exported with this command:</p>
+<div class="hl"><pre><span></span><code>gcloud<span class="w"> </span>logging<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s1">&#39;resource.labels.service_name=&quot;citypulse-api&quot; AND jsonPayload.path=&quot;/v1/predict&quot;&#39;</span><span class="w"> </span>--freshness<span class="o">=</span>7d<span class="w"> </span>--format<span class="o">=</span>json<span class="w"> </span>&gt;<span class="w"> </span>logs/predict_7d.json
+</code></pre></div>
+
+<p><code>gcloud logging read</code> fetches log entries. The quoted text is the filter, and <code>AND</code> joins its two conditions. <code>--freshness=7d</code> keeps only the last seven days. <code>--format=json</code> prints the result as a JSON list. The <code>&gt;</code> sends the output to <code>logs/predict_7d.json</code>, replacing the file if it exists. The <code>logs</code> folder must already exist.</p>
+<p>The script that computes the SLI and budget from that file is:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;jsonPayload&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;logs/predict_7d.json&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="s2">&quot;jsonPayload&quot;</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+<span class="n">valid</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">400</span> <span class="ow">or</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">]</span>   <span class="c1"># client 4xx excluded</span>
+<span class="n">good</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">valid</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">500</span> <span class="ow">and</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;latency_ms&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">sli</span> <span class="o">=</span> <span class="n">good</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span>
+<span class="n">budget</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span>          <span class="c1"># bad requests allowed in this window</span>
+<span class="n">used</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span> <span class="o">-</span> <span class="n">good</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SLI </span><span class="si">{</span><span class="n">sli</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> (target </span><span class="si">{</span><span class="n">target</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">); budget </span><span class="si">{</span><span class="n">budget</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> requests, used </span><span class="si">{</span><span class="n">used</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">used</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">budget</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line. <code>import json</code> loads the JSON tools. The first assignment reads the file, which is a list of log entries. <code>json.load(open(...))</code> turns the file into Python lists and dictionaries, and <code>open</code> returns the file for reading. The list comprehension keeps only entries with a <code>jsonPayload</code> field, then keeps that field's contents as <code>rows</code>. <code>valid</code> keeps a row if its status is below 400 (not a client error) or 500 and above (a server error). The <code># client 4xx excluded</code> text after the <code>#</code> is a comment. <code>good</code> counts the valid rows that are under 500 and faster than 500 ms; <code>sum(1 for ...)</code> adds 1 for each match. <code>target = 0.99</code> stores the SLO as a fraction. <code>sli = good / len(valid)</code> divides good requests by valid ones. <code>budget</code> is the number of bad requests allowed, that is 1% of the valid total. <code>used</code> is the number of valid requests that were bad. The final <code>print</code> builds one line with f-string braces that insert values; <code>:.2%</code> shows a fraction as a percentage with two decimals, and <code>:.0f</code> shows a number with no decimals. With 20,000 valid requests the budget is 200, so if 116 are used the last part of the output reads <code>(58%)</code>.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting good and valid requests&quot;, &quot;code&quot;: [&quot;statuses = [200, 503, 404, 200]&quot;, &quot;valid = [s for s in statuses if s &lt; 400 or s &gt;= 500]&quot;, &quot;good = sum(1 for s in valid if s &lt; 500)&quot;, &quot;sli = good / len(valid)&quot;, &quot;used = len(valid) - good&quot;, &quot;print(f\&quot;SLI {sli:.1%}; failed {used}\&quot;)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;]], &quot;note&quot;: &quot;Four requests arrive. Their status codes are stored in a list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;], [&quot;valid&quot;, &quot;[200, 503, 200]&quot;]], &quot;note&quot;: &quot;The 404 is a client error, so it is dropped from the valid list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;], [&quot;valid&quot;, &quot;[200, 503, 200]&quot;], [&quot;good&quot;, &quot;2&quot;]], &quot;note&quot;: &quot;The two 200 responses are good. The 503 is a server error.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;], [&quot;valid&quot;, &quot;[200, 503, 200]&quot;], [&quot;good&quot;, &quot;2&quot;], [&quot;sli&quot;, &quot;0.6666666666666666&quot;]], &quot;note&quot;: &quot;Two good out of three valid requests, as a fraction.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;], [&quot;valid&quot;, &quot;[200, 503, 200]&quot;], [&quot;good&quot;, &quot;2&quot;], [&quot;sli&quot;, &quot;0.6666666666666666&quot;], [&quot;used&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;One valid request failed. That is the budget spent.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;statuses&quot;, &quot;[200, 503, 404, 200]&quot;], [&quot;valid&quot;, &quot;[200, 503, 200]&quot;], [&quot;good&quot;, &quot;2&quot;], [&quot;sli&quot;, &quot;0.6666666666666666&quot;], [&quot;used&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;The print line shows SLI 66.7%; failed 1 in the terminal.&quot;}]}"></div>
+
+<p>Watch the variables change as the lines run. Each step shows the state after its line has run, so <code>valid</code> is filled in at step 2 and <code>good</code> is first set at step 3. Notice that the 404 never appears in <code>valid</code>, so it cannot count as a failure.</p>
+<div class="box box-trap"><div class="box-h">Trap: Including the health check</div><p><code>/v1/health</code> is fast and always succeeds, so it inflates the SLI. Exclude it before counting.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Counting client 422s as failures</div><p>A 422 means the caller sent bad input. The service behaved correctly, so the response does not spend the budget.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: An SLO with no query</div><p>A target written without the query that measures it cannot be checked. Write the exact query and today's measured value next to the target in <code>docs/slo.md</code>.</p></div>
+
+<div class="box box-tip"><div class="box-h">Tip: Say which definition you used</div><p>The worked example below counts 4xx responses as good, but the course SLI leaves them out. In the viva, state the definition first, then the number.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The course workbook takes one window of 5,000 requests from <code>access.log</code> and produces a reliability read-out. Its goal is to answer four questions: what was the request mix, what was the SLI, how much budget is left, and what does latency look like? Each step below is one file from the workbook. The code is shown once, in the step where it runs.</p>
+<p><strong>Step 1: write one JSON line per request.</strong></p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;citypulse&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">log_request</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="c1"># one structured line</span>
+        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
+        <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">}))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.0472</span>      <span class="c1"># pretend the request started 47.2 ms ago</span>
+    <span class="n">log_request</span><span class="p">(</span><span class="s2">&quot;/readings&quot;</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">log_request</span><span class="p">(</span><span class="s2">&quot;/stations&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line. <code>import logging, json, time, sys</code> loads four standard modules: logging for records, json for text, time for clocks and sys for the standard output stream. <code>basicConfig</code> sets up logging. <code>stream=sys.stdout</code> sends records to the screen, <code>level=logging.INFO</code> lets info messages through, and <code>format="%(message)s"</code> prints only the message, with no timestamp or level, so the output stays valid JSON. <code>log = logging.getLogger("citypulse")</code> gets a named logger. <code>def log_request(path, status, start):</code> defines a function that takes three values. Inside it, <code>json.dumps({...})</code> turns a dictionary into a JSON string, and <code>log.info(...)</code> writes that string as one line. The <code>latency_ms</code> value is the current time minus <code>start</code>, in seconds, multiplied by 1000 to get milliseconds, and <code>round(..., 1)</code> keeps one decimal. The <code>if __name__ == "__main__":</code> line means the lines below run only when you start this file directly. <code>t = time.time() - 0.0472</code> pretends the request began 47.2 ms ago. The last two lines write one event each.</p>
+<p>Running it with <code>python3 observability.py</code> prints two lines. The last digit may differ on your machine:</p>
+<div class="hl"><pre><span></span><code>{&quot;path&quot;: &quot;/readings&quot;, &quot;status&quot;: 201, &quot;latency_ms&quot;: 47.2}
+{&quot;path&quot;: &quot;/stations&quot;, &quot;status&quot;: 200, &quot;latency_ms&quot;: 47.3}
+</code></pre></div>
+
+<p><strong>Step 2: collect a window of traffic.</strong> The server appends one line per request to <code>access.log</code>. Then you check the file:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;wc -l &lt; access.log&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;5000&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;head -1 access.log&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{\&quot;path\&quot;: \&quot;/stations\&quot;, \&quot;status\&quot;: 200, \&quot;latency_ms\&quot;: 58.2}&quot;}]}"></div>
+
+<p><code>wc -l</code> counts lines. The <code>&lt;</code> feeds the file into <code>wc</code> as input, so the output is a plain number. <code>head -1</code> prints the first line of the file. The output shows 5,000 request events on disk, each one a JSON line.</p>
+<p><strong>Step 3: count requests by status.</strong></p>
+<div class="hl"><pre><span></span><code><span class="c1">## count requests by HTTP status</span>
+jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.status&#39;</span><span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
+</code></pre></div>
+
+<p>Line by line. The first line is a comment. <code>jq -r '.status' access.log</code> reads each line and prints its <code>status</code> field; <code>-r</code> prints the raw value without quotes. The pipe sends those values to <code>sort</code>, which puts identical codes next to each other. <code>uniq -c</code> collapses each run into one line and writes the count in front. The final <code>sort -rn</code> orders the lines by count, largest first, reading the counts as numbers (<code>-n</code>) and reversing (<code>-r</code>). Expected output:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;jq -r &#x27;.status&#x27; access.log | sort | uniq -c | sort -rn&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2955 201&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1953 200&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  89 400&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;   3 503&quot;}]}"></div>
+
+<p>That is 4,908 successful requests, 89 client errors and 3 server errors. The first thing to read is the 5xx count, because server errors belong to the team to fix.</p>
+<p><strong>Step 4: measure the SLI.</strong> This version counts a response as good if it is not a 5xx.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;access.log&quot;</span><span class="p">)]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">good</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">)</span>    <span class="c1"># non-5xx = served OK</span>
+<span class="n">sli</span> <span class="o">=</span> <span class="n">good</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;requests: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;good (non-5xx): </span><span class="si">{</span><span class="n">good</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;errors (5xx): </span><span class="si">{</span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">good</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SLI (success): </span><span class="si">{</span><span class="n">sli</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line. <code>rows = [json.loads(l) for l in open("access.log")]</code> reads each line, turns it from JSON text into a dictionary, and collects the dictionaries in a list. <code>total = len(rows)</code> counts them. <code>good</code> counts rows whose status is below 500, and the comment says that means served OK. <code>sli = good / total * 100</code> gives a percentage. The four <code>print</code> lines show the numbers. <code>{sli:.2f}</code> shows two decimal places. Expected output:</p>
+<div class="hl"><pre><span></span><code>requests: 5000
+good (non-5xx): 4997
+errors (5xx): 3
+SLI (success): 99.94%
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Two definitions of good</div><p>This step counts 4xx responses as good, so the denominator includes the 89 client errors. The course SLI in the tools section leaves them out. Both are legitimate, but the number you publish must name the one you used.</p></div>
+
+<p><strong>Step 5: set the SLO and track the error budget.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">TOTAL</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">SLO</span> <span class="o">=</span> <span class="mf">99.5</span>                                   <span class="c1"># the target we commit to</span>
+<span class="n">failures</span> <span class="o">=</span> <span class="mi">3</span>                                 <span class="c1"># observed 5xx this window</span>
+<span class="n">allowed</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">TOTAL</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">SLO</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># budget, in requests</span>
+<span class="n">remaining</span> <span class="o">=</span> <span class="n">allowed</span> <span class="o">-</span> <span class="n">failures</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SLO target: </span><span class="si">{</span><span class="n">SLO</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;error budget: </span><span class="si">{</span><span class="n">allowed</span><span class="si">}</span><span class="s2"> failed requests&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spent: </span><span class="si">{</span><span class="n">failures</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;remaining: </span><span class="si">{</span><span class="n">remaining</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">remaining</span><span class="o">/</span><span class="n">allowed</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% of budget)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;status: HEALTHY — ship features&quot;</span> <span class="k">if</span> <span class="n">remaining</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;status: FREEZE&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line. <code>TOTAL = 5000</code> is the number of requests in the window. Capital letters are a convention for values that do not change. <code>SLO = 99.5</code> is the commitment, written as a percentage. <code>failures = 3</code> is the observed 5xx count, typed in by hand here. <code>allowed</code> is the budget: <code>100 - SLO</code> is the failure percentage, dividing by 100 turns it into a fraction, and multiplying by <code>TOTAL</code> gives a count of requests. <code>round(...)</code> turns 25.0 into a whole 25. <code>remaining</code> subtracts the spent failures from the budget. The <code>print</code> lines show the values, and <code>remaining/allowed*100:.0f</code> shows the share left. The last line uses a conditional expression, written <code>value if test else other</code>, to print one of two words. Expected output:</p>
+<div class="hl"><pre><span></span><code>SLO target: 99.5%
+error budget: 25 failed requests
+spent: 3
+remaining: 22 (88% of budget)
+status: HEALTHY — ship features
+</code></pre></div>
+
+<p>Twenty-two failures remain, so the team keeps shipping. In the lab you replace the hand-typed <code>failures</code> value with the real 5xx count from step 3.</p>
+<p><strong>Step 6: read the latency tail.</strong></p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">l</span><span class="p">)[</span><span class="s2">&quot;latency_ms&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;access.log&quot;</span><span class="p">))</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pct</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">lat</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p50: </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p95: </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p99: </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max: </span><span class="si">{</span><span class="n">lat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line. The first two lines read the file and collect every <code>latency_ms</code> value into one list, which <code>sorted</code> puts in ascending order. <code>def pct(p):</code> defines a function that takes a fraction such as 0.95. <code>int(len(lat) * p) - 1</code> works out the position of the value to return, counting from zero. For 5,000 values and p95 that is position 4749, the 4,750th smallest value. <code>print</code> shows each percentile, and <code>lat[-1]</code> is the last item, the largest value. Expected output:</p>
+<div class="hl"><pre><span></span><code>n: 5000
+p50: 47.6 ms
+p95: 74.2 ms
+p99: 85.7 ms
+max: 1894.7 ms
+</code></pre></div>
+
+<p>The p95 is healthy at 74 ms, but the max shows the three slow 5xx calls. The mean would have hidden them.</p>
+<div class="box box-trap"><div class="box-h">Trap: The index rule</div><p><code>int(n * p) - 1</code> agrees with the nearest-rank rule only when <code>n * p</code> is a whole number. For nine values at p99 it returns the 8th value (70 ms), but nearest rank asks for <code>ceil(9 * 0.99)</code>, which is 9, so the answer is the largest value (900 ms). Use <code>ceil</code>, as the graded-lab solution does.</p></div>
+
+<p><strong>Step 7: run the whole read-out.</strong></p>
+<div class="hl"><pre><span></span><code>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.status&#39;</span><span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+python3<span class="w"> </span>sli.py
+python3<span class="w"> </span>budget.py
+python3<span class="w"> </span>p95.py
+</code></pre></div>
+
+<p>Each line runs in turn. The first is the status count from step 3. The next three run the Python scripts with <code>python3</code>, which runs a Python file. The output is the four blocks shown above, one after the other. One command gives the whole picture, which means anyone can rerun it on a new window of logs.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Do these on your own copy of CityPulse, in Git Bash. Before you start, set the address once in each new terminal window with <code>URL=</code> followed by the Live address from your README. Steps 1 to 5 are checks; steps 6 and 7 write the SLO document.</p>
+<h3 id="step-1-structured-request-logging">Step 1: Structured request logging</h3>
+<p><strong>What you do.</strong> Confirm that the API writes one JSON object per request. First run the example from the worked example:</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>observability.py
+</code></pre></div>
+
+<p><code>python3</code> runs the file. You should see two lines, each starting with <code>{</code> and ending with <code>}</code>. Then check that every line parses as JSON:</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>observability.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys, json; [json.loads(l) for l in sys.stdin]; print(&#39;all lines are JSON&#39;)&quot;</span>
+</code></pre></div>
+
+<p>The pipe sends the output into the second command. <code>python3 -c</code> runs the code in quotes. <code>sys.stdin</code> is the stream of lines coming in. <code>json.loads(l)</code> converts each line and raises an error if one is not JSON, and the list brackets run the loop and the resulting list is thrown away. The last statement prints a message when no error occurred.</p>
+<p><strong>How you know it worked.</strong> The message <code>all lines are JSON</code> appears. A traceback (Python's error report) means one line is not JSON, usually a stray <code>print</code>. On CityPulse, the request-logging middleware writes the same kind of line for each real request.</p>
+<h3 id="step-2-count-requests-and-errors">Step 2: Count requests and errors</h3>
+<p><strong>What you do.</strong> Save the API's JSON lines to <code>access.log</code>, then count them by status:</p>
+<div class="hl"><pre><span></span><code>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.status&#39;</span><span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
+jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;select(.status&gt;=500)&#39;</span><span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<p>The first command prints a count for each status code. The second prints the number of server errors, using the filter from the tools section.</p>
+<p><strong>How you know it worked.</strong> The counts in the first command add up to the number printed by <code>wc -l &lt; access.log</code>, and the number in the second command equals the 5xx lines in the first. If the file is empty, nothing is printed and the API has not been called yet.</p>
+<h3 id="step-3-expose-metrics">Step 3: Expose /metrics</h3>
+<p><strong>What you do.</strong> Check that the API answers a <code>/metrics</code> endpoint with plain-text counters:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">/metrics&quot;</span>
+</code></pre></div>
+
+<p><code>curl</code> sends a GET request, <code>-f</code> fails on an HTTP error, and <code>-s</code> hides the progress bar. The flags are the same as in the alert test.</p>
+<p><strong>How you know it worked.</strong> The response is a list of lines, each with a name and a number, such as a total count of requests. The exact names and the code that writes them come from your lab sheet, which is not reproduced in this book's sources. The check here only confirms that the endpoint answers. A counter is explained in the quiz section.</p>
+<h3 id="step-4-generate-traffic-and-a-few-errors">Step 4: Generate traffic and a few errors</h3>
+<p><strong>What you do.</strong> Send twenty healthy requests and one request to a path that does not exist:</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">20</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">/v1/health&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">/v1/does-not-exist&quot;</span>
+</code></pre></div>
+
+<p><code>for i in $(seq 1 20); do ... done</code> runs the body twenty times, with <code>i</code> counting from 1 to 20. <code>-o /dev/null</code> throws away the response body. <code>-w "%{http_code}\n"</code> prints only the status code and a newline. The pipe then counts the codes, as in step 2.</p>
+<p><strong>How you know it worked.</strong> The first command prints <code>20 200</code>, and the second prints <code>404</code> if the server follows the usual convention for a missing path. Run step 2 again and the counts have gone up. The 404 is a client error, so it appears in the 4xx count and not the 5xx count.</p>
+<h3 id="step-5-probe-uptime-and-latency">Step 5: Probe uptime and latency</h3>
+<p><strong>What you do.</strong> Time one health check from outside the service:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-fsS<span class="w"> </span>-m<span class="w"> </span><span class="m">10</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code} %{time_total}s\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">/v1/health&quot;</span>
+</code></pre></div>
+
+<p>The flags <code>-fsS -m 10</code> are explained in the alert test. <code>-o /dev/null</code> discards the body, and <code>-w</code> prints the status code followed by <code>%{time_total}</code>, the seconds the whole request took.</p>
+<p><strong>How you know it worked.</strong> The output looks like <code>200 0.084s</code>, with a 200 status and a time under the 10-second timeout. Run the command five times. The times vary, and each value is one latency sample. Also confirm the alert check passes: <code>curl -fsS -m 10 "$URL/v1/health" | grep -q '"ok"' &amp;&amp; echo UP</code> prints <code>UP</code>.</p>
+<h3 id="step-6-define-the-slo-and-error-budget">Step 6: Define the SLO and error budget</h3>
+<p><strong>What you do.</strong> Create <code>docs/slo.md</code>. Copy the <code>sli.py</code> and <code>budget.py</code> code from the worked example into the folder you are working in, then run them:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>docs
+python3<span class="w"> </span>sli.py
+python3<span class="w"> </span>budget.py
+</code></pre></div>
+
+<p><code>mkdir -p docs</code> creates the folder, and does nothing if it already exists. Before running <code>budget.py</code>, change its <code>failures</code> line to the 5xx count from step 2. Then write in <code>docs/slo.md</code>: the SLI definition in words, the numeric SLO and its window, the error budget in requests, the exact command that measures it, and the measured value.</p>
+<p><strong>How you know it worked.</strong> The file names the SLI, the SLO, the budget and the command. Someone who runs the command again on the same logs gets the same numbers you wrote down. A number with no command beside it does not count.</p>
+<h3 id="step-7-decide-using-the-budget">Step 7: Decide using the budget</h3>
+<p><strong>What you do.</strong> Read the <code>status</code> line from <code>budget.py</code>. If it says <code>HEALTHY</code>, the squad keeps shipping features. If it says <code>FREEZE</code>, the rule is to stop new features and fix reliability. Write one line in <code>docs/slo.md</code> that states the decision and the number behind it, for example: <code>Decision: ship features, 22 of 25 failures left.</code></p>
+<p><strong>How you know it worked.</strong> Run <code>grep -n "Decision" docs/slo.md</code>. The line prints with its line number, and the decision matches the status line from the script. If they disagree, the file is wrong, not the script.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"CityPulse SLO: availability, error budget, p95" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>19 of 20 OK -&gt; 95.0%</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>All OK -&gt; 100.0%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>One 5xx of two -&gt; 50.0%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Nearest-rank p95 of 4 samples</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>p95 of 20 samples</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 75 of the 100 points. The other 25 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K12.html#y2-t46-add-uptime-alert-5-min-saved-log-queries-and-one-measurable-slo">Y2-T46 · Add uptime alert (&lt;5 min), saved log queries and one measurable SLO</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions. There is one question for each topic in this section, asked in the same order. Each question gives you a short scenario about a team running CityPulse, and then asks what the team should conclude or do next. The pass mark is 70%, which means seven correct answers out of ten. Your skill score is kept from your first attempt.</p>
+<p>Each question is built around a decision, not a definition. Use the same routine on every question:</p>
+<ol>
+<li>Read the last line first. It tells you what is asked: a cause, a number, a next step or the best description.</li>
+<li>Reread the scenario and underline the facts that matter, such as the status codes, the window length, the target, the latency limit and the counts.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. A correct definition can still be the wrong answer.</li>
+<li>Watch the qualifier words. "Most" asks for the likeliest cause, "first" asks for the earliest step and "best" asks you to choose between two reasonable answers.</li>
+<li>Check the numbers. If a question gives counts or percentages, work the arithmetic on paper before you choose.</li>
+</ol>
+<h3 id="structured-logging">Structured logging</h3>
+<p><strong>What it is.</strong> A log is a record that a program writes about what it did, usually one line for each event. A structured log line is a JSON object: a set of named fields inside curly braces, such as <code>{"path": "/v1/predict", "status": 200, "latency_ms": 48.1}</code>. Each name is a key, and a log tool treats each key as a column, in the same way that a spreadsheet treats the heading of a column.</p>
+<p>The same event can be written as plain text or as structured data. Both of the lines below describe one failed request.</p>
+<div class="hl"><pre><span></span><code>Plain text: request to /v1/predict failed with status 503 after 812 ms
+Structured: {&quot;path&quot;: &quot;/v1/predict&quot;, &quot;status&quot;: 503, &quot;latency_ms&quot;: 812}
+</code></pre></div>
+
+<p>A tool can filter the structured line with a test such as <code>status &gt;= 500</code>, because <code>status</code> is a field that holds a number. The plain text line has no such field. Cloud Logging stores each JSON line under <code>jsonPayload</code> and each plain text line under <code>textPayload</code>, so a filter on a named field only finds the JSON lines.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse squad keeps a saved query that counts server errors: <code>jsonPayload.status&gt;=500</code> over the last 24 hours. On Tuesday the query shows 14 errors. The BBMP dashboard team reports 31 failed requests for the same day, and someone suggests that the query is broken. The squad searches the logs and finds 17 lines that begin with the word <code>ERROR</code> and are not JSON. A <code>print()</code> statement in an error handler wrote them. The right decision is to change the handler so that it writes a JSON line with a status field, and to keep the query as it is.</p>
+<div class="box box-trap"><div class="box-h">Trap: Blaming the query</div><p>A filter cannot find lines that are not in the field it reads. The tempting wrong answer is to rewrite the query with a different operator, which changes nothing. Fix the lines the program writes, and keep the query.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The squad&#x27;s saved filter jsonPayload.status&gt;=500 shows 14 server errors for Tuesday, but the load balancer reports 31 failed requests. A review finds 17 error lines that begin with ERROR and are not JSON. What most likely explains the gap?&quot;, &quot;opts&quot;: [&quot;The load balancer counts requests that clients cancelled, which the service never logs.&quot;, &quot;The 17 plain text lines are stored in textPayload, so the jsonPayload filter never matches them.&quot;, &quot;Cloud Logging keeps only the first 14 errors of each day.&quot;, &quot;The status field is stored as text, so the greater-than-or-equal comparison cannot match it.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Plain text lines land in textPayload, not jsonPayload, so a filter on a JSON field cannot see them. The cancelled-request idea is tempting, but it does not explain 17 error lines that the service did write. Retention is about age, not format, and the JSON status fields are numbers.&quot;}, {&quot;q&quot;: &quot;A developer wants a chart of successful uploads each day. Some log lines are written as JSON with a status field, and others are written as a sentence such as upload ok with status 201. Which change makes the chart reliable?&quot;, &quot;opts&quot;: [&quot;Write every request line as JSON with the same keys, so the chart can filter on the status field.&quot;, &quot;Add the word ok to the sentence lines, so a text search can find them.&quot;, &quot;Make the sentence lines longer, so that each line is unique in the log.&quot;, &quot;Chart the textPayload field, because it holds more detail than jsonPayload.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Consistent JSON keys turn status into a column that the chart can filter on every time. Adding words to sentence lines still gives the tool nothing reliable to parse. The textPayload option is the trap, because the sentence is there, but without a named status field it cannot be counted precisely.&quot;}, {&quot;q&quot;: &quot;A log entry reads Request handled in 48 ms and nothing else. An engineer wants to find all slow requests over 500 ms next week with one filter. What should the log line contain?&quot;, &quot;opts&quot;: [&quot;A longer description of what the handler did with the request.&quot;, &quot;A field named latency_ms with a number, written as part of a JSON object.&quot;, &quot;The word slow, whenever a request takes more than half a second.&quot;, &quot;A copy of the request body, so that the duration can be checked later.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A filter needs a named numeric field to compare, so latency_ms as a number inside JSON is what makes the threshold testable. A sentence containing the word slow is still text, and a request body adds data without a duration. The tempting answer is the longer description, which reads well for people but gives the tool nothing to compare.&quot;}]}"></div>
+
+<h3 id="correlation-id">Correlation id</h3>
+<p><strong>What it is.</strong> A correlation id is a value that the program attaches to every log line written while it handles one request. In CityPulse this is the <code>request_id</code> field. Each part of the system writes its own lines, and the shared <code>request_id</code> collects them. The id is created once and passed along with the request.</p>
+<p>Here is what three lines with the same id might look like after a filter on that id:</p>
+<div class="hl"><pre><span></span><code>{&quot;request_id&quot;: &quot;7f3a&quot;, &quot;service&quot;: &quot;api&quot;, &quot;path&quot;: &quot;/v1/upload&quot;, &quot;status&quot;: 202}
+{&quot;request_id&quot;: &quot;7f3a&quot;, &quot;service&quot;: &quot;queue&quot;, &quot;event&quot;: &quot;job enqueued&quot;, &quot;latency_ms&quot;: 12}
+{&quot;request_id&quot;: &quot;7f3a&quot;, &quot;service&quot;: &quot;worker&quot;, &quot;event&quot;: &quot;job done&quot;, &quot;latency_ms&quot;: 940}
+</code></pre></div>
+
+<p>A correlation id is not a count, a rate or a percentile. It is a label that connects lines, which is why it is the first thing to search when one user reports one failure.</p>
+<p><strong>How it shows up in a case study.</strong> A user reports that a prediction took nine seconds, and the request id is <code>c81e</code>. The squad filters the logs on that id and finds three lines, one each from the API, the feature service and the model service. The model service line shows 8,700 ms, while the other two show about 30 ms each. The decision is to investigate the model service for that request, and to check whether other requests with a long model step share the same cause.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading one id as a user</div><p>A <code>request_id</code> groups the lines of one request, not all requests from one user. The tempting wrong answer is to assume that the id shows a user's whole history, which it does not.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A checkout passes through three services, and each writes a log line with the same request_id. A user reports a nine-second wait. Which question can the team answer with that shared field?&quot;, &quot;opts&quot;: [&quot;How many users used the checkout feature this week.&quot;, &quot;What the 99th percentile latency was across all checkouts.&quot;, &quot;Which step of that one request spent the nine seconds.&quot;, &quot;Whether the payment provider&#x27;s fraud model has become less accurate.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A shared request_id ties together the lines of one request, so the team can see where the time went. Counts and percentiles need many requests, and model accuracy is not written into a request log. The percentile is the tempting option, but it describes all requests rather than the one the user reported.&quot;}, {&quot;q&quot;: &quot;A junior engineer proposes setting request_id to the customer&#x27;s account number, so that all requests from one customer can be found together. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;A request_id should be unique to each request and copied to every line of that request, so that it groups one request, not one customer.&quot;, &quot;A request_id should be the same for every request a customer makes, so the customer&#x27;s history can be found.&quot;, &quot;A request_id should be the account number, because that keeps the logs private.&quot;, &quot;A request_id should change each time a line is written, so that no two lines look alike.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The id is created once per request and copied to each line that the request produces. Setting it to the account number would merge every request from that customer, which is the trap in the second option. It would also put a personal identifier into logs that many people can read.&quot;}, {&quot;q&quot;: &quot;A support engineer searches for request_id 7f3a. The search returns six lines from three different services, all within 200 ms of each other. The engineer asks why one request appears in several services. Which answer is best?&quot;, &quot;opts&quot;: [&quot;The id was reused by another user, so the lines belong to several people.&quot;, &quot;The services copied the status code into the id by mistake.&quot;, &quot;The request was retried five times, so the logs hold five copies of the same line.&quot;, &quot;The request passed through three services, and each one wrote its lines with the id it received.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The id travels with the request from service to service, so every service that handles the request writes the same value. Reuse by another user would be a design fault, not the normal case. The retry option is tempting, but retries do not explain lines from three different services, and a status code cannot be an id.&quot;}]}"></div>
+
+<h3 id="slo-definition">SLO definition</h3>
+<p><strong>What it is.</strong> A service level objective, or SLO, is a numeric target for a measured ratio, such as the share of good requests. A complete SLO has three parts. It names the measure, gives the number that must be reached, and states the time window over which the number is judged. For example, 99% of <code>/v1/predict</code> requests are not 5xx and finish under 500 ms, over a rolling 7 days. The SLO is a promise that someone can check, so it should also name the query that measures it.</p>
+<p>The SLO is the promise, and the SLI is what the service achieved.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse engineer writes this target in the design document: the prediction endpoint should be reliable most of the time. The dashboard team cannot check that sentence, and the squad cannot decide what to do when it is broken. A reviewer asks the squad to rewrite it with a measure, a number, a window and the query. The rewritten SLO says 99% of prediction requests are not 5xx and finish under 500 ms over seven days, and the query is stored in <code>docs/queries</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: A target of always</div><p>Writing always or 100% sounds strong, but no real service meets it, and it leaves no budget for any change. A good SLO is strict and achievable.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The design document says the prediction endpoint should be reliable most of the time. Which change turns this into a proper SLO?&quot;, &quot;opts&quot;: [&quot;State a measure, a number and a window, such as 99% of /v1/predict requests not 5xx over 7 days, and name the query that measures it.&quot;, &quot;Replace most of the time with always, so that the promise is stronger.&quot;, &quot;Add a sentence saying that the team will try hard to meet it.&quot;, &quot;Move the target to the CPU dashboard, so that the team sees it every day.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A proper SLO has a measured ratio, a number, a window and the query that measures it, so anyone can reproduce the result. Always is a 100% target, which cannot be met, and it is the tempting wrong answer. Trying hard and moving the target to another dashboard do not make the promise checkable.&quot;}, {&quot;q&quot;: &quot;A team sets its SLO for a booking service at 100% of requests not 5xx over 30 days, so that customers are never let down. Which criticism is most accurate?&quot;, &quot;opts&quot;: [&quot;It is too easy to meet, so customers will see many errors.&quot;, &quot;It measures the wrong endpoint, so it should move to the health check.&quot;, &quot;No real service can meet it, and it leaves no budget for deploys, so the first failure breaks the promise and the team has nothing left to spend.&quot;, &quot;It uses a window that is too long, so the team cannot see changes quickly.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A 100% target allows zero failures, so the first failure breaks the promise, and there is no budget left for planned change. The too-easy option is backwards, because 100% is the hardest possible target. A 30-day window is a reasonable length for most services.&quot;}, {&quot;q&quot;: &quot;An SLO says 99.5% of requests over 30 days are good. Which item is still needed before someone can check the number next Friday?&quot;, &quot;opts&quot;: [&quot;A bigger dashboard with more colours, so that the number is easier to read.&quot;, &quot;A longer window, such as one year, so that short spikes do not matter.&quot;, &quot;The exact query that counts good and valid requests over the window, with today&#x27;s measured value written beside the target.&quot;, &quot;A promise that the team will tell customers about every failure.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A target without its query cannot be reproduced, so nobody can check it on Friday. A dashboard, a longer window or a customer message does not make the number checkable. The longer window is the tempting answer, but the length of the window does not make a target measurable.&quot;}]}"></div>
+
+<h3 id="sli-definition">SLI definition</h3>
+<p><strong>What it is.</strong> A service level indicator, or SLI, is a measured ratio. It counts good events and divides them by valid events, and it is usually shown as a percentage. The course defines the SLI for <code>/v1/predict</code> as the share of valid requests that are not 5xx and finish under 500 ms. Valid requests are the prediction requests that are not client errors, and the health check is excluded from the count entirely. The ratio is what makes an SLI useful, because it shows how many events went well, not just how fast the average event was.</p>
+<p>An SLI must name its events, and the definition must be written down with the number.</p>
+<p><strong>How it shows up in a case study.</strong> An uploads team measures its SLI as the average response time over the last hour. The average is 42 ms, and the team says the service is healthy. A squad member points out that the average is not a ratio of good events, so it does not count requests at all. The right decision is to replace the average with a ratio, such as the share of uploads that are not 5xx and finish under the limit, and to write the valid events beside it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Counting the health check</div><p>The health check is fast and always succeeds, so counting it inflates the SLI. Exclude it from the valid events before you compute the ratio.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An engineer defines the SLI for the uploads endpoint as the average response time over the last hour. Which problem matters most?&quot;, &quot;opts&quot;: [&quot;The average is reported in seconds, while the target is in milliseconds.&quot;, &quot;The average cannot be computed from logs at all.&quot;, &quot;The average includes the health check, which is the only problem.&quot;, &quot;The average is not a ratio of good events over valid events, so it does not count requests and can hide a slow tail.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An SLI is a ratio of good events to valid events. The average does not count events, and a small number of very slow requests can leave it looking healthy. The unit and the log source are not the main problem. The health check is a separate issue, and it would not fix an average either.&quot;}, {&quot;q&quot;: &quot;Valid requests exclude client errors and the health check. In one hour there are 1,200 requests to /v1/predict. Of these, 40 return 422 and 6 return 503, and the rest return 200 within 500 ms. Using the course definition, what is the SLI?&quot;, &quot;opts&quot;: [&quot;96.17%&quot;, &quot;99.48%&quot;, &quot;99.50%&quot;, &quot;99.99%&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Removing the 40 client errors leaves 1,160 valid requests. Six of those are 503s, so 1,154 are good, and 1,154 divided by 1,160 is 99.48%. The tempting option 96.17% divides by all 1,200 requests, which keeps the client errors in the denominator. The option 99.50% counts the client errors as good, which breaks the definition the other way.&quot;}, {&quot;q&quot;: &quot;A dashboard shows the /v1/predict SLI at 99.99%, but users complain about slow answers. The query includes the /v1/health endpoint, which takes 2 ms and never fails. What should the team do?&quot;, &quot;opts&quot;: [&quot;Keep the query, since more events make the SLI more accurate.&quot;, &quot;Lower the target to 99.9%, so that the dashboard matches what users say.&quot;, &quot;Exclude /v1/health from the valid events and recalculate the SLI.&quot;, &quot;Replace the SLI with the average latency of both endpoints.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The health check is fast and always succeeds, so it inflates the ratio and hides the slow answers that users see. Excluding it changes the valid events, which is the real fix. Lowering the target hides the problem, and an average does not count events.&quot;}]}"></div>
+
+<h3 id="error-budget">Error budget</h3>
+<p><strong>What it is.</strong> The error budget is the number of failures that an SLO allows. It equals <code>(100 - SLO)</code> percent of the valid requests in the window. For a 99.5% SLO over 5,000 valid requests, the allowed share is 0.5%, which is 25 requests. The budget is a count, not a percentage, even though it is worked out from one. Each failure that happens in the window is subtracted from the budget. What remains tells the team whether it can ship features or must spend its time on reliability.</p>
+<p>The budget is useful only when the team agrees in advance what happens at each level.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse SLO of 99.9% covers 40,000 valid requests in a 30-day window. The budget is therefore 0.1% of 40,000, which is 40 failures. Halfway through the window the squad has 15 failures. The budget left is 25 failures, so about 62% of it remains. The decision is to keep shipping and watch the burn.</p>
+<div class="box box-trap"><div class="box-h">Trap: A budget read as a percentage</div><p>A 99.5% SLO over 5,000 requests allows 0.5% of 5,000, which is 25 failures. It does not allow 0.5 failures. Always convert the percentage into a count.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An SLO of 99.9% covers 40,000 valid requests in a 30-day window, and 15 failures have happened so far. How many failed requests does the budget still allow?&quot;, &quot;opts&quot;: [&quot;25&quot;, &quot;40&quot;, &quot;15&quot;, &quot;400&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The budget is 0.1% of 40,000, which is 40 failures, and 15 have been spent, so 25 remain. The total budget is 40, not what is left. The option 400 uses 1% instead of 0.1%, which is a common scaling error.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s monthly budget is 60 failed requests, and it has already had 75. The squad has agreed a rule in advance for this situation. What should the squad do?&quot;, &quot;opts&quot;: [&quot;Keep shipping, because an overspend is only a number and reliability work can wait until next month.&quot;, &quot;Lower the SLO, so that the budget becomes positive again.&quot;, &quot;Stop new features and put reliability work first, because the budget is overspent.&quot;, &quot;Ask the dashboard team to remove the failures from the logs.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;When the budget is spent, the agreed rule is to stop features and fix reliability. Hiding the overspend by lowering the SLO changes the promise rather than the service, and removing logs destroys the evidence. The keep-shipping option is tempting because the number looks small, but the rule was agreed to prevent exactly that.&quot;}, {&quot;q&quot;: &quot;An engineer reads the budget for a 99.5% SLO as 0.5 failed requests instead of a count. The window has 2,000 valid requests. What is the budget in requests?&quot;, &quot;opts&quot;: [&quot;0.5&quot;, &quot;10&quot;, &quot;2&quot;, &quot;200&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The budget is 0.5% of 2,000, which is 10 requests. The number 0.5 is the percentage, not the count. The number 2 is 0.1% of 2,000, and 200 is 10% of the window, so both are the wrong share.&quot;}]}"></div>
+
+<h3 id="latency-percentiles">Latency percentiles</h3>
+<p><strong>What it is.</strong> A percentile is the value below which a given share of sorted values falls. The 95th percentile, or p95, is the value that 95 out of 100 requests beat. The p99 is the value that 99 out of 100 requests beat, and it shows the slow tail that a small number of users feel. To find the nearest-rank percentile, you sort the values from smallest to largest, compute the rank as <code>ceil(p × n / 100)</code>, and take the value at that position, counting from 1. The <code>ceil</code> function rounds up to the next whole number, so a rank of 8.55 becomes 9.</p>
+<p>Alerts and SLOs use tail percentiles because averages hide the tail.</p>
+<p><strong>How it shows up in a case study.</strong> Nine valid requests in one hour took 40, 45, 48, 52, 55, 60, 61, 70 and 900 ms. The squad asks what the p95 is, because the alert is set on p95. The rank is <code>ceil(0.95 × 9)</code>, which is <code>ceil(8.55)</code>, so the rank is 9 and the answer is 900 ms. The decision is to report 900 ms, and to look at the single slow request.</p>
+<div class="box box-trap"><div class="box-h">Trap: Truncating instead of rounding up</div><p>Using <code>int(0.95 × 9)</code> gives 8 and picks the value 70 ms. Nearest rank needs <code>ceil</code>, which gives 9. The mistake is common when the sample is small.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Nine valid requests in an hour took 40, 45, 48, 52, 55, 60, 61, 70 and 900 ms. Using the nearest-rank method, what is the p95?&quot;, &quot;opts&quot;: [&quot;70&quot;, &quot;61&quot;, &quot;55&quot;, &quot;900&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The rank is ceil(95 \u00d7 9 / 100), which is ceil(8.55), so the rank is 9 and the answer is the largest value, 900. Truncating 8.55 to 8 gives the eighth value, 70, which is the tempting wrong answer. Nearest rank always rounds the rank up.&quot;}, {&quot;q&quot;: &quot;A service has 20 requests, with latencies of 1, 2 and so on up to 20 ms, one of each. What is the nearest-rank p95?&quot;, &quot;opts&quot;: [&quot;19&quot;, &quot;20&quot;, &quot;18&quot;, &quot;10&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The rank is ceil(0.95 \u00d7 20), which is 19, and the 19th smallest value is 19 ms. The maximum, 20, is the tempting answer for anyone who rounds the percentile up to the largest value. The value 18 is one rank short, which happens when the rank is not rounded up.&quot;}, {&quot;q&quot;: &quot;A dashboard shows an average latency of 48 ms and a p99 of 900 ms for the same hour. A product manager asks which figure should drive the alert. Which answer is best?&quot;, &quot;opts&quot;: [&quot;The average, because it is smaller and fewer alerts will fire.&quot;, &quot;The p99, because it shows the slow tail that users feel, while the average can look healthy even when some requests are very slow.&quot;, &quot;Neither, because percentiles cannot be used in alerts.&quot;, &quot;The maximum only, because the maximum is always the same as the p99.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The p99 shows the slow tail, and an average can hide it. Alerts and SLOs are commonly set on tail percentiles, so the third option is wrong. The maximum equals the p99 only when the sample is tiny, so the fourth option is not a rule. The average is the tempting choice because it is smaller and easy to read.&quot;}]}"></div>
+
+<h3 id="alerting-and-burn-rate">Alerting and burn rate</h3>
+<p><strong>What it is.</strong> Burn rate is how fast the error budget is being spent, compared with the steady pace that would use exactly the whole budget by the end of the window. If the window is 30 days and the budget is 600 failures, the steady pace is 20 failures a day. A burn rate of 1 means the budget runs out exactly at the end of the window. A burn rate of 10 means the budget would run out in a tenth of the time. A burn rate of 0.5 means the budget would last twice as long.</p>
+<p>Burn-rate alerts warn early when the budget is spent too quickly.</p>
+<p><strong>How it shows up in a case study.</strong> An SLO has a 30-day window and 600 allowed failures. In the last six hours the team has had 150 failures. The steady pace is 600 divided by 720 hours, which is about 0.83 failures an hour. The actual pace is 25 failures an hour, so the burn rate is 25 divided by 0.83, which is about 30. The decision is to page the squad now, because at this rate the whole monthly budget would be spent in a single day.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading the rate as a share used</div><p>A burn rate describes a pace, not the total spent so far. Half the budget may be gone while the burn rate is low, and a high burn rate may still leave most of the budget intact.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An SLO has a 30-day window and allows 600 failures. In the last six hours the team has had 150 failures. Roughly what is the burn rate?&quot;, &quot;opts&quot;: [&quot;5&quot;, &quot;15&quot;, &quot;30&quot;, &quot;0.25&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The steady pace is 600 over 720 hours, about 0.83 failures an hour. The actual pace is 25 an hour, and 25 divided by 0.83 is about 30. The option 0.25 is the share of the budget used, which is not the same as a rate against the steady pace. The option 5 is the steady-pace amount for six hours, not a rate.&quot;}, {&quot;q&quot;: &quot;An alert fires when a single five-minute window shows a 1% error rate. Overnight traffic is low, and a handful of failed requests can push the rate over 1%. What is the best change?&quot;, &quot;opts&quot;: [&quot;Alert on every failed request, so that nothing is missed.&quot;, &quot;Alert only when the whole monthly budget is gone.&quot;, &quot;Remove the alert and check the dashboard each morning.&quot;, &quot;Alert on a burn rate measured over a longer window, with a short check to confirm that the problem is still happening.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A longer window smooths out noise from low traffic, and the short check confirms that the burn is current. Alerting on every failure creates noise, and waiting for the monthly budget to run out is too late. Removing the alert leaves the team unaware until the morning.&quot;}, {&quot;q&quot;: &quot;A team&#x27;s 30-day SLO has a burn rate of 0.5. What does that mean?&quot;, &quot;opts&quot;: [&quot;The budget will run out in 15 days.&quot;, &quot;The team has already used half of its budget.&quot;, &quot;At this pace, only half of the budget is used by the end of the 30 days.&quot;, &quot;The budget will run out in 10 days.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A burn rate of 1 uses the budget exactly over the window, so 0.5 uses half of it by the end. The tempting answer reads the rate as a share already spent, but the rate describes a future pace, not the total so far. The 15-day and 10-day options wrongly say the budget runs out inside the window, which would need a burn rate above 1.&quot;}]}"></div>
+
+<h3 id="observability-pillars">Observability pillars</h3>
+<p><strong>What it is.</strong> Observability is the ability to work out what a running system is doing from the records it leaves behind. The three commonly named pillars are logs, metrics and traces. Logs record individual events, one record for each thing that happened. Metrics are numbers summed or averaged over time, such as a count of requests per minute, and they are cheap to store and chart over long periods. Traces follow one request across several services and record the time each step took. </p>
+<p>The course uses logs and metrics, and adds an outside uptime check.</p>
+<p><strong>How it shows up in a case study.</strong> A monthly review asks how the number of failed checkouts has changed over the past six months. The engineer wants a chart. The right tool is a metric, because the question is a trend of a count over time, and a metric is cheap to query over a long period. Logs could answer the question, but they would need to be scanned event by event. A later question asks why one checkout took twelve seconds and which downstream call caused it. That needs a trace, because only a trace follows one request across the services and shows where its time went.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using logs for trends</div><p>Logs are the right tool for one event, and a poor tool for a long trend. The tempting answer is to scan logs for the trend, which is slower and more expensive than a metric.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team wants to show how the number of checkout failures has changed over the last six months in a monthly review. Which pillar is the best tool?&quot;, &quot;opts&quot;: [&quot;Metrics, because they are numbers summed over time and are cheap to chart over long periods.&quot;, &quot;Logs, because every event can be read one by one for six months.&quot;, &quot;Traces, because they follow each checkout across the services.&quot;, &quot;Health checks, because they run every minute and show the trend.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Metrics aggregate numbers over time and are cheap to chart across months. Logs can answer the question but are slower and costlier for a trend. Traces follow single requests, and health checks say whether a service answers now, not how a count has changed.&quot;}, {&quot;q&quot;: &quot;A customer says one checkout took twelve seconds. The checkout calls a pricing service and then a payments service, and the squad needs to know which call was slow for that request. Which pillar answers this?&quot;, &quot;opts&quot;: [&quot;Metrics, because a counter of checkouts shows which call was slow.&quot;, &quot;Health checks, because they report the speed of each downstream call.&quot;, &quot;Traces, because a trace follows one request across the services and records the time each step took.&quot;, &quot;A monthly SLO report, because it lists every checkout with its time.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A trace follows one request through each service and records how long each step took. Metrics show totals and rates across requests, and a health check says only whether a service works. The metrics option is tempting, because it shows that checkouts were slow overall, but it cannot say which call was slow for this one request.&quot;}, {&quot;q&quot;: &quot;An engineer uses logs to draw a chart of CPU usage every five seconds for the past year. Which change is most sensible?&quot;, &quot;opts&quot;: [&quot;Keep using logs, because logs are always the cheapest option.&quot;, &quot;Read the CPU usage from a single log line each year.&quot;, &quot;Replace the chart with a list of every request the server handled.&quot;, &quot;Record CPU usage as a metric and chart the metric.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;CPU usage is a number sampled over time, which is exactly what a metric is for. Logs are expensive to scan over a year, so the first option is wrong. A list of requests does not show CPU use at all, and one log line a year cannot make a trend.&quot;}]}"></div>
+
+<h3 id="health-checks">Health checks</h3>
+<p><strong>What it is.</strong> A health check is an endpoint that an outside checker calls to test whether the service works. In CityPulse this is <code>/v1/health</code>. The checker sends a request on a schedule, and it passes only if the answer is correct. A status code alone is not always enough, because an error page can arrive with status 200. The course check therefore also requires the body to contain the word <code>ok</code>. A health check is useful only when it tests something real. If it always answers ok without touching anything the service depends on, the check passes while users fail.</p>
+<p><strong>How it shows up in a case study.</strong> A health endpoint returns 200 and the body <code>ok</code>, but it never calls the database. One afternoon the database connection breaks, and every prediction request fails. The uptime checker still reports UP, because the endpoint does not depend on the database. The squad decides to make the check exercise the dependency, for example by running a small read with a short timeout.</p>
+<div class="box box-trap"><div class="box-h">Trap: The check that never checks</div><p>An endpoint that always returns ok without testing its dependencies lets the check pass while users fail. The tempting fix is to change the timeout or the frequency, which does not touch the real gap.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A health endpoint returns 200 and the body ok, but it never touches the database. The database connection breaks, and users see errors while the uptime checker keeps reporting UP. What is the flaw?&quot;, &quot;opts&quot;: [&quot;The check runs too often, so it hides the database failure.&quot;, &quot;The endpoint tests nothing the service depends on, so the check passes while users fail.&quot;, &quot;The check has a timeout, so slow database calls are cut off.&quot;, &quot;The body should be JSON, not plain text.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A health check is useful only when it tests what users need. The frequency and timeout are settings, and they are not the cause of a check that never reaches the database. The JSON question is a separate design choice. The timeout is the tempting answer, but a generous timeout would not help an endpoint that never calls the database.&quot;}, {&quot;q&quot;: &quot;The uptime check requires only status 200 and never reads the body. A bad deploy makes the service return a 200 error page whose body says Service unavailable. What is the right fix?&quot;, &quot;opts&quot;: [&quot;Remove the timeout, so the checker waits longer for a reply.&quot;, &quot;Alert after ten failures instead of two.&quot;, &quot;Check the checker&#x27;s own address on each run.&quot;, &quot;Also require the body to contain the expected text, such as ok, and fail the check otherwise.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A status-only check passes on a 200 error page, so matching the body catches the wrong answer. Waiting longer or raising the failure count makes the alert slower and still does not catch a wrong answer. The checker&#x27;s address is irrelevant to what the response says.&quot;}, {&quot;q&quot;: &quot;The squad wants a health check that tells a load balancer when to stop sending traffic to one container. Which design is most suitable?&quot;, &quot;opts&quot;: [&quot;A check that answers quickly with ok only when the container can handle requests, which tests its required dependencies within a short timeout.&quot;, &quot;A check that writes a long report of every log line from the past hour.&quot;, &quot;A check that waits until the monthly error budget is spent before it answers.&quot;, &quot;A check that always returns 200, so that no container is ever removed.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A health check should report, quickly and correctly, whether this instance can serve requests. A long report, a budget check or an always-200 check each fails that purpose. The always-200 check is the trap, because it hides broken containers from the load balancer.&quot;}]}"></div>
+
+<h3 id="counter-versus-gauge">Counter versus gauge</h3>
+<p><strong>What it is.</strong> A counter is a metric that only goes up. The total number of requests is a counter. It resets to zero when the process restarts, so you read it as a rate of change, such as requests per minute, rather than as a level. A gauge is a metric that can go up and down, such as the number of jobs waiting in a queue or the number of open connections. You read a gauge as its current value at each moment.</p>
+<p><strong>How it shows up in a case study.</strong> A worker exposes a metric called <code>jobs_processed_total</code>. After each deploy the metric drops to zero, and a colleague says the metric is broken. The squad recognises the metric as a counter, which resets when the process restarts. The right decision is to read the rate of increase, and to ignore the drop at the deploy. A second metric, <code>jobs_waiting</code>, rises and falls with the queue. The squad should read that as a gauge, showing the current queue length.</p>
+<div class="box box-trap"><div class="box-h">Trap: The reset is not a fault</div><p>A counter that drops to zero after a restart is normal. The tempting error is to call such a metric a gauge, or to report the drop as a failure.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A worker exposes jobs_processed_total, which starts from zero after each deploy. A colleague says the metric is faulty because it drops. What is the right reading?&quot;, &quot;opts&quot;: [&quot;The metric is a gauge, so the drop shows a fault in the counter.&quot;, &quot;The metric should be replaced with a gauge, so that it never drops.&quot;, &quot;The metric is a counter, which resets when the process restarts, so you read its rate of increase rather than its level.&quot;, &quot;The metric is a percentile, so a drop at deploy is expected.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A counter only goes up while one process runs, and it restarts at zero when the process restarts. The meaningful reading is the rate of increase. Calling it a gauge is the tempting error, but a gauge is a value that moves up and down, which is not what a total of processed jobs does.&quot;}, {&quot;q&quot;: &quot;A dashboard shows the number of open database connections, which rises and falls as clients connect and leave. Which metric type fits, and how should it be read?&quot;, &quot;opts&quot;: [&quot;A gauge, read as its current value at each moment.&quot;, &quot;A counter, read as its total since the start of time.&quot;, &quot;A percentile, read as the average of all connections ever opened.&quot;, &quot;A counter, read as its rate of change per minute.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Open connections can fall, which rules out a counter, and the current value is the figure that matters. The tempting answer is a counter read as a rate, which suits a total that only rises, not a level that moves in both directions.&quot;}, {&quot;q&quot;: &quot;An engineer uses a counter for the number of requests waiting in a queue, and the chart shows the number falling. Why does the chart look wrong?&quot;, &quot;opts&quot;: [&quot;Counters are read only as totals, so the queue must be read the same way.&quot;, &quot;The chart is correct, because queues always get shorter over time.&quot;, &quot;The counter needs a timestamp, so that it can rise again after falling.&quot;, &quot;A queue length goes up and down, so it should be a gauge, read as its current value.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A counter represents a total that only rises, so it cannot represent a queue that empties. A gauge is the right type, and its falling value is correct. The option about timestamps is a distractor, because a timestamp does not change what a counter is.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The self-test has one question for each topic, in the same order, and each is harder than the ones above. Read each scenario twice before you choose.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A saved query for slow requests uses jsonPayload.latency_ms &gt; 500, but it returns nothing from a region where the service writes each JSON line inside a text field called message. Which fix is most direct?&quot;, &quot;opts&quot;: [&quot;Raise the threshold to 1000 ms, so that fewer requests match.&quot;, &quot;Make the program write the JSON line directly to standard output, so the platform parses its fields.&quot;, &quot;Add the word slow to every log line, so that the query can find them.&quot;, &quot;Delete the saved query and search the text logs with grep.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The platform parses a JSON line only when the program writes it directly, so the field filter needs that structure. Raising the threshold changes the question, not the data. Adding words or switching to grep leaves the fields unparsed, which is why the direct JSON line is the fix.&quot;}, {&quot;q&quot;: &quot;Three services handle one checkout and each logs request_id 91c. The email service&#x27;s line is 40 seconds later than the others. An engineer says the email was sent late by a bug in another service. Which conclusion is best supported?&quot;, &quot;opts&quot;: [&quot;The email service must have restarted, which resets its request_id.&quot;, &quot;The request_id is wrong, so the lines cannot be trusted at all.&quot;, &quot;The payments service changed the status code, which delayed the email.&quot;, &quot;The three lines belong to one request, so the 40-second gap is part of that request&#x27;s path and should be investigated within it.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Lines that share a request_id belong to the same request, so the gap is a step in that request&#x27;s path rather than a separate event. A restart does not change the id, and the id is not wrong. The status code claim is tempting, but a status code does not cause a delay in another service.&quot;}, {&quot;q&quot;: &quot;A squad&#x27;s SLO is 99.9% over 30 days. Last month the SLI was 99.95%, and the team says it is well inside the SLO and wants to spend the rest on a risky rewrite. What is the best response?&quot;, &quot;opts&quot;: [&quot;The SLI is above target, so budget remains, but the team should check how much is left and agree the rule before it takes the risk.&quot;, &quot;The rewrite is safe, because the SLI is above the SLO.&quot;, &quot;The SLO should be lowered to 99.95%, so that no budget is left to protect.&quot;, &quot;The SLI and SLO cannot be compared, because they use different units.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;At 99.95% against a 99.9% target, half of the budget is used, so the budget still gives room. The budget exists to absorb change, and the agreed rule decides what happens at each level. Calling the rewrite safe ignores the remaining risk, and lowering the SLO removes the protection the budget gives.&quot;}, {&quot;q&quot;: &quot;A squad measures the share of /v1/predict requests under 500 ms and counts a 503 as good if it returns in 80 ms. Which change makes the SLI match the course definition?&quot;, &quot;opts&quot;: [&quot;Add a second query that counts the 503s separately, and ignore it.&quot;, &quot;Count 422 responses as bad, since they are slow to fix.&quot;, &quot;Count any 5xx as bad regardless of its latency, and count a request as good only when it is not 5xx and is under 500 ms.&quot;, &quot;Drop the latency condition, so that only the status matters.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Under the course definition a good request must be both not 5xx and under 500 ms, so a 503 is bad whatever its latency. A second query leaves the SLI wrong. Counting 422 responses breaks the rule that client errors are excluded, and dropping the latency condition ignores slow successes.&quot;}, {&quot;q&quot;: &quot;A 99.5% SLO covers 80,000 valid requests in a 28-day window, and the squad has had 240 failures so far. Roughly what share of the budget is left?&quot;, &quot;opts&quot;: [&quot;60%&quot;, &quot;40%&quot;, &quot;240%&quot;, &quot;25%&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The budget is 0.5% of 80,000, which is 400 failures. With 240 spent, 160 remain, and 160 out of 400 is 40%. The 60% figure is the share already used, which is the tempting answer when the question asks for what is left.&quot;}, {&quot;q&quot;: &quot;Twelve valid requests have sorted latencies of 20, 22, 25, 27, 30, 31, 33, 35, 41, 48, 60 and 350 ms. Using nearest rank, what is the p90?&quot;, &quot;opts&quot;: [&quot;48&quot;, &quot;350&quot;, &quot;41&quot;, &quot;60&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The rank is ceil(0.9 \u00d7 12), which is ceil(10.8), so the rank is 11, and the eleventh value is 60. The 48 ms value is the tenth, which truncating 10.8 would pick. The 350 ms value is the maximum, not the 90th percentile.&quot;}, {&quot;q&quot;: &quot;An SLO has a 14-day window and allows 280 failures, so the steady pace is 20 failures a day. Over the last two days the team has had 80 failures. What is the burn rate for those two days?&quot;, &quot;opts&quot;: [&quot;2&quot;, &quot;4&quot;, &quot;0.5&quot;, &quot;40&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The steady pace for two days is 40 failures, and 80 actual failures is twice that, so the burn rate is 2. The value 4 comes from dividing by one day&#x27;s pace of 20, which uses the wrong number of days.&quot;}, {&quot;q&quot;: &quot;A team needs an alert for the share of failed requests across the whole fleet, and also needs to see how one slow request moved through a cache, a database and a queue. Which pairing of tools fits both needs?&quot;, &quot;opts&quot;: [&quot;Metrics for the fleet alert, and a health check for the slow request.&quot;, &quot;Logs for both needs, since logs can do everything the other pillars do.&quot;, &quot;Metrics for the fleet alert, and a trace for the slow request&#x27;s path through the services.&quot;, &quot;Traces for the fleet alert, and a counter for the slow request.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Metrics are numbers summed over time, which suits a fleet-wide alert, and a trace follows one request through each service. Logs could do both, but they are slower and costlier for the trend, and a health check says only whether a service answers.&quot;}, {&quot;q&quot;: &quot;A health check on /v1/health returns 200 and ok. It calls no database and no model. The team proposes a deeper check that sends a tiny input to the prediction model and requires a valid answer within two seconds. What is the main benefit and the main cost?&quot;, &quot;opts&quot;: [&quot;It removes the need for alerts, at no cost to the service.&quot;, &quot;It catches a broken model that the shallow check misses, but it adds load, and a failure in the model can look like a failure of the API, so it needs its own timeout and alert threshold.&quot;, &quot;It makes the check faster, because the model answers before the API does.&quot;, &quot;It tests only the network, so it does not change what the checker sees.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A deeper check finds faults that a shallow one misses, but it adds load and blurs which part failed. The first option is tempting, but alerts are still needed. The other two options misunderstand what the deeper check tests, which is the model&#x27;s answer.&quot;}, {&quot;q&quot;: &quot;A worker reports emails_sent_total, which resets when the process restarts, and emails_in_outbox, the number waiting to send right now. On a graph the first rises in steps and the second rises and falls. A new engineer reads the counter as its current value and the gauge as a rate. Which reading is correct?&quot;, &quot;opts&quot;: [&quot;Both proposals are correct, because the two metrics are interchangeable.&quot;, &quot;Both metrics should be read as current values, because counters and gauges are read the same way.&quot;, &quot;The counter should be read as its current value, and the gauge as a total since startup.&quot;, &quot;The counter should be read as a rate of increase, and the gauge as its current value.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A counter is read as a rate because only its increase is meaningful, and it resets on restart. A gauge is read as its current value. The tempting option swaps the two, which reads a counter&#x27;s total as a level and a gauge as if it only ever rose.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem with visible and hidden tests. You are given a starter file with three functions, and you must write their bodies so that the tests pass. This section explains the task in plain words, teaches the Python you need with examples unrelated to the lab, lists the rules people miss, and gives you a method. It also works through a twin problem in a different domain. A twin problem uses the same skills with different data, so you can practise without the answer to the real task.</p>
+<p>Read the first two parts before you open the starter file.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>Scenario.</strong> The CityPulse API publishes an SLO dashboard. You are given a list of request records, and from them you compute three numbers: availability, the error budget that is left, and the p95 latency. Each record is a dictionary with two keys. <code>status</code> is an integer HTTP status code, and <code>latency_ms</code> is a number of milliseconds. The statement shows this shape for every record, so assume both keys are present unless a visible test shows otherwise.</p>
+<p><strong>The functions.</strong> The starter file defines these three names, and you write their bodies.</p>
+<ul>
+<li><code>availability(records)</code> returns a float. It is the percentage of records whose <code>status</code> is below 500, rounded to two decimal places with <code>round(..., 2)</code>.</li>
+<li>Every record counts in the total.</li>
+<li>A record counts as available when its status is below 500.</li>
+<li>A 4xx status is below 500, so a 4xx record counts as available.</li>
+<li>Empty input returns <code>0.0</code>.</li>
+<li><code>error_budget_remaining(records, slo)</code> returns a float. <code>slo</code> is the target availability as a percentage, such as <code>99.0</code>.</li>
+<li>The allowed error budget is <code>100 - slo</code>.</li>
+<li>The actual error rate is <code>100 - availability</code>, as the statement defines it. The statement does not say whether <code>availability</code> here is the rounded value that the function returns or the unrounded percentage, and the two can differ in the last decimal. This is unclear in the course: ask your trainer which one the reference uses, and check the visible tests.</li>
+<li>The result is the percentage of the budget that is still remaining, written as <code>round((allowed - error_rate) / allowed * 100, 2)</code>.</li>
+<li>The result may be negative when the budget is overspent.</li>
+<li>If <code>allowed</code> is zero or less, return <code>0.0</code>.</li>
+<li><code>p95_latency(records)</code> returns a float. It is the 95th percentile of <code>latency_ms</code> over all the records, by the nearest-rank method.</li>
+<li>Sort the latency values in ascending order.</li>
+<li>Take the item at index <code>ceil(0.95 * n) - 1</code>, where <code>n</code> is the number of records.</li>
+<li>Round the result to two decimal places.</li>
+<li>Empty input returns <code>0.0</code>.</li>
+</ul>
+<p>The statement gives one example. Two records, one with status 200 and one with status 503, give an availability of 50.0. Their p95 latency is 20.0, because the index is <code>ceil(1.9) - 1</code>, which is 1.</p>
+<p><strong>Limits.</strong> Your code may run for 30 seconds and use up to 128 MB of memory. Neither limit should matter for this task, unless your code does something very wasteful.</p>
+<p><strong>Scoring.</strong> The visible tests are worth 75 points in total. The statement gives them as follows.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19 of 20 OK gives 95.0%</td>
+<td>20</td>
+</tr>
+<tr>
+<td>All OK gives 100.0%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>One 5xx of two gives 50.0%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Nearest-rank p95 of 4 samples</td>
+<td>20</td>
+</tr>
+<tr>
+<td>p95 of 20 samples</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hidden tests.</strong> There are three hidden tests, worth 25 points in total. A hidden test is a check that the platform runs after you submit, and its inputs are not shown to you. The visible tests give you 75 points, so a solution that passes only the visible tests scores at most 75 out of 100. The hidden tests decide the top marks, because they check the rules that the visible tests do not show, such as empty input, boundary values and rounding. Treat every rule in the statement as a test that you must pass, and not only the rules in the visible table.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that has nothing to do with CityPulse. Use these examples to understand the idea, and then write the lab's functions yourself.</p>
+<p><strong>Counting matches with a generator.</strong> <code>sum(1 for x in items if test)</code> adds 1 for each item that passes the test. For example, <code>temps = [18, 25, 30]</code> and <code>sum(1 for t in temps if t &gt; 20)</code> gives 2, because 25 and 30 pass. The <code>sum</code> adds only the 1s, so the result is a count.</p>
+<p><strong>Empty input.</strong> <code>len(items)</code> is 0 for an empty list, and dividing by it raises a <code>ZeroDivisionError</code>. Check for emptiness first with <code>if not items:</code> and return the value the statement asks for. The check <code>if not items</code> is True for an empty list and False otherwise.</p>
+<p><strong>Percentages and rounding.</strong> <code>2 / 3 * 100</code> is about 66.666..., and <code>round(2 / 3 * 100, 2)</code> gives 66.67. Round only when you return the answer, not partway through a calculation. Rounding early can change the second decimal place of the final result.</p>
+<p><strong>Dictionary keys and get.</strong> Given <code>pets = {"cat": 2}</code>, the expression <code>pets["cat"]</code> gives 2, and <code>pets.get("dog", 0)</code> gives 0 because the key is missing. A plain key lookup raises a <code>KeyError</code> when the key is absent, and <code>get</code> returns a default instead. The statement shows both keys in every record, so plain lookups are probably safe for this lab.</p>
+<p><strong>Sorting with and without a key.</strong> <code>sorted(["pear", "fig", "banana"], key=len)</code> gives <code>['fig', 'pear', 'banana']</code>, because the words are ordered by length. <code>sorted</code> returns a new list, and the original is unchanged. For example, if <code>scores = [3, 1, 2]</code>, then <code>ordered = sorted(scores)</code> gives <code>[1, 2, 3]</code>, and <code>scores</code> still reads <code>[3, 1, 2]</code>.</p>
+<p><strong>Integer ceiling.</strong> <code>import math</code> gives you <code>math.ceil</code>. For example, <code>math.ceil(7 / 3)</code> is 3, and <code>math.ceil(0.5)</code> is 1. The same answer without floats is <code>(7 + 3 - 1) // 3</code>, which is also 3. The integer version adds the divisor minus one before the floor division. Floating-point products such as <code>0.95 * n</code> may be a hair above or below a whole number, so a ceiling of them can jump by one. Test this with a list whose length makes the product whole.</p>
+<p><strong>Floating-point tolerance.</strong> Computer decimals are approximate. <code>0.1 + 0.2 == 0.3</code> gives <code>False</code>, but <code>round(0.1 + 0.2, 2) == 0.3</code> gives <code>True</code>. Compare floats with a tolerance when you test them, such as <code>abs(a - b) &lt; 1e-9</code>, which means "closer than a billionth".</p>
+<p><strong>Types: int, bool and float.</strong> <code>isinstance(5, int)</code> is <code>True</code>. <code>isinstance(True, int)</code> is also <code>True</code>, because <code>bool</code> is a subclass of <code>int</code>. So a check for <code>int</code> cannot tell <code>True</code> from <code>1</code>. The check <code>type(True) is int</code> gives <code>False</code>. A function that is meant to return a float should return <code>float(x)</code> rather than <code>x</code>, because <code>round(20, 2)</code> returns the integer 20.</p>
+<p><strong>Slicing.</strong> <code>"parking"[2:5]</code> gives <code>'rki'</code>. The slice starts at index 2 and stops before index 5, so the item at index 5 is not included. Slices never change the original string or list.</p>
+<p><strong>The median.</strong> <code>statistics.median([5, 1, 3])</code> gives 3. For an even count, <code>statistics.median([1, 2, 3, 4])</code> gives 2.5, which is the mean of the two middle values. The lab uses a percentile rather than the median, but the idea of picking a value at a position in sorted data is the same.</p>
+<p><strong>Returning None.</strong> <code>None</code> means that there is no value. <code>result = None</code> followed by <code>result is None</code> gives <code>True</code>. Use <code>is None</code> to test for <code>None</code>, and not <code>== None</code>. The lab does not ask for <code>None</code>, so return the numbers the statement gives, such as <code>0.0</code>.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row is a rule from the statement, or a habit that protects you when the statement says nothing about it. Rows marked <em>(habit)</em> are not in the statement. Check every row with an <code>assert</code> before you submit.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>availability counts records whose status is below 500</td>
+<td>Counts only 200 responses, or drops 4xx records as the caller's fault</td>
+<td>Use one 404 and one 200. Both are below 500, so the answer must be 100.0.</td>
+</tr>
+<tr>
+<td>"below 500" is an exclusive boundary</td>
+<td>Counts 500 as available, or uses <code>&lt;= 500</code></td>
+<td>One 499 and one 500 must give 50.0.</td>
+</tr>
+<tr>
+<td>Empty input returns 0.0 for availability and p95_latency</td>
+<td>Raises ZeroDivisionError, or returns None or an int</td>
+<td>Call both with an empty list. The value must be <code>0.0</code> and <code>isinstance(x, float)</code> must be True.</td>
+</tr>
+<tr>
+<td>Results are rounded to two decimal places</td>
+<td>Rounds extra intermediate values of its own, so the budget drifts in the second decimal place</td>
+<td>Round only where the statement does. Note that the statement defines the error rate from <code>availability</code>, which is itself rounded, so test a case where both ways agree and compare.</td>
+</tr>
+<tr>
+<td>error_budget_remaining on an empty list (follows from the other rules)</td>
+<td>Crashes, or returns 0.0 because availability is 0.0</td>
+<td>Availability of an empty list is 0.0, so the error rate is 100 and the budget is overspent. Work out what your code gives for a 99.0 target and check it matches your hand result.</td>
+</tr>
+<tr>
+<td>The error rate is 100 minus availability</td>
+<td>Works out errors another way, or subtracts in the wrong order</td>
+<td>Compare your error rate with 100 minus your availability for the same records.</td>
+</tr>
+<tr>
+<td>allowed is 100 minus slo, and the result is 0.0 when allowed is zero or less</td>
+<td>Divides by zero when slo is 100</td>
+<td>Call with slo 100 and check that no exception is raised.</td>
+</tr>
+<tr>
+<td>The budget may be negative when it is overspent</td>
+<td>Clamps the result at zero with <code>max(0, ...)</code></td>
+<td>Use records where more than the allowed share fails. The answer must be negative.</td>
+</tr>
+<tr>
+<td>p95 sorts ascending and takes index <code>ceil(0.95 * n) - 1</code></td>
+<td>Sorts descending, takes the median, or uses <code>int()</code> instead of a ceiling</td>
+<td>Work the rank out by hand for four samples, then compare with the visible test.</td>
+</tr>
+<tr>
+<td>0.95 times n is a decimal product</td>
+<td>A product that should be whole comes out a hair off, so the ceiling jumps by one</td>
+<td>Test 20 samples, where 0.95 times 20 should be exactly 19. Use integer arithmetic if you are unsure.</td>
+</tr>
+<tr>
+<td>p95 is taken over every record</td>
+<td>Drops 4xx or 5xx records before sorting</td>
+<td>Add one very slow 404 record to a list. Your p95 must change.</td>
+</tr>
+<tr>
+<td>The return type is float</td>
+<td>Returns the integer from <code>round(20, 2)</code></td>
+<td>Check <code>isinstance(p95_latency(...), float)</code>.</td>
+</tr>
+<tr>
+<td><em>(habit)</em> Equal values are separate entries</td>
+<td>Removes duplicates with <code>set()</code></td>
+<td>Four records with the same latency must still count as four values.</td>
+</tr>
+<tr>
+<td><em>(habit)</em> Inputs are not changed</td>
+<td>Calls <code>.sort()</code> on the caller's list</td>
+<td>Copy the records before the call, then compare the copy with the list afterwards.</td>
+</tr>
+</tbody>
+</table>
+<p>The statement does not mention ties, so the tie rows are habits and not rules. Equal values sort next to each other, and a list keeps each of them. Check ties with an assert anyway, because it costs nothing.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file once. Note each function name, its parameters and the type it must return.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any code. Put the expected value beside each assert, worked out by hand.</li>
+<li>Add your own asserts for every row of the table above, even the rows you think are safe.</li>
+<li>Implement one function at a time. Run the asserts after each function, and stop as soon as one fails.</li>
+<li>For a tiny list, work the arithmetic on paper and compare it with the code. Do not trust a result you have not checked by hand once.</li>
+<li>Check types and rounding last. Make the return type match the statement, and round only at the return.</li>
+<li>Run the visible tests. Read each failure message, and find the rule it names before you change any code.</li>
+<li>Submit once, when the visible tests pass and your own asserts pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The twin problem uses a payments API instead of the CityPulse API. It needs the same skills: filtering, a ratio, a budget and a nearest-rank percentile. It is different in three places. It excludes client errors, it uses a different target, and it asks for the p99.</p>
+<p><strong>Scenario.</strong> A payments API writes one record for each request. Each record is a dictionary with <code>status</code>, an integer HTTP status code, and <code>latency_ms</code>, a number of milliseconds. Both keys are present in every record. A valid request is any request whose status is not 4xx. Write three functions.</p>
+<ul>
+<li><code>success_percent(records)</code> returns a float: the percentage of valid requests whose status is below 500, rounded to two decimal places. If there are no valid requests, return <code>0.0</code>.</li>
+<li><code>budget_spent_fraction(records, target=99.5)</code> returns a float: the number of failed valid requests divided by the number of failures that the target allows. The allowed failures are the number of valid requests times <code>(100 - target) / 100</code>. Round the result to four decimal places. If there are no valid requests, or the target is 100, return <code>0.0</code>.</li>
+<li><code>p99_nearest_rank(records)</code> returns a float: the nearest-rank 99th percentile of <code>latency_ms</code> over the valid requests. Sort the values, take the rank <code>ceil(0.99 * n)</code>, and return the value at that rank counting from 1. If there are no valid requests, return <code>0.0</code>.</li>
+</ul>
+<p>The test block below is the solution, with the helper <code>valid_payments</code> added. Try the problem yourself before you read on.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">valid_payments</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Requests that count against the service: everything except 4xx responses.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span> <span class="k">if</span> <span class="ow">not</span> <span class="mi">400</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">499</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">success_percent</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">valid_payments</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">good</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">valid</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">good</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">budget_spent_fraction</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="mf">99.5</span><span class="p">):</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">valid_payments</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="n">allowed_share</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">target</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span> <span class="ow">or</span> <span class="n">allowed_share</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">bad</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">valid</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">allowed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span> <span class="o">*</span> <span class="n">allowed_share</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">bad</span> <span class="o">/</span> <span class="n">allowed</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">p99_nearest_rank</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">valid_payments</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;latency_ms&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">valid</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ordered</span><span class="p">)</span> <span class="o">*</span> <span class="mi">99</span> <span class="o">+</span> <span class="mi">99</span><span class="p">)</span> <span class="o">//</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">ordered</span><span class="p">[</span><span class="n">rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">EXAMPLE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">502</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">900</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">52</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_payments</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">))</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">)</span> <span class="o">==</span> <span class="mf">88.89</span>
+<span class="k">assert</span> <span class="n">budget_spent_fraction</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">22.2222</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">)</span> <span class="o">==</span> <span class="mf">900.0</span>
+
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">budget_spent_fraction</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="n">only_client</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">(</span><span class="n">only_client</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">only_client</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}]</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">budget_spent_fraction</span><span class="p">(</span><span class="n">clean</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">(</span><span class="n">clean</span><span class="p">)</span> <span class="o">==</span> <span class="mf">100.0</span>
+<span class="k">assert</span> <span class="n">budget_spent_fraction</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+
+<span class="n">edge</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">399</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> <span class="o">==</span> <span class="mf">50.0</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">([{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">399</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}])</span> <span class="o">==</span> <span class="mf">100.0</span>
+<span class="k">assert</span> <span class="n">success_percent</span><span class="p">([{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">499</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}])</span> <span class="o">==</span> <span class="mf">100.0</span>
+
+<span class="n">hundred</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="n">v</span><span class="p">}</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">hundred</span><span class="p">)</span> <span class="o">==</span> <span class="mf">99.0</span>
+<span class="n">hundred_one</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="n">v</span><span class="p">}</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">102</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">hundred_one</span><span class="p">)</span> <span class="o">==</span> <span class="mf">100.0</span>
+
+<span class="n">three</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="n">v</span><span class="p">}</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">==</span> <span class="mf">30.0</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">([{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">}])</span> <span class="o">==</span> <span class="mf">12.0</span>
+
+<span class="n">slow_client</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;latency_ms&quot;</span><span class="p">:</span> <span class="mi">99999</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">slow_client</span><span class="p">)</span> <span class="o">==</span> <span class="mf">10.0</span>
+
+<span class="n">snapshot</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">EXAMPLE</span><span class="p">]</span>
+<span class="n">success_percent</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">)</span>
+<span class="n">p99_nearest_rank</span><span class="p">(</span><span class="n">EXAMPLE</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">EXAMPLE</span> <span class="o">==</span> <span class="n">snapshot</span>
+</code></pre></div>
+
+<p><strong>Line by line.</strong> When every assert passes, the file prints nothing. An <code>AssertionError</code> names the first assert that fails.</p>
+<ul>
+<li><code>valid_payments</code> builds a new list. The condition <code>400 &lt;= r["status"] &lt;= 499</code> is a chained comparison, and <code>not</code> flips it, so the list keeps every status outside the 4xx range. The docstring in triple quotes documents the function and does nothing when the code runs.</li>
+<li><code>success_percent</code> returns <code>0.0</code> when there are no valid requests. <code>good</code> counts the valid requests below 500. <code>good * 100 / len(valid)</code> multiplies before it divides, which avoids an extra rounding step. <code>round</code> is applied only at the return.</li>
+<li><code>budget_spent_fraction</code> has the same empty check, and it also returns <code>0.0</code> when the target is 100, because <code>allowed_share</code> is then zero. <code>allowed</code> is the number of failures the target permits. <code>bad</code> counts the valid requests that are 5xx, and <code>bad / allowed</code> is the fraction of the budget spent.</li>
+<li><code>p99_nearest_rank</code> sorts the valid latencies. The rank <code>(len(ordered) * 99 + 99) // 100</code> is the ceiling of <code>0.99 * n</code>, written with integers, so no float can push it off a whole number. <code>ordered[rank - 1]</code> turns the 1-based rank into a 0-based index. <code>float(...)</code> makes the return type float.</li>
+<li><code>EXAMPLE</code> is the ten-request log, and <code>valid_payments(EXAMPLE)</code> keeps nine. The first group of asserts checks the success percentage of 800 out of 9, the budget spent of 1 failure against 0.045 allowed failures, and the p99 of 900 ms.</li>
+<li>The empty and all-4xx asserts check the <code>0.0</code> results. The clean-log asserts check zero failures, and the target of 100.</li>
+<li>The <code>edge</code> asserts check the boundaries. Status 399 is valid and good, status 499 is a client error and is excluded, and status 500 is a failure.</li>
+<li>The <code>hundred</code> and <code>hundred_one</code> asserts check exact multiples. For 100 values the rank is 99, and for 101 values the rank is 100.</li>
+<li>The <code>three</code> asserts check that unsorted input is sorted before the rank is taken. The single-record assert checks that one value is its own p99.</li>
+<li>The <code>slow_client</code> assert checks that a 4xx latency cannot change the result.</li>
+<li>The last group checks that the function does not change its input.</li>
+</ul>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Nearest rank for three latencies&quot;, &quot;code&quot;: [&quot;latencies = [30, 10, 20]&quot;, &quot;ordered = sorted(latencies)&quot;, &quot;n = len(ordered)&quot;, &quot;rank = (n * 99 + 99) // 100&quot;, &quot;value = ordered[rank - 1]&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;]], &quot;note&quot;: &quot;Three latencies arrive in no particular order.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;], [&quot;ordered&quot;, &quot;[10, 20, 30]&quot;]], &quot;note&quot;: &quot;sorted returns a new ascending list, and the original list is unchanged.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;], [&quot;ordered&quot;, &quot;[10, 20, 30]&quot;], [&quot;n&quot;, &quot;3&quot;]], &quot;note&quot;: &quot;len counts the values.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;], [&quot;ordered&quot;, &quot;[10, 20, 30]&quot;], [&quot;n&quot;, &quot;3&quot;], [&quot;rank&quot;, &quot;3&quot;]], &quot;note&quot;: &quot;3 times 99 is 297, plus 99 is 396, and 396 // 100 is 3.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;], [&quot;ordered&quot;, &quot;[10, 20, 30]&quot;], [&quot;n&quot;, &quot;3&quot;], [&quot;rank&quot;, &quot;3&quot;], [&quot;value&quot;, &quot;30&quot;]], &quot;note&quot;: &quot;ordered[2] is the third value, because indexes start at 0.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;latencies&quot;, &quot;[30, 10, 20]&quot;], [&quot;ordered&quot;, &quot;[10, 20, 30]&quot;], [&quot;n&quot;, &quot;3&quot;], [&quot;rank&quot;, &quot;3&quot;], [&quot;value&quot;, &quot;30&quot;]], &quot;note&quot;: &quot;With three values the 99th percentile is the largest one, so 30 is the answer. The function returns it as a float.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This twin problem is about a ticket queue for a support desk, not payments. Each ticket is a dictionary with <code>state</code>, which is either <code>"closed"</code> or <code>"open"</code>, and <code>minutes</code>, a number of minutes it took to close or the age of an open ticket. Write two functions.</p>
+<ul>
+<li><code>closed_share_percent(tickets)</code> returns a float: the percentage of tickets whose <code>state</code> is <code>"closed"</code>, rounded to one decimal place. Empty input returns <code>0.0</code>.</li>
+<li><code>median_close_time(tickets)</code> returns a float: the median of <code>minutes</code> over the closed tickets only. Sort the minutes, and take the middle value. For an even count, take the mean of the two middle values. If there are no closed tickets, return <code>None</code>.</li>
+</ul>
+<p>Make these asserts pass.</p>
+<div class="hl"><pre><span></span><code><span class="n">tickets</span> <span class="o">=</span> <span class="p">[</span>
+ <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">(</span><span class="n">tickets</span><span class="p">)</span> <span class="o">==</span> <span class="mf">75.0</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">(</span><span class="n">tickets</span><span class="p">)</span> <span class="o">==</span> <span class="mf">20.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">(</span><span class="n">tickets</span> <span class="o">+</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}])</span> <span class="o">==</span> <span class="mf">25.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">([{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="n">two</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">(</span><span class="n">two</span><span class="p">)</span> <span class="o">==</span> <span class="mf">66.7</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">closed_share_percent</span><span class="p">(</span><span class="n">tickets</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tickets</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">closed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickets</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;closed&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">closed</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">tickets</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">median_close_time</span><span class="p">(</span><span class="n">tickets</span><span class="p">):</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;minutes&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickets</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;closed&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">times</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">mid</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">times</span><span class="p">[</span><span class="n">mid</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+
+
+<span class="n">tickets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">(</span><span class="n">tickets</span><span class="p">)</span> <span class="o">==</span> <span class="mf">75.0</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">([])</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">(</span><span class="n">tickets</span><span class="p">)</span> <span class="o">==</span> <span class="mf">20.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">(</span><span class="n">tickets</span> <span class="o">+</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}])</span> <span class="o">==</span> <span class="mf">25.0</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">([{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">median_close_time</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="n">two</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+<span class="k">assert</span> <span class="n">closed_share_percent</span><span class="p">(</span><span class="n">two</span><span class="p">)</span> <span class="o">==</span> <span class="mf">66.7</span>
+</code></pre></div>
+
+<p><strong>Line by line.</strong> <code>closed_share_percent</code> counts the closed tickets with a generator and divides by the total. It multiplies by 100 before the division, and rounds only at the return. <code>median_close_time</code> sorts the closed minutes into a new list. For an odd count, <code>len(times) // 2</code> is the middle index, and <code>float</code> makes the return type float. For an even count, the two middle values are added and divided by 2. For <code>[10, 20, 30, 40]</code> the middle indexes are 1 and 2, so the answer is <code>(20 + 30) / 2</code>, which is 25.0. When every assert passes, the file prints nothing.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Read the statement once more, and check that each function returns the type it names.</li>
+<li>Confirm that an empty list gives <code>0.0</code> from <code>availability</code> and from <code>p95_latency</code>.</li>
+<li>Check that a 4xx record counts as available, and that a 500 record does not.</li>
+<li>Make sure <code>error_budget_remaining</code> returns <code>0.0</code> when the target is 100, and that it can return a negative number.</li>
+<li>Check that the p95 uses a ceiling of <code>0.95 * n</code>, and that a tiny list gives the answer you worked out by hand.</li>
+<li>Confirm that a slow 404 record changes the p95, because the statement puts no status filter on it.</li>
+<li>Round only in the return line of each function, and never inside the calculation.</li>
+<li>Check that your code does not change the records it is given.</li>
+<li>Remove any test prints and leftover debugging lines from the file before you submit.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<details class="box box-answer"><summary>What is the difference between an SLI and an SLO?</summary><p>An SLI is the measured value, such as the share of <code>/v1/predict</code> requests that are not 5xx and finish under 500 ms. An SLO is the target that value is judged against, such as 99% over seven days. The SLI tells you where the service is, and the SLO tells you where it has promised to be. Without a measured SLI, an SLO is only a hope.</p></details>
+
+<details class="box box-answer"><summary>Your error budget is nearly spent with three weeks left. What do you do?</summary><p>I would stop starting new features and move the squad to reliability work. The budget says how many failures the promise still allows, and nearly none is left. I would look at the 5xx query by path to find the source of the failures. I would also tell the dashboard team the current SLI and what the team is doing about it.</p></details>
+
+<details class="box box-answer"><summary>Why alert on p99 latency and not on the average?</summary><p>An average can look healthy while a small share of requests is very slow. The p99 is the value that 99% of requests beat, so it shows the slow tail real users feel. Alerts and SLOs on tail percentiles catch problems that averages hide. The average is still useful for trends, but it should not be the alert.</p></details>
+
+<details class="box box-answer"><summary>Why does the uptime alert wait for two failed checks?</summary><p>A single failed check can come from a network blip that has nothing to do with the service. Requiring two failures in a row filters most of those false alarms. The check still runs every minute, so the alert fires within about two minutes of a real outage, which meets the five-minute requirement. Fewer false alarms mean the squad trusts the alert and acts on it.</p></details>
+
+<details class="box box-answer"><summary>Why are 4xx responses left out of the SLI?</summary><p>A 4xx response means the caller sent a bad request, such as a missing field, and the service answered correctly. Counting it as a failure would penalise the service for behaviour it should have. It would also make the budget depend on what clients send, not on how reliable the service is. Say this out loud, and name the definition you used.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curl -f</code></td>
+<td>Exits with an error on HTTP 4xx or 5xx</td>
+<td><code>curl -f "$URL/v1/health"</code></td>
+</tr>
+<tr>
+<td><code>curl -s</code></td>
+<td>Hides the progress meter</td>
+<td><code>curl -s "$URL/metrics"</code></td>
+</tr>
+<tr>
+<td><code>curl -S</code></td>
+<td>Shows errors even when silent</td>
+<td>used with <code>-s</code> as <code>-fsS</code></td>
+</tr>
+<tr>
+<td><code>curl -m 10</code></td>
+<td>Gives up after 10 seconds</td>
+<td><code>curl -fsS -m 10 "$URL/v1/health"</code></td>
+</tr>
+<tr>
+<td><code>curl -o /dev/null</code></td>
+<td>Discards the response body</td>
+<td>timing checks</td>
+</tr>
+<tr>
+<td><code>curl -w "%{http_code}"</code></td>
+<td>Prints the status code</td>
+<td><code>-w "%{http_code}\n"</code></td>
+</tr>
+<tr>
+<td><code>grep -q</code></td>
+<td>Quiet search, exit code only</td>
+<td><code>grep -q '"ok"'</code></td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Runs the next command only on success</td>
+<td><code>grep -q ... &amp;&amp; echo UP</code></td>
+</tr>
+<tr>
+<td><code>$(...)</code></td>
+<td>Inserts a command's output</td>
+<td><code>$(date -Iseconds)</code></td>
+</tr>
+<tr>
+<td><code>tee -a</code></td>
+<td>Shows and appends to a file</td>
+<td><code>echo x \| tee -a file</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code> and <code>&gt;&gt;</code></td>
+<td>Overwrite and append to a file</td>
+<td><code>&gt; logs/x.json</code></td>
+</tr>
+<tr>
+<td><code>jq -r</code></td>
+<td>Prints raw values without quotes</td>
+<td><code>jq -r '.status' access.log</code></td>
+</tr>
+<tr>
+<td><code>jq select(...)</code></td>
+<td>Keeps matching JSON lines</td>
+<td><code>select(.status&gt;=500)</code></td>
+</tr>
+<tr>
+<td><code>sort \| uniq -c \| sort -rn</code></td>
+<td>Counts and ranks repeated values</td>
+<td>status code mix</td>
+</tr>
+<tr>
+<td><code>wc -l</code></td>
+<td>Counts lines</td>
+<td><code>wc -l &lt; access.log</code></td>
+</tr>
+<tr>
+<td><code>gcloud logging read --freshness=7d</code></td>
+<td>Reads the last seven days of logs</td>
+<td><code>--format=json</code> for JSON output</td>
+</tr>
+<tr>
+<td><code>json.dumps</code></td>
+<td>Turns a dictionary into a JSON string</td>
+<td>one log line</td>
+</tr>
+<tr>
+<td><code>logging.basicConfig</code></td>
+<td>Sets where and how logs are printed</td>
+<td><code>format="%(message)s"</code></td>
+</tr>
+<tr>
+<td>Good request</td>
+<td>Not 5xx, under 500 ms, on <code>/v1/predict</code></td>
+<td>course SLI</td>
+</tr>
+<tr>
+<td>Valid request</td>
+<td>Not 4xx, not <code>/v1/health</code></td>
+<td>denominator of the SLI</td>
+</tr>
+<tr>
+<td>Error budget</td>
+<td>(100 - SLO) percent of valid requests</td>
+<td>0.5% of 5,000 is 25</td>
+</tr>
+<tr>
+<td>Nearest rank</td>
+<td>rank = ceil(p × n / 100), take that value</td>
+<td>p99 of 9 values is the 9th</td>
+</tr>
+<tr>
+<td>Burn rate 1</td>
+<td>Budget ends exactly on schedule</td>
+<td>2 days out of 30 is 15</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>Only goes up; use its rate</td>
+<td><code>requests_total</code></td>
+</tr>
+<tr>
+<td>Gauge</td>
+<td>Goes up and down; read its current value</td>
+<td><code>queue_depth</code></td>
+</tr>
+<tr>
+<td>Health check</td>
+<td>Status 200 and body contains <code>ok</code></td>
+<td>every minute, 10 s timeout</td>
+</tr>
+<tr>
+<td>Alert rule</td>
+<td>Two consecutive failures, then notify</td>
+<td>recovery notice on</td>
+</tr>
+<tr>
+<td>Budget rule</td>
+<td>Budget spent means stop features and fix reliability</td>
+<td><code>FREEZE</code> status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;structured log&quot;, &quot;a&quot;: &quot;One record per event, written as JSON, so each key becomes a searchable field.&quot;}, {&quot;q&quot;: &quot;correlation id&quot;, &quot;a&quot;: &quot;A value stamped on every line of one request, so you can gather that request&#x27;s lines.&quot;}, {&quot;q&quot;: &quot;SLI&quot;, &quot;a&quot;: &quot;A measured ratio of good events over valid events, such as the share of requests that are not 5xx.&quot;}, {&quot;q&quot;: &quot;SLO&quot;, &quot;a&quot;: &quot;A numeric target for an SLI over a stated window, such as 99% over 7 days.&quot;}, {&quot;q&quot;: &quot;error budget&quot;, &quot;a&quot;: &quot;The failures an SLO allows: (100 minus the SLO) percent of valid requests.&quot;}, {&quot;q&quot;: &quot;nearest rank&quot;, &quot;a&quot;: &quot;Sort the values, take rank = ceil(p times n over 100), and return the value at that rank counting from 1.&quot;}, {&quot;q&quot;: &quot;p99&quot;, &quot;a&quot;: &quot;The latency that 99 out of 100 requests beat; it shows the slow tail.&quot;}, {&quot;q&quot;: &quot;burn rate&quot;, &quot;a&quot;: &quot;How fast the budget is spent compared with the pace that uses it exactly by the window&#x27;s end.&quot;}, {&quot;q&quot;: &quot;health check&quot;, &quot;a&quot;: &quot;An endpoint an outside checker calls, which passes only if the status and body are correct.&quot;}, {&quot;q&quot;: &quot;counter&quot;, &quot;a&quot;: &quot;A value that only goes up, read as a rate of change.&quot;}, {&quot;q&quot;: &quot;gauge&quot;, &quot;a&quot;: &quot;A value that goes up and down, read as its current value.&quot;}, {&quot;q&quot;: &quot;valid request&quot;, &quot;a&quot;: &quot;A request that is not a 4xx, and is not the health check.&quot;}]}"></div>
+
+<div class="box box-key"><div class="box-h">Key fact: Spend the budget on purpose</div><p>A budget is only useful when the team agrees in advance what happens at each level. Write that rule into <code>docs/slo.md</code> with the number.</p></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D26.html"><small>Previous</small>Day 26 — CI/CD and cloud deployment</a><a class="nx" href="D28.html"><small>Next</small>Day 28 — Generative AI and LLM APIs</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

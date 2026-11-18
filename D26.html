@@ -1,0 +1,1158 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 26 — CI/CD and cloud deployment · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D26" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 7 · Days 26–29 · Shipping it</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a class="cur" href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 7 · Days 26–29 · Shipping it</p><h1>Day 26 — CI/CD and cloud deployment</h1><p class="sub">You will be able to build a GitHub Actions pipeline that tests the code, builds and pushes a container image tagged with the commit SHA, deploys a version tag, and rolls back a release.</p><p class="meta">84 min read · practice quiz · 6 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D26.mp4?v=1794463935"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you make a computer do the checking and shipping that you would otherwise do by hand. Each time you send a change to GitHub, a fresh machine in the cloud runs your tests. If they pass, the same machine packages CityPulse into a container image, labels the image with the exact code commit it came from, and stores it in a registry. When you mark a release with a tag, a second pipeline deploys that same image to a public web address, checks that it answers correctly, and can send users back to the previous version within minutes.</p>
+<p>The analogy is a factory line. A part moves on to painting only after inspection passes, and every finished part gets a serial number. Tests are the inspection, the image is the part, and the commit SHA is the serial number.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section defines every word the day depends on. Read it once now and come back to it when a later section uses a word you are unsure of.</p>
+<p><strong>Terminal.</strong> A text window where you type instructions for the computer and read its replies. Each instruction is a <strong>command</strong>, such as <code>git status</code>. The computer runs it and prints output below it.</p>
+<p><strong>File and folder.</strong> A file holds text or data, such as a Python program. A folder (also called a <strong>directory</strong>) holds files and other folders. A path such as <code>.github/workflows/ci.yml</code> is the address of a file: start at the top folder, go into <code>.github</code>, then <code>workflows</code>, then open <code>ci.yml</code>. The dot at the start of <code>.github</code> means the folder name begins with a dot, which marks it as a hidden or settings folder.</p>
+<p><strong>Variable.</strong> A name that holds a value. In the line <code>version = "1.4.2"</code>, the name <code>version</code> holds the text <code>"1.4.2"</code>. In a terminal script, a variable is read with a dollar sign, so <code>$SHA</code> means "the value stored in SHA".</p>
+<p><strong>Function.</strong> A named block of Python code that takes inputs, does some work and gives back a result. You define it with <code>def</code> and call it by writing its name with brackets, such as <code>next_version("1.4.2", [])</code>.</p>
+<p><strong>Server.</strong> A program that waits for requests and sends answers. A <strong>web API</strong> is a server that answers requests sent to web addresses. CityPulse exposes an address called <code>/v1/health</code> that reports whether the app is alive.</p>
+<p><strong>Git, commit, SHA.</strong> Git records snapshots of your project called <strong>commits</strong>. Every commit has a long identifier called a <strong>SHA</strong> (a 40-character code made of letters a to f and digits). The <strong>short SHA</strong> is the first seven characters, such as <code>e610ea4</code>. A SHA never changes and always points to the same code.</p>
+<p><strong>Branch and tag.</strong> A <strong>branch</strong> is a named line of commits. <code>main</code> is the main line. A <strong>tag</strong> is a permanent name attached to one commit, such as <code>v1.4.2</code>. Tags do not move when you add new commits.</p>
+<p><strong>Push.</strong> Sending your local commits or tags to the copy on GitHub with <code>git push</code>.</p>
+<p><strong>YAML.</strong> A plain-text format for settings. Indentation (spaces at the start of a line) shows which lines belong together. <code>key: value</code> sets one thing, and a line starting with <code>-</code> is an item in a list.</p>
+<p><strong>Workflow, job, step, runner.</strong> A <strong>workflow</strong> is one YAML file in <code>.github/workflows</code> that describes automation. A <strong>job</strong> is a group of steps. A <strong>step</strong> is one action or one shell command. A <strong>runner</strong> is the fresh virtual machine that GitHub gives a job to run on. Each job gets a new runner, so nothing from one job exists in the next unless you pass it on.</p>
+<p><strong>Exit code.</strong> Every program finishes with a number. Zero means success. Any other number means failure. Automation relies on this: a failed command stops the step, and a failed step fails the job.</p>
+<p><strong>Container, image, registry.</strong> A <strong>container</strong> is a program packaged with the libraries it needs, so it runs the same way on any machine. An <strong>image</strong> is the stored template that a container starts from. A <strong>registry</strong> is a storage service for images, such as GitHub Container Registry (GHCR) or Amazon Elastic Container Registry (ECR).</p>
+<p><strong>Secret and token.</strong> A <strong>secret</strong> is a sensitive value, such as a password. A <strong>token</strong> is a long string that proves who you are to a service. Secrets should never be written into files that are stored in Git.</p>
+<p><strong>Environment variable.</strong> A named value handed to a program when it starts. Apps read settings such as <code>DATABASE_URL</code> this way.</p>
+<p><strong>Semantic version.</strong> A version number written as <code>MAJOR.MINOR.PATCH</code>, such as <code>1.4.2</code>. A major change can break users, a minor change adds features without breaking anything, and a patch fixes bugs.</p>
+<p><strong>Smoke test.</strong> A quick check that a deployed app starts and gives a basic correct answer. It is not a full test suite. It answers one question: is the thing that went live working at all?</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="github-actions">GitHub Actions</h3>
+<p><strong>What it is.</strong> GitHub Actions runs workflows defined in YAML files on GitHub-hosted machines when events happen, such as a <code>push</code> or a <code>pull_request</code>. An event is something that happened in the repository. A push to <code>main</code> is one event; opening a pull request (a request to merge one branch into another, reviewed before merging) is another.</p>
+<p><strong>Why CityPulse uses it.</strong> The course repositories, branch protection and GHCR already live on GitHub, so one tool covers code, tests and images. The alternatives in the slides each have a cost. GitLab CI is equally capable, but it would mean moving the repositories. Jenkins is flexible, but someone must run and maintain its server. Cloud Build and CodeBuild sit close to the cloud platform, but they split the pipeline across two systems and need extra permission wiring.</p>
+<p><strong>How it works.</strong> Jobs run on separate fresh runners. The <code>needs:</code> keyword makes one job wait for another, and the job waits only if the earlier one succeeded. An <code>if:</code> condition decides whether a job runs at all. The diagram below shows one merge to <code>main</code>.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One push to main&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Fresh runner&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push origin main&quot;, &quot;note&quot;: &quot;Your new commits travel to GitHub.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;start test job&quot;, &quot;note&quot;: &quot;GitHub gives the workflow to a fresh Linux machine.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;tests passed&quot;, &quot;note&quot;: &quot;The runner reports exit code zero, so the job succeeded.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;start build-push job&quot;, &quot;note&quot;: &quot;needs: test was satisfied, so the next job starts on another fresh machine.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;image pushed&quot;, &quot;note&quot;: &quot;The new image is stored in the registry under its SHA.&quot;}]}"></div>
+
+<p><strong>The test job.</strong> This is the gate, the first job every later job depends on. The slides' version of the file is shown below, with the indentation restored.</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt &amp;&amp; pytest -q</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>name: ci</code> sets the name shown in the GitHub Actions tab.</li>
+<li><code>on: [push]</code> says this workflow starts on every push. The square brackets make a list with one item.</li>
+<li><code>jobs:</code> starts the list of jobs. Each job name is indented under it.</li>
+<li><code>test:</code> names the job. The name is used by <code>needs:</code> elsewhere.</li>
+<li><code>runs-on: ubuntu-latest</code> asks for a fresh Linux machine using the latest Ubuntu image GitHub provides.</li>
+<li><code>steps:</code> starts the list of steps for this job.</li>
+<li><code>- uses: actions/checkout@v4</code> copies your repository onto the runner. <code>uses:</code> runs a reusable action, and <code>@v4</code> pins the version.</li>
+<li><code>- run: pip install -r requirements.txt &amp;&amp; pytest -q</code> runs two commands in order. <code>pip install -r requirements.txt</code> installs the libraries listed in that file. <code>&amp;&amp;</code> runs the second command only if the first succeeded. <code>pytest -q</code> runs the tests, and <code>-q</code> (quiet) prints less detail. Expected output is a line such as <code>3 passed</code>.</li>
+</ul>
+<p><strong>The build-push job.</strong> This job builds the image and pushes it to the registry. It runs only for pushes to <code>main</code>. The slides' version is restored below.</p>
+<div class="hl"><pre><span></span><code><span class="w">  </span><span class="nt">build-push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event_name == &#39;push&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39;</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="nv">read</span><span class="p p-Indicator">,</span><span class="nt"> packages</span><span class="p">:</span><span class="w"> </span><span class="nv">write</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/setup-buildx-action@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/login-action@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="nv">ghcr.io</span><span class="p p-Indicator">,</span><span class="nt"> username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">github.actor</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">secrets.GITHUB_TOKEN</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/metadata-action@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghcr.io/${{</span><span class="nv"> </span><span class="s">github.repository</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;type=sha,format=long,prefix=\ntype=sha,prefix=&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v6</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="nv">.</span><span class="p p-Indicator">,</span><span class="nt"> push</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">steps.meta.outputs.tags</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> cache-from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;type=gha&quot;</span><span class="p p-Indicator">,</span><span class="nt"> cache-to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;type=gha,mode=max&quot;</span><span class="p p-Indicator">,</span><span class="nt"> build-args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GIT_SHA=${{</span><span class="nv"> </span><span class="s">github.sha</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>build-push:</code> is the job name, indented to sit beside <code>test:</code> under <code>jobs:</code>.</li>
+<li><code>needs: test</code> means this job waits for the <code>test</code> job and is skipped if that job fails.</li>
+<li><code>if: github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/main'</code> is a condition. <code>github.event_name</code> is the event type, and <code>github.ref</code> is the branch or tag. <code>==</code> means "equals" and <code>&amp;&amp;</code> means "and". On a pull request the condition is false, so the job is skipped.</li>
+<li><code>permissions: {contents: read, packages: write}</code> gives this job only the rights it needs. <code>contents: read</code> lets it read code, and <code>packages: write</code> lets it push images.</li>
+<li><code>docker/setup-buildx-action@v3</code> prepares Docker's newer build tool, which supports the cache options used below.</li>
+<li><code>docker/login-action@v3</code> logs in to <code>ghcr.io</code>, the GitHub container registry. <code>username</code> is the person who triggered the run, from <code>github.actor</code>. <code>password</code> is <code>secrets.GITHUB_TOKEN</code>, a short-lived token that GitHub creates for each run. You never type it.</li>
+<li><code>id: meta</code> gives this step a name, so later steps can read its outputs.</li>
+<li><code>docker/metadata-action@v5</code> creates the tag names. The value <code>type=sha,format=long,prefix=</code> makes the full 40-character SHA. The second line <code>type=sha,prefix=</code> makes the short form. Without <code>prefix=</code> the action would add <code>sha-</code> in front of each tag, and the deploy step could not find the image by the plain SHA. The <code>\n</code> between them is a newline, which separates the two rules.</li>
+<li><code>docker/build-push-action@v6</code> builds and pushes. <code>context: .</code> means "use the current folder". <code>push: true</code> sends the image to the registry after building.</li>
+<li><code>tags: "${{ steps.meta.outputs.tags }}"</code> uses the tag names created in the <code>meta</code> step.</li>
+<li><code>cache-from</code> and <code>cache-to</code> with <code>type=gha</code> keep build layers in GitHub's cache, so the next build can reuse them. Warm builds are faster than cold ones.</li>
+<li><code>build-args: "GIT_SHA=${{ github.sha }}"</code> passes the commit SHA into the Dockerfile as a build argument. The app reads it and reports it at <code>/v1/health</code>.</li>
+</ul>
+<p>Expected result: on a push to <code>main</code>, both jobs appear in the Actions tab with green ticks. On a pull request, <code>build-push</code> shows as skipped.</p>
+<div class="box box-trap"><div class="box-h">Trap: Granting write permission to everything</div><p>Put <code>packages: write</code> at the top level and every job can push images, including the test job. Keep <code>contents: read</code> globally and add <code>write</code> only on <code>build-push</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Pasting a token into the YAML</div><p>A personal access token typed into the file is stored in Git history forever. Use <code>secrets.GITHUB_TOKEN</code> for GHCR. If a token has already leaked, revoke it, because deleting the line does not remove it from history.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Mixed-case repository names</div><p>Registry image paths must be lowercase. <code>ghcr.io/MyTeam/CityPulse</code> fails. Use lowercase names.</p></div>
+
+<h3 id="container-registries-and-sha-tags">Container registries and SHA tags</h3>
+<p><strong>What it is.</strong> A container registry stores images so that servers can download them. Common registries are GHCR, Amazon ECR and Google Artifact Registry. Each image has a <strong>tag</strong>, which is a label such as <code>latest</code> or <code>e610ea4</code>. Tags are names, not copies.</p>
+<p><strong>Why SHA tags.</strong> A tag made from the full commit SHA is immutable in practice: it always points to the same code. The tag <code>latest</code> changes every time someone pushes a new image. If a server runs <code>latest</code>, you cannot tell which code it is running, and you cannot reproduce it. The alternative of using only semantic version tags needs manual bumps, so CityPulse uses <code>v*</code> Git tags to trigger deployments and SHA tags to identify images.</p>
+<p><strong>How it works.</strong> The script below builds one image and tags it with the short commit SHA. Run it inside the project folder, where a <code>Dockerfile</code> (a text file describing how to build the image) sits.</p>
+<div class="hl"><pre><span></span><code><span class="nv">SHA</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD<span class="k">)</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citypulse:<span class="nv">$SHA</span><span class="w"> </span>.
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;built citypulse:</span><span class="nv">$SHA</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>SHA=$(git rev-parse --short HEAD)</code> runs a command inside <code>$( )</code> and stores its output in the variable <code>SHA</code>. <code>git rev-parse</code> translates a name into a SHA. <code>--short</code> asks for the seven-character form. <code>HEAD</code> means "the commit you currently have checked out".</li>
+<li><code>docker build -t citypulse:$SHA .</code> builds the image. <code>-t</code> (tag) names it <code>citypulse</code> with the tag from <code>$SHA</code>. The final <code>.</code> is the build context, the folder whose files the build may use.</li>
+<li><code>echo "built citypulse:$SHA"</code> prints a confirmation line.</li>
+</ul>
+<p>Run it in the terminal and you see:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash tag.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;built citypulse:e610ea4&quot;}]}"></div>
+
+<p>The first line is the command you type. The second line is the output the script prints. The tag <code>e610ea4</code> is the commit you built from, so you can match the running image to the code later.</p>
+<p>The CI version goes one step further. The metadata step creates two tags for the same image digest. A <strong>digest</strong> is a fingerprint of the image's content. The full SHA and the short SHA point to the same digest. To check that the registry is consistent, you can pull the image, compare its digest, and read the <code>git_sha</code> value from <code>/v1/health</code>. All three must match the commit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Deploying by latest</div><p>If the deploy step says <code>image: citypulse:latest</code>, the next push silently changes what is deployed and rollback has no fixed target. Always deploy an explicit SHA.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Declaring the build argument in the wrong stage</div><p>A multi-stage Dockerfile has separate stages. An <code>ARG</code> (build argument) declared in the builder stage does not exist in the runtime stage. Declare <code>ARG</code> and <code>ENV</code> again in the runtime stage, or the app will report an empty <code>git_sha</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Pushing from pull requests</div><p>An image built from an unreviewed branch can become deployable. The <code>if:</code> condition on <code>build-push</code> prevents this.</p></div>
+
+<h3 id="deploy-on-tag-smoke-tests-and-rollback">Deploy on tag, smoke tests and rollback</h3>
+<p><strong>What it is.</strong> Continuous deployment here means that pushing a <code>v*</code> tag, such as <code>v0.9.0-rc1</code>, starts a workflow. That workflow tells a <strong>managed container service</strong> to run the image already built for that commit. Managed means the cloud provider runs the servers, patches them and restarts them. The slides use Google Cloud Run as the default service. Cloud Run keeps a list of <strong>revisions</strong>, which are saved versions of your service, and can send traffic to any one of them.</p>
+<p><strong>Why a managed service.</strong> CityPulse needs a public HTTPS address that updates without someone typing commands on one laptop. The alternatives are a manual deploy from a laptop (depends on one person's credentials and is not repeatable), EC2 with SSH (virtual servers you manage yourself, including patches and TLS), and Kubernetes (powerful, but heavy for one small API).</p>
+<p><strong>How it works.</strong> The deploy workflow below runs when a tag is pushed. It does not rebuild the image. It deploys the one CI already tested.</p>
+<div class="hl"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v*&quot;</span><span class="p p-Indicator">]</span>
+<span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="nv">read</span><span class="p p-Indicator">,</span><span class="nt"> id-token</span><span class="p">:</span><span class="w"> </span><span class="nv">write</span><span class="p p-Indicator">}</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-github-actions/auth@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">workload_identity_provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">vars.WIF_PROVIDER</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> service_account</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">vars.DEPLOY_SA</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-github-actions/setup-gcloud@v2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcloud run deploy citypulse-api --image &quot;${{ vars.IMAGE }}:${{ github.sha }}&quot; --region asia-south1 --quiet</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./scripts/smoke.sh &quot;${{ vars.BASE_URL }}&quot; &quot;${{ github.sha }}&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>on: push: tags: ["v*"]</code> starts the workflow only when a pushed tag begins with <code>v</code>. The <code>*</code> is a wildcard that matches any ending, so <code>v0.9.0-rc1</code> matches.</li>
+<li><code>permissions: {contents: read, id-token: write}</code> lets the job read the code and ask GitHub for an identity token. <code>id-token: write</code> is what makes the keyless login below possible.</li>
+<li><code>google-github-actions/auth@v2</code> logs the job in to Google Cloud. <code>workload_identity_provider</code> names a trust relationship that someone set up in advance in Google Cloud. <code>service_account</code> names the identity the job will act as. Both values come from repository <strong>variables</strong> (<code>vars.</code>), which are not secret, so the workflow contains no key file.</li>
+<li>The login works through OIDC (OpenID Connect, a standard way to prove identity without a password). GitHub gives the job a short-lived token that says which repository and tag it came from. Google checks that token against the trust set up in advance and issues short-lived credentials. No long-lived key is stored anywhere.</li>
+<li><code>google-github-actions/setup-gcloud@v2</code> installs the <code>gcloud</code> command-line tool.</li>
+<li><code>gcloud run deploy citypulse-api</code> tells Cloud Run to create a new revision of the service named <code>citypulse-api</code>. <code>--image "${{ vars.IMAGE }}:${{ github.sha }}"</code> names the exact image: the image name followed by the tag equal to the commit SHA the tag points to. <code>--region asia-south1</code> picks the Google Cloud region. <code>--quiet</code> stops the command asking questions, which would hang the runner.</li>
+<li><code>./scripts/smoke.sh "${{ vars.BASE_URL }}" "${{ github.sha }}"</code> runs the smoke test against the live URL. It must exit with zero, or the job fails. The script checks that <code>/v1/health</code> returns the expected <code>git_sha</code> and that one real prediction request succeeds.</li>
+</ul>
+<p>Rollback works by moving traffic, not by rebuilding. The example below is the rollback script from the slides.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;bash rollback.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;rolling back to citypulse:9c2f0b1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;deploy \u2713 ./deploy.sh citypulse:9c2f0b1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;rollout complete \u2014 citypulse:9c2f0b1 live (2/2 healthy)&quot;}]}"></div>
+
+<p>The first line is the command you type. The later lines are what the script prints: it names the previous SHA, redeploys that image, and reports the result. In the lab you do the Cloud Run version of this with <code>gcloud run services update-traffic citypulse-api --to-revisions=&lt;previous&gt;=100</code>, which sends 100% of traffic to the previous revision.</p>
+<div class="box box-trap"><div class="box-h">Trap: Rebuilding in deploy.yml</div><p>If deploy.yml runs <code>docker build</code> again, you deploy code that CI never tested. Deploy the SHA CI already tested.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Putting DATABASE_URL in plain text</div><p>A database address with a password in it must be stored in the platform's secret manager and referenced by the service. A plain environment variable in the YAML file is visible to anyone who can read the repository.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: No limit on instances</div><p>Without a maximum number of instances and a budget alert, a loop in the code can start many servers and spend credits. The slides suggest a maximum of two instances and a budget.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p><strong>Goal.</strong> Build a pipeline where a broken test blocks the deploy. You will use the <code>test_app.py</code> file from the course and a <code>deploy</code> job that waits for <code>test</code>.</p>
+<p><strong>Step 1: the tests.</strong> The file below is the gate. It is the same test file the course gives you, with indentation restored.</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">aqi_band</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_good</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">aqi_band</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Good&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_moderate</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">aqi_band</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Moderate&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unhealthy</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">aqi_band</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Unhealthy&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>from app import aqi_band</code> loads the function <code>aqi_band</code> from the file <code>app.py</code>. <code>from ... import ...</code> picks one name out of a module (a Python file).</li>
+<li><code>def test_good():</code> defines a function. Pytest runs every function whose name starts with <code>test_</code>.</li>
+<li><code>assert aqi_band(8) == "Good"</code> calls <code>aqi_band</code> with the number 8 and checks that the answer is the text <code>"Good"</code>. If the check is false, <code>assert</code> raises an error and the test fails.</li>
+<li>The next two blocks follow the same pattern with other inputs. Thirty should give <code>"Moderate"</code>, and 120 should give <code>"Unhealthy"</code>.</li>
+</ul>
+<p>Run it locally:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...                                                                      [100%]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;3 passed in 0.01s&quot;}]}"></div>
+
+<p><code>pytest</code> finds the tests, runs them, and prints the summary. Three dots mean three passes.</p>
+<p><strong>Step 2: the tag script.</strong> The <code>tag.sh</code> script from the previous section gives the image its commit SHA. CI does the same thing with the metadata action.</p>
+<p><strong>Step 3: the workflow with dependencies.</strong> The workflow in the course has a test job and a deploy job. The deploy job uses <code>needs: test</code>, so GitHub starts it only after the test job passes.</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt &amp;&amp; pytest -q</span>
+<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker build -t citypulse:${GITHUB_SHA::7} .</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker push citypulse:${GITHUB_SHA::7}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./deploy.sh citypulse:${GITHUB_SHA::7}</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li>The <code>test</code> job is the same as before.</li>
+<li><code>deploy:</code> is a second job, at the same indentation as <code>test:</code>.</li>
+<li><code>needs: test</code> is the dependency. It makes <code>deploy</code> wait for <code>test</code>.</li>
+<li><code>${GITHUB_SHA::7}</code> is a bash expression that takes the first seven characters of the commit SHA GitHub stores in <code>GITHUB_SHA</code>. The result is the same short SHA as <code>git rev-parse --short HEAD</code>.</li>
+<li>The three <code>run:</code> lines build, push and deploy the image tagged with that short SHA.</li>
+</ul>
+<p>Check the dependency from the terminal. This command needs the PyYAML library (<code>pip install pyyaml</code>):</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 -c \&quot;import yaml;d=yaml.safe_load(open(&#x27;.github/workflows/ci.yml&#x27;));print(list(d[&#x27;jobs&#x27;]),&#x27;| deploy needs&#x27;,d[&#x27;jobs&#x27;][&#x27;deploy&#x27;][&#x27;needs&#x27;])\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[&#x27;test&#x27;, &#x27;deploy&#x27;] | deploy needs test&quot;}]}"></div>
+
+<p>The <code>python3 -c</code> runs the code in quotes. It loads the YAML file, reads the list of job names and the <code>needs</code> value of <code>deploy</code>, and prints them. The output shows that <code>deploy</code> needs <code>test</code>.</p>
+<p><strong>Step 4: a failing test.</strong> If you change <code>aqi_band(8)</code> so it returns <code>"Poor"</code>, the test job fails, GitHub marks <code>deploy</code> as skipped, and no image is pushed. The result is one red run and no deployed change. That is the point of the gate.</p>
+<p><strong>Explanation.</strong> The tests are the inspection, <code>needs</code> is the rule that the next part waits for the inspection, and the SHA is the serial number that follows the part through every step.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The lab uses Amazon ECR, the AWS container registry, where the slides use GHCR. The job shape stays the same: test first, then build and push a full-SHA tag. Only the registry and the login change. Where a command uses a value from your lab sheet, replace the placeholder in angle brackets such as <code>&lt;region&gt;</code>.</p>
+<h3 id="step-1-create-the-ecr-repository">Step 1: Create the ECR repository</h3>
+<p><strong>What you do.</strong> Create a place in ECR where the CityPulse images will be stored. ECR stands for Elastic Container Registry, and <code>aws</code> is the AWS command-line tool, which must already be set up with the credentials on your lab sheet.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ecr<span class="w"> </span>create-repository<span class="w"> </span>--repository-name<span class="w"> </span>citypulse-api<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
+</code></pre></div>
+
+<p><code>aws ecr create-repository</code> asks AWS to make a new repository. <code>--repository-name citypulse-api</code> names it. <code>--region</code> chooses the AWS region where it lives.</p>
+<p><strong>What you should see.</strong> A block of JSON text that includes a <code>repositoryUri</code> field ending in <code>/citypulse-api</code>.</p>
+<p><strong>How you know it worked.</strong> Run <code>aws ecr describe-repositories --repository-names citypulse-api --region &lt;region&gt;</code>. It prints the same repository. If it says the repository does not exist, the first command failed; read its error message.</p>
+<h3 id="step-2-add-repository-secrets">Step 2: Add repository secrets</h3>
+<p><strong>What you do.</strong> Store the sensitive values the lab names in GitHub's secret store, so the workflow can read them at run time.</p>
+<p><strong>What you type.</strong> The pattern from the course is shown below. Use the names and values from your lab sheet.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>REG_TOKEN<span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$REGISTRY_TOKEN</span><span class="s2">&quot;</span>
+gh<span class="w"> </span>secret<span class="w"> </span>list
+</code></pre></div>
+
+<p><code>gh</code> is the GitHub command-line tool. <code>gh secret set REG_TOKEN</code> stores the value under the name <code>REG_TOKEN</code>. <code>--body</code> gives the value. <code>"$REGISTRY_TOKEN"</code> reads it from an environment variable on your machine, so the value is never typed into the command history. <code>gh secret list</code> shows the names that exist.</p>
+<p><strong>What you should see.</strong> A table with <code>REG_TOKEN</code> in the name column and a note such as "less than a minute ago" in the updated column. The value itself is never shown.</p>
+<p><strong>How you know it worked.</strong> The name appears in the list. Then check that no secret leaked into the repository with this search, which must print nothing:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-rnE<span class="w"> </span><span class="s1">&#39;(ghp_|github_pat_|AKIA|password:|token:)&#39;</span><span class="w"> </span>.github/
+</code></pre></div>
+
+<p><code>grep</code> searches text for a pattern. <code>-r</code> searches all files in the folder, <code>-n</code> prints line numbers, and <code>-E</code> allows the pattern's <code>|</code> (which means "or"). The pattern lists the prefixes that common tokens start with and the words <code>password:</code> and <code>token:</code>. An empty output means nothing matched. If a line appears, remove it and revoke the token.</p>
+<h3 id="step-3-scaffold-the-workflow">Step 3: Scaffold the workflow</h3>
+<p><strong>What you do.</strong> Create the folder and file that GitHub reads for the workflow.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>.github/workflows
+touch<span class="w"> </span>.github/workflows/ci.yml
+</code></pre></div>
+
+<p><code>mkdir -p</code> creates the folder and any missing parent folders, and does not fail if the folder already exists. <code>touch</code> creates an empty file if it does not exist. Then open <code>ci.yml</code> in an editor and paste the start of the file: <code>name: ci</code>, <code>on: [push]</code> and <code>jobs:</code>.</p>
+<p><strong>What you should see.</strong> Running <code>ls .github/workflows</code> prints <code>ci.yml</code>.</p>
+<p><strong>How you know it worked.</strong> The file is in the right place, and <code>git status</code> lists it as a new file. If it is in the wrong folder, GitHub will not run it.</p>
+<h3 id="step-4-the-test-job-the-gate">Step 4: The test job (the gate)</h3>
+<p><strong>What you do.</strong> Add the <code>test</code> job so every push runs the tests first.</p>
+<p><strong>What you type.</strong> Add this under <code>jobs:</code> and keep the indentation:</p>
+<div class="hl"><pre><span></span><code><span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt &amp;&amp; pytest -q</span>
+</code></pre></div>
+
+<p><code>test:</code> is the job name. <code>runs-on</code> picks a fresh Ubuntu machine. The first step copies the repository, and the second installs the requirements and runs the tests, as explained in the GitHub Actions section.</p>
+<p><strong>What you should see.</strong> Locally, <code>pytest -q</code> prints <code>3 passed</code> (or the number of tests your project has, all passing).</p>
+<p><strong>How you know it worked.</strong> Push the branch, then run <code>gh run list</code>. The newest run has a green tick next to <code>test</code>.</p>
+<h3 id="step-5-the-build-and-push-job">Step 5: The build-and-push job</h3>
+<p><strong>What you do.</strong> Add a <code>build-push</code> job that depends on <code>test</code> and runs only on pushes to <code>main</code>.</p>
+<p><strong>What you type.</strong> Add the <code>build-push</code> block from the GitHub Actions section under <code>jobs:</code>, at the same indentation as <code>test:</code>. Then check the dependency:</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import yaml;d=yaml.safe_load(open(&#39;.github/workflows/ci.yml&#39;));print(list(d[&#39;jobs&#39;]),&#39;| build-push needs&#39;,d[&#39;jobs&#39;][&#39;build-push&#39;][&#39;needs&#39;])&quot;</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong></p>
+<div class="hl"><pre><span></span><code>[&#39;test&#39;, &#39;build-push&#39;] | build-push needs test
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> The job names are listed, and <code>build-push</code> needs <code>test</code>. The <code>if:</code> line stays in the file, so pull requests will skip the job. On your next push to a branch, the Actions tab shows <code>build-push</code> as skipped.</p>
+<h3 id="step-6-understand-the-ecr-login">Step 6: Understand the ECR login</h3>
+<p><strong>What you do.</strong> Learn how CI logs in to ECR. You do not type this in the workflow. Your lab workflow runs the same logic as this command, and you run it once yourself to see it work.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span>&lt;account-id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com
+</code></pre></div>
+
+<p><code>aws ecr get-login-password</code> prints a temporary password for the registry. The vertical bar <code>|</code> is a <strong>pipe</strong>: it sends the output of the left command into the input of the right command. <code>docker login</code> reads the password from standard input because of <code>--password-stdin</code>, so the password never appears in your command history. <code>--username AWS</code> is a fixed username ECR expects. The last part is the address of the registry in your account.</p>
+<p><strong>What you should see.</strong></p>
+<div class="hl"><pre><span></span><code>Login Succeeded
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> The message <code>Login Succeeded</code> appears. The password is temporary, so it stops working after a set period, which is why CI logs in fresh on every run.</p>
+<h3 id="step-7-trigger-and-verify">Step 7: Trigger and verify</h3>
+<p><strong>What you do.</strong> Send your commit to <code>main</code>, watch the run, and check that the image in the registry has the commit's SHA as its tag.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+gh<span class="w"> </span>run<span class="w"> </span>watch
+git<span class="w"> </span>rev-parse<span class="w"> </span>origin/main
+aws<span class="w"> </span>ecr<span class="w"> </span>describe-images<span class="w"> </span>--repository-name<span class="w"> </span>citypulse-api<span class="w"> </span>--image-ids<span class="w"> </span><span class="nv">imageTag</span><span class="o">=</span>&lt;full-sha&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
+</code></pre></div>
+
+<p><code>git push origin main</code> sends your commits to the <code>main</code> branch on GitHub. <code>gh run watch</code> follows the latest run live. <code>git rev-parse origin/main</code> prints the full SHA of the commit on GitHub. The last command asks ECR for the image with that tag. Replace <code>&lt;full-sha&gt;</code> with the output of the third command.</p>
+<p><strong>What you should see.</strong> <code>gh run watch</code> shows <code>test</code> and then <code>build-push</code> ending with a green tick. The <code>describe-images</code> command prints JSON with an <code>imageDigest</code> field and the tag you asked for.</p>
+<p><strong>How you know it worked.</strong> The tag in the output equals the SHA printed by <code>git rev-parse</code>. That chain (commit, tag, image) is what makes a rollback safe later. If you also deploy with a tag, run <code>curl -s &lt;your-url&gt;/v1/health | jq .git_sha</code> and compare the result with the SHA. <code>jq</code> is a tool that reads JSON and prints one field; <code>.git_sha</code> selects that field, and <code>-s</code> (silent) hides the progress meter of <code>curl</code>, which is a tool for fetching web addresses.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"CityPulse deploy gate and semver bump" (easy), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>All stages pass -&gt; deploy</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A failing stage blocks deploy</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Patch bump</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Minor bump resets patch</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Major bump resets minor and patch</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Green pipeline deploys bumped version</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Hidden tests (2)</td>
+<td>Not shown to you</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 85 of the 100 points. The other 15 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K12.html#y2-t44-ci-lint-test-build-and-push-sha-tagged-image-on-merge-to-main">Y2-T44 · CI: lint → test → build and push SHA-tagged image on merge to main</a></li>
+<li><a href="K12.html#y2-t45-deploy-v1-api-live-on-https-deploy-on-tag-smoke-test-rollback">Y2-T45 · Deploy v1: API live on HTTPS, deploy on tag, smoke test, rollback</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic below, in the same order. The pass mark is 70%, which means seven correct answers out of ten. Only your first attempt is kept for your skill score, so treat the first attempt as the real one.</p>
+<p>Each question gives a short scenario, usually about a CityPulse team, then one question and four options. Answer in this order.</p>
+<p>First, read the last line of the question before the scenario. It tells you what is being asked, such as "What happens next?" or "Which tag should the command name?" Knowing the question tells you which facts matter.</p>
+<p>Second, underline the facts in the scenario that matter: the event, the job that failed, the value that is missing, the number of users affected. Background about the team is often padding.</p>
+<p>Third, eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about CI/CD. The right option is true and answers this particular case.</p>
+<p>Fourth, watch three words. "Most" asks for the strongest answer among several reasonable ones. "First" asks for the earliest step, not the final one. "Best" asks for the safest or simplest option that still works.</p>
+<h3 id="triggers-and-job-conditions">Triggers and job conditions</h3>
+<p><strong>What it is.</strong> A workflow starts when an event happens to the repository. An event is a named action, such as <code>push</code>, which sends new commits to a branch, or <code>pull_request</code>, which asks for one branch to be merged into another. The workflow lists its events under <code>on:</code>. Each job can also have an <code>if:</code> line, a condition that GitHub checks before the job starts. Two values are common in conditions. <code>github.event_name</code> holds the name of the event, such as <code>push</code>. <code>github.ref</code> holds the full name of the branch or tag, such as <code>refs/heads/main</code>. When the condition is false, GitHub skips the job.</p>
+<div class="hl"><pre><span></span><code><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;running tests&quot;</span>
+<span class="w">  </span><span class="nt">publish</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event_name == &#39;push&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39;</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;publishing&quot;</span>
+</code></pre></div>
+
+<p><code>on: [push, pull_request]</code> starts the workflow for both events. <code>test</code> has no <code>if:</code>, so it runs every time. <code>publish</code> runs only when both halves of its condition are true. <code>==</code> means "equals" and <code>&amp;&amp;</code> means "and". On a pull request the condition is false, so the Actions tab shows <code>test</code> with a green tick and <code>publish</code> as skipped. A skipped job is not a failure.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse teammate pushes a branch called <code>feature/bus-map</code>. The Actions tab shows <code>test</code> in green and <code>publish</code> in grey. A new team member thinks the workflow has broken. The reasoning is short: the branch is not <code>main</code>, so the condition is false, and the skip is the rule working as designed. The branch is still tested, but nothing is published from it. The team would change the condition only if it decided that feature branches should publish.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming every change publishes</div><p>The tempting answer is that every push, or every pull request, builds and pushes an image. The condition says otherwise: only a push to <code>main</code> passes it. Feature-branch pushes run the tests and stop there, and pull requests never reach the publish job.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate opens a pull request from feature/map-colours into main. The test job passes. The publish job has if: github.event_name == &#x27;push&#x27; &amp;&amp; github.ref == &#x27;refs/heads/main&#x27;. What happens to publish?&quot;, &quot;opts&quot;: [&quot;Both jobs run, and the image is pushed under the branch name.&quot;, &quot;publish is skipped, so no image is pushed.&quot;, &quot;The whole workflow fails, because a job cannot be skipped.&quot;, &quot;publish waits until the branch is merged, then runs.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The condition is false for a pull request, so publish is skipped, which is not a failure. The tempting mistake is reading a skipped job as a broken one.&quot;}, {&quot;q&quot;: &quot;A job should run only on pushes to main, so its line is if: github.ref == &#x27;main&#x27;. It never runs. What is wrong?&quot;, &quot;opts&quot;: [&quot;Pull requests always have a ref, so the job runs on them.&quot;, &quot;Single quotes are not allowed in an if line.&quot;, &quot;Jobs cannot read github.ref, so the line is ignored.&quot;, &quot;github.ref holds the full name refs/heads/main, so the comparison is never true.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The ref is refs/heads/main, not main, so the job is always skipped. The tempting mistake is blaming the quotes, which are valid.&quot;}, {&quot;q&quot;: &quot;A team wants deploy to run only for a version tag such as v0.9.0, not on every commit. The workflow says on: [push]. What is the smallest fix?&quot;, &quot;opts&quot;: [&quot;Trigger on push with tags: [\&quot;v*\&quot;], so the workflow starts only for version tags.&quot;, &quot;Add needs: test to the deploy job, so it waits for a tag.&quot;, &quot;Use a larger runner, so the job runs less often.&quot;, &quot;Remove the test job, so there is nothing to wait for.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;on: decides which events start the workflow. needs only orders jobs, so it cannot filter by tag. The tempting mistake is giving needs that job.&quot;}]}"></div>
+
+<h3 id="grouping-jobs-with-needs">Grouping jobs with needs</h3>
+<p><strong>What it is.</strong> <code>needs:</code> names one or more jobs that must finish successfully before this job starts. It sets the order, and it also depends on the result. A job with <code>needs:</code> is skipped if any job it names did not succeed. Here is a small example with two jobs.</p>
+<div class="hl"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;lint passed&quot;</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;tests passed&quot;</span>
+</code></pre></div>
+
+<p><code>lint</code> has no <code>needs:</code>, so it starts at once. <code>test</code> waits until <code>lint</code> finishes. If <code>lint</code> fails, <code>test</code> is skipped. Expected output in the Actions tab: <code>lint</code> shows a green tick first, then <code>test</code> shows a green tick. <code>needs</code> also accepts a list, written as <code>needs: [lint, test]</code>, which waits for every named job. A job never retries a failed job on its own. Each job starts on a fresh runner, so a file made in one job does not exist in the next unless you pass it on.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse pipeline has <code>lint</code>, <code>unit-tests</code> and <code>build</code>, and <code>build</code> has <code>needs: [lint, unit-tests]</code>. On a push to <code>main</code>, lint passes and <code>unit-tests</code> shows a red cross because one test fails. The Actions tab shows <code>build</code> as skipped. Someone asks why the image was not built, and whether the build should be retried. The reasoning is that <code>build</code> starts only when every job it names succeeded. The fix is in the failing test, not in the <code>needs:</code> line. Once the test passes, the next push runs the build.</p>
+<div class="box box-trap"><div class="box-h">Trap: Thinking needs only sets the order</div><p>The tempting answer is that <code>needs:</code> controls order and ignores results. It does not. A failed job in the list stops every job that depends on it, and nothing is retried, so no broken image is pushed.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A build job has needs: [lint, test]. On a push to main, lint passes but test fails on one test. What happens to build?&quot;, &quot;opts&quot;: [&quot;It runs, because lint passed and only one job failed.&quot;, &quot;It runs, pushes the image, and reports the failure afterwards.&quot;, &quot;It is skipped, because every job in needs must succeed.&quot;, &quot;It runs on a second runner as a retry of test.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;needs waits for all the named jobs, and nothing is retried automatically. The tempting mistake is thinking one passing job is enough.&quot;}, {&quot;q&quot;: &quot;A developer moves the build job below the deploy job in the file and adds needs: build to deploy. Does file order matter?&quot;, &quot;opts&quot;: [&quot;Yes, jobs run from top to bottom, so deploy must come last.&quot;, &quot;No, needs decides when deploy starts, so its position in the file does not matter.&quot;, &quot;Yes, deploy runs first because it is listed first.&quot;, &quot;No, but only the first job in a file can use needs.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;needs, not file order, decides when a job starts. The tempting mistake is reading the workflow file as a script.&quot;}, {&quot;q&quot;: &quot;A package job has needs: test, and test fails. A team lead says package should run anyway, because it only packages and does not ship. Is the lead right?&quot;, &quot;opts&quot;: [&quot;Yes, because packaging is not deployment, so needs does not apply.&quot;, &quot;Yes, because GitHub runs any job with needs after a failure.&quot;, &quot;No, but test is retried first and then package decides.&quot;, &quot;No, package is skipped because the job it needs failed.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;needs applies to every job, whatever the job does. The tempting mistake is judging a job by its name.&quot;}]}"></div>
+
+<h3 id="secrets-and-tokens">Secrets and tokens</h3>
+<p><strong>What it is.</strong> A secret is a sensitive value, such as a password, an API key or a token. A token is a long string that proves who you are to a service. Secrets belong in the platform's secret store, not in files you commit to Git. A workflow reads a stored secret as <code>secrets.NAME</code>, and GitHub gives the value to the run only while it runs. GitHub hides secret values in the logs, so a printed secret appears as <code>***</code>. GitHub also creates <code>secrets.GITHUB_TOKEN</code> for each run. It is short-lived and ends when the run ends. Here is a step that passes a secret to a script through an environment variable.</p>
+<div class="hl"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./publish.sh</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_KEY }}</span>
+</code></pre></div>
+
+<p>The <code>env:</code> block sets the variable <code>API_KEY</code> for this step only. The script reads it as <code>$API_KEY</code>. The value is never written in the YAML file, so the file is safe to commit.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse engineer needs a registry password in a workflow. To make the build pass quickly, they paste the password into <code>ci.yml</code> and commit it. A colleague says the repository is private, so it is fine. The reasoning is that the password is now in Git history, which every collaborator and every clone keeps, even after the line is deleted. The password must be revoked and replaced. The correct place for it is the secret store, read as <code>secrets.REG_TOKEN</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Deleting the line and calling it fixed</div><p>The tempting answer is that removing the token from the file in a new commit solves the problem. The old commit still holds the value, so the token must be revoked, and a new one stored as a secret.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CI job must log in to a container registry, and the repository is private. Where should the password go?&quot;, &quot;opts&quot;: [&quot;In the secret store, read in the workflow as secrets.REG_TOKEN.&quot;, &quot;In ci.yml, since only the team can read the repository.&quot;, &quot;In a committed .env file that the workflow reads.&quot;, &quot;Printed in a run step, so reviewers can check it.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The secret store keeps the value out of the code and the logs. The tempting mistake is trusting a private repository, because Git history still holds committed values.&quot;}, {&quot;q&quot;: &quot;A token was committed. In the next commit the developer deleted the line and called the problem solved, but the token still works. What should the team do?&quot;, &quot;opts&quot;: [&quot;Nothing, because the latest file is clean.&quot;, &quot;Rename the file, so a search cannot find the token.&quot;, &quot;Revoke the token and issue a new one, since old commits still contain it.&quot;, &quot;Mark the token as a secret, which hides it from the history.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Git keeps every earlier commit, so only revoking removes the risk. The tempting mistake is trusting the latest commit.&quot;}, {&quot;q&quot;: &quot;A job must push an image during one run, and the team does not want a personal access token. Which token fits?&quot;, &quot;opts&quot;: [&quot;A personal access token typed into the YAML file.&quot;, &quot;secrets.GITHUB_TOKEN, which GitHub creates for each run and which expires when the run ends.&quot;, &quot;A token copied from a laptop into a .env file.&quot;, &quot;The commit SHA, since it is unique to each change.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;GITHUB_TOKEN is short-lived and needs no typing. The tempting mistake is a personal token, which lives far longer and is more dangerous if it leaks.&quot;}]}"></div>
+
+<h3 id="image-tagging-with-commit-shas">Image tagging with commit SHAs</h3>
+<p><strong>What it is.</strong> A tag is a name attached to an image, such as <code>latest</code>, <code>v0.9.0</code> or <code>e610ea4</code>. Tags are labels, and a label can be moved to a different image. A commit SHA is the identifier of a commit, a 40-character code. The short form is the first seven characters. If an image is tagged with the commit SHA, the tag names the code of that commit, and it does not move. A digest is a fingerprint of the image's contents, and two tags can point to the same digest. The example below tags an image with the short SHA of the commit that is checked out.</p>
+<div class="hl"><pre><span></span><code><span class="nv">SHA</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD<span class="k">)</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citypulse:<span class="nv">$SHA</span><span class="w"> </span>.
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;built citypulse:</span><span class="nv">$SHA</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>git rev-parse --short HEAD</code> prints the short SHA of the current commit, for example <code>e610ea4</code>. The <code>docker build</code> line names the image <code>citypulse:e610ea4</code>. If the team later pushes another image under <code>latest</code>, the old <code>latest</code> name points to the new build. The commit SHA tag does not move.</p>
+<p><strong>How it shows up in a case study.</strong> A city dashboard server runs the image <code>citypulse:latest</code>. A user reports a wrong band for one reading. Two engineers disagree about which code is live. The registry shows that <code>latest</code> has been moved twice since the release. The reasoning is that a moving label cannot tell you the code. The team checks the <code>git_sha</code> value from <code>/v1/health</code> on the running server. That value is a commit SHA, so it names the code exactly. From now on the server runs an explicit SHA tag, so the rollback target is clear.</p>
+<div class="box box-trap"><div class="box-h">Trap: Treating latest as a version number</div><p>The tempting answer is that <code>latest</code> is the newest release. It is only the last image pushed under that name, which may be a broken build. Name an exact SHA when you deploy or roll back.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The team deployed citypulse:latest last Tuesday, and a new image was pushed under latest yesterday. Today a fault is reported and nobody knows which commit is live. What is the main reason?&quot;, &quot;opts&quot;: [&quot;The new image starts more slowly, so the old one was lost.&quot;, &quot;Docker refuses to run an image whose tag has changed.&quot;, &quot;The registry deletes the older image when a new one arrives.&quot;, &quot;latest now points to a different build, so the tag does not name the code.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;latest is a moving label. The tempting mistake is treating latest as the newest version number.&quot;}, {&quot;q&quot;: &quot;The last good release was built from commit 9c2f0b1, and a bad release is live. Which tag should the fastest rollback command name?&quot;, &quot;opts&quot;: [&quot;citypulse:9c2f0b1, the exact image built from the last good commit.&quot;, &quot;citypulse:latest, the newest image in the registry.&quot;, &quot;citypulse:main, since a branch name always points to the last good commit.&quot;, &quot;citypulse with no tag, so that Docker picks the previous image.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A SHA tag names one image, so the rollback targets it exactly. The tempting mistake is latest, which is probably the bad build.&quot;}, {&quot;q&quot;: &quot;The metadata step creates a full 40-character SHA tag and a short tag for one build. A reviewer asks whether these are two different images. What is the correct answer?&quot;, &quot;opts&quot;: [&quot;Yes, the short tag comes from a different compile.&quot;, &quot;Yes, the short tag holds an older copy of the code.&quot;, &quot;No, both tags name the same image digest.&quot;, &quot;No, but the short tag is removed after a day.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Two names can point to one digest, the fingerprint of the contents. The tempting mistake is thinking a shorter name means another image.&quot;}]}"></div>
+
+<h3 id="canary-releases">Canary releases</h3>
+<p><strong>What it is.</strong> A canary release sends a small share of real traffic, such as 5% of requests, to the new version. The old version serves the rest. The team watches the error rate and the response time. If the numbers are healthy, the share rises step by step, for example to 25%, 50% and 100%. If they are not, the new version's share goes back to 0%, and the old version serves everyone again. The steps might look like this, where each line is a decision.</p>
+<div class="hl"><pre><span></span><code>Step 1: 5% of requests to version 2 for 10 minutes. Error rate 0.1%. Continue.
+Step 2: 25% of requests to version 2 for 20 minutes. Error rate 0.1%. Continue.
+Step 3: 100% of requests to version 2. Release complete.
+</code></pre></div>
+
+<p>The team does not move to the next line until the measures on the current line are acceptable. A canary needs a platform or a router that can split traffic by percentage.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse API handles about 800 requests a minute. A new version changes how the air-quality band is rounded. The team sends 5% of traffic to it. After ten minutes the error rate is unchanged, but the response time for the new version is twice as high. The reasoning is that the change works but is slower, so the team holds the share at 5% and investigates. They do not raise the share to 100%, because more users would see the slowdown. If the slowdown continues, they set the share back to 0%.</p>
+<div class="box box-trap"><div class="box-h">Trap: Confusing canary with blue-green</div><p>Blue-green moves all traffic at once. A canary moves a share of traffic in steps, and it can stop at any step. The tempting answer is that both methods switch everyone at the same moment.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A new API version gets 5% of requests for ten minutes. Errors rise during the test. What should the team do?&quot;, &quot;opts&quot;: [&quot;Raise the share to 100%, so the cause shows up sooner.&quot;, &quot;Set the new version&#x27;s share back to 0%, so the old version serves everyone again.&quot;, &quot;Delete the old version, so only the new one remains.&quot;, &quot;Rebuild the first commit and send that image to 5% of users.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A canary stops by moving its share to zero while the old version still runs. The tempting mistake is raising the share to 100%, which exposes every user.&quot;}, {&quot;q&quot;: &quot;A team moves 10% of traffic to version 2, then 50%, then 100%, passing the checks at each step. Which kind of release is this?&quot;, &quot;opts&quot;: [&quot;Blue-green, because a switch from version 1 to version 2 happened.&quot;, &quot;A rollback, because version 2 replaced version 1.&quot;, &quot;Parallel jobs, because the checks ran at the same time.&quot;, &quot;A canary rollout, because traffic moved in gradual steps.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Traffic moved in steps, which is what defines a canary. The tempting mistake is blue-green, which switches all traffic at once.&quot;}, {&quot;q&quot;: &quot;A team wants the smallest group of users to see a bug in a new air-quality calculation at the first stage. Which release method fits?&quot;, &quot;opts&quot;: [&quot;A canary, which sends a small percentage of requests to the new version first.&quot;, &quot;A full switch, which sends all requests to the new version at once.&quot;, &quot;A rebuild, which removes the old version while the new one starts.&quot;, &quot;Continuous delivery, which waits for a person to press a button.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A canary limits the first group to a small share. The tempting mistake is a full switch, which exposes every user at once.&quot;}]}"></div>
+
+<h3 id="blue-green-deployments">Blue-green deployments</h3>
+<p><strong>What it is.</strong> A blue-green deployment keeps two identical environments. Blue is live and serves all users. Green is idle. The new version is deployed to green and tested there. Then the router is switched so that all traffic goes to green. Blue keeps running the previous version, so switching back to blue is the rollback. The table shows the state at three points in a release.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Blue</th>
+<th>Green</th>
+<th>Live traffic goes to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>Version 1, live</td>
+<td>Empty</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>Deployed</td>
+<td>Version 1, live</td>
+<td>Version 2, tested</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>Switched</td>
+<td>Version 1, idle</td>
+<td>Version 2, live</td>
+<td>Green</td>
+</tr>
+</tbody>
+</table>
+<p>The cost is the second environment, which doubles the servers while both run. The benefit is speed: a switch changes a router setting rather than rebuilding or redeploying anything. A switch does not reverse changes made to shared data. If version 2 changed the database, the old version must still be able to read it.</p>
+<p><strong>How it shows up in a case study.</strong> A school's exam-results portal runs blue. On Friday the team deploys version 2 to green and runs the smoke test against green's private address. It passes, so they switch the load balancer. Two minutes later the error rate jumps. They switch the balancer back to blue, which still runs version 1. The reasoning is that the old version was never removed, so the rollback is one setting change. The team then checks whether version 2 changed anything in the database before it tries again.</p>
+<div class="box box-trap"><div class="box-h">Trap: Rebuilding the old image for rollback</div><p>The tempting answer is to rebuild version 1 when something goes wrong. With blue-green the old version is still running, so switching the router back is the rollback. Rebuilding is slower and may produce a different image.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Blue serves all users. The team deploys version 2 to green, switches all traffic to green, and ten minutes later errors rise. What is the fastest way back?&quot;, &quot;opts&quot;: [&quot;Rebuild version 1 from its commit and deploy it to green.&quot;, &quot;Wait until a 5% canary of green looks healthy.&quot;, &quot;Switch the router back to blue, which still runs version 1.&quot;, &quot;Delete green and redeploy blue from a new image.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Blue still runs version 1, so switching back takes seconds. The tempting mistake is rebuilding, which is slower and may give a different image.&quot;}, {&quot;q&quot;: &quot;Version 2 passed the smoke test on green and is now live. Which fact can make switching back less simple than expected?&quot;, &quot;opts&quot;: [&quot;The old version still runs on blue, so nothing needs rebuilding.&quot;, &quot;Version 2 changed the database in a way version 1 cannot read, and the switch does not undo that data change.&quot;, &quot;Green has more CPU, which slows the router down.&quot;, &quot;The smoke test ran before the switch, so it counts for nothing.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A router switch moves traffic and nothing else. The tempting mistake is believing the switch undoes everything.&quot;}, {&quot;q&quot;: &quot;A team has spare capacity and wants an instant way back, with only one environment live at a time. Which method fits?&quot;, &quot;opts&quot;: [&quot;Canary, which keeps two environments with one live at a time.&quot;, &quot;Parallel jobs, which build the two environments at once.&quot;, &quot;Continuous delivery, which stores the artifact for later use.&quot;, &quot;Blue-green, because the idle environment holds the previous version for an instant switch back.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Blue-green keeps the previous version ready to receive traffic. The tempting mistake is canary, which splits traffic by percentage rather than switching it.&quot;}]}"></div>
+
+<h3 id="parallel-jobs-and-runners">Parallel jobs and runners</h3>
+<p><strong>What it is.</strong> A job with no <code>needs:</code> line has no ordering rule. GitHub can start it at the same time as other jobs with no ordering rule, and each job runs on its own fresh runner. The order of the jobs in the file does not decide this. Because every runner starts clean, parallel jobs do not share a file system. A file written in one job is absent from another unless it is passed on as an artifact. An artifact is a file or folder that one job uploads and a later job downloads. The example below has two jobs with no ordering rule, so they can run together.</p>
+<div class="hl"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;lint&quot;</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;test&quot;</span>
+</code></pre></div>
+
+<p>Both jobs can start at once, and the Actions tab may show them running side by side. Neither can see a file that the other creates. To pass a report from <code>lint</code> to a later job, <code>lint</code> uploads it with <code>actions/upload-artifact</code>, and the later job downloads it with <code>actions/download-artifact</code>. A <code>needs:</code> line makes a job wait, but it does not copy files between runners.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse workflow has <code>lint</code>, <code>test</code> and <code>security-scan</code>, and none of them has <code>needs:</code>. The <code>lint</code> job writes <code>report.txt</code>. The <code>security-scan</code> job reads the same file and fails with "No such file". The reasoning is that the two jobs run on different fresh runners, so the file never reached the scan job. The fix is to upload the report as an artifact in <code>lint</code> and download it in <code>security-scan</code>, and to add <code>needs: lint</code> if the scan must wait for it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Sharing files between parallel jobs</div><p>The tempting answer is that all jobs in one run share one disk, or that jobs in the file run one after another. Neither is true. Jobs get separate runners, and only artifacts or outputs carry data between them.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Lint, test and scan jobs have no needs line. The scan job reads a report that lint wrote to its disk, and it fails with a missing file. What is the likely cause?&quot;, &quot;opts&quot;: [&quot;Each job runs on a fresh runner, so the file was not passed on as an artifact.&quot;, &quot;The jobs run one after another, so the file was deleted before scan ran.&quot;, &quot;The scan job is missing a runs-on line.&quot;, &quot;Lint writes the report after scan has finished, because of the file order.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Fresh runners do not share files. The tempting mistake is blaming file order, which creates no dependency.&quot;}, {&quot;q&quot;: &quot;Lint and test should run together, and deploy must wait for both. Deploy is listed first in the file. Which YAML is correct?&quot;, &quot;opts&quot;: [&quot;Add needs: deploy to the lint job and to the test job.&quot;, &quot;Move deploy to the top of the file, so that it starts first.&quot;, &quot;Give deploy needs: [lint, test], and leave lint and test without a needs line.&quot;, &quot;Add a runs-on line to deploy, so that it waits.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;needs on deploy makes it wait for both, and lint and test stay parallel. The tempting mistake is moving deploy, which changes nothing about when it starts.&quot;}, {&quot;q&quot;: &quot;Two jobs in one run each write a file to their own runner. Can the second job see the file the first job made?&quot;, &quot;opts&quot;: [&quot;Yes, the runners share one disk for the whole run.&quot;, &quot;No, unless the first job uploads it as an artifact and the second job downloads it.&quot;, &quot;Yes, if the second job is written later in the file.&quot;, &quot;No, because jobs cannot run on Ubuntu machines.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Artifacts are the mechanism that passes files between jobs. The tempting mistake is assuming a shared disk.&quot;}]}"></div>
+
+<h3 id="delivery-versus-deployment">Delivery versus deployment</h3>
+<p><strong>What it is.</strong> Continuous integration means changes are merged often and checked automatically. Continuous delivery means every change produces a tested artifact, such as a container image, that is ready to ship. A person or a rule then decides when to ship it. Continuous deployment means a change that passes the checks goes into the live service automatically. The difference is the last step. Delivery stops at a stored, deployable artifact. Deployment puts that artifact into service. The table shows the two side by side.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What is produced</th>
+<th>Who or what decides to ship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continuous delivery</td>
+<td>A tested image in the registry</td>
+<td>A person or a rule</td>
+</tr>
+<tr>
+<td>Continuous deployment</td>
+<td>A new version in the live service</td>
+<td>The pipeline itself</td>
+</tr>
+</tbody>
+</table>
+<p>In CityPulse, the build-and-push job runs on every merge to <code>main</code>, so each merge produces a tested image. Pushing a <code>v*</code> tag starts the deploy workflow, so the tag push is the decision to ship. Building an image is delivery. Running that image in the live service is deployment.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse team merges a change to <code>main</code>. The pipeline builds and pushes a tested image, and the product manager says the release is finished. Nothing has changed for users yet. The reasoning is that the merge produced a deployable artifact, which is delivery. The release is finished only when someone pushes a version tag and the deploy workflow puts that exact image into the live service.</p>
+<div class="box box-trap"><div class="box-h">Trap: Calling the build deployment</div><p>The tempting answer is that pushing an image means the software is deployed. The image is only stored. Deployment starts when the image is run in a live service.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team merges to main. CI builds and pushes a tested image to the registry. Nothing is live yet, and the product manager says the release is done. Which term describes the pipeline so far?&quot;, &quot;opts&quot;: [&quot;Continuous deployment, because the image reached the registry automatically.&quot;, &quot;Blue-green, because two versions now exist.&quot;, &quot;Canary, because some users can see the change.&quot;, &quot;Continuous delivery, because each change makes a tested artifact that a decision ships.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Delivery ends at a deployable artifact. The tempting mistake is calling the automatic push deployment.&quot;}, {&quot;q&quot;: &quot;A team wants a release to go live only when a maintainer pushes a tag such as v1.2.0. What does that tag push represent?&quot;, &quot;opts&quot;: [&quot;The decision to deploy, which starts the workflow that puts the tested image into service.&quot;, &quot;Continuous integration, which runs the unit tests on each change.&quot;, &quot;Schema expansion, which adds a column to the database.&quot;, &quot;A canary, which sends five percent of users to the new version.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The tag is the deployment trigger. The tempting mistake is calling the tag a test, because CI is what runs tests.&quot;}, {&quot;q&quot;: &quot;A new engineer says the team deploys on every merge, because the build job pushes an image. What is the best reply?&quot;, &quot;opts&quot;: [&quot;Correct, since pushing an image is deployment by definition.&quot;, &quot;Correct, if the image is tagged latest.&quot;, &quot;Not quite. Each merge gives a deployable image, which is delivery, and a tag starts deployment.&quot;, &quot;Not quite, because the team does not build images at all.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Delivery produces the artifact, and deployment moves it live. The tempting mistake is taking the first step as the last one.&quot;}]}"></div>
+
+<h3 id="expand-and-contract-database-migrations">Expand-and-contract database migrations</h3>
+<p><strong>What it is.</strong> A database migration is a change to the structure of a database, such as adding, renaming or removing a column. During a rolling update, the old version and the new version of the code run together for a while. A change that works for only one version breaks the other. Expand-and-contract keeps both versions working. First, expand: add the new column and let the new code write to both columns. Second, backfill: copy the old values into the new column. Third, switch reads to the new column. Fourth, contract: remove the old column in a later release, once no running version uses it. The first step looks like this.</p>
+<div class="hl"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">readings</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">pm25_ug</span><span class="w"> </span><span class="nb">REAL</span><span class="p">;</span>
+</code></pre></div>
+
+<p>This statement adds a new empty column called <code>pm25_ug</code> to the table <code>readings</code>. The old column is untouched, so the old code keeps working. Rolling back the code does not undo a change to the schema. That is why the old column stays in place until the contract step.</p>
+<p><strong>How it shows up in a case study.</strong> The CityPulse team plans to rename the column <code>pm25</code> to <code>pm2_5_ug</code>. The release rolls out over an hour, and during that hour old and new instances run together. A one-step rename would break the old instances, which still read <code>pm25</code>. The reasoning is that the team must expand first, let both versions work with both columns, and remove <code>pm25</code> only in a later release. If a release has to be rolled back, the old code still finds its column.</p>
+<div class="box box-trap"><div class="box-h">Trap: Believing rollback also reverts the database</div><p>The tempting answer is that rolling back the code also undoes the schema change. It does not. Rollback changes the code only. A renamed or dropped column stays changed, so the old version must be able to work with the new schema.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A release renames the column pm25 to pm2_5 in one step. Old and new instances run together for an hour, and some requests now fail on the old instances. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The new instances use too much memory.&quot;, &quot;The old code still reads pm25, which the rename removed.&quot;, &quot;The rollout started on a Friday.&quot;, &quot;The image was tagged with a commit SHA.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The old code reads the old name, which the rename removed. The tempting mistake is blaming the rollout timing.&quot;}, {&quot;q&quot;: &quot;A team rolls back a failed release by reverting the code. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;Rolling back the code also restores the old column automatically.&quot;, &quot;Rolling back is impossible once a migration has started.&quot;, &quot;Rolling back the code deletes the new column.&quot;, &quot;Rolling back changes only the code, so the schema change stays until the contract step.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Code rollback does not undo schema changes. The tempting mistake is believing that the rollback reverts the database as well.&quot;}, {&quot;q&quot;: &quot;The new code reads the new column and is running in production. When is it safe to remove the old column?&quot;, &quot;opts&quot;: [&quot;In a later release, after no running version reads or writes the old column.&quot;, &quot;In the same deploy, so the database stays tidy.&quot;, &quot;Before any code is deployed, so the old code cannot read it.&quot;, &quot;Never, because deleting a column always loses data.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The contract step waits until no running version uses the old column. The tempting mistake is removing it in the same release, which breaks any instance still on the old code.&quot;}]}"></div>
+
+<h3 id="reproducible-builds">Reproducible builds</h3>
+<p><strong>What it is.</strong> A build is reproducible when the same inputs always give the same result. The inputs are the source code, the exact versions of the libraries, and the base image that the container starts from. If a library version is not pinned, the installer may choose a newer version next time, and the build changes without any change in your repository. Pinning means writing the exact version. In a requirements file, <code>example-lib==1.4.2</code> pins one library. In a Dockerfile, <code>FROM python:3.11-slim</code> names a tag that the image maintainers update over time. A tag with the full version, such as <code>python:3.11.9-slim</code>, changes far less often.</p>
+<div class="hl"><pre><span></span><code>## requirements.txt
+example-lib==1.4.2
+
+## Dockerfile
+FROM python:3.11.9-slim
+</code></pre></div>
+
+<p>The <code>==</code> means the installer must use exactly that version. Two builds of the same commit with these files install the same library and start from the same base.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse build passed on Monday. On Tuesday the same commit is rebuilt by a different engineer, and the container crashes at start-up. The base image tag <code>python:3.11-slim</code> has moved to a newer build, and one library behaves differently on it. The reasoning is that nothing in the repository changed, so an unpinned input changed. The fix is to pin the base image to a full version and pin every library, then rebuild and test.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using latest or an unpinned requirements file</div><p>The tempting answer is that the newest version is the safe choice. It is safe only when you control the test. A build that depends on <code>latest</code> or on an unpinned library can change without any change in your repository.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Two builds of one commit behave differently. The Dockerfile starts from python:latest, and requirements.txt lists flask with no version. Which change helps most?&quot;, &quot;opts&quot;: [&quot;Add the build date to the image name.&quot;, &quot;Keep latest, so the newest fixes always arrive.&quot;, &quot;Pin the base image to a full version and pin exact library versions.&quot;, &quot;Remove the test job, so the builds finish faster.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Fixed inputs give repeatable builds. The tempting mistake is keeping latest for its fixes, since it changes without any change in your repository.&quot;}, {&quot;q&quot;: &quot;flask is pinned at 3.0.3, but the base image is python:3.11-slim. A rebuild of an unchanged commit now fails. What explains it?&quot;, &quot;opts&quot;: [&quot;Flask 3.0.3 was deleted from the internet.&quot;, &quot;The base image tag moved to a newer build, a change the repository never recorded.&quot;, &quot;Git gave the same code a new commit SHA.&quot;, &quot;The tests ran twice, which broke the build.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The pinned library cannot explain the change, so the moving base tag is the likely cause. The tempting mistake is blaming flask.&quot;}, {&quot;q&quot;: &quot;A reviewer asks how to show that two builds used the same inputs, when the image tag holds only the commit SHA. What is the best evidence?&quot;, &quot;opts&quot;: [&quot;Name the image with today&#x27;s date.&quot;, &quot;Store the image in a second registry.&quot;, &quot;Turn off the build cache.&quot;, &quot;Record the exact library versions and the full base image reference in the repository.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Recorded inputs make a rebuild possible and checkable. The tempting mistake is a date stamp, which records when a build ran but not what it used.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>Ten questions, one per topic, harder than the ones above. Each combines two facts.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A job has needs: test and if: github.event_name == &#x27;pull_request&#x27;. On a pull request the test job fails. What happens to the job?&quot;, &quot;opts&quot;: [&quot;It runs anyway, because pull requests ignore needs.&quot;, &quot;It is skipped, because the job it needs failed, even though its if is true.&quot;, &quot;It runs, because its if condition is true.&quot;, &quot;It retries test first, then decides.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A failed needed job skips the dependent job, whatever its if says. The tempting mistake is trusting the if condition alone.&quot;}, {&quot;q&quot;: &quot;A publish job has needs: [test, scan] and if: always(). Test passes and scan fails. What happens to publish?&quot;, &quot;opts&quot;: [&quot;It is skipped, because one needed job failed.&quot;, &quot;It is retried until scan passes.&quot;, &quot;It runs only when scan is run again later.&quot;, &quot;It runs, because always() overrides the default check on needs.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;always() runs the job after a failure, which can publish broken output. The tempting mistake is assuming needs always blocks the job.&quot;}, {&quot;q&quot;: &quot;A step needs a deploy token. A colleague wants it written into the command line, and an earlier committed .env file holds the same token. Which action protects the token best?&quot;, &quot;opts&quot;: [&quot;Read it from secrets.DEPLOY_TOKEN in an env block, and revoke the committed token.&quot;, &quot;Put the token in the README, so teammates can find it.&quot;, &quot;Print the token at job start, to confirm it is set.&quot;, &quot;Keep the .env file, since .gitignore now hides it.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Secrets are read at run time, and a committed value must be revoked. The tempting mistake is trusting .gitignore, which does not remove committed files.&quot;}, {&quot;q&quot;: &quot;Staging runs latest and production runs an older SHA, and the team needs to know whether the code is identical. Which step gives an exact answer?&quot;, &quot;opts&quot;: [&quot;Ask staging to run the image with the newest date.&quot;, &quot;Rebuild production from the same branch.&quot;, &quot;Deploy the same full-SHA tag to both and compare their git_sha values.&quot;, &quot;Delete latest, so that nobody can use it.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A SHA names one commit, and git_sha reports what is running. The tempting mistake is rebuilding from a branch, which may differ.&quot;}, {&quot;q&quot;: &quot;A canary at 10% has a normal error rate, but its 95th-percentile response time is double the old version&#x27;s. What should the team do next?&quot;, &quot;opts&quot;: [&quot;Hold or lower the share, and investigate the latency before raising it.&quot;, &quot;Raise the share to 100%, since errors are normal.&quot;, &quot;Delete the old version, so the new one must cope.&quot;, &quot;Switch to blue-green at once, which avoids the measurement.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A canary is judged on every measure, and slowness fails the release. The tempting mistake is judging by errors alone.&quot;}, {&quot;q&quot;: &quot;Blue runs version 1, and green runs version 2, which is live. Two days later a bug appears, and version 1 was deleted from blue. What is the fastest safe fix?&quot;, &quot;opts&quot;: [&quot;Wait until a canary of version 1 is built.&quot;, &quot;Switch to green and hope the bug fades.&quot;, &quot;Delete the database to reset version 2.&quot;, &quot;Redeploy version 1&#x27;s SHA-tagged image to blue, then switch the router to blue.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The SHA-tagged image still exists, so it can be redeployed quickly. The tempting mistake is hoping, which keeps users on the broken version.&quot;}, {&quot;q&quot;: &quot;Three jobs run in parallel. Job C reads a file from job A and fails. The team adds needs: A to job C. Does job B now wait, and can job C read the file?&quot;, &quot;opts&quot;: [&quot;Job B still runs in parallel, and job C still needs an artifact to read the file.&quot;, &quot;Job B waits too, since one needs line makes every job wait.&quot;, &quot;Job C can read the file now, because needs copies files between runners.&quot;, &quot;Job B is cancelled, and job C reads the file from the first runner.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;needs orders jobs and does not copy files. The tempting mistake is thinking needs moves the file.&quot;}, {&quot;q&quot;: &quot;Every merge builds and pushes a tested image, and production changes only when a release manager runs a deploy and chooses the image. How should the team describe this practice?&quot;, &quot;opts&quot;: [&quot;Continuous deployment, since every merge is built automatically.&quot;, &quot;Continuous deployment, since a person presses a button to deploy.&quot;, &quot;Continuous delivery, since merges produce deployable images and a person decides when they go live.&quot;, &quot;Neither, since building images is not part of delivery.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Delivery ends at the artifact, and a decision ships it. The tempting mistake is calling automatic builds deployment.&quot;}, {&quot;q&quot;: &quot;A team adds a new column, backfills it, switches reads, and removes the old column in the same release. What is the main risk?&quot;, &quot;opts&quot;: [&quot;The new column uses more disk space.&quot;, &quot;Old instances may still run and read the old column, and the removal breaks them.&quot;, &quot;The backfill makes the table slower for ever.&quot;, &quot;Writing to two columns doubles the backup cost.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The old column must stay until no running version needs it. The tempting mistake is worrying about disk space.&quot;}, {&quot;q&quot;: &quot;A Dockerfile uses python:3.11-slim, and requirements.txt pins flask but not numpy. A week apart, two engineers get different results from one commit. Which fix covers both causes?&quot;, &quot;opts&quot;: [&quot;Rename the image to include only the commit SHA.&quot;, &quot;Add more memory to the build machine.&quot;, &quot;Turn on the build cache, so builds are faster.&quot;, &quot;Pin the base image to a full version, and pin numpy as well.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Both the base image and numpy can change between builds. The tempting mistake is the SHA tag, which names the image but does not fix the inputs.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem with visible and hidden tests. You write a small set of functions. The visible tests run as you work, and the hidden tests run when you submit. This section explains the real task in plain words and teaches the Python you need. It then sets a twin problem: a different task with the same kinds of rules. You will not be given a solution to the real lab, and the examples below do not solve it.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> The CityPulse pipeline may release the API only when every stage is green. Each release also gets a semantic version bump. A semantic version has three numbers, <code>MAJOR.MINOR.PATCH</code>, such as <code>1.4.9</code>. A bump raises one of the numbers and resets the ones to its right to zero. Your starter file contains three functions. Keep their names and parameters exactly as the starter file gives them.</p>
+<p><strong><code>should_deploy(stages)</code></strong> takes a list of stages. Each stage is a dictionary with a <code>name</code> (text) and a <code>status</code> (text).</p>
+<ul>
+<li>It returns <code>True</code> only when the list is not empty and every stage has a <code>status</code> equal to the text <code>"pass"</code>.</li>
+<li>It returns <code>False</code> in every other case, including an empty list and any list with one stage that is not <code>"pass"</code>.</li>
+<li>It returns the bool value itself, <code>True</code> or <code>False</code>, not a count or a truthy value.</li>
+</ul>
+<p><strong><code>bump_version(current, level)</code></strong> takes a version text such as <code>"1.4.9"</code> and a level text.</p>
+<ul>
+<li>The level is <code>"major"</code>, <code>"minor"</code> or <code>"patch"</code>.</li>
+<li><code>"major"</code> adds one to the major number and sets the minor and patch numbers to zero. For example, <code>bump_version("1.4.9", "major")</code> should give <code>"2.0.0"</code>.</li>
+<li><code>"minor"</code> adds one to the minor number and sets the patch number to zero. For example, <code>bump_version("1.4.9", "minor")</code> should give <code>"1.5.0"</code>.</li>
+<li><code>"patch"</code> adds one to the patch number and changes nothing else. For example, <code>bump_version("2.0.0", "patch")</code> should give <code>"2.0.1"</code>.</li>
+<li>It returns the new version as text in the same <code>MAJOR.MINOR.PATCH</code> form.</li>
+</ul>
+<p><strong><code>pipeline_result(stages, current, level)</code></strong> combines the two.</p>
+<ul>
+<li>If <code>should_deploy</code> is true for the stages, it returns the result of <code>bump_version</code> for the current version and the level.</li>
+<li>Otherwise it returns the exact text <code>"BLOCKED"</code>.</li>
+</ul>
+<p>The statement gives two examples. <code>bump_version("1.4.9", "minor")</code> gives <code>'1.5.0'</code>. <code>pipeline_result([{"name": "build", "status": "pass"}], "2.0.0", "patch")</code> gives <code>'2.0.1'</code>.</p>
+<p><strong>Limits.</strong> Each run may take up to 30 seconds and use up to 128 MB of memory. A solution that does ordinary list and string work is far inside both limits.</p>
+<p><strong>Scoring.</strong> There are six visible tests, worth 85 points in total. They are listed below with their points.</p>
+<table>
+<thead>
+<tr>
+<th>Visible test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All stages pass gives deploy</td>
+<td>15</td>
+</tr>
+<tr>
+<td>A failing stage blocks deploy</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Patch bump</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Minor bump resets patch</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Major bump resets minor and patch</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Green pipeline deploys the bumped version</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>Two hidden tests are worth 15 points together, so the full mark is 100. A hidden test is a check whose inputs are not shown to you. The platform reports only that the hidden tests exist and what they are worth. They decide the top marks because they test cases that the visible tests do not show. Those cases are usually the edges: an empty list, a stage with an unexpected status, or a version with a zero in it. You cannot see them, so you must test those edges yourself before you submit.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>The real lab uses a few Python ideas. Each one is taught below with a small example about something unrelated to the lab, so the example does not solve the task. Try each one in a scratch file before you use it.</p>
+<p><strong>Dictionaries and <code>get</code>.</strong> A dictionary maps keys to values. <code>dict[key]</code> raises an error if the key is missing. <code>dict.get(key, default)</code> returns the default instead.</p>
+<div class="hl"><pre><span></span><code><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apples&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;plums&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apples&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pears&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Output: <code>3</code>, then <code>0</code>. The second key is missing, so <code>get</code> returns the default.</p>
+<p><strong><code>all</code> over a list.</strong> <code>all(...)</code> returns <code>True</code> only when every item it checks is true. The important edge is an empty input: <code>all</code> over nothing is <code>True</code>. Any check that treats an empty list as a success needs a separate test for emptiness.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">15</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">15</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[]))</span>
+</code></pre></div>
+
+<p>Output: <code>False</code>, then <code>True</code>. The first list has one reading that is not below 15. The empty list is <code>True</code> because nothing fails the check.</p>
+<p><strong>Text, <code>split</code> and <code>int</code>.</strong> <code>split</code> cuts text at a separator and returns a list of pieces, which are still text. <code>int</code> turns digit text into a number. <code>isdigit</code> tells you whether the text is made only of digits.</p>
+<div class="hl"><pre><span></span><code><span class="n">parts</span> <span class="o">=</span> <span class="s2">&quot;red,green,blue&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="o">.</span><span class="n">isdigit</span><span class="p">(),</span> <span class="s2">&quot;4a&quot;</span><span class="o">.</span><span class="n">isdigit</span><span class="p">(),</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output: <code>['red', 'green', 'blue']</code>, then <code>True False False</code>, then <code>43</code>. An empty string is not digits, so <code>"".isdigit()</code> is <code>False</code>.</p>
+<p><strong>Building text with f-strings and <code>join</code>.</strong> An f-string puts values into text. <code>join</code> puts a list of text pieces together with a separator.</p>
+<div class="hl"><pre><span></span><code><span class="n">name</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="s2">&quot;bridges&quot;</span><span class="p">,</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> checked&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;north&quot;</span><span class="p">,</span> <span class="s2">&quot;east&quot;</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Output: <code>4 bridges checked</code>, then <code>north-east</code>. Inside an f-string, <code>{count}</code> is replaced by the value of <code>count</code>.</p>
+<p><strong><code>isinstance</code> and the <code>bool</code> trap.</strong> <code>isinstance(value, int)</code> checks the type. A <code>bool</code> is a subclass of <code>int</code>, so <code>True</code> also passes an <code>int</code> check.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Output: <code>True</code>, <code>True</code>, <code>False</code>, <code>True</code>. To reject booleans when you want a whole number, check for <code>bool</code> as well.</p>
+<p><strong>Rounding.</strong> <code>round(number, digits)</code> rounds to a set number of decimal places. <code>round(number)</code> with no digits gives a whole number. Python rounds exact halves to the nearest even whole number.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Output: <code>2</code>, then <code>3.14</code>, then <code>4</code>. Notice that <code>round(2.5)</code> is <code>2</code>. Round once, at the end of a calculation, not in the middle.</p>
+<p><strong>Returning versus printing.</strong> A function sends its answer back with <code>return</code>. A function that only prints gives back <code>None</code>, which is Python's word for nothing. A test receives the return value, so a printed answer does not count.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output: <code>8</code>, then <code>None</code>. The function printed 8 and returned nothing, so <code>result</code> is <code>None</code>. Use <code>return</code> for every answer the tests check.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row below is a rule from the statement. Check each one with an <code>assert</code> before you submit. The statement names no rounding and no ties, so there is nothing to round and no tie to break in this lab. Do not add rules that the statement does not give.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The stage list must not be empty for <code>True</code></td>
+<td>Returns <code>True</code> for an empty list, because <code>all</code> over nothing is <code>True</code></td>
+<td><code>should_deploy([]) is False</code></td>
+</tr>
+<tr>
+<td>Every stage must have status exactly <code>"pass"</code></td>
+<td>Accepts <code>"PASS"</code>, <code>"passed"</code> or any status that is not <code>"fail"</code></td>
+<td>One stage with <code>"PASS"</code> and one with <code>"skipped"</code> both give <code>False</code></td>
+</tr>
+<tr>
+<td>One failing stage blocks the deploy, wherever it is</td>
+<td>Checks only the first or the last stage</td>
+<td>Put the failing stage in the middle of three stages, and expect <code>False</code></td>
+</tr>
+<tr>
+<td><code>should_deploy</code> returns <code>True</code> or <code>False</code></td>
+<td>Returns the list, a count or a text value</td>
+<td><code>should_deploy([...]) is True</code> and <code>is False</code></td>
+</tr>
+<tr>
+<td><code>bump_version</code> returns text in <code>MAJOR.MINOR.PATCH</code> form</td>
+<td>Returns a number, a tuple or a text with a leading <code>v</code></td>
+<td><code>isinstance(result, str)</code> and compare with the exact text</td>
+</tr>
+<tr>
+<td>A patch bump adds one to patch only</td>
+<td>Resets patch to zero as a minor bump does, or changes the major or minor number</td>
+<td><code>bump_version("2.0.0", "patch") == "2.0.1"</code></td>
+</tr>
+<tr>
+<td>A minor bump resets patch to zero</td>
+<td>Leaves patch unchanged, so <code>1.4.9</code> becomes <code>1.5.9</code></td>
+<td><code>bump_version("1.4.9", "minor") == "1.5.0"</code></td>
+</tr>
+<tr>
+<td>A major bump resets minor and patch to zero</td>
+<td>Resets only patch, so <code>1.4.9</code> becomes <code>2.4.0</code></td>
+<td><code>bump_version("1.4.9", "major") == "2.0.0"</code></td>
+</tr>
+<tr>
+<td>Version parts are whole numbers that can have two digits</td>
+<td>Joins text pieces, so <code>1.9.0</code> after a minor bump becomes <code>1.90.0</code> or fails</td>
+<td><code>bump_version("1.9.0", "minor") == "1.10.0"</code></td>
+</tr>
+<tr>
+<td><code>pipeline_result</code> returns the exact text <code>"BLOCKED"</code> when the gate fails</td>
+<td>Returns <code>None</code>, <code>"blocked"</code> or an empty text</td>
+<td><code>pipeline_result([], "1.0.0", "patch") == "BLOCKED"</code></td>
+</tr>
+<tr>
+<td><code>pipeline_result</code> returns the bumped version when the gate passes</td>
+<td>Bumps the version before checking the stages, or returns the old version</td>
+<td><code>pipeline_result([{"name": "a", "status": "pass"}], "1.4.9", "minor") == "1.5.0"</code></td>
+</tr>
+<tr>
+<td>The inputs are not changed</td>
+<td>Removes or edits stage dictionaries while checking them</td>
+<td>Call <code>should_deploy</code> twice on the same list, and print the list before and after</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Note the three function names, their parameters and their order. Do not rename anything.</li>
+<li>Write the examples from the statement as <code>assert</code> lines first. They are the first tests you will run.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Write them before you write the code they test.</li>
+<li>Implement one function at a time. After each function, run all the <code>assert</code> lines. Fix the function before you start the next one.</li>
+<li>Check types and rounding last. Confirm that the return values are the right type: <code>True</code> or <code>False</code> for the gate, text for the version and <code>"BLOCKED"</code> for the blocked result.</li>
+<li>Run the visible tests. Read every failure message, because each one names the rule it broke.</li>
+<li>Submit once, when every <code>assert</code> you wrote passes and the visible tests pass.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p><strong>The twin task.</strong> A library lends books, and a late return costs a fine. Each loan is a dictionary with a <code>title</code> (text) and a <code>due</code> day (a whole number). The library counts days as whole numbers. Write four functions.</p>
+<ul>
+<li><code>days_overdue(due, today)</code> returns the number of days a loan is late. If the book is not late, it returns <code>0</code>. Both inputs must be whole numbers, and a boolean is not accepted. Otherwise it raises <code>ValueError</code>.</li>
+<li><code>fine_for(days, rate)</code> returns the fine for a number of late days at a rate per day. A zero or negative number of days gives <code>0</code>. The fine never goes above <code>300</code>.</li>
+<li><code>ranked_fines(loans, today, rate)</code> returns a list of <code>(title, fine)</code> pairs for every loan with a fine above zero. The list is sorted by fine, largest first. Loans with equal fines are sorted by title, A to Z.</li>
+<li><code>average_fine(loans, today, rate)</code> returns the average fine over every loan, including loans with no fine. It is rounded to two decimal places, and an empty list gives <code>0.0</code>.</li>
+</ul>
+<p><strong>The solution.</strong> The code below is the full answer for the twin task. Read it, then try to write your own version before you check.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">days_overdue</span><span class="p">(</span><span class="n">due</span><span class="p">,</span> <span class="n">today</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="n">due</span><span class="p">,</span> <span class="n">today</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;days must be whole numbers&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">today</span> <span class="o">&lt;=</span> <span class="n">due</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">today</span> <span class="o">-</span> <span class="n">due</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fine_for</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">days</span> <span class="o">*</span> <span class="n">rate</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ranked_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="n">today</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">loan</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="n">days_overdue</span><span class="p">(</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;due&quot;</span><span class="p">],</span> <span class="n">today</span><span class="p">)</span>
+        <span class="n">amount</span> <span class="o">=</span> <span class="n">fine_for</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">amount</span><span class="p">))</span>
+    <span class="n">found</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">found</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average_fine</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="n">today</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">loan</span> <span class="ow">in</span> <span class="n">loans</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">fine_for</span><span class="p">(</span><span class="n">days_overdue</span><span class="p">(</span><span class="n">loan</span><span class="p">[</span><span class="s2">&quot;due&quot;</span><span class="p">],</span> <span class="n">today</span><span class="p">),</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">loans</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">days_overdue</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">days_overdue</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">days_overdue</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">days_overdue</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+    <span class="n">raised</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="n">raised</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">raised</span>
+
+<span class="k">assert</span> <span class="n">fine_for</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">fine_for</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">fine_for</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span>
+<span class="k">assert</span> <span class="n">fine_for</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">300</span>
+
+<span class="n">loans</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Maps&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Atlas&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Ecology&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Algebra&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">ranked_fines</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ecology&quot;</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Maps&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Atlas&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">loans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Maps&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+
+<span class="n">ties</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Zoology&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Art&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">ranked_fines</span><span class="p">(</span><span class="n">ties</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Art&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zoology&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">ranked_fines</span><span class="p">([{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}],</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="mi">300</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">ranked_fines</span><span class="p">([],</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="k">assert</span> <span class="n">average_fine</span><span class="p">(</span><span class="n">loans</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">35.0</span>
+<span class="n">short</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;due&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">average_fine</span><span class="p">(</span><span class="n">short</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.67</span>
+<span class="k">assert</span> <span class="n">average_fine</span><span class="p">([],</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+</code></pre></div>
+
+<p><strong>Explanation, function by function.</strong></p>
+<ul>
+<li><code>days_overdue</code> first checks both inputs. The loop runs over the pair <code>(due, today)</code>, so one check covers both. <code>isinstance(value, int)</code> accepts whole numbers, and <code>isinstance(value, bool)</code> rejects <code>True</code> and <code>False</code>, because a boolean is also an <code>int</code>. If <code>today</code> is not after <code>due</code>, the book is not late, and the function returns <code>0</code>. Otherwise the difference is the number of late days. The first <code>assert</code> lines check the boundary: a book due on day 10 and returned on day 10 is not late.</li>
+<li><code>fine_for</code> returns <code>0</code> for zero or negative days. For a positive number of days, <code>days * rate</code> is the fine, and <code>min(..., 300)</code> stops the fine at the cap. <code>fine_for(100, 5)</code> would be <code>500</code>, so the cap gives <code>300</code>.</li>
+<li><code>ranked_fines</code> builds the list one loan at a time. A loan with no fine is left out by the <code>if amount &gt; 0</code> check. The <code>sort</code> call uses a key, which is a tuple. The first part, <code>-pair[1]</code>, is the negated fine, so the largest fine sorts first. The second part, <code>pair[0]</code>, is the title, which breaks ties in A to Z order. The assert on <code>ties</code> checks this with two loans that have the same fine. The assert on <code>loans[0]</code> checks that the function does not change the input list.</li>
+<li><code>average_fine</code> returns <code>0.0</code> for an empty list before any division, which avoids a division by zero. It adds up the fines over all loans, including zeros, then divides by the number of loans. The rounding happens once, at the end. For the short list, the total fine is <code>5</code>, and <code>5 / 3</code> is <code>1.666...</code>, which rounds to <code>1.67</code>.</li>
+</ul>
+<p><strong>Tracing the sort with a tie.</strong> The animation below steps through the sort on a small list. Watch the keys: a larger fine gives a more negative number, so it comes first, and two equal fines are decided by the title.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Sorting fines with a tie&quot;, &quot;code&quot;: [&quot;found = [(\&quot;Zoology\&quot;, 20), (\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20)]&quot;, &quot;found.sort(key=lambda pair: (-pair[1], pair[0]))&quot;, &quot;print(found)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Zoology\&quot;, 20), (\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20)]&quot;]], &quot;note&quot;: &quot;The list holds the pairs in the order the loans were checked.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Zoology\&quot;, 20), (\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20)]&quot;], [&quot;key&quot;, &quot;(-20, \&quot;Zoology\&quot;)&quot;]], &quot;note&quot;: &quot;sort asks the key function for each pair. Zoology gives (-20, \&quot;Zoology\&quot;).&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Zoology\&quot;, 20), (\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20)]&quot;], [&quot;key&quot;, &quot;(-50, \&quot;Maps\&quot;)&quot;]], &quot;note&quot;: &quot;Maps gives (-50, \&quot;Maps\&quot;). The minus sign makes the larger fine the smaller key, so it sorts first.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Zoology\&quot;, 20), (\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20)]&quot;], [&quot;key&quot;, &quot;(-20, \&quot;Art\&quot;)&quot;]], &quot;note&quot;: &quot;Art gives (-20, \&quot;Art\&quot;). Its fine ties with Zoology, so the title decides.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20), (\&quot;Zoology\&quot;, 20)]&quot;]], &quot;note&quot;: &quot;Sorted by key, Maps comes first, then Art, then Zoology.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;found&quot;, &quot;[(\&quot;Maps\&quot;, 50), (\&quot;Art\&quot;, 20), (\&quot;Zoology\&quot;, 20)]&quot;]], &quot;note&quot;: &quot;print shows the sorted list.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p><strong>The new twin task.</strong> A cinema charges ticket prices by age. The base price is a whole number of rupees. Write two functions.</p>
+<ul>
+<li><code>ticket_price(base, age)</code> returns the price for one person. A child under 3 pays <code>0</code>. An age from 3 to 12, inclusive, pays half the base price, rounded down. An age of 60 or more pays 80% of the base price, rounded down. Every other age pays the full base price. A negative age, or an age that is not a whole number, raises <code>ValueError</code>. A boolean is not a whole number.</li>
+<li><code>group_total(ages, base)</code> returns the total price for a list of ages. An empty list gives <code>0</code>.</li>
+</ul>
+<p>Your file must pass these <code>assert</code> lines, which are also a good list of cases to check.</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">==</span> <span class="mi">200</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="o">==</span> <span class="mi">160</span>
+<span class="k">assert</span> <span class="n">group_total</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span> <span class="o">==</span> <span class="mi">460</span>
+<span class="k">assert</span> <span class="n">group_total</span><span class="p">([],</span> <span class="mi">200</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p>Also make <code>ticket_price</code> raise <code>ValueError</code> for a negative age. Think about the boundary ages 2, 3, 12, 13, 59 and 60 before you write the code.</p>
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ticket_price</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;age must be a whole number of 0 or more&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">base</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">base</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">//</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="n">base</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">group_total</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">ticket_price</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">==</span> <span class="mi">200</span>
+<span class="k">assert</span> <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="o">==</span> <span class="mi">160</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ticket_price</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">raised</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="n">raised</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">raised</span>
+<span class="k">assert</span> <span class="n">group_total</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span> <span class="o">==</span> <span class="mi">460</span>
+<span class="k">assert</span> <span class="n">group_total</span><span class="p">([],</span> <span class="mi">200</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p><code>ticket_price</code> checks the age first, so a bad value stops the function before any price is calculated. The <code>if age &lt; 3</code> line handles the free range, and the <code>age &lt;= 12</code> line is inclusive, so age 12 pays the half price. The <code>age &gt;= 60</code> line uses <code>base * 4 // 5</code>, which multiplies first and then divides by 5 with rounding down. For 200 the result is <code>160</code>. <code>group_total</code> adds the price for each age in turn, starting from <code>0</code>, so an empty list correctly gives <code>0</code>.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>The three function names and their parameters match the starter file exactly, and none of them is renamed.</li>
+<li>Every stage status is compared with exactly <code>"pass"</code>, in lower case, and an empty stage list gives <code>False</code>.</li>
+<li><code>should_deploy</code> returns the bool <code>True</code> or <code>False</code>, and you have tested it with <code>is True</code> or <code>is False</code>.</li>
+<li>A minor bump resets patch to zero, and a major bump resets minor and patch to zero. Test <code>1.4.9</code> for both.</li>
+<li><code>bump_version</code> returns text without a leading <code>v</code>, and a two-digit part such as <code>1.9.0</code> gives <code>1.10.0</code>.</li>
+<li><code>pipeline_result</code> returns the capitalised text <code>"BLOCKED"</code> when the gate fails, and not <code>None</code>.</li>
+<li>Your code only returns values. It does not print the answers or call <code>input</code>.</li>
+<li>Your code does not change the stage list or the dictionaries inside it.</li>
+<li>Every row of the rules table has an <code>assert</code> in your file, and every <code>assert</code> passes.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<details class="box box-answer"><summary>Why must the build job wait for the tests?</summary><p>Because a build that starts before the tests finish can push an image that fails them. The <code>needs: test</code> line makes GitHub skip the build when the tests fail, so a broken change never reaches the registry. This is the gate the course describes: a red suite stops everything. In a viva you can add that the same rule means a failing change simply does not produce a deployable image.</p></details>
+
+<details class="box box-answer"><summary>Why tag images with the commit SHA and not latest?</summary><p>A SHA always points to one commit, so you can say exactly which code is running. The tag <code>latest</code> moves every time someone pushes, so two servers may be running different code under the same name. A SHA also makes rollback precise: you deploy the previous SHA, not a guess. I would tell the examiner that the SHA is the serial number of the part from the factory picture.</p></details>
+
+<details class="box box-answer"><summary>How does a secret reach the workflow without being in the repository?</summary><p>The value is stored in the platform's secret store, and GitHub injects it into the run when the workflow asks for it with <code>secrets.NAME</code>. The value is hidden from logs, and it is not written into the repository, so it does not appear in Git history. For the deployment, the cloud login uses OIDC, which gives a short-lived token and no stored key at all. The rule I follow is that a secret should never be typed into a file I commit.</p></details>
+
+<details class="box box-answer"><summary>What does a rollback actually do, and what does it not do?</summary><p>A rollback moves traffic back to the previous revision, which is still stored by the platform, so no image is rebuilt. It does not undo changes to the database, and it does not undo data written by the new version. That is why a schema change must be backward compatible before a release that might be rolled back. I would say the rollback restores the code path, and the database has to be designed to support both versions.</p></details>
+
+<details class="box box-answer"><summary>What is the difference between continuous delivery and continuous deployment in CityPulse?</summary><p>Continuous delivery means every change produces a tested image that is ready to ship. In CityPulse, every merge to <code>main</code> does that, because the build-push job runs on each push. Continuous deployment means the change goes live automatically. Here, pushing a <code>v*</code> tag is the decision to deploy, so the deploy workflow starts from that tag. I would add that the deployed image is the one CI already tested, never a new build.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Where you meet it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on: [push]</code></td>
+<td>Starts the workflow on every push</td>
+<td>Top of <code>ci.yml</code></td>
+</tr>
+<tr>
+<td><code>on: push: tags: ["v*"]</code></td>
+<td>Starts the workflow when a tag beginning with <code>v</code> is pushed</td>
+<td>Top of <code>deploy.yml</code></td>
+</tr>
+<tr>
+<td><code>jobs:</code></td>
+<td>Starts the list of jobs</td>
+<td>Both workflow files</td>
+</tr>
+<tr>
+<td><code>runs-on: ubuntu-latest</code></td>
+<td>Gives the job a fresh Ubuntu runner</td>
+<td>Every job</td>
+</tr>
+<tr>
+<td><code>needs: test</code></td>
+<td>Waits for <code>test</code> and is skipped if <code>test</code> fails</td>
+<td><code>build-push</code> and <code>deploy</code></td>
+</tr>
+<tr>
+<td><code>if: github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/main'</code></td>
+<td>Runs the job only on pushes to <code>main</code></td>
+<td><code>build-push</code></td>
+</tr>
+<tr>
+<td><code>permissions: {contents: read, packages: write}</code></td>
+<td>Limits the job's rights to read code and write packages</td>
+<td><code>build-push</code></td>
+</tr>
+<tr>
+<td><code>id-token: write</code></td>
+<td>Lets the job request a cloud identity token</td>
+<td><code>deploy.yml</code></td>
+</tr>
+<tr>
+<td><code>secrets.GITHUB_TOKEN</code></td>
+<td>Short-lived token GitHub creates per run</td>
+<td>Registry login</td>
+</tr>
+<tr>
+<td><code>secrets.NAME</code></td>
+<td>Reads a stored secret at run time</td>
+<td>Any workflow</td>
+</tr>
+<tr>
+<td><code>vars.NAME</code></td>
+<td>Reads a repository variable (not secret)</td>
+<td><code>deploy.yml</code></td>
+</tr>
+<tr>
+<td><code>${{ github.sha }}</code></td>
+<td>The full commit SHA of the run</td>
+<td>Image tags, build args</td>
+</tr>
+<tr>
+<td><code>${GITHUB_SHA::7}</code></td>
+<td>The first seven characters of the SHA, in bash</td>
+<td><code>deploy</code> job in the course example</td>
+</tr>
+<tr>
+<td><code>git rev-parse --short HEAD</code></td>
+<td>Prints the short SHA of the checked-out commit</td>
+<td><code>tag.sh</code></td>
+</tr>
+<tr>
+<td><code>git rev-parse origin/main</code></td>
+<td>Prints the full SHA on GitHub's <code>main</code></td>
+<td>Lab step 7</td>
+</tr>
+<tr>
+<td><code>git push origin main</code></td>
+<td>Sends commits to <code>main</code> and starts CI</td>
+<td>Every release</td>
+</tr>
+<tr>
+<td><code>git tag v0.9.0-rc1</code></td>
+<td>Creates a tag on the current commit</td>
+<td>Release</td>
+</tr>
+<tr>
+<td><code>git push origin v0.9.0-rc1</code></td>
+<td>Sends the tag and starts <code>deploy.yml</code></td>
+<td>Release</td>
+</tr>
+<tr>
+<td><code>docker build -t name:tag .</code></td>
+<td>Builds an image and names it</td>
+<td><code>tag.sh</code></td>
+</tr>
+<tr>
+<td><code>docker push</code></td>
+<td>Sends an image to a registry</td>
+<td>CI</td>
+</tr>
+<tr>
+<td><code>gh secret set NAME --body "$VALUE"</code></td>
+<td>Stores a secret in GitHub</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>gh secret list</code></td>
+<td>Lists secret names, not values</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>gh run watch</code></td>
+<td>Follows the latest run live</td>
+<td>Lab step 7</td>
+</tr>
+<tr>
+<td><code>gh run list</code></td>
+<td>Lists recent runs</td>
+<td>Lab step 4</td>
+</tr>
+<tr>
+<td><code>grep -rnE 'pattern' .github/</code></td>
+<td>Searches for leaked tokens</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>pytest -q</code></td>
+<td>Runs the tests quietly</td>
+<td>Test job</td>
+</tr>
+<tr>
+<td><code>aws ecr create-repository</code></td>
+<td>Creates an ECR repository</td>
+<td>Lab step 1</td>
+</tr>
+<tr>
+<td><code>aws ecr get-login-password \| docker login ...</code></td>
+<td>Logs Docker in to ECR with a temporary password</td>
+<td>Lab step 6</td>
+</tr>
+<tr>
+<td><code>aws ecr describe-images</code></td>
+<td>Shows the images and tags in a repository</td>
+<td>Lab step 7</td>
+</tr>
+<tr>
+<td><code>gcloud run deploy NAME --image IMG --region R --quiet</code></td>
+<td>Creates a new Cloud Run revision</td>
+<td><code>deploy.yml</code></td>
+</tr>
+<tr>
+<td><code>gcloud run services update-traffic NAME --to-revisions=OLD=100</code></td>
+<td>Sends all traffic to a previous revision</td>
+<td>Rollback</td>
+</tr>
+<tr>
+<td><code>./scripts/smoke.sh URL SHA</code></td>
+<td>Checks the live service; exit code non-zero fails the job</td>
+<td><code>deploy.yml</code></td>
+</tr>
+<tr>
+<td><code>curl -s URL</code></td>
+<td>Fetches a web address silently</td>
+<td>Smoke test, lab step 7</td>
+</tr>
+<tr>
+<td><code>jq -r .git_sha</code></td>
+<td>Prints one field from JSON</td>
+<td>Verifying the running version</td>
+</tr>
+<tr>
+<td><code>python3 -c "import yaml; ..."</code></td>
+<td>Checks the job names and <code>needs</code> in a workflow file</td>
+<td>Worked example, lab step 5</td>
+</tr>
+</tbody>
+</table>
+<p>Rules to remember: the gate must pass before anything ships; deploy the SHA CI tested, never a fresh build; no token or password in any committed file; a rollback is a traffic change; any database change must work for both old and new versions.</p>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;needs&quot;, &quot;a&quot;: &quot;A job-level keyword that makes the job wait for the named jobs and skip if any of them failed.&quot;}, {&quot;q&quot;: &quot;if&quot;, &quot;a&quot;: &quot;A job-level condition. If it is false, the job is skipped instead of run.&quot;}, {&quot;q&quot;: &quot;secrets.GITHUB_TOKEN&quot;, &quot;a&quot;: &quot;A short-lived token GitHub creates for each run, used here to log in to GHCR.&quot;}, {&quot;q&quot;: &quot;SHA tag&quot;, &quot;a&quot;: &quot;An image tag made from the full commit SHA, which always points to one commit.&quot;}, {&quot;q&quot;: &quot;latest&quot;, &quot;a&quot;: &quot;A moving label that changes on every push, so it cannot tell you which code is running.&quot;}, {&quot;q&quot;: &quot;Runner&quot;, &quot;a&quot;: &quot;A fresh virtual machine that GitHub gives a job to run on. Nothing carries over between jobs.&quot;}, {&quot;q&quot;: &quot;OIDC&quot;, &quot;a&quot;: &quot;A standard way to prove identity with a short-lived token instead of a stored key.&quot;}, {&quot;q&quot;: &quot;Smoke test&quot;, &quot;a&quot;: &quot;A quick check that a live service starts and answers a basic request correctly.&quot;}, {&quot;q&quot;: &quot;Canary&quot;, &quot;a&quot;: &quot;A release that first sends a small share of traffic to the new version.&quot;}, {&quot;q&quot;: &quot;Blue-green&quot;, &quot;a&quot;: &quot;Two identical environments, with traffic switched all at once. Rollback is switching back.&quot;}, {&quot;q&quot;: &quot;Expand and contract&quot;, &quot;a&quot;: &quot;A database change in two releases, adding the new form first and removing the old form later.&quot;}, {&quot;q&quot;: &quot;Continuous delivery&quot;, &quot;a&quot;: &quot;Every change produces a tested, deployable artifact. A person or rule decides when to ship it.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="P5.html"><small>Previous</small>Project 5 — Containerised Air-Quality Platform</a><a class="nx" href="D27.html"><small>Next</small>Day 27 — Observability: logs, uptime and SLOs</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

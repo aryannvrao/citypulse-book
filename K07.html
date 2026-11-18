@@ -1,0 +1,1708 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T20–T22: the DSA track, part 1 · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K07" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a class="cur" href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T20–T22: the DSA track, part 1</h1><p class="sub">3 tickets, 15 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">84 min read · practice quiz · 18 animations · 3 tested solutions</p><video class="vid" controls preload="metadata" src="videos/K07.mp4?v=1794965563"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t20-dsa-1-arrays-strings-hashing-deduptop-k-on-citypulse-data">Y2-T20 · DSA-1: arrays, strings, hashing + dedup/top-k on CityPulse data</a></li><li><a href="#y2-t21-dsa-2-windows-stacks-queues-on-rolling-aqi-matching-sql">Y2-T21 · DSA-2: windows, stacks, queues + O(n) rolling AQI matching SQL</a></li><li><a href="#y2-t22-dsa-3-recursion-sorting-search-first-crossing-benchmark">Y2-T22 · DSA-3: recursion, sorting, search + first-crossing benchmark</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t20-dsa-1-arrays-strings-hashing-deduptop-k-on-citypulse-data">Y2-T20</a></td>
+<td>20</td>
+<td>5</td>
+<td>DSA-1: arrays, strings, hashing + dedup/top-k on CityPulse data</td>
+</tr>
+<tr>
+<td><a href="#y2-t21-dsa-2-windows-stacks-queues-on-rolling-aqi-matching-sql">Y2-T21</a></td>
+<td>21</td>
+<td>5</td>
+<td>DSA-2: windows, stacks, queues + O(n) rolling AQI matching SQL</td>
+</tr>
+<tr>
+<td><a href="#y2-t22-dsa-3-recursion-sorting-search-first-crossing-benchmark">Y2-T22</a></td>
+<td>22</td>
+<td>5</td>
+<td>DSA-3: recursion, sorting, search + first-crossing benchmark</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t20-dsa-1-arrays-strings-hashing-deduptop-k-on-citypulse-data">Y2-T20 · DSA-1: arrays, strings, hashing + dedup/top-k on CityPulse data</h2>
+<p><em>Session 20 · phase DSA · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>CityPulse is the city-data platform your squad is building. Its sensor feed sometimes sends the same reading twice, and ops wants every duplicate flagged across 10 million rows.</p>
+<p>The obvious way to find a duplicate is to compare each row with every row before it. For 10 million rows that is about 50 trillion comparisons, which will not finish in any sensible time. A <strong>set</strong> fixes this. A set remembers what it has already seen and answers "have I seen this?" almost at once. One pass over the file is then enough, and the work grows in step with the number of rows.</p>
+<p>This ticket is a practice interview. You work alone. You solve six small problems, state the speed and memory cost of each, run a script on real sensor data, and may explain one solution on a whiteboard. The point is to show that you choose the right data structure under pressure, and can say why.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>Assume these are merged: <strong>Y2-T17</strong>, <strong>Y2-T18</strong> and <strong>Y2-T19</strong>. The winter-break warm-up set (20 problems) must already be in a repo, pushed by 09:00.</p>
+<p>You need these tools. Each check shows what "ready" looks like.</p>
+<ul>
+<li><strong>Python 3.11 or later.</strong> Run <code>python3 --version</code>, or <code>python --version</code> or <code>py -3 --version</code> on Windows. Ready means <code>Python 3.11.x</code> or higher. If <code>python</code> opens the Microsoft Store, install Python from python.org.</li>
+<li><strong>pytest</strong>, the test runner. Run <code>pytest --version</code>. Ready means a line starting with <code>pytest</code> and a version number. If the command is not found, run <code>pip install pytest</code>.</li>
+<li><strong>pandas</strong>, a data library. Run <code>python3 -c "import pandas; print(pandas.__version__)"</code>. Ready means a version number such as <code>2.2.3</code>. If you see <code>ModuleNotFoundError</code>, run <code>pip install pandas</code>.</li>
+<li><strong>Git.</strong> Run <code>git --version</code>. Ready means <code>git version 2.x</code>.</li>
+<li><strong>Your repository.</strong> Run <code>git ls-remote &lt;your-repo-url&gt;</code>, using the URL from GitHub. Ready means no error message. An empty repository prints nothing, and that is fine.</li>
+<li><strong>The data.</strong> Run <code>head -n 3 applied/data/readings.csv</code>. Ready means a header line with column names, then data rows. If you only have parquet, export it to CSV with pandas, which needs <code>pyarrow</code> installed.</li>
+</ul>
+<p>Where commands run: use Git Bash on your Windows laptop for <code>git</code>, <code>pytest</code> and the applied script. The lab machine is Linux and uses <code>python3</code>. Git Bash also understands <code>head</code>, <code>grep</code>, <code>ls</code> and <code>touch</code>.</p>
+<p>For background, read <a href="D16.html">Day 16 — DSA I: arrays, hashing, windows and stacks</a>, <a href="D01.html">Day 1 — Git, GitHub and secure accounts</a> and <a href="D02.html">Day 2 — Linux and the command line</a>. For the test rules, read <a href="F4.html">Beating hidden tests and first-attempt marking</a>.</p>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big-O</td>
+<td>How work or memory grows with the input size n. O(n) grows in step with n; O(n²) grows with n squared.</td>
+</tr>
+<tr>
+<td>Hash</td>
+<td>A number Python computes from a value. Python uses it to find a value in a set or dict quickly.</td>
+</tr>
+<tr>
+<td>Hashable</td>
+<td>A value that Python can hash. Numbers, strings and tuples are hashable. Lists and dicts are not.</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>A collection of unique items. <code>x in s</code> checks membership in O(1) on average.</td>
+</tr>
+<tr>
+<td>Dict</td>
+<td>A collection of key and value pairs. <code>d[key]</code> reads a value.</td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td>A fixed group of values in round brackets, such as <code>("S1", 1)</code>. Tuples are hashable when everything inside them is hashable, so they work as set items.</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>A dict from the standard library that counts items. <code>most_common(k)</code> returns the k most frequent items.</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>The function's name, its parameters and their order. The hidden test calls the function by this exact signature.</td>
+</tr>
+<tr>
+<td>Assert</td>
+<td>A line that checks a condition and stops with an error if it is false.</td>
+</tr>
+<tr>
+<td>Unit test</td>
+<td>A small test function that checks one behaviour of your code.</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>The test runner. It finds functions named <code>test_...</code> and reports which pass.</td>
+</tr>
+<tr>
+<td>Hidden test</td>
+<td>A test your trainer runs, which you cannot see. It checks edge cases you did not write.</td>
+</tr>
+<tr>
+<td>Edge case</td>
+<td>An unusual input, such as an empty list, a single item or a duplicate at the end.</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Comma-separated values, a plain text table with a header row.</td>
+</tr>
+<tr>
+<td>DictReader</td>
+<td>A <code>csv</code> tool that gives each row as a dict keyed by the header names.</td>
+</tr>
+<tr>
+<td>pandas</td>
+<td>A data library that works on tables called DataFrames.</td>
+</tr>
+<tr>
+<td>DataFrame</td>
+<td>A table in pandas, with named columns.</td>
+</tr>
+<tr>
+<td><code>perf_counter</code></td>
+<td>A timer from the <code>time</code> module that returns seconds with high precision.</td>
+</tr>
+<tr>
+<td><code>timeit.repeat</code></td>
+<td>A function that runs a piece of code several times and returns each timing.</td>
+</tr>
+<tr>
+<td>Best of 3</td>
+<td>Run the timing three times and report the smallest. It reduces noise from other programs.</td>
+</tr>
+<tr>
+<td>Repository (repo)</td>
+<td>A project folder that Git tracks, usually on GitHub.</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of your changes, with a message.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A separate line of work in Git.</td>
+</tr>
+<tr>
+<td>Push</td>
+<td>Send your local commits to GitHub.</td>
+</tr>
+<tr>
+<td>SHA</td>
+<td>The short ID of a commit, such as <code>a1b2c3d</code>.</td>
+</tr>
+<tr>
+<td>Collaborator</td>
+<td>A GitHub user who has access to your repo. Your trainer must be one.</td>
+</tr>
+<tr>
+<td>README</td>
+<td>The <code>README.md</code> file that explains your repo. Your log and timings go here.</td>
+</tr>
+<tr>
+<td>Hint tier</td>
+<td>The level of hint you used, as your trainer defines the levels. Logged for the record.</td>
+</tr>
+<tr>
+<td>Whiteboard</td>
+<td>A short oral test where you explain a solution on a board or aloud.</td>
+</tr>
+<tr>
+<td>Rubric</td>
+<td>The list of marks a trainer uses to score an answer.</td>
+</tr>
+<tr>
+<td>Gate</td>
+<td>A minimum score you must reach before the ticket can count.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p>The ticket has five acceptance criteria and four test cases. Each one is covered below.</p>
+<p><strong>Test case TC1: the visible tests pass.</strong> The trainer runs <code>git clone &lt;dsa-name-url&gt; &amp;&amp; cd dsa-&lt;name&gt; &amp;&amp; pytest -q</code>.</p>
+<ul>
+<li><code>git clone</code> copies the repo. <code>&amp;&amp;</code> runs the next command only if the last one worked. <code>cd</code> changes folder. <code>pytest -q</code> runs every test file, quietly.</li>
+</ul>
+<p>Passing output looks like this:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;..................                                       [100%]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;18 passed in 0.12s&quot;}]}"></div>
+
+<p>The count depends on your tests. With six problems and at least three tests each, expect 18 or more.</p>
+<p>Each dot is one passing test.</p>
+<p>A failing run ends with a line such as <code>1 failed, 5 passed</code>. The usual cause is a function whose name, parameters or return value differ from the sheet. An import error such as <code>ModuleNotFoundError: No module named 'problems'</code> means pytest cannot find your code. The "What goes wrong" table near the end has the fix.</p>
+<p><strong>Acceptance criterion: at least 5 of 6 hidden tests pass.</strong> Test case TC2 is <code>python run_hidden.py roster.csv --day d1</code>, run by the trainer, not by you. <code>run_hidden.py</code> is the trainer's runner, <code>roster.csv</code> lists the squad and <code>--day d1</code> picks the day. The hidden suite runs at 13:00 on your latest commit made before 12:55, so a later push does not count. What matters is that your row shows at least 5 of 6. Test empty inputs and repeats yourself before you push.</p>
+<p><strong>Acceptance criterion: every solution has a complexity comment.</strong> The trainer opens two random files and checks the first line of each function's file. The header must read <code># time: O(...) space: O(...)</code>. A failing file has no header, or the header says O(n) while the code has a loop inside a loop.</p>
+<p><strong>Test case TC3: the applied script runs on 10 million rows.</strong> The trainer runs <code>python applied/dedup_topk.py trainer_10M.csv</code>. The script must print lines starting with <code>rows=</code>, <code>dups=</code> and <code>top=</code>, then three timing lines, and it must finish. Hours of run time point to an O(n²) loop. <code>IndexError: list index out of range</code> means no file name was given.</p>
+<p><strong>Acceptance criterion: the README log has six complete rows.</strong> The trainer reads the table. Each row needs the pattern, the complexity and the hint tier. A blank cell or only five rows fails the check.</p>
+<p><strong>Acceptance criterion and TC4: the defence scores at least 3 out of 5.</strong> The trainer asks: "What is the space cost of your set-based dedup on 10M rows, and when would you not use it?" A good answer says the set stores one entry per distinct key, so the extra memory is O(n) in the worst case. It then names a trade-off, such as sorting the rows, or processing a sliding window that keeps only recent keys. Answers that say "it is O(1)" or "it is fast" with no trade-off score low.</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T20.1</td>
+<td>Every student</td>
+<td>Show your warm-up count, which must be 15 or more out of 20.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T20.2</td>
+<td>Every student</td>
+<td>Create the repo with the required layout. First commit by 11:00.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T20.3</td>
+<td>Every student</td>
+<td>Solve the six problems with the sheet's exact signatures, a complexity header and at least three tests each. Push by 12:55.</td>
+<td>115 min</td>
+</tr>
+<tr>
+<td>Y2-T20.4</td>
+<td>Every student</td>
+<td>Write <code>applied/dedup_topk.py</code>, run it on the data and paste the results into the README.</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Y2-T20.5</td>
+<td>Every student</td>
+<td>Fill the README log table, one row per problem.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T20.6</td>
+<td>Every student</td>
+<td>If drawn for the whiteboard, explain one problem and its complexity.</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T20.7</td>
+<td>Scrum/Docs</td>
+<td>Add each member's repo URL to the squad row in the DSA tracker by 15:30.</td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<p>Your repo is personal, so every commit in it is yours. For your commits to show your contribution, own all six solutions and the applied script from start to finish. Do not take on the Scrum/Docs task (Y2-T20.7) unless your squad has agreed that you hold that role.</p>
+<p>Suggested branch name: <code>d1/&lt;your-name&gt;</code>. If your trainer's repo rules say to use <code>main</code> only, follow the rules.</p>
+<p>Example commit messages, in the order you would make them:</p>
+<ol>
+<li><code>Add repo layout and README skeleton</code></li>
+<li><code>Add first problem with complexity header and tests</code></li>
+<li><code>Solve problems 2 and 3 with tests</code></li>
+<li><code>Add dedup_topk.py with set-based dedup and top-5 stations</code></li>
+<li><code>Add timings: pure Python vs pandas, best of 3</code></li>
+<li><code>Fill README log table with pattern, complexity and hint tier</code></li>
+</ol>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<h4 id="y2-t201-gate-show-the-warm-up-count">Y2-T20.1 Gate: show the warm-up count</h4>
+<p><strong>Goal.</strong> Record that you passed at least 15 of the 20 warm-up problems.</p>
+<p><strong>Stage 1.</strong> Find the warm-up results from your trainer. Count how many you passed. If you are below 15, the ticket says to start with problems 1 and 3 of the six, then come back to the rest.</p>
+<p><strong>Stage 2.</strong> Put the count in your repo. The ticket says "in your repo" but does not name a file, so write it in your README and ask your trainer if they want it elsewhere. Add a line such as:</p>
+<div class="hl"><pre><span></span><code>Warm-up: 16/20
+</code></pre></div>
+
+<p><strong>Stage 3. Test it.</strong> Run this from the repo folder:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;grep -n \&quot;Warm-up\&quot; README.md&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;3:Warm-up: 16/20&quot;}]}"></div>
+
+<p><code>grep</code> searches a file for text. <code>-n</code> shows the line number. Expected output is the line you wrote. If nothing prints, the line is missing or spelled differently.</p>
+<h4 id="y2-t202-create-the-repo">Y2-T20.2 Create the repo</h4>
+<p><strong>Goal.</strong> Create <code>dsa-&lt;name&gt;</code> with the required layout, then push a first commit by 11:00.</p>
+<p><strong>Stage 1. Create the repo on GitHub.</strong> In the browser, create a new repository named <code>dsa-&lt;name&gt;</code>, public or private. Under Settings, add your trainer as a collaborator. The trainer needs access to run the hidden tests.</p>
+<p><strong>Stage 2. Clone it.</strong></p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git clone https://github.com/&lt;your-user&gt;/dsa-&lt;name&gt;.git&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;cd dsa-&lt;name&gt;&quot;}]}"></div>
+
+<p><code>git clone</code> copies the repo into a folder named after it. <code>cd</code> moves into that folder. Expected output is a line such as <code>Cloning into 'dsa-&lt;name&gt;'...</code>.</p>
+<p><strong>Stage 3. Make the layout.</strong></p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;mkdir -p problems/d1 tests/d1 applied&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;touch README.md conftest.py problems/d1/.gitkeep tests/d1/.gitkeep applied/.gitkeep&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ls -aR problems tests applied&quot;}]}"></div>
+
+<p><code>mkdir -p</code> creates folders, and it creates parent folders too. <code>touch</code> creates an empty file if it does not exist. Git does not track empty folders, so the empty <code>.gitkeep</code> files make sure the layout is committed. You can delete them once real files are in each folder. <code>ls -aR</code> also shows hidden files. <code>conftest.py</code> is an empty file at the root. Its presence tells pytest to add the repo root to its search path, so tests can import from <code>problems</code>. Expected output from <code>ls -R</code> lists the folders and their contents.</p>
+<p><strong>Stage 4. Commit and push.</strong></p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git add .&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m \&quot;Add repo layout and README skeleton\&quot;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git push -u origin HEAD&quot;}]}"></div>
+
+<p><code>git add .</code> stages every new file. <code>git commit -m</code> saves a commit with the message in quotes. <code>git push -u origin HEAD</code> sends the current branch to GitHub and remembers the link. Expected output ends with a line showing the branch was pushed.</p>
+<p><strong>Test it.</strong> Run <code>git log --oneline</code>. Expected output is one line with your commit message. Check the time with <code>git log -1 --format=%ci</code>. It must be before 11:00.</p>
+<h4 id="y2-t203-solve-the-six-problems">Y2-T20.3 Solve the six problems</h4>
+<p><strong>Goal.</strong> Six solutions, each with a complexity header and at least three tests, all green under <code>pytest -q</code>.</p>
+<p>The sheet gives each problem a <strong>signature</strong>. Copy the name, parameters and order exactly. The trainer's hidden runner calls the function by that signature, so <code>def count_pairs(nums, target)</code> and <code>def count_pairs(target, nums)</code> are different functions as far as the runner is concerned.</p>
+<p>Two techniques cover most of these problems. Learn them on small examples first.</p>
+<p><strong>Technique 1: a set remembers what you have seen.</strong> The example below is a teaching twin, not one of your six. It returns the first word that appears twice.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">first_repeat</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">word</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">assert</span> <span class="n">first_repeat</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span>
+<span class="k">assert</span> <span class="n">first_repeat</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">first_repeat</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">first_repeat</span><span class="p">([</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>seen = set()</code> creates an empty set. This is the memory of the loop.</li>
+<li><code>for word in words:</code> visits each word once, in order.</li>
+<li><code>if word in seen:</code> checks membership. On a set this is O(1) on average. On a list it would scan every item.</li>
+<li><code>return word</code> stops at the first repeat, so the function does not read the rest of the list.</li>
+<li><code>seen.add(word)</code> remembers the word for later checks.</li>
+<li><code>return None</code> runs only when no repeat exists.</li>
+</ul>
+<p>The four <code>assert</code> lines test a normal case, a case with no repeat, an empty list and two equal words in a row. If all four pass, Python prints nothing. A failed assert stops with <code>AssertionError</code>.</p>
+<p><strong>Technique 2: a Counter counts how often each item appears.</strong> <code>Counter(items)</code> adds one to a count for each item in one pass, and <code>most_common(k)</code> ranks the top k. Use it when a problem asks "how many of each?".</p>
+<p><strong>Stage 1. Write the tests first.</strong> For each problem, create <code>tests/d1/test_&lt;slug&gt;.py</code> with three or more functions named <code>test_...</code>: a normal case, an empty or single-item case, and one tricky case. pytest runs every one.</p>
+<p><strong>Stage 2. Write the function.</strong> Create <code>problems/d1/&lt;slug&gt;.py</code>. Start with the signature from the sheet and a placeholder body, then fill it in. Run the tests after each function so you see failures early.</p>
+<p><strong>Stage 3. Add the complexity header.</strong> The first line of each problem file is a comment:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## time: O(n) space: O(n)</span>
+</code></pre></div>
+
+<p>Choose the costs from your own reasoning. Count loops, and count the set or dict you build. Check the header against the code before you commit.</p>
+<p><strong>Stage 4. Run the tests.</strong></p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q tests/d1/test_first_repeat.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...                                                      [100%]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;3 passed in 0.02s&quot;}]}"></div>
+
+<p><code>pytest -q</code> followed by a file path runs only that file. Expected output is three dots and a <code>passed</code> line. If you see <code>ImportError</code> or <code>ModuleNotFoundError</code>, check that <code>conftest.py</code> is in the repo root, or run <code>python -m pytest -q</code> from the root.</p>
+<p><strong>Stage 5. Commit each problem separately.</strong> Commit after each green problem. This gives you one commit per problem, which you will need for the README log. Push before 12:55.</p>
+<p><strong>Test it.</strong> Run <code>pytest -q</code> from the repo root. The last line must say all tests passed. Run <code>grep -c "def test_" tests/d1/*.py</code>. Each file should report three or more.</p>
+<h4 id="y2-t204-write-the-applied-script">Y2-T20.4 Write the applied script</h4>
+<p><strong>Goal.</strong> A script that reads a CSV, counts duplicate readings, lists the top five stations and times two methods.</p>
+<p>The ticket does not define what makes a duplicate. The course data uses station, timestamp and pollutant together. Check this with your trainer, and state the key you chose in the README.</p>
+<p><strong>Stage 1. Read the header.</strong> Create <code>applied/dedup_topk.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;columns:&quot;</span><span class="p">,</span> <span class="n">reader</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>import csv</code> and <code>import sys</code> bring in the CSV reader and the command-line tool. <code>sys.argv[1]</code> is the first word after the script name, which is the file path. <code>open(path, newline="")</code> opens the file. <code>csv.DictReader(f)</code> reads rows as dicts keyed by header names. <code>reader.fieldnames</code> is the list of column names.</p>
+<p>Run it:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 applied/dedup_topk.py applied/data/readings.csv&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;columns: [&#x27;station_id&#x27;, &#x27;timestamp&#x27;, &#x27;pollutant&#x27;, &#x27;value&#x27;]&quot;}]}"></div>
+
+<p>Your column names may differ. Use the names you see here in the next stages.</p>
+<p><strong>Stage 2. Count duplicates with a set.</strong> Replace the last two lines with a function that tracks keys. Add this below the <code>import</code> lines:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">count_dups</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">key_cols</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">dups</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">key_cols</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                <span class="n">dups</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dups</span>
+</code></pre></div>
+
+<p><code>key_cols</code> is a list of column names. <code>tuple(...)</code> builds the key from them, because a list is not hashable and cannot go in a set. The <code>if</code> checks the set, and the <code>else</code> adds new keys. The function returns the count of repeats. Its cost is O(n) time and O(d) space, where d is the number of distinct keys.</p>
+<p>Watch the trace below. It shows the same logic on three rows.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting repeats with a set&quot;, &quot;code&quot;: [&quot;rows = [(\&quot;S1\&quot;, 1), (\&quot;S2\&quot;, 1), (\&quot;S1\&quot;, 1)]&quot;, &quot;seen = set()&quot;, &quot;dups = 0&quot;, &quot;for row in rows:&quot;, &quot;    if row in seen:&quot;, &quot;        dups += 1&quot;, &quot;    else:&quot;, &quot;        seen.add(row)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;rows&quot;, &quot;[(\&quot;S1\&quot;,1),(\&quot;S2\&quot;,1),(\&quot;S1\&quot;,1)]&quot;]], &quot;note&quot;: &quot;Three rows, read in file order.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;seen&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The set starts empty.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;No repeats counted yet.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The loop takes the first row.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The check is false. The key is not in the set yet.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The else branch adds the key.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S2\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The loop takes the second row.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S2\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;A different station, so the check is false.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S2\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1),(\&quot;S2\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The key is added.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1),(\&quot;S2\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The loop takes the third row.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1),(\&quot;S2\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;The key is already in the set, so the check is true.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;row&quot;, &quot;(\&quot;S1\&quot;,1)&quot;], [&quot;seen&quot;, &quot;{(\&quot;S1\&quot;,1),(\&quot;S2\&quot;,1)}&quot;], [&quot;dups&quot;, &quot;1&quot;]], &quot;note&quot;: &quot;The repeat is counted.&quot;}]}"></div>
+
+<p><strong>Stage 3. Top five stations.</strong> Count rows per station with <code>Counter</code>, then rank them:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_stations</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>counts[row["station_id"]] += 1</code> adds one to the station's count. <code>most_common(5)</code> returns the five highest pairs. Test this on a four-row CSV you write by hand before you run it on the real data.</p>
+<p><strong>Stage 4. Time the methods.</strong> <code>timeit.repeat(func, number=1, repeat=3)</code> returns three timings in seconds. Take <code>min(...)</code> for the best of three, and time only the function call, not the print. <code>timeit.repeat</code> needs a function with no arguments, so wrap your call, for example <code>lambda: count_dups(path, key_cols)</code>.</p>
+<p><strong>Stage 5. Add pandas.</strong> The pandas version uses library code that hashes internally:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dups_pandas</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">key_cols</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">key_cols</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p><code>pd.read_csv</code> loads the whole file into a DataFrame. <code>duplicated(subset=...)</code> marks each row that repeats an earlier key. <code>.sum()</code> counts the marks. <code>int(...)</code> converts the result to a plain number. Decide whether your timing includes the file read, and say so in the README.</p>
+<p><strong>Stage 6. Run it.</strong> Wire the functions together in a <code>main</code> block at the end of the file, with <code>if __name__ == "__main__":</code> in front of it. Print <code>rows=</code>, <code>dups=</code>, <code>top=</code>, and the three timing lines. Then run:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python3 applied/dedup_topk.py applied/data/readings.csv&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;rows=...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;dups=...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;top=...&quot;}]}"></div>
+
+<p>The ticket asks for three timing lines and for the README to show pure-Python vs pandas timings, best of three. The ticket does not name the third timing. Agree with your squad what it measures, and write that in the README. Then paste <code>rows</code>, <code>dups</code>, the top five stations and the three timings into an "Applied" section of the README. The ticket wants this pushed by 15:30.</p>
+<p><strong>Test it.</strong> Make a four-row CSV by hand, with one exact repeat. Expected output is <code>dups=1</code>. Then run the script on the real file.</p>
+<h4 id="y2-t205-fill-the-readme-log">Y2-T20.5 Fill the README log</h4>
+<p><strong>Goal.</strong> A table with one row per problem: problem, pattern, time, space, hint tier and commit SHA.</p>
+<p><strong>Stage 1. Find each commit SHA.</strong> For each problem file, run:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --oneline -- problems/d1/first_repeat.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;a1b2c3d Add first problem with complexity header and tests&quot;}]}"></div>
+
+<p><code>git log --oneline</code> prints one line per commit. The <code>--</code> separates the options from the file path. Take the SHA from the commit that finished the problem.</p>
+<p><strong>Stage 2. Write the table.</strong></p>
+<div class="hl"><pre><span></span><code>| Problem | Pattern | Time | Space | Hint tier | Commit |
+|---|---|---|---|---|---|
+| first_repeat | set membership | O(n) | O(n) | 0 | a1b2c3d |
+</code></pre></div>
+
+<p>Use your six problems and your own values. The pattern is a short name, such as set membership, counter or sliding window. Use the hint tier names from your trainer. If none are given, write the number of the hint you used, or 0 if you used none.</p>
+<p><strong>Test it.</strong> Run <code>grep -c "^|" README.md</code>. The count includes the header row and the separator row, so six data rows give 8. Expected output is <code>8</code>.</p>
+<h4 id="y2-t206-whiteboard-defence-if-drawn">Y2-T20.6 Whiteboard defence (if drawn)</h4>
+<p><strong>Goal.</strong> Explain one of your problems in five minutes, using a fixed order of steps.</p>
+<p>Use this order every time:</p>
+<ol>
+<li><strong>Clarify.</strong> Repeat the problem in your own words. Ask about input size, empty input and duplicates.</li>
+<li><strong>Brute force.</strong> Describe the simplest correct method and its cost, even if it is slow.</li>
+<li><strong>Optimise.</strong> Name the structure that removes the slow part, such as a set, a dict or a deque, and state the new cost.</li>
+<li><strong>Test edges.</strong> Name three cases: empty, one item and a repeat or a tie.</li>
+<li><strong>State complexity.</strong> Say the time and the space in one sentence each.</li>
+</ol>
+<p>Practise with a fictional bakery that wants the first day it sells over 100 loaves. Brute force recomputes each total. Optimised, it keeps a running total in one pass. Do the same reasoning for your own problems.</p>
+<p>Practise aloud, with a timer, five times. Rubric points are clarify, approach, complexity, edge cases and communication. You need at least three out of five.</p>
+<h4 id="y2-t207-update-the-dsa-tracker">Y2-T20.7 Update the DSA tracker</h4>
+<p><strong>Goal.</strong> Your squad row in the tracker has every member's repo URL by 15:30.</p>
+<p>This task belongs to the Scrum/Docs role. If you hold that role, open the tracker link from your trainer, find your squad row, and add each member's repo URL in the right column. Save, reload the page and check that the URLs show. If you do not hold the role, ask the Scrum/Docs student to add your URL, and check it afterwards.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>Run every test case yourself, in order, from a clean copy of the repo.</p>
+<p><strong>TC1.</strong> Clone into a new folder, so you know the code is pushed and complete:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git clone https://github.com/&lt;your-user&gt;/dsa-&lt;name&gt;.git fresh-check&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;cd fresh-check&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}]}"></div>
+
+<p>Expected output is all dots and a <code>passed</code> line with no failures.</p>
+<p><strong>TC3.</strong> Make a one-million-row test CSV with a short script kept outside your repo, then time the script on it. The trainer's file is ten times larger. Expect seconds, not minutes.</p>
+<p><strong>TC2 and TC4.</strong> You cannot run these. Your job is to make your own tests cover the same cases, and to practise the spoken answer.</p>
+<p><strong>Pull request.</strong> The ticket says you work alone in a personal repo. Ask your trainer whether to open a pull request or push to <code>main</code>. If a pull request is needed, use this template:</p>
+<div class="hl"><pre><span></span><code>## What
+Six hidden-test-ready solutions, the applied dedup script and the README log.
+
+## Why
+Y2-T20: show that I choose the right structure and state its cost.
+
+## How to test
+pytest -q
+python3 applied/dedup_topk.py applied/data/readings.csv
+
+## Evidence
+- pytest output: (paste the last two lines)
+- applied script output: (paste rows, dups, top and the three timings)
+- README log: (paste the table)
+- Screenshot of the trainer&#39;s access (optional)
+
+## Checklist
+- [ ] Each problem file has a complexity header
+- [ ] Each problem has at least three tests
+- [ ] The README log has six rows
+</code></pre></div>
+
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] <strong>The repo <code>dsa-&lt;name&gt;</code> exists, and your trainer has access.</strong> Check the Settings page on GitHub, under Collaborators. Your last push before 12:55 is in <code>git log -1 --format=%ci</code> for the problems.</li>
+<li>[ ] <strong>Six solutions, each with a complexity header and at least three tests.</strong> Run <code>grep -c "def test_" tests/d1/*.py</code> and check each count is three or more. Run <code>pytest -q</code>, expecting a <code>passed</code> line.</li>
+<li>[ ] <strong>The applied script runs, and its timings are in the README.</strong> Run the script and check that the README's Applied section matches its output.</li>
+<li>[ ] <strong>The README log is complete.</strong> Run <code>grep -c "^|" README.md</code>, expecting 8.</li>
+<li>[ ] <strong>The DSA tracker has your hidden-test score and hint tiers.</strong> Check the tracker row with your trainer.</li>
+<li>[ ] <strong>The repo link is in the LMS Y2-T20 field by 23:59.</strong> Open the LMS entry and check the link saved.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'problems'</code></td>
+<td>pytest cannot find your code from the test folder</td>
+<td>Add an empty <code>conftest.py</code> in the repo root, or run <code>python -m pytest -q</code> from the root</td>
+</tr>
+<tr>
+<td><code>TypeError: unhashable type: 'list'</code></td>
+<td>You used a list as a set item or a dict key</td>
+<td>Convert the row to a tuple before <code>in</code> and <code>add</code></td>
+</tr>
+<tr>
+<td>The applied script takes hours on the big file</td>
+<td><code>if key in seen_list</code> on a list, which is O(n²)</td>
+<td>Change the list to <code>set()</code></td>
+</tr>
+<tr>
+<td><code>IndexError: list index out of range</code></td>
+<td>You ran the script without a file name, so <code>sys.argv[1]</code> is missing</td>
+<td>Pass the file path after the script name</td>
+</tr>
+<tr>
+<td><code>KeyError: 'station_id'</code></td>
+<td>Your CSV header uses another name</td>
+<td>Print <code>reader.fieldnames</code> and use the real names</td>
+</tr>
+<tr>
+<td><code>dups=0</code> on a file that has repeats</td>
+<td>The key includes a field that differs on every row, such as the value or a row ID</td>
+<td>Build the key only from the fields that identify one reading</td>
+</tr>
+<tr>
+<td><code>dups=</code> is far too high</td>
+<td>The key uses only one column, so different readings look the same</td>
+<td>Use every field that makes a reading unique</td>
+</tr>
+<tr>
+<td>Timings are near zero or wildly different</td>
+<td>You timed the print or the file open, or ran once</td>
+<td>Time only the function call, use <code>timeit.repeat</code>, and take the minimum</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'pandas'</code></td>
+<td>pandas is not installed</td>
+<td>Run <code>pip install pandas</code></td>
+</tr>
+<tr>
+<td><code>python</code> opens the Microsoft Store</td>
+<td>The Store alias shadows Python on Windows</td>
+<td>Use <code>py -3</code> or install Python from python.org</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p><strong>Q1. Why does a set make the duplicate check O(n), where a list makes it O(n²)?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A set uses a hash to jump straight to the slot for a key, so each membership check takes O(1) on average. Over n rows the total is O(n). A list membership test scans every earlier item, so the total is about n times n divided by two, which is O(n²). The change from list to set is one line of code, but it changes the whole cost. Say "on average", because a bad set of hash collisions can be slower.</p></details>
+
+<p><strong>Q2. What is the memory cost of your set, and when would you not use it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The set stores one entry for each distinct key, so the extra memory is O(n) in the worst case. With 10 million distinct tuples that can be gigabytes, so memory is a real limit. I would not use a set when memory is tight. Sorting the rows costs O(n log n) time, and sorting in place needs little extra space, although the rows must still be loaded first. A sliding window that keeps only recent keys is another choice when duplicates are close together in time. The right answer depends on which resource the system cannot spare.</p></details>
+
+<p><strong>Q3. Which of the six problems did you choose to do first, and why?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Explain your reasoning honestly: which problem you chose first, and why, such as building a green test run with easier ones. Your commit history shows the order, so your answer should match it.</p></details>
+
+<p><strong>Q4. How did you check edge cases?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>I wrote at least three tests per problem: a normal case, an empty case and a tricky case such as a repeat or a tie. Hidden tests check cases I did not write, so I also considered negative numbers and large inputs. Finally I ran the tests on a fresh clone.</p></details>
+
+<p><strong>Q5. Why do the pure-Python and pandas timings differ, and which would you use in production?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Pandas loads the whole file into a table and runs its duplicate check in optimised code, so it is often faster but needs more memory. Pure Python streams the file row by row, using little memory but running slower. Timings also depend on what each includes, such as the file read. I would choose by the limit that matters, and say so in the README.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The applied script must count repeated readings in a 10 million row file. Which structure gives an O(n) pass?&quot;, &quot;opts&quot;: [&quot;A list that you search with `in` on every row&quot;, &quot;A set of key tuples that you check and add to on every row&quot;, &quot;A sorted copy of the file that you scan with two nested loops&quot;, &quot;A string that you append to and search each time&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A set check is O(1) on average, so one pass is O(n). A list search scans every item, which makes the whole job O(n\u00b2). Sorting first still leaves a nested scan, and string search repeats the same work.&quot;}, {&quot;q&quot;: &quot;Your key is station_id, timestamp and pollutant. Why must the key be a tuple before it goes in the set?&quot;, &quot;opts&quot;: [&quot;Tuples are faster to print than lists&quot;, &quot;Tuples are sorted automatically by Python&quot;, &quot;A tuple is hashable, but a list is not, so a list cannot go in a set&quot;, &quot;Tuples use less memory than strings&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A set can store only hashable items. A tuple of strings is hashable, while a list of the same strings is not. The printing speed, the sorting and the memory of tuples have nothing to do with this rule.&quot;}, {&quot;q&quot;: &quot;Your script prints `dups=0` on a file that you know has repeats. Which cause fits best?&quot;, &quot;opts&quot;: [&quot;The timing lines are wrong&quot;, &quot;The file has too many columns for the set&quot;, &quot;pandas is not installed&quot;, &quot;The key includes a field that differs on every row, such as the value, so no two keys ever match&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Repeats are found only when the keys match exactly. A key that includes a field that always differs never matches. A column name that does not exist would raise a KeyError, not print dups=0. Timing lines and a missing pandas do not change the pure-Python duplicate count.&quot;}]}"></div>
+
+<h2 id="y2-t21-dsa-2-windows-stacks-queues-on-rolling-aqi-matching-sql">Y2-T21 · DSA-2: windows, stacks, queues + O(n) rolling AQI matching SQL</h2>
+<p><em>Session 21 · phase DSA · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>Health officers want an alert when air stays poor for a while, not just in one hour. The measure is PM2.5, which means fine particles in the air that can reach the lungs. The alert looks at a <strong>rolling window</strong> of six hours. A rolling window is the group of the latest six readings. Each new hour adds a reading and pushes out the oldest one. For every window you need two numbers: the average and the maximum.</p>
+<p>The slow way adds up all six readings again every hour. Most of those readings were already added an hour earlier, so the work repeats itself. The faster way keeps a <strong>running sum</strong>, a total that goes up by the new reading and down by the reading that left. For the maximum you use a <strong>deque</strong> (a double-ended queue, a list that is quick to add and remove at both ends). The deque keeps only the readings that could still be the maximum. Every reading enters and leaves once, so the work grows in a straight line with the number of readings. That is the O(n) in the ticket.</p>
+<p>A fast answer is useless if it is wrong. The ticket therefore asks you to check your Python against a <strong>SQL window view</strong> from Y2-T15, a saved database query that computes values over neighbouring rows. The two must agree to two decimal places. Checking a new method against a trusted reference is what a data engineer does before a number reaches a dashboard.</p>
+<p>The day also has six DSA-2 problems (DSA means data structures and algorithms), five homework problems on two pointers, and a pair mock interview, where you take turns as candidate and interviewer. Asking clarifying questions and giving hints are skills employers hire for, so they are marked too.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p><strong>Must already be merged.</strong> From the spec: Y2-T18 (clean parquet in a date-partitioned private bucket), Y2-T19 (the pipeline running on the hardened VM and writing to the bucket) and Y2-T20 (DSA-1 solutions and the README log in your <code>dsa-&lt;name&gt;</code> repository). A <strong>repository</strong>, or repo, is a project folder that Git tracks. The <strong>squad repository</strong> holds <code>citypulse.db</code>, a SQLite database file.</p>
+<p><strong>Tools and accounts.</strong> Git, a GitHub account with access to the squad repository and your <code>dsa-&lt;name&gt;</code> repository, Python 3.9 or later, pytest (a Python test runner), and the <code>sqlite3</code> command-line tool. The lab machine is Linux and has bash, git and Python 3. Your laptop runs Windows, so use Git Bash there. Where the ticket says <code>python</code>, type <code>python3</code> on Linux if <code>python</code> is not found.</p>
+<p>Run each check from the folder named in the table.</p>
+<table>
+<thead>
+<tr>
+<th>Check command</th>
+<th>Run in</th>
+<th>You are ready when you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python --version</code></td>
+<td>any terminal</td>
+<td><code>Python 3.</code> followed by a version of 3.9 or later</td>
+</tr>
+<tr>
+<td><code>pytest --version</code></td>
+<td>any terminal</td>
+<td>a pytest version. If you get "command not found", run <code>python -m pip install pytest</code></td>
+</tr>
+<tr>
+<td><code>sqlite3 --version</code></td>
+<td>squad repo root</td>
+<td>a version number. If not found, install the sqlite3 tool with your system's package manager</td>
+</tr>
+<tr>
+<td><code>sqlite3 citypulse.db ".tables"</code></td>
+<td>squad repo root</td>
+<td>a list including <code>fact_air_quality</code> and a window view from T15. Write the view's name down</td>
+</tr>
+<tr>
+<td><code>git pull</code> then <code>git log --oneline -5</code></td>
+<td>squad repo root</td>
+<td>the latest lines include merges from T18, T19 and T20</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td><code>dsa-&lt;name&gt;</code> repo root</td>
+<td><code>nothing to commit, working tree clean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSA</td>
+<td>Data structures and algorithms: choosing the right container and method to make a program fast.</td>
+</tr>
+<tr>
+<td>Big-O (O(n), O(n·k), O(k))</td>
+<td>How the work or memory grows as the input size n grows. O(n) means the work doubles when the input doubles.</td>
+</tr>
+<tr>
+<td>PM2.5</td>
+<td>Fine particles in the air, measured in micrograms per cubic metre. Here it is the value you average and take the maximum of.</td>
+</tr>
+<tr>
+<td>Reading</td>
+<td>One measured value at one station and one hour.</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td>The code of one sensor site. You export one site at a time.</td>
+</tr>
+<tr>
+<td><code>ts_utc</code></td>
+<td>The timestamp of a reading, in UTC (the standard world time zone).</td>
+</tr>
+<tr>
+<td>Rolling window</td>
+<td>The latest k readings, which moves forward by one reading each step.</td>
+</tr>
+<tr>
+<td>k</td>
+<td>The window size. Here k = 6 for the real data and k = 3 in the trace test.</td>
+</tr>
+<tr>
+<td>Running sum</td>
+<td>A total updated by adding the entering value and subtracting the leaving value.</td>
+</tr>
+<tr>
+<td>Partial window</td>
+<td>A window at the start that has fewer than k values. Both SQL and your code must handle it the same way.</td>
+</tr>
+<tr>
+<td>Deque</td>
+<td>A double-ended queue, built with <code>from collections import deque</code>. Adding and removing at either end takes constant time.</td>
+</tr>
+<tr>
+<td>Monotonic deque</td>
+<td>A deque whose stored values are kept in sorted order, so its front is always the answer you need.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The position of an item in a list. Positions start at 0.</td>
+</tr>
+<tr>
+<td>Amortised O(n)</td>
+<td>The total work over all steps is at most a constant times n, even if one step is expensive.</td>
+</tr>
+<tr>
+<td>Nested loop</td>
+<td>A loop inside another loop. Two nested loops over n items cost O(n²).</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>The query language used to ask questions of a database.</td>
+</tr>
+<tr>
+<td>Window view</td>
+<td>A saved SQL query that computes values such as averages over neighbouring rows.</td>
+</tr>
+<tr>
+<td><code>OVER (...)</code></td>
+<td>The part of an SQL query that says which rows form the window.</td>
+</tr>
+<tr>
+<td><code>ROWS BETWEEN 5 PRECEDING AND CURRENT ROW</code></td>
+<td>The last six rows, counting the current row.</td>
+</tr>
+<tr>
+<td><code>sqlite3</code></td>
+<td>A command-line tool that runs SQL against a SQLite database file.</td>
+</tr>
+<tr>
+<td><code>-header -csv</code></td>
+<td>Two <code>sqlite3</code> options: print a header line of column names, and write comma-separated output.</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Comma-separated values: a text file with one row per line and commas between fields.</td>
+</tr>
+<tr>
+<td><code>csv.DictReader</code></td>
+<td>A Python tool that reads a CSV file and gives each row as a dictionary keyed by the header names.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>A number a program returns when it stops. 0 means success. Anything else means a problem.</td>
+</tr>
+<tr>
+<td><code>echo $?</code></td>
+<td>A shell command that prints the exit code of the command before it.</td>
+</tr>
+<tr>
+<td>Tolerance</td>
+<td>The allowed difference between two numbers. Here it is 0.005.</td>
+</tr>
+<tr>
+<td>Assert</td>
+<td>A check that stops with an error if its condition is false.</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>A test runner. It runs each function whose name starts with <code>test_</code>.</td>
+</tr>
+<tr>
+<td>Test case</td>
+<td>One check the trainer runs, with a command and an expected result.</td>
+</tr>
+<tr>
+<td>Hidden tests</td>
+<td>Checks you cannot see, which the trainer runs on your code.</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>The function name, its parameters and its return type, which the problem card fixes exactly.</td>
+</tr>
+<tr>
+<td>Complexity header</td>
+<td>A comment at the top of a solution that states its time and space cost.</td>
+</tr>
+<tr>
+<td>Two pointers</td>
+<td>A technique that moves two positions through a list to avoid nested loops.</td>
+</tr>
+<tr>
+<td>Hint tier</td>
+<td>The level of help you needed in the interview, from the scale your squad uses in the README.</td>
+</tr>
+<tr>
+<td>Rubric</td>
+<td>A scoring sheet with criteria and points for each role.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A separate line of commits in Git, used for your work before it is merged.</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of your changes, with a message.</td>
+</tr>
+<tr>
+<td>Commit SHA</td>
+<td>The unique code Git gives a commit. Short form: <code>git rev-parse --short HEAD</code>.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge your branch, which a squad-mate reviews and approves.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>The trainer checks five acceptance criteria and four test cases. Read each one, then the command that proves it.</p>
+<p><strong>Acceptance criteria.</strong></p>
+<ul>
+<li><em>Hidden tests on the 12:55 commit.</em> The trainer runs hidden tests on the commit your squad pushed at 12:55. At least 5 of the 6 DSA-2 problems must pass.</li>
+<li><em>Matches the SQL export.</em> <code>rolling_window.py</code> must print a clean summary for the CSV, with exit code 0. TC2 covers it.</li>
+<li><em>No nested loop over the window.</em> The trainer reads the code. A loop inside a loop over the window fails. So does a <code>sum(...)</code> of a slice inside the main loop, because it hides a loop.</li>
+<li><em>Pair-interview rubric uploaded.</em> A filled rubric sheet, with scores for both candidate and interviewer roles, is in the LMS.</li>
+<li><em>Complexity header.</em> Each solution begins with a comment giving its time and space cost.</li>
+</ul>
+<p><strong>TC1: the hidden tests.</strong></p>
+<p>Steps: <code>python run_hidden.py roster.csv --day d2</code></p>
+<ul>
+<li><code>python</code> runs the Python program that follows it.</li>
+<li><code>run_hidden.py</code> is the trainer's script. You do not run it yourself.</li>
+<li><code>roster.csv</code> is the input file the trainer names. You do not create it.</li>
+<li><code>--day d2</code> is a flag, a word starting with <code>--</code>, that tells the script which day's problems to test.</li>
+</ul>
+<p>Passing output: a score line showing at least 5 out of 6 for you. The exact wording is set by the trainer.</p>
+<p>Failing output: fewer than 5. The usual cause is an edge case you did not test, such as an empty input or a window larger than the data. Another cause is a function name or parameter that differs from the problem card.</p>
+<p><strong>TC2: the SQL cross-check.</strong></p>
+<p>Steps: <code>python applied/rolling_window.py applied/data/sql_rolling.csv; echo $?</code></p>
+<ul>
+<li><code>python</code> runs your script.</li>
+<li><code>applied/rolling_window.py</code> is the file path of your script, relative to the squad repo root.</li>
+<li><code>applied/data/sql_rolling.csv</code> is the file path of the export, passed as the first argument.</li>
+<li>The semicolon <code>;</code> runs the next command even if the first one failed.</li>
+<li><code>echo $?</code> prints the exit code of the script, which is 0 on success.</li>
+</ul>
+<p>Passing output: the last line of your script says <code>&lt;n&gt; rows, 0 mismatches</code>, where n is the number of data rows. Then <code>0</code> on its own line.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python applied/rolling_window.py applied/data/sql_rolling.csv; echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;96 rows, 0 mismatches&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}]}"></div>
+
+<p>The number 96 is only an example. Your count is the number of data rows in your own CSV.</p>
+<p>Failing output: a line with a number above zero after "mismatches". The usual cause is the partial windows, which are divided by the wrong count, or the expiry test for the maximum. A traceback instead means your script stopped. <code>FileNotFoundError</code> means you ran the command from the wrong folder. <code>KeyError: 'avg6'</code> means the CSV header does not match the name you read. A non-zero <code>echo $?</code> means the script did not finish cleanly.</p>
+<p><strong>TC3: the unit tests.</strong></p>
+<p>Steps: <code>pytest -q tests/applied/test_rolling.py</code></p>
+<ul>
+<li><code>pytest</code> is the test runner.</li>
+<li><code>-q</code> means quiet: print one line per test instead of a long report.</li>
+<li><code>tests/applied/test_rolling.py</code> is the test file to run.</li>
+</ul>
+<p>Passing output: a line such as <code>3 passed in 0.02s</code>. The count and time will differ.</p>
+<p>Failing output: an <code>AssertionError</code> showing two lists, the expected maxes and what your function returned. The usual cause is a wrong expiry test. An <code>ImportError</code> means Python could not find your module, which usually happens when you run pytest from the wrong folder. Run it from the repo root with <code>python -m pytest -q tests/applied/test_rolling.py</code>, which adds the current folder to the import path.</p>
+<p>The trace expectation is <code>[4, 2, 12, 3, 8, 1]</code> with <code>k=3</code> giving maxes <code>[4, 4, 12, 12, 12, 8]</code>.</p>
+<p>The animation below shows a passing run of TC2 on the terminal.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python applied/rolling_window.py applied/data/sql_rolling.csv; echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;96 rows, 0 mismatches&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}]}"></div>
+
+<p><strong>TC4: the viva question.</strong></p>
+<p>The trainer asks: "Why does each index enter and leave the deque at most once?"</p>
+<p>A passing answer says that each index is pushed once and popped at most once, so the total number of pops is at most n. Because one step can pop many items, the cost is O(n) amortised, not O(1) per step. A failing answer describes a loop inside a loop without checking whether the inner loop's total is bounded. That is the trap in the chapter: one expensive step does not make the algorithm O(n²).</p>
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T21.1</td>
+<td>Every student</td>
+<td>Gate: push five homework problems on two pointers. Be ready to show one and state its complexity.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T21.2</td>
+<td>Every student</td>
+<td>Solve the six DSA-2 problems with exact signatures, complexity headers and at least three tests each. Push by 12:55.</td>
+<td>120 min</td>
+</tr>
+<tr>
+<td>Y2-T21.3</td>
+<td>Every student</td>
+<td>Export one location's SQL window view to <code>applied/data/sql_rolling.csv</code>. Commit the <code>.sql</code> file, not the database.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T21.4</td>
+<td>Every student</td>
+<td>Write <code>rolling(values, k=6)</code> in <code>applied/rolling_window.py</code> in O(n). It must print the summary line and exit 0 on the CSV.</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Y2-T21.5</td>
+<td>Every student</td>
+<td>Add <code>tests/applied/test_rolling.py</code> with the trace from the ticket.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T21.6</td>
+<td>Every student</td>
+<td>Pair interview: candidate for 10 minutes, interviewer for 10 minutes. Both roles fill the rubric and upload it.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T21.7</td>
+<td>Every student</td>
+<td>Update the README log rows for d2 and the window-semantics note.</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which piece to own.</strong> Own Y2-T21.4 (the rolling function and its script) and Y2-T21.5 (its test file). Those commits show that you wrote the O(n) method, and the viva asks about exactly that. Every student also does their own DSA solutions and their own interview role, so those commits will show your work too.</p>
+<p><strong>Branch name.</strong> Use <code>y2-t21-rolling-&lt;your-name&gt;</code> for your work on <code>applied/</code>. Use a separate branch in your <code>dsa-&lt;name&gt;</code> repo for the problem solutions.</p>
+<p><strong>Example commit messages, in the order you would make them.</strong> These are patterns. Write your own wording and make each commit match what it changes.</p>
+<ol>
+<li><code>Export 6-hour SQL window view for one location</code></li>
+<li><code>Read sql_rolling.csv in rolling_window.py</code></li>
+<li><code>Add running-sum average with partial windows</code></li>
+<li><code>Add monotonic deque for rolling maximum</code></li>
+<li><code>Compare against SQL export with tolerance and exit code</code></li>
+<li><code>Add tests for rolling maximum trace</code></li>
+</ol>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<p>Commands for this section run in the squad repo root unless the stage says otherwise. Everything here works on the Linux lab and in Git Bash.</p>
+<h4 id="stage-1-export-the-sql-reference-y2-t213">Stage 1: export the SQL reference (Y2-T21.3)</h4>
+<p><strong>Goal.</strong> A CSV of rolling averages and maxima for one location, computed by the SQL window view. Your Python must match it.</p>
+<p><strong>Step 1a. Pick one location.</strong> Run:</p>
+<div class="hl"><pre><span></span><code>sqlite3<span class="w"> </span>citypulse.db<span class="w"> </span><span class="s2">&quot;SELECT DISTINCT location_id FROM fact_air_quality;&quot;</span>
+</code></pre></div>
+
+<p><code>SELECT DISTINCT</code> lists each value once. <code>FROM fact_air_quality</code> names the table. The output is one location id per line. Pick one, and write it in the commit message later.</p>
+<p><strong>Step 1b. Learn the window clause.</strong> This is the only SQL piece you see here. You write the rest from your T15 view.</p>
+<div class="hl"><pre><span></span><code><span class="k">AVG</span><span class="p">(</span><span class="n">pm2_5</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ts_utc</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg6</span>
+</code></pre></div>
+
+<ul>
+<li><code>AVG(pm2_5)</code> averages the column over the window.</li>
+<li><code>OVER (...)</code> says the average is computed over neighbouring rows, not collapsed into one number.</li>
+<li><code>ORDER BY ts_utc</code> sets the order of the rows, so the window follows time.</li>
+<li><code>ROWS BETWEEN 5 PRECEDING AND CURRENT ROW</code> takes the five rows before this one plus this row, which is six rows.</li>
+<li><code>AS avg6</code> names the output column <code>avg6</code>. The CSV header uses this name.</li>
+</ul>
+<p>The first rows have fewer than six values. SQL divides by the rows it has, so the start of the file uses partial windows. Your Python must do the same. A <code>MAX(pm2_5) OVER (...) AS max6</code> column uses the same window.</p>
+<p><strong>Step 1c. Write the file.</strong> Save <code>applied/sql/rolling_6h.sql</code>. It selects <code>ts_utc</code>, <code>pm2_5</code>, <code>avg6</code> and <code>max6</code> from <code>fact_air_quality</code>, filters to your <code>location_id</code>, and orders by <code>ts_utc</code>. Write the <code>WHERE</code> and <code>ORDER BY</code> lines yourself.</p>
+<p><strong>Step 1d. Run the export.</strong></p>
+<div class="hl"><pre><span></span><code>sqlite3<span class="w"> </span>-header<span class="w"> </span>-csv<span class="w"> </span>citypulse.db<span class="w"> </span>&lt;<span class="w"> </span>applied/sql/rolling_6h.sql<span class="w"> </span>&gt;<span class="w"> </span>applied/data/sql_rolling.csv
+</code></pre></div>
+
+<ul>
+<li><code>sqlite3 citypulse.db</code> opens the database.</li>
+<li><code>&lt; applied/sql/rolling_6h.sql</code> feeds the file into <code>sqlite3</code> as its input.</li>
+<li><code>-header</code> prints the column names as the first line.</li>
+<li><code>-csv</code> writes comma-separated output.</li>
+<li><code>&gt; applied/data/sql_rolling.csv</code> sends the output to the file instead of the screen.</li>
+</ul>
+<p>Expected: the command prints nothing. The file exists.</p>
+<p><strong>Step 1e. Check it.</strong></p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-3<span class="w"> </span>applied/data/sql_rolling.csv
+wc<span class="w"> </span>-l<span class="w"> </span>applied/data/sql_rolling.csv
+</code></pre></div>
+
+<p><code>head -3</code> prints the header and the first two data rows. The first line must read <code>ts_utc,pm2_5,avg6,max6</code> in some order, with <code>avg6</code> and <code>max6</code> spelled exactly like that. <code>wc -l</code> counts lines, so its number is the data rows plus one for the header.</p>
+<p>Commit <code>rolling_6h.sql</code> and the CSV. Do not add <code>citypulse.db</code>.</p>
+<h4 id="stage-2-read-the-csv-in-python-y2-t214">Stage 2: read the CSV in Python (Y2-T21.4)</h4>
+<p><strong>Goal.</strong> Your script reads the file and sees every row.</p>
+<p><strong>Step 2a. Write the reader.</strong> Create <code>applied/rolling_window.py</code> with:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">),</span> <span class="s2">&quot;rows read&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import csv</code> and <code>import sys</code> bring in the CSV reader and the command-line arguments.</li>
+<li><code>path = sys.argv[1]</code> takes the first word after the script name. That is the CSV path from TC2.</li>
+<li><code>with open(path, newline="") as f:</code> opens the file. The <code>with</code> block closes it when the block ends.</li>
+<li><code>rows = list(csv.DictReader(f))</code> reads every row into a list. Each row is a dictionary keyed by the header names.</li>
+<li><code>print(...)</code> shows the number of rows.</li>
+</ul>
+<p><strong>Step 2b. Run it.</strong></p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>applied/rolling_window.py<span class="w"> </span>applied/data/sql_rolling.csv
+</code></pre></div>
+
+<p>Expected: the number printed equals the <code>wc -l</code> count minus one. If it does not, the file has a blank line or a second header row.</p>
+<p>Every value in <code>rows</code> is text. Convert with <code>float(row["pm2_5"])</code> before you do any arithmetic. Otherwise <code>"9"</code> would compare as bigger than <code>"10"</code>. If the export has an empty <code>pm2_5</code> cell, <code>float("")</code> raises <code>ValueError</code>. The ticket does not say what to do with missing readings, so ask your trainer, and make sure the SQL view and your Python treat them the same way. A simple choice is to filter them out in the <code>.sql</code> file with <code>WHERE pm2_5 IS NOT NULL</code>.</p>
+<p><strong>Step 2c. Plan the shape of the file now.</strong> The ticket asks for a function <code>rolling(values, k=6)</code>. Put the maths in that function. It takes a list of numbers and returns two lists: the averages and the maxima. Put the reading and comparing in a function called <code>main()</code>, and end the file with:</p>
+<div class="hl"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p>This guard means <code>main()</code> runs only when you run the file directly, not when pytest imports it. Without it, importing the file would run the reader, find no <code>sys.argv[1]</code>, and fail with <code>IndexError</code>. Inside <code>main()</code>, build the numbers with <code>values = [float(r["pm2_5"]) for r in rows]</code>. The loops in Stages 3 and 4 go inside <code>rolling</code>, with <code>total</code>, <code>averages</code>, <code>dq</code> and <code>out</code> created at the top of the function and <code>k</code> as its parameter. End <code>rolling</code> with <code>return averages, out</code>.</p>
+<h4 id="stage-3-the-running-sum-for-the-average-y2-t214">Stage 3: the running sum for the average (Y2-T21.4)</h4>
+<p><strong>Goal.</strong> An average for each row that matches the SQL <code>avg6</code>.</p>
+<p><strong>The technique.</strong> Start with the first values. Each later step adds the new value and takes away the value that just left. The window never has to be rebuilt, so each value is handled twice in total. The divisor is the number of values in the window now, which is <code>min(i + 1, k)</code>.</p>
+<p><strong>Step 3a. Write the loop with blanks.</strong> Put this in <code>rolling_window.py</code> below the reader, and fill in each blank:</p>
+<div class="hl"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">averages</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">-=</span> <span class="n">____</span>          <span class="c1"># hint: the value k positions back, at index i - k</span>
+    <span class="n">averages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">____</span><span class="p">)</span>   <span class="c1"># hint: min(i + 1, k)</span>
+</code></pre></div>
+
+<ul>
+<li><code>enumerate(values)</code> gives the position <code>i</code> and the value <code>v</code> at each step.</li>
+<li><code>total += v</code> adds the entering value.</li>
+<li><code>if i &gt;= k:</code> is true once the window is full, so there is a value to remove.</li>
+<li>The blank in the subtraction is the value that just left the window.</li>
+<li>The blank in the division is the number of values in the window now.</li>
+</ul>
+<p><strong>Step 3b. Test the idea before you trust it.</strong> This block checks the running totals on the ticket's example. It is standard library only, so it runs on its own.</p>
+<div class="hl"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">running</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">-=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">]</span>
+    <span class="n">running</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">running</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="c1">## each total must equal the sum of the last min(i + 1, k) values</span>
+<span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))]</span>
+<span class="k">assert</span> <span class="n">running</span> <span class="o">==</span> <span class="n">expected</span>
+</code></pre></div>
+
+<p>Line by line, the first assert checks the running totals by hand. The second builds each window the slow way, with a slice and <code>sum</code>, and checks the fast version against it. Keep this habit. A slow, obvious version in a test is the cheapest proof that the fast version is right.</p>
+<p>Expected: the block runs with no output. Any error means the running total is wrong.</p>
+<h4 id="stage-4-the-monotonic-deque-for-the-maximum-y2-t214">Stage 4: the monotonic deque for the maximum (Y2-T21.4)</h4>
+<p><strong>Goal.</strong> The maximum of each window in O(n), with the same partial windows.</p>
+<p><strong>The technique.</strong> The deque stores indexes, not values, and its values decrease from front to back. A new value removes every smaller value from the back, because those can never again be the maximum. The front index is the answer. When the front index leaves the window, remove it. An index is added once and removed at most once.</p>
+<p>Here is the trace for <code>values = [2, 5, 1, 4]</code> with <code>k = 2</code>. It is a different list from the ticket's, so you can follow it without copying the answer.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Monotonic deque on [2, 5, 1, 4] with k=2&quot;, &quot;code&quot;: [&quot;dq = deque()&quot;, &quot;out = []&quot;, &quot;for i, v in enumerate(values):&quot;, &quot;    while dq and values[dq[-1]] &lt;= v:&quot;, &quot;        dq.pop()&quot;, &quot;    dq.append(i)&quot;, &quot;    if dq[0] &lt;= i - k:&quot;, &quot;        dq.popleft()&quot;, &quot;    out.append(values[dq[0]])&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;dq&quot;, &quot;[]&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Start with an empty deque of indexes and an empty output list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;i&quot;, &quot;0&quot;], [&quot;v&quot;, &quot;2&quot;], [&quot;dq&quot;, &quot;[]&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The first value is 2, at index 0.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;i&quot;, &quot;0&quot;], [&quot;v&quot;, &quot;2&quot;], [&quot;dq&quot;, &quot;[0]&quot;], [&quot;out&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The deque is empty, so index 0 joins the back.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;i&quot;, &quot;0&quot;], [&quot;v&quot;, &quot;2&quot;], [&quot;dq&quot;, &quot;[0]&quot;], [&quot;out&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;With one value so far, the front gives 2.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;i&quot;, &quot;1&quot;], [&quot;v&quot;, &quot;5&quot;], [&quot;dq&quot;, &quot;[0]&quot;], [&quot;out&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;The next value is 5, at index 1.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;i&quot;, &quot;1&quot;], [&quot;v&quot;, &quot;5&quot;], [&quot;dq&quot;, &quot;[]&quot;], [&quot;out&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;The back value 2 is no bigger than 5, so index 0 is popped.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;i&quot;, &quot;1&quot;], [&quot;v&quot;, &quot;5&quot;], [&quot;dq&quot;, &quot;[1]&quot;], [&quot;out&quot;, &quot;[2]&quot;]], &quot;note&quot;: &quot;Index 1 joins the back.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;i&quot;, &quot;1&quot;], [&quot;v&quot;, &quot;5&quot;], [&quot;dq&quot;, &quot;[1]&quot;], [&quot;out&quot;, &quot;[2,5]&quot;]], &quot;note&quot;: &quot;The front is index 1, so the maximum is 5.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;i&quot;, &quot;2&quot;], [&quot;v&quot;, &quot;1&quot;], [&quot;dq&quot;, &quot;[1,2]&quot;], [&quot;out&quot;, &quot;[2,5]&quot;]], &quot;note&quot;: &quot;5 is bigger than 1, so nothing is popped and index 2 joins the back.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;i&quot;, &quot;2&quot;], [&quot;v&quot;, &quot;1&quot;], [&quot;dq&quot;, &quot;[1,2]&quot;], [&quot;out&quot;, &quot;[2,5,5]&quot;]], &quot;note&quot;: &quot;Index 1 is still inside the window of two values, so the output is 5.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;i&quot;, &quot;3&quot;], [&quot;v&quot;, &quot;4&quot;], [&quot;dq&quot;, &quot;[1]&quot;], [&quot;out&quot;, &quot;[2,5,5]&quot;]], &quot;note&quot;: &quot;The back value 1 is no bigger than 4, so index 2 is popped.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;i&quot;, &quot;3&quot;], [&quot;v&quot;, &quot;4&quot;], [&quot;dq&quot;, &quot;[1,3]&quot;], [&quot;out&quot;, &quot;[2,5,5]&quot;]], &quot;note&quot;: &quot;Index 3 joins the back.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;i&quot;, &quot;3&quot;], [&quot;v&quot;, &quot;4&quot;], [&quot;dq&quot;, &quot;[3]&quot;], [&quot;out&quot;, &quot;[2,5,5]&quot;]], &quot;note&quot;: &quot;Index 1 has left the window, so it is removed from the front.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;i&quot;, &quot;3&quot;], [&quot;v&quot;, &quot;4&quot;], [&quot;dq&quot;, &quot;[3]&quot;], [&quot;out&quot;, &quot;[2,5,5,4]&quot;]], &quot;note&quot;: &quot;The maximum of the last two values, 1 and 4, is 4.&quot;}]}"></div>
+
+<p>Read the <code>dq</code> column as the important part. The front is always the answer. Note that the output includes the partial windows at the start, which matches the SQL view.</p>
+<p><strong>Step 4a. Write the loop with blanks.</strong> Fill in each blank in <code>rolling_window.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">dq</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>                     <span class="c1"># indexes, with values decreasing from front to back</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">dq</span> <span class="ow">and</span> <span class="n">____</span><span class="p">:</span>
+        <span class="n">dq</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                 <span class="c1"># hint: compare the back value with v</span>
+    <span class="n">dq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">____</span><span class="p">:</span>
+        <span class="n">dq</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>             <span class="c1"># hint: which index has just left the window?</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">____</span><span class="p">)</span>             <span class="c1"># hint: the value at the front of the deque</span>
+</code></pre></div>
+
+<p>Check your three blanks against the trace. The expiry test uses <code>&lt;=</code>, so an index is removed when it equals <code>i - k</code>. With <code>&lt;</code> it would stay one step too long.</p>
+<p><strong>Step 4b. Test it on the trace.</strong> Call your function on <code>[2, 5, 1, 4]</code> with <code>k=2</code> and check it returns <code>[2, 5, 5, 4]</code>. Then try <code>[4, 2, 12, 3, 8, 1]</code> with <code>k=3</code>. It must return <code>[4, 4, 12, 12, 12, 8]</code>.</p>
+<h4 id="stage-5-compare-with-the-sql-export-and-exit-y2-t214">Stage 5: compare with the SQL export and exit (Y2-T21.4)</h4>
+<p><strong>Goal.</strong> The script counts the mismatches and exits with the right code.</p>
+<p><strong>Step 5a. Compare each row.</strong> Inside the loop over <code>rows</code>, add one check per row. Write the average and maximum you computed as <code>my_avg</code> and <code>my_max</code>:</p>
+<div class="hl"><pre><span></span><code><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">my_avg</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;avg6&quot;</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="mf">0.005</span> <span class="ow">or</span> <span class="n">my_max</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;max6&quot;</span><span class="p">]):</span>
+    <span class="n">mismatches</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<ul>
+<li><code>abs(...)</code> gives the size of the difference, ignoring its sign.</li>
+<li><code>&gt; 0.005</code> allows the tolerance from the ticket.</li>
+<li><code>!=</code> on the maximum is an exact check, because the ticket asks for an exact match.</li>
+<li><code>float(...)</code> converts the CSV text to a number first.</li>
+<li><code>mismatches += 1</code> counts the rows that fail.</li>
+</ul>
+<p>Set <code>mismatches = 0</code> before the loop.</p>
+<p><strong>Step 5b. Print the summary and set the exit code.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows, </span><span class="si">{</span><span class="n">mismatches</span><span class="si">}</span><span class="s2"> mismatches&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">mismatches</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>The f-string prints the wording the trainer expects in TC2.</li>
+<li><code>sys.exit(...)</code> stops the program with the exit code it is given.</li>
+<li><code>0 if mismatches == 0 else 1</code> is a short choice: 0 when there are no mismatches, and 1 otherwise.</li>
+</ul>
+<p>Run TC2 from the repo root. The output must match the animation in the trainer's section.</p>
+<h4 id="stage-6-the-unit-tests-y2-t215">Stage 6: the unit tests (Y2-T21.5)</h4>
+<p><strong>Goal.</strong> A test file that pytest runs.</p>
+<p>Create <code>tests/applied/test_rolling.py</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">applied.rolling_window</span><span class="w"> </span><span class="kn">import</span> <span class="n">rolling</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_rolling_max_trace</span><span class="p">():</span>
+    <span class="n">averages</span><span class="p">,</span> <span class="n">maxes</span> <span class="o">=</span> <span class="n">rolling</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># write the assert for the maxes: the ticket&#39;s trace</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<ul>
+<li><code>from applied.rolling_window import rolling</code> brings in your function. This assumes <code>rolling</code> returns the two lists (averages, maxes) as in Step 2c. If you chose another shape, change the test to match.</li>
+<li>Each function whose name starts with <code>test_</code> is one test. pytest finds and runs it.</li>
+<li><code>assert</code> on its own line checks the result. Write the expected list yourself.</li>
+</ul>
+<p>Add at least two more tests for edge cases: a list with one value, and a window larger than the list. Run from the repo root:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-q<span class="w"> </span>tests/applied/test_rolling.py
+</code></pre></div>
+
+<p>Expected: a line ending in <code>passed</code>, with the count of tests. Run it before every commit.</p>
+<p>The trainer runs plain <code>pytest -q tests/applied/test_rolling.py</code>, without <code>python -m</code>. To make the import work that way too, add an empty file called <code>conftest.py</code> in the repo root. pytest then adds the repo root to the import path. Test it by running the plain <code>pytest</code> form yourself.</p>
+<h4 id="stage-7-the-six-dsa-2-problems-and-the-homework-y2-t212-and-y2-t211">Stage 7: the six DSA-2 problems and the homework (Y2-T21.2 and Y2-T21.1)</h4>
+<p><strong>Goal.</strong> Six working solutions, each with a complexity header and at least three tests, pushed by 12:55.</p>
+<p><strong>Signatures.</strong> Use the function name, parameters and return type from each problem card exactly. A different name fails the hidden tests even when the logic is right.</p>
+<p><strong>Complexity header.</strong> Put a comment at the top of each solution, in the same style as the chapter:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## time: O(n)  space: O(1)</span>
+</code></pre></div>
+
+<p>Write the cost you can justify. Be ready to say why in one sentence.</p>
+<p><strong>Tests.</strong> For each problem, write at least three asserts: a normal case, an edge case, and one case that exposes a common mistake. Edge cases to try are empty input, one item, all values equal, and a window or target that is larger than the data.</p>
+<p><strong>Homework: two pointers.</strong> Two pointers means two positions move through a list, usually from opposite ends, so you avoid a nested loop. Here is the idea on a small sorted list. Look for a pair that sums to 8 in <code>[1, 3, 5, 8]</code>.</p>
+<ul>
+<li>Start with the left pointer on 1 and the right pointer on 8. The sum is 9, which is too big, so move the right pointer left, to 5.</li>
+<li>The sum of 1 and 5 is 6, which is too small, so move the left pointer right, to 3.</li>
+<li>The sum of 3 and 5 is 8. The pair is found.</li>
+</ul>
+<p>Each pointer moves forward at most n steps, so the whole search is O(n) time with O(1) extra space. For the gate, be ready to show one of your five homework solutions, and to say that complexity in one sentence.</p>
+<h4 id="stage-8-the-pair-interview-y2-t216">Stage 8: the pair interview (Y2-T21.6)</h4>
+<p><strong>Goal.</strong> Two roles, two timed turns, and a rubric that both roles fill in.</p>
+<p>Pick the assigned problem card. In the first 10 minutes you play candidate. You ask clarifying questions, state an approach, give its complexity, and test it. In the next 10 minutes you play interviewer. You ask the question, watch how the candidate reasons, and give hints in order from the smallest to the largest.</p>
+<p>Your rubric sheet must have a section for each role. Write the criteria yourself, with your squad. A rubric needs a clear point scale and a short note for each score. Do not copy someone else's sheet.</p>
+<p>Check before you upload:</p>
+<ul>
+<li>Both roles have scores and a one-line reason for each.</li>
+<li>The problem card name is on the sheet.</li>
+<li>The file is a photo or PDF that can be read on screen.</li>
+<li>The upload appears in the LMS for both roles.</li>
+</ul>
+<h4 id="stage-9-readme-log-and-the-window-note-y2-t217">Stage 9: README log and the window note (Y2-T21.7)</h4>
+<p><strong>Goal.</strong> One row for each d2 problem and one note on window semantics.</p>
+<p>For each row, fill in the pattern, time, space, hint tier and commit SHA. To get the SHA of your latest commit, run <code>git rev-parse --short HEAD</code> in the repo. Use the hint-tier scale your squad uses in the README.</p>
+<p>The window-semantics note answers four questions in plain words: how the window starts (partial windows), what counts as one window (six rows, or six hours), what happens when an hour is missing from the feed, and whether the Python matches the SQL. Write your own answers. The chapter's trap applies: six rows are not always six hours.</p>
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run every check in order, and paste each output into the pull request.</p>
+<ol>
+<li>Run <code>python -m pytest -q tests/applied/test_rolling.py</code> from the repo root. Expected: a line ending in <code>passed</code>.</li>
+<li>Run the TC2 command with <code>; echo $?</code>. Expected: the summary line with 0 mismatches, then <code>0</code>.</li>
+<li>Run your six DSA test files in <code>dsa-&lt;name&gt;</code> with <code>python -m pytest -q</code>. Expected: all tests pass.</li>
+<li>Run <code>git log --format='%h %ad %s' --date=iso -5</code>. Expected: your commits, with times, before 12:55 for the DSA push and before 15:30 for the applied files.</li>
+<li>Confirm the rubric upload shows in the LMS for both roles.</li>
+</ol>
+<p>Then open the pull request with this description. Replace each heading's content with your own.</p>
+<div class="hl"><pre><span></span><code><span class="gu">## What</span>
+One sentence: what this change adds.
+
+<span class="gu">## Why</span>
+The ticket and the acceptance criterion it meets.
+
+<span class="gu">## How to test</span>
+The exact commands, from the repo root.
+
+<span class="gu">## Evidence</span>
+Paste the outputs from &quot;Prove it before review&quot; and the git log lines.
+
+<span class="gu">## Checklist</span>
+<span class="k">- [ ]</span> TC2 prints 0 mismatches and exits 0
+<span class="k">- [ ]</span> TC3 passes
+<span class="k">- [ ]</span> No nested loop over the window
+<span class="k">- [ ]</span> Complexity headers present
+</code></pre></div>
+
+<p>Evidence means terminal output, not claims. A screenshot of the LMS upload is good evidence for the rubric.</p>
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] Six solutions and their tests are pushed by 12:55. You know this when <code>git log</code> shows those commits with times before 12:55.</li>
+<li>[ ] The applied files are pushed by 15:30. You know this from the same <code>git log</code> output.</li>
+<li>[ ] <code>rolling_window.py</code> exits 0 against the SQL export. You know this when the TC2 command prints <code>0</code> after the summary line.</li>
+<li>[ ] The pair-interview rubric is uploaded for both roles. You know this when the LMS shows both uploads.</li>
+<li>[ ] The README log and the window-semantics note are updated, and the DSA tracker is updated. You know this from the diff in your <code>dsa-&lt;name&gt;</code> repo and the tracker's own history.</li>
+<li>[ ] Any mismatch fixes are pushed before Sat 9 Jan 09:00. You know this from the commit dates in <code>git log</code>.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avg6</code> differs only in the first few rows</td>
+<td>You divided by k instead of by the number of values in the window</td>
+<td>Divide by <code>min(i + 1, k)</code></td>
+</tr>
+<tr>
+<td><code>max6</code> differs at one row, where an old maximum should have left</td>
+<td>The expiry test uses <code>&lt;</code> instead of <code>&lt;=</code></td>
+<td>Remove the front when its index is <code>i - k</code> or less</td>
+</tr>
+<tr>
+<td><code>KeyError: 'avg6'</code></td>
+<td>The SQL column has no <code>AS avg6</code> alias, so the header differs</td>
+<td>Add the alias in the <code>.sql</code> file and re-export</td>
+</tr>
+<tr>
+<td><code>FileNotFoundError</code> in TC2</td>
+<td>You ran the command from a folder other than the squad repo root</td>
+<td><code>cd</code> to the repo root and run the command again</td>
+</tr>
+<tr>
+<td><code>ImportError</code> in TC3</td>
+<td>pytest was run from the wrong folder</td>
+<td>Run <code>python -m pytest -q tests/applied/test_rolling.py</code> from the repo root</td>
+</tr>
+<tr>
+<td>Averages are right, but a comparison fails by 0.01</td>
+<td>You rounded to one decimal place, or truncated instead of rounding</td>
+<td>Keep the full average and compare with the 0.005 tolerance</td>
+</tr>
+<tr>
+<td>Maxima compare wrong, such as <code>9</code> beating <code>10</code></td>
+<td>The values were compared as text</td>
+<td>Convert with <code>float(...)</code> before any comparison</td>
+</tr>
+<tr>
+<td>Script is slow on the full export</td>
+<td>A <code>sum(values[i-k:i])</code> or <code>max(...)</code> slice sits inside the loop</td>
+<td>Use the running total and the deque</td>
+</tr>
+<tr>
+<td>Hidden tests pass 3 of 6</td>
+<td>Edge cases were not tested, such as empty input or a window larger than the list</td>
+<td>Add tests for empty input, one item and k larger than the data</td>
+</tr>
+<tr>
+<td><code>echo $?</code> shows 1 but the summary looks fine</td>
+<td>The script raised an error after printing</td>
+<td>Read the last line of the traceback before the summary</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p><strong>Q1. Why is the running-sum average O(n) when the naive method is O(n·k)?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The naive method adds all k values again for every window, so the work is about n times k. The running sum adds the entering value and subtracts the leaving value, so each value is handled a fixed number of times in total. The work grows with n, not with n times k. The reasoning is that the window overlaps almost entirely with the one before it, so reusing the total avoids repeating the work.</p></details>
+
+<p><strong>Q2. What is the trade-off between the monotonic deque and a heap for the rolling maximum?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A heap can also find a window maximum, at O(n log n) in the worst case with lazy deletion (old entries stay in the heap until they reach the top), and it is often easier to write. The deque is O(n) overall and needs O(k) extra space, but you must store indexes and handle expiry correctly. The trade-off is speed and a tighter bound against code that is easier to get wrong. For a stream that must run quickly on many values, the deque is the better fit. For a quick prototype, a heap can be fine.</p></details>
+
+<p><strong>Q3. Which function did you write, and how did you show it matched the SQL export?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the function and the file you wrote, the test file you added, and the commit where you added each one. Then state the exact command you ran, the summary line it printed and the exit code. Say which bug you fixed first, if any, and what caused it. Only claim work that the commit history shows. The reviewer will check the commits, so your answer should match them.</p></details>
+
+<p><strong>Q4. Why does each index enter and leave the deque at most once, and why is that O(n) overall?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Each index is pushed to the back once, and it is removed at most once, either from the back when a bigger value arrives or from the front when it leaves the window. So the total number of pops cannot exceed the number of pushes, which is n. One step can pop many items, so that step is expensive. But the total over all steps is at most about 2n, so the cost per step is constant on average. That is the amortised O(n) bound.</p></details>
+
+<p><strong>Q5. Your six rows span more than six hours. Why does that happen, and what should you write in the note?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The window is defined by rows, not by time. If an hour is missing from the feed, six rows cover more than six hours. The note should state that the window is six rows, give the gap rule the squad uses, and say that the SQL view and the Python both use rows, so they agree. Naming the gap is better than hiding it, because the health officers rely on the alert time.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your window size is k=3. Which operation keeps the running sum correct when a new value arrives?&quot;, &quot;opts&quot;: [&quot;Recompute the sum of the last three values from scratch&quot;, &quot;Add the entering value and subtract the value k positions back&quot;, &quot;Sort the window and take the middle value&quot;, &quot;Store every window in a list and add them at the end&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Each value enters once and leaves once, so the total changes by two operations per step. Recomputing repeats the work on overlapping windows. Sorting answers a different question, the median.&quot;}, {&quot;q&quot;: &quot;With k=3, at step i=5, which index has just left the window, so it is removed if it is at the front of the deque?&quot;, &quot;opts&quot;: [&quot;Index 5, because it is the newest value&quot;, &quot;Index 3, because it is the oldest value still in the window&quot;, &quot;Index 2, because i - k = 2 and it is no longer inside the window&quot;, &quot;Index 4, because it is the value before the newest one&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;At i=5 the window holds indexes 3, 4 and 5. Index 2 has left, so if it is at the front it is removed. Index 3 is still inside the window, so removing it would make the window too small.&quot;}, {&quot;q&quot;: &quot;Your command prints a traceback and `echo $?` shows 1. Which should you check first?&quot;, &quot;opts&quot;: [&quot;The README log, because the tracker must match the code&quot;, &quot;The pytest version, because the script depends on it&quot;, &quot;The number of hidden tests, because they decide the exit code&quot;, &quot;The last line of the traceback, which names the error and its cause&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Python exits with code 1 when an error is not caught, and the last traceback line says what failed, for example FileNotFoundError for a wrong path or KeyError for a wrong header. The other choices do not explain why the script stopped.&quot;}]}"></div>
+
+<h2 id="y2-t22-dsa-3-recursion-sorting-search-first-crossing-benchmark">Y2-T22 · DSA-3: recursion, sorting, search + first-crossing benchmark</h2>
+<p><em>Session 22 · phase DSA · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_2">The ticket in plain words</h3>
+<p>CityPulse is the Bengaluru city-data platform your squad is building. PM2.5 measures very fine dust in the air. An analyst wants a dashboard that answers at once: "when did PM2.5 first go above 200?" The answer sits somewhere in years of hourly readings. Reading every hour from the start is correct but slow when the question is asked again and again.</p>
+<p>This ticket teaches the usual fix: do some work once, then answer each question in a few steps. It is the trade-off interviewers like to probe, because the preparation costs time and memory and pays off only after enough questions.</p>
+<p>The ticket also closes the January block on data structures and algorithms (DSA, the standard ways of organising data). You practise recursion, where a function calls itself on a smaller problem, and meet merge sort, linked lists and binary search. Then you build <code>first_crossing.py</code>, measure it, and finish with a timed contest.</p>
+<h3 id="before-you-start_2">Before you start</h3>
+<p>These tickets must already be merged to the squad's <code>main</code> branch:</p>
+<ul>
+<li>Y2-T19: the pipeline writes to the bucket from the hardened VM.</li>
+<li>Y2-T20: DSA-1, arrays, strings, hashing and top-k.</li>
+<li>Y2-T21: DSA-2, windows, stacks and queues. Your <code>rolling_window.py</code> must still pass, and any T21 mismatches must be fixed before 09:00.</li>
+</ul>
+<p>Tools and accounts:</p>
+<ul>
+<li><strong>Git</strong> on your Windows laptop (use Git Bash) or on the Linux lab machine. Check: <code>git --version</code> prints a line that starts with <code>git version</code>.</li>
+<li><strong>Python 3.8 or newer</strong>. Check: <code>python -c "import sys; print(sys.version_info &gt;= (3, 8))"</code> prints <code>True</code>. On the Linux lab machine, type <code>python3</code> instead of <code>python</code>.</li>
+<li><strong>A GitHub account</strong> with access to the squad repository. Check: <code>git ls-remote origin</code> lists references with no error, run inside your clone.</li>
+<li><strong>Your clone of the squad repository</strong> on <code>main</code>, with no unsaved changes. Check: <code>git status</code> ends with <code>nothing to commit, working tree clean</code>.</li>
+<li><strong>The contest platform login</strong> from your trainer. Check: you can open the platform and see your own name.</li>
+</ul>
+<p>Commands use <code>python</code>, as on Windows. On the Linux lab machine, use <code>python3</code> where a command says so.</p>
+<h3 id="words-you-need_2">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSA</td>
+<td>Data structures and algorithms: ways to organise data and steps for working on it.</td>
+</tr>
+<tr>
+<td>Binary search</td>
+<td>Finds a value in a sorted list by halving the range at each step.</td>
+</tr>
+<tr>
+<td>Sorted, non-decreasing</td>
+<td>Each item is equal to or bigger than the one before.</td>
+</tr>
+<tr>
+<td>Monotonic</td>
+<td>Never moves backwards. A running maximum is monotonic.</td>
+</tr>
+<tr>
+<td>Running maximum</td>
+<td>The biggest value seen so far, at each position.</td>
+</tr>
+<tr>
+<td>Invariant</td>
+<td>A fact that stays true before and after every loop step.</td>
+</tr>
+<tr>
+<td>O(n), O(log n)</td>
+<td>Work that grows with n, or with the logarithm of n. O(log n) is about 20 steps for a million items.</td>
+</tr>
+<tr>
+<td>Preprocessing</td>
+<td>Work done once, so that each later question is cheap.</td>
+</tr>
+<tr>
+<td>Recursion</td>
+<td>A function that calls itself on a smaller input.</td>
+</tr>
+<tr>
+<td>Base case</td>
+<td>The input where the function returns without calling itself.</td>
+</tr>
+<tr>
+<td>RecursionError</td>
+<td>Python's error when calls go too deep, usually after about 1000.</td>
+</tr>
+<tr>
+<td>Merge sort</td>
+<td>Sorts by splitting a list, sorting the halves, then merging them.</td>
+</tr>
+<tr>
+<td>Linked list</td>
+<td>A chain of nodes, each holding a value and a link to the next.</td>
+</tr>
+<tr>
+<td><code>bisect_left</code></td>
+<td>Standard library function: the first index where a value fits in a sorted list.</td>
+</tr>
+<tr>
+<td><code>accumulate</code></td>
+<td>Standard library function that yields running results.</td>
+</tr>
+<tr>
+<td><code>timeit</code></td>
+<td>Standard library module that times code.</td>
+</tr>
+<tr>
+<td>Repeats</td>
+<td>Separate timing runs. The benchmark needs at least 5.</td>
+</tr>
+<tr>
+<td>Break-even</td>
+<td>The number of queries after which preprocessing has paid for itself.</td>
+</tr>
+<tr>
+<td>Benchmark</td>
+<td>A timed comparison of two methods on the same data.</td>
+</tr>
+<tr>
+<td>Edge case</td>
+<td>An unusual input, such as an empty list or duplicates.</td>
+</tr>
+<tr>
+<td>Complexity header</td>
+<td>A comment stating a function's time and space cost.</td>
+</tr>
+<tr>
+<td>Hidden tests</td>
+<td>Private test cases the trainer runs on your commit.</td>
+</tr>
+<tr>
+<td>Contest</td>
+<td>A timed test of three problems on the contest platform.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A separate line of work in Git, merged through a pull request.</td>
+</tr>
+<tr>
+<td>Pull request</td>
+<td>A request to merge your branch, reviewed by a squad-mate.</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of your changes, with a message and timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_2">How your trainer checks it</h3>
+<p>The five acceptance criteria are covered below. At least 5 of 6 DSA-3 problems must pass the hidden tests on your 12:55 commit. <code>first_crossing.py</code> must agree for every threshold. The README must show measured benchmark times and a break-even statement. You must solve at least 1 of 3 contest problems. Every recursive solution needs a base-case comment and a complexity header.</p>
+<p><strong>TC1. Hidden tests.</strong> Command: <code>python run_hidden.py roster.csv --day d3</code></p>
+<p><code>python</code> runs <code>run_hidden.py</code>, the trainer's private test script. <code>roster.csv</code> is a file it reads, and <code>--day d3</code> selects the day 3 problems.</p>
+<p>You cannot run the hidden tests yourself, so make sure your own tests cover the same edge cases.</p>
+<p>Passing: the summary shows at least 5 of the 6 DSA-3 problems passing. Failing: fewer than 5 pass. The usual cause is a missing base case or an untested edge case, such as an empty list or duplicates.</p>
+<p><strong>TC2. First crossing.</strong> Command: <code>python applied/first_crossing.py</code></p>
+<p><code>applied/first_crossing.py</code> is your file in the <code>applied</code> folder. It runs your scan and query and checks them with <code>assert</code>.</p>
+<p>Passing output is one line:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python applied/first_crossing.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;scan and bisect agree&quot;}]}"></div>
+
+<p>Failing output is a traceback that ends in <code>AssertionError</code>. Your line numbers will differ:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python applied/first_crossing.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Traceback (most recent call last):&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  File \&quot;applied/first_crossing.py\&quot;, line 40, in &lt;module&gt;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    assert scan(vals, ts, t) == query(build(vals), ts, t)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;AssertionError&quot;}]}"></div>
+
+<p>The usual cause is a <code>query</code> that does not check <code>i &lt; len(run_max)</code>, or a running maximum built with the wrong function.</p>
+<p><strong>TC3. Benchmark table.</strong> Steps: open the README and find the section "Benchmark d3".</p>
+<p>Passing: a table with numeric values for build time, scan time and bisect time, a repeats value of 5 or more, and a line with a break-even q value. Failing: estimated words such as "about" or "roughly", a missing repeats count, or a missing break-even line.</p>
+<p><strong>TC4. Contest.</strong> Steps: the trainer exports the results from the contest platform.</p>
+<p>Passing: your score is at least 1 of 3 and has a timestamp. Failing: 0 of 3, or a submission the platform did not accept because it came after the timer ended.</p>
+<h3 id="split-the-work_2">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Subtask</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T22.1</td>
+<td>Every student</td>
+<td>Gate: trace your binary-search homework on the board and state the loop invariant.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T22.2</td>
+<td>Every student</td>
+<td>Solve 6 DSA-3 problems with signatures, complexity headers, base-case comments and at least 3 tests each (empty, single, duplicates). Push by 12:55.</td>
+<td>120 min</td>
+</tr>
+<tr>
+<td>Y2-T22.3</td>
+<td>Every student</td>
+<td>Implement <code>applied/first_crossing.py</code>. It must print <code>scan and bisect agree</code>.</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Y2-T22.4</td>
+<td>Every student</td>
+<td>Benchmark with <code>timeit</code> (at least 5 repeats) on 1M rows. Add the README table and the break-even value.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T22.5</td>
+<td>Every student</td>
+<td>Sit the 30-minute contest (3 problems). Submit before the timer ends.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T22.6</td>
+<td>Every student</td>
+<td>Update the README log for the d3 rows and add one line on when sort and search is not worth it.</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p>Every student owns every subtask, so your commits must show your own work. A suggested split: you own <code>applied/first_crossing.py</code> and the benchmark table (T22.3 and T22.4), and you still solve all six problems yourself, because the hidden tests run on your own repo and you need at least 5 of 6. Squad-mates may discuss ideas, but each writes their own code. Do the contest and your README line yourself. Never copy a squad-mate's solution.</p>
+<p>Work on one branch, created with <code>git checkout -b &lt;branch-name&gt;</code>, named by your squad's convention.</p>
+<p>Example commit messages, in the order you would make them:</p>
+<ol>
+<li><code>Add complexity headers and base-case comments to d3 problems</code></li>
+<li><code>Add empty, single and duplicate tests for the six d3 problems</code></li>
+<li><code>Add first_crossing with scan and bisect versions</code></li>
+<li><code>Assert scan and bisect agree for 150, 200, 230 and the never-reached case</code></li>
+<li><code>Add timeit benchmark for build, scan and bisect</code></li>
+<li><code>Add d3 benchmark table and break-even q to README</code></li>
+<li><code>Update README log for d1 to d3 and add when sort and search is not worth it</code></li>
+</ol>
+<h3 id="do-it-step-by-step_2">Do it, step by step</h3>
+<p>Each stage is short. Run it, check the output, and move on only when the test passes.</p>
+<h4 id="y2-t221-gate-trace-binary-search-and-state-the-invariant">Y2-T22.1 Gate: trace binary search and state the invariant</h4>
+<p><strong>Goal.</strong> Be able to explain, on a board, what each line of a binary search does and what stays true during the loop. This is the invariant: a fact that holds before and after every loop step.</p>
+<p><strong>Technique.</strong> The function below finds the first index where a value is at least <code>target</code> in a sorted list. The range from <code>lo</code> to <code>hi</code> is half-open: <code>hi</code> is one past the last index. The invariant is "the answer lies between <code>lo</code> and <code>hi</code>, and <code>hi</code> itself may be the answer". Follow the walk-through below to see the range shrink.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">first_at_least</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">xs</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">lo</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hi</span> <span class="o">=</span> <span class="n">mid</span>
+    <span class="k">return</span> <span class="n">lo</span>
+</code></pre></div>
+
+<p>Walk through it with <code>xs=[1, 3, 3, 6, 9]</code> and <code>target=3</code>. The range starts as <code>lo=0</code>, <code>hi=5</code>. The middle is index 2, where <code>xs[2]</code> is 3. That is not less than 3, so <code>hi</code> moves to 2. The next middle is 1, where <code>xs[1]</code> is also 3, so <code>hi</code> moves to 1. The middle is 0, where <code>xs[0]</code> is 1, so <code>lo</code> moves to 1. Now <code>lo</code> equals <code>hi</code>, the loop stops, and the function returns 1.</p>
+<p>Line by line: <code>while lo &lt; hi:</code> repeats while the range is not empty. <code>mid = (lo + hi) // 2</code> picks the middle, and <code>//</code> drops any fraction. The <code>if</code> decides which side keeps the answer.</p>
+<p><strong>Test it.</strong> Trace on paper with <code>xs=[2, 4, 4, 7]</code> and <code>target=4</code>. You should get 1. Then try <code>target=8</code>. You should get 4, which means "past the end".</p>
+<p><strong>State the invariant out loud.</strong> Say it in one sentence: "Every index before <code>lo</code> holds a value less than the target, and the answer is never before <code>lo</code>."</p>
+<h4 id="y2-t222-solve-six-dsa-3-problems-with-recursion-and-search">Y2-T22.2 Solve six DSA-3 problems with recursion and search</h4>
+<p><strong>Goal.</strong> Six small solutions, each with a clear signature, a complexity header, a base-case comment for any recursive function, and at least three tests: empty input, one item, and duplicates.</p>
+<p><strong>Technique 1, recursion with a base case.</strong> Write the base case first, then the smaller step. Here is a fictional example that counts values above a limit:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## Fictional example: count readings above a limit.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="c1"># Base case: an empty list has nothing above the limit.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">limit</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="o">+</span> <span class="n">count_above</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">7</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ok&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line: <code>if not values:</code> is True for an empty list, so the function returns 0 without calling itself. <code>values[1:]</code> is the rest of the list, one item shorter. The asserts check the empty case, one item, duplicates and a value equal to the limit. The block prints <code>ok</code> and exits with no error.</p>
+<p><strong>Technique 2, merge sort.</strong> Merge sort splits a list in half, sorts each half the same way, then merges the two sorted halves. Practise the merge loop first, with <code>i</code> and <code>j</code> pointers, and check it with asserts such as <code>merge([1, 4], [2, 3]) == [1, 2, 3, 4]</code>.</p>
+<p><strong>Technique 3, linked lists.</strong> A linked list is a chain of nodes. Each node holds a value and a reference to the next node, and the last node's reference is <code>None</code>. Practise walking the chain with <code>while node is not None:</code> and moving on with <code>node = node.next</code>. Test the empty list (head is <code>None</code>), one node, and repeated values.</p>
+<p><strong>Technique 4, binary search.</strong> Use the invariant from stage 1. Test the empty list, one matching item, one non-matching item, and duplicates.</p>
+<div class="box box-trap"><div class="box-h">Trap: Recursion depth</div><p>Python stops after about 1000 nested calls with <code>RecursionError</code>, even when your base case is correct. A recursive function that peels one item at a time, like <code>count_above</code>, fails on a list of 5000 items. Recursion that halves the input, like merge sort, only goes about log n deep, so it is safe.</p></div>
+
+<p>For each problem, write the signature, a complexity header such as <code># Complexity: O(log n) time, O(1) space</code>, the base case, the step, then the tests.</p>
+<p><strong>Test it.</strong> If you write your tests with <code>unittest</code> (files named <code>test_*.py</code>), run <code>python -m unittest discover</code> in that folder and the output ends with <code>OK</code>. If you use plain <code>assert</code> lines, run each file with <code>python &lt;file&gt;.py</code> and expect no error. Then push before 12:55 with <code>git push -u origin &lt;your-branch-name&gt;</code> (the branch name is only a suggestion, for example <code>y2-t22-dsa3-&lt;yourname&gt;</code>; the ticket gives no naming rule, so ask your trainer if your squad has one).</p>
+<h4 id="y2-t223-build-first_crossingpy">Y2-T22.3 Build first_crossing.py</h4>
+<p><strong>Goal.</strong> A file, <code>applied/first_crossing.py</code>, with three functions, <code>scan</code>, <code>build</code> and <code>query</code>. Running it prints <code>scan and bisect agree</code>.</p>
+<p><strong>Technique 1, running maximum.</strong> Passing <code>max</code> to <code>accumulate</code> gives the largest value so far at each step. Try it on fictional hourly readings:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">accumulate</span>
+
+<span class="n">readings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">accumulate</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="nb">max</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>Line by line: <code>accumulate(readings, max)</code> gives one output per item, each the maximum so far. <code>list(...)</code> turns it into a list. Expected output: <code>[4, 4, 9, 9, 12]</code>, which never goes down.</p>
+<p><strong>Technique 2, bisect_left.</strong> <code>bisect_left(sorted_list, x)</code> returns the first index where <code>x</code> fits in a sorted list, which for a monotonic list is the first index whose value is at least <code>x</code>. Try it:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bisect</span><span class="w"> </span><span class="kn">import</span> <span class="n">bisect_left</span>
+
+<span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output: <code>2</code>, then <code>5</code>. The index 5 is one past the end, which means the value is never reached.</p>
+<p><strong>Technique 3, the skeleton.</strong> Create <code>applied/first_crossing.py</code> with the three signatures. Leave the bodies for you to write:</p>
+<div class="hl"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">bisect</span><span class="w"> </span><span class="kn">import</span> <span class="n">bisect_left</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">accumulate</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the first timestamp whose value is at least threshold, or None. O(n).&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the running maximum of values. O(n) once.&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="n">run_max</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use bisect_left on run_max. Return ts[i], or None when i is past the end. O(log n).&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<p>The <code>...</code> is a placeholder that does nothing. Write <code>scan</code> with a loop over <code>zip(values, ts)</code>, <code>build</code> with <code>accumulate</code>, and <code>query</code> with <code>bisect_left</code>. Check the index before you read <code>ts</code>.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Build once, then answer many questions&quot;, &quot;nodes&quot;: [&quot;Raw readings&quot;, &quot;Running maximum&quot;, &quot;bisect_left&quot;, &quot;Answer&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;build&quot;, &quot;note&quot;: &quot;accumulate turns the readings into a list that never goes down.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;query&quot;, &quot;note&quot;: &quot;bisect_left searches that sorted list for the threshold.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;index&quot;, &quot;note&quot;: &quot;The index becomes a timestamp, or None if it is past the end.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 2, &quot;label&quot;: &quot;next question&quot;, &quot;note&quot;: &quot;The same running maximum answers the next threshold with no rebuild.&quot;}]}"></div>
+
+<p><strong>Technique 4, the assertions.</strong> Below the functions, add asserts that compare <code>scan</code> and <code>query</code> for thresholds 150, 200, 230 and 10000 on a small list you make yourself. End with <code>print("scan and bisect agree")</code>, which runs only when every assert passes.</p>
+<p><strong>Test it.</strong> Add an empty list case and a case where the first value already crosses. Both must still agree.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python applied/first_crossing.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;scan and bisect agree&quot;}]}"></div>
+
+<h4 id="y2-t224-benchmark-with-timeit-on-1m-rows">Y2-T22.4 Benchmark with timeit on 1M rows</h4>
+<p><strong>Goal.</strong> Measured numbers, not estimates, for the build time, the scan time per query and the bisect time per query, on 1M rows.</p>
+<p><strong>Technique 1, timeit.</strong> <code>timeit.repeat(fn, repeat=5, number=100)</code> runs <code>fn</code> 100 times, five times over, and returns five totals in seconds. Take the minimum, because the lowest total is the least disturbed by other programs, and divide by <code>number</code>:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="n">totals</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">per_call</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">per_call</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line: <code>lambda: double(21)</code> wraps the call so <code>timeit</code> can run it. <code>min(totals) / 100</code> gives the time for one call in seconds, printed as a small number such as <code>1.2e-07</code>.</p>
+<p><strong>Technique 1b, the data.</strong> Make 1M fictional rows yourself, for example with <code>random.seed(1)</code> and <code>random.randint(0, 300)</code> for each value, plus an increasing list of hourly timestamps. Seeding makes the data repeat on every run. Time the scan with a threshold that is reached late or never (such as 10000), because that is the slowest case for a scan. Keep the scan's <code>number</code> small (for example 5), since each call walks 1M rows.</p>
+<p><strong>Technique 2, units.</strong> Build time is one call, so use <code>number=1</code> and take the minimum as <code>build_s</code>. Multiply seconds by 1000 for <code>scan_ms</code> and by 1,000,000 for <code>bisect_µs</code>. For the break-even formula, every value must be in seconds:</p>
+<p>q = build_s / (scan − bisect)</p>
+<p>The formula holds because after <code>q</code> queries, scanning costs <code>q × scan</code> and the preprocessed version costs <code>build_s + q × bisect</code>. Those are equal at the break-even point. Fictional example: <code>build_s</code> 0.5, scan 0.002 seconds and bisect 0.000002 seconds give q = 0.5 / 0.001998, about 250. Mixing milliseconds and microseconds gives an answer a thousand times off, so convert first.</p>
+<p><strong>Technique 3, the machine note.</strong> Record <code>platform.platform()</code> and <code>sys.version</code> in the README, and close heavy programs before timing.</p>
+<p><strong>Test it.</strong> Run the benchmark twice and expect close numbers.</p>
+<p>Then fill this table in the README, with your own measured values:</p>
+<table>
+<thead>
+<tr>
+<th>build_s</th>
+<th>scan_ms/query</th>
+<th>bisect_µs/query</th>
+<th>break-even q</th>
+<th>repeats</th>
+<th>machine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Add one sentence under the table that states the break-even value in words.</p>
+<h4 id="y2-t225-sit-the-30-minute-contest">Y2-T22.5 Sit the 30-minute contest</h4>
+<p><strong>Goal.</strong> At least one of three problems solved and submitted before the timer ends.</p>
+<p><strong>Preparation.</strong> Write three original practice problems on binary search, recursion and a running maximum, and time yourself with a 10-minute limit each. Do not look for the contest's problems or share answers.</p>
+<p><strong>On the day.</strong> Read all three problems first. Start with the one you can solve fastest, test the empty input, and submit before the timer ends.</p>
+<h4 id="y2-t226-update-the-readme-log">Y2-T22.6 Update the README log</h4>
+<p><strong>Goal.</strong> Complete README rows for d1 to d3, plus one sentence on when sort and search is not worth it.</p>
+<p>Open the README log and add a row for each d3 problem, with the same columns as the d1 and d2 rows. Then write one sentence, in your own words, saying when preprocessing is not worth it. Use your break-even number from stage 4 to support it.</p>
+<p>Commit with <code>git add README.md</code>, <code>git commit</code> and <code>git push</code>. Write a message that names the change.</p>
+<h3 id="prove-it-before-review_2">Prove it before review</h3>
+<p>Run every test case yourself, in order, before you open the pull request.</p>
+<ol>
+<li>Run your six problems' tests (<code>python -m unittest discover</code> if you use <code>unittest</code>). The last line is <code>OK</code>, or there is no error.</li>
+<li>Run <code>python applied/first_crossing.py</code>. The output is <code>scan and bisect agree</code>.</li>
+<li>Open the README "Benchmark d3" table and check the numbers, the repeats and the break-even line.</li>
+<li>Check your contest score. You need at least 1 of 3.</li>
+</ol>
+<p>Open the pull request and fill in this template:</p>
+<div class="hl"><pre><span></span><code>## What
+Six d3 problems with tests, `first_crossing.py`, and the d3 benchmark.
+
+## Why
+The first-crossing query must answer quickly on years of hourly data.
+
+## How to test
+1. python -m unittest discover
+2. python applied/first_crossing.py   (expect: scan and bisect agree)
+3. Open README, section &quot;Benchmark d3&quot;.
+
+## Evidence
+- Paste the last 10 lines of the unittest output.
+- Paste the output of applied/first_crossing.py.
+- Paste the benchmark table and the break-even line.
+- Paste a screenshot or text of your contest score, with the timestamp.
+
+## Checklist
+- [ ] Tests pass locally
+- [ ] Each recursive function has a base-case comment and a complexity header
+- [ ] README log updated for d1 to d3
+- [ ] I wrote my own commits
+</code></pre></div>
+
+<p>Fill in your own words and paste your real output, not placeholder text.</p>
+<p>Then ask a squad-mate to review. Their approval is needed before merge, and you must not merge your own pull request.</p>
+<h3 id="definition-of-done_2">Definition of done</h3>
+<ul>
+<li>[ ] Six solutions and tests pushed by 12:55. Check: <code>git log --format="%h %ad %s" --date=iso</code> shows them before 12:55.</li>
+<li>[ ] <code>first_crossing.py</code> passes, including the never-reached case. Check: it prints <code>scan and bisect agree</code>.</li>
+<li>[ ] Applied code and benchmark done by 15:30. Check: the T22.3 and T22.4 commits are timed before 15:30.</li>
+<li>[ ] Contest submitted, with the score in the DSA tracker. Check: your score is visible in the tracker.</li>
+<li>[ ] README log complete for d1 to d3. Check: a row exists for every d1, d2 and d3 problem.</li>
+<li>[ ] Repository link and contest score in the LMS Y2-T22 field by 23:59. Check: the LMS shows both after you save.</li>
+</ul>
+<h3 id="what-goes-wrong_2">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AssertionError</code> at the 10000 threshold</td>
+<td><code>query</code> reads <code>ts[i]</code> without checking <code>i &lt; len(run_max)</code>.</td>
+<td>Check the index first, and return <code>None</code> past the end.</td>
+</tr>
+<tr>
+<td>Duplicates give a later timestamp</td>
+<td>You used <code>bisect_right</code>, or a loop that moves <code>hi</code> too early.</td>
+<td>Use <code>bisect_left</code>, or return the first index whose value reaches the target.</td>
+</tr>
+<tr>
+<td><code>RecursionError</code> on a long list</td>
+<td>No base case for the empty list.</td>
+<td>Add the <code>if not values:</code> base case before the recursive step.</td>
+</tr>
+<tr>
+<td>Benchmark numbers look like round guesses</td>
+<td>The numbers were typed before the benchmark ran.</td>
+<td>Rerun <code>timeit</code> and paste its output.</td>
+</tr>
+<tr>
+<td>Break-even q is negative or huge</td>
+<td>Scan is not slower than bisect, or the units are mixed.</td>
+<td>Convert every value to seconds, and check that scan is slower.</td>
+</tr>
+<tr>
+<td>Hidden tests give 4 of 6</td>
+<td>Empty or duplicate inputs are untested.</td>
+<td>Add those tests to each problem and fix failures before 12:55.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_2">Defend it in the viva</h3>
+<p>The trainer asks five questions. Each model answer explains the reasoning. Use your own experience in your own answer.</p>
+<p><strong>Question 1. Why must the query use a running maximum rather than the raw readings?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Binary search needs a sorted or monotonic sequence. The raw readings go up and down, so searching them can return a wrong index with no error. The running maximum never goes down, so <code>bisect_left</code> finds its first crossing in O(log n).</p></details>
+
+<p><strong>Question 2. What is the trade-off of preprocessing once?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>You pay the build cost once, and then each query is cheap. The break-even value q says how many queries it takes to pay off. Few queries favour a plain scan.</p></details>
+
+<p><strong>Question 3. What does the base case in a recursive function protect against?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The base case is where the function returns without calling itself. Without it, the calls never stop and Python raises <code>RecursionError</code>. Test the empty and single-item inputs to check it is reached.</p></details>
+
+<p><strong>Question 4. How did you make sure your benchmark numbers are real measurements?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the steps: <code>timeit</code> with at least 5 repeats, the minimum taken, units checked before the break-even formula, and the machine recorded. Say what you changed if the first run was noisy. Never present a number you did not measure.</p></details>
+
+<p><strong>Question 5. What did you personally write, and how would you test it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the parts you wrote, the commits that show them, and the tests you added first. Then say what you would change next time. The examiner checks that you can explain each line you wrote.</p></details>
+
+<h3 id="check-yourself_2">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Why does binary search need the running maximum rather than the raw readings?&quot;, &quot;opts&quot;: [&quot;Raw readings take too much memory to store&quot;, &quot;Binary search gives correct answers only on a sorted or monotonic list, and the running maximum is one&quot;, &quot;The running maximum is faster to compute than a scan&quot;, &quot;Binary search works on any list, so preprocessing is never needed&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Raw readings go up and down, so a search can return a wrong index with no error. The tempting wrong option claims binary search works on any list, which is false.&quot;}, {&quot;q&quot;: &quot;A sorted list has 1,000,000 items. Roughly how many comparisons does one binary search need?&quot;, &quot;opts&quot;: [&quot;About 1,000,000&quot;, &quot;About 1,000&quot;, &quot;About 20&quot;, &quot;About 2&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each step halves the range, and log base 2 of a million is about 20. The tempting 1,000 is the square root, not the logarithm.&quot;}, {&quot;q&quot;: &quot;Which method gives the most reliable per-call time from timeit?&quot;, &quot;opts&quot;: [&quot;Take the minimum of the repeats, then divide by the number of calls&quot;, &quot;Take the first repeat only&quot;, &quot;Add up all the repeats and do not divide&quot;, &quot;Time one call with a single timer reading&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The minimum is the least disturbed by other programs. A sum is not a per-call time, and one reading is easily spoiled by noise.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="K06.html"><small>Previous</small>Capstone tickets T17–T19: IAM, S3 and a hardened VM</a><a class="nx" href="K08.html"><small>Next</small>Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,1032 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 25 — Containers with Docker · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D25" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 6 · Days 21–25 · Models, APIs, containers</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a class="cur" href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 6 · Days 21–25 · Models, APIs, containers</p><h1>Day 25 — Containers with Docker</h1><p class="sub">You will be able to package the CityPulse API into a hardened Docker image, run it with a published port, start it together with Postgres using Compose, and scan the image with Trivy.</p><p class="meta">83 min read · practice quiz · 5 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D25.mp4?v=1794463762"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you put the CityPulse API into a box that carries everything it needs: the Python version, the libraries at the exact versions you tested, the code, and the command that starts the server. Anyone with Docker can open that box and get the same behaviour you see, so "it works on my laptop" stops being a problem. Think of an image as a sealed lunch tiffin packed at home. A container is that tiffin opened and eaten anywhere, tasting the same. By the end you will be able to build the image, run it, check that it answers, make it small and safe, start the API and its database with one command, and list the known security holes in it.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Terminal and command.</strong> A terminal is a text window where you type instructions for the computer. Each instruction is a command. In this chapter a command is shown after a dollar sign, such as <code>$ docker ps</code>. You type only the text after the dollar sign. The lines underneath are the output the computer prints back.</p>
+<p><strong>Flag.</strong> A flag is an option that changes how a command behaves. Flags start with a dash. A single dash and one letter, such as <code>-p</code>, is a short flag. Two dashes and a word, such as <code>--rm</code>, is a long flag.</p>
+<p><strong>File, folder and path.</strong> A file holds data, for example <code>requirements.txt</code>. A folder (also called a directory) holds files and other folders. A path names a file by its location, so <code>api/main.py</code> means the file <code>main.py</code> inside the folder <code>api</code>.</p>
+<p><strong>Variable.</strong> A variable is a name that stores a value. In a terminal, <code>DATABASE_URL="postgresql://..."</code> stores text under the name <code>DATABASE_URL</code>. Writing <code>$DATABASE_URL</code> later reads the stored value back.</p>
+<p><strong>Environment variable.</strong> An environment variable is a variable that a program reads when it starts. The same program can therefore behave differently on two machines without any code change. The database address is the usual example.</p>
+<p><strong>Function.</strong> A function is a named piece of code that takes inputs, does some work and gives back a result. For example, <code>len("abc")</code> is a call to the built-in function <code>len</code>, and it returns <code>3</code>.</p>
+<p><strong>Server, host, localhost and port.</strong> A server is a program that waits for requests and sends answers. The CityPulse API is a server. A host is a machine. <code>localhost</code> means "this machine". A port is a numbered entry point on a machine. The address <code>localhost:8000</code> means port 8000 on this machine, which is where the API listens.</p>
+<p><strong>Process and PID.</strong> A process is a running program. Each process has a number called a PID (process ID). The first process started inside a container gets PID 1.</p>
+<p><strong>User and root.</strong> Every process runs as a user. The user <code>root</code> can change anything on the system. A process that runs as a normal user has fewer powers, and that limits the damage if the program is attacked. Users can be shown by name or by number. The number 10001 is simply a user ID.</p>
+<p><strong>Package, dependency and pip.</strong> A package is a ready-made library of code. A dependency is a package your code needs. <code>pip</code> is the tool that installs Python packages. Writing <code>fastapi==0.115.4</code> pins the version, so the same version is installed every time.</p>
+<p><strong>Virtual environment.</strong> A virtual environment is a folder with its own copy of Python packages, kept apart from the rest of the machine. <code>python -m venv /opt/venv</code> creates one in the folder <code>/opt/venv</code>.</p>
+<p><strong>Container and virtual machine.</strong> A virtual machine runs a complete second operating system, which is heavy and slow to start. A container shares the host's Linux kernel but is isolated from everything else. It is much lighter.</p>
+<p><strong>YAML and JSON.</strong> Both are text formats for structured data. JSON uses braces, brackets and quotes. YAML uses indentation to show structure. In YAML, indentation must use spaces, not tabs, and the number of spaces matters.</p>
+<p><strong>Exit code.</strong> When a program finishes, it returns a number. Zero means success. Any other number means failure. Docker and scripts use this number to decide what to do next.</p>
+<p><strong>Git.</strong> Git records the history of changes to a project. The hidden folder <code>.git</code> holds that history. It is useful to developers, but it does not belong inside a running application.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="docker-images-and-containers">Docker images and containers</h3>
+<p>Docker builds an <strong>image</strong> from a text recipe called a <strong>Dockerfile</strong>. An image is a read-only package made of layers. Each instruction in the Dockerfile adds one layer. A <strong>container</strong> is a running copy of an image. You can start many containers from one image, and stopping a container does not change the image.</p>
+<p>CityPulse uses Docker because the client's platform engineer must start the service with one <code>docker run</code> command on a machine nobody has configured. The alternatives fail that test in different ways. A virtual environment plus a setup script depends on the host's operating system and Python version, so the swap test usually fails on a different laptop. A virtual machine image works, but it is gigabytes in size and takes minutes to boot. Podman is daemonless and Docker-compatible, which makes it a fine choice in general, but the course standardises on Docker.</p>
+<p>The flow below shows the life of an image.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;From recipe to running container&quot;, &quot;nodes&quot;: [&quot;Dockerfile&quot;, &quot;Image&quot;, &quot;Container&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;docker build&quot;, &quot;note&quot;: &quot;Docker reads the Dockerfile top to bottom and turns each instruction into a cached layer. The result is one image.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;docker run&quot;, &quot;note&quot;: &quot;Docker starts a container from the image, maps host port 8000 to container port 8000 and sets environment variables.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;docker stop&quot;, &quot;note&quot;: &quot;The container stops and, because of --rm, is deleted. The image is unchanged.&quot;}]}"></div>
+
+<p>The flow shows three stages. Node 1 is the text recipe. Node 2 is the image, the stored package. Node 3 is the running container. The message labels name the Docker command that moves the work from one stage to the next.</p>
+<p>Here is a build of the simple image from the slides.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker build -t citypulse:1.0 .&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#5 [1/5] FROM docker.io/library/python:3.12-slim&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#8 [4/5] RUN pip install --no-cache-dir -r requirements.txt&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#8 DONE 10.2s&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#10 naming to docker.io/library/citypulse:1.0 done&quot;}]}"></div>
+
+<p>The command is <code>docker build</code>, which reads a Dockerfile and creates an image. <code>-t citypulse:1.0</code> is a tag. The part before the colon is the image name and the part after it is the version label. The single dot at the end is the <strong>build context</strong>. It is the folder that Docker can read files from during the build, and the dot means "the current folder". Each numbered line starting with <code>#</code> is one build step. The <code>[1/5]</code> means step 1 of 5. <code>DONE 10.2s</code> says the pip install took 10.2 seconds. The last line confirms the image name and tag.</p>
+<div class="box box-trap"><div class="box-h">Trap: Editing files inside a running container</div><p>Changes you make inside a container disappear when the container is removed. The fix belongs in the Dockerfile, followed by a new build. Examiners often ask why a change "vanished", and the answer is always that the container was thrown away and the image was never edited.</p></div>
+
+<h3 id="dockerfile-best-practice-and-multi-stage-builds">Dockerfile best practice and multi-stage builds</h3>
+<p>A Dockerfile is a list of instructions that Docker runs top to bottom. A <strong>multi-stage build</strong> uses more than one <code>FROM</code> line. The first stage, called the <strong>builder</strong>, installs everything needed to prepare the app. The second stage starts clean and copies in only the results. The final image therefore does not contain compilers, pip caches or other tools used only during the build.</p>
+<p>The course's hardened Dockerfile is below. The line breaks have been restored, because the source extraction split some lines.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/opt/venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/opt/venv/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/venv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/opt/venv<span class="w"> </span>/opt/venv
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="m">10001</span>:10001<span class="w"> </span>models/<span class="w"> </span>models/
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="m">10001</span>:10001<span class="w"> </span>src/<span class="w"> </span>src/
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="m">10001</span>:10001<span class="w"> </span>api/<span class="w"> </span>api/
+<span class="k">USER</span><span class="w"> </span><span class="s">10001</span>
+<span class="k">HEALTHCHECK</span><span class="w"> </span>--interval<span class="o">=</span>15s<span class="w"> </span>--timeout<span class="o">=</span>3s<span class="w"> </span><span class="k">CMD</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import urllib.request; urllib.request.urlopen(&#39;http://localhost:8000/v1/health&#39;, timeout=2)&quot;</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;api.main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>FROM python:3.11.9-slim AS builder</code> starts the first stage. <code>FROM</code> names the base image, which is a ready-made Linux with Python already installed. The tag <code>3.11.9</code> pins the exact Python version, and <code>slim</code> picks a smaller variant with fewer packages. <code>AS builder</code> gives the stage a name so later lines can refer to it.</li>
+<li><code>COPY requirements.txt .</code> copies that one file from the build context into the image. The dot is the destination, which is the current working folder. In this stage no <code>WORKDIR</code> has been set, so that folder is the root <code>/</code>.</li>
+<li><code>RUN python -m venv /opt/venv &amp;&amp; /opt/venv/bin/pip install ...</code> runs commands during the build. <code>python -m venv /opt/venv</code> creates a virtual environment in <code>/opt/venv</code>. The <code>&amp;&amp;</code> runs the second command only if the first succeeds. <code>/opt/venv/bin/pip</code> is the pip belonging to that environment. <code>--no-cache-dir</code> stops pip keeping its download cache, which keeps the layer small. <code>-r requirements.txt</code> installs every package listed in the file.</li>
+<li><code>FROM python:3.11.9-slim</code> starts the second stage. It begins empty, with only the base image.</li>
+<li><code>ENV PATH="/opt/venv/bin:$PATH" PYTHONUNBUFFERED=1</code> sets two environment variables inside the image. Putting <code>/opt/venv/bin</code> first in <code>PATH</code> means that <code>python</code> and <code>uvicorn</code> are found in the virtual environment. <code>PYTHONUNBUFFERED=1</code> makes Python send logs immediately, so <code>docker logs</code> shows them without delay.</li>
+<li><code>COPY --from=builder /opt/venv /opt/venv</code> copies only the virtual environment from the builder stage. <code>--from=builder</code> names the source stage.</li>
+<li><code>WORKDIR /app</code> sets the working folder for the following lines and creates it if it does not exist.</li>
+<li>The three <code>COPY --chown=10001:10001</code> lines copy the model, source and API folders. <code>--chown</code> sets the owner and group of the copied files to user and group 10001, so the non-root user owns them and can write to them.</li>
+<li><code>USER 10001</code> means the container's process runs as user 10001 instead of root.</li>
+<li><code>HEALTHCHECK --interval=15s --timeout=3s CMD ...</code> tells Docker to run the check every 15 seconds, and each check must finish within 3 seconds. The Python command tries to open <code>/v1/health</code>. If the request fails or returns an error code, <code>urlopen</code> raises an error, the script exits with a non-zero code, and Docker marks the container unhealthy.</li>
+<li><code>CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]</code> is the command that starts when the container starts. <code>api.main:app</code> names the <code>app</code> object in the file <code>api/main.py</code>. <code>--host 0.0.0.0</code> makes the server accept connections from outside the container. <code>--port 8000</code> sets the port.</li>
+</ul>
+<p>When you build this file, the build output is long and you should see no errors. Nothing is printed when the container starts except the server's startup lines.</p>
+<p>Next is the cache. The term block shows a rebuild after a code change.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker build -t citypulse:1.1 .&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#6 [3/5] COPY requirements.txt .&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#6 CACHED&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#8 [4/5] RUN pip install --no-cache-dir -r requirements.txt&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#8 CACHED&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#10 naming to docker.io/library/citypulse:1.1 done&quot;}]}"></div>
+
+<p><code>CACHED</code> means Docker found an identical layer from an earlier build and reused it instead of running the step again. Docker decides this from the instruction and the files it reads. Because <code>requirements.txt</code> did not change, the pip install is skipped. Only the layers below a changed file must run again. The reader can see the payoff: the pip install does not run again after a change to application code.</p>
+<div class="box box-trap"><div class="box-h">Trap: COPY . . before pip install</div><p>If you write <code>COPY . .</code> above the <code>pip install</code> line, every edit to any code file changes the layer above the install. Docker then reinstalls all dependencies on every build. Copy <code>requirements.txt</code> first, install, and copy the code afterwards.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Two versions of the course recipe</div><p>The slides use Python <code>3.11.9-slim</code>, the folders <code>api/</code>, <code>src/</code> and <code>models/</code>, and the health path <code>/v1/health</code>. The walkthrough uses <code>python:3.12-slim</code>, a single <code>app/</code> folder and <code>/health</code>. Use the tag, folders and paths in your ticket and the slides. The lab in this chapter follows the slides.</p></div>
+
+<h3 id="docker-compose">Docker Compose</h3>
+<p>Docker Compose runs several containers from one file called <code>docker-compose.yml</code>. CityPulse needs two services: the API and Postgres, which is the database. Compose creates a private network between them, starts them in the right order and gives each service a name that the other containers can use as a hostname.</p>
+<p>Compose is used instead of separate <code>docker run</code> commands. Separate commands work, but you must create the network, set the order and type long commands into the README, which is error-prone. Kubernetes (for example minikube or kind) is far beyond two containers on a laptop. A local Postgres install differs between laptops. The compose file below is the course's version, with line breaks restored.</p>
+<div class="hl"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16-alpine</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${POSTGRES_USER}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${POSTGRES_PASSWORD}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="nv">citypulse</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pgdata:/var/lib/postgresql/data&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD-SHELL&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">$${POSTGRES_USER}</span><span class="nv"> </span><span class="s">-d</span><span class="nv"> </span><span class="s">citypulse&quot;</span><span class="p p-Indicator">],</span><span class="nt"> interval</span><span class="p">:</span><span class="w"> </span><span class="nv">5s</span><span class="p p-Indicator">,</span><span class="nt"> retries</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;8000:8000&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">DATABASE_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/citypulse&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">db</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="nv">service_healthy</span><span class="p p-Indicator">}}</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pgdata</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>services:</code> starts the list of containers. Each key below it, here <code>db</code> and <code>api</code>, is one service, and the indented lines belong to it.</li>
+<li><code>db:</code> defines the database service. <code>image: postgres:16-alpine</code> uses the ready-made Postgres image, version 16, based on the small Alpine Linux.</li>
+<li><code>environment:</code> sets environment variables inside the container. <code>POSTGRES_USER</code> and <code>POSTGRES_PASSWORD</code> are read by the Postgres image at first start. <code>${POSTGRES_USER}</code> is replaced by the value in your <code>.env</code> file before Compose starts anything. <code>POSTGRES_DB: citypulse</code> creates a database named <code>citypulse</code>.</li>
+<li><code>volumes:</code> has two entries. <code>pgdata:/var/lib/postgresql/data</code> stores the database files in a named volume called <code>pgdata</code>, so the data survives when the container is removed. The second entry copies <code>sql/init.sql</code> into a folder that Postgres runs on first start. The suffix <code>:ro</code> means read-only.</li>
+<li><code>healthcheck:</code> asks Postgres every 5 seconds whether it is ready. <code>pg_isready</code> is a Postgres tool that exits with zero when the server accepts connections. The double dollar sign <code>$$</code> stops Compose replacing the variable itself, so the shell inside the container reads it. <code>retries: 10</code> allows ten failed checks before the service counts as unhealthy.</li>
+<li><code>api:</code> defines the API service. <code>build: .</code> builds the image from the Dockerfile in the current folder.</li>
+<li><code>ports: ["8000:8000"]</code> publishes port 8000, the same as <code>-p 8000:8000</code> in <code>docker run</code>.</li>
+<li><code>DATABASE_URL</code> is the connection address. The host part is <code>db</code>, the service name. Inside the Compose network, <code>db</code> points to the Postgres container. It does not mean <code>localhost</code>, which would point to the API container itself.</li>
+<li><code>depends_on: {db: {condition: service_healthy}}</code> makes Compose wait until the <code>db</code> healthcheck passes before it starts the API.</li>
+<li><code>volumes: pgdata: {}</code> at the top level declares the named volume. The empty braces mean "default settings".</li>
+</ul>
+<p>The commands are short. Copy the example file for the secrets first:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;cp .env.example .env&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker compose up --build -d&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker compose ps&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;NAME            SERVICE  STATUS                     PORTS&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;citypulse-db-1  db       Up 40 seconds (healthy)    5432/tcp&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;citypulse-api-1 api      Up 20 seconds              0.0.0.0:8000-&gt;8000/tcp&quot;}]}"></div>
+
+<p><code>cp .env.example .env</code> copies the template file to <code>.env</code>, the real file that holds your passwords. <code>docker compose up</code> starts the services. <code>--build</code> rebuilds the API image first. <code>-d</code> runs everything in the background. <code>docker compose ps</code> lists the services. The exact spacing and container names vary, but <code>(healthy)</code> next to <code>db</code> shows the healthcheck passed. The <code>0.0.0.0:8000-&gt;8000/tcp</code> text means port 8000 on your machine is connected to port 8000 in the API container.</p>
+<div class="box box-trap"><div class="box-h">Trap: Commit the template, not the secrets</div><p>Commit <code>.env.example</code> with placeholder values and add <code>.env</code> to <code>.gitignore</code>. A real password committed to Git stays in the history even after you delete it.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Changing init.sql and expecting it to run again</div><p>The init script runs only when the volume is empty, which means the first start. Editing <code>init.sql</code> does nothing to an existing volume. <code>docker compose down -v</code> removes the volume and its data, so use it only when losing the data is acceptable.</p></div>
+
+<h3 id="trivy-scanning">Trivy scanning</h3>
+<p>Trivy is an open-source scanner. It lists known security weaknesses, called CVEs (Common Vulnerabilities and Exposures), in the operating-system packages and Python libraries inside an image. Each finding has a severity such as LOW, MEDIUM, HIGH or CRITICAL. Trivy can also write a software bill of materials, called an SBOM, which is a list of every component in the image.</p>
+<p>CityPulse uses Trivy because the client's security team will not run an image without a report and a decision for every HIGH or CRITICAL finding. The alternatives are Docker Scout, which needs a Docker account and is less common in CI pipelines, Grype, which is equally valid but does not also scan configuration and secrets, and Snyk, which needs an account and token and has usage limits on the free plan.</p>
+<p>Trivy downloads a vulnerability database, lists every package in the image layers and reports the ones with known CVEs. The commands below save the reports to <code>docs/security</code>.</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>docs/security
+<span class="nv">TRIVY</span><span class="o">=</span><span class="s2">&quot;docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v </span><span class="nv">$PWD</span><span class="s2">/docs/security:/out aquasec/trivy&quot;</span>
+<span class="nv">$TRIVY</span><span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>citypulse-api:before<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>docs/security/trivy-before.txt
+<span class="nv">$TRIVY</span><span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>citypulse-api:hardened<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>docs/security/trivy-<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>.txt
+<span class="nv">$TRIVY</span><span class="w"> </span>image<span class="w"> </span>--format<span class="w"> </span>cyclonedx<span class="w"> </span>--output<span class="w"> </span>/out/sbom.cdx.json<span class="w"> </span>citypulse-api:hardened
+<span class="c1">## show only findings that have an upgrade available</span>
+<span class="nv">$TRIVY</span><span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>--ignore-unfixed<span class="w"> </span>citypulse-api:hardened
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>mkdir -p docs/security</code> creates the folder, and <code>-p</code> means "no error if it already exists".</li>
+<li><code>TRIVY="..."</code> stores the long <code>docker run</code> command in a variable, so the later lines are short. Trivy is itself a container, <code>aquasec/trivy</code>.</li>
+<li><code>-v /var/run/docker.sock:/var/run/docker.sock</code> gives Trivy access to Docker so it can read the image. <code>-v $PWD/docs/security:/out</code> shares your report folder with the container. <code>$PWD</code> is the current folder.</li>
+<li><code>$TRIVY image --severity HIGH,CRITICAL citypulse-api:before</code> scans the image and shows only HIGH and CRITICAL findings.</li>
+<li><code>| tee docs/security/trivy-before.txt</code> sends the output to the screen and to a file at the same time. <code>tee</code> is the tool that does both.</li>
+<li><code>$(date +%F)</code> prints today's date in the form <code>2027-03-01</code>, which goes into the file name.</li>
+<li><code>--format cyclonedx --output /out/sbom.cdx.json</code> writes the SBOM in the CycloneDX format to the shared folder.</li>
+<li><code>--ignore-unfixed</code> hides findings where no fixed version exists yet.</li>
+</ul>
+<p>The scan output is a table with columns such as Library, Vulnerability, Severity, Installed Version and Fixed Version. Each remaining finding needs a decision in <code>docs/security/README.md</code>: upgrade the package, accept it with a reason, or note that no fix exists.</p>
+<div class="box box-trap"><div class="box-h">Trap: No fix available does not mean ignore</div><p>A finding with no fixed version still needs a line in <code>docs/security/README.md</code> with a reason. Also rescan on every release, because new CVEs appear every day.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Upgrading without re-testing</div><p>A package upgrade to clear a CVE can break the model. A scikit-learn bump can stop the saved model loading, so run the tests again after any upgrade.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The walkthrough in the course workbook takes a simple Dockerfile through to a working container. Its goal is to show the three things you do with any image: build it, run it and check it, and prove that the cache works.</p>
+<p><strong>Step A: build the image.</strong> The Dockerfile in this step has the same logic as the hardened version, but is simpler.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>FROM</code> picks the base, <code>WORKDIR</code> sets the folder, the <code>COPY requirements.txt</code> and <code>RUN pip install</code> pair installs the dependencies in their own layer, and <code>COPY . .</code> copies the rest of the project. <code>EXPOSE 8000</code> documents the port but does not open it. <code>CMD</code> starts the server. Run <code>docker build -t citypulse:1.0 .</code> and the last line of the output names the new image.</p>
+<p><strong>Step B: run it and check it answers.</strong></p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>citypulse:1.0
+</code></pre></div>
+
+<p><code>-p 8000:8000</code> publishes port 8000. Without this flag the server runs, but your machine cannot reach it. Leave this terminal open. In a second terminal, run:</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/readings
+</code></pre></div>
+
+<p><code>curl</code> sends a request to the address. <code>-s</code> (silent) hides the progress meter, so you see only the answer. The expected output is one line of JSON:</p>
+<div class="hl"><pre><span></span><code>{&quot;count&quot;:2,&quot;readings&quot;:[{&quot;station_id&quot;:&quot;S1&quot;,&quot;pollutant&quot;:&quot;pm25&quot;,&quot;value&quot;:42.1},{&quot;station_id&quot;:&quot;S2&quot;,&quot;pollutant&quot;:&quot;no2&quot;,&quot;value&quot;:18.5}]}
+</code></pre></div>
+
+<p>Each reading has a station ID, a pollutant and a value. Matching output on your laptop and in the container shows that the packaged app behaves like the development version.</p>
+<p><strong>Step C: prove the cache and check the size.</strong> Change one line of code in <code>app/main.py</code>, then rebuild with the tag <code>1.1</code>. The output shows <code>CACHED</code> on the dependency steps, as in the term block earlier. Then run:</p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>images<span class="w"> </span>citypulse
+</code></pre></div>
+
+<p>The output lists the repository, tag, image ID, creation time and size. The walkthrough shows two images of 238MB each, one for <code>1.0</code> and one for <code>1.1</code>. The size is the same because only the code layer changed. Your size can be different, and the T43 table records the size you measure.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Work through the steps in order. Each one ends with a check. Do not move on until the check passes.</p>
+<h3 id="1-a-minimal-api-to-containerise">1. A minimal API to containerise</h3>
+<p><strong>What you do.</strong> Confirm that the CityPulse API folder has a file called <code>main.py</code> inside a folder called <code>api</code>, and that the file creates an application object called <code>app</code> with a route <code>/v1/health</code>.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>api
+</code></pre></div>
+
+<p><code>ls</code> lists the files in a folder. The output should include <code>main.py</code>.</p>
+<p><strong>What you should see.</strong> <code>main.py</code> is listed. If it is not, stop and ask your mentor which folder your ticket uses.</p>
+<p><strong>How you know it worked.</strong> Once the dependencies are installed in step 2, <code>python -m uvicorn api.main:app --port 8000</code> starts the server locally, and <code>curl -i http://localhost:8000/v1/health</code> returns <code>HTTP/1.1 200 OK</code>. Use <code>Ctrl+C</code> in the server terminal to stop it. This proves the app works before you wrap it in a container.</p>
+<h3 id="2-pin-dependencies">2. Pin dependencies</h3>
+<p><strong>What you do.</strong> Make sure <code>requirements.txt</code> lists every package the API uses, each with an exact version. The slides name <code>scikit-learn</code> pinned to the version used to train the model. Copy that version from your team's notes. Do not guess it.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>cat<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<p><code>cat</code> prints the contents of a file.</p>
+<p><strong>What you should see.</strong> Lines in the form <code>name==version</code>, for example:</p>
+<div class="hl"><pre><span></span><code>fastapi==0.115.4
+uvicorn==0.32.0
+</code></pre></div>
+
+<p><strong>How you know it worked.</strong> Every line has <code>==</code> followed by a number. A line such as <code>fastapi&gt;=0.100</code> is not pinned and must be changed. The lint problem later in this chapter checks this exact rule.</p>
+<h3 id="3-write-the-dockerfile">3. Write the Dockerfile</h3>
+<p><strong>What you do.</strong> In the project's top folder, create a file named exactly <code>Dockerfile</code>, with no extension. Use a plain text editor. Write the single-stage version below. The multi-stage version is the T43 ticket.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>models/<span class="w"> </span>models/
+<span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>src/
+<span class="k">COPY</span><span class="w"> </span>api/<span class="w"> </span>api/
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;api.main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>FROM</code> sets the base image with a pinned tag. <code>WORKDIR /app</code> sets the folder for the next lines. The two lines starting <code>COPY requirements.txt</code> and <code>RUN pip install</code> come before the code, so the dependency layer is cached. The three <code>COPY</code> lines copy the named folders, one line each, into the same paths inside the image. <code>EXPOSE</code> documents port 8000. <code>CMD</code> starts the server and <code>--host 0.0.0.0</code> lets outside traffic in.</p>
+<p><strong>What you should see.</strong> The file appears in the folder listing as <code>Dockerfile</code>, with no extra extension. Windows Notepad sometimes adds <code>.txt</code> to new files, so check the name.</p>
+<p><strong>How you know it worked.</strong> The build in step 5 finishes without an error.</p>
+<h3 id="4-add-a-dockerignore-and-a-non-root-user">4. Add a .dockerignore and a non-root user</h3>
+<p><strong>What you do.</strong> Create a file named <code>.dockerignore</code> in the same folder. Add the lines below. Then add <code>USER 10001</code> and make the copied files owned by user 10001 by changing the three <code>COPY</code> lines to <code>COPY --chown=10001:10001 ...</code>.</p>
+<div class="hl"><pre><span></span><code>.git
+.venv
+.env
+data/raw
+</code></pre></div>
+
+<p>Each line names a path to leave out of the build context. A <code>.dockerignore</code> file uses the same path rules as <code>.gitignore</code>, which is a file that tells Git what to ignore.</p>
+<p><strong>What you should see.</strong> The <code>.dockerignore</code> file exists, and the Dockerfile has a <code>USER 10001</code> line below the <code>COPY</code> lines.</p>
+<p><strong>How you know it worked.</strong> Build the image in step 5, then run <code>docker run --rm citypulse-api:p8 id -u</code>. It prints <code>10001</code>. Using <code>id -u</code> is the right check, because <code>whoami</code> may print an error for a user number that has no name.</p>
+<p>Note that your single-stage Dockerfile copies only named folders, so <code>.git</code> would not have been copied anyway. The <code>.dockerignore</code> file is a safety net that also makes the build faster. It matters the moment someone writes <code>COPY . .</code>.</p>
+<h3 id="5-build-and-tag">5. Build and tag</h3>
+<p><strong>What you do.</strong> Build the image and give it a tag.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citypulse-api:p8<span class="w"> </span>.
+docker<span class="w"> </span>images<span class="w"> </span>citypulse-api
+</code></pre></div>
+
+<p><code>docker build</code> reads the Dockerfile and creates the image. <code>-t citypulse-api:p8</code> gives it the name <code>citypulse-api</code> and the tag <code>p8</code>. The final <code>.</code> is the build context, the current folder. <code>docker images citypulse-api</code> lists the images with that name.</p>
+<p><strong>What you should see.</strong> The build output ends with a line that names <code>citypulse-api:p8</code> as done. The <code>docker images</code> output shows one row with the tag <code>p8</code> and a size column. Write the size down for the T43 table.</p>
+<p><strong>How you know it worked.</strong> The row with <code>p8</code> appears. If the build fails on <code>COPY</code>, check the folder names in your Dockerfile against the folder names on disk.</p>
+<h3 id="6-run-and-publish-the-port">6. Run and publish the port</h3>
+<p><strong>What you do.</strong> Start the container in the background, publish its port and check that it answers.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>cp-api<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>-e<span class="w"> </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$DATABASE_URL</span><span class="s2">&quot;</span><span class="w"> </span>citypulse-api:p8
+docker<span class="w"> </span>ps
+sleep<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>-i<span class="w"> </span>localhost:8000/v1/health
+</code></pre></div>
+
+<p>Line by line: <code>docker run</code> starts a container. <code>--rm</code> deletes it when it stops. <code>-d</code> runs it in the background, so the prompt returns. <code>--name cp-api</code> gives it a name you can use in later commands. <code>-p 8000:8000</code> publishes port 8000, with the host port on the left and the container port on the right. <code>-e DATABASE_URL="$DATABASE_URL"</code> passes your shell's <code>DATABASE_URL</code> into the container. <code>sleep 5</code> waits five seconds for the server to start, and <code>&amp;&amp;</code> runs <code>curl</code> only if the wait succeeded. <code>curl -i</code> prints the response headers as well as the body.</p>
+<p><strong>What you should see.</strong> <code>docker ps</code> shows the container <code>cp-api</code> with <code>0.0.0.0:8000-&gt;8000/tcp</code> under PORTS. <code>curl -i</code> prints <code>HTTP/1.1 200 OK</code> followed by a small JSON body.</p>
+<p><strong>How you know it worked.</strong> The status line is <code>200</code>. If <code>curl</code> says the connection was refused, the port flag is missing or the server is bound to <code>127.0.0.1</code> inside the container.</p>
+<div class="box box-trap"><div class="box-h">Trap: Localhost inside the container</div><p>If <code>DATABASE_URL</code> says <code>localhost</code>, the API looks for Postgres inside its own container and fails. Use <code>host.docker.internal</code> when Postgres runs on your laptop, or the service name <code>db</code> inside Compose. If <code>$DATABASE_URL</code> is not set in your terminal, the <code>-e</code> flag passes an empty value.</p></div>
+
+<h3 id="7-healthcheck-and-logs">7. Healthcheck and logs</h3>
+<p><strong>What you do.</strong> Check the container's health status and read its logs, then stop it. The health status exists only if the Dockerfile has a <code>HEALTHCHECK</code> line, so add the one from the hardened Dockerfile above and rebuild before step 6.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>inspect<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;{{.State.Health.Status}}&#39;</span><span class="w"> </span>cp-api
+docker<span class="w"> </span>logs<span class="w"> </span>cp-api<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>cp-api<span class="w"> </span>id<span class="w"> </span>-u
+docker<span class="w"> </span>stop<span class="w"> </span>cp-api
+</code></pre></div>
+
+<p><code>docker inspect --format</code> prints one field from the container's details. <code>{{.State.Health.Status}}</code> is the path to the health status. <code>docker logs cp-api</code> prints what the server wrote. The <code>|</code> sends that output to <code>tail -5</code>, which keeps only the last five lines. <code>docker exec cp-api id -u</code> runs a command inside the running container and prints the user number. <code>docker stop cp-api</code> stops the container, and because you used <code>--rm</code>, it is removed.</p>
+<p><strong>What you should see.</strong> The first command prints <code>starting</code> straight after start-up and <code>healthy</code> after the first 15-second check. The log lines are JSON request lines, for example one line per request to <code>/v1/health</code>. <code>id -u</code> prints <code>10001</code>.</p>
+<p><strong>How you know it worked.</strong> The status is <code>healthy</code>, the logs show your requests, and the user is not <code>0</code>. <code>0</code> is the number for root. Then <code>docker ps</code> no longer lists <code>cp-api</code>.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Lint a CityPulse Dockerfile" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Parse into (instruction, arg) tuples, skipping comments</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>All four anti-patterns present</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A clean Dockerfile has no findings</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Instruction count</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 70 of the 100 points. The other 30 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K12.html#y2-t42-p8-sign-off-api-with-tests-and-containerise-it-with-a-dockerfile">Y2-T42 · P8: sign off API with tests and containerise it with a Dockerfile</a></li>
+<li><a href="K12.html#y2-t43-harden-the-image-multi-stage-non-root-trivy-scan-compose-apidb">Y2-T43 · Harden the image: multi-stage, non-root, Trivy scan, compose API+DB</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has 10 case-study multiple-choice questions. Each one is about a single topic from today, so you get one question per topic, in the order this section follows. The pass mark is 70%. Your first attempt is the one your skill score keeps, so read the topics carefully before you start.</p>
+<p>Every case-study question describes a team, a symptom and a constraint, then asks for one decision. Use this method on each one:</p>
+<ol>
+<li>Read the last line first. It tells you what is being asked: the cause, the fix or the best next step.</li>
+<li>Underline the facts in the scenario that matter. A port number, a password, a file name or a version usually matters. The story around them usually does not.</li>
+<li>Eliminate options that are true in general but do not fix this scenario. A statement about Docker can be correct and still be the wrong answer.</li>
+<li>Watch the words "most", "first" and "best". They mean that more than one option is partly right, and you must choose the one that fits this scenario most closely.</li>
+</ol>
+<h3 id="choosing-the-base-image-with-from">Choosing the base image with FROM</h3>
+<p><strong>What it is.</strong> A Dockerfile is a text recipe. <code>FROM</code> is the instruction that names the base image every later line builds on. A base image is a ready-made image with an operating system and a language runtime already installed, so you do not start from an empty machine.</p>
+<p>An image name can carry a tag after a colon. The tag selects a version:</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:latest</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span>
+</code></pre></div>
+
+<p>The first line means "whatever Python release is newest today". The second pins Python 3.11.9, and <code>slim</code> leaves out many extra packages and build tools. The tag <code>latest</code> can point to a different image next month, so the same Dockerfile can produce a different result without anyone editing it.
+A second <code>FROM</code> starts a new build stage.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse API builds on Monday and fails on Friday with a library error, although nobody changed the Dockerfile. The first line reads <code>FROM python:latest</code>, so the base image moved overnight. The recipe did not change, but its input did. The right decision is to pin <code>python:3.11.9-slim</code> and rebuild, then move to a newer Python later as a tested change.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing latest because it is newest</div><p><code>latest</code> looks safe because it always has the newest release. The question is about reproducibility, though. A build that changes without any code change is the defect, so the fix is to pin the tag.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse Dockerfile begins with FROM python:latest. On Monday the image builds and the API starts. On Friday the build fails with a library error, and no line of the Dockerfile has changed. Which change stops this happening again?&quot;, &quot;opts&quot;: [&quot;Add a RUN line that upgrades pip before the install&quot;, &quot;Move the COPY of the code above the pip install&quot;, &quot;Change the base line to a pinned tag such as python:3.11.9-slim&quot;, &quot;Add --no-cache to the docker build command&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The base image moved under an unchanged recipe, so pinning the tag fixes the input. The cache flag is tempting, but the failure is about which base is used.&quot;}, {&quot;q&quot;: &quot;A colleague writes FROM python:slim for a service whose model was trained on Python 3.11. Both of you build the image on different days. What is the most likely problem with this line?&quot;, &quot;opts&quot;: [&quot;It leaves the Python version unpinned, so the image can change under the same recipe&quot;, &quot;The slim variant has no pip, so every pip install fails&quot;, &quot;It starts a second build stage, which copies the wrong files&quot;, &quot;It is only valid after an ARG line, so the build ignores it&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A tag without a version moves as the image is updated, so the model may run on a different Python. The other options describe things Docker does not do.&quot;}, {&quot;q&quot;: &quot;A reviewer asks what the second FROM does in a Dockerfile that has two FROM lines. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;It repeats the first stage, so the build runs twice and keeps the first image&quot;, &quot;It is ignored, because only the first FROM is read&quot;, &quot;It merges the two images into one layer by layer&quot;, &quot;It starts a new build stage, and only the last stage becomes the final image&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each FROM starts a stage. The last stage is what Docker outputs unless you choose another target. The option that says only the first FROM is read is tempting, because the first line is usually the base, but a second FROM is read and begins a new stage.&quot;}]}"></div>
+
+<h3 id="publishing-a-port-with-p">Publishing a port with -p</h3>
+<p><strong>What it is.</strong> A container has its own network, so the API's port 8000 is unreachable from your laptop until you publish it. The flag is <code>-p host:container</code>:</p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>citypulse-api:p8
+</code></pre></div>
+
+<p>In a second terminal, <code>curl -i localhost:8000/v1/health</code> should print <code>HTTP/1.1 200 OK</code>. The host port comes first. With <code>-p 9000:8000</code>, the API is reached at <code>localhost:9000</code>, while the process still listens on 8000 inside the container.</p>
+<p><code>EXPOSE 8000</code> in a Dockerfile only records which port the app uses. It publishes nothing. Also, the server must listen on all addresses inside the container. <code>--host 0.0.0.0</code> does that. If the server listens only on <code>127.0.0.1</code> inside the container, a published port still refuses connections.</p>
+<p><strong>How it shows up in a case study.</strong> A reviewer runs your image. The log says uvicorn listens on port 8000, but the browser cannot reach <code>localhost:8000</code>. The Dockerfile has <code>EXPOSE 8000</code>, and the run command has no <code>-p</code>. The server is fine, and the missing step is the publish. The right decision is to add <code>-p 8000:8000</code>, not to change EXPOSE or rebuild.</p>
+<div class="box box-trap"><div class="box-h">Trap: EXPOSE publishes the port</div><p>Seeing <code>EXPOSE 8000</code> looks as if the port is open. It is documentation only. Changing it to another number, or rebuilding, does not make the port reachable from the host.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse container logs that it listens on port 8000. The Dockerfile contains EXPOSE 8000, and the run command is docker run citypulse-api:p8. Your browser cannot reach localhost:8000. What is the most direct fix?&quot;, &quot;opts&quot;: [&quot;Rebuild the image with --no-cache so the port is registered&quot;, &quot;Add -p 8000:8000 to the docker run command&quot;, &quot;Change EXPOSE to 8080 in the Dockerfile&quot;, &quot;Set the environment variable PORT=8000 with -e&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The server is running, so only the publish step is missing, and -p supplies it. Rebuilding does not publish a port, and neither EXPOSE nor an environment variable does. The PORT option is tempting, but nothing in the run command reads it.&quot;}, {&quot;q&quot;: &quot;A teammate runs docker run -p 9000:8000 citypulse-api:p8 on a laptop. Another colleague says the API should be opened at localhost:8000 on this laptop. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;Use localhost:8000, because the container port is always the one you browse&quot;, &quot;Use localhost:8000 only if the image has EXPOSE 9000&quot;, &quot;Use localhost:8000, because uvicorn moves itself to the host port&quot;, &quot;Use localhost:9000, because the host port is the left-hand number in -p&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;In -p host:container the left number is the host port, so the browser uses 9000. The first option swaps the two sides.&quot;}, {&quot;q&quot;: &quot;The server in a container binds to 127.0.0.1:8000 inside the container. The run command publishes -p 8000:8000, but the host gets connection refused. Which change most likely fixes it?&quot;, &quot;opts&quot;: [&quot;Change the server&#x27;s bind address to 0.0.0.0, for example with --host 0.0.0.0 in CMD&quot;, &quot;Change -p to 8000:9000&quot;, &quot;Add EXPOSE 127.0.0.1 to the Dockerfile&quot;, &quot;Remove the -d flag from docker run&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Traffic from the host arrives on the container&#x27;s external address, which a server bound only to 127.0.0.1 refuses. 0.0.0.0 accepts it.&quot;}]}"></div>
+
+<h3 id="keeping-data-in-volumes">Keeping data in volumes</h3>
+<p><strong>What it is.</strong> A container's filesystem belongs to that container. When the container is removed, its changes go with it. A volume is storage that Docker keeps outside the container, so data survives removal. Two kinds appear in CityPulse. A named volume has a name, and Docker decides where it lives:</p>
+<div class="hl"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pgdata:/var/lib/postgresql/data&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>This keeps the Postgres database files in a volume called <code>pgdata</code>. A bind mount maps a file from your project into the container:</p>
+<div class="hl"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p><code>:ro</code> makes it read-only inside the container. The Postgres image runs the scripts in <code>/docker-entrypoint-initdb.d</code> only on the first start, when the data folder is empty. If <code>pgdata</code> already holds a database, editing <code>init.sql</code> changes nothing. Removing the volume with <code>docker compose down -v</code> empties it, and that also deletes the data.</p>
+<p><strong>How it shows up in a case study.</strong> A developer adds a table to <code>sql/init.sql</code> and runs <code>docker compose up</code>, but the table is missing. The database volume already holds data from an earlier start, so the init step is skipped. If it is only test data, <code>docker compose down -v</code> resets it. If the data matters, apply the change to the existing database instead.</p>
+<div class="box box-trap"><div class="box-h">Trap: Editing init.sql and expecting a rerun</div><p>The script is not rerun on each start. Editing the file has no effect on a volume that already holds data. Deleting the volume fixes the symptom, but it also deletes every row.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A developer edits sql/init.sql to add a table and runs docker compose up. The table is missing, and the pgdata volume holds test data from last week. What is the correct explanation and action?&quot;, &quot;opts&quot;: [&quot;Compose caches the old file, so run docker compose build --no-cache&quot;, &quot;The API must be restarted, because the database reads init.sql on each request&quot;, &quot;The init script only runs on an empty data folder, so run docker compose down -v to empty the volume&quot;, &quot;The new table must be declared with EXPOSE so Postgres sees it&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Postgres skips init scripts when its data folder already holds data. Removing the volume empties it, which is acceptable only because the data is test data. The no-cache option is tempting, but the file is not cached; the volume is the issue.&quot;}, {&quot;q&quot;: &quot;A team wants the new schema in init.sql applied to a production database that already holds customer data in the pgdata volume. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;Running docker compose down -v applies the schema and keeps the data&quot;, &quot;Running docker compose down -v would delete the production data, so the change must be applied in a reviewed way instead&quot;, &quot;Adding init.sql to .dockerignore makes Postgres apply it on the next start&quot;, &quot;Renaming the volume to pgdata2 runs the script and keeps the old rows&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Deleting the volume deletes the data. Ignoring the file has no effect on Postgres, and a new volume name creates an empty database rather than changing the existing one.&quot;}, {&quot;q&quot;: &quot;A Compose file maps ./sql/init.sql into the container with :ro and keeps the database in pgdata. A reviewer asks what :ro does and whether the database survives docker compose down. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;:ro makes the file writable only by root, and down deletes pgdata&quot;, &quot;:ro hides the file from the container, and down deletes pgdata&quot;, &quot;:ro makes the file read-only, and down deletes pgdata&quot;, &quot;:ro makes the mapped file read-only inside the container, and pgdata survives down because only down -v removes volumes&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;:ro sets read-only access for that one mapping. docker compose down stops and removes containers and networks but keeps named volumes. Only down -v also removes volumes.&quot;}]}"></div>
+
+<h3 id="reusing-layers-with-the-build-cache">Reusing layers with the build cache</h3>
+<p><strong>What it is.</strong> Each Dockerfile instruction creates a layer. During a build, Docker looks at each instruction and the files it reads. If nothing has changed since an earlier build, Docker reuses the stored layer and prints <code>CACHED</code>. If something changed, Docker runs that instruction again, and every instruction below it runs again too.
+Take this order:</p>
+<div class="hl"><pre><span></span><code><span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>api/<span class="w"> </span>api/
+</code></pre></div>
+
+<p>Change one line in <code>api/main.py</code> and rebuild. The first COPY sees the same requirements file, so it is cached. The install depends on the layer above it, which did not change, so it is cached too. Only the last COPY runs again. Now put <code>COPY . .</code> above the install. Every code edit changes the copied files, so the copy reruns, and then the install reruns because the layer above it changed.
+<strong>How it shows up in a case study.</strong> A rebuild takes four minutes after every small change, and the log shows the pip install running each time. The Dockerfile copies the whole project before the install, so any file change, even a README edit, invalidates the install layer. The right decision is to copy <code>requirements.txt</code> first, install, and copy the code afterwards.</p>
+<div class="box box-trap"><div class="box-h">Trap: Each line is cached on its own</div><p>Because the install line did not change, a candidate expects it to stay cached. Caching is a chain. A change high in the file invalidates every later line, even if those lines are unchanged.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A Dockerfile copies the full project with COPY . . and then runs pip install. After a one-line change to api/main.py, the build reinstalls every package and takes four minutes. Which change gives the fastest rebuilds for code-only edits?&quot;, &quot;opts&quot;: [&quot;Copy requirements.txt, run pip install, and then copy the project&quot;, &quot;Add RUN pip cache purge before the COPY line&quot;, &quot;Use the latest tag so the cache refreshes&quot;, &quot;Add --no-cache to every build command&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Reordering moves the install into a layer that does not depend on the code. --no-cache forces a full rebuild every time, which is slower. Purging the cache inside the build does not stop the copy layer from changing first.&quot;}, {&quot;q&quot;: &quot;A developer edits only a README file. The build log shows COPY . . running again, and then RUN pip install also running again. Which answer explains the second run?&quot;, &quot;opts&quot;: [&quot;Docker always runs pip install, because RUN lines are never cached&quot;, &quot;The README edit changed requirements.txt, so the install must run&quot;, &quot;The build cache was deleted by docker build&quot;, &quot;COPY . . copies the README, which changed the layer above the install, so every later layer reruns&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The README is part of the copied files, so the copy layer changes. Docker reuses a layer only when the layer above it is also reused. RUN lines are cached normally.&quot;}, {&quot;q&quot;: &quot;A team wants fast CI builds. Developers change code many times a day but change dependencies rarely. Which Dockerfile order is best?&quot;, &quot;opts&quot;: [&quot;COPY . . first, then WORKDIR, then requirements, then pip install&quot;, &quot;WORKDIR, then COPY requirements.txt, then pip install, then COPY the code&quot;, &quot;pip install first, then COPY requirements.txt, then the code&quot;, &quot;COPY the code first, and put pip install at the end of the file&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Stable inputs go at the top, so their layers stay cached. Installing before the requirements file is copied cannot work.&quot;}]}"></div>
+
+<h3 id="multi-stage-builds">Multi-stage builds</h3>
+<p><strong>What it is.</strong> A multi-stage build has more than one <code>FROM</code> line, and each <code>FROM</code> starts a stage. A stage can be named with <code>AS</code>, and a later stage can copy files from it with <code>COPY --from=name</code>. Only the final stage becomes the image unless you choose another target. Here is the course pattern in short form:</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/opt/venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>/opt/venv/bin/pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11.9-slim</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/opt/venv<span class="w"> </span>/opt/venv
+</code></pre></div>
+
+<p>The builder stage creates a virtual environment and installs the packages into it. The final stage starts clean and copies only <code>/opt/venv</code>, so the pip cache and any compiler stay behind in the builder. The venv must be copied to the same path it was created in, because its scripts contain that path.</p>
+<p><strong>How it shows up in a case study.</strong> A CityPulse image is over a gigabyte, and a scan reports hundreds of packages, many of them build tools that nothing uses at run time. The team installs in a builder stage and copies only the virtual environment and the code into the final stage. The problem is what was left over from installing, not what the app needs. The right decision is to split the stages, not to delete files in a later RUN line.</p>
+<div class="box box-trap"><div class="box-h">Trap: Every stage ends up in the image</div><p>A candidate thinks that because the builder stage ran, its tools are in the final image. Only the final stage becomes the image. Anything not copied with <code>COPY --from</code> is discarded with the builder.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A builder stage installs a C compiler and a pip cache. The final stage runs COPY --from=builder /opt/venv /opt/venv, and a security scan then runs on the final image. What will the scan find?&quot;, &quot;opts&quot;: [&quot;The compiler, because every stage is shipped in the image&quot;, &quot;The pip cache, because COPY --from copies whole stages&quot;, &quot;Nothing from the venv, because it is removed when the build ends&quot;, &quot;The packages in /opt/venv and the base packages of the final stage, but not the compiler or the pip cache&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;COPY --from copies only the named path. The builder stage is discarded, so its compiler and cache are not in the image. The third option is tempting, but the copied venv stays in the image.&quot;}, {&quot;q&quot;: &quot;A teammate copies /opt/venv from the builder to /home/app/venv in the final stage. When the container starts, uvicorn cannot be found. Which change most likely fixes it?&quot;, &quot;opts&quot;: [&quot;Add EXPOSE for the venv folder in the final stage&quot;, &quot;Use COPY --chown on the venv folder and nothing else&quot;, &quot;Copy the venv to /opt/venv, the path it was created at, and put /opt/venv/bin first on PATH&quot;, &quot;Use the latest base image so that the venv is rebuilt&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The scripts in a venv refer to the path it was created at, so moving it breaks them. Keeping the original path and putting its bin folder on PATH makes the tools findable. Changing ownership does not solve a missing path.&quot;}, {&quot;q&quot;: &quot;A reviewer asks you to prove that the final image does not include build tools. Which check is most direct?&quot;, &quot;opts&quot;: [&quot;Run docker history on the final image to list its layers, and run a scan on the image&quot;, &quot;Run docker build with --target builder and count the lines of output&quot;, &quot;Count the FROM lines in the Dockerfile&quot;, &quot;Run docker ps to see which tools the container is running&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;docker history lists each layer and its size, and a scan lists the packages present in the image. Counting lines describes the intent of the Dockerfile, not the image. docker ps lists running containers and does not show installed tools.&quot;}]}"></div>
+
+<h3 id="cmd-entrypoint-and-arguments">CMD, ENTRYPOINT and arguments</h3>
+<p><strong>What it is.</strong> <code>CMD</code> sets the default command that runs when a container starts. It can be written in JSON form or shell form:</p>
+<div class="hl"><pre><span></span><code><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;api.main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span>uvicorn<span class="w"> </span>api.main:app<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+
+<p>The JSON form runs the program directly. The shell form runs it through <code>/bin/sh</code>. The shell can then be the process that receives a stop signal, so the server may not shut down cleanly. If you add arguments after the image name, they replace the whole CMD:</p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>citypulse-api:p8<span class="w"> </span>--port<span class="w"> </span><span class="m">9000</span>
+</code></pre></div>
+
+<p>Docker then tries to run <code>--port</code> as a program and fails. <code>ENTRYPOINT</code> is a fixed program that always runs. CMD then supplies its default arguments, so arguments given to <code>docker run</code> replace only the CMD part.</p>
+<p><strong>How it shows up in a case study.</strong> An operator wants the API on port 9000, so they add <code>--port 9000</code> after the image name. The container exits at once with an executable error, because the arguments replace CMD and Docker tries to run <code>--port</code>. The right decision is to publish with <code>-p 9000:8000</code>, which keeps the server on 8000 inside the container.</p>
+<div class="box box-trap"><div class="box-h">Trap: Arguments are added to CMD</div><p>A candidate expects the extra arguments to be appended to the existing list. They replace it. The uvicorn command never runs, so its settings never matter.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An image has CMD [\&quot;uvicorn\&quot;, \&quot;api.main:app\&quot;, \&quot;--port\&quot;, \&quot;8000\&quot;]. An operator runs docker run citypulse-api:p8 --port 9000, and the container exits at once with an executable-not-found error. What is the cause?&quot;, &quot;opts&quot;: [&quot;Port 9000 is not allowed, so Docker blocks the container&quot;, &quot;The extra arguments replace the whole CMD, so Docker tries to run --port as a program&quot;, &quot;The image has no EXPOSE line, so the start fails&quot;, &quot;Uvicorn cannot bind to port 9000 inside a container&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Without an ENTRYPOINT, arguments after the image name replace CMD, so Docker looks for a program named --port. Uvicorn never starts, so it never tries to bind a port. The last option is tempting, but the failure happens earlier.&quot;}, {&quot;q&quot;: &quot;A team uses CMD uvicorn api.main:app --host 0.0.0.0 in shell form. When they stop the container, the server takes the full timeout and is then killed. Which change best addresses the cause?&quot;, &quot;opts&quot;: [&quot;Change CMD to the JSON form, so uvicorn runs as the main process and receives the stop signal&quot;, &quot;Add EXPOSE 8000 so Docker knows the port&quot;, &quot;Change the port in the health check&quot;, &quot;Add -p 8000:8000 to the stop command&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;In shell form, /bin/sh is the main process, and the stop signal may not reach uvicorn. JSON form runs uvicorn directly. The port options do not affect how the process stops.&quot;}, {&quot;q&quot;: &quot;A team wants one image that runs the API, or runs a one-off migration script, by changing only the arguments. They set ENTRYPOINT [\&quot;python\&quot;] and CMD [\&quot;-m\&quot;, \&quot;api\&quot;]. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;ENTRYPOINT is replaced by CMD, so python never runs&quot;, &quot;Any arguments after the image name always replace ENTRYPOINT&quot;, &quot;The image cannot run a migration, because ENTRYPOINT and CMD cannot both be set&quot;, &quot;python always runs, and arguments given after the image name replace only the CMD defaults&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The entrypoint stays fixed, so python always starts. Arguments given to docker run replace CMD, so running the image with migrate.py runs python migrate.py. ENTRYPOINT and CMD are designed to be used together.&quot;}]}"></div>
+
+<h3 id="setting-environment-variables-at-run-time">Setting environment variables at run time</h3>
+<p><strong>What it is.</strong> An environment variable is a named value that a program reads when it starts. <code>ENV</code> in a Dockerfile sets one inside the image:</p>
+<div class="hl"><pre><span></span><code><span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+
+<p>Every container started from that image gets the value. The <code>-e</code> flag sets a value for one container when you run it:</p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$DATABASE_URL</span><span class="s2">&quot;</span><span class="w"> </span>citypulse-api:p8
+</code></pre></div>
+
+<p>A value given with <code>-e</code> overrides the value in the image, for that container only. Because <code>ENV</code> values are stored in the image, anyone who has the image can read them with <code>docker inspect</code>. A password written with <code>ENV</code> is therefore a leaked password.
+<strong>How it shows up in a case study.</strong> A developer writes a database password into the Dockerfile with <code>ENV</code>, and the image is pushed to a shared registry. A reviewer runs <code>docker inspect</code> and reads the password. The value belongs to the image, not to the run. The right decision is to remove the line, pass <code>DATABASE_URL</code> with <code>-e</code> at run time, and change the password, which is already exposed.</p>
+<div class="box box-trap"><div class="box-h">Trap: ENV is safe because the container is private</div><p>A candidate assumes that a container's settings stay private. They are stored in the image, and anyone with the image can read them.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A Dockerfile contains ENV DATABASE_URL=postgresql://app:realpass@db:5432/citypulse, and the image is pushed to a shared registry. Which fix keeps the password out of the image while the container still connects?&quot;, &quot;opts&quot;: [&quot;Keep the ENV line and delete the image from the registry&quot;, &quot;Change ENV to ARG, which is hidden from docker inspect&quot;, &quot;Remove the password from the Dockerfile, pass DATABASE_URL with -e at run time, and change the password&quot;, &quot;Add the password to .dockerignore so it is not copied&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Deleting the image from the registry does not remove copies others pulled. An ARG value still shows in the build history. The password must be changed, because it was exposed.&quot;}, {&quot;q&quot;: &quot;Your laptop has a local Postgres, and a teammate&#x27;s container needs a different database. Which statement about ENV and -e is correct?&quot;, &quot;opts&quot;: [&quot;A value set with ENV cannot be changed when the container starts&quot;, &quot;A value set with -e is saved into the image for the next build&quot;, &quot;ENV and -e cannot set the same name, so the build fails&quot;, &quot;A value set with -e overrides the image&#x27;s ENV value for that one container only&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The -e value applies when the container starts, and it overrides the image value without changing the image. ENV values can be replaced at run time, so the first option is wrong.&quot;}, {&quot;q&quot;: &quot;An API container connects to localhost:5432 and gets connection refused, although Postgres runs on the laptop. What is the cause and the fix?&quot;, &quot;opts&quot;: [&quot;Port 5432 is not published, so add -p 5432:5432 to the API container&quot;, &quot;Inside a container, localhost means the container itself, so set DATABASE_URL to a host name the container can reach, such as host.docker.internal on Docker Desktop&quot;, &quot;The ENV line is ignored, so add the value to CMD&quot;, &quot;Postgres must be installed inside the image, so add an apt install line&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The API connects from inside its own container, so localhost points at the API container. Publishing port 5432 would let the laptop reach a container, but it does not change the address the API uses. Installing Postgres in the image is not needed.&quot;}]}"></div>
+
+<h3 id="running-services-with-compose">Running services with Compose</h3>
+<p><strong>What it is.</strong> Docker Compose starts several containers from one file, <code>docker-compose.yml</code>. Each entry under <code>services</code> is one container. Compose creates a private network for them, and each service can be reached by its service name, which acts as a hostname:</p>
+<div class="hl"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16-alpine</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</code></pre></div>
+
+<p>The sketch omits the healthcheck on <code>db</code>, which the course file includes. <code>depends_on</code> with <code>condition: service_healthy</code> makes <code>api</code> wait until <code>db</code> reports healthy. Without the condition, <code>depends_on</code> only sets the start order, so it cannot know when Postgres accepts connections. Inside the API container, the host in <code>DATABASE_URL</code> is <code>db</code>, not <code>localhost</code>. Run the stack with <code>docker compose up --build -d</code> and check it with <code>docker compose ps</code>, which shows <code>(healthy)</code> next to <code>db</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A team's API crashes with connection refused for Postgres, then works on a restart. Adding a plain <code>depends_on</code> makes the crash rarer but not gone, because it controls start order only. The right decision is a <code>pg_isready</code> healthcheck on <code>db</code>, and <code>condition: service_healthy</code> on <code>api</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: depends_on means the database is ready</div><p>A list-style <code>depends_on</code> or one without a condition looks like a guarantee. It controls only the start order. The database process can still be starting when the API connects.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team&#x27;s API crashes on start because Postgres is still starting. The Compose file has depends_on: [db]. What change makes the API wait until Postgres accepts connections?&quot;, &quot;opts&quot;: [&quot;Add a pg_isready healthcheck to db, and set depends_on with condition: service_healthy on api&quot;, &quot;Add ports: 5432:5432 to the api service&quot;, &quot;Add more service names to the depends_on list&quot;, &quot;Add restart: always to the db service only&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A list form sets the start order only, and the condition needs a healthcheck to evaluate. Publishing ports and restart policies do not make the API wait for readiness.&quot;}, {&quot;q&quot;: &quot;A developer&#x27;s API has DATABASE_URL pointing at localhost:5432 and fails, although docker compose ps shows db as healthy. Which change fixes it?&quot;, &quot;opts&quot;: [&quot;Make db publish port 5432 on localhost&quot;, &quot;Add depends_on with no condition to the api service&quot;, &quot;Change the host in DATABASE_URL to db, the service name on the Compose network&quot;, &quot;Remove the healthcheck from the db service&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Inside the API container, localhost is the API container itself, so the connection never reaches db. The service name works across the Compose network, and publishing a port is not needed for containers to reach each other.&quot;}, {&quot;q&quot;: &quot;A team runs docker compose stop and then docker compose up. Which statement about the database data is correct?&quot;, &quot;opts&quot;: [&quot;docker compose stop deletes the pgdata volume&quot;, &quot;up creates a new empty pgdata volume each time it runs&quot;, &quot;The data is saved only inside the API image, so it is lost on stop&quot;, &quot;docker compose stop keeps the containers and volumes, so up starts them again with the data intact&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;stop halts the containers but keeps them and their volumes. The first option is tempting, because people confuse stop with down -v.&quot;}]}"></div>
+
+<h3 id="keeping-files-out-with-dockerignore">Keeping files out with .dockerignore</h3>
+<p><strong>What it is.</strong> When you run <code>docker build</code>, Docker sends the build context to the builder first. The build context is the folder named at the end of the command, here the dot, and it is everything <code>COPY . .</code> can reach. A file named <code>.dockerignore</code> lists paths that are left out of that context. Left-out files cannot be copied into the image:</p>
+<div class="hl"><pre><span></span><code>.git
+.venv
+.env
+data/raw
+</code></pre></div>
+
+<p>With these lines, the build does not send <code>.git</code>, the local virtual environment, <code>.env</code> or the raw data folder, so the image is smaller and the secrets stay out. It does not delete anything from your disk, and it does not change Git. An image built earlier still contains whatever it copied, until you rebuild.</p>
+<p><strong>How it shows up in a case study.</strong> A team's image is two gigabytes and contains a <code>.git</code> folder, a large virtual environment and a <code>.env</code> file, because <code>COPY . .</code> takes everything in the context. The right decision is a <code>.dockerignore</code> file and a rebuild. The team also checks that <code>.env</code> was never committed to Git.</p>
+<div class="box box-trap"><div class="box-h">Trap: Adding a file to .dockerignore removes it from Git</div><p>A candidate adds <code>.env</code> to <code>.dockerignore</code> after a secret was committed, and believes the secret is gone. The file stays in Git history and in any image built before the change.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CityPulse image is two gigabytes. The build context holds .git, a local .venv and a .env with secrets, and the Dockerfile uses COPY . . Which change is the cleanest fix?&quot;, &quot;opts&quot;: [&quot;Add RUN rm -rf .git .venv .env after the copy&quot;, &quot;Add .git, .venv and .env to .dockerignore, then rebuild&quot;, &quot;Add EXPOSE lines for the three paths&quot;, &quot;Add the three paths to requirements.txt&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;.dockerignore keeps the files out of the build context, so they never reach the image. A RUN line that deletes them leaves them in the layer created by the copy, and that layer still counts towards the image size.&quot;}, {&quot;q&quot;: &quot;A developer committed .env with a database password to Git. The next day they added .env to .dockerignore and pushed. A reviewer asks whether the password is still exposed. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;No, because .dockerignore removes the file from Git&quot;, &quot;No, because the password is removed from new images and the commit is cleared&quot;, &quot;Only the first commit exposes it, so the next commit fixes it&quot;, &quot;Yes, the password stays in Git history and in any image built earlier, so it must be rotated&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;.dockerignore changes only what a build sends, so the old commit still holds the password. Rotating the secret is the real fix.&quot;}, {&quot;q&quot;: &quot;The team&#x27;s Dockerfile copies the project with COPY . ., and the context includes a three-gigabyte data/raw folder that the image does not need. Which action helps most directly?&quot;, &quot;opts&quot;: [&quot;Add data/raw to requirements.txt&quot;, &quot;Add a USER line before the COPY line&quot;, &quot;Add data/raw to .dockerignore, so it is not sent in the build context&quot;, &quot;Run docker build with --no-cache, so the context is skipped&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The context is sent before the build starts, so excluding the folder saves transfer time and keeps it out of the image. --no-cache changes layer reuse, not the context.&quot;}]}"></div>
+
+<h3 id="running-as-a-non-root-user">Running as a non-root user</h3>
+<p><strong>What it is.</strong> By default, container processes run as <code>root</code>, the user with the most power. A normal user has fewer powers, so an attacker gets less. The <code>USER</code> instruction changes that:</p>
+<div class="hl"><pre><span></span><code><span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="m">10001</span>:10001<span class="w"> </span>api/<span class="w"> </span>api/
+<span class="k">USER</span><span class="w"> </span><span class="s">10001</span>
+</code></pre></div>
+
+<p><code>USER 10001</code> runs the later build steps and the container's processes as user number 10001, even when the image has no user with that name. Files copied into the image are owned by root unless you add <code>--chown</code>, which sets the owner as the file is copied. To check the result, run <code>docker exec cp-api id -u</code>, which should print <code>10001</code>. If it prints <code>0</code>, the process is root.</p>
+<p><strong>How it shows up in a case study.</strong> A team adds <code>USER 10001</code> for a security review. The API starts, but the first request that writes a cache file fails with a permission error, because the copied folders are owned by root. The right decision is <code>--chown=10001:10001</code> on the COPY lines, not root rights.</p>
+<div class="box box-trap"><div class="box-h">Trap: USER alone is enough</div><p>Adding <code>USER 10001</code> without <code>--chown</code> looks complete. The process runs as the new user, but the files it writes to may still belong to root.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A security review requires the API not to run as root. A developer adds USER 10001 after the COPY lines, and the API now fails with permission denied when it writes to /app. The COPY lines have no --chown flag. What is the fix?&quot;, &quot;opts&quot;: [&quot;Run the container with --privileged so it can write files&quot;, &quot;Remove the USER line, because the app must run as root to write&quot;, &quot;Change the COPY lines to a RUN mkdir command&quot;, &quot;Add --chown=10001:10001 to the COPY lines, so the new user owns the copied files&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Files copied without --chown belong to root, and user 10001 is not root, so it cannot write to them. Running privileged or as root defeats the review.&quot;}, {&quot;q&quot;: &quot;A teammate runs docker exec cp-api whoami and gets an error saying the user has no name. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;The container is broken, so rebuild the image from scratch&quot;, &quot;The user number 10001 has no name in the image, so whoami fails, while id -u still prints the number that shows the process is not root&quot;, &quot;The container runs as root, and whoami hides it&quot;, &quot;USER must be set to a name, not a number, for whoami to work&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;whoami looks up a name for the user, so it fails for an unnamed numeric user. id -u prints the number and is the right check here.&quot;}, {&quot;q&quot;: &quot;A reviewer finds that the container&#x27;s process runs as root, and the Dockerfile has no USER line. Which change fixes this with the least risk?&quot;, &quot;opts&quot;: [&quot;Add USER 10001, and copy the code with --chown=10001:10001, then check that docker exec id -u prints 10001&quot;, &quot;Add EXPOSE 10001 and remove the HEALTHCHECK line&quot;, &quot;Add ENV USER=10001 and nothing else&quot;, &quot;Add -p 10001:8000 to the run command&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;USER sets the user that runs the process, and --chown gives that user ownership of the files it must write. An ENV variable named USER does not change the process user, and a port mapping has nothing to do with it.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A Dockerfile has FROM python:3.11-slim AS builder, then a second FROM python:3.11-slim. A reviewer asks which stage gives the image and whether it is reproducible. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;The builder stage, because the first FROM always names the output&quot;, &quot;Both stages, merged layer by layer into one image&quot;, &quot;The final stage, and the 3.11-slim tag still moves unless you pin a full patch version&quot;, &quot;Neither, because named stages cannot be used as the output&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The final stage is the output. A minor tag such as 3.11-slim changes as patch releases arrive, so only a full patch version is fixed.&quot;}, {&quot;q&quot;: &quot;A container logs that it listens on 127.0.0.1:8000. The run command is docker run -p 8000:8000 citypulse-api:p8, and curl to localhost:8000 is refused. What is the best next step?&quot;, &quot;opts&quot;: [&quot;Change the server to bind to 0.0.0.0 with --host 0.0.0.0 in CMD, then rebuild and rerun&quot;, &quot;Change EXPOSE to 8080 and rebuild, because the port is wrong&quot;, &quot;Add -e HOST=0.0.0.0 to the run command, because uvicorn reads it&quot;, &quot;Add the -d flag, because detached containers accept connections&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The mapping is correct, so the bind address is the problem. The CMD passes --host directly, so an environment variable would do nothing.&quot;}, {&quot;q&quot;: &quot;One teammate ran docker compose down and kept the data, but another ran docker compose down -v and lost it. Which statement explains both observations?&quot;, &quot;opts&quot;: [&quot;down -v keeps the data and down deletes it, so the team confused the two&quot;, &quot;down keeps named volumes and down -v removes them, so the first run kept the data and the second deleted it&quot;, &quot;Both commands delete named volumes, so the data was restored from the image&quot;, &quot;Named volumes live inside the API image, so each up restores them&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Named volumes survive down and are removed only by down -v. The first option reverses the two commands, which is the trap.&quot;}, {&quot;q&quot;: &quot;A Dockerfile copies api/, then requirements.txt, then runs pip install. A change in api/ reinstalls everything. Which order is best?&quot;, &quot;opts&quot;: [&quot;Copy api/ and models/ first, then requirements.txt, then pip install&quot;, &quot;Run pip install before any COPY, then copy requirements.txt&quot;, &quot;Use COPY . . at the top, then pip install&quot;, &quot;Copy requirements.txt, run pip install, then copy models/ and api/&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Requirements and install form a stable block at the top, so code edits leave them cached. The other orders put a changing copy above the install.&quot;}, {&quot;q&quot;: &quot;A final stage copies the venv from the builder to /app/venv, not /opt/venv. Uvicorn then fails with a bad interpreter path. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The base image is too new, so change it to an older tag&quot;, &quot;The builder ran as root, so change its user&quot;, &quot;The scripts in the venv refer to /opt/venv, so copy the venv back to /opt/venv and put its bin folder on PATH&quot;, &quot;The EXPOSE line points at the wrong port&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Scripts in a venv store the path they were created at, so a moved copy breaks. The fix is the original path, plus PATH.&quot;}, {&quot;q&quot;: &quot;An image has ENTRYPOINT [\&quot;uvicorn\&quot;] and CMD [\&quot;api.main:app\&quot;, \&quot;--port\&quot;, \&quot;8000\&quot;]. An operator runs docker run citypulse-api:p8 api.main:app --port 9000. What happens?&quot;, &quot;opts&quot;: [&quot;Uvicorn starts on port 9000, because the arguments replace CMD and run after the fixed ENTRYPOINT&quot;, &quot;The container fails, because ENTRYPOINT and CMD cannot be combined&quot;, &quot;Uvicorn starts on port 8000, because CMD always wins&quot;, &quot;Docker runs both commands, and the second one fails&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The entrypoint is fixed, so uvicorn runs. The arguments replace CMD, so the --port 9000 value is the one used.&quot;}, {&quot;q&quot;: &quot;A team runs docker run -e DATABASE_URL=... with a value. The image&#x27;s Dockerfile has ENV DATABASE_URL=postgresql://localhost:5432/dev. A teammate says the image now uses the run value for everyone. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;Yes, the run command rewrites the Dockerfile and changes the image for everyone&quot;, &quot;No, the -e value is saved into the image and used by later runs&quot;, &quot;Yes, but only after the next build, because ENV is read at build time&quot;, &quot;No, the -e value applies to that one container, and the image keeps its ENV default for any other container&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;-e overrides the value for one container at start. The image is not changed, so other containers still see the ENV default.&quot;}, {&quot;q&quot;: &quot;Compose makes api wait for a healthy db, and Postgres is healthy. Yet the API logs connection refused to db:5432, and its DATABASE_URL uses 127.0.0.1. Which change fixes it?&quot;, &quot;opts&quot;: [&quot;Add a second healthcheck to the api service that pings port 5432&quot;, &quot;Change the host in DATABASE_URL to db, because inside the API container 127.0.0.1 means the API itself&quot;, &quot;Remove depends_on, because it is the cause of the refusal&quot;, &quot;Publish port 5432 on the api service so it can reach db&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;127.0.0.1 inside the API container is the API itself, so the connection never reaches db.&quot;}, {&quot;q&quot;: &quot;A team adds .venv to .dockerignore, but the image still has .venv, because a RUN line creates it inside the image. Which explanation is correct?&quot;, &quot;opts&quot;: [&quot;.dockerignore works only after a commit, so the team must commit first&quot;, &quot;The build used the old cache, so the team should delete the image&quot;, &quot;.dockerignore filters files from the build context, so a folder that a RUN line creates inside the image is not affected&quot;, &quot;.venv is a reserved name, so .dockerignore cannot hide it&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;.dockerignore acts on the build context, which is sent before the build. A folder created inside the image during the build is outside its reach.&quot;}, {&quot;q&quot;: &quot;A Dockerfile ends with USER 10001, and the app fails writing to /app/cache because the copied folders belong to root. Which fix keeps the least privilege?&quot;, &quot;opts&quot;: [&quot;Add --chown=10001:10001 to the COPY lines that bring in the code, or create and chown the cache folder before USER 10001&quot;, &quot;Give the process root rights with USER 0 at runtime&quot;, &quot;Remove the USER line, because a non-root process cannot write&quot;, &quot;Make every folder writable with chmod 777&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Ownership is the problem, so changing it fixes the fault without raising privileges. Root or open folders weaken the review&#x27;s requirement.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python task. You read a Dockerfile as plain text and write two functions that check it. You do not build or run any Docker image, and you do not need Docker installed to pass.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> Before a CityPulse service image ships, a pre-commit check scans its Dockerfile for common security and reproducibility problems. A Dockerfile is a text file of instructions, one per line. Each instruction starts with a keyword such as <code>FROM</code>, <code>USER</code> or <code>ENV</code>, followed by its argument. Your job is to read that text and report the problems.</p>
+<p>You write two module-level functions. The names and the parameters are fixed, and the platform calls them by name.</p>
+<ul>
+<li><code>parse_instructions(text: str) -&gt; list[tuple]</code> returns a list with one <code>(INSTRUCTION, argument)</code> tuple for each line. The rules are:</li>
+<li>Blank lines are skipped.</li>
+<li>Comment lines, which begin with <code>#</code>, are skipped. Treating an indented <code>#</code> line as a comment (after stripping its leading spaces) is the natural reading, but the statement does not say so. Ask your trainer if unsure, and strip each line before you test for <code>#</code>.</li>
+<li>The keyword is uppercased, so <code>from</code> becomes <code>FROM</code>.</li>
+<li>The argument is the rest of the line with the spaces at both ends removed.</li>
+<li>If a line has no argument, the argument is the empty string <code>""</code>, not <code>None</code>.</li>
+<li>Example: <code>parse_instructions("# base image\nFROM python:3.11\nUSER app\n")</code> returns <code>[('FROM', 'python:3.11'), ('USER', 'app')]</code>.</li>
+<li><code>lint_dockerfile(text: str) -&gt; list[str]</code> returns a sorted list of anti-pattern codes. There are four codes, and each one means:</li>
+<li><code>unpinned_base</code>: a <code>FROM</code> image whose tag is missing or is <code>latest</code>.</li>
+<li><code>runs_as_root</code>: there is no <code>USER</code> instruction, or the last <code>USER</code> instruction names <code>root</code>.</li>
+<li><code>no_healthcheck</code>: there is no <code>HEALTHCHECK</code> instruction anywhere in the file.</li>
+<li><code>secret_in_env</code>: an <code>ENV</code> instruction whose key contains <code>KEY</code>, <code>SECRET</code>, <code>TOKEN</code> or <code>PASSWORD</code>, in any letter case.</li>
+<li>Example: <code>lint_dockerfile("FROM python:latest\nENV API_KEY=abc123\nRUN pip install flask\nCOPY . /app")</code> returns <code>['no_healthcheck', 'runs_as_root', 'secret_in_env', 'unpinned_base']</code>.</li>
+</ul>
+<p><strong>Limits and scoring.</strong> The solution must finish within 30 seconds and use at most 128 MB. The visible tests carry 70 points:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parse into (instruction, arg) tuples, skipping comments</td>
+<td>15</td>
+</tr>
+<tr>
+<td>All four anti-patterns present</td>
+<td>25</td>
+</tr>
+<tr>
+<td>A clean Dockerfile has no findings</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Instruction count</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hidden tests.</strong> The platform also runs three hidden tests, worth 30 points together. A hidden test is an input you cannot see. It checks a case the visible examples do not show, such as an empty file, a file with only comments, a <code>FROM</code> line with no tag, or a <code>USER</code> line followed by another <code>USER</code> line. Hidden tests decide the top marks because they check whether your code follows the rules, not whether it matches the examples. A solution that only fits the visible examples can score 70 at most. Read every rule in the list above and assume that a hidden test checks it.</p>
+<p>The visible tests are a sample of the platform's checks. Read them to learn what the answers look like, not as a complete specification.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that does not use the lab's data. Try each one in a shell before you use it.</p>
+<ul>
+<li><strong>Splitting lines.</strong> <code>splitlines()</code> cuts text into lines, and <code>strip()</code> removes spaces at both ends. The two differ on empty text: <code>"".splitlines()</code> returns <code>[]</code>, while <code>"".split("\n")</code> returns <code>['']</code>. Your function should give <code>[]</code> for empty input.</li>
+<li><strong>Splitting off the first word.</strong> <code>split(None, 1)</code> splits on any run of spaces and stops after one cut. <code>"brew  hot  tea".split(None, 1)</code> returns <code>['brew', 'hot  tea']</code>, and <code>"brew".split(None, 1)</code> returns <code>['brew']</code>. The second case has no argument, so you must supply <code>""</code> yourself.</li>
+<li><strong>Splitting on a separator that may be missing.</strong> <code>partition(":")</code> returns three parts, always. <code>"cake:chocolate".partition(":")</code> returns <code>('cake', ':', 'chocolate')</code>, and <code>"cake".partition(":")</code> returns <code>('cake', '', '')</code>. You can tell whether the separator was present by checking the middle part.</li>
+<li><strong>Changing case for comparison.</strong> <code>upper()</code> and <code>lower()</code> return a new string. <code>"Tea".upper()</code> returns <code>'TEA'</code>. The original string is unchanged. Compare the uppercased form when a rule ignores case.</li>
+<li><strong>Substring tests.</strong> <code>in</code> on strings checks whether one string sits inside another. <code>"ch" in "chocolate"</code> returns <code>True</code>. Note that this is a substring test: <code>"ant" in "elephant"</code> is also <code>True</code>.</li>
+<li><strong>Testing several words at once.</strong> <code>any()</code> returns <code>True</code> if at least one item in an iterable is true. <code>any(c in "GREEN TEA".upper() for c in ("TEA", "MILK"))</code> returns <code>True</code>, because one item matches.</li>
+<li><strong>Sorting a list.</strong> <code>sorted()</code> returns a new sorted list and leaves the original alone. <code>sorted(["pear", "apple", "fig"])</code> returns <code>['apple', 'fig', 'pear']</code>.</li>
+<li><strong>Remembering the last match.</strong> Set a variable to <code>None</code> before a loop, and overwrite it inside the loop each time you see a match. After the loop, the variable holds the last match. A list <code>[7, 3, 9]</code> with <code>last = None</code> and <code>if x &gt; 5: last = x</code> ends with <code>last == 9</code>.</li>
+<li><strong>Building tuples.</strong> A tuple is a fixed group of values in parentheses. <code>[(word, len(word)) for word in ["ann", "bo"]]</code> returns <code>[('ann', 3), ('bo', 2)]</code>.</li>
+<li><strong>Empty text.</strong> <code>if not text:</code> is true for <code>""</code> and for an empty list. Test empty input first, because many hidden tests use it.</li>
+</ul>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>Each row names a rule from the statement, the mistake a careless solution makes, and a test you can write to check yours. The statement has no rule about rounding, ties or numeric boundaries, so you do not need to round anything.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blank lines and <code>#</code> comment lines are skipped</td>
+<td>Keeps them as tuples such as <code>('', '')</code> or <code>('#', ...)</code></td>
+<td><code>parse_instructions("\n# note\n")</code> must return <code>[]</code></td>
+</tr>
+<tr>
+<td>The keyword is uppercased</td>
+<td>Returns <code>from</code> as typed</td>
+<td>The first item of <code>parse_instructions("from x")</code> must be <code>'FROM'</code></td>
+</tr>
+<tr>
+<td>The argument is stripped, and <code>""</code> when there is none</td>
+<td>Returns <code>None</code>, or keeps trailing spaces</td>
+<td><code>parse_instructions("USER   ")</code> must return <code>[('USER', '')]</code></td>
+</tr>
+<tr>
+<td><code>unpinned_base</code>: the tag is missing or is <code>latest</code></td>
+<td>Flags <code>python:3.11</code>, or misses <code>FROM python</code> because it has no colon</td>
+<td>Check <code>FROM python</code>, <code>FROM python:latest</code> and <code>FROM python:3.11</code> separately</td>
+</tr>
+<tr>
+<td><code>runs_as_root</code>: the last <code>USER</code> decides</td>
+<td>Checks the first <code>USER</code> line only, or flags any <code>USER</code> line</td>
+<td><code>USER root</code> then <code>USER app</code> must not flag; <code>USER app</code> then <code>USER root</code> must flag</td>
+</tr>
+<tr>
+<td><code>runs_as_root</code>: a numeric user is not root</td>
+<td>Treats <code>USER 10001</code> as root, or as a missing user</td>
+<td><code>USER 10001</code> alone must not flag a root user, and must not flag a missing user either</td>
+</tr>
+<tr>
+<td><code>no_healthcheck</code>: anywhere in the file</td>
+<td>Checks only the last line, or expects the <code>HEALTHCHECK</code> to come after <code>CMD</code></td>
+<td>A <code>HEALTHCHECK</code> on line 1 of a three-line file must suppress the code</td>
+</tr>
+<tr>
+<td><code>secret_in_env</code>: the key contains a word, in any case</td>
+<td>Checks the value, or only matches uppercase</td>
+<td><code>ENV api_token=x</code> must flag; <code>ENV MOTTO=the KEY is here</code> must not flag, because only the key counts</td>
+</tr>
+<tr>
+<td><code>secret_in_env</code>: contains means substring</td>
+<td>Matches whole words only</td>
+<td><code>ENV MONKEY=1</code> must flag, because <code>MONKEY</code> contains <code>KEY</code></td>
+</tr>
+<tr>
+<td>Return a sorted list</td>
+<td>Returns the codes in the order they were found</td>
+<td>Compare your output with <code>sorted(...)</code> of the same list</td>
+</tr>
+<tr>
+<td>Each code is one of four names</td>
+<td>Repeats a code for every matching line</td>
+<td>Two <code>FROM python:latest</code> lines must give <code>unpinned_base</code> once</td>
+</tr>
+<tr>
+<td>Empty input</td>
+<td>Crashes, or returns the wrong codes</td>
+<td><code>lint_dockerfile("")</code> must return <code>['no_healthcheck', 'runs_as_root']</code>, because there is no <code>USER</code> and no <code>HEALTHCHECK</code>, and the other two rules have nothing to match</td>
+</tr>
+<tr>
+<td>A clean Dockerfile has no findings</td>
+<td>Flags a rule by mistake on a pinned, non-root, healthy file</td>
+<td>A file with a pinned <code>FROM</code>, <code>USER 10001</code>, a <code>HEALTHCHECK</code> and no secret <code>ENV</code> must return <code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Use the table as a checklist for your asserts. If a row seems to contradict the statement, the statement wins, so re-read the rule before you change your code.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file. Keep the function names and parameters exactly as they are.</li>
+<li>Turn each example in the statement into an <code>assert</code> line. Run the file. The asserts will fail at first, which is expected.</li>
+<li>Add your own asserts for every row of the table above. Write them before you write the function bodies, so you know what the function must do.</li>
+<li>Implement <code>parse_instructions</code> first, because <code>lint_dockerfile</code> can depend on its output. Run the asserts for it until they pass.</li>
+<li>Implement <code>lint_dockerfile</code> one code at a time, in this order: <code>unpinned_base</code>, <code>runs_as_root</code>, <code>no_healthcheck</code>, <code>secret_in_env</code>. Run the asserts after each code.</li>
+<li>Check the output format last. Tuples must contain strings, the argument must never be <code>None</code>, and the codes must be a sorted list with no repeats.</li>
+<li>Run the visible tests. Read any failure, fix the cause, and run them again.</li>
+<li>Submit once, when every assert and every visible test passes. While you work, a <code>print</code> call helps you see a value, but remove every <code>print</code> before you submit, because the platform reads only the return values.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The real lab checks a Dockerfile. This twin checks a Procfile, the file that tells a hosting platform which processes to start. It needs the same skills: splitting lines, uppercasing or normalising a keyword, returning tuples, collecting findings and returning them sorted.</p>
+<p><strong>Task.</strong> A Procfile has one process per line in the form <code>name: command</code>. Write two module-level functions.</p>
+<ul>
+<li><code>parse_procfile(text: str) -&gt; list[tuple]</code> returns one <code>(name, command)</code> tuple for each line. Blank lines and comment lines starting with <code>#</code> are skipped. Both the name and the command are stripped of spaces. A line with no colon gives a name equal to the whole line and the command <code>""</code>.</li>
+<li><code>lint_procfile(text: str) -&gt; list[str]</code> returns a sorted list of codes:</li>
+<li><code>no_web</code>: no process is named <code>web</code>.</li>
+<li><code>unknown_process</code>: a name is not one of <code>web</code>, <code>worker</code> or <code>release</code>. Names are case-sensitive, so <code>Web</code> is unknown.</li>
+<li><code>duplicate_process</code>: a name appears more than once.</li>
+<li><code>empty_command</code>: a command is empty after the spaces are removed.</li>
+</ul>
+<p>Examples: <code>parse_procfile("# app\nweb: gunicorn app:app\n\nworker: python jobs.py\n")</code> returns <code>[('web', 'gunicorn app:app'), ('worker', 'python jobs.py')]</code>. <code>lint_procfile("Web: a\n")</code> returns <code>['no_web', 'unknown_process']</code>.</p>
+<p>Try to write <code>lint_procfile</code> yourself from the rules above before you read the solution. Then compare your result with the solution, and run both against the asserts.</p>
+<p><strong>Solution.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">KNOWN</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;web&quot;</span><span class="p">,</span> <span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="s2">&quot;release&quot;</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_procfile</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">command</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">entries</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lint_procfile</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="n">parse_procfile</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s2">&quot;web&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="n">codes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;no_web&quot;</span><span class="p">)</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">KNOWN</span><span class="p">:</span>
+            <span class="n">codes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;unknown_process&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="n">codes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;duplicate_process&quot;</span><span class="p">)</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">codes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;empty_command&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="n">parse_procfile</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">parse_procfile</span><span class="p">(</span><span class="s2">&quot;# app</span><span class="se">\n</span><span class="s2">web: gunicorn app:app</span><span class="se">\n\n</span><span class="s2">worker: python jobs.py</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;web&quot;</span><span class="p">,</span> <span class="s2">&quot;gunicorn app:app&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="s2">&quot;python jobs.py&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="k">assert</span> <span class="n">parse_procfile</span><span class="p">(</span><span class="s2">&quot;release:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;release&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_procfile</span><span class="p">(</span><span class="s2">&quot;worker</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;web: gunicorn app:app</span><span class="se">\n</span><span class="s2">worker: python jobs.py</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;no_web&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;worker: run</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;no_web&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;web: a</span><span class="se">\n</span><span class="s2">web: b</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;duplicate_process&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;web: a</span><span class="se">\n</span><span class="s2">cron: b</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;unknown_process&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;web:</span><span class="se">\n</span><span class="s2">release: x</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;empty_command&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;Web: a</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;no_web&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown_process&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">lint_procfile</span><span class="p">(</span><span class="s2">&quot;web: a</span><span class="se">\n</span><span class="s2">web: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;duplicate_process&quot;</span><span class="p">,</span> <span class="s2">&quot;empty_command&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><strong>Line by line.</strong></p>
+<ul>
+<li><code>KNOWN</code> is a set of the three allowed names. A set answers "is this name allowed?" quickly, and it keeps the list in one place.</li>
+<li><code>parse_procfile</code> builds an empty list and walks the lines. <code>text.splitlines()</code> cuts the text into lines, and <code>raw.strip()</code> removes the spaces at both ends.</li>
+<li>The <code>if</code> line skips a blank line, and a line that starts with <code>#</code>. A blank line is empty after stripping, so <code>not line</code> is true for it.</li>
+<li><code>line.partition(":")</code> splits the line at the first colon into three parts. The middle part is the colon itself, which is not needed, so the code assigns it to <code>_</code>. A line with no colon gives the whole line as <code>name</code> and an empty <code>command</code>.</li>
+<li><code>name.strip()</code> and <code>command.strip()</code> remove the spaces around each part, so <code>web: gunicorn app:app</code> gives the command <code>gunicorn app:app</code>.</li>
+<li><code>lint_procfile</code> calls <code>parse_procfile</code>, so both functions agree about what a line means.</li>
+<li><code>codes = set()</code> collects findings. A set stores each code once, so a repeated finding does not appear twice.</li>
+<li><code>names = [name for name, _ in entries]</code> builds a list of names. The <code>_</code> ignores the command. The <code>no_web</code> check is <code>"web" not in names</code>, which is a membership test on a list.</li>
+<li><code>seen</code> records the names already met. For each entry, <code>name in seen</code> is true only for a repeat, which is how <code>duplicate_process</code> is found. Then <code>seen.add(name)</code> records the name for later lines.</li>
+<li><code>command == ""</code> checks for an empty command. The parser has already removed the spaces, so this comparison is enough.</li>
+<li><code>sorted(codes)</code> turns the set into a sorted list of strings. Sorting works on strings alphabetically.</li>
+</ul>
+<p>Running the block prints nothing. Every <code>assert</code> passes, so the program ends without an error. An assert that fails stops the run and shows a message, which is how the build checks the solution.</p>
+<p>The trickiest function is <code>lint_procfile</code>, because one line can produce two codes, and a set makes the duplicates disappear. Step through the loop below. Watch how <code>seen</code> grows, and how the second <code>web</code> line triggers two codes at once.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Spotting a duplicate and an empty command&quot;, &quot;code&quot;: [&quot;seen = set()&quot;, &quot;codes = set()&quot;, &quot;for name, command in [(\&quot;web\&quot;, \&quot;a\&quot;), (\&quot;web\&quot;, \&quot;\&quot;)]:&quot;, &quot;    if name in seen:&quot;, &quot;        codes.add(\&quot;duplicate_process\&quot;)&quot;, &quot;    seen.add(name)&quot;, &quot;    if command == \&quot;\&quot;:&quot;, &quot;        codes.add(\&quot;empty_command\&quot;)&quot;, &quot;print(sorted(codes))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;seen&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;Start with an empty set of names already seen.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;seen&quot;, &quot;set()&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;Start with no findings.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;a\&quot;&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The loop takes the first entry.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;a\&quot;&quot;], [&quot;seen&quot;, &quot;set()&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;\&quot;web\&quot; is not in seen yet, so the test is False.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;a\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;Remember \&quot;web\&quot; for the entries that follow.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;a\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;\&quot;a\&quot; is not empty, so the test is False.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The loop takes the second entry.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;\&quot;web\&quot; is already in seen, so this is a duplicate.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;{\&quot;duplicate_process\&quot;}&quot;]], &quot;note&quot;: &quot;The duplicate code is recorded.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;{\&quot;duplicate_process\&quot;}&quot;]], &quot;note&quot;: &quot;Adding \&quot;web\&quot; again changes nothing, because a set keeps one copy.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;{\&quot;duplicate_process\&quot;}&quot;]], &quot;note&quot;: &quot;The command is empty, so the test is True.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;{\&quot;duplicate_process\&quot;, \&quot;empty_command\&quot;}&quot;]], &quot;note&quot;: &quot;The empty-command code is recorded.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;web\&quot;&quot;], [&quot;command&quot;, &quot;\&quot;\&quot;&quot;], [&quot;seen&quot;, &quot;{\&quot;web\&quot;}&quot;], [&quot;codes&quot;, &quot;{\&quot;duplicate_process\&quot;, \&quot;empty_command\&quot;}&quot;]], &quot;note&quot;: &quot;print shows [&#x27;duplicate_process&#x27;, &#x27;empty_command&#x27;].&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>Write a function <code>summarise_gauges(text)</code> for a river-gauge log. Each line holds a station name and one reading, separated by spaces, for example <code>S1 2.0</code>.</p>
+<ul>
+<li>The function returns a list of <code>(station, average)</code> tuples, sorted by station name.</li>
+<li>The average is the mean of that station's readings, rounded to one decimal place. Round only once, at the end, after the mean is calculated.</li>
+<li>Blank lines and comment lines starting with <code>#</code> are skipped.</li>
+<li>A line that does not have exactly two parts is skipped.</li>
+<li>A line whose reading is not a number is skipped. Use <code>float()</code> to test this.</li>
+<li>Empty input returns <code>[]</code>.</li>
+</ul>
+<p>Make these asserts pass:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;# header</span><span class="se">\n</span><span class="s2">S1 2.0</span><span class="se">\n</span><span class="s2">S1 3.0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S2 4</span><span class="se">\n</span><span class="s2">S1 1</span><span class="se">\n</span><span class="s2">S2 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 abc</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 1 2</span><span class="se">\n</span><span class="s2">S3 7</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 1</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;A 0.25</span><span class="se">\n</span><span class="s2">A 0.25</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)]</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summarise_gauges</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">station</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parts</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">totals</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">totals</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[</span><span class="n">station</span><span class="p">]</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">station</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;# header</span><span class="se">\n</span><span class="s2">S1 2.0</span><span class="se">\n</span><span class="s2">S1 3.0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S2 4</span><span class="se">\n</span><span class="s2">S1 1</span><span class="se">\n</span><span class="s2">S2 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 abc</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 1 2</span><span class="se">\n</span><span class="s2">S3 7</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S3&quot;</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;S1 1</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">S1 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">summarise_gauges</span><span class="p">(</span><span class="s2">&quot;A 0.25</span><span class="se">\n</span><span class="s2">A 0.25</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)]</span>
+</code></pre></div></details>
+
+<p>The solution collects the readings for each station in a dictionary of lists. <code>setdefault</code> creates an empty list the first time a station appears, and <code>append</code> adds each reading. A <code>try</code> block catches the error that <code>float()</code> raises when a reading is not a number, and <code>continue</code> skips that line. The averages are calculated only after every line has been read, and <code>round(..., 1)</code> is applied once, at the end. The last assert shows why: Python rounds an exact half to the nearest even digit, so <code>0.25</code> becomes <code>0.2</code>.</p>
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Both function names and parameters match the starter file exactly, and there are no <code>print</code> calls or input prompts.</li>
+<li><code>parse_instructions</code> returns tuples, not lists, and every argument is a string. An argument is never <code>None</code>.</li>
+<li>The keyword is uppercased, and the argument is stripped at both ends.</li>
+<li>Blank lines and <code>#</code> comment lines do not appear in the output of <code>parse_instructions</code>.</li>
+<li><code>lint_dockerfile</code> returns a sorted list of strings, and each code appears at most once.</li>
+<li>Each of the four codes has one assert that makes it fire and one assert that stops it firing.</li>
+<li><code>latest</code> and a missing tag both trigger <code>unpinned_base</code>, while a pinned tag such as <code>python:3.11</code> does not.</li>
+<li>Only <code>root</code> counts as root. A numeric <code>USER 10001</code> does not trigger <code>runs_as_root</code>, and the last <code>USER</code> line decides.</li>
+<li>An empty file gives the two codes implied by the rules, and your code does not crash on it.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<details class="box box-answer"><summary>What is the difference between an image and a container?</summary><p>An image is a read-only package made of layers, built from a Dockerfile, and it does not change when you run it. A container is a running copy of an image, with its own process, network connection and writable layer on top. You can start many containers from one image, and stopping a container leaves the image untouched. This is why the image can be tested and then shipped unchanged.</p></details>
+
+<details class="box box-answer"><summary>Why is requirements.txt copied before the app code?</summary><p>Docker reuses a layer only when the layer above it is also reused. Copying requirements.txt and running pip install first means that the dependency layer stays cached when only application code changes. Copying the code first would invalidate the pip step on every edit. The result is a rebuild in seconds instead of minutes.</p></details>
+
+<details class="box box-answer"><summary>Why does the container run as user 10001?</summary><p>A process running as root can change any file in the container and the host's mounted folders if the container is misconfigured. Running as a normal user limits what an attacker gets if the app is compromised. The client's security reviewer requires it before approving the image. The Dockerfile sets it with USER 10001 and copies the files with --chown so the user owns them.</p></details>
+
+<details class="box box-answer"><summary>How does the API find Postgres in Compose, and why does the condition matter?</summary><p>Compose puts both services on a private network where each service is reachable by its name, so the API uses db as the host in DATABASE_URL. A plain localhost would point to the API container itself. The depends_on condition service_healthy makes Compose wait until Postgres passes its pg_isready check. Without that condition, the API can start before the database accepts connections and fail.</p></details>
+
+<details class="box box-answer"><summary>What does Trivy tell you, and what do you do with a finding that has no fix?</summary><p>Trivy lists known CVEs in the operating-system packages and Python libraries of an image, with a severity for each. You filter to HIGH and CRITICAL so the list is actionable, and you scan again on every release because new CVEs appear daily. For a finding with no fixed version, you do not ignore it. You record it in docs/security/README.md with a reason, and you note that no fix exists.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Kind</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FROM image:tag AS name</code></td>
+<td>Dockerfile instruction</td>
+<td>Sets the base image for a stage and names the stage. Pin a tag.</td>
+</tr>
+<tr>
+<td><code>WORKDIR /path</code></td>
+<td>Dockerfile instruction</td>
+<td>Sets the working folder and creates it if missing.</td>
+</tr>
+<tr>
+<td><code>COPY src dst</code></td>
+<td>Dockerfile instruction</td>
+<td>Copies files from the build context into the image.</td>
+</tr>
+<tr>
+<td><code>COPY --from=stage src dst</code></td>
+<td>Dockerfile instruction</td>
+<td>Copies files from an earlier build stage.</td>
+</tr>
+<tr>
+<td><code>COPY --chown=uid:gid</code></td>
+<td>Dockerfile flag</td>
+<td>Sets the owner of copied files.</td>
+</tr>
+<tr>
+<td><code>RUN command</code></td>
+<td>Dockerfile instruction</td>
+<td>Runs a command during the build and stores the result in a layer.</td>
+</tr>
+<tr>
+<td><code>ENV NAME=value</code></td>
+<td>Dockerfile instruction</td>
+<td>Sets an environment variable inside the image.</td>
+</tr>
+<tr>
+<td><code>EXPOSE port</code></td>
+<td>Dockerfile instruction</td>
+<td>Documents the port. It does not publish it.</td>
+</tr>
+<tr>
+<td><code>USER 10001</code></td>
+<td>Dockerfile instruction</td>
+<td>Runs later instructions and the container as that user.</td>
+</tr>
+<tr>
+<td><code>HEALTHCHECK --interval --timeout CMD</code></td>
+<td>Dockerfile instruction</td>
+<td>Runs a check and marks the container healthy or unhealthy.</td>
+</tr>
+<tr>
+<td><code>CMD ["prog", "arg"]</code></td>
+<td>Dockerfile instruction</td>
+<td>Sets the default command at container start. Arguments replace it.</td>
+</tr>
+<tr>
+<td><code>docker build -t name:tag .</code></td>
+<td>Command</td>
+<td>Builds an image from the Dockerfile in the current folder.</td>
+</tr>
+<tr>
+<td><code>docker images name</code></td>
+<td>Command</td>
+<td>Lists images with the name, including tag and size.</td>
+</tr>
+<tr>
+<td><code>docker run --rm -d --name n</code></td>
+<td>Command and flags</td>
+<td>Starts a container, deletes it on stop, runs it in the background and names it.</td>
+</tr>
+<tr>
+<td><code>-p host:container</code></td>
+<td>Flag</td>
+<td>Publishes a container port on the host.</td>
+</tr>
+<tr>
+<td><code>-e NAME=value</code></td>
+<td>Flag</td>
+<td>Sets an environment variable for one container at start.</td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>Command</td>
+<td>Lists running containers.</td>
+</tr>
+<tr>
+<td><code>docker logs name</code></td>
+<td>Command</td>
+<td>Prints what the container wrote.</td>
+</tr>
+<tr>
+<td><code>docker exec name command</code></td>
+<td>Command</td>
+<td>Runs a command inside a running container.</td>
+</tr>
+<tr>
+<td><code>docker inspect --format</code></td>
+<td>Command</td>
+<td>Prints one field of a container's details.</td>
+</tr>
+<tr>
+<td><code>docker stop name</code></td>
+<td>Command</td>
+<td>Stops a running container.</td>
+</tr>
+<tr>
+<td><code>docker history image</code></td>
+<td>Command</td>
+<td>Shows each layer and its size.</td>
+</tr>
+<tr>
+<td><code>docker tag src dst</code></td>
+<td>Command</td>
+<td>Gives an existing image another name and tag.</td>
+</tr>
+<tr>
+<td><code>docker push name</code></td>
+<td>Command</td>
+<td>Uploads an image to a registry.</td>
+</tr>
+<tr>
+<td><code>docker compose up --build -d</code></td>
+<td>Command</td>
+<td>Builds and starts all services in the background.</td>
+</tr>
+<tr>
+<td><code>docker compose ps</code></td>
+<td>Command</td>
+<td>Lists the services and their health.</td>
+</tr>
+<tr>
+<td><code>docker compose down -v</code></td>
+<td>Command</td>
+<td>Stops services and deletes their volumes and data.</td>
+</tr>
+<tr>
+<td><code>depends_on: condition: service_healthy</code></td>
+<td>Compose key</td>
+<td>Waits for a healthy dependency before starting.</td>
+</tr>
+<tr>
+<td><code>pg_isready</code></td>
+<td>Postgres tool</td>
+<td>Exits with zero when Postgres accepts connections.</td>
+</tr>
+<tr>
+<td><code>.dockerignore</code></td>
+<td>File</td>
+<td>Lists paths left out of the build context.</td>
+</tr>
+<tr>
+<td><code>trivy image --severity HIGH,CRITICAL</code></td>
+<td>Command and flag</td>
+<td>Scans an image and shows only those severities.</td>
+</tr>
+<tr>
+<td><code>--ignore-unfixed</code></td>
+<td>Trivy flag</td>
+<td>Hides findings that have no fixed version.</td>
+</tr>
+<tr>
+<td><code>--format cyclonedx --output</code></td>
+<td>Trivy flags</td>
+<td>Writes an SBOM in CycloneDX format.</td>
+</tr>
+<tr>
+<td><code>tee file</code></td>
+<td>Shell tool</td>
+<td>Shows output on screen and saves it to a file.</td>
+</tr>
+<tr>
+<td><code>python -m venv path</code></td>
+<td>Command</td>
+<td>Creates a virtual environment in the given folder.</td>
+</tr>
+<tr>
+<td><code>pip install --no-cache-dir -r file</code></td>
+<td>Command and flags</td>
+<td>Installs the packages in the file without keeping a download cache.</td>
+</tr>
+<tr>
+<td><code>name==version</code></td>
+<td>Rule</td>
+<td>A pinned dependency. Anything else is unpinned.</td>
+</tr>
+<tr>
+<td>Pinned base tag</td>
+<td>Rule</td>
+<td>Use <code>python:3.11.9-slim</code>, never <code>latest</code>.</td>
+</tr>
+<tr>
+<td>Copy requirements before code</td>
+<td>Rule</td>
+<td>Keeps the dependency layer cached.</td>
+</tr>
+<tr>
+<td>Health check on the database</td>
+<td>Rule</td>
+<td>Required before depends_on can wait for it.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;image&quot;, &quot;a&quot;: &quot;A read-only package of layers, built from a Dockerfile.&quot;}, {&quot;q&quot;: &quot;container&quot;, &quot;a&quot;: &quot;A running copy of an image. Stopping it does not change the image.&quot;}, {&quot;q&quot;: &quot;layer&quot;, &quot;a&quot;: &quot;The result of one Dockerfile instruction, reused by the cache when unchanged.&quot;}, {&quot;q&quot;: &quot;EXPOSE&quot;, &quot;a&quot;: &quot;Documents a port. It does not publish it. Use -p to publish.&quot;}, {&quot;q&quot;: &quot;multi-stage build&quot;, &quot;a&quot;: &quot;A Dockerfile with several FROM lines, copying only results from the builder stage.&quot;}, {&quot;q&quot;: &quot;CMD&quot;, &quot;a&quot;: &quot;The default command at container start. Arguments after the image name replace it.&quot;}, {&quot;q&quot;: &quot;-e flag&quot;, &quot;a&quot;: &quot;Sets an environment variable for one container at start, overriding the image&#x27;s value.&quot;}, {&quot;q&quot;: &quot;USER 10001&quot;, &quot;a&quot;: &quot;Runs the container&#x27;s processes as a non-root user. Files need --chown to be writable by it.&quot;}, {&quot;q&quot;: &quot;depends_on with service_healthy&quot;, &quot;a&quot;: &quot;Waits for the dependency&#x27;s healthcheck to pass before starting.&quot;}, {&quot;q&quot;: &quot;docker compose down -v&quot;, &quot;a&quot;: &quot;Stops the services and deletes their volumes, including database data.&quot;}, {&quot;q&quot;: &quot;.dockerignore&quot;, &quot;a&quot;: &quot;Lists paths left out of the build context so they never reach the image.&quot;}, {&quot;q&quot;: &quot;Trivy&quot;, &quot;a&quot;: &quot;Scans an image for known CVEs and can write an SBOM.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D24.html"><small>Previous</small>Day 24 — Validation and testing: Pydantic and pytest</a><a class="nx" href="P5.html"><small>Next</small>Project 5 — Containerised Air-Quality Platform</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

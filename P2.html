@@ -1,0 +1,709 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project 2 — Air-Quality Anomaly Detector · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="P2" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 3 · Days 6–10 · Python, data and SQL</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a class="cur" href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 3 · Days 6–10 · Python, data and SQL</p><h1>Project 2 — Air-Quality Anomaly Detector</h1><p class="sub">You will be able to build, test, explain and ship a pollution-spike detector, and defend every design choice in a viva.</p><p class="meta">63 min read · practice quiz · 21 animations</p><video class="vid" controls preload="metadata" src="videos/P2.mp4?v=1794464810"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#what-you-are-building">What you are building</a></li><li><a href="#how-this-project-is-really-assessed">How this project is really assessed</a></li><li><a href="#the-architecture">The architecture</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#build-it-step-by-step">Build it, step by step</a></li><li><a href="#the-part-g-challenges">The Part G challenges</a></li><li><a href="#viva-preparation">Viva preparation</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#what-goes-wrong">What goes wrong</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="what-you-are-building">What you are building</h2>
+<p>You are building a small service that watches hourly PM2.5 readings from four air-quality stations. PM2.5 is the amount of very fine dust in the air, measured in micrograms per cubic metre. When a station suddenly reports a value far above its own recent normal, the service flags it as a spike.</p>
+<p>A team member opens a web page. The page shows a bar chart of each station's average reading and a table of the confirmed spikes, with the largest value highlighted. They can ask the service whether a new reading at a given station would breach that station's limit. For each spike, a small language model writes one plain sentence that says what happened and what residents should do.</p>
+<p>Every push to the main branch of the code repository runs the tests. If they pass, the service is rebuilt and published automatically. You do not start any of these steps by hand.</p>
+<h2 id="how-this-project-is-really-assessed">How this project is really assessed</h2>
+<p>This was checked on the course site (learner view, 17 November 2026), so it describes your batch, not projects in general.</p>
+<ul>
+<li><strong>The brief is a reading item.</strong> In the course outline this project appears as a slides item inside its milestone module. No separate graded submission is attached to it.</li>
+<li><strong>The work is assessed on the capstone board.</strong> Your squad works through 63 numbered tickets (Y2-T01 to Y2-T63). Each ticket has a user story, acceptance criteria written as Given/When/Then, test cases your trainer runs, a definition of done and a points value. Only a trainer can move a ticket to Done, and each ticket gets a gate score from 0 to 3.</li>
+<li><strong>Commits are the evidence.</strong> Every ticket is judged from what is in your squad's repository: your commits, your pull requests and your reviews. Commit every day; the platform says your daily commits are reviewed in your viva.</li>
+<li><strong>The viva.</strong> Each viva is scored 0 to 5 on four things, 20 in total: acceptance criteria met, technical depth, contribution and ownership, and your understanding.</li>
+<li><strong>The final capstone grade.</strong> The platform shows it as 60% your own contribution and 40% your team's score. Trainers can change that split for the batch.</li>
+</ul>
+<p>So the Part G challenges below are where this brief stretches you, and the tickets are where the same skills are marked. The tickets that build the same pieces as this project:</p>
+<ul>
+<li><a href="K04.html#y2-t11-refactor-to-srccitypulsefetchpy-v1-utc-logging-data-dictionary">Y2-T11 · Refactor to src/citypulse/fetch.py v1: UTC, logging, data dictionary</a></li>
+<li><a href="K04.html#y2-t12-build-srccitypulsecleanpy-to-parquet-with-documented-dq-rules">Y2-T12 · Build src/citypulse/clean.py to Parquet with documented DQ rules</a></li>
+<li><a href="K05.html#y2-t13-design-star-schema-and-idempotent-loadpy-solve-15-sql-challenges">Y2-T13 · Design star schema and idempotent load.py; solve 15 SQL challenges</a></li>
+<li><a href="K05.html#y2-t14-answer-8-client-questions-as-sql-views-in-sqlviewssql">Y2-T14 · Answer 8 client questions as SQL views in sql/views.sql</a></li>
+<li><a href="K05.html#y2-t15-wire-run_pipelinesh-fetchcleanloaddq-with-5-blocking-dq-checks">Y2-T15 · Wire run_pipeline.sh fetch→clean→load→dq with ≥5 blocking DQ checks</a></li>
+<li><a href="K05.html#y2-t16-d02-defence-of-pipeline-tag-v030-secure-cloud-account-setup">Y2-T16 · D02 defence of pipeline (tag v0.3.0) + secure cloud account setup</a></li>
+</ul>
+<h2 id="the-architecture">The architecture</h2>
+<p>Data moves through the project in one direction. Each file handles one job, and each job's output is the next job's input.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;How one reading becomes a confirmed anomaly&quot;, &quot;nodes&quot;: [&quot;readings.csv&quot;, &quot;pipeline.py&quot;, &quot;rolling.py (SQLite)&quot;, &quot;detect.py&quot;, &quot;main.py (FastAPI)&quot;, &quot;dashboard.py (Streamlit)&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;load()&quot;, &quot;note&quot;: &quot;pandas reads the 675 raw rows and drops the 3 bad ones.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;clean frame&quot;, &quot;note&quot;: &quot;The clean rows go into an in-memory SQLite table.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;roll_mean&quot;, &quot;note&quot;: &quot;SQL adds each reading&#x27;s trailing 6-hour baseline.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;label&quot;: &quot;anomalies()&quot;, &quot;note&quot;: &quot;The statistical test and IsolationForest must both agree. Four rows survive.&quot;}, {&quot;from&quot;: 4, &quot;to&quot;: 5, &quot;label&quot;: &quot;JSON list&quot;, &quot;note&quot;: &quot;The API serves the confirmed list at /anomalies.&quot;}, {&quot;from&quot;: 5, &quot;to&quot;: 4, &quot;label&quot;: &quot;GET /anomalies&quot;, &quot;note&quot;: &quot;The dashboard asks the API for the list and draws it.&quot;}]}"></div>
+
+<p>The arrows show data, not control. The dashboard asks for data, and the API answers with it. The explanation step in <code>explain.py</code> sits beside <code>main.py</code>. It takes one confirmed anomaly and returns a sentence.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it is for</th>
+<th>Built in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data/readings.csv</code></td>
+<td>The raw sensor dump, including the planted spikes and bad rows</td>
+<td>Step 2</td>
+</tr>
+<tr>
+<td><code>make_data.py</code></td>
+<td>Generates the raw CSV so the dataset is the same every time</td>
+<td>Step 2</td>
+</tr>
+<tr>
+<td><code>pipeline.py</code></td>
+<td>Loads, cleans and aggregates the readings with pandas</td>
+<td>Steps 3, 5</td>
+</tr>
+<tr>
+<td><code>dq_check.py</code></td>
+<td>Fails loudly if the cleaned data breaks an assumption</td>
+<td>Step 4</td>
+</tr>
+<tr>
+<td><code>rolling.py</code></td>
+<td>Computes rolling baselines with an SQL window function</td>
+<td>Step 6</td>
+</tr>
+<tr>
+<td><code>chart.py</code></td>
+<td>Saves a PNG of the trends with the spikes ringed in red</td>
+<td>Step 7</td>
+</tr>
+<tr>
+<td><code>detect.py</code></td>
+<td>Robust z-score, IQR fence and IsolationForest; returns the confirmed list</td>
+<td>Steps 8 to 10</td>
+</tr>
+<tr>
+<td><code>main.py</code></td>
+<td>The FastAPI service: <code>/health</code>, <code>/anomalies</code> and <code>/check</code></td>
+<td>Steps 11 to 13</td>
+</tr>
+<tr>
+<td><code>explain.py</code></td>
+<td>Asks a small local language model to explain each spike</td>
+<td>Step 14</td>
+</tr>
+<tr>
+<td><code>dashboard.py</code></td>
+<td>The Streamlit page that the team opens in a browser</td>
+<td>Step 15</td>
+</tr>
+<tr>
+<td><code>test_app.py</code></td>
+<td>Four pytest tests that guard the cleaner, detector and API</td>
+<td>Step 16</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>The list of Python libraries the project needs</td>
+<td>Step 1</td>
+</tr>
+<tr>
+<td><code>Dockerfile</code></td>
+<td>The recipe that packages the project into a container image</td>
+<td>Step 17</td>
+</tr>
+<tr>
+<td><code>.github/workflows/ci.yml</code></td>
+<td>The GitHub Actions pipeline: test, then build and deploy</td>
+<td>Steps 18, 19</td>
+</tr>
+</tbody>
+</table>
+<p>Two files appear in the steps but not in the layout tree in the course: <code>chart.py</code> and <code>run_all.sh</code>. Keep them in the project root beside the others.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>The terminal.</strong> The terminal is a text window where you type commands and the computer prints the results. In this book, a line that starts with <code>$</code> is something you type. The lines under it are what the computer prints. A command is a program name followed by options, called flags, that change how it behaves. Flags usually start with one or two dashes, such as <code>-q</code> or <code>--reload</code>.</p>
+<p><strong>Python, pip and packages.</strong> Python is the programming language used throughout the project. A package is a ready-made library that someone else wrote and published. <code>pip</code> is the tool that downloads packages from the Python Package Index. A file named <code>requirements.txt</code> lists the packages a project needs, and <code>pip install -r requirements.txt</code> installs everything in it. The <code>-r</code> flag means "read the list from this file".</p>
+<p><strong>Files, folders and CSV.</strong> A file is a named block of data stored on disk. A folder holds files. CSV stands for comma-separated values. A CSV file is plain text where each line is a row and commas separate the columns. The first line normally holds the column names.</p>
+<p><strong>pandas and the DataFrame.</strong> pandas is a library for working with tables. Its main object is the DataFrame, a table held in memory with named columns. Each row also has an index label. You will use DataFrames to read the CSV, filter rows, add columns and group values by station. The earlier Day chapter on pandas covers this in depth.</p>
+<p><strong>Statistics you need.</strong> The median is the middle value when a list is sorted. The mean is the average. The standard deviation measures how spread out values are. A quantile is the value below which a given share of the data falls; the 0.25 quantile is the first quartile, Q1, and the 0.75 quantile is Q3. The interquartile range, IQR, is Q3 minus Q1. The median absolute deviation, MAD, is the median of the distances from the median. Unlike the mean and standard deviation, the median and MAD are not pulled around by one extreme value.</p>
+<p><strong>SQL, SQLite and window functions.</strong> SQL is the language for asking questions of a database. SQLite is a small database that lives in one file, or in memory with no file at all. A window function calculates a value for each row using a set of neighbouring rows called the window. <code>PARTITION BY</code> splits the rows into groups, such as one group per station. <code>ORDER BY</code> sets the order inside each group. <code>ROWS BETWEEN</code> picks which neighbouring rows count.</p>
+<p><strong>scikit-learn and IsolationForest.</strong> scikit-learn is a free library of machine-learning tools. Machine learning means letting a program find patterns in data rather than writing every rule by hand. An IsolationForest is a model that finds unusual points. It works by splitting the data at random many times. Unusual points get isolated after fewer splits, and the model turns that into a score.</p>
+<p><strong>HTTP, endpoints, JSON and FastAPI.</strong> HTTP is the protocol a browser and a server use to talk. A client sends a request, such as <code>GET /anomalies</code>, and the server returns a response. An endpoint is a path that the server answers, such as <code>/anomalies</code>. JSON is a text format for structured data, made of keys and values in curly braces and square brackets. FastAPI is a Python library that turns functions into endpoints. Pydantic is the library FastAPI uses to check incoming data against a declared shape. uvicorn is the server program that runs the FastAPI app and listens for requests on a port, which is a numbered door on the computer. Port 8000 is the one this project uses.</p>
+<p><strong>Language models on a CPU.</strong> A language model generates text one piece at a time. The pieces are called tokens. A transformer is the neural network design behind most modern models. The transformers library, from Hugging Face, loads these models. torch is the numerical library the models run on. CPU means the central processor of your computer, as opposed to a graphics card. The project uses Qwen2.5-0.5B-Instruct, a small model that is free to download and runs on a CPU, though slowly.</p>
+<p><strong>Streamlit and matplotlib.</strong> Streamlit turns a Python script into a web page with titles, tables and charts, without any web programming. matplotlib is a plotting library. It draws a figure and can save it as a PNG image file.</p>
+<p><strong>pytest and assert.</strong> pytest is a test runner. It finds functions whose names begin with <code>test_</code> and runs them. Inside a test, <code>assert</code> is a statement that checks a condition. If the condition is false, the test fails. A TestClient is a helper that sends requests to a FastAPI app inside the test, so no real server needs to run.</p>
+<p><strong>Git, GitHub and Actions.</strong> Git records the history of a project's files as commits. A push sends your commits to a shared copy on GitHub. GitHub Actions runs jobs on GitHub's machines when an event happens, such as a push. The jobs are described in a YAML file. YAML is a text format that uses indentation to show structure, so spaces matter. A secret is a value, such as a password, stored in GitHub and passed to a job without appearing in the file.</p>
+<p><strong>Docker, images and containers.</strong> A Docker image is a packed snapshot of an app and everything it needs. A container is a running copy of an image. A Dockerfile is the text recipe that builds an image, one instruction per line.</p>
+<p><strong>curl and jq.</strong> curl sends HTTP requests from the terminal. jq reads JSON and prints parts of it. You will use both to check the API without a browser.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="pandas-cleaning-and-aggregating">pandas: cleaning and aggregating</h3>
+<p>pandas is the right tool here because the data is a table of 675 rows that needs filtering, typing and grouping. Writing those loops by hand in plain Python is slower and easier to get wrong. The alternatives are a spreadsheet, which you cannot test automatically, and a database, which adds setup for a file this small.</p>
+<p>The cleaner in <code>pipeline.py</code> is the most important function in Part A:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;data/readings.csv&quot;</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ts</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">station_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">STATIONS</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">,</span><span class="s2">&quot;pollutant&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p><code>def load(path="data/readings.csv"):</code> defines a function called <code>load</code>. Its single argument, <code>path</code>, has a default value, so calling <code>load()</code> reads the standard file. <code>pd.read_csv(path)</code> reads the file into a DataFrame, which is stored in <code>df</code>. Each row becomes a row in the table, and the first line of the file supplies the column names.</p>
+<p><code>df["ts"] = pd.to_datetime(df.ts, errors="coerce")</code> converts the text in the <code>ts</code> column into real date-and-time values. <code>errors="coerce"</code> turns anything it cannot read into a special empty value, <code>NaT</code>, instead of stopping the program.</p>
+<p><code>df = df[df.station_id.isin(STATIONS)]</code> keeps only rows whose station is in the known list <code>STATIONS</code>. The square brackets select rows that match a condition. <code>isin</code> checks membership.</p>
+<p><code>df = df[df.value.between(0, 500)]</code> keeps rows whose value is from 0 to 500 inclusive. A negative or enormous reading cannot be a real measurement.</p>
+<p><code>df = df.dropna(subset=["ts"])</code> removes rows where the timestamp is empty. <code>.drop_duplicates([...])</code> then removes repeated rows that have the same station, time and pollutant. Method calls can be chained with dots, and the result of each call is passed to the next.</p>
+<p><code>return df.sort_values(["station_id","ts"])</code> sorts by station first, then by time. This order matters for the SQL step later.</p>
+<div class="box box-trap"><div class="box-h">Trap: Sorting is not optional</div><p>The SQL window in Step 6 assumes readings are in time order inside each station. If <code>sort_values</code> is removed, the rolling baselines will mix up neighbouring hours without any error message. Your tests may still pass, which is why the sort needs to stay in the function.</p></div>
+
+<h3 id="sqlite-window-functions-rolling-baselines">SQLite window functions: rolling baselines</h3>
+<p>The baseline for a reading is the average of the six hours before it, per station. SQL window functions are the right tool, because they compute this for every row in one query, and the same query can be read and explained by anyone who knows SQL. A Python loop would be longer and easier to get wrong at the start of each station.</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">station_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span>
+<span class="w">  </span><span class="k">AVG</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">roll_mean</span><span class="p">,</span>
+<span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">   </span><span class="n">OVER</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">win_n</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">readings</span>
+<span class="n">WINDOW</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">station_id</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ts</span>
+<span class="w">  </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">PRECEDING</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>SELECT</code> lists the columns to return. <code>AVG(value) OVER w</code> computes the average of <code>value</code> over the window named <code>w</code>. <code>AS roll_mean</code> names the result. <code>COUNT(*) OVER w AS win_n</code> counts how many rows the window contained, which tells you whether the baseline is based on a full six hours.</p>
+<p><code>WINDOW w AS (...)</code> defines the window once, so both functions can reuse it. <code>PARTITION BY station_id</code> restarts the calculation for each station, so a station never borrows another station's readings. <code>ORDER BY ts</code> puts each station's readings in time order.</p>
+<p><code>ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING</code> says the window is the six rows before the current one, and it stops at the row immediately before. The current row is excluded. That exclusion is the key design point. If the current reading were included, a large spike would raise its own baseline and partly hide itself.</p>
+<div class="box box-trap"><div class="box-h">Trap: The first readings have a short window</div><p>The first row of each station has no earlier rows, so its <code>roll_mean</code> is empty (NULL) and <code>win_n</code> is 0. The second row has one earlier row, and so on until the seventh row, the first with a full six. Code that assumes <code>win_n</code> is always 6 will give wrong results near the start of each station.</p></div>
+
+<h3 id="pandas-and-statistics-the-robust-z-score-and-the-iqr-fence">pandas and statistics: the robust z-score and the IQR fence</h3>
+<p>A plain z-score measures how many standard deviations a value sits from the mean. The problem is that the spike being searched for also inflates the mean and the standard deviation, so it partly hides itself. The robust version uses the median and the MAD, which a single spike barely moves. The IQR fence is a second, independent test: a value must sit above Q3 plus 1.5 times the IQR. Requiring both tests keeps out noise that is only slightly high.</p>
+<div class="hl"><pre><span></span><code><span class="n">grp</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<span class="n">med</span> <span class="o">=</span> <span class="n">grp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+<span class="n">mad</span> <span class="o">=</span> <span class="n">grp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="n">s</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">median</span><span class="p">())</span> <span class="o">+</span> <span class="mf">1e-6</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6745</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="o">-</span><span class="n">med</span><span class="p">)</span><span class="o">/</span><span class="n">mad</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span><span class="p">,</span><span class="n">q3</span> <span class="o">=</span> <span class="n">grp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.25</span><span class="p">)),</span>\
+        <span class="n">grp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.75</span><span class="p">))</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;iqr_hi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="p">(</span><span class="n">q3</span><span class="o">-</span><span class="n">q1</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;stat_flag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">z</span><span class="o">&gt;=</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="o">&gt;</span><span class="n">r</span><span class="o">.</span><span class="n">iqr_hi</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>grp = r.groupby("station_id")["value"]</code> splits the readings into one group per station and selects the <code>value</code> column. Nothing is calculated yet. <code>grp</code> is a recipe for the next steps.</p>
+<p><code>med = grp.transform("median")</code> computes each station's median and puts it on every row of that station. <code>transform</code> returns a result the same length as the original table, which is why it can be stored as a new column.</p>
+<p><code>mad = grp.transform(lambda s: ...) + 1e-6</code> computes the MAD for each station. The <code>lambda</code> is a small unnamed function. Inside it, <code>s</code> is one station's values, <code>(s-s.median()).abs()</code> is each distance from the median, and <code>.median()</code> of those distances is the MAD. <code>+ 1e-6</code> adds 0.000001 so the division below never divides by zero.</p>
+<p><code>r["z"] = (0.6745*(r.value-med)/mad).round(2)</code> computes the robust z-score. The constant 0.6745 rescales the MAD so the result is comparable to a normal z-score. <code>round(2)</code> keeps two decimal places.</p>
+<p><code>q1,q3 = ...</code> computes the first and third quartiles per station. The backslash at the end of the line tells Python the statement continues on the next line.</p>
+<p><code>r["iqr_hi"] = (q3 + 1.5*(q3-q1)).round(1)</code> computes the upper fence for each station.</p>
+<p><code>r["stat_flag"] = (r.z&gt;=3) &amp; (r.value&gt;r.iqr_hi)</code> marks a reading when both tests fire. The <code>&amp;</code> operator combines two columns of true and false values, one answer per row. The brackets are required because <code>&amp;</code> binds more tightly than <code>&gt;=</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Use &amp; and not and</div><p>Writing <code>(r.z&gt;=3) and (r.value&gt;r.iqr_hi)</code> raises <code>ValueError: The truth value of a Series is ambiguous</code>. The word <code>and</code> works on single values; a column holds many values, so pandas needs the element-wise <code>&amp;</code> and the brackets around each test.</p></div>
+
+<p>Here is the robust z-score calculated on five readings for one station. These numbers are invented for this explanation so you can follow each step. They are not course output.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;One station&#x27;s robust z-score&quot;, &quot;code&quot;: [&quot;import statistics&quot;, &quot;vals = [50, 52, 49, 51, 180]&quot;, &quot;med = statistics.median(vals)&quot;, &quot;dev = [abs(v - med) for v in vals]&quot;, &quot;mad = statistics.median(dev) + 1e-6&quot;, &quot;z = 0.6745 * (180 - med) / mad&quot;, &quot;is_spike = z &gt;= 3&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [], &quot;note&quot;: &quot;The statistics module provides median, so it is imported first.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;]], &quot;note&quot;: &quot;The five readings of one station are stored in a list.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;], [&quot;med&quot;, &quot;51&quot;]], &quot;note&quot;: &quot;The middle value of the sorted list (49, 50, 51, 52, 180) is 51.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;], [&quot;med&quot;, &quot;51&quot;], [&quot;dev&quot;, &quot;[1, 1, 2, 0, 129]&quot;]], &quot;note&quot;: &quot;Each reading&#x27;s distance from the median. The 180 is 129 away.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;], [&quot;med&quot;, &quot;51&quot;], [&quot;dev&quot;, &quot;[1, 1, 2, 0, 129]&quot;], [&quot;mad&quot;, &quot;1.000001&quot;]], &quot;note&quot;: &quot;The median of the distances is 1. Adding 1e-6 means the division never divides by zero.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;], [&quot;med&quot;, &quot;51&quot;], [&quot;mad&quot;, &quot;1.000001&quot;], [&quot;z&quot;, &quot;87.0&quot;]], &quot;note&quot;: &quot;0.6745 rescales the result, and the spike sits 87 robust units above the median.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;vals&quot;, &quot;[50, 52, 49, 51, 180]&quot;], [&quot;med&quot;, &quot;51&quot;], [&quot;mad&quot;, &quot;1.000001&quot;], [&quot;z&quot;, &quot;87.0&quot;], [&quot;is_spike&quot;, &quot;True&quot;]], &quot;note&quot;: &quot;87.0 is at least 3, so the statistical test fires for this reading.&quot;}]}"></div>
+
+<p>Notice that the spike did not change the median or the MAD much. A plain mean would have been pulled up to 76.4 by the single 180, and a standard deviation would have been inflated the same way. That is the whole reason for the robust version.</p>
+<h3 id="scikit-learn-isolationforest-as-the-second-opinion">scikit-learn: IsolationForest as the second opinion</h3>
+<p>The statistical test looks at each value against its own station. The IsolationForest looks at the whole picture, using two features: the value itself and how far it sits above the rolling baseline. Two methods that work in different ways, when they agree, are much stronger evidence than either one alone. The IsolationForest is the right second method for this job because it needs no hand-written thresholds for the second feature. The <code>contamination</code> setting tells it how rare anomalies are expected to be.</p>
+<div class="box box-tip"><div class="box-h">Tip: Explain why the two methods differ</div><p>In a viva, say that the z-score and IQR fence use only per-station distributions, while the IsolationForest sees the joint pattern of value and deviation. Then say why requiring agreement lowers false alarms.</p></div>
+
+<h3 id="fastapi-and-pydantic-serving-the-results">FastAPI and Pydantic: serving the results</h3>
+<p>FastAPI is the right tool because it reads type hints to validate input and generates documentation automatically. The alternative, Flask, works too, but needs more code for the same checks. Pydantic models describe what a valid request must look like, and FastAPI rejects anything that does not match before your code runs.</p>
+<div class="box box-trap"><div class="box-h">Trap: Mind the server&#x27;s port and address</div><p>uvicorn listens on <code>127.0.0.1:8000</code> for your laptop only. Inside Docker, the Dockerfile uses <code>--host 0.0.0.0</code> so the container accepts connections from outside it. Using the wrong host is the most common reason a container runs but cannot be reached.</p></div>
+
+<h3 id="docker-and-github-actions-packaging-and-shipping">Docker and GitHub Actions: packaging and shipping</h3>
+<p>Docker is used because the detector must run identically on your laptop, on the CI runner and in the cloud. The image bundles Python, the libraries and the code, so the machine it runs on does not matter. GitHub Actions is used because the project is already on GitHub, so the pipeline is in the same place and needs no separate server.</p>
+<h2 id="build-it-step-by-step">Build it, step by step</h2>
+<p>Each step below follows the same order: the goal, the code as the source shows it, a line-by-line explanation, the output and what that output proves. The source excerpts omit a few set-up lines, such as imports and the creation of variables. Where that matters, the text says so.</p>
+<h3 id="part-a-data-engineering">Part A: Data engineering</h3>
+<p><strong>Step 1: Scaffold the project.</strong> The goal is one folder with one file per job and one requirements file, so the whole project installs with one command.</p>
+<div class="hl"><pre><span></span><code>pandas
+scikit-learn
+matplotlib
+fastapi
+uvicorn[standard]
+streamlit
+transformers
+torch
+joblib
+pytest
+httpx
+requests
+</code></pre></div>
+
+<p>Each line names one package. <code>uvicorn[standard]</code> means "install uvicorn with its optional extras", which are extra packages it can use for faster operation. The list has twelve packages. Notice that the names have no version numbers, although the slide heading says to pin every dependency. A pinned version looks like <code>pandas==2.3</code>. The file as printed is not fully pinned, so ask your tutor whether you should add versions. The output below shows what pip chose on the course machine.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pip install -r requirements.txt&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Collecting pandas ... scikit-learn ... fastapi ...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Successfully installed fastapi-0.115 pandas-2.3&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  scikit-learn-1.7 streamlit-1.39 transformers-5.17 ...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  (12 packages)&quot;}]}"></div>
+
+<p>The last line of the output proves the install worked, and the number of packages matches the number of lines in the file. If you see an error that names a package, the install stopped there and the rest are missing.</p>
+<p><strong>Step 2: Ingest readings with real spikes.</strong> The goal is a dataset where you know exactly which spikes exist, so you can test the detector against them. The script writes 168 hourly readings for each of four stations, which is seven days, and it injects four spikes.</p>
+<div class="hl"><pre><span></span><code><span class="n">SPIKES</span> <span class="o">=</span> <span class="p">{(</span><span class="s2">&quot;ST-04&quot;</span><span class="p">,</span><span class="mi">44</span><span class="p">):</span><span class="mf">3.2</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;ST-01&quot;</span><span class="p">,</span><span class="mi">92</span><span class="p">):</span><span class="mf">2.8</span><span class="p">,</span>
+          <span class="p">(</span><span class="s2">&quot;ST-02&quot;</span><span class="p">,</span><span class="mi">93</span><span class="p">):</span><span class="mf">2.9</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;ST-03&quot;</span><span class="p">,</span><span class="mi">140</span><span class="p">):</span><span class="mf">3.5</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">168</span><span class="p">):</span>                 <span class="c1"># 7 days, hourly</span>
+    <span class="n">rush</span> <span class="o">=</span> <span class="mf">1.3</span> <span class="k">if</span> <span class="mi">6</span><span class="o">&lt;=</span><span class="n">h</span><span class="o">%</span><span class="mi">24</span><span class="o">&lt;=</span><span class="mi">10</span> <span class="ow">or</span> <span class="mi">17</span><span class="o">&lt;=</span><span class="n">h</span><span class="o">%</span><span class="mi">24</span><span class="o">&lt;=</span><span class="mi">21</span> <span class="k">else</span> <span class="mf">0.8</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">base</span> <span class="ow">in</span> <span class="n">STATIONS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">gauss</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">.2</span><span class="p">)</span><span class="o">*</span><span class="n">rush</span> <span class="o">+</span> <span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">val</span> <span class="o">*=</span> <span class="n">SPIKES</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">s</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>   <span class="c1"># inject spike</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s2">&quot;pm25&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</code></pre></div>
+
+<p><code>SPIKES</code> is a dictionary. A dictionary maps keys to values inside braces. Each key here is a pair <code>(station, hour)</code>, written in round brackets, and each value is the multiplier for that reading. The spike at ST-04 hour 44 multiplies the normal reading by 3.2.</p>
+<p><code>for h in range(168):</code> repeats the inner code for hour numbers 0 to 167. <code>range(168)</code> stops before 168, so it gives exactly 168 hours.</p>
+<p><code>rush = 1.3 if ... else 0.8</code> sets a rush-hour multiplier. <code>h%24</code> is the remainder when <code>h</code> is divided by 24, which gives the hour of the day. The condition <code>6&lt;=h%24&lt;=10</code> is a chained comparison and means the hour is from 6 to 10 inclusive. The <code>or</code> joins the morning and evening rush periods.</p>
+<p><code>for s,base in STATIONS.items():</code> loops over each station. <code>STATIONS</code> is a dictionary that maps each station id to its normal base level. The excerpt does not show how <code>STATIONS</code>, <code>rows</code> and <code>ts</code> are created. Take those lines from the workbook.</p>
+<p><code>val = base + 8*gauss(1,.2)*rush + gauss(0,4)</code> builds a random reading. <code>gauss(mean, spread)</code> draws a random number from a bell curve, so the readings look like real noise.</p>
+<p><code>val *= SPIKES.get((s,h), 1.0)</code> multiplies the reading by the spike factor if there is one. <code>.get</code> returns the default, 1.0, when the key is missing, so most readings are unchanged.</p>
+<p><code>rows.append([...])</code> adds one row to the list <code>rows</code>.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python make_data.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;wrote data/readings.csv: 675 rows (4 spikes planted)&quot;}]}"></div>
+
+<p>The count proves the arithmetic. Four stations times 168 hours is 672 good rows. Three deliberately bad rows make 675. The 4 spikes are the ones you will look for later. The stable numbers in later outputs suggest the script sets a random seed, which makes the random numbers repeat. Check the top of <code>make_data.py</code> for a line that sets one, because without it your spike values will drift between runs.</p>
+<p><strong>Step 3: Clean and validate.</strong> The goal is a cleaner that removes the three bad rows and nothing else. The function <code>load</code> was explained in the tools section above, so here you verify its behaviour.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python pipeline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}]}"></div>
+
+<p>The output proves that exactly three rows were removed, which matches the three faults planted in Step 2. If the count is different, a filter is too strict or too loose.</p>
+<p><strong>Step 4: Guard it with a data-quality gate.</strong> The goal is to write the assumptions as checks that stop the run if they are broken. A broken feed should fail loudly, not quietly produce wrong alerts.</p>
+<div class="hl"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span>   <span class="s2">&quot;negative reading&quot;</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;out-of-range value&quot;</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>\
+         <span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>         <span class="s2">&quot;duplicate reading&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data-quality checks: 3 passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>df = load()</code> runs the cleaner. Each <code>assert</code> checks a condition and, if it is false, stops the program with the message after the comma. <code>df.value.min()</code> finds the smallest value in the column, and <code>&gt;= 0</code> tests it.</p>
+<p><code>df.groupby(["station_id","ts"]).size()</code> counts the rows for each station and time pair. <code>.max() == 1</code> checks that no pair appears twice. The backslash at the end of one line joins it to the next line.</p>
+<p><code>print(...)</code> writes text to the terminal.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python dq_check.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;data-quality checks: 3 passed&quot;}]}"></div>
+
+<p>The message proves all three assertions held. The duplicate check is a second guard, because <code>load</code> already removes duplicates. This is deliberate: if a later edit breaks <code>load</code>, the gate still catches the problem.</p>
+<div class="box box-trap"><div class="box-h">Trap: assert can be switched off</div><p>Python ignores <code>assert</code> lines when it runs with the <code>-O</code> flag. Do not rely on <code>assert</code> for security checks. For this project it is acceptable, because the gate is for development and CI, and the tests run without <code>-O</code>.</p></div>
+
+<p><strong>Step 5: Aggregate per station.</strong> The goal is one summary row per station, showing count, mean and maximum.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">per_station</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;count&quot;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span><span class="s2">&quot;max&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>df.groupby("station_id")["value"]</code> makes one group per station and selects the value column. <code>.agg(["count","mean","max"])</code> calculates three summaries for each group, and <code>.round(1)</code> rounds them to one decimal place.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python pipeline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;            count  mean    max&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;station_id&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-01         168  51.0  132.6&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-02         168  64.1  153.1&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-03         168  46.8  180.5&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-04         168  69.6  215.6&quot;}]}"></div>
+
+<p>Each station has 168 readings, which confirms that the cleaner kept every good row for every station. The maximum is much larger than the mean for every station. That gap is the first clue that spikes exist, and the detector's job is to find them.</p>
+<h3 id="part-b-detect-the-spikes">Part B: Detect the spikes</h3>
+<p><strong>Step 6: Rolling baselines with SQL windows.</strong> The goal is to load the clean data into SQLite and compute each reading's trailing six-hour average. The window was explained above. The excerpt does not show the lines that create the connection <code>con</code> and load the data into a table named <code>readings</code>. Those lines are needed before the query runs.</p>
+<div class="hl"><pre><span></span><code><span class="n">ROLL_SQL</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">SELECT station_id, ts, value,</span>
+<span class="s1">  AVG(value) OVER w AS roll_mean,</span>
+<span class="s1">  COUNT(*)   OVER w AS win_n</span>
+<span class="s1">FROM readings</span>
+<span class="s1">WINDOW w AS (PARTITION BY station_id ORDER BY ts</span>
+<span class="s1">  ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING)&#39;&#39;&#39;</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">ROLL_SQL</span><span class="p">,</span> <span class="n">con</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>ROLL_SQL = '''...'''</code> stores a multi-line text in a variable. Three single quotes start and end a multi-line string. <code>pd.read_sql(ROLL_SQL, con)</code> sends the query to the database through the connection <code>con</code> and returns the result as a DataFrame called <code>out</code>.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python rolling.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;station_id                  ts  value  roll_mean  win_n&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-01 2026-04-01 06:00:00   54.3       48.2      6&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-01 2026-04-01 07:00:00   57.5       49.2      6&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-01 2026-04-01 08:00:00   55.6       51.8      6&quot;}]}"></div>
+
+<p>Each reading now has a baseline. The <code>win_n</code> value of 6 shows that the first three rows shown already had a full window. The 06:00 reading's baseline of 48.2 is the average of the six readings before it, not including its own. That is what you should check by hand on a few rows.</p>
+<p><strong>Step 7: Chart the trends and spikes.</strong> The goal is a saved PNG image showing each station's series, with the detected spikes ringed.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="p">;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>  <span class="c1"># headless</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;ts&quot;</span><span class="p">)</span>
+<span class="n">a</span>  <span class="o">=</span> <span class="n">anomalies</span><span class="p">(</span><span class="n">load</span><span class="p">())</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">sid</span><span class="p">,</span><span class="n">g</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">sid</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ts</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+           <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;anomaly&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;trend.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">110</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>matplotlib.use("Agg")</code> selects a drawing backend that writes images without opening a window. This is why the script works on a CI runner, which has no screen. The comment after the <code>#</code> is ignored by Python.</p>
+<p><code>df = load().set_index("ts")</code> loads the clean data and makes the timestamp the index, so the x-axis shows time. <code>a = anomalies(load())</code> gets the confirmed spikes. The function <code>anomalies</code> is built in Step 10.</p>
+<p><code>fig, ax = plt.subplots(figsize=(7.2, 3.1))</code> creates a figure and one set of axes, sized 7.2 by 3.1 inches. The <code>for</code> loop draws one line per station. <code>label=sid</code> names each line so the legend can show it.</p>
+<p><code>ax.scatter(...)</code> draws the spikes as points. <code>facecolors="none"</code> makes the points hollow, and <code>edgecolors="red"</code> makes their outline red, so they look like rings on top of the lines.</p>
+<p><code>fig.savefig("trend.png", dpi=110)</code> writes the image. At 110 dots per inch the image is 792 by 341 pixels, because 7.2 times 110 is 792 and 3.1 times 110 is 341.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python chart.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;wrote trend.png (4 spikes marked)&quot;}]}"></div>
+
+<p>The file <code>trend.png</code> should exist in the project folder, and it should show four red rings. The file size will vary with your machine, so the 69 KB figure in the course output need not match yours.</p>
+<p><strong>Step 8: Flag spikes with robust z-score and IQR.</strong> The goal is a per-reading flag that is true only when both the robust z-score and the IQR fence fire. The code is explained in the tools section above. Here you verify the result.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python -c \&quot;from detect import *; print(flag(load()).stat_flag.sum())\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;4&quot;}]}"></div>
+
+<p><code>python -c</code> runs a line of Python typed directly on the command line. <code>from detect import *</code> imports everything from <code>detect.py</code>. <code>flag(load())</code> runs the detector, <code>.stat_flag</code> selects the new column, and <code>.sum()</code> counts the true values. Booleans count as 1 for true and 0 for false, so the sum counts the flagged rows. The output 4 proves the statistical test alone finds the four candidates. Those are candidates, not yet confirmed, because the model has not been asked.</p>
+<p><strong>Step 9: Cross-check with IsolationForest.</strong> The goal is a second, model-based flag, and a rule that only confirms a spike when both methods agree.</p>
+<div class="hl"><pre><span></span><code><span class="n">feats</span> <span class="o">=</span> <span class="n">r</span><span class="p">[[</span><span class="s2">&quot;value&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+    <span class="n">dev</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">r</span><span class="o">.</span><span class="n">roll_mean</span><span class="p">)</span>
+<span class="n">iso</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;iso_flag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;anomaly&quot;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">stat_flag</span> <span class="o">&amp;</span> <span class="n">r</span><span class="o">.</span><span class="n">iso_flag</span>
+</code></pre></div>
+
+<p><code>feats = r[["value"]].assign(dev = ...)</code> builds a table with two features. The double square brackets select a column as a table, not as a single series, which the model expects. <code>assign</code> adds the <code>dev</code> column, the reading's distance above its rolling baseline.</p>
+<p><code>IsolationForest(contamination=0.02, random_state=11)</code> creates the model. <code>contamination=0.02</code> tells it to expect about 2 per cent of readings to be unusual. <code>random_state=11</code> fixes the random choices inside the model, so the same data always gives the same result. <code>.fit(feats)</code> learns from the data.</p>
+<p><code>iso.predict(feats)</code> returns 1 for normal and -1 for unusual. <code>== -1</code> turns that into true and false. <code>r.stat_flag &amp; r.iso_flag</code> sets <code>anomaly</code> only when both are true.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python -c \&quot;from detect import *; import pandas as pd; &quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;print(flag(load()).iso_flag.sum())\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;13&quot;}]}"></div>
+
+<p>The model flags 13 readings. The check is simple arithmetic: 2 per cent of 672 is 13.4, so 13 is what contamination predicts. The model casts a wider net than the statistics, and the <code>&amp;</code> keeps only the four readings that both methods agree on.</p>
+<div class="box box-trap"><div class="box-h">Trap: First readings have no baseline</div><p>The first reading of each station has no <code>roll_mean</code>, so <code>dev</code> is empty for it. The excerpt does not show how that case is handled. Check how your version treats those rows, and decide what the model should do with them before you trust the count.</p></div>
+
+<p><strong>Step 10: The confirmed anomaly list.</strong> The goal is a function that returns only the confirmed spikes, with the columns an operator needs.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">anomalies</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">flag</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;roll_mean&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">,</span><span class="s2">&quot;iqr_hi&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">anomaly</span><span class="p">][</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>r = flag(df)</code> runs the detector. <code>cols</code> is a list of column names to keep. <code>r[r.anomaly]</code> keeps only the rows where <code>anomaly</code> is true. <code>[cols]</code> then keeps only those columns in that order, and <code>.round(1)</code> rounds the numbers.</p>
+<p><code>.reset_index(drop=True)</code> renumbers the rows from 0. <code>drop=True</code> throws away the old index instead of adding it as a column.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python detect.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;anomalies flagged: 4&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;station_id          ts  value roll_mean    z iqr_hi&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-01 ...04 20:00  132.6      49.9 15.5   65.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-03 ...06 20:00  180.5      45.9 25.9   59.3&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;     ST-04 ...02 20:00  215.6      68.5 26.8   83.0&quot;}]}"></div>
+
+<p>The output shows four rows, one per planted spike, and the course output truncates the timestamps with <code>...</code>. The rows are sorted by station, so the missing row is the second one, for ST-02, which is not shown in this excerpt. Your count of four is the result that matters.</p>
+<h3 id="part-c-serve-it-with-fastapi">Part C: Serve it with FastAPI</h3>
+<p><strong>Step 11: The API skeleton.</strong> The goal is an app with a health endpoint that reports the anomaly count, and a Pydantic model for checked input.</p>
+<div class="hl"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;CityPulse Anomaly Detector&quot;</span><span class="p">)</span>
+<span class="n">_df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span>
+<span class="n">_anom</span> <span class="o">=</span> <span class="n">anomalies</span><span class="p">(</span><span class="n">_df</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CheckIn</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">station_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^ST-0[1-4]$&quot;</span><span class="p">)</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span> <span class="s2">&quot;anomalies&quot;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">_anom</span><span class="p">)}</span>
+</code></pre></div>
+
+<p><code>app = FastAPI(title=...)</code> creates the application. The title appears in the automatic documentation. <code>_df = load()</code> and <code>_anom = anomalies(_df)</code> run once when the file is loaded. The leading underscore is a convention meaning "private to this file".</p>
+<p><code>class CheckIn(BaseModel):</code> defines the shape of a valid request. A class is a blueprint for an object with named fields. <code>BaseModel</code> is Pydantic's base class.</p>
+<p><code>station_id: str = Field(pattern=r"^ST-0[1-4]$")</code> says the field is text and must match a pattern. The pattern <code>^ST-0[1-4]$</code> means: start with <code>ST-0</code>, then one digit from 1 to 4, then the end. The <code>r</code> before the string means a raw string, so the backslashes in a pattern are not treated as escape characters. <code>value: float = Field(ge=0, le=500)</code> says the value is a decimal number from 0 to 500. <code>ge</code> means greater than or equal to, and <code>le</code> means less than or equal to.</p>
+<p><code>@app.get("/health")</code> is a decorator. It tells FastAPI that the function below answers GET requests to <code>/health</code>. <code>return {...}</code> returns a dictionary, which FastAPI sends as JSON.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;uvicorn main:app --reload&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;INFO:     Uvicorn running on http://127.0.0.1:8000&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;INFO:     Application startup complete.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;INFO:     127.0.0.1 - \&quot;GET /health HTTP/1.1\&quot; 200 OK&quot;}]}"></div>
+
+<p><code>uvicorn main:app</code> means "run the object called <code>app</code> inside the file <code>main.py</code>". <code>--reload</code> restarts the server whenever you save a change, which is convenient while you work. The line ending in <code>200 OK</code> proves a request was answered successfully. Status 200 means success.</p>
+<p><strong>Step 12: Serve the anomalies.</strong> The goal is an endpoint that returns the confirmed spikes as JSON.</p>
+<div class="hl"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/anomalies&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_anomalies</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">_anom</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ts</span><span class="o">=</span><span class="n">_anom</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>_anom.assign(ts=_anom.ts.astype(str))</code> replaces the timestamp column with text. JSON cannot hold a Python timestamp object directly, so it must become a string first. <code>.to_dict("records")</code> turns each row into a dictionary with column names as keys, and returns a list of those dictionaries.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s localhost:8000/anomalies | jq &#x27;.[3]&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;station_id\&quot;: \&quot;ST-04\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;ts\&quot;: \&quot;2026-04-02 20:00:00\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;value\&quot;: 215.6,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;roll_mean\&quot;: 68.5,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;z\&quot;: 26.8,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  \&quot;iqr_hi\&quot;: 83.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}]}"></div>
+
+<p><code>curl -s</code> sends the request and <code>-s</code> hides the progress meter. <code>localhost:8000/anomalies</code> is the address. <code>|</code> passes the output into <code>jq</code>. <code>jq '.[3]'</code> takes the element at position 3. Counting starts at 0, so this is the fourth spike. The output proves the endpoint returns valid JSON, and that the timestamp is a string.</p>
+<p><strong>Step 13: Live spike check, with validation.</strong> The goal is an endpoint that accepts a new reading for a station and says whether it would breach that station's fence.</p>
+<div class="hl"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/check&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="n">CheckIn</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">_scored</span><span class="p">[</span><span class="n">_scored</span><span class="o">.</span><span class="n">station_id</span><span class="o">==</span><span class="n">c</span><span class="o">.</span><span class="n">station_id</span><span class="p">]</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">iqr_hi</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;station_id&quot;</span><span class="p">:</span><span class="n">c</span><span class="o">.</span><span class="n">station_id</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;iqr_hi&quot;</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+            <span class="s2">&quot;anomaly&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">hi</span><span class="p">)}</span>
+</code></pre></div>
+
+<p><code>@app.post("/check")</code> answers POST requests, which carry data in the body. The parameter <code>c: CheckIn</code> tells FastAPI to read the body, check it against the model, and pass it in as <code>c</code>. If the check fails, the function never runs.</p>
+<p><code>s = _scored[_scored.station_id==c.station_id]</code> selects the rows for the requested station. <code>s.iqr_hi.iloc[-1]</code> takes the last value in that column. <code>iloc</code> selects by position, and <code>-1</code> means the last position.</p>
+<p><code>bool(c.value &gt; hi)</code> compares the value to the fence and converts the answer to plain True or False, which JSON can represent.</p>
+<p>The excerpt uses <code>_scored</code>, but no earlier step creates it. The excerpt also does not show it being defined. The variable most likely holds the output of <code>flag(load())</code>, the table that has <code>iqr_hi</code> for every reading. Take the definition from the workbook or your tutor before you run this step.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s -XPOST localhost:8000/check \\&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  -d &#x27;{\&quot;station_id\&quot;:\&quot;ST-04\&quot;,\&quot;value\&quot;:220}&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{\&quot;station_id\&quot;:\&quot;ST-04\&quot;,\&quot;value\&quot;:220.0,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; \&quot;iqr_hi\&quot;:83.0,\&quot;anomaly\&quot;:true}&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;# station_id \&quot;ST-99\&quot; -&gt; 422 String should match&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;#   pattern &#x27;^ST-0[1-4]$&#x27;&quot;}]}"></div>
+
+<p><code>-XPOST</code> is the same as <code>-X POST</code>, which sets the request method. <code>-d</code> supplies the request body, and the text in single quotes is the JSON. The <code>\</code> joins the two lines. The output proves the endpoint works: 220 is above the fence of 83.0, so <code>anomaly</code> is true. The comment at the bottom describes what happens with a bad station. Status 422 means the request was understood but its data failed validation. The error message says which rule failed, so the caller can fix the request.</p>
+<div class="box box-trap"><div class="box-h">Trap: 422 is not a server crash</div><p>A 422 is a deliberate rejection of bad input, and it is what your test checks for. A 500 is a server error, which means your code failed. Confuse the two and you will debug the wrong thing.</p></div>
+
+<h3 id="part-d-explain-the-spikes">Part D: Explain the spikes</h3>
+<p><strong>Step 14: Explain anomalies with a free CPU language model.</strong> The goal is one plain-English sentence per spike, grounded in the real numbers.</p>
+<div class="hl"><pre><span></span><code><span class="n">tok</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">roll_mean</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">msgs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;Analyst. &quot;</span>
+      <span class="s2">&quot;ONE sentence: explain the spike, advise.&quot;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">station</span><span class="si">}</span><span class="s2"> PM2.5 hit &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">, ~</span><span class="si">{</span><span class="n">value</span><span class="o">/</span><span class="n">roll_mean</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">x its </span><span class="si">{</span><span class="n">roll_mean</span><span class="si">}</span><span class="s2"> &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;average (z=</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">}]</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">tok</span><span class="p">(</span><span class="n">tok</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">msgs</span><span class="p">,</span>
+      <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+      <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">ids</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tok</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ids</span><span class="o">.</span><span class="n">input_ids</span>
+      <span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>AutoTokenizer.from_pretrained(M)</code> downloads and loads the tokenizer, which converts text into token numbers. <code>AutoModelForCausalLM.from_pretrained(M)</code> loads the model that generates text. <code>M</code> holds the model's name. The excerpt does not show its value; the course names it as Qwen2.5-0.5B-Instruct. Both lines run once at import time, so the model is loaded once and reused.</p>
+<p><code>msgs</code> is a list of messages in chat format. The <code>system</code> message tells the model its role and the rule, one sentence. The <code>user</code> message contains the numbers. The f-string, written <code>f"..."</code>, puts the variables into the text. <code>{value/roll_mean:.1f}</code> divides the two numbers and formats the result with one decimal place.</p>
+<p><code>tok.apply_chat_template(...)</code> wraps the messages in the special markers the model was trained to expect. <code>add_generation_prompt=True</code> adds the marker that means "the assistant speaks next". <code>return_tensors="pt"</code> returns PyTorch tensors, which the model needs.</p>
+<p><code>llm.generate(**ids, max_new_tokens=48)</code> produces the reply. <code>**ids</code> unpacks the tokenised input as keyword arguments. <code>max_new_tokens=48</code> caps the reply at 48 new tokens, which keeps generation short on a CPU.</p>
+<p><code>out[0][ids.input_ids.shape[1]:]</code> removes the prompt from the output. <code>ids.input_ids.shape[1]</code> is the length of the prompt, and the slice keeps only what comes after it. <code>tok.decode(..., skip_special_tokens=True)</code> turns the tokens back into text and removes the markers.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python explain.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-04 215.6: Residents should monitor PM2.5 levels&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  closely; it spiked to 215.6 ug/m3, ~3.1x the&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  recent 68.5 average.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ST-03 180.5: Residents should monitor PM2.5 levels&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  closely; it spiked to 180.5 ug/m3, ~3.9x the&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  recent 45.9 average.&quot;}]}"></div>
+
+<p>Check the arithmetic in the output. 215.6 divided by 68.5 is 3.15, which rounds to 3.1. 180.5 divided by 45.9 is 3.93, which rounds to 3.9. The numbers in the reply come from the prompt, so they are reliable. The wording does not come from the data, and a model can drift from the facts. That is why the numbers should always be checked against the API, and why the sentence is treated as explanation, not detection.</p>
+<div class="box box-trap"><div class="box-h">Trap: The model explains; it does not detect</div><p>The language model never decides whether a reading is a spike. Detection is done by Part B. If you let the model decide, the alerts depend on the model's mood on the day. Keep the decision in code and use the model only for wording.</p></div>
+
+<h3 id="part-e-the-dashboard">Part E: The dashboard</h3>
+<p><strong>Step 15: Dashboard that highlights spikes.</strong> The goal is a web page that shows station averages and the spike table, fetched from the API.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">API</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">secrets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;api&quot;</span><span class="p">,</span><span class="s2">&quot;http://localhost:8000&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CityPulse — Anomaly Detector&quot;</span><span class="p">)</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/stations&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">st</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)[</span><span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+<span class="n">anom</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/anomalies&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flagged spikes (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">anom</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">anom</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">highlight_max</span><span class="p">(</span>
+    <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#b4532a&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>import streamlit as st, requests, pandas as pd</code> loads three libraries and gives them short names. <code>requests</code> sends HTTP requests from Python. <code>st.secrets.get("api", ...)</code> reads a configuration value, here the API address, and falls back to localhost if none is set. Secrets are kept in a file Streamlit reads, not written into the code.</p>
+<p><code>st.title(...)</code> shows a heading. <code>requests.get(f"{API}/stations").json()</code> asks the API for the stations, and <code>pd.DataFrame(...)</code> turns the reply into a table. <code>st.bar_chart(...)</code> draws a bar chart of the means.</p>
+<p><code>anom.style.highlight_max(subset=["value"], color=...)</code> colours the largest value in the value column. Because the largest reading is the biggest spike, the highlight points at the most urgent row.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;streamlit run dashboard.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  You can now view your Streamlit app in your browser.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  Local URL: http://localhost:8501&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  Network URL: http://10.0.0.4:8501&quot;}]}"></div>
+
+<p><code>streamlit run</code> starts the app. Open the local address in a browser to see it. The network address lets other devices on the same Wi-Fi reach it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Two gaps to check before you run it</div><p>The source calls <code>/stations</code>, but no step in Part C defines that endpoint, so the dashboard will get an error from the API. You need to add it. Also, <code>Styler.highlight_max</code> relies on the Jinja2 package. If you see an error about jinja2, install it with pip, because it is not in the requirements file as printed.</p></div>
+
+<h3 id="part-f-test-containerise-and-ship">Part F: Test, containerise and ship</h3>
+<p><strong>Step 16: Automated tests.</strong> The goal is four tests that the CI pipeline runs on every push.</p>
+<div class="hl"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_detects_four_spikes</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">anomalies</span><span class="p">(</span><span class="n">load</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_health_reports_count</span><span class="p">():</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">j</span><span class="p">[</span><span class="s2">&quot;anomalies&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_check_validation</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/check&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+      <span class="s2">&quot;station_id&quot;</span><span class="p">:</span><span class="s2">&quot;ST-99&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
+      <span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+</code></pre></div>
+
+<p><code>client = TestClient(main.app)</code> wraps the app so tests can send requests to it. Each function whose name starts with <code>test_</code> is one test. <code>assert len(a) == 4</code> checks the list has exactly four rows. <code>(a.z &gt;= 3.0).all()</code> checks that every row has a z-score of at least 3. <code>.all()</code> is true only when every row passes.</p>
+<p><code>client.get("/health").json()</code> sends a request and converts the reply into a dictionary. The last test sends a station of <code>ST-99</code>, which the pattern rejects, and checks for status 422. The code shown has only three test functions, so <code>pytest</code> would report <code>3 passed</code>. Add a fourth test of your own, such as one that posts a valid station to <code>/check</code>, to match the course output below.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;....                                      [100%]&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;4 passed in 1.69s&quot;}]}"></div>
+
+<p>Each dot is one passing test. <code>-q</code> makes the output quiet. The line <code>4 passed</code> is the result that CI checks.</p>
+<div class="box box-trap"><div class="box-h">Trap: The tests depend on the generated data</div><p><code>test_detects_four_spikes</code> reads <code>data/readings.csv</code>, which <code>make_data.py</code> creates. If you run <code>pytest</code> before generating the data, you get a <code>FileNotFoundError</code>. CI runs the generator first, and you must do the same locally.</p></div>
+
+<p><strong>Step 17: Containerise with Docker.</strong> The goal is one image that contains the code, the libraries and the generated data, and serves the API.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>python<span class="w"> </span>make_data.py
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;uvicorn&quot;</span>,<span class="s2">&quot;main:app&quot;</span>,<span class="s2">&quot;--host&quot;</span>,<span class="s2">&quot;0.0.0.0&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;--port&quot;</span>,<span class="s2">&quot;8000&quot;</span><span class="o">]</span>
+</code></pre></div>
+
+<p><code>FROM python:3.11-slim</code> starts from a small, official Python image. <code>WORKDIR /app</code> sets the working folder inside the image.</p>
+<p><code>COPY requirements.txt .</code> copies only the requirements file first, then <code>RUN pip install ...</code> installs the libraries. Docker caches each step, so if only your code changes later, this slow install is reused. <code>--no-cache-dir</code> stops pip keeping its download cache, which keeps the image smaller.</p>
+<p><code>COPY . .</code> copies everything else into <code>/app</code>. <code>RUN python make_data.py</code> generates the data while building, so the image is self-contained. <code>EXPOSE 8000</code> documents the port. It does not open it.</p>
+<p><code>CMD [...]</code> is the command that runs when a container starts. <code>--host 0.0.0.0</code> makes the server accept connections from outside the container. Without it, the app runs but cannot be reached.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;docker build -t citypulse2:2.0 . &amp;&amp; \\&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  docker run -p 8000:8000 citypulse2:2.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[+] Building 51.4s (11/11) FINISHED&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; =&gt; naming to docker.io/library/citypulse2:2.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;INFO:     Uvicorn running on http://0.0.0.0:8000&quot;}]}"></div>
+
+<p><code>docker build -t citypulse2:2.0 .</code> builds the image from the Dockerfile in the current folder. <code>-t</code> names it and gives it a tag, <code>2.0</code>. The final <code>.</code> is the build context. The <code>&amp;&amp;</code> runs the second command only if the first succeeds. <code>docker run -p 8000:8000</code> maps port 8000 on your machine to port 8000 in the container. The first number is the host port, the second is the container port.</p>
+<p><strong>Step 18: CI on every push.</strong> The goal is a GitHub Actions workflow that tests every push to main.</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-cd</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> push</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python make_data.py</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+</code></pre></div>
+
+<p><code>name: ci-cd</code> names the workflow. <code>on: { push: { branches: [main] } }</code> says the workflow starts on a push to the <code>main</code> branch. <code>jobs:</code> lists the jobs, and <code>test:</code> is the name of this one.</p>
+<p><code>runs-on: ubuntu-latest</code> picks the kind of machine. Each <code>- uses:</code> line runs a ready-made action. <code>actions/checkout@v4</code> downloads your code, and <code>@v4</code> is the version. <code>actions/setup-python@v5</code> installs Python 3.11.</p>
+<p><code>- run:</code> lines run shell commands on that machine, in order. The order matters: install, generate data, then test. Each step stops the job if it fails, so later steps are skipped.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh run watch&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;test  Set up Python ............... \u2713&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;test  pip install -r requirements ... \u2713&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;test  python make_data.py .......... \u2713&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;test  pytest -q  (4 passed) ........ \u2713&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;\u2713  test succeeded in 1m18s&quot;}]}"></div>
+
+<p><code>gh run watch</code> follows a run from the terminal. Each tick shows a step passed. The last line proves the whole job succeeded.</p>
+<div class="box box-trap"><div class="box-h">Trap: YAML indentation is part of the syntax</div><p>Two spaces change the meaning. If <code>steps:</code> is indented differently from <code>runs-on:</code>, GitHub rejects the file or runs the wrong steps. Copy the file exactly and use spaces, never tabs.</p></div>
+
+<p><strong>Step 19: CD: build, push and deploy.</strong> The goal is a second job that runs only when tests pass, builds the image, pushes it to a registry, and deploys it.</p>
+<div class="hl"><pre><span></span><code><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span><span class="w">                 </span><span class="c1"># only if green</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${{ secrets.REGISTRY_TOKEN }}&quot;</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">| docker login ghcr.io -u ${{ github.actor }}</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--password-stdin</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker build -t</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA .</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker push</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA</span>
+</code></pre></div>
+
+<p><code>deploy:</code> is a second job, at the same level as <code>test:</code> under <code>jobs:</code>. <code>needs: test</code> makes it wait for the test job, and it runs only if that job succeeded. The comment after <code>#</code> is ignored.</p>
+<p><code>${{ secrets.REGISTRY_TOKEN }}</code> inserts a secret stored in GitHub. <code>docker login ghcr.io</code> logs in to the GitHub container registry. <code>-u ${{ github.actor }}</code> gives the username of the person or process that triggered the run. <code>--password-stdin</code> reads the password from the pipe <code>|</code> instead of the command line, so it does not show in the process list.</p>
+<p><code>docker build -t ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA .</code> builds the image and tags it with the repository name and the commit id. <code>$GITHUB_SHA</code> is the full id of the commit being built, which makes each image traceable to one commit.</p>
+<p><code>docker push</code> uploads the image to the registry.</p>
+<div class="box box-trap"><div class="box-h">Trap: Do not echo the secret</div><p>The line <code>echo "${{ secrets.REGISTRY_TOKEN }}"</code> prints the token into the step's log. GitHub masks secrets it knows about, but the safer habit is to pass the secret straight to <code>docker login</code> without echoing it. The lowercase rule also matters: container image names must be lowercase, so a repository name with capital letters can fail at push. Check the name if the push step fails.</p></div>
+
+<p>The course output also shows a rollout to a live address. The YAML shown in the source has no rollout step. Find that step in the workbook before you expect the live URL to update.</p>
+<p><strong>Step 20: Ship it, end to end.</strong> The goal is one command that runs the whole flow, and a final check on the live service.</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>make_data.py<span class="w">       </span><span class="c1"># data + spikes</span>
+python<span class="w"> </span>detect.py<span class="w">          </span><span class="c1"># confirm anomalies</span>
+pytest<span class="w"> </span>-q<span class="w">                 </span><span class="c1"># tests</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citypulse2:2.0<span class="w"> </span>.<span class="w">   </span><span class="c1"># package</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">      </span><span class="c1"># CI/CD deploys</span>
+</code></pre></div>
+
+<p>Each line runs one stage. Lines beginning with <code>#</code> are comments, which the shell ignores. The file <code>run_all.sh</code> holds these lines so you can run them in order. Notice that the last command is a push, not a deploy. Deployment happens in GitHub, not on your laptop.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;curl -s https://citypulse2.example.app/anomalies&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  | jq length&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;4&quot;}]}"></div>
+
+<p><code>jq length</code> counts the items in the list. The answer 4 proves the live service reports the four spikes. The address in the course output is an example, so use the address your own deployment gives you.</p>
+<h2 id="the-part-g-challenges">The Part G challenges</h2>
+<p>Each challenge below has a "Done when" test. That test is the marking standard, so read it carefully before you start. The plans give you a route and the reasoning. Write the code yourself.</p>
+<h3 id="challenge-1-add-a-severity-column-data-easy">Challenge 1: Add a severity column (data, easy)</h3>
+<p><strong>What is asked.</strong> In <code>detect.py</code>, add a severity value, defined as the reading divided by the rolling mean, to the anomaly table. Sort the output so the highest severity comes first.</p>
+<p><strong>Done when.</strong> "Done when: detect.py prints the 4 spikes ordered by severity, highest first."</p>
+<p><strong>Ideas you need.</strong> Column arithmetic in pandas, <code>sort_values</code> with <code>ascending=False</code>, and the fact that <code>anomalies</code> returns a table you can modify before it is printed.</p>
+<p><strong>Plan of attack.</strong></p>
+<ol>
+<li>Open <code>detect.py</code> and find where <code>anomalies</code> selects its columns. Decide whether severity must be computed before or after the <code>anomaly</code> filter.</li>
+<li>Compute severity as a new column from <code>value</code> and <code>roll_mean</code>. Watch the first reading of each station, where <code>roll_mean</code> is empty, and make sure it cannot crash the sort.</li>
+<li>Add severity to the list of columns that are kept and rounded.</li>
+<li>Sort the result by severity, descending. Check the sort direction by reading the printed order, not by trusting the code.</li>
+<li>Run <code>python detect.py</code>. Confirm it prints four rows, highest severity first, and that the existing four tests still pass.</li>
+</ol>
+<p><strong>Mistakes that fail the test.</strong> Sorting by value instead of severity. Forgetting that <code>ascending=False</code> is needed, which gives lowest first. Printing before sorting, so the order looks random. Computing severity on the whole table, then letting the NaN from the first readings sort to the top or bottom.</p>
+<h3 id="challenge-2-tune-the-detectors-sensitivity-model-medium">Challenge 2: Tune the detector's sensitivity (model, medium)</h3>
+<p><strong>What is asked.</strong> Make the z-score threshold and the IsolationForest contamination configurable. Show a setting that also flags a fifth, milder spike you plant.</p>
+<p><strong>Done when.</strong> "Done when: A documented config catches 5 spikes while the original 4 tests still pass."</p>
+<p><strong>Ideas you need.</strong> Named constants or a configuration structure, the effect of <code>contamination</code> and of the z threshold, and the difference between the default data and a data set you change on purpose.</p>
+<p><strong>Plan of attack.</strong></p>
+<ol>
+<li>List every number that controls sensitivity: the z threshold, the IQR multiplier, and contamination. Move each into a named setting with a documented default.</li>
+<li>Think about the conflict first. The four existing tests expect exactly four spikes on the generated data. If you add a fifth spike to <code>make_data.py</code>, those tests fail. So the default configuration must still produce four, and the fifth spike must come from a separate setting or data run.</li>
+<li>Plant the milder spike in a way that is switched on by configuration, not by changing the default data.</li>
+<li>Choose a configuration in which the detector finds five. Measure it by running the detector, not by reasoning about it alone.</li>
+<li>Document both settings in a short text file or docstring, stating what each one does and what value gives four and what value gives five.</li>
+<li>Run the tests and confirm all four still pass with the default settings.</li>
+</ol>
+<p><strong>Mistakes that fail the test.</strong> Changing the default data, which breaks the count of four. Making the threshold so low that the model flags noise, so the count is five for the wrong reasons. Documenting the settings but not showing the five-spike run. Hard-coding the fifth spike into the detector instead of the data.</p>
+<h3 id="challenge-3-per-station-explanation-endpoint-api-and-llm-medium">Challenge 3: Per-station explanation endpoint (API and LLM, medium)</h3>
+<p><strong>What is asked.</strong> Add <code>GET /explain/{station}</code>. It runs the LLM from <code>explain.py</code> on that station's latest confirmed anomaly and returns the sentence.</p>
+<p><strong>Done when.</strong> "Done when: curl /explain/ST-04 returns one grounded plain-English sentence."</p>
+<p><strong>Ideas you need.</strong> Path parameters, which are the <code>{station}</code> part of the URL, and how a route can return an HTTP 404 for an unknown station. Also the cost of loading a model: the model should load once, not per request.</p>
+<p><strong>Plan of attack.</strong></p>
+<ol>
+<li>Read the <code>explain</code> function in <code>explain.py</code> and list its inputs. Work out which values for a station you must find: the station, the value, the rolling mean and the z-score.</li>
+<li>Decide where the model is loaded. The tokenizer and model should be loaded once when the program starts, not inside the request handler.</li>
+<li>Write the route with a path parameter. Look up the station's latest confirmed anomaly from the list you already have. Think about what to do when the station has no anomaly.</li>
+<li>Call the explanation function with those values, and return the sentence in a JSON object.</li>
+<li>Test with <code>curl</code> on the valid station and on one with no anomaly. Confirm the response codes are different.</li>
+</ol>
+<p><strong>Mistakes that fail the test.</strong> Loading the model inside the route, which makes every call take many seconds. Returning the latest reading instead of the latest confirmed anomaly. Returning a server error for an unknown station instead of a clear 404. Ignoring the case where a station has several anomalies, and not saying which one was used.</p>
+<h3 id="challenge-4-interactive-spike-drill-down-ui-medium">Challenge 4: Interactive spike drill-down (UI, medium)</h3>
+<p><strong>What is asked.</strong> Add a station selector and a 24-hour line chart to the Streamlit app. The chart rings any spikes in that window, and the data comes from the API.</p>
+<p><strong>Done when.</strong> "Done when: Picking a station redraws its last-24h trend with spikes marked."</p>
+<p><strong>Ideas you need.</strong> Streamlit widgets such as <code>st.selectbox</code>, the difference between "the last 24 hours" of the data and "the last 24 hours" of the real clock, and the fact that the API may need a new endpoint to supply raw readings.</p>
+<p><strong>Plan of attack.</strong></p>
+<ol>
+<li>Decide what the chart needs: the readings for one station, and which of them are spikes. Check whether the API already provides raw readings. If it does not, add an endpoint for them, following the same pattern as <code>/anomalies</code>.</li>
+<li>Add a selector that lists the four station ids. Store the selected value in a variable.</li>
+<li>Fetch the readings for that station and filter them to the last 24 hours of the data, using the latest timestamp in the data as the end point.</li>
+<li>Draw the line chart. Mark the spikes for that station on the same chart, as points, the way <code>chart.py</code> does.</li>
+<li>Check the chart for two stations and confirm that each redraws with its own spikes.</li>
+</ol>
+<p><strong>Mistakes that fail the test.</strong> Using the real clock for "last 24 hours" when the data is from April 2026, which gives an empty chart. Filtering the lines but not the spikes. Showing all seven days. Not handling a station with no spikes in the window.</p>
+<h3 id="challenge-5-alert-gate-in-ci-cicd-hard">Challenge 5: Alert gate in CI (CI/CD, hard)</h3>
+<p><strong>What is asked.</strong> Add a <code>ruff</code> lint step to the pipeline. Add a check that fails the build if the detector's recall on the planted spikes drops below 100 per cent. Deploy only on green.</p>
+<p><strong>Done when.</strong> "Done when: A detector that misses a planted spike fails the Actions run; a correct one deploys."</p>
+<p><strong>Ideas you need.</strong> Recall, which is the share of true positives among all real spikes. Exit codes: a program returns 0 for success and a non-zero number for failure, and CI reads only that number. The ruff linter, which checks code style and common errors. The fact that the planted spikes are known, because <code>make_data.py</code> defines them.</p>
+<p><strong>Plan of attack.</strong></p>
+<ol>
+<li>Add a <code>ruff</code> step to the workflow before the tests. Run <code>ruff check</code> locally first, and fix or configure any existing findings so the step is meaningful.</li>
+<li>Decide how the check knows the true spikes. The planted spikes are defined in the generator, so think about whether the check should import that list, read it from a file, or derive it from the data.</li>
+<li>Write a small script that compares the detected spikes with the planted spikes. Compare identities, meaning the station and hour pairs, not just the count.</li>
+<li>Make the script compute recall and exit with a non-zero code if recall is below 1.0. Print the result so the log explains the failure.</li>
+<li>Add the script as a CI step after the tests. Confirm the existing <code>needs: test</code> ordering still makes deploy wait for it.</li>
+<li>Test the gate both ways. Temporarily raise the threshold so a spike is missed, confirm the run fails, then restore it and confirm the run passes and deploys.</li>
+</ol>
+<p><strong>Mistakes that fail the test.</strong> Printing "FAIL" but returning exit code 0, so CI shows green. Comparing only the number of spikes, so a detector that finds five wrong readings passes. Adding <code>ruff</code> after the tests so a lint error is never reported before the deploy decision. Leaving existing lint findings unfixed, so the step fails for reasons unrelated to the detector.</p>
+<h2 id="viva-preparation">Viva preparation</h2>
+<p>The capstone viva scores four things, each from 0 to 5. The first is acceptance criteria met: did your project do what the brief asked, and can you show it? The second is technical depth: can you explain how the statistics, SQL and model work, and why? The third is contribution and ownership: can you say which parts you built and which decisions were yours? The fourth is understanding: can you answer a question you have not seen before, and admit the limits of what you built?</p>
+<p>Answer each question in your own words, aloud. The model answers below show the content and the length, not a script to memorise.</p>
+<details class="box box-answer"><summary>Why does the rolling baseline exclude the current reading?</summary><p>Because a spike would otherwise raise its own baseline and hide itself. The window is the six rows before the current one, set by <code>ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING</code>. This keeps the comparison honest: each reading is judged against what came just before it. The cost is that the first readings of each station have a short or empty window, and I handle that explicitly.</p></details>
+
+<details class="box box-answer"><summary>Why use the median and MAD instead of the mean and standard deviation?</summary><p>The median and MAD are robust, meaning one extreme value barely moves them. A spike inflates the mean and standard deviation, which makes it harder to detect. With the median and MAD, the spike stands out clearly. The 0.6745 constant rescales the MAD so the score reads like a normal z-score. I added a tiny constant to the MAD so the code never divides by zero.</p></details>
+
+<details class="box box-answer"><summary>Why do you need both the robust z-score and the IQR fence?</summary><p>Each test catches a different kind of false alarm. The z-score is sensitive to how far a value sits from its station's median, and the IQR fence sets an upper limit from the middle of the distribution. Requiring both means a reading must be unusual by two independent measures. The result is fewer false alarms from noise that is only slightly high.</p></details>
+
+<details class="box box-answer"><summary>Why add an IsolationForest if the statistics already find the spikes?</summary><p>The statistics find four candidates on this data, and the model finds thirteen. The model looks at the joint pattern of value and deviation from the baseline, which the univariate tests do not. Requiring agreement keeps only the readings both methods support. The trade-off is that a real spike that only one method sees will be missed, and I would rather report that honestly than hide it.</p></details>
+
+<details class="box box-answer"><summary>Why compute the anomalies once at startup rather than on each request?</summary><p>The detection depends only on the data, which is fixed for the life of the process. Computing it once makes every request fast, because the API only reads a stored table. The cost is that new data needs a restart, which is acceptable for this project. In a production system with changing data, I would recompute on a schedule and store the results.</p></details>
+
+<details class="box box-answer"><summary>What does Pydantic validation protect against, and what does a 422 mean?</summary><p>It protects the detector from input it cannot handle, such as a station that does not exist or a value outside 0 to 500. The 422 status means the request was understood but its data failed validation. The response says which rule failed, so the caller can correct the request. A 500 would mean my code broke, which is a different problem.</p></details>
+
+<details class="box box-answer"><summary>Why does the language model only explain, rather than detect?</summary><p>Detection must be deterministic, so the same data always gives the same alerts, and it must be testable. A language model's output can vary and can drift from the facts. So the decision stays in code and is covered by tests, and the model only turns the confirmed numbers into a sentence. I also check that the numbers in the sentence match the API.</p></details>
+
+<details class="box box-answer"><summary>What does CI/CD guarantee, and what does it not guarantee?</summary><p>It guarantees that every push to main runs the tests on a fresh machine, and that the image is deployed only after those tests pass. It does not guarantee the detector is correct. It only checks what the tests check. A spike that the tests never cover can still be missed, which is why the planned recall gate matters.</p></details>
+
+<h2 id="check-yourself">Check yourself</h2>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Why does the rolling baseline in rolling.py exclude the current reading?&quot;, &quot;opts&quot;: [&quot;It makes the SQL query run faster on a CPU.&quot;, &quot;It stops the first reading of each station from being empty.&quot;, &quot;It stops a spike from raising its own baseline and hiding itself.&quot;, &quot;It sorts the rows by timestamp before the average is taken.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Including the current row would let a spike pull its own baseline upward. The phrase ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING stops one row before the current one. The first-row emptiness is a real effect, but it is not the reason for the exclusion.&quot;}, {&quot;q&quot;: &quot;Which condition must hold before a reading becomes a confirmed anomaly?&quot;, &quot;opts&quot;: [&quot;The statistical flag and the IsolationForest flag must both be true.&quot;, &quot;Either the statistical flag or the IsolationForest flag must be true.&quot;, &quot;The reading must be the highest value at its station.&quot;, &quot;The reading must be above 500, the upper limit of the valid range.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The anomaly column is stat_flag AND iso_flag, so both must agree. The OR option is tempting because the model casts a wider net, but a single flag is not enough. The highest-value option describes the severity idea from Challenge 1, not the rule.&quot;}, {&quot;q&quot;: &quot;Why does the code add 1e-6 to the MAD?&quot;, &quot;opts&quot;: [&quot;To round the z-score to six decimal places.&quot;, &quot;To make the median of an even-length list come out exactly.&quot;, &quot;To stop the IQR fence from being calculated for the first reading.&quot;, &quot;So a station whose readings are all identical does not cause a division by zero.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;When every reading is the same, the MAD is zero, and dividing by it would crash or produce infinity. The tiny constant prevents that. The rounding option is tempting because round() appears nearby, but the constant is added before the division, not used for rounding.&quot;}, {&quot;q&quot;: &quot;What does contamination=0.02 tell the IsolationForest?&quot;, &quot;opts&quot;: [&quot;The random seed used to build the trees.&quot;, &quot;The share of readings the model expects to be unusual, around two per cent.&quot;, &quot;The maximum value the model will accept as input.&quot;, &quot;The number of trees to build in the forest.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Contamination is the expected proportion of outliers in the training data. It sets the decision threshold, which is why 2 per cent of 672 readings gives about 13 flags. The seed option is tempting because random_state also appears, but that is a separate setting.&quot;}, {&quot;q&quot;: &quot;What happens when assert fails in dq_check.py?&quot;, &quot;opts&quot;: [&quot;The script stops with an AssertionError, so a broken feed fails the run.&quot;, &quot;The script prints a warning and continues with the remaining checks.&quot;, &quot;The bad rows are deleted from the CSV file automatically.&quot;, &quot;The script returns exit code 0 so the pipeline keeps going.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;An failed assert raises an AssertionError, which ends the program with a non-zero exit code. That is what makes CI stop. The warning option describes logging, which assert does not do. The exit-code option is the opposite of what happens.&quot;}, {&quot;q&quot;: &quot;Why does POST /check return 422 for station ST-99?&quot;, &quot;opts&quot;: [&quot;The FastAPI server is not running on port 8000.&quot;, &quot;The station has no readings in the database yet.&quot;, &quot;The request was sent with curl instead of a browser.&quot;, &quot;Pydantic rejects the station_id because ST-99 does not match ^ST-0[1-4]$.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The pattern allows only ST-01 to ST-04, so ST-99 fails validation before the function runs. The server-not-running option would give a connection error, not a 422. The no-readings option would give a different error from the code.&quot;}, {&quot;q&quot;: &quot;What does needs: test do in the deploy job?&quot;, &quot;opts&quot;: [&quot;It starts the deploy job only after the test job has succeeded.&quot;, &quot;It runs the test job a second time inside the deploy job.&quot;, &quot;It makes the deploy job run at the same time as the test job.&quot;, &quot;It stores the test results in the container registry.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;needs makes a job wait for another and run only if it succeeded. That is why a failing test blocks deployment. The parallel option is the opposite of what needs does, and the second option describes an action that needs does not perform.&quot;}, {&quot;q&quot;: &quot;Why does explain.py limit the reply with max_new_tokens=48?&quot;, &quot;opts&quot;: [&quot;To make the model more accurate in its numbers.&quot;, &quot;To stop the model from calling the FastAPI endpoint.&quot;, &quot;To round the reply to the nearest 48 characters.&quot;, &quot;To cap the length of the reply, so generation stays quick on a CPU.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;max_new_tokens sets an upper limit on the number of tokens generated. A shorter reply finishes sooner, which matters on a CPU. The accuracy option is tempting, but the limit does not improve accuracy, and it can cut off a sentence.&quot;}]}"></div>
+
+<h2 id="what-goes-wrong">What goes wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running <code>pytest</code> before <code>make_data.py</code></td>
+<td><code>FileNotFoundError</code> for <code>data/readings.csv</code></td>
+<td>Run <code>python make_data.py</code> first, as CI does</td>
+</tr>
+<tr>
+<td>Using <code>and</code> instead of <code>&amp;</code> on pandas columns</td>
+<td><code>ValueError: The truth value of a Series is ambiguous</code></td>
+<td>Use <code>&amp;</code> with brackets around each test</td>
+</tr>
+<tr>
+<td>Removing <code>sort_values</code> from <code>load</code></td>
+<td>Rolling baselines mix neighbouring hours, with no error</td>
+<td>Keep the sort, and check the <code>win_n</code> column</td>
+</tr>
+<tr>
+<td>Including the current row in the window</td>
+<td>Spikes look smaller than they are, and may be missed</td>
+<td>Use <code>ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING</code></td>
+</tr>
+<tr>
+<td>Plain mean and standard deviation for the z-score</td>
+<td>A spike is less visible, and fewer spikes are flagged</td>
+<td>Use the median and MAD</td>
+</tr>
+<tr>
+<td>Returning raw timestamps from <code>/anomalies</code></td>
+<td>A 500 error that says the timestamp is not JSON serialisable</td>
+<td>Convert with <code>astype(str)</code> before returning</td>
+</tr>
+<tr>
+<td>Binding the server to <code>127.0.0.1</code> inside Docker</td>
+<td>The container runs, but the port cannot be reached</td>
+<td>Use <code>--host 0.0.0.0</code> in the <code>CMD</code> line</td>
+</tr>
+<tr>
+<td>Loading the model inside a request handler</td>
+<td>Each call takes many seconds, and the server looks frozen</td>
+<td>Load the tokenizer and model once at startup</td>
+</tr>
+<tr>
+<td>A lint or recall check that prints FAIL but exits with 0</td>
+<td>CI shows green, and a broken detector deploys</td>
+<td>Exit with a non-zero code on failure</td>
+</tr>
+<tr>
+<td>Dashboard calls <code>/stations</code> with no such endpoint</td>
+<td>The page shows an error where the bar chart should be</td>
+<td>Add the endpoint, or remove the call</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;contamination&quot;, &quot;a&quot;: &quot;The share of readings the IsolationForest expects to be unusual, here about two per cent.&quot;}, {&quot;q&quot;: &quot;MAD&quot;, &quot;a&quot;: &quot;Median absolute deviation: the median of each value&#x27;s distance from the median.&quot;}, {&quot;q&quot;: &quot;IQR fence&quot;, &quot;a&quot;: &quot;Q3 plus 1.5 times (Q3 minus Q1). Values above it are high outliers.&quot;}, {&quot;q&quot;: &quot;Window frame&quot;, &quot;a&quot;: &quot;The set of neighbouring rows that a window function looks at for each row.&quot;}, {&quot;q&quot;: &quot;PARTITION BY&quot;, &quot;a&quot;: &quot;Splits rows into groups, so each group&#x27;s window is calculated separately.&quot;}, {&quot;q&quot;: &quot;assert&quot;, &quot;a&quot;: &quot;A Python statement that stops the program with an error when its condition is false.&quot;}, {&quot;q&quot;: &quot;422&quot;, &quot;a&quot;: &quot;An HTTP status meaning the request was understood, but its data failed validation.&quot;}, {&quot;q&quot;: &quot;uvicorn&quot;, &quot;a&quot;: &quot;The server program that runs a FastAPI app and answers HTTP requests on a port.&quot;}, {&quot;q&quot;: &quot;needs (Actions)&quot;, &quot;a&quot;: &quot;Makes one job wait for another job and run only if that job succeeded.&quot;}, {&quot;q&quot;: &quot;Secret&quot;, &quot;a&quot;: &quot;A value stored in GitHub and passed to a job without appearing in the workflow file.&quot;}, {&quot;q&quot;: &quot;Recall&quot;, &quot;a&quot;: &quot;The share of the real spikes that the detector actually catches.&quot;}, {&quot;q&quot;: &quot;Container&quot;, &quot;a&quot;: &quot;A running copy of a Docker image, which is itself built from a Dockerfile.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D10.html"><small>Previous</small>Day 10 — Analytical SQL</a><a class="nx" href="D11.html"><small>Next</small>Day 11 — Data pipelines and data-quality checks</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

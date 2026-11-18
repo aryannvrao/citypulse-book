@@ -1,0 +1,1022 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 9: Relational modelling and SQL loading · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D09" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 3 · Days 6–10 · Python, data and SQL</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a class="cur" href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 3 · Days 6–10 · Python, data and SQL</p><h1>Day 9: Relational modelling and SQL loading</h1><p class="sub">You will be able to design tables with keys and constraints, bulk-load CSV data, and prove that running the load twice leaves the same row count.</p><p class="meta">91 min read · practice quiz · 3 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D09.mp4?v=1794465642"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Today you stop storing data in one big spreadsheet-like table and start storing it in linked tables. Each real-world fact gets one place. A station is stored once, and every reading points back to its station. The database itself refuses bad data, such as a duplicate sample or a reading for a station that does not exist. You will also load a file of 1,392 readings in a single step, and you will check that the load can be repeated without doubling the data.</p>
+<p>Think of a library. The book catalogue lists each book once with its shelf location. Each loan slip carries only the book's catalogue number, not a copy of the title and author. If the library renames a shelf, only the catalogue changes.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>Read this section even if you think you know these words. The later sections use them without explaining them again.</p>
+<h3 id="files-folders-and-the-terminal">Files, folders and the terminal</h3>
+<p>A <strong>file</strong> is a named block of data on your disk, such as <code>readings.csv</code>. A <strong>folder</strong> (also called a directory) holds files and other folders. The <strong>terminal</strong> is a window where you type text instructions to your computer. Each instruction is a <strong>command</strong>: a word, usually a program name, followed by options. An <strong>option</strong> (also called a flag) changes what the command does. For example, in <code>ls -l</code>, the program is <code>ls</code> and <code>-l</code> is an option.</p>
+<p>A <strong>variable</strong> is a name that holds a value, such as <code>count = 5</code>. A <strong>function</strong> is a named block of code you call with brackets, such as <code>len(rows)</code>. A <strong>server</strong> is a program that waits for requests from other programs. A <strong>client</strong> is a program that sends those requests.</p>
+<h3 id="tables-rows-columns-and-keys">Tables, rows, columns and keys</h3>
+<p>A <strong>database</strong> is a program that stores data safely and answers questions about it. A <strong>table</strong> holds one kind of thing. Each <strong>row</strong> is one item, such as one reading. Each <strong>column</strong> is one property of that item, such as <code>pm2_5</code>. A <strong>schema</strong> is the written plan of tables and columns, usually stored in a file of SQL statements.</p>
+<p>A <strong>key</strong> is a column, or a set of columns, that identifies a row. A <strong>primary key</strong> must be unique and must not be empty. A <strong>foreign key</strong> says that a column's value must match a value in another table. A <strong>natural key</strong> is a key made from facts that already exist in the real world, such as a station id plus a timestamp. A <strong>surrogate key</strong> is a number the database invents, such as <code>fact_id</code>.</p>
+<h3 id="sql">SQL</h3>
+<p><strong>SQL</strong> (Structured Query Language) is the language you use to create tables, put rows in, change them and ask questions. A <strong>statement</strong> is one complete SQL instruction, normally ending with a semicolon. A <strong>query</strong> is a statement that asks for data, such as <code>SELECT</code>. <strong>DDL</strong> (data definition language) is the part of SQL that creates or changes structure, such as <code>CREATE TABLE</code>. The rest is about data, such as <code>INSERT</code>.</p>
+<p>A <strong>constraint</strong> is a rule the database enforces on each row, such as "this value must not be empty". <strong>NULL</strong> is SQL's word for a missing value. It is not zero and it is not an empty string.</p>
+<h3 id="transactions">Transactions</h3>
+<p>A <strong>transaction</strong> is a group of changes that the database treats as one unit. It either <strong>commits</strong> (all changes are saved) or <strong>rolls back</strong> (all changes are undone). If your program crashes halfway, a rollback leaves the database as it was before the group started.</p>
+<h3 id="words-from-python-and-data-files">Words from Python and data files</h3>
+<p><strong>Python</strong> is the programming language used in the course. A <strong>list</strong> is an ordered collection written with square brackets, such as <code>[1, 2, 3]</code>. A <strong>tuple</strong> is a fixed group of values written with round brackets, such as <code>(1, "Hebbal", 51.3)</code>. A <strong>dictionary</strong> (<code>dict</code>) maps keys to values, such as <code>{"S1": 3}</code>. A <strong>loop</strong> repeats a block of code for each item in a collection.</p>
+<p><strong>CSV</strong> (comma-separated values) is a plain text file where each line is a row and commas separate the columns. The first line is often a <strong>header</strong> with the column names. <strong>pandas</strong> is a Python library for working with tables in memory. <strong>Parquet</strong> is a compressed file format for tables. You do not need pandas or Parquet for the lab, but the course's loader reads a Parquet file, so you will see them in the code.</p>
+<p><strong>Docker</strong> runs a program inside a <strong>container</strong>, an isolated package that carries everything the program needs. <strong>Postgres</strong> (PostgreSQL) is a database server, a program that other programs connect to over a network. <strong>SQLite</strong> is a database stored in a single file, with no server. Both understand SQL.</p>
+<h2 id="the-tools">The tools</h2>
+<h3 id="relational-model-and-star-schema">Relational model and star schema</h3>
+<p><strong>What it is.</strong> The relational model stores data in tables that are linked by keys. A <strong>star schema</strong> is a layout for analytics. It has one <strong>fact table</strong> in the middle, holding measurements, and <strong>dimension tables</strong> around it, holding descriptions such as a location's name or a data source's name.</p>
+<p><strong>Why CityPulse uses it.</strong> CityPulse questions are always of the form "measure by place by time". The fact table <code>fact_air_quality</code> holds the measurements, and the dimensions <code>dim_location</code> and <code>dim_source</code> hold the places and sources. The alternatives are weaker. One wide flat table repeats the location text on every row and cannot enforce clean references. A fully normalised model suits apps that update data often, but CityPulse reads far more than it writes, so it needs more joins than it needs. A document store has weak joins and weak constraints for the aggregate questions asked in Day 14.</p>
+<p><strong>How it works.</strong> You write the <strong>grain</strong> first. The grain is a sentence that says what one row means. The course's grain is "one row per location per source per UTC hour". UTC is Coordinated Universal Time, a fixed clock standard that avoids daylight-saving confusion. The grain decides the natural key, and the natural key decides what counts as a duplicate.</p>
+<p><strong>The slide code.</strong> Here is the schema from the slides, with comments added by this book.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dim_location</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">location_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="w"> </span><span class="nb">REAL</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dim_source</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">source_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">fact_air_quality</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">fact_id</span><span class="w">     </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">location_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">dim_location</span><span class="p">(</span><span class="n">location_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">source_id</span><span class="w">   </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">dim_source</span><span class="p">(</span><span class="n">source_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">ts_utc</span><span class="w">      </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">  </span><span class="c1">-- ISO-8601 &#39;YYYY-MM-DDTHH:MM:SSZ&#39;</span>
+<span class="w">  </span><span class="n">pm2_5</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">pm2_5</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pm10</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">pm10</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<span class="w">  </span><span class="n">temperature_2m</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">relative_humidity_2m</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">location_id</span><span class="p">,</span><span class="w"> </span><span class="n">source_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts_utc</span><span class="p">));</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ix_fact_loc_ts</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">fact_air_quality</span><span class="w"> </span><span class="p">(</span><span class="n">location_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts_utc</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>CREATE TABLE IF NOT EXISTS dim_location (</code> creates a table named <code>dim_location</code>. <code>IF NOT EXISTS</code> means "do nothing if the table is already there". That makes the script safe to run twice.</li>
+<li><code>location_id INTEGER PRIMARY KEY</code> is the table's key. In SQLite, an <code>INTEGER PRIMARY KEY</code> column gets a number automatically when you do not supply one.</li>
+<li><code>name TEXT NOT NULL UNIQUE</code> stores the station name as text. <code>NOT NULL</code> rejects an empty name. <code>UNIQUE</code> rejects a second station with the same name.</li>
+<li><code>lat REAL, lon REAL</code> store latitude and longitude as decimal numbers. <code>REAL</code> means a floating-point number.</li>
+<li><code>dim_source</code> follows the same pattern for the data source, such as <code>openaq</code>.</li>
+<li><code>fact_air_quality</code> is the fact table. Its <code>fact_id</code> is a surrogate key.</li>
+<li><code>REFERENCES dim_location(location_id)</code> is the foreign key. A location id that is not in <code>dim_location</code> is refused.</li>
+<li><code>ts_utc TEXT NOT NULL</code> stores the time as text such as <code>2026-12-05T03:00:00Z</code>. The <code>Z</code> means UTC. Text in this format sorts in time order, which is why the course uses it.</li>
+<li>The comment <code>-- ISO-8601 ...</code> is ignored by the database. Anything after <code>--</code> on a line is a comment.</li>
+<li><code>pm2_5 REAL CHECK (pm2_5 &gt;= 0)</code> rejects a negative particle reading. <code>&gt;=</code> means "greater than or equal to".</li>
+<li><code>UNIQUE (location_id, source_id, ts_utc)</code> stops the same grain appearing twice.</li>
+<li><code>CREATE INDEX IF NOT EXISTS ix_fact_loc_ts ON fact_air_quality (location_id, ts_utc);</code> builds a lookup structure, described in Day 9's indexing topic below.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Putting the location name in the fact table</div><p>Writing <code>location_name</code> on every fact row duplicates text and breaks renames. Store <code>location_id</code> and join to <code>dim_location</code> when you need the name.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A table with no UNIQUE natural key</div><p>Without <code>UNIQUE</code> on the grain columns, a rerun of the loader inserts every row again and the data doubles. The database has no way to know the rows are the same.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: CHECK passes NULL</div><p><code>CHECK (pm2_5 &gt;= 0)</code> accepts a missing value. The check only fails when the expression is false, and a NULL comparison is unknown, not false. Add <code>NOT NULL</code> only if your documented rule forbids missing values.</p></div>
+
+<h3 id="sqlite-and-postgresql">SQLite and PostgreSQL</h3>
+<p><strong>What it is.</strong> SQLite is a complete SQL database stored in one file, and it is built into Python's <code>sqlite3</code> module. PostgreSQL is a server database for many users at once. Both speak standard SQL, including constraints and <code>ON CONFLICT</code> upserts.</p>
+<p><strong>Why CityPulse uses SQLite first.</strong> SQLite needs no server and no password on the lab machines, so every student can build <code>citypulse.db</code> in seconds. Python's <code>sqlite3</code> module plus <code>?</code> placeholders is enough for the loader. The same schema and upsert syntax run on PostgreSQL when the platform needs concurrent users. MySQL was rejected because its upsert syntax (<code>ON DUPLICATE KEY UPDATE</code>) differs. DuckDB is strong for analytics on Parquet but weaker for a constrained, often-updated store.</p>
+<p><strong>How it works.</strong> A database file is opened by a <strong>connection</strong>. In SQLite, foreign-key checks are off by default for every connection. So each connection must turn them on with <code>PRAGMA foreign_keys = ON</code>. A <strong>PRAGMA</strong> is a SQLite command that changes a setting. The slide code makes this visible.</p>
+<p><strong>The slide code.</strong> This is the connection and load setup from the slides.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SQLITE_PATH&quot;</span><span class="p">,</span> <span class="s2">&quot;citypulse.db&quot;</span><span class="p">))</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>  <span class="c1"># idempotent DDL: second run changes nothing</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;sql/schema.sql&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+<span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO dim_location (location_id, name) VALUES (1, &#39;Hebbal&#39;)&quot;</span><span class="p">)</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO dim_source (source_id, name) VALUES (1, &#39;openaq&#39;)&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO fact_air_quality (location_id, source_id, ts_utc, pm2_5) VALUES (?, ?, ?, ?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2026-12-05T03:00:00Z&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rejected:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>  <span class="c1"># CHECK constraint failed</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>import os, sqlite3</code> loads two standard modules. <code>os</code> reads environment variables, and <code>sqlite3</code> talks to SQLite.</li>
+<li><code>from pathlib import Path</code> loads a helper for reading files.</li>
+<li><code>con = sqlite3.connect(...)</code> opens the database. <code>os.environ.get("SQLITE_PATH", "citypulse.db")</code> reads the environment variable <code>SQLITE_PATH</code> and falls back to <code>citypulse.db</code> if it is not set. Nothing is printed.</li>
+<li><code>con.execute("PRAGMA foreign_keys = ON")</code> turns on foreign-key checks for this connection only.</li>
+<li><code>for _ in range(2):</code> repeats the next line twice. The underscore means "I do not need the loop value".</li>
+<li><code>con.executescript(...)</code> runs every statement in the file. Because of <code>IF NOT EXISTS</code>, the second run changes nothing and prints nothing.</li>
+<li><code>with con:</code> opens a transaction. If the block ends normally, the changes are committed. If an error escapes, they are rolled back.</li>
+<li><code>INSERT OR IGNORE</code> adds the station and the source. If the row already exists, the insert is skipped without an error.</li>
+<li>The second <code>try</code> block tries to insert a reading with <code>pm2_5</code> set to -5. The <code>?</code> marks are placeholders. Python fills them from the tuple in order, so the values never become part of the SQL text.</li>
+<li><code>except sqlite3.IntegrityError as e:</code> catches the error raised when a constraint fails. <code>print</code> shows the message.</li>
+</ul>
+<p>Expected output, when the CHECK constraint is working:</p>
+<div class="hl"><pre><span></span><code>rejected: CHECK constraint failed: ...
+</code></pre></div>
+
+<p>The exact wording of the message depends on the SQLite version. The important part is that the program prints <code>rejected:</code> and the row is not stored.</p>
+<div class="box box-trap"><div class="box-h">Trap: Foreign keys are off by default</div><p>In SQLite, a foreign key you wrote is only a promise until <code>PRAGMA foreign_keys = ON</code> runs on that connection. Run it every time you open a connection, not once in a script.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Building SQL with f-strings</div><p>Writing <code>f"... VALUES ('{name}')"</code> invites quoting errors and SQL injection, where text in the data changes the statement. Use <code>?</code> placeholders and a tuple of values.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Committing the database file</div><p>Do not commit <code>citypulse.db</code> to Git. It leaks data and causes merge conflicts. Add the file name to <code>.gitignore</code>, a list of files Git should ignore.</p></div>
+
+<p><strong>The flow.</strong> Here is what happens when the lab loads data into the server database. The same idea applies to <code>\copy</code> in Day 9's lab.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One bulk load into Postgres&quot;, &quot;nodes&quot;: [&quot;readings.csv&quot;, &quot;psql on your computer&quot;, &quot;Postgres server&quot;, &quot;reading table&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;\\copy reading ...&quot;, &quot;note&quot;: &quot;psql opens readings.csv on your computer and reads it line by line.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;rows stream&quot;, &quot;note&quot;: &quot;psql sends the rows over the connection to the server in one stream.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;store rows&quot;, &quot;note&quot;: &quot;The server checks each row against the keys and constraints, then stores it.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;COPY 1392&quot;, &quot;note&quot;: &quot;The server reports how many rows it stored.&quot;}]}"></div>
+
+<h3 id="idempotent-upserts">Idempotent upserts</h3>
+<p><strong>What it is.</strong> An <strong>upsert</strong> is an insert that becomes an update when the key already exists. An operation is <strong>idempotent</strong> if running it again leaves the same result as running it once. Together with a <code>UNIQUE</code> natural key and one transaction, an upsert makes the loader idempotent.</p>
+<p><strong>Why CityPulse uses it.</strong> Cron (a scheduler that runs programs at set times) and retries will rerun loads after partial failures. A corrected reading for an hour, from a fresh fetch, replaces the old value instead of creating a duplicate. The alternatives each fail one case. <code>DELETE</code> then <code>INSERT</code> rewrites everything and leaves an empty table if it fails halfway without a transaction. <code>INSERT OR IGNORE</code> never applies corrected values. A plain <code>INSERT</code> fails on the second run or doubles data.</p>
+<p><strong>How it works.</strong> The database looks at the proposed row. If it clashes with the <code>UNIQUE</code> key, the <code>DO UPDATE</code> branch runs. If not, a new row is added. The word <code>excluded</code> refers to the proposed row.</p>
+<p><strong>A stand-in in plain Python.</strong> The idea is easier to see in ordinary Python, with a dictionary playing the table. This is an illustration, not the course code.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Two loads of the same reading&quot;, &quot;code&quot;: [&quot;store = {}&quot;, &quot;batch = [(\&quot;CP-001\&quot;, \&quot;09:00\&quot;, 51.3), (\&quot;CP-001\&quot;, \&quot;09:00\&quot;, 52.0)]&quot;, &quot;for station, hour, pm25 in batch:&quot;, &quot;    store[(station, hour)] = pm25&quot;, &quot;print(len(store))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;store&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Start with an empty dictionary standing in for the table.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;store&quot;, &quot;{}&quot;], [&quot;batch&quot;, &quot;2 rows&quot;]], &quot;note&quot;: &quot;The batch holds two readings with the same station and hour.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;CP-001\&quot;&quot;], [&quot;hour&quot;, &quot;\&quot;09:00\&quot;&quot;], [&quot;pm25&quot;, &quot;51.3&quot;], [&quot;store&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The loop takes the first reading.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;CP-001\&quot;&quot;], [&quot;hour&quot;, &quot;\&quot;09:00\&quot;&quot;], [&quot;pm25&quot;, &quot;51.3&quot;], [&quot;store&quot;, &quot;{(\&quot;CP-001\&quot;,\&quot;09:00\&quot;): 51.3}&quot;]], &quot;note&quot;: &quot;The key is new, so a row is created.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;CP-001\&quot;&quot;], [&quot;hour&quot;, &quot;\&quot;09:00\&quot;&quot;], [&quot;pm25&quot;, &quot;52.0&quot;], [&quot;store&quot;, &quot;{(\&quot;CP-001\&quot;,\&quot;09:00\&quot;): 51.3}&quot;]], &quot;note&quot;: &quot;The second reading has the same key.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;CP-001\&quot;&quot;], [&quot;hour&quot;, &quot;\&quot;09:00\&quot;&quot;], [&quot;pm25&quot;, &quot;52.0&quot;], [&quot;store&quot;, &quot;{(\&quot;CP-001\&quot;,\&quot;09:00\&quot;): 52.0}&quot;]], &quot;note&quot;: &quot;The key exists, so the value is replaced. No second row appears.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;store&quot;, &quot;{(\&quot;CP-001\&quot;,\&quot;09:00\&quot;): 52.0}&quot;]], &quot;note&quot;: &quot;len(store) is 1, and the stored value is the corrected one.&quot;}]}"></div>
+
+<p><strong>The slide code.</strong> This is the core of <code>load.py</code> from the slides.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">SQL</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;INSERT INTO fact_air_quality (location_id, source_id, ts_utc, pm2_5, pm10)</span>
+<span class="s2">VALUES (?, ?, ?, ?, ?) ON CONFLICT (location_id, source_id, ts_utc)</span>
+<span class="s2">DO UPDATE SET pm2_5 = excluded.pm2_5, pm10 = excluded.pm10&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/clean/readings.parquet&quot;</span><span class="p">)</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># NaN -&gt; SQL NULL</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SQLITE_PATH&quot;</span><span class="p">,</span> <span class="s2">&quot;citypulse.db&quot;</span><span class="p">))</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span>
+<span class="n">loc</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT name, </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">_id FROM dim_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">))</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[(</span><span class="n">loc</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">location</span><span class="p">],</span> <span class="n">src</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">source</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">ts_utc</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ&quot;</span><span class="p">),</span> <span class="n">nn</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">pm2_5</span><span class="p">),</span> <span class="n">nn</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">pm10</span><span class="p">))</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()]</span>
+<span class="k">with</span> <span class="n">con</span><span class="p">:</span>  <span class="c1"># one transaction: commit all or roll back all</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">SQL</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM fact_air_quality&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>SQL = """..."""</code> stores the upsert statement in a variable. Triple quotes let the text run over several lines.</li>
+<li><code>ON CONFLICT (location_id, source_id, ts_utc)</code> names the conflict target. It must match a <code>UNIQUE</code> constraint exactly, with the same columns in any order.</li>
+<li><code>DO UPDATE SET pm2_5 = excluded.pm2_5, pm10 = excluded.pm10</code> says what to change when the row exists. <code>excluded.pm2_5</code> is the new value from the proposed row.</li>
+<li><code>df = pd.read_parquet(...)</code> reads the cleaned file into a pandas table called <code>df</code>.</li>
+<li><code>nn = lambda x: ...</code> defines a short function. A <code>lambda</code> is a one-line function. It returns <code>None</code> when the value is missing (<code>pd.isna</code> is true for NaN) and otherwise converts the value to a plain number.</li>
+<li><code>loc, src = (dict(...) for t in (...))</code> builds two dictionaries that map a station name to its <code>location_id</code>, and a source name to its <code>source_id</code>.</li>
+<li><code>rows = [...]</code> builds a list of tuples, one per reading, with names turned into ids and timestamps turned into ISO text.</li>
+<li><code>r.ts_utc.strftime(...)</code> formats the timestamp, for example <code>2026-12-05T03:00:00Z</code>. <code>%Y</code> is the four-digit year, and each <code>%</code> code is one part of the date or time.</li>
+<li><code>with con:</code> opens one transaction for the whole load.</li>
+<li><code>con.executemany(SQL, rows)</code> runs the statement once per tuple in <code>rows</code>.</li>
+<li>The last line counts the fact rows and prints the number. The expected output is a single number, which should be the same on the second run.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: NaN is not NULL</div><p>Passing pandas <code>NaN</code> straight into a database can store a floating-point NaN rather than SQL NULL (Postgres does), which then breaks <code>AVG</code>. SQLite happens to turn NaN into NULL, but do not rely on that. Convert NaN to <code>None</code> before <code>executemany</code>, as <code>nn</code> does.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Committing per row</div><p>Committing after each row is slow and leaves a partial load if the program stops. Wrap the whole batch in one <code>with con:</code> block.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: ON CONFLICT target mismatch</div><p>If the conflict target does not match a <code>UNIQUE</code> constraint, SQLite raises an error about the conflict clause. Use the same columns as the grain key.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The workbook builds one small CityPulse database in eight steps. It uses SQLite, and the data is a station table and a reading table. The schema in the workbook differs from the star schema above. It is simpler, and it shows the same ideas.</p>
+<h3 id="step-1-model-the-two-entities">Step 1: model the two entities</h3>
+<p>The goal is to separate where a sensor is (<code>station</code>) from what it measured (<code>reading</code>). The reading refers to the station by a foreign key, so each fact is stored once.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">station_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">station_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">station</span><span class="p">(</span><span class="n">station_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">ts</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+</code></pre></div>
+
+<p>The <code>station</code> table has a text key, <code>station_id</code>, such as <code>CP-001</code>. The <code>reading</code> table has a foreign key to it. Its primary key is three columns together, so one station can report several pollutants at the same time, but not the same pollutant twice. Notice <code>ts TEXT</code>. SQLite has no dedicated timestamp type, so the workbook stores time as text.</p>
+<p>Expected output from <code>sqlite3 :memory: ".read schema.sql" ".schema reading"</code> is the <code>CREATE TABLE reading</code> statement printed back. That confirms the file parses.</p>
+<h3 id="step-2-create-the-tables">Step 2: create the tables</h3>
+<p>The goal is a fresh database with both tables. The workbook's script is:</p>
+<div class="hl"><pre><span></span><code>rm<span class="w"> </span>-f<span class="w"> </span>citypulse.db
+sqlite3<span class="w"> </span>citypulse.db<span class="w"> </span><span class="s2">&quot;.read schema.sql&quot;</span>
+sqlite3<span class="w"> </span>citypulse.db<span class="w"> </span><span class="s2">&quot;.tables&quot;</span>
+</code></pre></div>
+
+<p>Line by line: <code>rm -f citypulse.db</code> deletes the old file if there is one, and <code>-f</code> stops the command complaining when the file is missing. The second line opens a new database and runs the schema file. The third line lists the tables. Expected output is <code>reading  station</code>. The table names are in alphabetical order, so the order is not a clue about which table was created first.</p>
+<h3 id="step-3-stage-the-cleaned-files">Step 3: stage the cleaned files</h3>
+<p>The goal is to check the file before loading it:</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-1<span class="w"> </span>readings.csv
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;rows: </span><span class="k">$(($(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>readings.csv<span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>head -1</code> prints the first line, which is the header. <code>wc -l</code> counts lines. <code>$(( ... - 1))</code> subtracts the header line. The expected output is <code>station_id,ts,pollutant,value</code> and <code>rows: 1392</code>. The header must match the columns of the <code>reading</code> table exactly.</p>
+<h3 id="step-4-bulk-load">Step 4: bulk-load</h3>
+<p>The goal is to load both files in one pass. The workbook's SQL is:</p>
+<div class="hl"><pre><span></span><code><span class="p">.</span><span class="k">mode</span><span class="w"> </span><span class="n">csv</span>
+<span class="p">.</span><span class="n">import</span><span class="w"> </span><span class="c1">--skip 1 stations.csv station</span>
+<span class="p">.</span><span class="n">import</span><span class="w"> </span><span class="c1">--skip 1 readings.csv reading</span>
+<span class="p">.</span><span class="k">mode</span><span class="w"> </span><span class="n">list</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;stations: &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">station</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;readings: &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">reading</span><span class="p">;</span>
+</code></pre></div>
+
+<p><code>.mode csv</code> tells the SQLite shell to read comma-separated text. <code>.import --skip 1 stations.csv station</code> loads the file into the <code>station</code> table and skips the first line, which is the header. <code>.mode list</code> switches output back to plain lines. The two <code>SELECT</code> statements count the rows, and <code>||</code> joins the label and the number. Expected output is <code>stations: 4</code> and <code>readings: 1392</code>. The stations load first because the readings refer to them.</p>
+<h3 id="step-5-block-duplicate-samples">Step 5: block duplicate samples</h3>
+<p>The goal is to see the composite key refuse a second sample for the same station, time and pollutant. The workbook's statement is:</p>
+<div class="hl"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CP-001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-01T00:00:00Z&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pm25&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">51</span><span class="p">.</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+
+<p>This row already exists, so the database refuses it. The output is an error that names the three key columns, and the row count stays at 1392.</p>
+<h3 id="step-6-reject-readings-for-unknown-stations">Step 6: reject readings for unknown stations</h3>
+<p>The goal is to show that the foreign key blocks an orphan reading. The script turns the check on first:</p>
+<div class="hl"><pre><span></span><code><span class="n">PRAGMA</span><span class="w"> </span><span class="n">foreign_keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ON</span><span class="p">;</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CP-999&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-01T00:00:00Z&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pm25&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Expected output is <code>Runtime error near line 2: FOREIGN KEY constraint failed (19)</code>. The <code>(19)</code> is SQLite's general constraint error code, and the message names the rule that failed.</p>
+<h3 id="step-7-query-across-the-join">Step 7: query across the join</h3>
+<p>The goal is a ranked picture of pm2.5 per station:</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">value</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_pm25</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">station_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">station_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">pollutant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pm25&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">avg_pm25</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Line by line: <code>FROM reading r</code> names the table and gives it the short name <code>r</code>. <code>JOIN station s ON ...</code> attaches each reading to its station. <code>avg(r.value)</code> averages the values in each group. <code>round(..., 1)</code> rounds to one decimal place. <code>count(*) AS n</code> counts rows, and <code>AS</code> names a column in the output. <code>GROUP BY s.name</code> makes one group per station. <code>ORDER BY avg_pm25 DESC</code> sorts from highest to lowest.</p>
+<p>Run it with <code>sqlite3 -header -column citypulse.db ".read hotspots.sql"</code>. The <code>-header</code> flag prints column names, and <code>-column</code> lines them up. Expected output:</p>
+<div class="hl"><pre><span></span><code>name        avg_pm25  n
+----------  --------  ---
+Jayanagar   51.4      116
+Hebbal      51.3      116
+Whitefield  50.5      116
+Indiranagar 49.7      116
+</code></pre></div>
+
+<p>The count is 116 for each station because each station has 116 pm2.5 readings. Four stations times three pollutants gives 1,392 rows in total.</p>
+<h3 id="step-8-rebuild-and-verify-end-to-end">Step 8: rebuild and verify end to end</h3>
+<p>The workbook's script runs every step from an empty file:</p>
+<div class="hl"><pre><span></span><code>rm<span class="w"> </span>-f<span class="w"> </span>citypulse.db
+sqlite3<span class="w"> </span>citypulse.db<span class="w"> </span><span class="s2">&quot;.read schema.sql&quot;</span><span class="w"> </span><span class="s2">&quot;.read load.sql&quot;</span><span class="w"> </span><span class="s2">&quot;.read verify.sql&quot;</span>
+</code></pre></div>
+
+<p>The first command clears the old database. The second runs the schema, the load, and a verification file. The verification file counts orphan readings and duplicate keys. Expected output is <code>stations: 4</code>, <code>readings: 1392</code>, <code>orphans: 0</code>, <code>dup_keys: 0</code>. Zero in both checks means the rules held.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>The lab uses Postgres, a server database, with the <code>psql</code> command-line client. Your lab sheet gives the exact image tag, password, database name and file paths. The commands below show the general form. If a value in your lab sheet differs, use the lab sheet's value.</p>
+<h3 id="step-1-launch-postgres-in-docker">Step 1: launch Postgres in Docker</h3>
+<p>Start a Postgres container in the background:</p>
+<div class="hl"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>citypulse-pg<span class="w"> </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>your-lab-password<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span>-d<span class="w"> </span>postgres:16
+</code></pre></div>
+
+<p>Line by line: <code>docker run</code> creates and starts a container. <code>--name citypulse-pg</code> gives it a name you can use later. <code>-e POSTGRES_PASSWORD=...</code> sets an environment variable inside the container, which Postgres reads for the password. <code>-p 5432:5432</code> connects port 5432 on your computer to port 5432 in the container, which is the port Postgres listens on. <code>-d</code> runs it in the background. <code>postgres:16</code> is the image, which is a packaged copy of Postgres version 16. You should see a long container id printed. Check with <code>docker ps</code>. The line for <code>citypulse-pg</code> should show <code>Up</code> in the status column. That means the server is running.</p>
+<h3 id="step-2-design-the-schema">Step 2: design the schema</h3>
+<p>Write the grain sentence on paper before any SQL. For the lab, the grain is "one row per station, timestamp and pollutant". Then list the tables and their keys:</p>
+<ul>
+<li><code>station</code>: one row per site, keyed by <code>station_id</code>.</li>
+<li><code>reading</code>: one row per measurement, keyed by <code>(station_id, ts, pollutant)</code>, with <code>station_id</code> pointing to <code>station</code>.</li>
+</ul>
+<p>You know the design is right when every table has a key and every relationship has one arrow from the child to the parent. If you cannot say what one row means, the design is not ready.</p>
+<h3 id="step-3-add-the-right-types-and-constraints">Step 3: add the right types and constraints</h3>
+<p>Write <code>sql/schema.sql</code>. Use the types from the lab sheet. In Postgres, <code>TIMESTAMPTZ</code> stores an exact point in time (zone-aware, held as UTC), <code>TEXT</code> stores text, and <code>REAL</code> stores a decimal number. Then add the rules:</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">station_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">lat</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="w"> </span><span class="nb">REAL</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">station_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">station</span><span class="p">(</span><span class="n">station_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">ts</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="p">));</span>
+</code></pre></div>
+
+<p>Run it once with <code>psql -h localhost -U postgres -d citypulse -f sql/schema.sql</code>. The flags are <code>-h</code> (the host), <code>-U</code> (the user), <code>-d</code> (the database name) and <code>-f</code> (a file to run). Expected output is <code>CREATE TABLE</code> twice. Run it again. <code>IF NOT EXISTS</code> means the output says <code>NOTICE</code> lines but no new tables appear. You know it worked when <code>\dt</code> in <code>psql</code> lists both tables.</p>
+<div class="box box-trap"><div class="box-h">Trap: Two type names in the sources</div><p>The Day 9 sources show <code>TIMESTAMPTZ</code> for the Postgres schema and <code>TEXT</code> for the SQLite schema. Use the type your lab sheet names. Do not mix the two in one database.</p></div>
+
+<h3 id="step-4-prepare-the-staging-data">Step 4: prepare the staging data</h3>
+<p>Check the CSV before loading. Use the same commands as the worked example:</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-1<span class="w"> </span>readings.csv
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;rows: </span><span class="k">$(($(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>readings.csv<span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>You should see the header <code>station_id,ts,pollutant,value</code> and the count <code>rows: 1392</code>. If the header is different, fix the file, not the table. A shifted column causes a type error part-way through a load, which is much harder to read.</p>
+<div class="box box-trap"><div class="box-h">Trap: Counting rows with wc</div><p><code>wc -l</code> counts newline characters. If the last line of the file has no newline at the end, the count is one too low. Open the file and check the last line if the count looks wrong.</p></div>
+
+<h3 id="step-5-bulk-load-with-copy">Step 5: bulk-load with COPY</h3>
+<p>Load the stations first, then the readings:</p>
+<div class="hl"><pre><span></span><code>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>citypulse<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;\copy station from &#39;stations.csv&#39; csv header&quot;</span>
+psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>citypulse<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;\copy reading from &#39;readings.csv&#39; csv header&quot;</span>
+</code></pre></div>
+
+<p>The <code>\copy</code> command is read by <code>psql</code> on your computer. The file is read from your computer, not from inside the container. <code>csv</code> says the file is comma-separated, and <code>header</code> says the first line holds column names and must be skipped. You should see <code>COPY 4</code> and then <code>COPY 1392</code>. That <code>COPY</code> line is the status message the database returns. The number is the number of rows stored.</p>
+<p>If <code>psql</code> is not installed on your machine, your lab sheet gives the route to use. Do not copy the file into the container by guessing the path.</p>
+<h3 id="step-6-verify-integrity">Step 6: verify integrity</h3>
+<p>Run the two checks. The orphan check looks for readings whose station is missing:</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">station_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">station_id</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">station_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<p>A <code>LEFT JOIN</code> keeps every reading. Where no station matches, the station columns are NULL, so the <code>WHERE ... IS NULL</code> filter keeps only the orphans. Expected result: <code>0</code>.</p>
+<p>The duplicate check looks for keys that appear more than once:</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">station_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">station_id</span><span class="p">,</span><span class="w"> </span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">pollutant</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Expected result: <code>0</code>. Because the primary key forbids duplicates, this check is a safety net. It should never find anything.</p>
+<p>To confirm the foreign key is active, insert a reading for <code>CP-999</code>. The lab sheet's example row is enough. You should see <code>ERROR: insert or update on table "reading" violates foreign key constraint</code>. That error is the proof you want.</p>
+<h3 id="step-7-run-a-join-query">Step 7: run a join query</h3>
+<p>Run the hotspot query from the worked example, adjusted for Postgres:</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">value</span><span class="p">)::</span><span class="nb">numeric</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_pm25</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">reading</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">station_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">station_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">pollutant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pm25&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">avg_pm25</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+
+<p>You should see four rows, one per station, sorted from highest to lowest, with <code>n</code> equal to 116 for each. The <code>::numeric</code> cast is needed in Postgres. Postgres's <code>round</code> with a number of decimal places expects a <code>numeric</code> value, and <code>avg</code> of a <code>REAL</code> column is not one. SQLite does not need the cast.</p>
+<div class="box box-trap"><div class="box-h">Trap: Postgres round on REAL</div><p>In Postgres, <code>round(avg(r.value), 1)</code> on a <code>REAL</code> column can fail with a message that <code>round</code> does not exist for those argument types. Cast the value with <code>::numeric</code>, as in step 7.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Loading Readings into SQLite" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Duplicate dropped by UNIQUE constraint</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Distinct pollutants sorted</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Summed value per station</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>44</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 56 of the 100 points. The other 44 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K05.html#y2-t13-design-star-schema-and-idempotent-loadpy-solve-15-sql-challenges">Y2-T13 · Design star schema and idempotent load.py; solve 15 SQL challenges</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions. Each question sits on one of today's topics, and the ten are asked in the order given below, one question per topic. The pass mark is 70%. Your first attempt is the one your skill score keeps, so a second attempt does not replace it. Read each question as a short story about a team, a symptom or a design, then choose the option that fixes that story.</p>
+<p>Case-study questions reward a method more than memory. Use this order every time:</p>
+<ol>
+<li>Read the last line of the question first. It tells you what is being asked, such as the best fix, the first thing to check or the most likely cause.</li>
+<li>Go back to the scenario and underline the facts that matter: the database, the table, the symptom, the constraint and any word that limits the answer, such as "retry", "crash" or "nightly".</li>
+<li>Eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about databases. The question is whether they solve the problem described.</li>
+<li>Watch for three words. "Most" means several options help, and you must pick the strongest. "First" means there is an order, and the step that must come first is the answer. "Best" means you must compare two good answers and choose the one that fits the stated goal.</li>
+</ol>
+<p>Each topic below explains the idea from zero, shows a small example, then shows how the idea appears in a CityPulse-style case. Read the topic, try its three questions, and only then read the WHY lines. The WHY line explains the right answer and why the most tempting wrong option fails. The trap box at the end of each topic names the mistake examiners rely on most.</p>
+<h3 id="primary-keys">Primary keys</h3>
+<p><strong>What it is.</strong> A primary key is the column, or the combination of columns, that identifies one row in a table. Two rows cannot have the same primary key, and the key cannot be empty. A key can be built from facts that already exist in the real world, such as a station id plus a timestamp plus a pollutant name. That kind of key is called a natural key. A key can also be a number the database creates for you, which is called a surrogate key.</p>
+<p>Here is a small table of library members, with a single-column key:</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">member_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Asha&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ravi&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>The first insert works. The second fails with <code>UNIQUE constraint failed: member.member_id</code>, because the number 1 is already taken, so Ravi is not stored. In SQLite, an <code>INTEGER PRIMARY KEY</code> column is filled with the next free number when you leave it out of an insert.</p>
+<p>When the rule is about a combination, the key must be the combination. A loan is one member borrowing one book on one day. Any single one of those columns repeats too often to identify a loan, so the primary key is the three columns together. The database then refuses a second copy of the same loan, but still accepts the same member borrowing a different book on the same day.</p>
+<p><strong>How it shows up in a case study.</strong> A sensor loader writes readings into a table. After a network problem, the sensor resends a batch, and the row count doubles. The team's first idea is to make the timestamp the key, because every reading has a time. That fails at once: all four stations report at 09:00, so the second station's reading clashes with the first and is refused. The right key is the combination that defines one measurement: the station, the time and the pollutant. Now a resent reading clashes with the stored one and is refused, while readings from other stations and other pollutants at the same time are kept.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing a column that looks unique</div><p>A timestamp can look unique in a small sample, and so can a station name. The key must match the real rule, which here is one measurement per station, time and pollutant. A key on one column refuses valid rows as well as duplicates.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A library table records each loan with member_id, book_id and borrowed_on. A member may borrow the same book again on a later day, but the system must refuse the same member borrowing the same book twice on the same day. Which set of columns should be the primary key?&quot;, &quot;opts&quot;: [&quot;borrowed_on alone&quot;, &quot;(member_id, book_id, borrowed_on)&quot;, &quot;book_id alone&quot;, &quot;member_id alone&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Only the three columns together express the rule. book_id alone would let each book be lent only once, ever, and member_id alone would allow only one loan per member for all time.&quot;}, {&quot;q&quot;: &quot;A sensor loader inserts a reading after a network retry. The table has PRIMARY KEY (station_id, ts, pollutant), and the same reading arrives twice with identical values. What should the database do with the second copy?&quot;, &quot;opts&quot;: [&quot;Store both, because a retry is a separate measurement&quot;, &quot;Replace the first row silently, because keys always overwrite&quot;, &quot;Refuse the second row with a constraint error, so the table keeps one row&quot;, &quot;Rebuild the table before the second insert can run&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The combination is the identity of the measurement, so a second copy clashes with the first and is refused. A plain INSERT does not overwrite, and a table does not need rebuilding to refuse a duplicate.&quot;}, {&quot;q&quot;: &quot;A table has an INTEGER PRIMARY KEY column called parcel_id. A courier inserts a parcel row and leaves parcel_id out of the statement, and the insert succeeds. What is the best explanation?&quot;, &quot;opts&quot;: [&quot;The primary key is optional when the table is small&quot;, &quot;SQLite stores the row with a NULL key, which it always allows&quot;, &quot;The insert must fail, because a primary key can never be left out&quot;, &quot;SQLite gives the row the next free number, because an INTEGER PRIMARY KEY is filled automatically when no value is given&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;SQLite treats an INTEGER PRIMARY KEY as the row&#x27;s own number, so it chooses one for you. The NULL option is the tempting trap, because a text key can hold NULL in SQLite unless you add NOT NULL, but an integer primary key does not store NULL like that.&quot;}]}"></div>
+
+<h3 id="foreign-keys">Foreign keys</h3>
+<p><strong>What it is.</strong> A foreign key is a column whose value must already exist in a key of another table. The table that holds the foreign key is the child, and the table it points to is the parent. If a child row names a parent that does not exist, the database refuses the child row. A child row with no parent is called an orphan.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="p">(</span><span class="n">member_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">loan_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">member_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">member</span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">99</span><span class="p">);</span>
+</code></pre></div>
+
+<p>With foreign-key checks active, the last insert fails with <code>FOREIGN KEY constraint failed</code>, because member 99 does not exist. In SQLite, the checks run only after <code>PRAGMA foreign_keys = ON</code> has been run on that connection, and the setting is off by default. In Postgres, the check applies as soon as the constraint exists, unless the constraint was declared DEFERRABLE and the check is postponed to the end of the transaction.</p>
+<p>To find orphans after the fact, use a LEFT JOIN. A LEFT JOIN keeps every child row. Where no parent matches, the parent's columns are NULL, so a filter for <code>IS NULL</code> on the parent's key keeps only the orphans. An INNER JOIN would drop the orphans and hide the problem.</p>
+<p><strong>How it shows up in a case study.</strong> A dashboard lists readings for each station, but one station's readings never appear on the map. The readings exist in the database and point to a station id that is missing from the station table. The loader ran for weeks on a connection that never switched foreign-key checks on. The fix has two parts. The loader must run the pragma on every connection, and the team must find and repair the existing orphans with a LEFT JOIN and an <code>IS NULL</code> filter before the foreign key can be trusted.</p>
+<div class="box box-trap"><div class="box-h">Trap: Assuming a foreign key is always enforced in SQLite</div><p>A foreign key written in the schema is only a promise until the connection enables checks. Two connections to the same file can behave differently, because the setting belongs to the connection, not to the file.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A reading for station CP-777 is stored, but CP-777 is not in the station table. The loader runs on SQLite, and the schema declares a foreign key from reading to station. What must you check first?&quot;, &quot;opts&quot;: [&quot;Whether the value column has a CHECK constraint&quot;, &quot;Whether the station table has a UNIQUE name column&quot;, &quot;Whether PRAGMA foreign_keys = ON ran on the connection that did the insert&quot;, &quot;Whether the station column is stored as REAL&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;SQLite leaves foreign-key checks off for each connection until the pragma turns them on. A CHECK constraint, a UNIQUE name or a numeric type cannot stop an orphan that a foreign key would have refused.&quot;}, {&quot;q&quot;: &quot;An analyst needs every reading whose station does not exist in the station table. Which query finds exactly these rows?&quot;, &quot;opts&quot;: [&quot;SELECT * FROM reading WHERE station_id IN (SELECT station_id FROM station)&quot;, &quot;SELECT r.* FROM reading r LEFT JOIN station s ON s.station_id = r.station_id WHERE s.station_id IS NULL&quot;, &quot;SELECT * FROM reading INNER JOIN station ON station.station_id = reading.station_id&quot;, &quot;SELECT COUNT(*) FROM reading GROUP BY station_id&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The LEFT JOIN keeps all readings, and the IS NULL filter keeps those with no matching station. The IN query returns the matching rows, which is the opposite of what is needed, and the INNER JOIN hides the orphans it was meant to find.&quot;}, {&quot;q&quot;: &quot;A batch loads a child table before its parent table in Postgres, and the foreign key is not deferred. What happens to the child rows?&quot;, &quot;opts&quot;: [&quot;They are stored, because Postgres checks foreign keys only at the end of the day&quot;, &quot;They are stored, because COPY turns off the foreign key during the load&quot;, &quot;They are stored without any checks, because bulk loads skip constraints&quot;, &quot;They are refused when the parent key is missing at the moment each child row is inserted, so the load must put parents first&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Postgres checks each child row when it is inserted unless the constraint was declared DEFERRABLE. Bulk loads such as COPY still enforce constraints, so the claim that they skip checks is the trap.&quot;}]}"></div>
+
+<h3 id="postgres-column-types">Postgres column types</h3>
+<p><strong>What it is.</strong> A column type sets which values a column can hold and how the database stores, compares and adds them. The choice matters even when the query is right. Four types matter for this lesson. TEXT holds characters. REAL holds a four-byte floating-point number. NUMERIC holds exact decimal digits. TIMESTAMPTZ holds a point in time, and Postgres converts the input to UTC for storage. A plain TIMESTAMP holds a wall-clock date and time with no zone attached.</p>
+<p>The difference between a floating-point type and an exact type shows up at once:</p>
+<div class="hl"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">::</span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">::</span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">::</span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">;</span>
+<span class="c1">-- false</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">::</span><span class="nb">numeric</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">::</span><span class="nb">numeric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">::</span><span class="nb">numeric</span><span class="p">;</span>
+<span class="c1">-- true</span>
+</code></pre></div>
+
+<p>Binary floating-point types cannot store 0.1 exactly, so the sum is slightly off and the equality fails. NUMERIC stores the decimal digits themselves, so the sum is exact. This is why money uses NUMERIC, and why sensor values are usually stored as REAL when small errors do not matter.</p>
+<p><strong>How it shows up in a case study.</strong> A team loads readings from two cities. The sensors send local times without a zone, and the team stores them in a TIMESTAMP column. A chart then puts a morning reading from one city after an evening reading from another, because the stored values carry no zone. The fix is to store the instant as TIMESTAMPTZ, with each source's time converted to UTC on the way in. The database can then compare the two cities correctly, and the displayed time can still be shown in the local zone.</p>
+<div class="box box-trap"><div class="box-h">Trap: Choosing TIMESTAMP because it looks shorter</div><p>TIMESTAMP looks simpler, but it cannot tell two cities apart. TIMESTAMPTZ is the type that keeps an instant that can be compared across sources.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Sensors in two cities send readings in UTC, and the team must compare the times later in one table. Which Postgres type keeps the exact instant safely?&quot;, &quot;opts&quot;: [&quot;TIMESTAMPTZ&quot;, &quot;TIMESTAMP&quot;, &quot;DATE&quot;, &quot;INTEGER&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;TIMESTAMPTZ stores the instant in UTC, so the readings line up. TIMESTAMP stores a wall-clock time with no zone, and DATE drops the time of day. INTEGER stores a number that has no time meaning unless you add one.&quot;}, {&quot;q&quot;: &quot;A table stores money amounts, such as 0.10 and 0.20, and the team needs sums that are exactly right. Which type fits best in Postgres?&quot;, &quot;opts&quot;: [&quot;REAL&quot;, &quot;DOUBLE PRECISION&quot;, &quot;TEXT&quot;, &quot;NUMERIC&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;NUMERIC stores exact decimal digits, so 0.10 plus 0.20 is exactly 0.30. REAL and DOUBLE PRECISION are binary floating-point types, so sums can be slightly off. TEXT cannot be added without a cast.&quot;}, {&quot;q&quot;: &quot;A sensor reports particle values to one decimal place. The team wants a compact type that suits measurements and does not need exact decimal sums. Which type should the column use?&quot;, &quot;opts&quot;: [&quot;NUMERIC with no precision&quot;, &quot;REAL&quot;, &quot;TIMESTAMP&quot;, &quot;BOOLEAN&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;REAL is compact and fits measurements. NUMERIC is exact and takes more space and time than the job needs. BOOLEAN holds only true or false, and TIMESTAMP holds a date and time.&quot;}]}"></div>
+
+<h3 id="bulk-loading">Bulk loading</h3>
+<p><strong>What it is.</strong> Bulk loading sends a whole file of rows into a table in one operation, rather than running one INSERT statement for each row. Each row still goes through the same checks, but the database avoids a separate statement, a separate round trip and a separate parse for every row. In Postgres, the <code>COPY</code> command reads a file on the server. The <code>\copy</code> command in <code>psql</code> reads a file on your own computer and streams it to the server.</p>
+<div class="hl"><pre><span></span><code><span class="err">\</span><span class="k">copy</span><span class="w"> </span><span class="n">station</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="s1">&#39;stations.csv&#39;</span><span class="w"> </span><span class="n">csv</span><span class="w"> </span><span class="n">header</span>
+</code></pre></div>
+
+<p>The <code>csv</code> option says the file is comma-separated. The <code>header</code> option says the first line holds column names and must be skipped. A successful run prints <code>COPY 4</code> when four rows were stored. The number is the count of rows stored, not the count of lines in the file.</p>
+<p>The same idea appears in Python. A loop that calls <code>execute</code> once per row sends one statement for each row. A call to <code>executemany</code> with a list of tuples runs one prepared statement for all rows in one go, which is much faster for a large batch.</p>
+<p><strong>How it shows up in a case study.</strong> A team loads 1,392 readings with a Python loop, and the load takes several minutes. They switch to a bulk load, and it finishes in a fraction of a second. The next run fails with a foreign-key error on the readings, because the readings file was loaded before the stations file. The decision is to load the parent table first, so every reading's station exists when its row is checked. The speed does not change the rules, and the order does.</p>
+<div class="box box-trap"><div class="box-h">Trap: Skipping constraints to load faster</div><p>A bulk load is fast because of how rows are sent, not because it turns checks off. Keys, NOT NULL, CHECK and foreign keys still apply to every row. A load that is fast but wrong is a worse result than a slower correct one.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A loader must add 1,392 readings. One version runs an INSERT inside a Python loop for each row. Another version sends the file as one bulk command. What is the main reason the bulk version is faster?&quot;, &quot;opts&quot;: [&quot;It skips every constraint, so there are fewer checks to run&quot;, &quot;It stores each row as text, which is smaller on disk&quot;, &quot;It writes to a second database first and copies the result later&quot;, &quot;It reads the file once and streams the rows, avoiding a separate statement and round trip for every row&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The speed comes from avoiding per-row overhead, and the constraints still run. Skipping constraints is the tempting wrong answer, and it is false for both COPY and \\copy.&quot;}, {&quot;q&quot;: &quot;A CSV file starts with a header line of column names. A bulk load into a table with a numeric column fails with a type error on the first line of data. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The header line was not skipped, so the column names were read as values for a numeric column&quot;, &quot;The table has too many primary keys&quot;, &quot;The file has more rows than the table can hold&quot;, &quot;The file was saved with the wrong extension&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A header is text that names the columns, and a loader that does not skip it tries to store those names as data. Too many keys, the row limit or the extension would not produce this particular type error.&quot;}, {&quot;q&quot;: &quot;A stations file and a readings file must be loaded in one run, and every reading refers to a station that is only added by the stations file. Which order is correct?&quot;, &quot;opts&quot;: [&quot;Load readings first, so the foreign key can point forward to stations that come later&quot;, &quot;Load both files in parallel, because the order does not matter with a foreign key&quot;, &quot;Load stations first, so each reading&#x27;s parent row exists when the reading is inserted&quot;, &quot;Load readings only, and let the database create the stations automatically&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each child row is checked when it is inserted, so the parent must be there first. A parallel load can race, and a foreign key never creates a missing parent row on its own.&quot;}]}"></div>
+
+<h3 id="normalisation">Normalisation</h3>
+<p><strong>What it is.</strong> Normalisation is the process of arranging tables so that each fact is stored in one place. A table is in first normal form when each cell holds a single value and there are no repeating groups of columns. It is in third normal form when every non-key column depends on the key itself, and not on some other non-key column. Here is a table that breaks the third rule:</p>
+<div class="hl"><pre><span></span><code>reading_id  station_id  station_name  value
+1           CP-001      Hebbal        51.3
+2           CP-001      Hebbal        52.0
+</code></pre></div>
+
+<p>The station name depends on the station, not on the reading. If the station is renamed, both rows must change. If a later update changes only one row, the table now gives two names for one station. Moving the name into a station table, and keeping only <code>station_id</code> in the reading table, removes the repeated fact.</p>
+<p>Normalisation is not a rule that more tables are always better. Each extra table means more joins when you read the data. A transactional app with many small updates usually benefits from full normalisation. An analytics store that mostly reads large amounts of data can accept some repetition for speed and simplicity. CityPulse uses a star schema for that reason.</p>
+<p><strong>How it shows up in a case study.</strong> A reporting team stores the station name and the city on every reading. A station is renamed, and an update changes most of its rows but misses a batch that came from a second loader. Now one station appears under two names in the report. The team's question is which design stops this. The answer is a station table with a station key, and a reading table that holds only the station id. A rename then touches one row, and the reports join to the new name.</p>
+<div class="box box-trap"><div class="box-h">Trap: Thinking normalisation means more tables is always better</div><p>Normalisation removes repeated facts. It does not reward the number of tables. A star schema with repeated text can be the right design when the workload is read-heavy analytics.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A reading table stores the station name on every row. A station is renamed, and a loader misses one batch of rows. What is the main problem?&quot;, &quot;opts&quot;: [&quot;The reading values become NULL after the rename&quot;, &quot;The primary key on the reading table is deleted&quot;, &quot;Some rows keep the old name, so one station now appears under two names&quot;, &quot;Postgres refuses to store a name longer than the old one&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The problem is a repeated fact that can disagree with itself. Storing the station id and joining to a station table keeps one copy of the name. The length of the name is a red herring.&quot;}, {&quot;q&quot;: &quot;A table stores the city and the region name and region code on every reading. Which rule does this design break most directly?&quot;, &quot;opts&quot;: [&quot;Every table must have exactly one row&quot;, &quot;Every column must be a number&quot;, &quot;A table must never contain a foreign key&quot;, &quot;Non-key columns must depend on the key, not on another non-key column, which is the third normal form rule&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The region code depends on the region, not on the reading key, so it is a transitive dependency. The other options describe rules that do not exist in normalisation.&quot;}, {&quot;q&quot;: &quot;A colleague says that normalisation means more tables are always better for CityPulse. Which reply is most accurate?&quot;, &quot;opts&quot;: [&quot;Normalisation removes repeated facts, and CityPulse keeps a star schema because its reads are analytics and some repetition is accepted&quot;, &quot;Normalisation applies only to Postgres and never to SQLite&quot;, &quot;More tables always make queries faster, so the colleague is right&quot;, &quot;Normalisation means every value should be stored as text&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The goal is one place for each fact, judged against the workload. More tables add joins, so they can slow reads. The text option confuses normalisation with the choice of data type.&quot;}]}"></div>
+
+<h3 id="upserts-and-idempotency">Upserts and idempotency</h3>
+<p><strong>What it is.</strong> An upsert is a single statement that inserts a row when its key is new and updates the existing row when the key is already present. In SQLite and Postgres, the syntax is <code>INSERT ... ON CONFLICT (key columns) DO UPDATE SET ...</code>. An operation is idempotent when running it again leaves the same result as running it once. A load becomes idempotent when its rows are keyed by a UNIQUE constraint and the load uses an upsert.</p>
+<div class="hl"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">member_fee</span><span class="w"> </span><span class="p">(</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">fee</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">CONFLICT</span><span class="w"> </span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="w"> </span><span class="k">DO</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">fee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">excluded</span><span class="p">.</span><span class="n">fee</span><span class="p">;</span>
+</code></pre></div>
+
+<p>The word <code>excluded</code> refers to the row that you tried to insert. If you run this statement twice, the table still has one row for member 1, and its fee is the value from the latest run. The first run inserts the row. The second run hits the conflict and updates the fee to the same value. The row count does not change.</p>
+<p>The conflict target, here <code>(member_id)</code>, must match a UNIQUE or PRIMARY KEY constraint with exactly those columns. If it does not, the database raises an error rather than guessing.</p>
+<p><strong>How it shows up in a case study.</strong> A nightly job loads the same file every night. One night, the source corrects the fee for a member, and the job must store the corrected value. A plain INSERT fails on the second run because the key already exists. An INSERT OR IGNORE keeps the old fee, so the correction is lost. A DELETE followed by an INSERT works if both steps run inside one transaction, but without one, a crash in the middle leaves an empty table. The upsert with a transaction is the only option that is repeatable and applies the correction.</p>
+<div class="box box-trap"><div class="box-h">Trap: INSERT OR IGNORE for a value that can change</div><p>INSERT OR IGNORE is repeatable, but it keeps the first value it saw. A corrected reading for an existing key is silently discarded, and no error tells you so.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A nightly job reloads a file. One reading arrives with a corrected value for a key that is already in the table. The table must hold the corrected value and no duplicate rows. Which statement does this?&quot;, &quot;opts&quot;: [&quot;INSERT OR IGNORE on the same key&quot;, &quot;DELETE FROM reading, then INSERT, with no transaction&quot;, &quot;An INSERT with ON CONFLICT on the key, using DO UPDATE to set the new value&quot;, &quot;A plain INSERT with no conflict clause&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Only the upsert both applies the new value and avoids a duplicate. INSERT OR IGNORE keeps the old value, a DELETE with no transaction can leave the table empty after a crash, and a plain INSERT fails on the second run.&quot;}, {&quot;q&quot;: &quot;A team runs the same load twice and counts the rows before and after the second run. The two counts are equal, and the values are the same. Which property has been shown?&quot;, &quot;opts&quot;: [&quot;Atomicity only&quot;, &quot;Idempotency&quot;, &quot;Normalisation&quot;, &quot;Partitioning&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Idempotency means running the operation again leaves the same result. Atomicity is about all-or-nothing changes, which matters for a crash but is not what two equal counts prove.&quot;}, {&quot;q&quot;: &quot;An upsert is written as ON CONFLICT (station_id, ts, pollutant). What must be true of the table for this statement to work?&quot;, &quot;opts&quot;: [&quot;The table must have a CHECK constraint on value&quot;, &quot;The table must have an index on value alone&quot;, &quot;The table must have a UNIQUE or PRIMARY KEY constraint on exactly station_id, ts and pollutant&quot;, &quot;The file must be sorted by value before the load&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The conflict target must match a unique key exactly, or the database rejects the statement. A CHECK and an index on value do not define a conflict, and the sort order of the file does not matter.&quot;}]}"></div>
+
+<h3 id="indexing-strategy">Indexing strategy</h3>
+<p><strong>What it is.</strong> An index is a separate structure that lets the database find rows without reading the whole table. It works like the index at the back of a book, which lists each term with its pages. A UNIQUE constraint and a PRIMARY KEY both create an index automatically. An index on several columns is sorted by the first column, then the second, and so on.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">ix_loan_member_date</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="p">(</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">borrowed_on</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">loan</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">borrowed_on</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-01-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-01-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>The index first narrows the search to member 7, because that is the first column. Within those rows, it finds the January dates, because the second column is sorted inside each member. A query that filters only on <code>borrowed_on</code> cannot use this index well, because the index is not sorted by date first. The column order is therefore part of the design. Put the column that you compare with equals first, and the column you compare with a range second.</p>
+<p>Indexes are not free. Each index must be updated whenever a row is inserted, changed or deleted, and each one takes disk space.</p>
+<p><strong>How it shows up in a case study.</strong> An analyst asks for one station's readings across one week, and the query takes several seconds. The table has a UNIQUE key on location, source and time, but the time column is last, so the source column sits between them and the key helps little for a query that filters by location and then by time. The team adds an index on the location and then the time. The query now reads only the rows it needs. The team also decides not to index the value column, because nobody filters by it, and the inserts would slow down for no gain.</p>
+<div class="box box-trap"><div class="box-h">Trap: Indexing every column</div><p>An index on every column makes each insert slower and uses space, and most of those indexes are never used. Add an index for a query you actually run, and choose the column order to match that query.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;An analyst often asks for one station&#x27;s readings across a single week, and this happens many times a day. The table has an index on (location_id, ts_utc). Why does this index help?&quot;, &quot;opts&quot;: [&quot;It starts with the station and then the time, so it finds the station&#x27;s rows and then the time range quickly&quot;, &quot;It stores every timestamp as a number, which makes comparisons faster&quot;, &quot;It removes the need for the primary key on the table&quot;, &quot;It makes inserts faster because it sorts the rows as they arrive&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The equality column comes first, and the range column comes second, which is what the query needs. Storing timestamps as numbers is a different choice, not what an index does. Indexes usually make inserts slower, not faster.&quot;}, {&quot;q&quot;: &quot;A table has a UNIQUE key on (location_id, source_id, ts_utc). A query filters only on source_id. Which statement is most accurate?&quot;, &quot;opts&quot;: [&quot;The unique key is useless for every query on the table&quot;, &quot;The database always uses the unique key for a filter on source_id alone&quot;, &quot;The key helps much less for source_id alone, because source_id is not its leading column&quot;, &quot;source_id cannot be indexed unless it is a primary key&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;An index is most useful for filters on its leading columns. Saying it is always used is too strong, because the planner chooses by cost, and saying it is useless for every query is also too strong.&quot;}, {&quot;q&quot;: &quot;A team adds an index to every column of a table, to make every query faster. What cost should they expect?&quot;, &quot;opts&quot;: [&quot;Queries on every column will now return wrong answers&quot;, &quot;Primary keys stop working until the indexes are dropped&quot;, &quot;The table stores fewer rows than before&quot;, &quot;Inserts and updates get slower, and the indexes take extra disk space&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Every index is maintained on each change to the table, which costs time and space. Indexes do not change query answers, and they do not reduce the number of rows.&quot;}]}"></div>
+
+<h3 id="constraints">Constraints</h3>
+<p><strong>What it is.</strong> A constraint is a rule the database checks on every insert and update, so bad data is refused rather than stored. The common types are NOT NULL, which refuses a missing value, UNIQUE, which refuses a repeated value, CHECK, which refuses a row when an expression is false, and FOREIGN KEY, which refuses a value with no parent. A PRIMARY KEY is a combination of NOT NULL and UNIQUE on one set of columns.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hire</span><span class="w"> </span><span class="p">(</span><span class="n">days</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">days</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">hire</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">hire</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">hire</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">NULL</span><span class="p">);</span>
+</code></pre></div>
+
+<p>The first insert is stored. The second fails with <code>CHECK constraint failed</code>, because zero is not greater than zero. The third fails with <code>NOT NULL constraint failed: hire.days</code>, because the value is missing. A constraint error is the database saying that the data breaks a rule, and nothing from that statement is stored.</p>
+<p>A CHECK fails only when its expression is false. When the value is NULL, the comparison is unknown, so the CHECK passes. The NOT NULL constraint is the rule that forbids the missing value.</p>
+<p><strong>How it shows up in a case study.</strong> A team validates readings in its Python code, and a bug in the code lets a negative particle value through. The bad value reaches the table, and a chart shows a dip below zero. The team's question is where the rule should live. The answer is in the database, as a CHECK constraint, because every program that writes to the table then obeys it. The team also notices that a few rows have a missing value, and that the CHECK does not catch them. They add NOT NULL to the column, because their documented rule says a reading must be present.</p>
+<div class="box box-trap"><div class="box-h">Trap: Believing a CHECK refuses NULL</div><p>CHECK (pm2_5 &gt;= 0) accepts a missing value, because the comparison is unknown and only a false result fails. If the value must be present, add NOT NULL as well.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A reading has pm2_5 set to NULL. The column has CHECK (pm2_5 &gt;= 0) and no NOT NULL constraint. What happens when the row is inserted?&quot;, &quot;opts&quot;: [&quot;The row is refused, because NULL is treated as zero and zero fails&quot;, &quot;The row is refused, because NULL is treated as a negative number&quot;, &quot;The row is stored only if a default value is set for the column&quot;, &quot;The row is stored, because the check is unknown for NULL and only a false result is refused&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A CHECK refuses a row only when its expression is false, and a comparison with NULL is unknown. Calling NULL zero is the common mistake, and adding NOT NULL is the fix when missing values are not allowed.&quot;}, {&quot;q&quot;: &quot;A rule says that every reading must name a station. Which constraint enforces that the station id is present on every row?&quot;, &quot;opts&quot;: [&quot;NOT NULL on the station id column&quot;, &quot;UNIQUE on the station id column&quot;, &quot;An index on the station id column&quot;, &quot;A DEFAULT of zero on the station id column&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;NOT NULL refuses a missing value. UNIQUE refuses repeats, an index only speeds up lookups, and a DEFAULT of zero stores a made-up station, which is worse than refusing the row.&quot;}, {&quot;q&quot;: &quot;A rule says that each combination of station id, timestamp and pollutant may appear only once. Which constraint should the schema use?&quot;, &quot;opts&quot;: [&quot;NOT NULL on each of the three columns&quot;, &quot;CHECK on the value column&quot;, &quot;A foreign key from the reading to the station table&quot;, &quot;UNIQUE or PRIMARY KEY on the three columns together&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A composite UNIQUE or PRIMARY KEY is the constraint that refuses a repeated combination. NOT NULL does not stop repeats, a CHECK tests one row&#x27;s values, and a foreign key points to a parent table.&quot;}]}"></div>
+
+<h3 id="transactions_1">Transactions</h3>
+<p><strong>What it is.</strong> A transaction is a group of changes that the database treats as one unit. The changes either commit together, which saves all of them, or roll back together, which undoes all of them. A change that is not yet committed is visible only to the connection that made it. If a program stops before the commit, the database undoes the uncommitted changes.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE tally (n INTEGER)&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO tally VALUES (1)&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;stop&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM tally&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>0</code>. The INSERT ran inside the <code>with con:</code> block, then the error left the block, so Python's sqlite3 module rolled the change back. Had the block ended normally, the insert would have been committed. The connection is still open after the rollback, so it can be used again.</p>
+<p><strong>How it shows up in a case study.</strong> A loader writes 5,000 rows, one commit for each row. The process stops at row 3,000. When the team looks at the table, it holds exactly 3,000 rows, which is a partial load that looks complete. A re-run then adds the rest, but only because the key stops the duplicates. The fix is to wrap the whole batch in one transaction. A stop in the middle then leaves the table as it was before the load, so the table is either complete or untouched.</p>
+<div class="box box-trap"><div class="box-h">Trap: Committing row by row</div><p>A commit after every row is slow, and it leaves a partial load if the program stops. Wrap the whole batch in one transaction, so the load is all or nothing.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A loader inserts 1,392 rows inside one with con: block. The process crashes at row 700 before the block ends. What is in the table afterwards?&quot;, &quot;opts&quot;: [&quot;The first 699 rows, because each row was committed as it was written&quot;, &quot;Nothing from this load, because the transaction was never committed and the database undoes it&quot;, &quot;Half of the rows, chosen at random&quot;, &quot;All 1,392 rows, because most of the rows were inserted before the crash&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;One transaction is all or nothing. The changes are undone when the commit does not happen. The first-699 answer describes per-row commits, which is the trap.&quot;}, {&quot;q&quot;: &quot;A developer commits after each row in a loop of 1,392 inserts. Compared with one transaction for the whole load, which two things does this lose?&quot;, &quot;opts&quot;: [&quot;Primary keys and foreign keys, because each commit turns the checks off&quot;, &quot;Indexes and the table name, because each commit rebuilds the table&quot;, &quot;Upserts and CHECK constraints, because each commit skips them&quot;, &quot;All-or-nothing behaviour, and speed, because each commit has its own cost&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Per-row commits allow a partial load and add a cost to every row. Keys, foreign keys, CHECK constraints and upserts still apply to every row in both designs, so those options are false.&quot;}, {&quot;q&quot;: &quot;A team wants a load in which either all rows are stored or none are, and in which a retry is safe. Which combination fits?&quot;, &quot;opts&quot;: [&quot;One transaction for the whole load, plus an upsert on a unique key&quot;, &quot;A commit after every row, plus a DELETE before each insert&quot;, &quot;No transaction, plus INSERT OR IGNORE&quot;, &quot;One separate file for each row, plus a UNIQUE key&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The transaction gives all or nothing, and the upsert makes the retry safe. Per-row commits lose the all-or-nothing guarantee, and no transaction at all loses it too.&quot;}]}"></div>
+
+<h3 id="partitioning">Partitioning</h3>
+<p><strong>What it is.</strong> Partitioning splits one large logical table into smaller physical parts, usually by a range of values such as a month or a year. Each part is stored separately, and the rows are routed to the right part when you insert them. A query that filters on the partition key can skip the parts that cannot match. Postgres supports this as declarative partitioning. SQLite has no built-in partitioning.</p>
+<div class="hl"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">reading_log</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">ts</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">value</span><span class="w"> </span><span class="nb">REAL</span>
+<span class="p">)</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">RANGE</span><span class="w"> </span><span class="p">(</span><span class="n">ts</span><span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">reading_2026</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">reading_log</span>
+<span class="w">  </span><span class="k">FOR</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;2026-01-01&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;2027-01-01&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Rows with a timestamp in 2026 go to <code>reading_2026</code>. A query with a filter such as <code>WHERE ts &gt;= '2026-03-01' AND ts &lt; '2026-04-01'</code> can skip the other parts when the planner knows their ranges do not match. Partitioning changes how the data is stored and read. It does not change the rules. Keys, constraints and foreign keys still apply to every row.</p>
+<p><strong>How it shows up in a case study.</strong> A team keeps ten years of hourly readings in one table, and most reports cover one year. Those reports have become slow, and the table is still growing. The team considers removing the primary key to make inserts faster. That would allow duplicate readings, which is the wrong fix. The better change is to partition the table by year, so a one-year report reads only one part. The key stays, so duplicates are still refused.</p>
+<div class="box box-trap"><div class="box-h">Trap: Using partitioning to replace keys</div><p>Partitioning is for speed and manageability. It does not make wrong data correct, and it does not stop duplicates unless the key does that job. Keep the keys and constraints in place when you partition.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A fact table holds ten years of hourly readings, and most queries cover one year. Which change best helps those queries?&quot;, &quot;opts&quot;: [&quot;Remove the primary key, so that inserts are faster&quot;, &quot;Store every number as TEXT, so that it is smaller&quot;, &quot;Add a CHECK constraint on every column&quot;, &quot;Partition the table by year, so a query for one year can skip the other years&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Partitioning lets the planner skip the parts that cannot match the filter. Removing the key allows duplicates, storing numbers as text slows comparisons, and extra CHECK constraints add cost without helping the date filter.&quot;}, {&quot;q&quot;: &quot;A colleague says that because the table is partitioned, duplicate readings can no longer happen. What is the correct reply?&quot;, &quot;opts&quot;: [&quot;Yes, every partition is unique by default&quot;, &quot;No, partitioning splits the storage for speed, and the keys and constraints still refuse duplicates&quot;, &quot;Yes, but only when the database is SQLite&quot;, &quot;Only when each partition is split by station&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Keys and constraints do the rule-checking, and partitioning does not replace them. The claims that partitions are unique by default, or that this is a SQLite feature, are both false.&quot;}, {&quot;q&quot;: &quot;Which database in the Day 9 course supports declarative partitioning of a table?&quot;, &quot;opts&quot;: [&quot;SQLite, which partitions every table automatically&quot;, &quot;Python&#x27;s sqlite3 module, which partitions files on disk&quot;, &quot;A CSV file, which is split into parts when it is loaded&quot;, &quot;PostgreSQL&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Postgres supports declarative partitioning. SQLite has no built-in partitioning, and a CSV file and a Python module are not databases. The Day 9 sources do not use partitioning, so treat it as an idea to explain in an interview.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>The questions below mix all ten topics, one question for each. They are harder than the ones above, because each one needs you to combine two ideas.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A table stores one row per station, pollutant and hour, keyed by (station_id, ts, pollutant). A migration adds a source_id column, and two sources must be able to report the same pollutant at the same hour for the same station without clashing. What is the smallest correct change to the key?&quot;, &quot;opts&quot;: [&quot;Keep the old key and add a CHECK constraint on source_id&quot;, &quot;Make ts the only primary key, because the hour is unique&quot;, &quot;Replace the key with (station_id, source_id, ts, pollutant), so that each source has its own row&quot;, &quot;Make source_id a surrogate key and drop every other key&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Adding the source to the key lets two sources coexist, and a CHECK does not stop a clash between rows. A key on ts alone refuses valid rows, and a surrogate key without the natural key would allow duplicate measurements.&quot;}, {&quot;q&quot;: &quot;A loader runs with PRAGMA foreign_keys = ON on its connection. Later, a second script opens the same database file with a new connection and inserts a reading for an unknown station, and no error appears. What is the most likely reason?&quot;, &quot;opts&quot;: [&quot;The first script removed the CHECK constraint from the reading table&quot;, &quot;The second connection never ran PRAGMA foreign_keys = ON, because the setting belongs to each connection&quot;, &quot;Foreign keys cannot refer to a TEXT primary key&quot;, &quot;The first script committed the foreign keys as off&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The pragma is per connection, so the second connection has the default, which is off. The other options describe changes that did not happen, or rules that do not exist.&quot;}, {&quot;q&quot;: &quot;A query runs round(avg(value), 1) on a REAL column in Postgres and fails with a message that round does not exist for those argument types. Which fix works in Postgres?&quot;, &quot;opts&quot;: [&quot;Change the column to TEXT and round the text values&quot;, &quot;Store the timestamps as TIMESTAMPTZ so that the average works&quot;, &quot;Cast the average to numeric, as in round(avg(value)::numeric, 1)&quot;, &quot;Remove the GROUP BY clause so that round receives one value&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Postgres&#x27;s two-argument round expects a numeric value, and the cast supplies it. Converting to text makes the average impossible, and removing the grouping changes the answer rather than fixing the type.&quot;}, {&quot;q&quot;: &quot;A CSV file has no header line. A bulk load reports COPY 100, but wc -l on the file prints 99. The file&#x27;s last line has no newline at its end. Which explanation fits?&quot;, &quot;opts&quot;: [&quot;A CHECK constraint removed one row during the load&quot;, &quot;Bulk loads never read the last line of a file&quot;, &quot;The line-count command counts newline characters, so a last line without one is not counted&quot;, &quot;Postgres stores only the first 1,000 rows of any file&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The count tool is the source of the difference, and the loader still reads the last line. The other options describe loader behaviour that does not happen.&quot;}, {&quot;q&quot;: &quot;A team stores the customer name and the customer city on every order row. After an update, two orders for the same customer show different cities. Which change best applies normalisation?&quot;, &quot;opts&quot;: [&quot;Add more indexes on the customer name&quot;, &quot;Move the customer details into a customer table, and store only the customer id on each order&quot;, &quot;Store the city as TEXT with a CHECK constraint&quot;, &quot;Remove the order key so that duplicates cannot appear&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;One place for each fact removes the disagreement at its source. An index speeds lookups but keeps both copies, a CHECK does not remove copies, and removing the key does not remove the repeated city.&quot;}, {&quot;q&quot;: &quot;A load is run twice. On the second run, a corrected value must replace the old value for the same key, and the row count must stay the same. The statement uses ON CONFLICT (station_id, ts, pollutant). Which condition must hold?&quot;, &quot;opts&quot;: [&quot;A UNIQUE or PRIMARY KEY constraint on exactly station_id, ts and pollutant&quot;, &quot;A CHECK constraint on the value column&quot;, &quot;An index on the value column alone&quot;, &quot;The input file must be sorted by value&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The conflict target must match a unique key exactly, and only that key creates the conflict that triggers the update. The other conditions do not define when a conflict happens.&quot;}, {&quot;q&quot;: &quot;A table has an index on (ts_utc, location_id). The most common query is WHERE location_id = 3 AND ts_utc BETWEEN a start and an end. Which step is the best improvement?&quot;, &quot;opts&quot;: [&quot;Drop the index, because a time-first index is wrong for every query&quot;, &quot;Keep the index, because the order of columns does not matter for equality filters&quot;, &quot;Create an index on (location_id, ts_utc), so the equality column leads and the range column follows&quot;, &quot;Make ts_utc a primary key on its own&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The equality column should lead, so the index can narrow to one location and then scan a time range. The time-first index is not useless for every query, and the order does matter for this one.&quot;}, {&quot;q&quot;: &quot;A CHECK (days &gt; 0) constraint is on a column that holds NULL in one row, and a team expects that row to be refused. What should you tell them?&quot;, &quot;opts&quot;: [&quot;The row passes the CHECK, unless the column also has a NOT NULL constraint&quot;, &quot;The row is refused, because NULL is treated as zero by every database&quot;, &quot;The row passes, but only in Postgres&quot;, &quot;The row is refused, because a CHECK must always name a positive value&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A NULL makes the CHECK unknown, so it passes, and NOT NULL is the constraint that refuses the missing value. Both Postgres and SQLite behave this way, so the Postgres-only claim is false.&quot;}, {&quot;q&quot;: &quot;A load of 5,000 rows runs inside one transaction, and the loader crashes after 3,000 rows. The team restarts the loader, which uses an upsert on the unique key. What does the table hold after the restart, and after a second restart?&quot;, &quot;opts&quot;: [&quot;It holds 3,000 rows after the first restart, and the second restart adds 2,000 more without any check&quot;, &quot;It holds 2,000 rows, because the restart skips the rows already stored&quot;, &quot;It holds 5,000 rows after the restart, and a second restart still leaves 5,000, because the first run stored nothing&quot;, &quot;It cannot restart, because the transaction already committed 3,000 rows&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The crash rolled back the whole transaction, so nothing was stored, and the upsert makes repeat runs safe. The options that count 3,000 rows assume per-row commits, which this design avoids.&quot;}, {&quot;q&quot;: &quot;A fact table is partitioned by month, and a query asks for the average value on one day. Which statement is most accurate?&quot;, &quot;opts&quot;: [&quot;The query reads every partition, because a day filter cannot use partitions&quot;, &quot;The query can skip the partitions for other months, because the filter is on the partition key&quot;, &quot;The query fails, because the partition key must match the query&#x27;s grouping&quot;, &quot;The query is faster only if the partitions are stored as text&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A filter on the partition key lets the planner skip partitions that cannot match. A day filter is allowed, and it prunes by the month range. The other claims misdescribe how partitioning works.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem that uses the standard <code>sqlite3</code> module. You write functions in a starter file, and automatic tests call them. Some tests are visible to you, and others are hidden. You earn points for each test that passes, so the way to earn all the points is to make your functions correct for every case the statement describes, not only for the example.</p>
+<p>This section restates the lab, explains the Python ideas you need, lists the rules people miss, gives a method, and works through a different problem with the same skills. The problem is never solved for you here. You write the solution to the real lab yourself.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> CityPulse is moving its readings from flat files into a relational store. Each reading must land in a SQLite table that refuses a duplicate sample. A duplicate means a second reading for the same station, the same timestamp and the same pollutant. The database itself should refuse the duplicate, so the rule is not left to the loader.</p>
+<p><strong>The limits.</strong> Your code may run for at most 30 seconds and use at most 128 MB of memory. The lab is medium in difficulty. It uses the Python skills python, sqlite3 and sql, plus the ideas relational-modelling and constraints.</p>
+<p><strong>The four functions.</strong> The starter file contains a module-level <code>import sqlite3</code>, a list called <code>READINGS</code> that holds the sample readings, and the four function names below. Keep the names and the signatures exactly as given.</p>
+<ul>
+<li><code>load_readings(readings)</code> takes a list of readings. Each reading is a tuple of station id, timestamp, pollutant and value. The function creates an in-memory database, with a table called <code>readings</code> that has the columns <code>station_id</code>, <code>ts</code>, <code>pollutant</code> and <code>value</code>. The table must enforce a UNIQUE rule on station id, timestamp and pollutant together. Every reading is inserted, so that a duplicate is silently ignored rather than raising an error. The function returns the open <code>sqlite3.Connection</code>, so the caller can ask questions of it.</li>
+<li><code>row_count(conn)</code> takes the open connection and returns the number of rows actually stored in the readings table, as an <code>int</code>.</li>
+<li><code>distinct_pollutants(conn)</code> returns a list of the distinct pollutant names in the table, sorted ascending.</li>
+<li><code>station_totals(conn)</code> returns a list of <code>(station_id, total_value)</code> tuples. The list is grouped by station, sorted by station id, and each total is rounded to 2 decimal places.</li>
+</ul>
+<p><strong>The example in the statement.</strong> The sample <code>READINGS</code> list contains one exact duplicate of an S1 PM25 sample. So <code>row_count(load_readings(READINGS))</code> returns <code>5</code>, not <code>6</code>, and <code>distinct_pollutants(load_readings(READINGS))</code> returns <code>['NO2', 'O3', 'PM25']</code>.</p>
+<p><strong>Rules that the statement states.</strong> Put each rule in your own words before you code, so you can check it later.</p>
+<ul>
+<li>The database is in memory, and each call of <code>load_readings</code> makes a fresh one.</li>
+<li>The UNIQUE rule uses three columns: station id, timestamp and pollutant. The value is not part of the key.</li>
+<li>A duplicate is ignored silently. The statement does not ask for an error, a message or a count of ignored rows.</li>
+<li>The first stored row for a key is the one that stays, because later duplicates are ignored.</li>
+<li><code>load_readings</code> returns the connection still open. Closing it first would break every later call.</li>
+<li><code>row_count</code> counts the rows that are actually stored, not the items in the input list.</li>
+<li><code>distinct_pollutants</code> lists each pollutant once, sorted ascending.</li>
+<li><code>station_totals</code> groups by station, sorts by station id, and rounds each total to 2 decimal places.</li>
+</ul>
+<p><strong>The scoring table.</strong> The visible tests are worth 56 points in total.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duplicate dropped by UNIQUE constraint</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Distinct pollutants sorted</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Summed value per station</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The hidden tests.</strong> There are three hidden tests, worth 44 points between them. The platform does not show you their inputs or their expected outputs. They are not a second copy of the visible tests. Hidden tests are written to check the rules in the statement against inputs you have not seen, such as an empty list, a repeated key with a different value, and a station that has readings for several pollutants. Because the hidden tests carry 44 of the 100 points, a solution that only passes the visible tests can score at most 56. Every rule in the statement is a possible hidden test, so you must check each one yourself.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each Python idea below is taught with a small example that is not about the lab's data. The examples use a fruit stall, so you can learn the tool without being given the lab's solution. Do not copy these examples into your functions as they are. Use the idea, then write your own code for the real task.</p>
+<p><strong>Opening an in-memory connection and creating a table.</strong> <code>sqlite3.connect(":memory:")</code> opens a database that lives only in memory. It disappears when the connection closes, which suits tests because nothing is written to disk. A table is created with <code>CREATE TABLE</code>, and a UNIQUE constraint is written as a clause in the table definition.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">stall</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE fruit (name TEXT NOT NULL, kg REAL, UNIQUE (name))&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Nothing is printed. If you ran the <code>CREATE TABLE</code> statement a second time, it would fail with an error, because the table already exists. Adding <code>IF NOT EXISTS</code> makes the statement safe to repeat.</p>
+<p><strong>Inserting one row with placeholders.</strong> A <code>?</code> in an SQL statement is a placeholder. Python fills each <code>?</code> from a tuple, in order, so values are never pasted into the SQL text. <code>INSERT OR IGNORE</code> skips a row that breaks a UNIQUE constraint, and keeps the row that was stored first. It also skips a row that breaks a NOT NULL or CHECK rule, with no error, so use it only when skipping every bad row is what you want.</p>
+<div class="hl"><pre><span></span><code><span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO fruit (name, kg) VALUES (?, ?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+<span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO fruit (name, kg) VALUES (?, ?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The second statement is skipped without an error, because <code>mango</code> is already there. The table still holds <code>1.5</code> for mango. <code>executemany</code> runs the same statement once for each tuple in a list, which is the tool to use when you have many rows.</p>
+<p><strong>Counting rows and reading one value.</strong> <code>COUNT(*)</code> counts the rows that a query returns. <code>fetchone()</code> returns the first row as a tuple, and the <code>[0]</code> picks the first item of that tuple, which is the number itself.</p>
+<div class="hl"><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM fruit&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>  <span class="c1"># 1</span>
+</code></pre></div>
+
+<p>The result is an <code>int</code>. The <code>fetchone()</code> call returns <code>(1,)</code>, a one-item tuple, and the index turns it into the plain number.</p>
+<p><strong>Distinct values in sorted order.</strong> <code>DISTINCT</code> removes repeated values from a result. <code>ORDER BY</code> sorts the result. <code>fetchall()</code> returns every row as a list of tuples, so a list comprehension turns the one-item tuples into plain values.</p>
+<div class="hl"><pre><span></span><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT DISTINCT name FROM fruit ORDER BY name&quot;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># [&#39;mango&#39;]</span>
+</code></pre></div>
+
+<p><strong>Grouping, summing and rounding.</strong> <code>GROUP BY</code> makes one group for each distinct value. <code>SUM</code> adds up a column inside each group. <code>ROUND(x, 2)</code> rounds a number to two decimal places. Floating-point arithmetic can leave small errors, so a sum such as 0.1 plus 0.2 may come out as 0.30000000000000004, and rounding removes that noise.</p>
+<div class="hl"><pre><span></span><code><span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE weigh (name TEXT, kg REAL)&quot;</span><span class="p">)</span>
+<span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO weigh VALUES (&#39;fig&#39;, 0.1)&quot;</span><span class="p">)</span>
+<span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO weigh VALUES (&#39;fig&#39;, 0.2)&quot;</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">stall</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="s2">&quot;SELECT name, ROUND(SUM(kg), 2) FROM weigh GROUP BY name ORDER BY name&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>  <span class="c1"># [(&#39;fig&#39;, 0.3)]</span>
+</code></pre></div>
+
+<p>Python's own <code>round</code> works the same way for a single number: <code>round(1.236, 2)</code> gives <code>1.24</code>. Round once, at the end of the calculation, so that the error from earlier steps does not build up.</p>
+<p><strong>Checking the type of a result.</strong> <code>isinstance(x, int)</code> is true for an <code>int</code>, and it is also true for a <code>bool</code>, because <code>bool</code> is a subclass of <code>int</code>. <code>type(x) is int</code> is true only for a true <code>int</code>. This matters when a function must return an integer and a <code>True</code> or <code>False</code> value would be wrong.</p>
+<div class="hl"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span>       <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span>          <span class="c1"># True</span>
+</code></pre></div>
+
+<p><strong>Sorting with a key.</strong> <code>sorted</code> returns a new list and leaves the original unchanged. Its <code>key</code> argument decides what is compared. Python's sort is stable, so items that compare equal keep their original order.</p>
+<div class="hl"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pear&quot;</span><span class="p">,</span> <span class="s2">&quot;fig&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>  <span class="c1"># [&#39;fig&#39;, &#39;pear&#39;, &#39;kiwi&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>                   <span class="c1"># [&#39;pear&#39;, &#39;fig&#39;, &#39;kiwi&#39;], unchanged</span>
+</code></pre></div>
+
+<p><strong>Never changing an input.</strong> A function that receives a list should not alter it, because the caller may use the list again. Use <code>sorted(items)</code> to get a new sorted list, rather than <code>items.sort()</code>, which changes the list in place. The same care applies to any list you were given as a parameter.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table below lists the rules a careless solution breaks. Each rule comes from the statement, except where a row says otherwise. Read each row, then check your own solution against the third column.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The UNIQUE rule uses station id, timestamp and pollutant</td>
+<td>Puts the UNIQUE rule on the station id alone, or on all four columns including the value</td>
+<td>Insert the same station, timestamp and pollutant with a different value. The row count must not rise.</td>
+</tr>
+<tr>
+<td>A duplicate is silently ignored</td>
+<td>Uses a plain INSERT, so the first duplicate raises an error and the function crashes</td>
+<td>Call <code>load_readings</code> on a list with a duplicate. It must return a connection without an exception.</td>
+</tr>
+<tr>
+<td>The first stored row for a key is the one that stays</td>
+<td>Uses a later duplicate's value, for example by using a replacing insert</td>
+<td>Check the stored value of the duplicated key in a test. It must match the first row in the list.</td>
+</tr>
+<tr>
+<td><code>row_count</code> returns the number of rows actually stored</td>
+<td>Returns <code>len(readings)</code>, which counts the duplicate as well</td>
+<td>The sample must give <code>5</code>, not <code>6</code>.</td>
+</tr>
+<tr>
+<td><code>row_count</code> returns an <code>int</code></td>
+<td>Returns a float, a string or a value that is a <code>bool</code></td>
+<td>Use <code>type(result) is int</code> in your own assert.</td>
+</tr>
+<tr>
+<td><code>distinct_pollutants</code> lists each name once, sorted ascending</td>
+<td>Returns a set, an unsorted list, or repeated names</td>
+<td>Compare the result with <code>sorted</code> applied to the same names, and check there are no repeats.</td>
+</tr>
+<tr>
+<td><code>station_totals</code> is sorted by station id</td>
+<td>Sorts by total value, which is a different order</td>
+<td>Check that the first tuple has the smallest station id, not the smallest total.</td>
+</tr>
+<tr>
+<td>Totals are grouped by station</td>
+<td>Groups by station and pollutant, so one station appears several times</td>
+<td>Check that each station id appears once in the output.</td>
+</tr>
+<tr>
+<td>Each total is rounded to 2 decimal places, at the end</td>
+<td>Rounds each reading before summing, or leaves the float noise in the output</td>
+<td>Compare with a value you have worked out by hand, such as a total of 0.1 and 0.2 that must print as 0.3.</td>
+</tr>
+<tr>
+<td><code>load_readings</code> returns the open connection</td>
+<td>Closes the connection before returning it, so later calls fail</td>
+<td>Call <code>row_count</code> on the returned object. It must work.</td>
+</tr>
+<tr>
+<td>Empty input</td>
+<td>Crashes on an empty list. The statement does not spell out this case, but the same rules apply: zero rows, an empty list of pollutants and an empty list of totals</td>
+<td>Call <code>load_readings([])</code> and check all three functions.</td>
+</tr>
+<tr>
+<td>The input list is not changed</td>
+<td>Removes duplicates from the input list, or sorts it in place</td>
+<td>Keep a copy of the sample before the call, and compare the two after the call.</td>
+</tr>
+</tbody>
+</table>
+<p>Ties need a special note for this lab. <code>distinct_pollutants</code> returns distinct names, so two items cannot tie. <code>station_totals</code> groups by station, so each station id appears once and the sort by station id has no ties either. The risk here is sorting on the wrong column, not a tie-break.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file from top to bottom. Note the names, the signatures and the module-level sample. Do not change the names.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function. The statement's example gives you two of them, one for <code>row_count</code> and one for <code>distinct_pollutants</code>.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Each row is a possible hidden test, so each row should have an assert that would fail on a careless solution.</li>
+<li>Implement one function at a time, starting with <code>load_readings</code>, since the other three depend on it. After each function, run the whole file, so the asserts for that function run at once.</li>
+<li>Only when the behaviour is right, check the types and the rounding. Make sure <code>row_count</code> returns an <code>int</code>, and that each total is rounded at the end.</li>
+<li>Run the visible tests. Read any failure message, and fix the rule that it names, not the test.</li>
+<li>Submit once. Do not submit to find out what the hidden tests check, because each submission is a graded attempt in its own right.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>The twin problem below is about library loans, not about readings. It needs the same skills: a table with a composite UNIQUE rule, a load that refuses repeated keys, a count of stored rows, and a grouped average rounded to one decimal place. It adds a rule the real lab does not have, a CHECK constraint, so that you practise a second kind of refusal.</p>
+<p><strong>The task.</strong> Write <code>load_loans(records)</code>. It receives a list of <code>(member, book, borrowed_on, days)</code> tuples. It creates an in-memory database with a table called <code>loans</code>, with the columns <code>member</code>, <code>book</code>, <code>borrowed_on</code> and <code>days</code>. The table has a composite primary key on member, book and borrowed_on, and the <code>days</code> column must be greater than zero. Each record is inserted. A record that the database refuses is not stored, and the function counts it. The function returns a tuple of the open connection and the number of refused records.</p>
+<p>Write <code>loan_count(conn)</code>, which returns the number of stored loans as an <code>int</code>. Write <code>average_days_by_book(conn)</code>, which returns a list of <code>(book, average_days)</code> tuples, grouped by book, sorted by book ascending, with each average rounded to one decimal place.</p>
+<p>Here is the full solution, with the asserts that check normal cases and every edge case.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">INSERT_SQL</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO loans (member, book, borrowed_on, days) VALUES (?, ?, ?, ?)&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_loans</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;CREATE TABLE loans (&quot;</span>
+        <span class="s2">&quot; member TEXT NOT NULL,&quot;</span>
+        <span class="s2">&quot; book TEXT NOT NULL,&quot;</span>
+        <span class="s2">&quot; borrowed_on TEXT NOT NULL,&quot;</span>
+        <span class="s2">&quot; days INTEGER NOT NULL CHECK (days &gt; 0),&quot;</span>
+        <span class="s2">&quot; PRIMARY KEY (member, book, borrowed_on))&quot;</span>
+    <span class="p">)</span>
+    <span class="n">refused</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">INSERT_SQL</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
+            <span class="n">refused</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="p">,</span> <span class="n">refused</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">loan_count</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM loans&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average_days_by_book</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT book, ROUND(AVG(days), 1) FROM loans GROUP BY book ORDER BY book ASC&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="n">RECORDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-01-05&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-01-09&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-01-12&quot;</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-01-05&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Mei&quot;</span><span class="p">,</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-02-01&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Mei&quot;</span><span class="p">,</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-02-01&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Ravi&quot;</span><span class="p">,</span> <span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-03-01&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Mei&quot;</span><span class="p">,</span> <span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-03-02&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span> <span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-03-03&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">conn</span><span class="p">,</span> <span class="n">refused</span> <span class="o">=</span> <span class="n">load_loans</span><span class="p">(</span><span class="n">RECORDS</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">loan_count</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">assert</span> <span class="n">refused</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">average_days_by_book</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)]</span>
+
+<span class="n">empty_conn</span><span class="p">,</span> <span class="n">empty_refused</span> <span class="o">=</span> <span class="n">load_loans</span><span class="p">([])</span>
+<span class="k">assert</span> <span class="n">loan_count</span><span class="p">(</span><span class="n">empty_conn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">empty_refused</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">average_days_by_book</span><span class="p">(</span><span class="n">empty_conn</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="n">one_conn</span><span class="p">,</span> <span class="n">one_refused</span> <span class="o">=</span> <span class="n">load_loans</span><span class="p">([(</span><span class="s2">&quot;Mei&quot;</span><span class="p">,</span> <span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-02-01&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="k">assert</span> <span class="n">loan_count</span><span class="p">(</span><span class="n">one_conn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">one_refused</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p><strong>Explanation, line by line.</strong></p>
+<ul>
+<li><code>import sqlite3</code> loads the standard library module. No installation is needed.</li>
+<li><code>INSERT_SQL</code> holds the insert statement once, with four <code>?</code> placeholders. Each tuple in the list supplies the four values in order.</li>
+<li><code>def load_loans(records):</code> defines the loader. It takes the list of tuples and gives nothing else.</li>
+<li><code>conn = sqlite3.connect(":memory:")</code> opens a fresh in-memory database for each call, so one call cannot see another call's loans.</li>
+<li>The <code>CREATE TABLE</code> statement has three parts that matter here. <code>NOT NULL</code> refuses a missing text value. <code>CHECK (days &gt; 0)</code> refuses a loan of zero or fewer days. <code>PRIMARY KEY (member, book, borrowed_on)</code> refuses a second copy of the same loan.</li>
+<li><code>refused = 0</code> starts the counter of refused records.</li>
+<li>The <code>for</code> loop takes one record at a time. The <code>try</code> block runs the insert, and the <code>except</code> block catches the error that the database raises when a rule is broken.</li>
+<li><code>refused += 1</code> adds one to the counter. The refused record is simply not stored, and the loop carries on with the next record.</li>
+<li><code>conn.commit()</code> saves the inserted rows. Without it, the changes would still be visible on this connection, but they would not be committed.</li>
+<li><code>return conn, refused</code> returns both values as one tuple. The connection is left open for the caller.</li>
+<li><code>loan_count</code> counts the rows in the table and returns the number as an <code>int</code>.</li>
+<li><code>average_days_by_book</code> groups the rows by book, averages the days in each group, rounds the average to one decimal place, and sorts by the book's name.</li>
+</ul>
+<p>Now the asserts. The first block uses the nine records. Record 4 repeats record 1, so the database refuses it because the key already exists. Record 5 has zero days, so the CHECK refuses it. That gives 9 minus 2 equals 7 stored loans, and a refused count of 2. The averages are Dune with 14 and 7, which is 10.5, Emma with 21 and 10, which is 15.5, and Ulysses with 1, 1 and 2, which is 4 divided by 3, or 1.333, rounded to 1.3. The second block checks that an empty list gives zero loans and an empty result. The third block checks a single valid record.</p>
+<p>Notice that the ROUND happens in the query, after the average is worked out. The average of the three Ulysses loans is rounded once, from the exact value. Rounding early, before the final average, is the habit to avoid.</p>
+<p>The trace below steps through the loop in <code>load_loans</code>, which is the trickiest part of the twin. It follows the first loan, the duplicate loan, and the loan with zero days.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Loading loans and counting the refused ones&quot;, &quot;code&quot;: [&quot;refused = 0&quot;, &quot;for record in records:&quot;, &quot;    try:&quot;, &quot;        conn.execute(insert_sql, record)&quot;, &quot;    except sqlite3.IntegrityError:&quot;, &quot;        refused += 1&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;]], &quot;note&quot;: &quot;Start the counter at zero.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The loop takes the first loan.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The insert works, so one loan is stored.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The fourth loan in the list is the same loan again.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The key already exists, so SQLite raises IntegrityError.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;refused&quot;, &quot;0&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The except line catches the error, and the loop goes on.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;refused&quot;, &quot;1&quot;], [&quot;record&quot;, &quot;(\&quot;Asha\&quot;, \&quot;Dune\&quot;, \&quot;2026-01-05\&quot;, 14)&quot;]], &quot;note&quot;: &quot;The refused count goes up by one. The loan is not stored.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;refused&quot;, &quot;1&quot;], [&quot;record&quot;, &quot;(\&quot;Mei\&quot;, \&quot;Emma\&quot;, \&quot;2026-02-01\&quot;, 0)&quot;]], &quot;note&quot;: &quot;The fifth loan has days set to zero.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;refused&quot;, &quot;1&quot;], [&quot;record&quot;, &quot;(\&quot;Mei\&quot;, \&quot;Emma\&quot;, \&quot;2026-02-01\&quot;, 0)&quot;]], &quot;note&quot;: &quot;The CHECK days &gt; 0 fails, so the insert raises IntegrityError.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;refused&quot;, &quot;1&quot;], [&quot;record&quot;, &quot;(\&quot;Mei\&quot;, \&quot;Emma\&quot;, \&quot;2026-02-01\&quot;, 0)&quot;]], &quot;note&quot;: &quot;The except line catches this second error.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;refused&quot;, &quot;2&quot;], [&quot;record&quot;, &quot;(\&quot;Mei\&quot;, \&quot;Emma\&quot;, \&quot;2026-02-01\&quot;, 0)&quot;]], &quot;note&quot;: &quot;The second refusal is counted. The loop then moves on to the sixth loan.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>Write a new twin problem, this time about parcel scans, and make it pass the asserts below. You must write three functions: <code>load_scans(rows)</code>, <code>scan_count(conn)</code> and <code>heaviest_by_courier(conn)</code>.</p>
+<p><code>load_scans(rows)</code> takes a list of <code>(scan_id, courier, kg)</code> tuples. It creates an in-memory table called <code>scans</code>, with <code>scan_id</code> as the primary key, <code>courier</code> as a required text column, and <code>kg</code> as a required number that must not be negative. It inserts the rows so that a repeated <code>scan_id</code> is ignored, and it returns the open connection.</p>
+<p><code>scan_count(conn)</code> returns the number of stored scans as an <code>int</code>.</p>
+<p><code>heaviest_by_courier(conn)</code> returns a list of <code>(courier, heaviest)</code> tuples, one for each courier, sorted by courier name ascending. The heaviest value is the largest <code>kg</code> for that courier, rounded to one decimal place.</p>
+<p>Try the problem yourself before you open the solution. The asserts below are the target.</p>
+<div class="hl"><pre><span></span><code><span class="n">rows</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">2.04</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">3.26</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">9.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">load_scans</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">scan_count</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">scan_count</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([]))</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([]))</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([(</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)]))</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]))</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_scans</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;CREATE TABLE scans (&quot;</span>
+        <span class="s2">&quot; scan_id INTEGER PRIMARY KEY,&quot;</span>
+        <span class="s2">&quot; courier TEXT NOT NULL,&quot;</span>
+        <span class="s2">&quot; kg REAL NOT NULL CHECK (kg &gt;= 0))&quot;</span>
+    <span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="s2">&quot;INSERT OR IGNORE INTO scans (scan_id, courier, kg) VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">rows</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">conn</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_count</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM scans&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">heaviest_by_courier</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT courier, ROUND(MAX(kg), 1) FROM scans GROUP BY courier ORDER BY courier ASC&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">2.04</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">3.26</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">9.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">load_scans</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">scan_count</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zed&quot;</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">scan_count</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([]))</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([]))</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([(</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)]))</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ace&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">heaviest_by_courier</span><span class="p">(</span><span class="n">load_scans</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]))</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>The first scan with id 1 is stored with 2.04. The later scan with id 1 and 9.9 is ignored, so Zed's heaviest value is 3.26 from scan 3, which rounds to 3.3. The <code>executemany</code> call runs the insert once per tuple, and <code>INSERT OR IGNORE</code> skips the repeat. The <code>MAX</code> function picks the largest value in each group, and <code>ROUND</code> rounds it once at the end. An empty input creates the table and returns nothing from the grouped query, which is why the last assert on the empty load is an empty list.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Run the visible tests and confirm that all three pass before you do anything else.</li>
+<li>Confirm that each function name and signature matches the starter file exactly.</li>
+<li>Confirm that <code>load_readings</code> returns the open connection, and that <code>row_count</code> still works on it afterwards.</li>
+<li>Confirm that <code>row_count</code> returns an <code>int</code>, and that the sample gives 5 and not 6.</li>
+<li>Confirm that a duplicate with a different value is ignored, and that the first stored value is the one that remains.</li>
+<li>Confirm that <code>distinct_pollutants</code> is sorted ascending and has no repeated names, and that it returns a list.</li>
+<li>Confirm that <code>station_totals</code> is sorted by station id, that each station id appears once, and that each total is rounded to 2 decimal places at the end.</li>
+<li>Confirm that your code prints nothing, reads no input and writes no file, and that the sample list <code>READINGS</code> is unchanged after your functions run.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p>Interviewers and viva examiners ask these questions to see whether you understand the design, not whether you can recite it.</p>
+<h3 id="what-is-the-grain-of-your-fact-table-and-why-does-it-come-first">What is the grain of your fact table, and why does it come first?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>The grain is one row per location, per source, per UTC hour. It comes first because it defines what one row means, and so it defines the natural key. The UNIQUE constraint on those columns is what makes a duplicate detectable. Without the grain, you cannot say whether two rows are the same measurement or two measurements.</p></details>
+
+<h3 id="why-does-the-loader-turn-on-foreign-keys-for-every-connection">Why does the loader turn on foreign keys for every connection?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>SQLite leaves foreign-key checks off by default, and the setting belongs to each connection. If the loader forgot the pragma, a reading for an unknown station would be stored without any error. Running <code>PRAGMA foreign_keys = ON</code> right after <code>connect</code> makes the rule hold for every insert from that process. You can prove it by inserting a bad row and seeing the error.</p></details>
+
+<h3 id="how-do-you-prove-that-the-load-is-idempotent">How do you prove that the load is idempotent?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>Run the load once, record <code>COUNT(*)</code> on the fact table, then run it again and record the count. The two numbers should be equal. The upsert is what makes this true, because a repeated row matches the UNIQUE key and updates instead of adding. The check should be repeatable from a fresh clone of the repository.</p></details>
+
+<h3 id="why-use-one-transaction-for-the-whole-load">Why use one transaction for the whole load?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>One transaction makes the load all-or-nothing. If the process crashes halfway, the database rolls back to its state before the load, so no half-loaded state is left behind. Committing row by row would leave a partial load that a later run could not distinguish from a complete one. The cost is one commit, which is also much faster.</p></details>
+
+<h3 id="why-on-conflict-do-update-rather-than-insert-or-ignore">Why ON CONFLICT DO UPDATE rather than INSERT OR IGNORE?</h3>
+<details class="box box-answer"><summary>Model answer</summary><p>INSERT OR IGNORE keeps the old row when the key exists, so a corrected reading for the same hour is silently lost. ON CONFLICT DO UPDATE applies the new value to the existing row, which is what a corrected fetch needs. Both are repeatable, but only the upsert keeps the data correct when values change. The conflict target must match the UNIQUE key, or the statement is rejected.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command, function or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CREATE TABLE IF NOT EXISTS t (...)</code></td>
+<td>Creates a table if it is missing, so the script is safe to rerun</td>
+</tr>
+<tr>
+<td><code>PRIMARY KEY</code></td>
+<td>Unique, non-empty identifier for a row; can be several columns</td>
+</tr>
+<tr>
+<td><code>REFERENCES parent(col)</code></td>
+<td>Foreign key: the value must exist in the parent table</td>
+</tr>
+<tr>
+<td><code>UNIQUE (a, b, c)</code></td>
+<td>Rejects a repeated combination; the natural grain key</td>
+</tr>
+<tr>
+<td><code>NOT NULL</code></td>
+<td>Rejects a missing value</td>
+</tr>
+<tr>
+<td><code>CHECK (expr)</code></td>
+<td>Rejects rows where the expression is false; NULL passes</td>
+</tr>
+<tr>
+<td><code>CREATE INDEX IF NOT EXISTS ix ON t (a, b)</code></td>
+<td>Builds a lookup structure; column order matters</td>
+</tr>
+<tr>
+<td><code>PRAGMA foreign_keys = ON</code></td>
+<td>Turns on foreign-key checks for this SQLite connection</td>
+</tr>
+<tr>
+<td><code>INSERT ... ON CONFLICT (cols) DO UPDATE SET c = excluded.c</code></td>
+<td>Upsert: insert, or update the existing row; target must match a UNIQUE key</td>
+</tr>
+<tr>
+<td><code>INSERT OR IGNORE</code></td>
+<td>Skips a row that clashes with a key, keeping the first one</td>
+</tr>
+<tr>
+<td><code>sqlite3.connect(":memory:")</code></td>
+<td>Opens a database that exists only in memory</td>
+</tr>
+<tr>
+<td><code>con.execute(sql, params)</code></td>
+<td>Runs one statement with <code>?</code> placeholders filled from a tuple</td>
+</tr>
+<tr>
+<td><code>con.executemany(sql, rows)</code></td>
+<td>Runs one statement for each tuple in a list</td>
+</tr>
+<tr>
+<td><code>con.executescript(text)</code></td>
+<td>Runs every statement in a text file</td>
+</tr>
+<tr>
+<td><code>with con:</code></td>
+<td>One transaction: commit on success, roll back on an exception</td>
+</tr>
+<tr>
+<td><code>IntegrityError</code></td>
+<td>Exception raised when a constraint fails</td>
+</tr>
+<tr>
+<td><code>fetchone()</code> / <code>fetchall()</code></td>
+<td>One row as a tuple, or all rows as a list of tuples</td>
+</tr>
+<tr>
+<td><code>COUNT(*)</code>, <code>DISTINCT</code>, <code>GROUP BY</code>, <code>ORDER BY ... DESC</code></td>
+<td>Count rows, remove repeats, group, sort</td>
+</tr>
+<tr>
+<td><code>LEFT JOIN ... WHERE x IS NULL</code></td>
+<td>Finds rows in one table with no match in the other (orphans)</td>
+</tr>
+<tr>
+<td><code>\copy t from 'f.csv' csv header</code></td>
+<td>Postgres bulk load from the client, skipping the header line</td>
+</tr>
+<tr>
+<td><code>COPY</code></td>
+<td>Postgres bulk load read on the server</td>
+</tr>
+<tr>
+<td><code>psql -h host -U user -d db -f file.sql</code></td>
+<td>Runs a SQL file against Postgres</td>
+</tr>
+<tr>
+<td><code>.read file.sql</code>, <code>.tables</code>, <code>.schema t</code></td>
+<td>SQLite shell: run a file, list tables, show a table's definition</td>
+</tr>
+<tr>
+<td><code>.mode csv</code>, <code>.import --skip 1 f t</code></td>
+<td>SQLite shell: read CSV into a table, skipping the header</td>
+</tr>
+<tr>
+<td><code>sqlite3 -header -column db</code></td>
+<td>SQLite shell output with column names, aligned</td>
+</tr>
+<tr>
+<td><code>head -1 f.csv</code>, <code>wc -l &lt; f.csv</code></td>
+<td>Show the header line; count lines</td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>Lists running containers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;grain&quot;, &quot;a&quot;: &quot;The sentence that says what one row means. It decides the natural key.&quot;}, {&quot;q&quot;: &quot;natural key&quot;, &quot;a&quot;: &quot;A key made from real-world facts, such as station, timestamp and pollutant.&quot;}, {&quot;q&quot;: &quot;surrogate key&quot;, &quot;a&quot;: &quot;A number the database creates for a row, such as fact_id.&quot;}, {&quot;q&quot;: &quot;foreign key&quot;, &quot;a&quot;: &quot;A column whose value must exist in another table&#x27;s key.&quot;}, {&quot;q&quot;: &quot;PRAGMA foreign_keys = ON&quot;, &quot;a&quot;: &quot;Turns on foreign-key checks for one SQLite connection. It is off by default.&quot;}, {&quot;q&quot;: &quot;upsert&quot;, &quot;a&quot;: &quot;An insert that becomes an update when the key already exists.&quot;}, {&quot;q&quot;: &quot;idempotent&quot;, &quot;a&quot;: &quot;Running it again leaves the same result as running it once.&quot;}, {&quot;q&quot;: &quot;CHECK constraint with NULL&quot;, &quot;a&quot;: &quot;A NULL passes, because the expression is unknown, not false.&quot;}, {&quot;q&quot;: &quot;transaction&quot;, &quot;a&quot;: &quot;A group of changes that commits together or rolls back together.&quot;}, {&quot;q&quot;: &quot;\\copy vs COPY&quot;, &quot;a&quot;: &quot;\\copy reads the file on your computer through psql. COPY reads the file on the server.&quot;}, {&quot;q&quot;: &quot;orphan row&quot;, &quot;a&quot;: &quot;A child row whose parent key does not exist. Found with LEFT JOIN and IS NULL.&quot;}, {&quot;q&quot;: &quot;ON CONFLICT target&quot;, &quot;a&quot;: &quot;The columns named after ON CONFLICT. They must match a UNIQUE constraint exactly.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D08.html"><small>Previous</small>Day 8 — Data wrangling with pandas and Parquet</a><a class="nx" href="D10.html"><small>Next</small>Day 10 — Analytical SQL</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

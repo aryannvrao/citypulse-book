@@ -1,0 +1,1547 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T17–T19: IAM, S3 and a hardened VM · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K06" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a class="cur" href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T17–T19: IAM, S3 and a hardened VM</h1><p class="sub">3 tickets, 11 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">67 min read · practice quiz · 9 animations</p><video class="vid" controls preload="metadata" src="videos/K06.mp4?v=1794965392"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t17-create-least-privilege-iam-identity-for-citypulse-pipeline">Y2-T17 · Create least-privilege IAM identity for citypulse-pipeline</a></li><li><a href="#y2-t18-upload-clean-parquet-to-date-partitioned-private-bucket">Y2-T18 · Upload clean parquet to date-partitioned private bucket</a></li><li><a href="#y2-t19-run-pipeline-on-hardened-vm-writing-to-bucket-via-instance-role">Y2-T19 · Run pipeline on hardened VM writing to bucket via instance role</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t17-create-least-privilege-iam-identity-for-citypulse-pipeline">Y2-T17</a></td>
+<td>17</td>
+<td>3</td>
+<td>Create least-privilege IAM identity for citypulse-pipeline</td>
+</tr>
+<tr>
+<td><a href="#y2-t18-upload-clean-parquet-to-date-partitioned-private-bucket">Y2-T18</a></td>
+<td>18</td>
+<td>3</td>
+<td>Upload clean parquet to date-partitioned private bucket</td>
+</tr>
+<tr>
+<td><a href="#y2-t19-run-pipeline-on-hardened-vm-writing-to-bucket-via-instance-role">Y2-T19</a></td>
+<td>19</td>
+<td>5</td>
+<td>Run pipeline on hardened VM writing to bucket via instance role</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t17-create-least-privilege-iam-identity-for-citypulse-pipeline">Y2-T17 · Create least-privilege IAM identity for citypulse-pipeline</h2>
+<p><em>Session 17 · phase M4 · 3 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>CityPulse is the Bengaluru city-data platform your squad is building. It already runs from start to finish on the lab machine, and it passed the defence in Y2-T16. Before any of its data leaves the lab, the client's security reviewer sets one condition: the pipeline must never run as an admin.</p>
+<p>The reason is a well-known breach. In 2019 an attacker used cloud credentials that had far more power than the application needed, and reached data well beyond that application's job. The lesson is simple: a stolen key is only as dangerous as the things it is allowed to do.</p>
+<p>So this ticket asks you to create a separate identity called <code>citypulse-pipeline</code>. An identity is who a request claims to be. It may read and write its own folders (prefixes) inside one storage bucket, and nothing else. A test script then tries six actions: two must succeed and four must be refused.</p>
+<p>Later labs reuse this identity, so a loose policy spreads its risk everywhere.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>The earlier tickets must be merged or completed first (Y2-T14 to Y2-T16). Y2-T15 gives you a pipeline that runs fetch, clean, load and data-quality stages. Y2-T16 gives you the defence, the tag <code>v0.3.0</code>, and a cloud account with root MFA, a budget alarm, an IAM admin user and a CLI admin profile. The squad repository needs a protected <code>main</code> branch and a <code>shellcheck</code> CI check. Without the Y2-T16 gate you may not start.</p>
+<p>You need Git for Windows (Git Bash), AWS CLI version 2, gitleaks, shellcheck and Python 3. Run commands in Git Bash from the squad repository root. On Windows, Python is often called <code>python</code>, not <code>python3</code>. Check each tool:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git fetch --tags &amp;&amp; git tag --list v0.3.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;v0.3.0&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws --version&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;aws-cli/2.x.x Python/3.x.x ...&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity --profile asha-admin --query Arn --output text&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;arn:aws:iam::123456789012:user/asha-admin&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gitleaks version&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;v8.x.x&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;shellcheck --version&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;version: 0.x.x&quot;}]}"></div>
+
+<p>The ARN must end in <code>:user/</code> and your admin user name. If it ends in <code>:root</code>, stop, because you are using the root account.</p>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Squad repository</td>
+<td>The shared Git repository your team of about five students works in.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A separate line of work in Git, so changes can be reviewed before they reach <code>main</code>.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge your branch into <code>main</code>, reviewed by a squad-mate first.</td>
+</tr>
+<tr>
+<td>CI (continuous integration)</td>
+<td>Automatic checks that run on every pull request, such as shellcheck.</td>
+</tr>
+<tr>
+<td>shellcheck</td>
+<td>A tool that finds mistakes in Bash scripts.</td>
+</tr>
+<tr>
+<td>gitleaks</td>
+<td>A tool that searches files and Git history for secrets such as access keys.</td>
+</tr>
+<tr>
+<td>Secret</td>
+<td>A value that proves who you are, such as a password or access key.</td>
+</tr>
+<tr>
+<td>Access key</td>
+<td>An ID and a secret string that let a program sign AWS requests.</td>
+</tr>
+<tr>
+<td>AKIA</td>
+<td>The start of every long-lived AWS access key ID. The gitleaks check looks for it.</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management: AWS's rules for who may do what.</td>
+</tr>
+<tr>
+<td>User (IAM)</td>
+<td>A long-lived identity for a person or a script.</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>A JSON document that lists what an identity may or may not do.</td>
+</tr>
+<tr>
+<td>Statement</td>
+<td>One rule inside a policy. A policy has a list of statements.</td>
+</tr>
+<tr>
+<td>Effect</td>
+<td>Whether a statement is <code>Allow</code> or <code>Deny</code>.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>One operation, written as a service and a name, such as <code>s3:PutObject</code>.</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>The thing an action applies to, written as an ARN.</td>
+</tr>
+<tr>
+<td>ARN</td>
+<td>Amazon Resource Name: the unique address of an AWS resource.</td>
+</tr>
+<tr>
+<td>Wildcard</td>
+<td>A <code>*</code> that stands for any text. Forbidden in this ticket.</td>
+</tr>
+<tr>
+<td>Least privilege</td>
+<td>Granting only the actions and resources a job really needs.</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>A named container for files in S3, AWS's storage service. Its name is unique worldwide.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>A stored file in a bucket.</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>The folder-like start of an object's name, such as <code>raw/</code>. S3 has no real folders.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>A named set of credentials and settings in the AWS CLI, such as <code>citypulse-pipeline</code>.</td>
+</tr>
+<tr>
+<td>AccessDenied</td>
+<td>The error AWS returns when a policy does not allow a call.</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>An extra test inside a statement, such as "the prefix must start with <code>raw/</code>".</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>A geographic area of AWS. This ticket uses <code>ap-south-1</code> (Mumbai).</td>
+</tr>
+<tr>
+<td>MFA</td>
+<td>Multi-factor authentication: a second sign-in proof, such as an authenticator code.</td>
+</tr>
+<tr>
+<td>CloudTrail</td>
+<td>AWS's log of API calls, with who made each call and what happened.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a command returns when it ends. 0 usually means success.</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>A command that prints the lines of a file or folder that match a pattern.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p>The trainer checks six acceptance criteria and five test cases. Know each one before the session.</p>
+<ul>
+<li><strong>AC1, no wildcards.</strong> Checked by TC1.</li>
+<li><strong>AC2, six-case matrix.</strong> Checked by TC2.</li>
+<li><strong>AC3, explain the policy.</strong> The trainer points at any line, and you say what it permits and what breaks without it.</li>
+<li><strong>AC4, no secrets.</strong> Checked by TC4, and no string matches <code>AKIA[0-9A-Z]{16}</code>.</li>
+<li><strong>AC5, README rows.</strong> One row per <code>Action</code> in the policy, each with a reason.</li>
+<li><strong>AC6, evidence.</strong> <code>docs/evidence/&lt;name&gt;/</code> holds one allowed and one AccessDenied screenshot, each with the command and a timestamp.</li>
+</ul>
+<p><strong>TC1: no wildcards.</strong> The trainer runs <code>grep -rnE '"(\*|s3:\*)"' infra/iam/</code> in the squad repository.</p>
+<ul>
+<li><code>grep</code> prints the lines that match a pattern.</li>
+<li><code>-r</code> searches folders recursively, <code>-n</code> shows line numbers, and <code>-E</code> makes <code>|</code> mean "or".</li>
+<li><code>'"(\*|s3:\*)"'</code> matches a double quote, then <code>*</code> or <code>s3:*</code>, then a double quote. The backslash makes the star literal.</li>
+</ul>
+<p>Passing output is nothing at all. grep exits with code 1 when it finds no match. Check it with <code>echo $?</code> straight after:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;grep -rnE &#x27;\&quot;(\\*|s3:\\*)\&quot;&#x27; infra/iam/&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;1&quot;}]}"></div>
+
+<p>A failing output looks like <code>infra/iam/asha/pipeline-policy.json:14:      "Action": "s3:*",</code>. The cause is a wildcard action or a <code>"Resource": "*"</code> line. Replace it with named actions and an exact ARN. Note that the README is searched too, so do not write <code>"*"</code> in quotes in your README.</p>
+<p><strong>TC2: the six-case matrix.</strong> On screen the trainer runs two commands. The first is <code>aws sts get-caller-identity --profile citypulse-pipeline --query Arn --output text</code>. It must print an ARN ending in <code>:user/citypulse-pipeline</code>. The second is <code>bash infra/iam/test_access.sh citypulse-&lt;name&gt;-&lt;rand4&gt;</code>.</p>
+<ul>
+<li><code>bash</code> runs the script. The argument is your bucket name.</li>
+<li>Passing output is six lines, all starting <code>PASS</code>. The two allow lines are the upload to <code>raw/</code> and the listing of <code>raw/</code>. The four deny lines are the upload to <code>secret/</code>, the <code>delete-object</code>, the <code>aws s3 ls</code> with no bucket, and <code>iam list-users</code>.</li>
+<li>A failing line looks like <code>FAIL want=allow got=deny: aws s3 cp ...</code>, usually a missing statement or a wrong ARN. <code>got=error</code> means a typo in the bucket name, not a policy problem.</li>
+<li>If every line passes but the ARN ends in <code>:user/asha-admin</code>, the test proves nothing. Your terminal was still using the admin profile.</li>
+</ul>
+<p><strong>TC3: a denied upload.</strong> The trainer runs <code>aws s3 cp README.md s3://&lt;bucket&gt;/secret/x.txt --profile citypulse-pipeline</code>.</p>
+<ul>
+<li><code>aws s3 cp</code> copies a file. <code>README.md</code> is the local source.</li>
+<li><code>s3://&lt;bucket&gt;/secret/x.txt</code> is the destination: a bucket, then a key under <code>secret/</code>.</li>
+<li><code>--profile citypulse-pipeline</code> makes the call as the pipeline user.</li>
+<li>Expected: <code>An error occurred (AccessDenied) when calling the PutObject operation</code>.</li>
+<li>If the copy succeeds, your policy allows <code>secret/</code>. Remove that resource. If you see <code>NoSuchBucket</code>, the bucket name is wrong.</li>
+</ul>
+<p><strong>TC4: no secrets in history.</strong> The trainer runs <code>gitleaks detect --source . --log-opts=--all -v</code>.</p>
+<ul>
+<li><code>gitleaks detect</code> scans for secrets.</li>
+<li><code>--source .</code> scans the current folder, which is the repository.</li>
+<li><code>--log-opts=--all</code> passes <code>--all</code> to <code>git log</code>, so every branch and commit is scanned.</li>
+<li><code>-v</code> prints extra detail.</li>
+<li>Passing output ends with <code>no leaks found</code>.</li>
+<li>A failing output reports <code>leaks found</code>. Deleting the file is not enough, because Git history keeps it. Deactivate the key first, then tell your trainer.</li>
+</ul>
+<p><strong>TC5: explain a resource.</strong> The trainer asks why <code>ListBucket</code> uses the bucket ARN but <code>PutObject</code> uses <code>bucket/raw/*</code>. See the viva section below.</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T17.1</td>
+<td>Every student</td>
+<td>Create your bucket and record its name</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T17.2</td>
+<td>Every student</td>
+<td>Write your scoped policy file</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T17.3</td>
+<td>Every student</td>
+<td>Create the policy, the user and the access key</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T17.4</td>
+<td>Every student</td>
+<td>Run the six-case test and take two screenshots</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T17.5</td>
+<td>Every student</td>
+<td>Find your event in CloudTrail and screenshot it</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T17.6</td>
+<td>Data</td>
+<td>Write the README table and the reference policy</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T17.7</td>
+<td>QA/DevOps</td>
+<td>Run the wildcard and secret checks, update <code>.gitignore</code></td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T17.8</td>
+<td>Tech Lead</td>
+<td>Review each policy and merge through a PR</td>
+<td>15 min</td>
+</tr>
+</tbody>
+</table>
+<p>Own your policy file (<code>infra/iam/&lt;name&gt;/pipeline-policy.json</code>) and your evidence folder, because your commits can prove you wrote them. In review, ask a squad-mate one question about their policy line.</p>
+<p>Use the branch name <code>feat/T17-iam-&lt;name&gt;</code>. Example commit messages, in the order you would make them:</p>
+<ol>
+<li><code>chore(iam): record bucket name for T17</code></li>
+<li><code>feat(iam): add scoped pipeline policy</code></li>
+<li><code>feat(iam): add six-case access test script</code></li>
+<li><code>docs(iam): add permission table in README</code></li>
+<li><code>chore: ignore credential exports and .aws folder</code></li>
+<li><code>docs(evidence): add allow and AccessDenied screenshots</code></li>
+</ol>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<h4 id="y2-t171-create-your-bucket">Y2-T17.1: create your bucket</h4>
+<p>Goal: one bucket, named after you, in <code>ap-south-1</code>. Bucket names are lowercase, use letters, digits and hyphens, are 3 to 63 characters long, and are unique across all of AWS.</p>
+<p>Stage 1. Set your name and suffix. Choose four random lowercase letters or digits yourself.</p>
+<div class="hl"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span>asha
+<span class="nv">SUFFIX</span><span class="o">=</span>3m9x
+<span class="nv">BUCKET</span><span class="o">=</span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">-</span><span class="nv">$SUFFIX</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BUCKET</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><code>NAME=asha</code> and <code>SUFFIX=3m9x</code> store values in variables. <code>BUCKET="..."</code> builds the name by inserting both variables. <code>echo</code> prints it. Expect <code>citypulse-asha-3m9x</code>. Use the same value in every later step.</p>
+<p>Stage 2. Create the bucket with the admin profile.</p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>asha-admin<span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-south-1
+aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>--region<span class="w"> </span>ap-south-1
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;docs/evidence/</span><span class="nv">$NAME</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;docs/evidence/</span><span class="nv">$NAME</span><span class="s2">/bucket.txt&quot;</span>
+</code></pre></div>
+
+<p><code>aws s3 mb</code> makes a bucket (<code>mb</code> means make bucket). <code>&gt;</code> writes the name into a file. Expect <code>make_bucket: citypulse-asha-3m9x</code>.</p>
+<p>Test: <code>aws s3 ls | grep "$BUCKET"</code> prints the bucket name.</p>
+<h4 id="y2-t172-write-the-scoped-policy">Y2-T17.2: write the scoped policy</h4>
+<p>Goal: a JSON file, <code>infra/iam/&lt;name&gt;/pipeline-policy.json</code>, that names your bucket only. Build it in stages.</p>
+<p>Stage 1. Create the folder, then the file with this outer shape. Leave the list empty for now.</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;infra/iam/</span><span class="nv">$NAME</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><code>"Version": "2012-10-17"</code> is the fixed version string of the policy language. Copy it exactly. <code>"Statement"</code> is the list of rules. Each rule is one object in that list, and objects are separated by commas.</p>
+<p>Stage 2. Add the listing statement inside the square brackets. Replace <code>BUCKET</code> with your bucket name.</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListRawPrefix&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::BUCKET&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;StringLike&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;s3:prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;raw/*&quot;</span><span class="p">]}}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><code>Sid</code> is a label you choose. <code>Action</code> lists names in the bucket. <code>Resource</code> is the bucket itself, with no slash. <code>Condition</code> allows the listing only when the prefix matches <code>raw/*</code>. That asterisk is a pattern for the prefix value, not a wildcard action.</p>
+<p>Stage 3. Add the object statement. Add a comma after the first statement, then this object.</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WriteReadRawObjects&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::BUCKET/raw/*&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><code>PutObject</code> uploads a file and <code>GetObject</code> reads one. Both act on objects, so the resource is the bucket, then <code>/raw/</code>, then <code>/*</code>.</p>
+<p>Stage 4. Validate the JSON, then check for forbidden text.</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>json.tool<span class="w"> </span><span class="s2">&quot;infra/iam/</span><span class="nv">$NAME</span><span class="s2">/pipeline-policy.json&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;JSON OK&quot;</span>
+grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;&quot;\*&quot;|s3:\*&#39;</span><span class="w"> </span><span class="s2">&quot;infra/iam/</span><span class="nv">$NAME</span><span class="s2">/pipeline-policy.json&quot;</span>
+</code></pre></div>
+
+<p><code>json.tool</code> stops with an error if the JSON is broken. <code>&amp;&amp; echo</code> prints <code>JSON OK</code> only when it passed. Use <code>python</code> on Windows if needed. The <code>grep</code> must print nothing.</p>
+<h4 id="y2-t173-create-the-policy-the-user-and-the-access-key">Y2-T17.3: create the policy, the user and the access key</h4>
+<p>Goal: the pipeline user has your policy and one access key, stored only in its profile.</p>
+<p>Stage 1. Create the policy from the file. Run this from the repository root, so the relative <code>file://</code> path works in Git Bash. Use the admin profile: run <code>export AWS_PROFILE=asha-admin</code> first if this is a new terminal, because the pipeline user cannot create policies.</p>
+<div class="hl"><pre><span></span><code><span class="nv">ACCT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span>--policy-name<span class="w"> </span>citypulse-pipeline-s3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy-document<span class="w"> </span><span class="s2">&quot;file://infra/iam/</span><span class="nv">$NAME</span><span class="s2">/pipeline-policy.json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span>Policy.Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><code>ACCT=$(...)</code> stores your account number. <code>--policy-document file://...</code> reads your file. The output is the policy ARN. If you see <code>EntityAlreadyExists</code>, the name is taken: reuse that ARN and ask your trainer before you delete anything.</p>
+<p>Stage 2. Create the user and attach the policy.</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>iam<span class="w"> </span>attach-user-policy<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="nv">$ACCT</span><span class="s2">:policy/citypulse-pipeline-s3&quot;</span>
+</code></pre></div>
+
+<p><code>create-user</code> makes the user. <code>attach-user-policy</code> connects the policy to it. The attach command prints nothing when it succeeds.</p>
+<p>Stage 3. Create the access key and store it. Copy the <code>AccessKeyId</code> and <code>SecretAccessKey</code> straight into the prompts. Do not save the output to a file.</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p>The secret is shown only once. <code>aws configure --profile</code> stores keys outside the repository. Set the region to <code>ap-south-1</code>. The final line must end in <code>:user/citypulse-pipeline</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Keys in the repository</div><p>Never write the access key into a file, a README, a screenshot or a commit. gitleaks will find it, and the ticket fails.</p></div>
+
+<h4 id="y2-t174-run-the-six-case-test">Y2-T17.4: run the six-case test</h4>
+<p>Goal: six lines of PASS, plus two screenshots.</p>
+<p>Stage 1. The script starts with three lines.</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span><span class="w"> </span>-uo<span class="w"> </span>pipefail
+<span class="nv">B</span><span class="o">=</span><span class="nv">$1</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-south-1
+</code></pre></div>
+
+<p>The first line tells the system to use Bash. <code>set -uo pipefail</code> makes Bash stop on unset variables (<code>-u</code>) and on failures inside a pipeline (<code>pipefail</code>). Do not add <code>-e</code>, because a failing command is exactly what the test expects. <code>B=$1</code> stores the bucket name passed as the first argument. <code>export</code> makes the profile apply to every <code>aws</code> call in the script.</p>
+<p>Stage 2. Add a checking function. This is the technique: run one command, capture its output, and decide the result.</p>
+<div class="hl"><pre><span></span><code>check<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">want</span><span class="o">=</span><span class="nv">$1</span><span class="w"> </span>out<span class="w"> </span>got
+<span class="w">  </span><span class="nb">shift</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nv">out</span><span class="o">=</span><span class="k">$(</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">got</span><span class="o">=</span>allow
+<span class="w">  </span><span class="k">elif</span><span class="w"> </span>grep<span class="w"> </span>-qE<span class="w"> </span><span class="s1">&#39;AccessDenied|not authorized&#39;</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;</span><span class="nv">$out</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">got</span><span class="o">=</span>deny
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="nv">got</span><span class="o">=</span>error
+<span class="w">  </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$got</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$want</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PASS </span><span class="nv">$want</span><span class="s2">: </span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;FAIL want=</span><span class="nv">$want</span><span class="s2"> got=</span><span class="nv">$got</span><span class="s2">: </span><span class="nv">$*</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><code>local</code> keeps variables private to the function. <code>shift</code> removes the first argument, so <code>"$@"</code> holds only the command. <code>$(...)</code> captures the output, and <code>2&gt;&amp;1</code> adds error text to it. Only an AccessDenied message counts as <code>deny</code>, so a typo cannot pass as a denial.</p>
+<p>Stage 3. Add the first two checks. Write <code>echo probe &gt; /tmp/probe.txt</code> once before them.</p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>probe<span class="w"> </span>&gt;<span class="w"> </span>/tmp/probe.txt
+check<span class="w"> </span>allow<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>/tmp/probe.txt<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/raw/probe.txt&quot;</span>
+check<span class="w"> </span>allow<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="s2">&quot;s3://</span><span class="nv">$B</span><span class="s2">/raw/&quot;</span>
+</code></pre></div>
+
+<p>Each line gives the wanted result first. Write the four deny lines yourself, with <code>deny</code> first:</p>
+<ul>
+<li>an upload to <code>secret/</code> with <code>aws s3 cp</code></li>
+<li>a <code>delete-object</code> with <code>aws s3api delete-object --bucket "$B" --key raw/probe.txt</code></li>
+<li>a listing with <code>aws s3 ls</code> and no bucket name</li>
+<li><code>aws iam list-users</code></li>
+</ul>
+<p>Save the file as <code>infra/iam/test_access.sh</code>, then run <code>shellcheck infra/iam/test_access.sh</code>. It must print nothing, because CI runs the same check.</p>
+<p>Stage 4. Run it. <code>date</code> prints a timestamp for your screenshots.</p>
+<div class="hl"><pre><span></span><code>date
+bash<span class="w"> </span>infra/iam/test_access.sh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BUCKET</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Expect six lines starting <code>PASS</code>. Screenshot one allowed and one AccessDenied line, with the command and timestamp visible.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One denied case in the test&quot;, &quot;nodes&quot;: [&quot;test_access.sh&quot;, &quot;AWS CLI&quot;, &quot;AWS IAM&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;aws s3 cp to secret/&quot;, &quot;note&quot;: &quot;check() runs the command as the citypulse-pipeline profile.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;signed PutObject request&quot;, &quot;note&quot;: &quot;The CLI signs the call with the pipeline user&#x27;s key.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;AccessDenied&quot;, &quot;note&quot;: &quot;No Allow statement covers secret/, so IAM refuses.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;error text&quot;, &quot;note&quot;: &quot;The script finds AccessDenied in the output, sets got=deny and prints PASS deny.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Testing as admin</div><p>If <code>AWS_PROFILE</code> is still set to <code>asha-admin</code>, every case passes and the result means nothing. Run the <code>get-caller-identity</code> check from Y2-T17.3 before the test.</p></div>
+
+<h4 id="y2-t175-find-the-event-in-cloudtrail">Y2-T17.5: find the event in CloudTrail</h4>
+<p>Goal: one screenshot of a call made by your pipeline user.</p>
+<p>CloudTrail records API calls with the identity that made them. Run this with the admin profile:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>cloudtrail<span class="w"> </span>lookup-events<span class="w"> </span>--lookup-attributes<span class="w"> </span><span class="nv">AttributeKey</span><span class="o">=</span>Username,AttributeValue<span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-results<span class="w"> </span><span class="m">10</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Events[].[EventTime,EventName]&#39;</span><span class="w"> </span>--output<span class="w"> </span>table
+</code></pre></div>
+
+<p><code>AttributeKey=Username</code> filters by user name. Events can take several minutes to appear. Object uploads (<code>PutObject</code>) are data events, which event history often does not show. If yours is missing, note that and screenshot a management event instead, such as the denied <code>ListUsers</code> call. The ticket allows this.</p>
+<h4 id="y2-t176-write-the-readme-table-and-the-reference-policy">Y2-T17.6: write the README table and the reference policy</h4>
+<p>Goal: <code>infra/iam/README.md</code> with one row per action, and a reference copy of the policy.</p>
+<p>Write a table with three columns: the action, the resource, and one sentence on why the pipeline needs it. The header is:</p>
+<div class="hl"><pre><span></span><code>| Action | Resource | Why the pipeline needs it |
+</code></pre></div>
+
+<p>Add exactly one row per <code>Action</code> in your policy. Your policy has three actions, so the table has three rows. Write each reason in your own words. Do not write <code>"*"</code> in quotes anywhere in this file.</p>
+<p>Then copy the reviewed policy as the reference version:</p>
+<div class="hl"><pre><span></span><code>cp<span class="w"> </span><span class="s2">&quot;infra/iam/</span><span class="nv">$NAME</span><span class="s2">/pipeline-policy.json&quot;</span><span class="w"> </span>infra/iam/pipeline-policy.json
+</code></pre></div>
+
+<p><code>cp</code> copies your file to the squad reference path.</p>
+<h4 id="y2-t177-run-the-team-checks-and-update-gitignore">Y2-T17.7: run the team checks and update .gitignore</h4>
+<p>Goal: both checks print nothing, and the ignore rules cover credential files.</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-rn<span class="w"> </span><span class="s1">&#39;&quot;\*&quot;&#39;</span><span class="w"> </span>infra/iam/
+gitleaks<span class="w"> </span>detect<span class="w"> </span>--source<span class="w"> </span>.<span class="w"> </span>--log-opts<span class="o">=</span>--all
+<span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s\n&#39;</span><span class="w"> </span><span class="s1">&#39;*.csv&#39;</span><span class="w"> </span><span class="s1">&#39;.aws/&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>ls-files<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;\.csv$|\.aws/&#39;</span>
+</code></pre></div>
+
+<p><code>gitleaks detect</code> scans the history. <code>printf '%s\n'</code> prints each argument on its own line, and <code>&gt;&gt;</code> appends them to <code>.gitignore</code>. The final <code>git ls-files</code> must print nothing, because <code>.gitignore</code> does not hide files Git already tracks.</p>
+<h4 id="y2-t178-review-and-merge">Y2-T17.8: review and merge</h4>
+<p>Goal: a reviewed PR with one approval and green CI. Push your branch and open the PR. A squad-mate picks one line and asks, "why does it need this action?" Nobody merges their own PR. <code>gh pr checks</code> shows whether CI passed.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>Run TC1 to TC4 yourself, in order, from a clean terminal, and save each output into <code>docs/evidence/&lt;name&gt;/</code>. Never save the access key.</p>
+<p>Write the PR description with these headings, in your own words:</p>
+<ul>
+<li><strong>What:</strong> the policy and the test script.</li>
+<li><strong>Why:</strong> the reviewer's condition.</li>
+<li><strong>How to test:</strong> the exact commands, in order.</li>
+<li><strong>Evidence:</strong> the six PASS lines, the <code>grep</code> and <code>gitleaks</code> output, and your two screenshots.</li>
+<li><strong>Checklist:</strong> the definition of done below, ticked.</li>
+</ul>
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] <code>infra/iam/&lt;name&gt;/pipeline-policy.json</code>, <code>infra/iam/pipeline-policy.json</code>, <code>infra/iam/README.md</code> and <code>infra/iam/test_access.sh</code> are merged to <code>main</code> through a reviewed PR. You know it when <code>git log --oneline main</code> shows the merge and the PR shows one approval.</li>
+<li>[ ] Zero wildcards in any policy file. You know it when <code>grep -rnE '"(\*|s3:\*)"' infra/iam/</code> prints nothing.</li>
+<li>[ ] The test matrix shows 6/6 PASS, with screenshots in <code>docs/evidence/&lt;name&gt;/</code>. You know it when the two screenshots show the command and a timestamp.</li>
+<li>[ ] gitleaks is clean on full history, and no access key appears in any file or commit. You know it when <code>gitleaks detect --source . --log-opts=--all -v</code> says <code>no leaks found</code>.</li>
+<li>[ ] Evidence links are posted in the LMS T17 field by 23:59 on the same day. You know it when the link appears in your LMS entry.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All six lines PASS, but the ARN ends in <code>:user/asha-admin</code></td>
+<td><code>AWS_PROFILE</code> still points at the admin profile</td>
+<td>Run <code>export AWS_PROFILE=citypulse-pipeline</code>, check the ARN, then rerun the test</td>
+</tr>
+<tr>
+<td><code>FAIL want=allow got=deny</code> on the <code>raw/</code> upload</td>
+<td>Missing <code>PutObject</code> or a wrong ARN such as <code>bucket/raw</code> without <code>/*</code></td>
+<td>Compare the object statement with Stage 3 and fix the resource</td>
+</tr>
+<tr>
+<td><code>FAIL want=allow got=deny</code> on <code>ls raw/</code></td>
+<td>The <code>ListBucket</code> resource has a slash, or the condition prefix is missing</td>
+<td>Use the bucket ARN with no slash, and keep the <code>StringLike</code> condition</td>
+</tr>
+<tr>
+<td><code>got=error</code> on every line</td>
+<td>Bucket name typo, or the argument is missing</td>
+<td>Pass the exact name from <code>docs/evidence/&lt;name&gt;/bucket.txt</code></td>
+</tr>
+<tr>
+<td>grep shows <code>"s3:*"</code> or <code>"Resource": "*"</code></td>
+<td>A wildcard was written while building the policy</td>
+<td>Replace it with the named actions and the exact bucket ARN</td>
+</tr>
+<tr>
+<td>gitleaks reports a leak</td>
+<td>An access key was pasted into a file and committed</td>
+<td>Deactivate the key in IAM, tell your trainer, and do not commit the key again</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p>Each model answer below explains the reasoning. Give your answers in your own words, using your own policy lines.</p>
+<p><strong>Question 1 (why): Why must the pipeline run as its own user and not as the admin?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A leaked admin key gives an attacker the whole account. A separate user with one bucket limits the damage to that bucket.</p></details>
+
+<p><strong>Question 2 (trade-off): Your policy allows <code>GetObject</code> as well as <code>PutObject</code>. What do you gain and what do you risk?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The pipeline reads its own raw files back, so it can check what it uploaded. The risk is that a leaked key can also read everything under the granted prefixes. The trade-off is acceptable here only because the prefixes are limited to the pipeline's own data.</p></details>
+
+<p><strong>Question 3 (technique): Why does <code>ListBucket</code> use the bucket ARN but <code>PutObject</code> uses <code>bucket/raw/*</code>?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>ListBucket</code> acts on the bucket itself, so its resource has no slash. <code>PutObject</code> and <code>GetObject</code> act on objects inside it, so their resource names the object path and ends in <code>/*</code>.</p></details>
+
+<p><strong>Question 4 (what you did): Walk me through one statement you wrote. What breaks if you remove it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the statement, its actions and its resource, then say what fails without it. Removing the listing statement makes <code>aws s3 ls s3://bucket/raw/</code> return AccessDenied. Match your answer to your own file.</p></details>
+
+<p><strong>Question 5 (why a deny test): Why is a denied case as important as an allowed case?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A policy that shows only its allows has not been tested for what it blocks. The deny cases prove that an upload to <code>secret/</code> is refused.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The wildcard grep prints nothing. What does its exit code of 1 mean?&quot;, &quot;opts&quot;: [&quot;grep found no matching line, which is the result the trainer wants&quot;, &quot;grep found a wildcard in the policy&quot;, &quot;The policy file is missing from the repository&quot;, &quot;The policy is valid JSON and has no errors&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;grep returns 1 when no line matches, so here 1 is the pass. The tempting wrong answer is the second option, because people assume a non-zero exit code always means a problem.&quot;}, {&quot;q&quot;: &quot;Which resource is correct for a statement that uploads objects under raw/ in bucket citypulse-asha-3m9x?&quot;, &quot;opts&quot;: [&quot;arn:aws:s3:::citypulse-asha-3m9x&quot;, &quot;arn:aws:s3:::citypulse-asha-3m9x/raw&quot;, &quot;arn:aws:s3:::citypulse-asha-3m9x/raw/*&quot;, &quot;arn:aws:s3:::citypulse-asha-3m9x/*&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;PutObject acts on objects, so the resource is the bucket, a slash, the prefix and /*. The tempting wrong answer is the last option, which grants the whole bucket instead of raw/.&quot;}, {&quot;q&quot;: &quot;Where should the access key from create-access-key be stored?&quot;, &quot;opts&quot;: [&quot;In infra/iam/README.md, so the squad can reuse it&quot;, &quot;In a .env file in the repository root&quot;, &quot;In the PR description as evidence that the key works&quot;, &quot;Only in the profile created by aws configure --profile citypulse-pipeline&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The key belongs only in the local AWS profile. The tempting wrong answer is the .env file, because it looks private, but it is still a file on disk and a common route into a commit.&quot;}]}"></div>
+
+<h2 id="y2-t18-upload-clean-parquet-to-date-partitioned-private-bucket">Y2-T18 · Upload clean parquet to date-partitioned private bucket</h2>
+<p><em>Session 18 · phase M4 · 3 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>CityPulse is the course's Bengaluru city-data platform. Its clean air-quality data sits only on the lab disk. This ticket moves it into cloud object storage, where you store whole files under names and read them over the internet. The course uses Amazon S3 for this.</p>
+<p>Cloud storage can leak. A public bucket is a container that anyone on the internet can open. Leaks in the news usually come from someone who left a bucket open and never checked. This ticket asks for the opposite: a private bucket that refuses anonymous readers, encryption on every file, and versioning, which keeps an older copy when a file is overwritten, so a bad upload can be undone.</p>
+<p>Each file goes under a key that contains its date, such as <code>clean/aqi/date=2026-12-17/aq_clean.parquet</code>. A dashboard can then read one day without reading the rest.</p>
+<p>Finally, two roles stay separate. An admin profile sets the bucket's safety settings. Your upload script uses the <code>citypulse-pipeline</code> identity from T17, which can write files but cannot change the bucket. The script must never contain a key or a profile name.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p>These must already be merged into the squad's main branch: Y2-T15 (the pipeline runs with data-quality checks), Y2-T16 (the defence is tagged <code>v0.3.0</code>), Y2-T17 (the <code>citypulse-pipeline</code> user and policy pass six access tests, with no wildcards), and T12 (<code>src/citypulse/clean.py</code> writes <code>data/clean/aq_clean.parquet</code>).</p>
+<p>You need Git Bash, the AWS command-line tool (<code>aws</code>), Python 3, and the two profiles from T17. Install the libraries with <code>pip install boto3 pytest</code>. Run commands in Git Bash from the repository root. The lab machine is Linux, and the same commands work there.</p>
+<p>Check that you are ready:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws sts get-caller-identity --profile citypulse-pipeline&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;{&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;UserId\&quot;: \&quot;AIDAEXAMPLE1234\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Account\&quot;: \&quot;123456789012\&quot;,&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;    \&quot;Arn\&quot;: \&quot;arn:aws:iam::123456789012:user/citypulse-pipeline\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;}&quot;}]}"></div>
+
+<p>You are ready when the <code>Arn</code> ends with <code>user/citypulse-pipeline</code>. Run the same command with your admin profile. Its <code>Arn</code> must name your admin user. Then run <code>python -c "import boto3, pytest; print('ready')"</code>. It must print <code>ready</code>, and if it prints <code>ModuleNotFoundError</code>, run the <code>pip</code> command again. Also run <code>ls -l data/clean/aq_clean.parquet</code>, which must list a file with a non-zero size. The bucket follows the pattern <code>citypulse-&lt;name&gt;-&lt;rand4&gt;</code>, where you write your own name and four random characters, all lowercase. The ticket lists the bucket as a prerequisite, so ask your trainer before creating one.</p>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS</td>
+<td>Amazon Web Services, a company that rents computers and storage over the internet.</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>A named container in S3 whose name is unique across AWS.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>One stored file, plus its details such as size.</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>The full name of an object in a bucket, such as <code>clean/aqi/date=2026-12-17/aq_clean.parquet</code>.</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>The start of a key. A listing of a prefix returns only the keys that begin with it.</td>
+</tr>
+<tr>
+<td>Partition</td>
+<td>A split of data by a value that readers filter on. Here it is the date.</td>
+</tr>
+<tr>
+<td>ISO date</td>
+<td>A date written year, month, day with leading zeros, such as <code>2026-12-17</code>.</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>A document of allow and deny rules for an identity.</td>
+</tr>
+<tr>
+<td>ACL</td>
+<td>Access control list, an older per-object permission list that can make one object public.</td>
+</tr>
+<tr>
+<td>Wildcard</td>
+<td>A <code>*</code> in a policy that matches many things at once. It is forbidden here.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>A named set of credentials kept on your computer, such as <code>citypulse-pipeline</code>.</td>
+</tr>
+<tr>
+<td>Environment variable</td>
+<td>A named setting passed to programs the shell starts, such as <code>AWS_PROFILE</code>.</td>
+</tr>
+<tr>
+<td><code>CITYPULSE_BUCKET</code></td>
+<td>The environment variable that holds the bucket name your script reads.</td>
+</tr>
+<tr>
+<td>Versioning</td>
+<td>A bucket setting that keeps the old copy of an overwritten file.</td>
+</tr>
+<tr>
+<td>Block Public Access</td>
+<td>Four switches that stop any ACL or policy from making a bucket public.</td>
+</tr>
+<tr>
+<td>Default encryption</td>
+<td>A setting that encrypts each new object on disk with AES256.</td>
+</tr>
+<tr>
+<td>Lifecycle rule</td>
+<td>A bucket rule that changes or expires objects after a number of days.</td>
+</tr>
+<tr>
+<td>Anonymous request</td>
+<td>A request sent with no credentials.</td>
+</tr>
+<tr>
+<td>HTTP status code</td>
+<td>A three-digit web reply. 403 means refused, 404 means not found.</td>
+</tr>
+<tr>
+<td><code>AccessDenied</code></td>
+<td>The AWS error for a request the caller may not make.</td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>A command that sends an HTTP request from the terminal.</td>
+</tr>
+<tr>
+<td>boto3</td>
+<td>The AWS library for Python.</td>
+</tr>
+<tr>
+<td><code>ClientError</code></td>
+<td>The exception boto3 raises when AWS refuses a call.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a program returns to the shell. 0 means success.</td>
+</tr>
+<tr>
+<td>Pure function</td>
+<td>A function whose result depends only on its inputs.</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>The Python test runner, which runs functions named <code>test_</code>.</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Continuous integration, which runs your tests on each pull request.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge your branch into <code>main</code>, after review.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>The trainer checks six acceptance criteria. Five of them are covered by the test cases below. The sixth is the repository check, which you run in Git Bash from the repository root:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;AKIA|secret|profile&#39;</span><span class="w"> </span>src/citypulse/upload.py<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</code></pre></div>
+
+<p><code>grep</code> searches for a pattern. The final <code>1</code> means no match, which is the pass. The word <code>profile</code> also matches a comment, so keep it out of comments and docstrings in <code>upload.py</code> too. Then compare the policy with <code>main</code>: <code>git diff main -- &lt;path-to-the-T17-policy-file&gt;</code>. The second criterion, that the upload still works with the admin profile unset, is proved in T18.4: you <code>unset AWS_PROFILE</code>, use only <code>citypulse-pipeline</code>, and the upload still succeeds. The fifth, that <code>T18-ls.txt</code> lists at least two <code>date=</code> prefixes, is the listing in TC2.</p>
+<p><strong>TC1: anonymous access is refused.</strong> The trainer runs <code>curl -I &lt;object-url&gt;</code> in an incognito window. <code>curl</code> sends an HTTP request, and <code>-I</code> asks only for the headers. A pass starts with <code>HTTP/1.1 403 Forbidden</code>. A <code>200 OK</code> means the object is public, usually because a Block Public Access flag is false. A <code>404</code> is not a pass, because it only means the key is wrong.</p>
+<p><strong>TC2: the upload works, and the listing shows two dates.</strong> The student runs <code>AWS_PROFILE=citypulse-pipeline python -m citypulse.upload --src data/clean/aq_clean.parquet --date 2026-12-17</code>. <code>AWS_PROFILE=...</code> sets the profile for this one command. <code>python -m citypulse.upload</code> runs the <code>upload</code> module of the <code>citypulse</code> package. <code>--src</code> names the file and <code>--date</code> names the day. There is no <code>--dataset</code> flag, so your script must produce <code>aqi</code> by default. Then the trainer lists the prefix with <code>aws s3 ls s3://&lt;bucket&gt;/clean/aqi/ --recursive --profile citypulse-pipeline</code>.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;AWS_PROFILE=citypulse-pipeline CITYPULSE_BUCKET=citypulse-demo-7q2d python -m citypulse.upload --src data/clean/aq_clean.parquet --date 2026-12-17&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;uploaded s3://citypulse-demo-7q2d/clean/aqi/date=2026-12-17/aq_clean.parquet&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo $?&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;0&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;aws s3 ls s3://citypulse-demo-7q2d/clean/aqi/ --recursive --profile citypulse-pipeline&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-12-17 09:30:12       1834 clean/aqi/date=2026-12-17/aq_clean.parquet&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2026-12-18 09:30:14       1834 clean/aqi/date=2026-12-18/aq_clean.parquet&quot;}]}"></div>
+
+<p>The bucket name is an example. A pass shows the <code>uploaded</code> line, exit code 0, and two <code>date=</code> prefixes. <code>upload failed: ... AccessDenied</code> means the policy does not allow the write, or the wrong profile was used. <code>KeyError: 'CITYPULSE_BUCKET'</code> means the variable was not exported. <code>No module named 'citypulse'</code> means you are in the wrong folder, or Python cannot see the <code>src</code> folder: from the repository root run <code>export PYTHONPATH=src</code>, or <code>pip install -e .</code> if the README says so.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;The trainer&#x27;s view of one upload&quot;, &quot;nodes&quot;: [&quot;upload.py&quot;, &quot;S3 bucket&quot;, &quot;Anonymous browser&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;put_object with Key&quot;, &quot;note&quot;: &quot;The script sends the file under clean/aqi/date=2026-12-17/.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;stored, success&quot;, &quot;note&quot;: &quot;S3 keeps the object, so the script exits with 0.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;GET with no credentials&quot;, &quot;note&quot;: &quot;The trainer asks for the same object with no signature.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;403 AccessDenied&quot;, &quot;note&quot;: &quot;The private bucket refuses the request, which is what TC1 expects.&quot;}]}"></div>
+
+<p><strong>TC3: the bucket is private and versioned.</strong> The trainer runs <code>aws s3api get-public-access-block --bucket &lt;bucket&gt;</code> and <code>aws s3api get-bucket-versioning --bucket &lt;bucket&gt;</code>. <code>get-</code> commands only read settings. A pass shows four <code>true</code> flags and <code>"Status": "Enabled"</code>. A <code>false</code> flag means T18.1 was not applied.</p>
+<p><strong>TC4: the unit tests pass.</strong> The trainer runs <code>pytest -q tests/test_upload.py</code>. <code>-q</code> gives quiet output. A pass ends with a line such as <code>3 passed in 0.12s</code>. A <code>FAILED</code> line followed by <code>AssertionError</code> means a key string is wrong.</p>
+<p><strong>TC5: a changed file keeps its old copy.</strong> The student uploads the same date twice, then the trainer runs <code>aws s3api list-object-versions --bucket &lt;bucket&gt; --prefix clean/aqi/date=2026-12-17/</code>. <code>--prefix</code> limits the list to one day. A pass shows two <code>VersionId</code> values for one <code>Key</code>. A single version means versioning was not <code>Enabled</code> during the uploads.</p>
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T18.1</td>
+<td>Every student</td>
+<td>Admin profile sets Block Public Access, versioning and encryption, and saves the <code>get-</code> outputs.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T18.2</td>
+<td>Backend</td>
+<td>Write <code>upload.py</code> with the pure <code>object_key</code> function and a <code>main</code> that returns 1 on <code>ClientError</code>.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T18.3</td>
+<td>QA/DevOps</td>
+<td>Add <code>tests/test_upload.py</code> for <code>object_key</code>, run by pytest in CI.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T18.4</td>
+<td>Every student</td>
+<td>Upload two dates with the pipeline profile and save the listing.</td>
+<td>15m</td>
+</tr>
+<tr>
+<td>Y2-T18.5</td>
+<td>Every student</td>
+<td>Apply the lifecycle file with the admin profile and save the rule.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T18.6</td>
+<td>Every student</td>
+<td>Prove the anonymous request returns 403, and save a screenshot.</td>
+<td>5m</td>
+</tr>
+<tr>
+<td>Y2-T18.7</td>
+<td>Scrum/Docs</td>
+<td>Add the "Storage layout" section to the README.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T18.8</td>
+<td>Tech Lead</td>
+<td>Review and merge the PR, with one approval and green CI.</td>
+<td>10m</td>
+</tr>
+</tbody>
+</table>
+<p>Take T18.2 if your role is Backend, or T18.3 if it is QA/DevOps, so your commits show real work. Do not merge your own PR. The branch name is <code>feat/T18-storage</code>. Make these commits in order:</p>
+<ol>
+<li><code>Add object_key for date-partitioned clean keys</code></li>
+<li><code>Read bucket name from CITYPULSE_BUCKET in upload script</code></li>
+<li><code>Return exit code 1 when AWS refuses the upload</code></li>
+<li><code>Add pytest checks for object_key layout</code></li>
+<li><code>Document storage layout in README</code></li>
+<li><code>Add evidence for bucket settings and anonymous 403</code></li>
+<li><code>Add evidence listing two date partitions</code></li>
+</ol>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<p>Run each command in Git Bash from the repository root, unless the text says otherwise.</p>
+<h4 id="t181-bucket-settings-admin-profile">T18.1 Bucket settings (admin profile)</h4>
+<p><strong>Goal.</strong> Turn on the three safety settings and save proof of each.</p>
+<p><strong>Stage 1: set the variables.</strong> Use the admin profile for bucket settings only.</p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;<span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-south-1
+<span class="nb">export</span><span class="w"> </span><span class="nv">CITYPULSE_BUCKET</span><span class="o">=</span>citypulse-&lt;name&gt;-&lt;rand4&gt;
+</code></pre></div>
+
+<p><code>export</code> makes each name visible to programs started later in the shell. <code>AWS_DEFAULT_REGION</code> is the variable both the <code>aws</code> command and boto3 read for the region.</p>
+<p><strong>Stage 2: turn on the four public-access switches and versioning.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>put-public-access-block<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>--public-access-block-configuration<span class="w"> </span><span class="nv">BlockPublicAcls</span><span class="o">=</span>true,IgnorePublicAcls<span class="o">=</span>true,BlockPublicPolicy<span class="o">=</span>true,RestrictPublicBuckets<span class="o">=</span><span class="nb">true</span>
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+</code></pre></div>
+
+<p>Each value is <code>Name=true</code>, separated by commas with no spaces. A successful <code>put</code> prints nothing. Versioning can be suspended later but never removed, so turn it on once.</p>
+<p><strong>Stage 3: confirm default encryption.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-encryption<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Expect <code>"SSEAlgorithm": "AES256"</code>. If none exists, ask your trainer before setting one.</p>
+<p><strong>Stage 4: save the evidence.</strong></p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>docs/evidence/&lt;name&gt;
+<span class="o">{</span><span class="w"> </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-public-access-block<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span>
+<span class="w">  </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-encryption<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span>
+<span class="w">  </span>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T18-bucket-settings.txt
+</code></pre></div>
+
+<p>The braces group three commands, so one <code>&gt;</code> saves all their output. Open the file and check the four <code>true</code> flags, <code>AES256</code> and <code>Enabled</code>.</p>
+<p><strong>Test this stage.</strong> Run <code>AWS_PROFILE=citypulse-pipeline aws s3api put-bucket-versioning ...</code> with the same arguments. It must fail with <code>AccessDenied</code>, which proves the pipeline cannot change the bucket.</p>
+<h4 id="t182-write-uploadpy-in-four-stages">T18.2 Write upload.py in four stages</h4>
+<p><strong>Goal.</strong> Build <code>src/citypulse/upload.py</code> in stages. Test each stage before the next.</p>
+<p><strong>Stage 1: the pure function.</strong> Practise the pattern with a twin file outside the repository.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">report_key</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;raw/</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">/date=</span><span class="si">{</span><span class="n">day</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">report_key</span><span class="p">(</span><span class="s2">&quot;sensors&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;t.csv&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The f-string fills each <code>{...}</code> slot. <code>isoformat()</code> turns a date into <code>2026-01-05</code>. Running it prints <code>raw/sensors/date=2026-01-05/t.csv</code>. This layout is not the one you need.</p>
+<p>Now write <code>object_key(dataset, day, filename)</code> in <code>upload.py</code>, returning <code>clean/&lt;dataset&gt;/date=&lt;day&gt;/&lt;filename&gt;</code>. Check it:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import datetime; from citypulse.upload import object_key; print(object_key(&#39;aqi&#39;, datetime.date(2026, 12, 17), &#39;aq.parquet&#39;))&quot;</span>
+</code></pre></div>
+
+<p>Expect <code>clean/aqi/date=2026-12-17/aq.parquet</code>.</p>
+<p><strong>Stage 2: the flags.</strong> <code>argparse</code> reads flags such as <code>--date</code>. Declare <code>--src</code> and <code>--date</code> in <code>upload.py</code>, then parse them. Decide how the script gets <code>aqi</code> when <code>--dataset</code> is missing, and be ready to explain why. Convert the text with <code>datetime.date.fromisoformat(a.date)</code>.</p>
+<p><strong>Stage 3: read the bucket name.</strong></p>
+<div class="hl"><pre><span></span><code><span class="n">bucket</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CITYPULSE_BUCKET&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>This reads one environment variable. If it is missing, Python raises <code>KeyError</code> before any <code>try</code> block starts. Test it with <code>unset CITYPULSE_BUCKET</code>, then run the upload. A traceback is correct here, so export the variable again afterwards. Build the key with <code>key = object_key(dataset, day, filename)</code>, using the file name from <code>pathlib.Path(a.src).name</code>. Read the file with <code>pathlib.Path(a.src).read_bytes()</code>. Create a client with <code>s3 = boto3.client("s3")</code>, then call <code>s3.put_object</code> with <code>Bucket=</code>, <code>Key=</code> and <code>Body=</code>. boto3 finds credentials itself, so no profile name appears in the code.</p>
+<p><strong>Stage 4: catch refusal and return a code.</strong> Fill in the blank yourself:</p>
+<div class="hl"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="o">...</span>  <span class="c1"># your put_object call goes here</span>
+<span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;upload failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;uploaded s3://</span><span class="si">{</span><span class="n">bucket</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">return</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p><code>ClientError</code> comes from <code>from botocore.exceptions import ClientError</code>. Only it is caught, so other bugs still show. Test the failure path with a bucket that does not exist:</p>
+<div class="hl"><pre><span></span><code><span class="nv">CITYPULSE_BUCKET</span><span class="o">=</span>does-not-exist-1<span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>data/clean/aq_clean.parquet<span class="w"> </span>--date<span class="w"> </span><span class="m">2026</span>-12-17<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</code></pre></div>
+
+<p>Expect an <code>upload failed:</code> line and <code>1</code>. Finish with <code>sys.exit(main())</code> under <code>if __name__ == "__main__":</code>, so the code reaches the shell.</p>
+<h4 id="t183-write-the-tests">T18.3 Write the tests</h4>
+<p><strong>Goal.</strong> Write <code>tests/test_upload.py</code> with a test of <code>object_key</code> that never calls AWS.</p>
+<p><strong>Stage 1: the pattern.</strong> Try this twin as <code>try_test.py</code> outside the repository:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_double</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">double</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+</code></pre></div>
+
+<p>pytest runs each <code>test_</code> function, and <code>assert</code> fails the test when its condition is false. To run it in CI, open the workflow from Day 6 and check it has a step running <code>pytest -q</code>. If not, add one.</p>
+<p><strong>Stage 2: the real test.</strong> Import <code>object_key</code>, then write a <code>test_</code> function that asserts the key for dataset <code>aqi</code>, date <code>datetime.date(2026, 12, 17)</code> and file <code>aq.parquet</code>. Write the expected string yourself. Run <code>pytest -q tests/test_upload.py</code>, and expect every test to pass.</p>
+<h4 id="t184-upload-two-dates-and-save-the-listing">T18.4 Upload two dates and save the listing</h4>
+<div class="box box-trap"><div class="box-h">Trap: Your T17 policy may not cover clean/</div><p>The T17 policy in this book lets the pipeline write and list only under <code>raw/</code>. The T18 upload goes to <code>clean/aqi/</code>, so it can fail with <code>AccessDenied</code>. The ticket does not say how to widen the policy, so it is unclear in the course itself: ask your trainer first. The usual fix is a scoped addition, made with the admin profile: add <code>s3:PutObject</code> and <code>s3:GetObject</code> on <code>arn:aws:s3:::&lt;bucket&gt;/clean/aqi/*</code>, add <code>clean/aqi/*</code> to the <code>s3:prefix</code> list of the <code>ListBucket</code> statement, and publish it with <code>aws iam create-policy-version --set-as-default</code>. Name every action and keep every ARN exact, because the ticket allows no new wildcard. Never switch the upload itself to the admin profile.</p></div>
+
+<p><strong>Goal.</strong> Upload with the pipeline profile only, and save the listing.</p>
+<p><strong>Stage 1: switch profiles.</strong> <code>unset</code> removes the admin profile, so it cannot leak in.</p>
+<div class="hl"><pre><span></span><code><span class="nb">unset</span><span class="w"> </span>AWS_PROFILE
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline<span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-south-1<span class="w"> </span><span class="nv">CITYPULSE_BUCKET</span><span class="o">=</span>citypulse-&lt;name&gt;-&lt;rand4&gt;
+</code></pre></div>
+
+<p><strong>Stage 2: upload both dates.</strong></p>
+<div class="hl"><pre><span></span><code><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">2026</span>-12-17<span class="w"> </span><span class="m">2026</span>-12-18<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>python<span class="w"> </span>-m<span class="w"> </span>citypulse.upload<span class="w"> </span>--src<span class="w"> </span>data/clean/aq_clean.parquet<span class="w"> </span>--date<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;exit </span><span class="nv">$?</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p><code>for ... do</code> loops over the dates. <code>"$d"</code> passes the current one, and <code>echo "exit $?"</code> prints each exit code, which must be 0.</p>
+<p><strong>Stage 3: save the listing.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://<span class="nv">$CITYPULSE_BUCKET</span><span class="w"> </span>--recursive<span class="w"> </span>--profile<span class="w"> </span>citypulse-pipeline<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T18-ls.txt
+</code></pre></div>
+
+<p><code>&gt;</code> saves the output. The file must show two <code>date=</code> prefixes.</p>
+<div class="box box-trap"><div class="box-h">Trap: Root listing denied</div><p>The pipeline identity may be denied a root listing. If you get <code>AccessDenied</code>, do not switch to the admin profile. Tell your trainer, and list <code>s3://&lt;bucket&gt;/clean/aqi/</code> instead.</p></div>
+
+<h4 id="t185-apply-the-lifecycle-rules-admin-profile">T18.5 Apply the lifecycle rules (admin profile)</h4>
+<p><strong>Goal.</strong> Write <code>infra/storage/lifecycle.json</code>, apply it, and save what S3 reports back.</p>
+<p><strong>Stage 1: the file.</strong> A lifecycle file is JSON with a <code>Rules</code> list. This example is for a different prefix, so choose your own prefix and number of days:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expire-old-exports&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exports/&quot;</span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;NoncurrentVersionExpiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;NoncurrentDays&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">}}]}</span>
+</code></pre></div>
+
+<p><code>Filter</code> picks which keys the rule covers, and <code>NoncurrentVersionExpiration</code> deletes old versions (not the current one) after that many days. Pick a rule that limits the cost of versioning on your data, and be ready to explain it.</p>
+<p><strong>Stage 2: apply it and save the output.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>&lt;admin-profile&gt;
+aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-lifecycle-configuration<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>--lifecycle-configuration<span class="w"> </span>file://infra/storage/lifecycle.json
+aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-lifecycle-configuration<span class="w"> </span>--bucket<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T18-lifecycle.txt
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>citypulse-pipeline
+</code></pre></div>
+
+<p><code>file://</code> tells the CLI to read the value from a file. The last line returns the shell to the pipeline profile.</p>
+<h4 id="t186-prove-anonymous-access-is-refused">T18.6 Prove anonymous access is refused</h4>
+<p><strong>Goal.</strong> Show that an anonymous request gets 403 on an object that exists.</p>
+<div class="hl"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}\n&#39;</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="nv">$CITYPULSE_BUCKET</span><span class="s2">.s3.ap-south-1.amazonaws.com/clean/aqi/date=2026-12-17/aq_clean.parquet&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/&lt;name&gt;/T18-anonymous.txt
+</code></pre></div>
+
+<p><code>-s</code> hides the progress meter. <code>-o /dev/null</code> throws away the body. <code>-w '%{http_code}\n'</code> prints only the status code. Expect <code>403</code> in the file. Save a console screenshot of the bucket permissions in the same folder, and check that no key or secret is visible in it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Trusting a 404</div><p>A 404 proves nothing about privacy. Test a key that exists, and expect 403.</p></div>
+
+<h4 id="t187-document-the-storage-layout">T18.7 Document the storage layout</h4>
+<p><strong>Goal.</strong> Add a "Storage layout" section to the README. Write it yourself.</p>
+<p><strong>Structure.</strong> Use a heading, a key tree showing <code>raw/&lt;source&gt;/date=YYYY-MM-DD/</code> and <code>clean/&lt;dataset&gt;/date=YYYY-MM-DD/</code>, and a table with one row per prefix and a column for who may write it. Check each row against the T17 policy.</p>
+<h4 id="t188-review-merge-and-record-the-evidence">T18.8 Review, merge and record the evidence</h4>
+<p><strong>Goal.</strong> Open a PR from <code>feat/T18-storage</code>, then get it reviewed and merged by someone else.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/T18-storage
+git<span class="w"> </span>add<span class="w"> </span>src/citypulse/upload.py<span class="w"> </span>tests/test_upload.py<span class="w"> </span>infra/storage/lifecycle.json<span class="w"> </span>docs/evidence/&lt;name&gt;/<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add object_key for date-partitioned clean keys&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/T18-storage
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>feat/T18-storage<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Y2-T18: upload clean parquet to private bucket&quot;</span><span class="w"> </span>--body-file<span class="w"> </span>../pr-T18.md
+</code></pre></div>
+
+<p>Make the branch before you start coding, and commit in the order listed in Split the work, adding only the files for each commit. The block above shows the commands once, with the first message. <code>git switch -c</code> creates the branch, <code>git add</code> stages files, and <code>git push -u</code> sends the branch to GitHub. <code>gh pr create</code> opens the PR, and <code>--body-file</code> reads a description kept outside the repository. The Tech Lead merges once CI is green and one approval is given. Confirm the T17 policy is unchanged with <code>git diff main -- &lt;policy-path&gt;</code>. Post the PR and evidence links in the LMS Y2-T18 field by 23:59 the same day.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;The review path for your change&quot;, &quot;nodes&quot;: [&quot;Your branch&quot;, &quot;GitHub PR&quot;, &quot;Squad-mate&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;open PR&quot;, &quot;note&quot;: &quot;You push feat/T18-storage and open a pull request into main.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;request review&quot;, &quot;note&quot;: &quot;A squad-mate checks the code, tests and evidence.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;approve&quot;, &quot;note&quot;: &quot;One approval is needed, and you must not merge your own PR.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;merge to main&quot;, &quot;note&quot;: &quot;The Tech Lead merges once CI is green.&quot;}]}"></div>
+
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run TC1 to TC5 yourself, in order, and keep the output. Then use this template for the PR description, filling each heading with your own facts:</p>
+<div class="hl"><pre><span></span><code><span class="gu">## What</span>
+One sentence naming the upload script, tests and bucket settings.
+
+<span class="gu">## Why</span>
+Two sentences on why CityPulse needs private, versioned, date-partitioned storage.
+
+<span class="gu">## How to test</span>
+<span class="k">1.</span> The command for each test case, in order.
+
+<span class="gu">## Evidence</span>
+<span class="k">-</span><span class="w"> </span>docs/evidence/&lt;name&gt;/T18-bucket-settings.txt
+<span class="k">-</span><span class="w"> </span>docs/evidence/&lt;name&gt;/T18-ls.txt
+<span class="k">-</span><span class="w"> </span>A pytest log excerpt and the bucket permissions screenshot.
+
+<span class="gu">## Checklist</span>
+<span class="k">- [ ]</span> No access key, secret or profile name in the code.
+<span class="k">- [ ]</span> The T17 policy has no new wildcard.
+<span class="k">- [ ]</span> CI is green.
+</code></pre></div>
+
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] <code>upload.py</code>, <code>tests/test_upload.py</code> and <code>infra/storage/lifecycle.json</code> are merged through a reviewed PR with CI green. You know it when the merged PR shows an approval and a green check.</li>
+<li>[ ] The bucket is private, versioned, encrypted and has the lifecycle applied. You know it when the T18 settings and lifecycle files show the right values.</li>
+<li>[ ] You uploaded at least two dates with only <code>citypulse-pipeline</code>. You know it when <code>T18-ls.txt</code> lists two <code>date=</code> prefixes.</li>
+<li>[ ] The evidence files are in <code>docs/evidence/&lt;name&gt;/</code>, and the README is updated. You know it when you can open each one.</li>
+<li>[ ] The PR and evidence links are in the LMS Y2-T18 field by 23:59 the same day. You know it when the link shows in the field.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AccessDenied</code> on <code>put-public-access-block</code></td>
+<td>The admin step ran with the pipeline profile.</td>
+<td>Set <code>AWS_PROFILE</code> to the admin profile and run it again.</td>
+</tr>
+<tr>
+<td><code>KeyError: 'CITYPULSE_BUCKET'</code></td>
+<td>The variable was not exported in this shell.</td>
+<td>Run <code>export CITYPULSE_BUCKET=&lt;bucket&gt;</code> in the same terminal.</td>
+</tr>
+<tr>
+<td><code>curl</code> returns <code>200</code></td>
+<td>A Block Public Access flag is false.</td>
+<td>Re-run the admin <code>put-public-access-block</code> and check the four flags.</td>
+</tr>
+<tr>
+<td><code>curl</code> returns <code>404</code></td>
+<td>The key is wrong, or nothing was uploaded.</td>
+<td>Copy the key from the listing. A 404 does not prove privacy.</td>
+</tr>
+<tr>
+<td>One <code>VersionId</code> in the listing</td>
+<td>Versioning was off during the uploads.</td>
+<td>Enable versioning as admin, then upload the same date again.</td>
+</tr>
+<tr>
+<td>Key contains <code>date=17-12-2026</code></td>
+<td>The date was written day-first.</td>
+<td>Use <code>day.isoformat()</code>, which gives <code>date=2026-12-17</code>.</td>
+</tr>
+<tr>
+<td><code>No module named 'citypulse'</code></td>
+<td>The command ran from the wrong folder.</td>
+<td>Run from the repository root, then run <code>export PYTHONPATH=src</code> (or <code>pip install -e .</code> if the README says so).</td>
+</tr>
+<tr>
+<td>A traceback instead of <code>upload failed</code></td>
+<td>A different exception is caught.</td>
+<td>Catch <code>ClientError</code> from <code>botocore.exceptions</code> only.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p><strong>Question 1 (why): Why use Block Public Access rather than careful object permissions?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Object permissions can be changed one object at a time, and one mistake can expose data. Block Public Access is a bucket-level switch that overrides any ACL or policy that would make data public. One <code>get-public-access-block</code> call shows all four flags, so the setting is easy to check.</p></details>
+
+<p><strong>Question 2 (trade-off): What does versioning cost, and how is the cost controlled?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Every overwrite keeps an old copy, so storage grows. Lifecycle rules limit that growth by expiring old versions after a set number of days. Versioning also is not a full backup, because it protects only inside the same bucket.</p></details>
+
+<p><strong>Question 3 (what you did): Which code did you write, and how do you know it works?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the function you wrote, the commit that holds it, and the test and output you saw. Use your own commit and output, because the trainer checks your answer against your commits.</p></details>
+
+<p><strong>Question 4 (why): Why can the <code>object_key</code> test run without AWS?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>object_key</code> is a pure function. It makes no network call and reads no file, so the test checks the string directly, with no credentials. A layout error is caught quickly, and an upload error is caught separately in <code>main</code>.</p></details>
+
+<p><strong>Question 5 (understanding): Why does a 403 prove privacy, but a 404 proves nothing?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A 403 means the object exists and the bucket refused an anonymous request. A 404 says only that the key was not found.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate says the bucket is private because nobody has shared the link. Which evidence proves privacy?&quot;, &quot;opts&quot;: [&quot;The object opens in your own browser while you are signed in.&quot;, &quot;A request with no credentials returns 403, and get-public-access-block shows four true flags.&quot;, &quot;The bucket name ends in four random characters.&quot;, &quot;list-object-versions shows two versions of one key.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Privacy means an anonymous request is refused, and the settings explain why. The tempting wrong answer is that the link was never shared, which says nothing about who can read the bucket.&quot;}, {&quot;q&quot;: &quot;Your script uploads a file for 2026-12-17 to dataset aqi. Which key is correct?&quot;, &quot;opts&quot;: [&quot;clean/aqi/17-12-2026/aq_clean.parquet&quot;, &quot;clean/aqi/2026-12-17/aq_clean.parquet&quot;, &quot;clean/aqi/date=2026/12/17/aq_clean.parquet&quot;, &quot;clean/aqi/date=2026-12-17/aq_clean.parquet&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The layout is clean/&lt;dataset&gt;/date=YYYY-MM-DD/&lt;file&gt;. The tempting wrong answer is the day-first date, which sorts wrongly across years.&quot;}, {&quot;q&quot;: &quot;A test expects two VersionId values for one key, but the listing shows one. What is the likeliest cause?&quot;, &quot;opts&quot;: [&quot;The second upload used a different file name, so S3 made a second key.&quot;, &quot;The pipeline identity lacks write rights, so the second upload was refused.&quot;, &quot;Versioning was not Enabled during the uploads, so S3 kept no older copy.&quot;, &quot;The random suffix in the bucket name hides older versions.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;With versioning off, an overwrite replaces the object and keeps no older copy. The tempting wrong answer is a permissions fault, which would stop the upload with AccessDenied instead of leaving one version.&quot;}]}"></div>
+
+<h2 id="y2-t19-run-pipeline-on-hardened-vm-writing-to-bucket-via-instance-role">Y2-T19 · Run pipeline on hardened VM writing to bucket via instance role</h2>
+<p><em>Session 19 · phase M4 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_2">The ticket in plain words</h3>
+<p>The CityPulse pipeline is the script that fetches city data, cleans it and uploads the result to a bucket, which is a storage container in Amazon S3. Right now it runs on the lab machine and your laptop. A laptop sleeps, changes networks and gets switched off, so the data stops flowing. This ticket moves the pipeline onto a cloud virtual machine (VM): a computer rented from Amazon Web Services (AWS) that stays on and runs the job on a timetable.</p>
+<p>The client sets two rules. First, the server holds no long-lived access keys. AWS gives it temporary permission through an instance role, so no secret file sits on the disk. Second, the server is hard to break into. Its SSH port, the remote-login door numbered 22, opens only to your own address, and only your own key can log in.</p>
+<p>The ticket also tells a story. In October 2021 a bad network change at Facebook locked out the engineers who ran the system, because they had no tested way back in. So you also write a runbook, a document of exact commands for launching, connecting, deploying, stopping and recovering the server. Finally, every VM must be stopped at the end of the day, because a running VM is billed every hour.</p>
+<h3 id="before-you-start_2">Before you start</h3>
+<p>Run these on your laptop in Git Bash, unless marked VM.</p>
+<ul>
+<li><strong>Earlier work is on main.</strong> Run <code>git switch main</code> and <code>git pull</code>, then <code>ls scripts/run_pipeline.sh src/citypulse/upload.py requirements.txt</code>. Ready when all three paths print.</li>
+<li><strong>AWS works.</strong> Run <code>aws --version</code>, which should start with <code>aws-cli/</code>, then <code>aws sts get-caller-identity --query Arn --output text</code>, which should print an <code>arn:aws:</code> line. If not, ask your trainer. Do not create credentials yourself.</li>
+<li><strong>The T17 policy exists.</strong> Run <code>aws iam list-policies --scope Local --query "Policies[?PolicyName=='citypulse-pipeline-s3'].Arn" --output text</code>. Ready when one ARN prints.</li>
+<li><strong>The T18 bucket exists.</strong> Run <code>aws s3 ls | grep citypulse-</code>. Ready when a line shows <code>citypulse-&lt;name&gt;-</code> and four more characters.</li>
+<li><strong>Your key and firewall exist.</strong> Run <code>ls ~/.ssh/citypulse-&lt;name&gt;.pub</code>, and <code>aws ec2 describe-security-groups --group-names citypulse-ssh-&lt;name&gt; --query 'SecurityGroups[0].GroupId' --output text</code>. Ready when a path prints and an ID starting <code>sg-</code> prints. If not, do Steps 1 and 2 of the Day 14 lab.</li>
+</ul>
+<h3 id="words-you-need_2">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM</td>
+<td>A computer that runs as software on someone else's hardware.</td>
+</tr>
+<tr>
+<td>Instance</td>
+<td>One running VM in EC2, AWS's VM service.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>A geographic group of AWS data centres. This course uses <code>ap-south-1</code>, Mumbai.</td>
+</tr>
+<tr>
+<td>AMI</td>
+<td>A saved operating-system image that a VM starts from.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>A label such as <code>Owner=asha</code> on an AWS resource, used to find it.</td>
+</tr>
+<tr>
+<td>Security group</td>
+<td>A firewall attached to a VM, with rules for allowed ports and sources.</td>
+</tr>
+<tr>
+<td>CIDR</td>
+<td>A short way to write an address range, such as <code>203.0.113.47/32</code>.</td>
+</tr>
+<tr>
+<td>/32</td>
+<td>A CIDR range that covers exactly one address.</td>
+</tr>
+<tr>
+<td>0.0.0.0/0</td>
+<td>A CIDR range that covers every address on the internet.</td>
+</tr>
+<tr>
+<td>Key pair</td>
+<td>A private key on your laptop and a public key on the VM.</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Secure Shell, an encrypted remote connection to a shell.</td>
+</tr>
+<tr>
+<td>sshd</td>
+<td>The SSH server program on the VM.</td>
+</tr>
+<tr>
+<td>Drop-in file</td>
+<td>A config file that sshd reads from a folder such as <code>/etc/ssh/sshd_config.d/</code>.</td>
+</tr>
+<tr>
+<td><code>sshd -t</code></td>
+<td>Checks the sshd config for errors. It prints nothing when valid.</td>
+</tr>
+<tr>
+<td><code>sshd -T</code></td>
+<td>Prints the settings sshd really uses.</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management, which decides who may do what in AWS.</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>A document listing the actions allowed on resources.</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>A set of permissions a service takes temporarily.</td>
+</tr>
+<tr>
+<td>Instance profile</td>
+<td>The container that carries a role onto a VM.</td>
+</tr>
+<tr>
+<td>IMDSv2</td>
+<td>The session-token version of the metadata service that serves a VM's credentials.</td>
+</tr>
+<tr>
+<td>ARN</td>
+<td>Amazon Resource Name, a unique address for an AWS object.</td>
+</tr>
+<tr>
+<td>Assumed role</td>
+<td>The identity a VM has through its role. Its ARN contains <code>assumed-role/</code>.</td>
+</tr>
+<tr>
+<td>Cron</td>
+<td>A scheduler that runs commands at fixed times.</td>
+</tr>
+<tr>
+<td>Crontab</td>
+<td>The file that lists your cron jobs.</td>
+</tr>
+<tr>
+<td>Redirect</td>
+<td>Sending a command's output into a file with <code>&gt;</code> or <code>&gt;&gt;</code>.</td>
+</tr>
+<tr>
+<td>Virtual environment</td>
+<td>A private folder of Python packages for one project.</td>
+</tr>
+<tr>
+<td>Bootstrap script</td>
+<td>A script that prepares a fresh machine, here <code>infra/vm/bootstrap.sh</code>.</td>
+</tr>
+<tr>
+<td>shellcheck</td>
+<td>A tool that finds mistakes in shell scripts.</td>
+</tr>
+<tr>
+<td>Runbook</td>
+<td>A written, tested list of exact commands for running and recovering a system.</td>
+</tr>
+<tr>
+<td>Dry run</td>
+<td>Following a runbook section step by step to test it.</td>
+</tr>
+<tr>
+<td>Stop and terminate</td>
+<td>Stop halts a VM and keeps its disk. Terminate deletes the VM and its disk for good.</td>
+</tr>
+<tr>
+<td>Pull request</td>
+<td>A proposed change that a squad-mate reviews before it is merged.</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Automatic checks, such as shellcheck, that run on each pull request.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_2">How your trainer checks it</h3>
+<table>
+<thead>
+<tr>
+<th>Acceptance criterion</th>
+<th>Test</th>
+<th>Your self-check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No credentials file or key variable; assumed-role ARN</td>
+<td>TC2</td>
+<td>Run TC2 on the VM.</td>
+</tr>
+<tr>
+<td>Only inbound rule is 22 from a /32</td>
+<td>TC1</td>
+<td>Run TC1 on your laptop.</td>
+</tr>
+<tr>
+<td>Password SSH and root login refused</td>
+<td>TC3</td>
+<td>Run TC3 from a second terminal.</td>
+</tr>
+<tr>
+<td>At least two cron runs, 30 minutes apart, each with a bucket object</td>
+<td>TC4</td>
+<td>Read the log and the bucket listing.</td>
+</tr>
+<tr>
+<td>Runbook has launch, connect, deploy, stop and recover</td>
+<td>Read by trainer</td>
+<td>Run <code>grep -n '^## ' docs/cloud-runbook.md</code>.</td>
+</tr>
+<tr>
+<td>Every <code>Owner=&lt;name&gt;</code> instance stopped at 15:30</td>
+<td>TC5</td>
+<td>Run TC5 at 15:25.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TC1: the firewall rule.</strong> Run on your laptop:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-names<span class="w"> </span>citypulse-ssh-&lt;name&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;SecurityGroups[].IpPermissions&#39;</span>
+</code></pre></div>
+
+<p><code>describe-security-groups</code> asks AWS for firewall details. <code>--group-names</code> picks your group by name. <code>--query</code> filters the JSON reply, and <code>SecurityGroups[].IpPermissions</code> lists the inbound rules of each group. Passing output is one rule with <code>FromPort</code> 22, <code>ToPort</code> 22 and a <code>CidrIp</code> ending in <code>/32</code>. Failing output shows a second rule, or <code>0.0.0.0/0</code>. An <code>InvalidGroup.NotFound</code> error means the name is wrong.</p>
+<p><strong>TC2: no stored keys.</strong> Run on the VM:</p>
+<div class="hl"><pre><span></span><code><span class="nb">test</span><span class="w"> </span>-e<span class="w"> </span>~/.aws/credentials<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>FOUND<span class="p">;</span><span class="w"> </span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Arn<span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div>
+
+<p><code>test -e</code> succeeds only if the file exists, and <code>&amp;&amp;</code> then runs <code>echo</code>. The <code>;</code> runs the second command regardless. Passing output has no <code>FOUND</code> line and an ARN with <code>assumed-role/citypulse-pipeline/i-</code>. A <code>FOUND</code> line means a leftover credentials file, so delete it. An ARN with <code>user/</code> means a stored key is in use.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;test -e ~/.aws/credentials &amp;&amp; echo FOUND; aws sts get-caller-identity --query Arn --output text&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;arn:aws:sts::123456789012:assumed-role/citypulse-pipeline/i-0a1b2c3d4e5f6a7b8&quot;}]}"></div>
+
+<p><strong>TC3: password refused.</strong> Run on your laptop:</p>
+<div class="hl"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">PubkeyAuthentication</span><span class="o">=</span>no<span class="w"> </span>ubuntu@&lt;ip&gt;
+</code></pre></div>
+
+<p><code>-o PubkeyAuthentication=no</code> stops the client offering your key, so only a password can be tried. Passing output is <code>Permission denied (publickey).</code>. A password prompt means password login is still on. Also try <code>ssh root@&lt;ip&gt;</code>, which must be refused.</p>
+<p><strong>TC4: cron evidence.</strong> The trainer opens <code>T19-cron-log.txt</code> and <code>T19-bucket.txt</code>. Passing evidence shows two runs at least 30 minutes apart, and bucket objects with matching <code>LastModified</code> times. One run, or runs closer together, fails.</p>
+<p><strong>TC5: all stopped.</strong> At 15:35 the trainer runs, while you share your screen:</p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>tag:Owner,Values<span class="o">=</span>&lt;name&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[].Instances[].State.Name&#39;</span>
+</code></pre></div>
+
+<p><code>--filters</code> keeps instances with your <code>Owner</code> tag. The query prints each state. Passing output is only <code>stopped</code> or <code>terminated</code>. A <code>running</code> entry usually means you forgot to stop the VM.</p>
+<h3 id="split-the-work_2">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T19.1</td>
+<td>Every student</td>
+<td>Launch, tag and connect.</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Y2-T19.2</td>
+<td>Every student</td>
+<td>Harden SSH and prove password login is refused.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T19.3</td>
+<td>Every student</td>
+<td>Create the role, attach the policy and profile, require IMDSv2.</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Y2-T19.4</td>
+<td>Every student</td>
+<td>Run the bootstrap script on the VM and upload once by hand.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T19.5</td>
+<td>Every student</td>
+<td>Install the crontab, wait for two runs, save evidence.</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Y2-T19.6</td>
+<td>Scrum/Docs</td>
+<td>Write the runbook and have each member dry-run one section.</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Y2-T19.7</td>
+<td>QA/DevOps</td>
+<td>Write the cost note.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T19.8</td>
+<td>Every student</td>
+<td>Stop the VM at 15:15 and screenshot the console.</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T19.9</td>
+<td>Tech Lead</td>
+<td>Merge through a reviewed pull request with green CI.</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p>Your VM work is your own contribution. To show more, also own one shared piece, such as the recovery section of the runbook. Agree the choice with your squad.</p>
+<p>Branch name: <code>y2-t19/&lt;name&gt;-vm</code>, unless your squad has its own rule.</p>
+<p>Example commit messages, in order. Write your own wording for your own changes.</p>
+<ol>
+<li><code>infra: add bootstrap script skeleton with strict mode</code></li>
+<li><code>infra: refuse to run when stored AWS keys exist</code></li>
+<li><code>infra: add crontab entry for the pipeline with a log file</code></li>
+<li><code>docs: add launch and connect sections to cloud runbook</code></li>
+<li><code>docs: add stop and recovery sections with changed-IP fix</code></li>
+<li><code>docs: record hourly and monthly cost for T19</code></li>
+<li><code>infra: fix shellcheck warnings in bootstrap script</code></li>
+</ol>
+<h3 id="do-it-step-by-step_2">Do it, step by step</h3>
+<p>Set your variables in every new terminal, using your own name: <code>NAME=asha; export AWS_PROFILE=$NAME-admin AWS_REGION=ap-south-1</code>. Variables exist only in the terminal where you set them, so write down your instance ID.</p>
+<h4 id="y2-t191-launch-and-connect">Y2-T19.1: Launch and connect</h4>
+<p><strong>Goal.</strong> A running VM tagged with your name that accepts your key.</p>
+<p><strong>Stage 1 (laptop): find the Ubuntu image.</strong> Run:</p>
+<div class="hl"><pre><span></span><code><span class="nv">AMI</span><span class="o">=</span><span class="k">$(</span><span class="nv">MSYS_NO_PATHCONV</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span>--name<span class="w"> </span>/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id<span class="w"> </span>--query<span class="w"> </span>Parameter.Value<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+
+<p><code>AMI=$(...)</code> stores the output of the command in <code>AMI</code>. In Git Bash, <code>MSYS_NO_PATHCONV=1</code> stops Git Bash rewriting the parameter name that starts with <code>/</code> into a Windows path; on Linux it does no harm.  The parameter holds the official Ubuntu 24.04 image ID, so you avoid a stranger's image. <code>echo "$AMI"</code> prints an ID starting <code>ami-</code>.</p>
+<p><strong>Stage 2 (laptop): look up your firewall.</strong> Run <code>SG_ID=$(aws ec2 describe-security-groups --group-names "citypulse-ssh-$NAME" --query 'SecurityGroups[0].GroupId' --output text)</code>. Check with <code>echo "$SG_ID"</code>.</p>
+<p><strong>Stage 3 (laptop): launch.</strong></p>
+<div class="hl"><pre><span></span><code><span class="nv">ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span>--image-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AMI</span><span class="s2">&quot;</span><span class="w"> </span>--instance-type<span class="w"> </span>t3.micro<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--key-name<span class="w"> </span><span class="s2">&quot;citypulse-</span><span class="nv">$NAME</span><span class="s2">&quot;</span><span class="w"> </span>--security-group-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SG_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metadata-options<span class="w"> </span><span class="nv">HttpTokens</span><span class="o">=</span>required,HttpEndpoint<span class="o">=</span>enabled<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tag-specifications<span class="w"> </span><span class="s2">&quot;ResourceType=instance,Tags=[{Key=Owner,Value=</span><span class="nv">$NAME</span><span class="s2">}]&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Instances[0].InstanceId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+
+<p>The backslashes continue the command. <code>--key-name</code> installs your public key. <code>--metadata-options HttpTokens=required</code> requires IMDSv2. <code>--tag-specifications</code> adds the <code>Owner</code> tag that TC5 searches for. The output is an ID starting <code>i-</code>. Add <code>--iam-instance-profile Name=citypulse-pipeline</code> only if that profile already exists. Otherwise attach it in T19.3.</p>
+<p><strong>Stage 4 (laptop): wait and read the address.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>instance-running<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span>
+<span class="nv">IP</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].PublicIpAddress&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+
+<p><code>wait</code> pauses until the VM runs, and prints nothing. Run <code>echo "$IP"</code> to read the address. Look it up again after every start, because it changes.</p>
+<p><strong>Stage 5 (Git Bash): connect.</strong> Run <code>ssh -i ~/.ssh/citypulse-$NAME ubuntu@"$IP"</code>. Type <code>yes</code> the first time. <code>whoami</code> on the VM prints <code>ubuntu</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Key permissions</div><p>If ssh refuses the key as unprotected, run <code>chmod 600 ~/.ssh/citypulse-$NAME</code> and try again.</p></div>
+
+<h4 id="y2-t192-harden-ssh">Y2-T19.2: Harden SSH</h4>
+<p><strong>Goal.</strong> Password and root logins refused, with a working session kept open.</p>
+<p><strong>Stage 1 (VM): write the drop-in.</strong> Keep this session open.</p>
+<div class="hl"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/ssh/sshd_config.d/99-citypulse.conf<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">PasswordAuthentication no</span>
+<span class="s">PermitRootLogin no</span>
+<span class="s">KbdInteractiveAuthentication no</span>
+<span class="s">EOF</span>
+</code></pre></div>
+
+<p><code>tee</code> writes the text into the file, and <code>&gt;/dev/null</code> hides its copy. <code>&lt;&lt;'EOF'</code> begins a block that ends at the next <code>EOF</code> line. The quotes stop <code>$</code> from being changed. Expect no output.</p>
+<p><strong>Stage 2 (VM): check, then reload.</strong> Run <code>sudo sshd -t &amp;&amp; sudo systemctl reload ssh</code>. The reload runs only if the check passes. Expect no output.</p>
+<p><strong>Stage 3 (VM): see the winning values.</strong> Run <code>ls /etc/ssh/sshd_config.d/</code> and <code>sudo sshd -T | grep -Ei 'passwordauthentication|permitrootlogin|kbdinteractive'</code>. sshd uses the first value it finds, so an earlier file can win. Expect three <code>no</code> lines. If an earlier file sets <code>yes</code>, ask your trainer before you change it.</p>
+<p><strong>Stage 4 (laptop, second terminal): test.</strong> Run <code>ssh -o PreferredAuthentications=password ubuntu@"$IP"</code>. Expect <code>Permission denied (publickey).</code></p>
+<div class="box box-trap"><div class="box-h">Trap: Closing your only session</div><p>Keep the first session open until a new session has logged in with your key. A broken config with no open session can lock you out.</p></div>
+
+<h4 id="y2-t193-role-not-keys">Y2-T19.3: Role, not keys</h4>
+<p><strong>Goal.</strong> The VM uses the <code>citypulse-pipeline</code> role, with no stored keys.</p>
+<p><strong>Stage 1 (laptop): create the role.</strong> The trust policy names EC2 as the service allowed to take the role.</p>
+<div class="hl"><pre><span></span><code><span class="nv">ACCT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--assume-role-policy-document<span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;ec2.amazonaws.com&quot;},&quot;Action&quot;:&quot;sts:AssumeRole&quot;}]}&#39;</span>
+aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="nv">$ACCT</span><span class="s2">:policy/citypulse-pipeline-s3&quot;</span>
+</code></pre></div>
+
+<p><code>ACCT</code> holds your account number. <code>attach-role-policy</code> attaches the T17 policy to the role, not to a user.</p>
+<p><strong>Stage 2 (laptop): build the profile and attach it.</strong></p>
+<div class="hl"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span>citypulse-pipeline<span class="w"> </span>--role-name<span class="w"> </span>citypulse-pipeline
+aws<span class="w"> </span>ec2<span class="w"> </span>associate-iam-instance-profile<span class="w"> </span>--instance-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>citypulse-pipeline
+aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-metadata-options<span class="w"> </span>--instance-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>--http-tokens<span class="w"> </span>required<span class="w"> </span>--http-endpoint<span class="w"> </span>enabled
+</code></pre></div>
+
+<p>The profile carries the role onto the VM. The last command makes IMDSv2 required.</p>
+<p><strong>Stage 3 (VM): install the AWS CLI, then prove it.</strong> A fresh Ubuntu image has no <code>aws</code> program. Run <code>sudo snap install aws-cli --classic</code>, then <code>aws --version</code>, which should start with <code>aws-cli/</code>. Now run <code>ls -la ~/.aws 2&gt;/dev/null || echo "no ~/.aws"</code>, then <code>aws sts get-caller-identity --query Arn --output text</code>. The folder should be missing and the ARN should contain <code>assumed-role/citypulse-pipeline/</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Waiting for the profile</div><p>A new profile can take a few seconds to appear. Wait, then retry.</p></div>
+
+<h4 id="y2-t194-the-bootstrap-script-in-stages">Y2-T19.4: The bootstrap script, in stages</h4>
+<p><strong>Goal.</strong> <code>infra/vm/bootstrap.sh</code> that prepares the VM and refuses stored keys. Test it by hand before cron uses it.</p>
+<p><strong>Technique: strict mode.</strong> Begin the script with <code>#!/usr/bin/env bash</code> and <code>set -euo pipefail</code>. <code>-e</code> stops at the first failing command, <code>-u</code> makes unset variables an error, and <code>pipefail</code> makes a pipeline fail if any part fails.</p>
+<p><strong>Stage 1 (VM): refuse stored keys.</strong></p>
+<div class="hl"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.aws/credentials&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;stored AWS keys found; remove them first&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<p><code>[ -e path ]</code> is true when the file exists. <code>&gt;&amp;2</code> sends the message to the error stream.</p>
+<p><strong>Stage 2 (VM): check the role.</strong> Add <code>aws sts get-caller-identity &gt;/dev/null || { echo "no role credentials" &gt;&amp;2; exit 1; }</code>. The braces group two commands.</p>
+<p><strong>Stage 3 (VM): clone over HTTPS.</strong> Use <code>git clone https://github.com/&lt;org&gt;/&lt;repo&gt;.git "$HOME/citypulse"</code>. For a private repository, ask your trainer how to authenticate. Never place a token in the script.</p>
+<p><strong>Stage 4 (VM): install packages.</strong> On Ubuntu 24.04, run <code>sudo apt-get install -y python3-venv</code> once. Then <code>python3 -m venv "$HOME/citypulse-venv"</code> and <code>"$HOME/citypulse-venv/bin/pip" install -r "$HOME/citypulse/requirements.txt"</code>. Calling <code>pip</code> by full path uses the venv's copy.</p>
+<p><strong>Stage 5 (VM): run once by hand.</strong> Read the header of <code>scripts/run_pipeline.sh</code> to learn what it expects, then run it. Check with <code>aws s3 ls s3://citypulse-&lt;name&gt;-&lt;rand4&gt;/clean/aqi/date=$(date +%F)/</code>. <code>date +%F</code> prints a date like <code>2026-11-17</code>. Expect one new object. The VM clock is UTC, not IST, so <code>date +%F</code> can differ from your local date near midnight, and the crontab hours are in UTC too. Convert your times before you write the schedule. Rerunning <code>git clone</code> into an existing folder fails, so delete the folder or test for it first.</p>
+<p><strong>Test.</strong> Run <code>shellcheck infra/vm/bootstrap.sh</code> on the VM. No output means no warnings.</p>
+<h4 id="y2-t195-cron-and-evidence">Y2-T19.5: Cron and evidence</h4>
+<p><strong>Goal.</strong> Two scheduled runs at least 30 minutes apart, each with a log line and a bucket object.</p>
+<p><strong>Technique: a cron line.</strong> The five fields are minute, hour, day of month, month and day of week. This line is a different example, a backup at 06:30 on weekdays:</p>
+<div class="hl"><pre><span></span><code><span class="m">30</span><span class="w"> </span><span class="m">6</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">1</span>-5<span class="w"> </span>/usr/bin/tar<span class="w"> </span>-czf<span class="w"> </span>/home/ubuntu/backup.tgz<span class="w"> </span>/home/ubuntu/notes
+</code></pre></div>
+
+<p><code>30</code> is the minute, <code>6</code> the hour, <code>*</code> means every day or month, and <code>1-5</code> means Monday to Friday. Write your own schedule, giving runs at least 30 minutes apart. Cron has a short PATH and no terminal, so use full paths. In a crontab, <code>%</code> means newline, so escape it as <code>\%</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: The missing log folder</div><p>Cron does not create folders. Run <code>mkdir -p /home/ubuntu/logs</code> first, or the redirect fails silently.</p></div>
+
+<p><strong>Stage 1 (VM): find full paths.</strong> Run <code>command -v aws</code>, and note the path it prints.</p>
+<p><strong>Stage 2 (laptop): write your line.</strong> In <code>infra/vm/crontab.txt</code>, use the full path to <code>aws</code>, the full path to <code>run_pipeline.sh</code>, and a redirect: <code>&gt;&gt; /home/ubuntu/logs/pipeline.log 2&gt;&amp;1</code>. <code>&gt;&gt;</code> appends each run, and <code>2&gt;&amp;1</code> sends errors to the same file. The VM has no default region, so put <code>AWS_DEFAULT_REGION=ap-south-1</code> on its own line at the top of the crontab (a <code>NAME=value</code> line before the schedule lines), or the upload may fail with a region error.</p>
+<p><strong>Stage 3 (VM): install.</strong> Run <code>crontab -l</code> to save the current list, then <code>crontab /home/ubuntu/citypulse/infra/vm/crontab.txt</code>, then <code>crontab -l</code> again. Installing replaces the whole list, so keep any entries you need.</p>
+<p><strong>Stage 4 (VM): check cron.</strong> Run <code>systemctl status cron --no-pager</code> and <code>journalctl -u cron -n 20 --no-pager</code>. Expect <code>active (running)</code>.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One scheduled run on the VM&quot;, &quot;nodes&quot;: [&quot;cron&quot;, &quot;pipeline script&quot;, &quot;S3 bucket&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;start the job&quot;, &quot;note&quot;: &quot;At the scheduled minute, cron runs the command from the crontab.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;upload the data&quot;, &quot;note&quot;: &quot;The pipeline cleans the data and uploads it, using the role&#x27;s credentials.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;object stored&quot;, &quot;note&quot;: &quot;The bucket keeps the object and records its LastModified time.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;append to the log&quot;, &quot;note&quot;: &quot;The script writes its output to the log, which you read with tail.&quot;}]}"></div>
+
+<p><strong>Stage 5 (wait).</strong> Wait at least 30 minutes after the first run, and write the runbook meanwhile.</p>
+<p><strong>Stage 6 (laptop): save evidence.</strong></p>
+<div class="hl"><pre><span></span><code>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/citypulse-<span class="nv">$NAME</span><span class="w"> </span>ubuntu@<span class="s2">&quot;</span><span class="nv">$IP</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;tail -n 40 ~/logs/pipeline.log&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/<span class="nv">$NAME</span>/T19-cron-log.txt
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://citypulse-<span class="nv">$NAME</span>-&lt;rand4&gt;/clean/aqi/<span class="w"> </span>--recursive<span class="w"> </span>&gt;<span class="w"> </span>docs/evidence/<span class="nv">$NAME</span>/T19-bucket.txt
+</code></pre></div>
+
+<p>The <code>&gt;</code> writes the output to a file on your laptop. Open both files before you commit.</p>
+<h4 id="y2-t196-the-runbook">Y2-T19.6: The runbook</h4>
+<p><strong>Goal.</strong> <code>docs/cloud-runbook.md</code> with five sections, each dry-run and initialled by a teammate.</p>
+<p>Write it in your own words. The structure is:</p>
+<div class="hl"><pre><span></span><code>## Cloud runbook
+## Launch
+## Connect
+## Deploy
+## Stop
+## Recover
+</code></pre></div>
+
+<p>Each section gives a symptom, one diagnosis command, exact commands with their variables, a verify command, and the dry-runner's initials. A fictional example from a school library server, not CityPulse:</p>
+<div class="hl"><pre><span></span><code>## Recover: catalogue page errors after reboot
+Diagnosis: sudo systemctl status library-web --no-pager
+Fix: sudo systemctl restart library-web
+Verify: curl -I http://localhost:8080
+Dry run: Maya, 17 Nov
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Steps that cannot be run</div><p>"Fix the firewall" is not a step. Write the command with its variables.</p></div>
+
+<h4 id="y2-t197-the-cost-note">Y2-T19.7: The cost note</h4>
+<p><strong>Goal.</strong> <code>docs/evidence/&lt;name&gt;/T19-cost.md</code> with an hourly figure and a monthly figure.</p>
+<p>Open the EC2 on-demand pricing page and choose the Asia Pacific (Mumbai) region, <code>ap-south-1</code>. Find the hourly price for <code>t3.micro</code>, and write the date you read it. Then multiply. A made-up example: at 0.10 USD an hour, 6 hours is 0.60 USD, and a month of about 730 hours is 73 USD. Use the real price. Add a line that a stopped VM still pays for its disk.</p>
+<h4 id="y2-t198-stop-at-1515">Y2-T19.8: Stop at 15:15</h4>
+<p><strong>Goal.</strong> Your VM is stopped, and a screenshot shows it.</p>
+<p>Run <code>aws ec2 stop-instances --instance-ids "$ID"</code>, then <code>aws ec2 wait instance-stopped --instance-ids "$ID"</code>. In the EC2 console, filter by your <code>Owner</code> tag and screenshot the state <code>stopped</code> with the clock visible.</p>
+<div class="box box-trap"><div class="box-h">Trap: Terminating by mistake</div><p><code>terminate-instances</code> deletes the disk for good. This ticket needs stop.</p></div>
+
+<h4 id="y2-t199-pull-request">Y2-T19.9: Pull request</h4>
+<p>Push your branch and open a pull request with the template below. Fix what CI or your reviewer raises. Run shellcheck before pushing. The Tech Lead merges.</p>
+<h3 id="prove-it-before-review_2">Prove it before review</h3>
+<p>Run the five test cases in order and keep the output: TC1 on your laptop, TC2 on the VM, TC3 from your laptop, TC4 by opening the evidence files, and TC5 at 15:25.</p>
+<p>The pull request needs these headings. Fill them in with your own words and evidence.</p>
+<ul>
+<li><strong>What</strong>: the files changed and the ticket id.</li>
+<li><strong>Why</strong>: the two client rules, no keys and SSH from a /32.</li>
+<li><strong>How to test</strong>: the five test cases in order.</li>
+<li><strong>Evidence</strong>: the two evidence files, the cost note and the screenshot. Paste output, never a key or password.</li>
+<li><strong>Checklist</strong>: one tick for each definition-of-done item.</li>
+</ul>
+<h3 id="definition-of-done_2">Definition of done</h3>
+<ul>
+<li>[ ] <code>infra/vm/bootstrap.sh</code>, <code>infra/vm/crontab.txt</code> and <code>docs/cloud-runbook.md</code> are merged through a reviewed pull request, with CI green. You know it is true from the approval, the green check and an empty <code>shellcheck</code> output.</li>
+<li>[ ] Every student has a VM with a role and no keys, SSH limited to a /32 and key-only, and two cron runs in the log. You know it is true from TC1 to TC4.</li>
+<li>[ ] A cost note is in <code>docs/evidence/&lt;name&gt;/T19-cost.md</code>. You know it is true when it has the price, its date, the hours and both calculations.</li>
+<li>[ ] All VMs are stopped by 15:30, with a screenshot. You know it is true when TC5 prints only <code>stopped</code>.</li>
+<li>[ ] Evidence links are in the LMS Y2-T19 field by 23:59. You know it is true when each link opens a file in your repository.</li>
+</ul>
+<h3 id="what-goes-wrong_2">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC2 prints <code>FOUND</code></td>
+<td>A leftover <code>~/.aws/credentials</code> overrides the role.</td>
+<td>Delete the file, then rerun TC2.</td>
+</tr>
+<tr>
+<td>TC2 ARN contains <code>user/</code></td>
+<td>A stored key is in use.</td>
+<td>Remove the key and check the profile is attached.</td>
+</tr>
+<tr>
+<td><code>Unable to locate credentials</code></td>
+<td>The instance profile is not attached.</td>
+<td>Attach it with <code>associate-iam-instance-profile</code>, then retry.</td>
+</tr>
+<tr>
+<td>TC3 shows a password prompt</td>
+<td>Password login is still on.</td>
+<td>Run <code>sudo sshd -T</code>, and check for an earlier drop-in.</td>
+</tr>
+<tr>
+<td>SSH times out after a network change</td>
+<td>Your IP changed, so the /32 rule no longer matches.</td>
+<td>Use your runbook's recovery section.</td>
+</tr>
+<tr>
+<td>Log shows <code>aws: not found</code></td>
+<td>Cron's short PATH misses the folder with <code>aws</code>.</td>
+<td>Use the full path from <code>command -v aws</code>.</td>
+</tr>
+<tr>
+<td>No log file appears</td>
+<td>The <code>~/logs</code> folder is missing, or <code>%</code> is unescaped.</td>
+<td>Run <code>mkdir -p</code>, and escape <code>%</code> as <code>\%</code>.</td>
+</tr>
+<tr>
+<td>TC5 shows <code>running</code></td>
+<td>The VM was not stopped at 15:15.</td>
+<td>Stop it now, then screenshot.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_2">Defend it in the viva</h3>
+<p><strong>1. Why an instance role, not an access key?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>An access key on the VM never expires and can leak through a disk snapshot. An instance role gives temporary credentials that AWS replaces automatically, so no permanent secret sits on the disk. The role carries the same scoped policy, so the access is no broader than before.</p></details>
+
+<p><strong>2. What is the trade-off of allowing SSH only from a /32?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The rule is strict, so scanners cannot see the port. The cost is that when your IP changes, you lose access until you update the rule. That is why the runbook has a recovery section. Session Manager avoids an inbound port, but it needs an agent and extra IAM setup.</p></details>
+
+<p><strong>3. Why run <code>sshd -t</code> and <code>sshd -T</code> before closing your session?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>sshd -t</code> catches syntax errors before the reload. <code>sshd -T</code> shows the values that really apply, because the first value read wins and an earlier drop-in can override mine. I kept my first session open until a new login with the key worked.</p></details>
+
+<p><strong>4. What did you personally do in this ticket?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name your own subtasks, commits and owned section, and point to the commit hashes and your review. Keep it to what the commit history shows.</p></details>
+
+<p><strong>5. How do you know the pipeline ran twice without you touching it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The log shows two runs at least 30 minutes apart, and each run has a bucket object with a matching time. Cron wrote the log. If a run left no object, I would read the log tail to find out why.</p></details>
+
+<h3 id="check-yourself_2">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The file ~/.aws/credentials does not exist. What does test -e ~/.aws/credentials &amp;&amp; echo FOUND print?&quot;, &quot;opts&quot;: [&quot;FOUND, because test always prints its result.&quot;, &quot;Nothing, because echo runs only when the test succeeds.&quot;, &quot;An error, because test cannot read a missing file.&quot;, &quot;The path of the missing file.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;test -e succeeds only when the file exists, and &amp;&amp; runs echo only after success. The tempting wrong answer is FOUND, which would mean the file exists.&quot;}, {&quot;q&quot;: &quot;Why does the crontab line use /home/ubuntu/logs/pipeline.log instead of ~/logs/pipeline.log?&quot;, &quot;opts&quot;: [&quot;Cron cannot read home folders.&quot;, &quot;The tilde symbol is invalid in a crontab.&quot;, &quot;Cron always writes logs to /var/log.&quot;, &quot;Cron runs with a short PATH and no terminal, so full paths are the reliable choice.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A crontab line runs in a minimal environment, so absolute paths avoid surprises. The tempting wrong answer says the tilde is invalid, but the real risk is that the environment differs from your terminal.&quot;}, {&quot;q&quot;: &quot;Two cron runs have timestamps 20 minutes apart. What does the TC4 evidence show?&quot;, &quot;opts&quot;: [&quot;A pass, because two runs are enough.&quot;, &quot;A pass, because cron rounds the times.&quot;, &quot;A fail, because the runs must be at least 30 minutes apart.&quot;, &quot;A pass, because the bucket holds two objects.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The criterion needs at least two runs that are at least 30 minutes apart. The tempting wrong answer is that two runs are enough, but the gap is part of the test.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="K05.html"><small>Previous</small>Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a><a class="nx" href="K07.html"><small>Next</small>Capstone tickets T20–T22: the DSA track, part 1</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

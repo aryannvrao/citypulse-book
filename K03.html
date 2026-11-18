@@ -1,0 +1,1993 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capstone tickets T08–T10: pull requests, CI gate and first release · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="K03" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 8 · The capstone tickets</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a class="cur" href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 8 · The capstone tickets</p><h1>Capstone tickets T08–T10: pull requests, CI gate and first release</h1><p class="sub">3 tickets, 11 points. What each one asks, how your trainer checks it, and how to do it yourself.</p><p class="meta">86 min read · practice quiz · 9 animations</p><video class="vid" controls preload="metadata" src="videos/K03.mp4?v=1794965738"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#how-to-use-these-ticket-guides">How to use these ticket guides</a></li><li><a href="#y2-t08-first-real-pr-per-student-2-peer-reviews-protect-main">Y2-T08 · First real PR per student, 2 peer reviews, protect main</a></li><li><a href="#y2-t09-add-shellcheck-ci-gate-on-prs-resolve-and-log-one-conflict-each">Y2-T09 · Add shellcheck CI gate on PRs; resolve and log one conflict each</a></li><li><a href="#y2-t10-p2d01-github-profile-release-v020-peer-audit-start-fetchpy">Y2-T10 · P2/D01: GitHub profile, release v0.2.0, peer audit, start fetch.py</a></li></ol></details><h2 id="how-to-use-these-ticket-guides">How to use these ticket guides</h2>
+<p>These chapters walk through the real tickets on your squad's capstone board, in the order the board schedules them. The ticket text (story, acceptance criteria, test cases, subtasks and definition of done) comes from the course site. The guides teach you how to do each ticket yourself and how your trainer will check it.</p>
+<p>How the board works:</p>
+<ul>
+<li>A ticket moves Backlog, To Do, In Progress, Review, Done. <strong>Only a trainer can move it to Done</strong>, after running its test cases, and gives it a gate score from 0 to 3.</li>
+<li>Every ticket is judged from commit evidence: your commits, pull requests and reviews in the squad repository. Work done on someone else's laptop does not count for you.</li>
+<li>Each ticket has a points value (the "pts" column). Defence tickets (marked D01, D02 and so on) are where you present and answer questions.</li>
+<li>Your viva scores acceptance criteria met, technical depth, contribution and ownership, and understanding, each 0 to 5. The final capstone grade shown on the platform is 60% your own contribution and 40% your team's.</li>
+</ul>
+<div class="box box-tip"><div class="box-h">Tip: How to use a ticket guide</div><p>Read the guide the evening before the session that ticket is scheduled for. Do the work yourself, in your squad's repository, and run every test case in "How it is checked" before you ask the trainer to review it.</p></div>
+
+<table>
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Session</th>
+<th>pts</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#y2-t08-first-real-pr-per-student-2-peer-reviews-protect-main">Y2-T08</a></td>
+<td>8</td>
+<td>3</td>
+<td>First real PR per student, 2 peer reviews, protect main</td>
+</tr>
+<tr>
+<td><a href="#y2-t09-add-shellcheck-ci-gate-on-prs-resolve-and-log-one-conflict-each">Y2-T09</a></td>
+<td>9</td>
+<td>3</td>
+<td>Add shellcheck CI gate on PRs; resolve and log one conflict each</td>
+</tr>
+<tr>
+<td><a href="#y2-t10-p2d01-github-profile-release-v020-peer-audit-start-fetchpy">Y2-T10</a></td>
+<td>10</td>
+<td>5</td>
+<td>P2/D01: GitHub profile, release v0.2.0, peer audit, start fetch.py</td>
+</tr>
+</tbody>
+</table>
+<h2 id="y2-t08-first-real-pr-per-student-2-peer-reviews-protect-main">Y2-T08 · First real PR per student, 2 peer reviews, protect main</h2>
+<p><em>Session 8 · phase E2 · 3 points</em></p>
+<h3 id="the-ticket-in-plain-words">The ticket in plain words</h3>
+<p>CityPulse now runs on its own. A script fetches city data on a timer, and five students change the same code. Until now, anyone could push a change straight onto <code>main</code>, the shared main line of the repository. One careless push can break the data for the whole squad.</p>
+<p>This ticket moves the squad to <strong>GitHub flow</strong>, the way most software teams work. Each student takes one small task card, called an <strong>Issue</strong>, and works on a <strong>feature branch</strong>, a separate line of work. When the change is ready, the student opens a <strong>pull request</strong> (PR), which asks for that branch to be merged into <code>main</code>. Two squad-mates read the change, run it and comment. The author answers with new commits, and only then does the change merge.</p>
+<p>The Tech Lead also turns on <strong>branch protection</strong>, a GitHub rule that refuses direct pushes to <code>main</code> and requires an approval first. GitHub enforces it, so nobody can skip it under deadline pressure.</p>
+<p>A comment that says only "LGTM" (short for "looks good to me") scores zero. A useful review says what you ran, what input you used and what you saw.</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>The spec says Y2-T07 must be complete: the tag <code>v0.1-p1</code> exists, <code>fetch.sh</code>, <code>healthcheck.sh</code> and <code>merge.sh</code> are on <code>main</code>, the Project board holds at least ten Issues, and the trainer has recorded the <strong>baseline</strong>, the commit hash of <code>main</code> at the end of Y2-T07.</p>
+<p>You need a GitHub account with write access to the squad repository, Git and the GitHub command-line tool <code>gh</code> on your laptop, and your squad-mates' usernames. Run the commands in Git Bash, not PowerShell, because the quoting rules differ. Run these checks inside your clone of the squad repository.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Run where</th>
+<th>You are ready when you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git --version</code></td>
+<td>Laptop, Git Bash</td>
+<td>A line starting with <code>git version</code>.</td>
+</tr>
+<tr>
+<td><code>gh --version</code></td>
+<td>Laptop, Git Bash</td>
+<td>A line starting with <code>gh version</code>.</td>
+</tr>
+<tr>
+<td><code>gh auth status</code></td>
+<td>Laptop, Git Bash</td>
+<td>A line saying you are logged in to <code>github.com</code>.</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>Your clone</td>
+<td><code>On branch main</code> and <code>nothing to commit, working tree clean</code>.</td>
+</tr>
+<tr>
+<td><code>git tag --list v0.1-p1</code></td>
+<td>Your clone</td>
+<td><code>v0.1-p1</code>.</td>
+</tr>
+<tr>
+<td><code>git cat-file -t &lt;baseline&gt;</code></td>
+<td>Your clone</td>
+<td><code>commit</code>. Use the hash the trainer gave you.</td>
+</tr>
+<tr>
+<td><code>gh issue list --state open --limit 10</code></td>
+<td>Your clone</td>
+<td>At least five lines, each with an Issue number and a title.</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>gh auth status</code> says you are logged out, run <code>gh auth login</code> yourself.</p>
+<h3 id="words-you-need">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code></td>
+<td>The shared main line of the code. Everyone builds from it.</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A movable name that points at a line of commits.</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>The commit hash that marks the end of Y2-T07. Later tests ignore everything before it.</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>A task card on GitHub with a number, such as #31.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge one branch into another, with the diff, comments and checks on one page.</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>A reader's verdict on a PR: comment, request changes or approve.</td>
+</tr>
+<tr>
+<td>Thread</td>
+<td>A group of comments on one point. A thread can be marked resolved.</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>The file <code>.github/PULL_REQUEST_TEMPLATE.md</code>, which pre-fills every new PR description.</td>
+</tr>
+<tr>
+<td><code>Closes #n</code></td>
+<td>A phrase in the PR body. When the PR merges, GitHub closes Issue n.</td>
+</tr>
+<tr>
+<td>Squash merge</td>
+<td>Joining a PR as one new commit on <code>main</code>, which combines the PR's commits.</td>
+</tr>
+<tr>
+<td>First parent</td>
+<td>The line of commits that <code>main</code> itself follows, not the commits inside a merged branch.</td>
+</tr>
+<tr>
+<td>Branch protection</td>
+<td>A GitHub rule that refuses direct pushes and requires reviews before a merge.</td>
+</tr>
+<tr>
+<td><code>enforce_admins</code></td>
+<td>The protection setting that applies the rule to administrators too.</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Why the baseline matters</div><p>The last two test cases look only at commits after the baseline hash. Earlier commits, from earlier tickets, are out of scope.</p></div>
+
+<h3 id="how-your-trainer-checks-it">How your trainer checks it</h3>
+<p>The trainer checks five acceptance criteria with five test cases. Replace <code>&lt;squad&gt;</code> with your squad name and <code>&lt;n&gt;</code> with a PR number.</p>
+<ul>
+<li><strong>Criterion 1</strong>: five merged PRs, one per student, each with <code>Closes #&lt;n&gt;</code> and the template sections. TC1 checks the count, the authors and <code>Closes #</code>. The trainer reads the template sections by eye.</li>
+<li><strong>Criterion 2</strong>: at least two review comments per PR, and every thread resolved. TC2 counts the comments.</li>
+<li><strong>Criterion 3</strong>: each student reviewed two PRs, with a comment that is not just "LGTM". Check with the reviews command in Y2-T08.5.</li>
+<li><strong>Criterion 4</strong>: a direct push to <code>main</code> is rejected. TC5 tests this.</li>
+<li><strong>Criterion 5</strong>: every commit after the baseline references a PR. TC4 tests this.</li>
+</ul>
+<h4 id="tc1-merged-prs-with-the-closing-keyword">TC1: merged PRs with the closing keyword</h4>
+<div class="hl"><pre><span></span><code>gh pr list --state merged --search &#39;merged:&gt;=2026-11-24&#39; --json number,author,body --jq &#39;.[] | [.number,.author.login,(.body|test(&quot;Closes #&quot;))] | @tsv&#39;
+</code></pre></div>
+
+<ul>
+<li><code>gh pr list</code> lists pull requests in the repository you are standing in.</li>
+<li><code>--state merged</code> keeps only merged PRs.</li>
+<li><code>--search 'merged:&gt;=2026-11-24'</code> uses GitHub search syntax to keep PRs merged on or after the date in the ticket.</li>
+<li><code>--json number,author,body</code> asks for three fields, as JSON.</li>
+<li><code>--jq '...'</code> filters the JSON with a jq program. Single quotes stop the shell changing it.</li>
+<li><code>.[]</code> takes each PR in turn. <code>[...]</code> builds a list of the number, the author's login and one true or false value.</li>
+<li><code>.body|test("Closes #")</code> checks the body for the exact text <code>Closes #</code>. It is case sensitive, so <code>closes #</code> in lower case gives <code>false</code>.</li>
+<li><code>| @tsv</code> prints each list as one tab-separated line.</li>
+</ul>
+<p>Passing output has at least five rows, five distinct authors, and <code>true</code> on every row:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh pr list --state merged --search &#x27;merged:&gt;=2026-11-24&#x27; --json number,author,body --jq &#x27;.[] | [.number,.author.login,(.body|test(\&quot;Closes #\&quot;))] | @tsv&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;14\talex-k\ttrue&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;15\tmeera-s\ttrue&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;16\travi-n\ttrue&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;17\ttara-v\ttrue&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;18\tdev-s\ttrue&quot;}]}"></div>
+
+<p>A failing <code>false</code> on a row means that PR's body lacks <code>Closes #</code>. Fix the PR description, and the trainer reads the new text. Write <code>Closes #</code> with a capital C, because the trainer's jq test is case sensitive.</p>
+<h4 id="tc2-at-least-two-review-comments-per-pr">TC2: at least two review comments per PR</h4>
+<div class="hl"><pre><span></span><code>gh api repos/citypulse-y2/citypulse-&lt;squad&gt;/pulls/&lt;n&gt;/comments --jq &#39;length&#39;
+</code></pre></div>
+
+<ul>
+<li><code>repos/citypulse-y2/citypulse-&lt;squad&gt;</code> is the squad repository.</li>
+<li><code>pulls/&lt;n&gt;/comments</code> lists the review comments on PR n, which are the comments attached to lines of the diff.</li>
+<li><code>--jq 'length'</code> counts the items returned.</li>
+</ul>
+<p>Passing output is <code>2</code> or more. A failing <code>0</code> or <code>1</code> usually means the reviewer wrote in the conversation box or in a review summary, and those are not counted.</p>
+<p>TC2 does not check that threads are resolved, but criterion 2 does. Check it yourself on the PR page, where each thread shows a Resolved label, or run this and expect only <code>true</code> lines:</p>
+<div class="hl"><pre><span></span><code>gh api graphql -f query=&#39;query { repository(owner:&quot;citypulse-y2&quot;, name:&quot;citypulse-&lt;squad&gt;&quot;) { pullRequest(number: &lt;n&gt;) { reviewThreads(first: 50) { nodes { isResolved } } } } }&#39; --jq &#39;.data.repository.pullRequest.reviewThreads.nodes[].isResolved&#39;
+</code></pre></div>
+
+<h4 id="tc3-one-approval-required-on-main">TC3: one approval required on main</h4>
+<div class="hl"><pre><span></span><code>gh api repos/citypulse-y2/citypulse-&lt;squad&gt;/branches/main/protection --jq &#39;.required_pull_request_reviews.required_approving_review_count&#39;
+</code></pre></div>
+
+<ul>
+<li><code>repos/.../branches/main/protection</code> is the protection rule for <code>main</code>.</li>
+<li><code>.required_pull_request_reviews</code> picks the review section of the JSON.</li>
+<li><code>.required_approving_review_count</code> picks the number of approvals required.</li>
+</ul>
+<p>Passing output is <code>1</code> (or more). Failing output is <code>null</code> or <code>0</code>, which means the rule does not require reviews. A not-found error that says the branch is not protected means no rule exists yet.</p>
+<h4 id="tc4-every-commit-after-the-baseline-references-a-pr">TC4: every commit after the baseline references a PR</h4>
+<div class="hl"><pre><span></span><code>git fetch origin
+git log --first-parent --format=&#39;%h %s&#39; &lt;baseline&gt;..origin/main
+</code></pre></div>
+
+<ul>
+<li><code>git fetch origin</code> downloads new commits without changing your files.</li>
+<li><code>--first-parent</code> follows only the line that <code>main</code> follows, so each merged PR appears as one line.</li>
+<li><code>--format='%h %s'</code> prints the short hash, a space and the subject line.</li>
+</ul>
+<p>Passing output has every subject ending in <code>(#&lt;n&gt;)</code> or containing <code>Merge pull request #&lt;n&gt;</code>. A failing line has no PR reference, such as <code>a1b2c3d Fix typo in healthcheck.sh</code>. The usual cause is a commit pushed straight to <code>main</code>. Tell the Tech Lead at once, and do not rewrite <code>main</code> to hide it.</p>
+<h4 id="tc5-direct-push-rejected">TC5: direct push rejected</h4>
+<div class="hl"><pre><span></span><code>git commit --allow-empty -m test &amp;&amp; git push origin main
+</code></pre></div>
+
+<ul>
+<li><code>git commit --allow-empty</code> creates a commit that changes no files, and <code>&amp;&amp;</code> runs the push only if it worked.</li>
+</ul>
+<p>Passing output is a refusal that contains the words <code>protected branch hook declined</code>. The exact wording depends on GitHub. A failing run says the push succeeded, which means the rule is missing or administrators are not covered. That also leaves a commit with no PR on <code>main</code>, which then fails TC4, so tell the Tech Lead at once. Run this only in a throwaway clone, never in your working clone.</p>
+<h3 id="split-the-work">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Owner</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T08.1</td>
+<td>Tech Lead</td>
+<td>Open a PR adding <code>.github/PULL_REQUEST_TEMPLATE.md</code>. Merge after one review.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T08.2</td>
+<td>Tech Lead</td>
+<td>Turn on branch protection for <code>main</code>: require a PR, one approval, include administrators. Screenshot it.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T08.3</td>
+<td>Every student</td>
+<td>Assign yourself one Issue, move it to In progress, and branch from an up-to-date <code>main</code>.</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T08.4</td>
+<td>Every student</td>
+<td>Make one to three commits, push, and open a PR with the template filled in and <code>Closes #&lt;n&gt;</code>. Request two reviewers.</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Y2-T08.5</td>
+<td>Every student</td>
+<td>Review two PRs by running each one. Leave at least one substantive comment on each.</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T08.6</td>
+<td>Every student</td>
+<td>Address every comment, resolve each thread, re-request review, merge and delete the branch.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T08.7</td>
+<td>Scrum/Docs</td>
+<td>Confirm all five Issues are closed and in Done. Post the PR links and screenshot to the LMS.</td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<p>Your contribution comes from T08.3 to T08.6. Take one Issue from start to finish, so your name is on the PR, your commits and your two reviews. The Tech Lead owns the template and the protection rule.</p>
+<p>Use the branch name <code>feat/&lt;issue-number&gt;-&lt;short-slug&gt;</code>, for example <code>feat/31-usage-message</code>, with your board's number. Five example commit messages, in order, follow. They are examples, so write your own:</p>
+<ol>
+<li><code>Add usage message when an option gets no value</code></li>
+<li><code>Quote the location variable in fetch.sh</code></li>
+<li><code>Document the option in the README</code></li>
+<li><code>Address review: use a clearer name for the retry counter</code></li>
+<li><code>Address review: exit with a clear message on bad input</code></li>
+</ol>
+<h3 id="do-it-step-by-step">Do it, step by step</h3>
+<h4 id="y2-t081-add-the-pull-request-template-tech-lead">Y2-T08.1: Add the pull request template (Tech Lead)</h4>
+<p><strong>Goal.</strong> Put a file at <code>.github/PULL_REQUEST_TEMPLATE.md</code>. GitHub reads this exact path and fills every new PR description with it.</p>
+<p><strong>Stage 1: branch from main.</strong></p>
+<div class="hl"><pre><span></span><code>git switch main
+git pull --ff-only
+git switch -c chore/pr-template
+</code></pre></div>
+
+<p><code>git pull --ff-only</code> refuses if it cannot move your <code>main</code> forward in a straight line, for example when your <code>main</code> has commits of its own that origin lacks. You should see <code>Switched to a new branch 'chore/pr-template'</code>.</p>
+<p><strong>Stage 2: create the folder and the file.</strong></p>
+<div class="hl"><pre><span></span><code>mkdir -p .github
+</code></pre></div>
+
+<p><code>-p</code> creates missing parent folders, and it does nothing with no error if the folder already exists. Create the file in your editor, with these headings in this order, and a short prompt under each in your own words:</p>
+<div class="hl"><pre><span></span><code>## What
+## Why
+## How to test
+## Evidence
+## Checklist
+</code></pre></div>
+
+<p>The Checklist should remind the author to write <code>Closes #&lt;n&gt;</code>, with a capital C.</p>
+<p><strong>Stage 3: commit, push and open the PR.</strong></p>
+<div class="hl"><pre><span></span><code>git add .github/PULL_REQUEST_TEMPLATE.md
+git commit -m &quot;Add pull request template&quot;
+git push -u origin chore/pr-template
+gh pr create --fill --reviewer &lt;name&gt;
+</code></pre></div>
+
+<p><code>git push -u</code> uploads the branch and links it to origin. <code>gh pr create --fill</code> builds the title and body from the commit message, and prints the PR URL.</p>
+<p><strong>Stage 4: merge after one review.</strong></p>
+<div class="hl"><pre><span></span><code>gh pr merge &lt;n&gt; --squash --delete-branch
+</code></pre></div>
+
+<p><code>--squash</code> makes one commit on <code>main</code>, and <code>--delete-branch</code> removes the branch.</p>
+<p><strong>How to test.</strong> Run <code>gh api repos/&lt;owner&gt;/&lt;repo&gt;/contents/.github/PULL_REQUEST_TEMPLATE.md --jq .name</code>. It should print <code>PULL_REQUEST_TEMPLATE.md</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Protecting main before the template is merged</div><p>The ticket orders the template first. Merge it, then protect <code>main</code>. If you protect first, the template PR still needs an approval, and a mistake in your first rule is harder to fix while every merge waits on a review.</p></div>
+
+<h4 id="y2-t082-turn-on-branch-protection-tech-lead">Y2-T08.2: Turn on branch protection (Tech Lead)</h4>
+<p><strong>Goal.</strong> Make GitHub refuse direct pushes to <code>main</code> and require one approval.</p>
+<p><strong>Stage 1: check the current state.</strong></p>
+<div class="hl"><pre><span></span><code>gh api repos/&lt;owner&gt;/&lt;repo&gt;/branches/main/protection
+</code></pre></div>
+
+<p>Before any rule exists, this prints an error containing <code>Branch not protected</code> (HTTP 404). You need admin rights on the repository for this call.</p>
+<p><strong>Stage 2: set the rule.</strong> On the website, open Settings, then Branches, and add a classic branch protection rule for <code>main</code> (TC3 reads this kind of rule, not a newer "ruleset"). Tick the options to require a pull request before merging, to require one approval, and to include administrators. GitHub's newer wording for the last one is "Do not allow bypassing the above settings". Take a screenshot for the LMS.</p>
+<p><strong>Stage 3: test.</strong> Run TC3. It should print <code>1</code>.</p>
+<div class="box box-key"><div class="box-h">Key fact: What include administrators means</div><p>Without <code>enforce_admins</code>, administrators could still push straight to <code>main</code>. TC5 checks this setting.</p></div>
+
+<h4 id="y2-t083-take-an-issue-and-branch">Y2-T08.3: Take an Issue and branch</h4>
+<p><strong>Goal.</strong> Have one Issue that is yours, on a branch that starts from the latest <code>main</code>.</p>
+<p><strong>Stage 1: choose the Issue.</strong> On GitHub, open an Issue from the board and assign yourself. Move its card to In progress in the browser.</p>
+<p><strong>Stage 2: update main and create the branch.</strong></p>
+<div class="hl"><pre><span></span><code>git status
+git switch main
+git pull --ff-only
+git switch -c feat/&lt;n&gt;-&lt;slug&gt;
+git branch --show-current
+</code></pre></div>
+
+<p><code>git switch -c</code> creates the branch from the commit you are on, which is now the latest <code>main</code>. <code>git branch --show-current</code> prints the branch name so you can confirm it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Branching from a stale main</div><p>A new branch starts at the commit you are on. If you skip the pull, your PR will include other people's old work.</p></div>
+
+<h4 id="y2-t084-implement-commit-push-and-open-the-pr">Y2-T08.4: Implement, commit, push and open the PR</h4>
+<p><strong>Goal.</strong> Make small commits, push the branch and open a PR the reviewers can run.</p>
+<p><strong>Stage 1: stage only your change.</strong></p>
+<div class="hl"><pre><span></span><code>git add -p &lt;file&gt;
+</code></pre></div>
+
+<p><code>-p</code> shows each changed block and asks whether to stage it. Type <code>y</code> or <code>n</code> for each block.</p>
+<p><strong>Stage 2: commit and check.</strong></p>
+<div class="hl"><pre><span></span><code>git commit -m &quot;Add usage message when an option gets no value&quot;
+git show --stat HEAD
+</code></pre></div>
+
+<p><code>git show --stat HEAD</code> lists the files in the latest commit. If an unexpected file appears, run <code>git reset --soft HEAD~1</code>, which undoes the commit but keeps your edits, and stage again.</p>
+<p><strong>Stage 3: test on the lab machine.</strong> Run the change exactly as the Issue describes, on the lab Linux machine where the scripts run. Save the command and its output for your PR evidence.</p>
+<p><strong>Stage 4: push.</strong></p>
+<div class="hl"><pre><span></span><code>git push -u origin feat/&lt;n&gt;-&lt;slug&gt;
+</code></pre></div>
+
+<p><strong>Stage 5: open the PR.</strong> Write the PR body in a file first, which avoids quoting problems in Git Bash. Fill in the template in your own words, with <code>Closes #&lt;n&gt;</code>. Then run:</p>
+<div class="hl"><pre><span></span><code>gh pr create --base main --title &quot;&lt;your title&gt;&quot; --body-file &lt;file&gt; --reviewer &lt;name1&gt;,&lt;name2&gt;
+</code></pre></div>
+
+<p><code>--body-file</code> reads the description from your file. <code>--reviewer</code> takes two names with a comma and no spaces.</p>
+<p><strong>Stage 6: check the body.</strong></p>
+<div class="hl"><pre><span></span><code>gh pr view --json body --jq .body | grep -c &quot;Closes #&quot;
+</code></pre></div>
+
+<p>The output should be <code>1</code>.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One pull request from push to merge&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Reviewer&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push -u origin feat/&lt;n&gt;-&lt;slug&gt;&quot;, &quot;note&quot;: &quot;The branch travels to GitHub, and the PR opens against main.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;review requested&quot;, &quot;note&quot;: &quot;GitHub tells the reviewer that the PR is waiting.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;request changes&quot;, &quot;note&quot;: &quot;The reviewer runs the branch and posts a comment with evidence.&quot;}, {&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;fix commit pushed&quot;, &quot;note&quot;: &quot;You add a commit to the same branch, and the PR updates by itself.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;re-review&quot;, &quot;note&quot;: &quot;The reviewer runs the fix again.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;approve&quot;, &quot;note&quot;: &quot;The reviewer approves, and the PR can merge.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Opening a second PR for a fix</div><p>A PR follows its branch. Push fixes to the same branch, or the review history splits.</p></div>
+
+<h4 id="y2-t085-review-two-prs-by-running-them">Y2-T08.5: Review two PRs by running them</h4>
+<p><strong>Goal.</strong> Give two PRs a substantive review, each with a verdict.</p>
+<p><strong>Stage 1: find the PRs.</strong></p>
+<div class="hl"><pre><span></span><code>gh pr list --search &#39;review-requested:@me&#39;
+</code></pre></div>
+
+<p><strong>Stage 2: check out and run.</strong></p>
+<div class="hl"><pre><span></span><code>gh pr checkout &lt;n&gt;
+</code></pre></div>
+
+<p>This downloads the branch and switches your clone to it. Run the PR's "How to test" steps, save the output, and return with <code>git switch</code> to your own branch.</p>
+<p><strong>Stage 3: write the comment.</strong> A useful comment states what you ran, the input, what you saw and what you suggest:</p>
+<div class="hl"><pre><span></span><code>I ran &lt;command&gt; with &lt;input&gt;. It printed &lt;what you saw&gt;. I suggest &lt;change&gt;, because &lt;reason&gt;.
+</code></pre></div>
+
+<p><strong>Stage 3b: attach it to a line.</strong> TC2 counts only comments on lines of the diff. In the browser, open the PR's Files changed tab, click the <code>+</code> beside the line you tested, write your comment and choose Start a review. Add a second line comment if you can. The next stage then submits the review.</p>
+<p><strong>Stage 4: post the verdict.</strong> The <code>--body</code> text becomes the review summary, which TC2 does not count, so the line comments from stage 3b matter.</p>
+<div class="hl"><pre><span></span><code>gh pr review &lt;n&gt; --comment --body &quot;&lt;your comment&gt;&quot;
+gh pr review &lt;n&gt; --request-changes --body &quot;&lt;your comment&gt;&quot;
+gh pr review &lt;n&gt; --approve --body &quot;&lt;your comment&gt;&quot;
+</code></pre></div>
+
+<p>Choose the verdict that matches what you found.</p>
+<p><strong>How to test.</strong></p>
+<div class="hl"><pre><span></span><code>gh api repos/&lt;owner&gt;/&lt;repo&gt;/pulls/&lt;n&gt;/reviews --jq &#39;.[] | select(.user.login==&quot;&lt;your-login&gt;&quot;) | .state&#39;
+</code></pre></div>
+
+<p><code>select(...)</code> keeps only your reviews, and <code>.state</code> prints each verdict: <code>APPROVED</code>, <code>CHANGES_REQUESTED</code> or <code>COMMENTED</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Writing LGTM and nothing else</div><p>"LGTM" on its own earns no credit. Say what you ran, with what input, and what you saw.</p></div>
+
+<h4 id="y2-t086-address-comments-resolve-merge-and-clean-up">Y2-T08.6: Address comments, resolve, merge and clean up</h4>
+<p><strong>Goal.</strong> Answer every comment, push fixes, resolve each thread and merge.</p>
+<p><strong>Stage 1: fix and push.</strong></p>
+<div class="hl"><pre><span></span><code>git add &lt;file&gt;
+git commit -m &quot;Address review: &lt;short description&gt;&quot;
+git push
+</code></pre></div>
+
+<p><strong>Stage 2: reply, resolve and re-request.</strong> Reply on each thread, mark it resolved, and ask the reviewer to look again. A reviewer who requested changes must approve again.</p>
+<p><strong>Stage 3: merge and clean up.</strong></p>
+<div class="hl"><pre><span></span><code>gh pr merge &lt;n&gt; --squash --delete-branch
+git switch main
+git pull --ff-only
+</code></pre></div>
+
+<p><strong>How to test.</strong></p>
+<div class="hl"><pre><span></span><code>git fetch origin
+git log --oneline -1 origin/main
+</code></pre></div>
+
+<p>The subject should end with <code>(#&lt;n&gt;)</code>, the form TC4 checks.</p>
+<div class="box box-trap"><div class="box-h">Trap: Deleting the branch before the merge</div><p>Deleting a branch closes its PR without merging it. Merge first, then delete.</p></div>
+
+<h4 id="y2-t087-confirm-the-issues-and-the-evidence-scrumdocs">Y2-T08.7: Confirm the Issues and the evidence (Scrum/Docs)</h4>
+<p><strong>Goal.</strong> Every Issue is closed and every card is in Done.</p>
+<p>For each Issue number, run:</p>
+<div class="hl"><pre><span></span><code>gh issue view &lt;n&gt; --json state --jq .state
+</code></pre></div>
+
+<p>The answer should be <code>CLOSED</code>. Then move each card to Done on the board, and post the PR links and the protection screenshot to the LMS.</p>
+<h3 id="prove-it-before-review">Prove it before review</h3>
+<p>Run every test case yourself, in this order, and keep each output: TC1, then TC2 for each of your PRs, then TC3, then TC4 after <code>git fetch origin</code>. Run TC5 last, in a throwaway clone made with <code>git clone</code> in a separate folder, and delete that folder afterwards.</p>
+<p>Then write the PR description with five headings: What, Why, How to test, Evidence and Checklist. Write each in your own words. Evidence means pasted real output, log excerpts or screenshots, with tokens and personal details removed first. The Checklist holds <code>- [ ]</code> items and the line <code>Closes #&lt;n&gt;</code>.</p>
+<h3 id="definition-of-done">Definition of done</h3>
+<ul>
+<li>[ ] <code>PULL_REQUEST_TEMPLATE.md</code> is on <code>main</code>. You know it is true when the Y2-T08.1 check prints the file name.</li>
+<li>[ ] Branch protection is on, and the screenshot is on the LMS. You know it is true when TC3 prints <code>1</code> and the screenshot shows administrators included.</li>
+<li>[ ] Your PR is merged with the template, an Issue link and at least two review comments you addressed. You know it is true when TC1 shows your row as <code>true</code> and every thread is resolved.</li>
+<li>[ ] You reviewed two PRs substantively. You know it is true when the reviews check shows your verdicts, and each comment names what you ran.</li>
+<li>[ ] Your Issue is closed and its card is in Done. You know it is true when <code>gh issue view</code> prints <code>CLOSED</code>.</li>
+<li>[ ] No direct pushes to <code>main</code> after the baseline. You know it is true when TC4 shows only PR references.</li>
+</ul>
+<h3 id="what-goes-wrong">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC1 shows <code>false</code> for your PR.</td>
+<td>The body says <code>closes #</code> in lower case, or the line is missing.</td>
+<td>Edit the PR description to use <code>Closes #&lt;n&gt;</code>.</td>
+</tr>
+<tr>
+<td>TC1 shows four distinct authors, not five.</td>
+<td>One student merged two PRs and another merged none.</td>
+<td>Agree who merges next.</td>
+</tr>
+<tr>
+<td>TC2 shows <code>0</code> or <code>1</code>.</td>
+<td>The comments are in the conversation box, not on diff lines.</td>
+<td>Ask the reviewer to comment on specific lines.</td>
+</tr>
+<tr>
+<td>TC3 shows <code>null</code>.</td>
+<td>The rule does not require reviews, or no rule exists.</td>
+<td>Ask the Tech Lead to check Y2-T08.2.</td>
+</tr>
+<tr>
+<td>TC4 shows a commit with no <code>(#n)</code>.</td>
+<td>A commit was pushed straight to <code>main</code>.</td>
+<td>Tell the Tech Lead at once. Do not rewrite <code>main</code>.</td>
+</tr>
+<tr>
+<td>TC5 push succeeds.</td>
+<td><code>enforce_admins</code> is off.</td>
+<td>Ask the Tech Lead to turn it on, then run TC5 again.</td>
+</tr>
+<tr>
+<td><code>git pull --ff-only</code> refuses.</td>
+<td>Your local <code>main</code> has diverged: it has commits of its own and origin has new ones.</td>
+<td>Stop and ask for help. Find out where the commits came from.</td>
+</tr>
+<tr>
+<td>The Issue stays open after merge.</td>
+<td>The PR body lacked <code>Closes #&lt;n&gt;</code>.</td>
+<td>Edit the body, then close the Issue by hand and note why.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva">Defend it in the viva</h3>
+<p><strong>1. Why must branch protection include administrators?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The rule exists so that nobody skips the review. Without <code>enforce_admins</code>, the Tech Lead could push straight to <code>main</code> under deadline pressure. The setting applies the same rule to everyone, and TC5 proves it by refusing a direct push.</p></details>
+
+<p><strong>2. What is the trade-off between a squash merge and a normal merge commit?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A squash merge gives <code>main</code> one commit per PR, which keeps history short. The cost is that the branch's individual commits are no longer on <code>main</code>, so the detail lives on the PR page.</p></details>
+
+<p><strong>3. Walk me through one review you gave. What did you run, and why did you write what you wrote?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the PR, the exact command you ran after <code>gh pr checkout</code>, the input you used and what the output showed. Explain your verdict. A comment needs evidence, because "LGTM" alone earns nothing. Describe only a review you really gave.</p></details>
+
+<p><strong>4. A required approval slows every merge. Why is it still worth it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The wait is short, and a second person reads the diff and runs the code before the change reaches the shared line. An error caught there is far cheaper than a broken fetch that nobody notices for a day.</p></details>
+
+<p><strong>5. What does <code>git log --first-parent</code> show, and why does TC4 use it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>It follows only the line of commits that <code>main</code> itself follows, so each merged PR appears as one line. TC4 can then check that each line references a PR number. Without the flag, commits inside merged branches would appear too, and some would have no PR reference.</p></details>
+
+<h3 id="check-yourself">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate approves your PR and writes only \&quot;LGTM\&quot;. Under this ticket, what does that review earn?&quot;, &quot;opts&quot;: [&quot;Full credit, because an approval is evidence.&quot;, &quot;Half credit, because the approval was given.&quot;, &quot;Zero, because it says nothing about what was run or seen.&quot;, &quot;Credit for the PR, but not for the reviewer.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The ticket says \&quot;LGTM\&quot; alone scores zero. The approval is a verdict, but without what was run and seen it is not evidence. The tempting wrong answer is full credit, because an approval looks like a sign-off.&quot;}, {&quot;q&quot;: &quot;Which flag makes gh pr merge combine all the PR&#x27;s commits into one commit on main?&quot;, &quot;opts&quot;: [&quot;--merge&quot;, &quot;--squash&quot;, &quot;--rebase&quot;, &quot;--first-parent&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The squash flag makes one commit on main, with the PR number added to its subject. The merge flag keeps every commit, and --first-parent is a git log option, not a gh merge option.&quot;}, {&quot;q&quot;: &quot;The Tech Lead can push straight to main even though the rule requires one approval. Which setting closes that gap?&quot;, &quot;opts&quot;: [&quot;required_approving_review_count&quot;, &quot;--force-with-lease&quot;, &quot;--first-parent&quot;, &quot;enforce_admins&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;enforce_admins applies the protection rule to administrators. The approval count sets how many approvals are needed, but it does not stop an exempt administrator. The tempting wrong answer is the approval count, which is part of the rule but does not cover exempt users.&quot;}]}"></div>
+
+<h2 id="y2-t09-add-shellcheck-ci-gate-on-prs-resolve-and-log-one-conflict-each">Y2-T09 · Add shellcheck CI gate on PRs; resolve and log one conflict each</h2>
+<p><em>Session 9 · phase E2 · 3 points</em></p>
+<h3 id="the-ticket-in-plain-words_1">The ticket in plain words</h3>
+<p>Five students in your squad edit the same shell scripts. A shell script is a text file of terminal commands that the computer runs from top to bottom. When two people change the same lines on different branches, Git cannot decide which version to keep. It stops and reports a <strong>merge conflict</strong>. This ticket teaches two habits.</p>
+<p>The first habit is to resolve a conflict on purpose. You read both sides, write the version that keeps what both people intended, test the script, and record what you did. The second habit is to let a robot judge each change. Every pull request will run ShellCheck, a tool that reads shell scripts and reports risky lines. "It works on my machine" is not evidence. A green check on the pull request is.</p>
+<p>CityPulse needs this because its fetch job runs unattended on a schedule. A script with a missing pair of quotes can break on a file name that contains a space, and nobody is watching. The ticket makes sure a broken script cannot reach <code>main</code>.</p>
+<h3 id="before-you-start_1">Before you start</h3>
+<p>These must already be merged, from Y2-T08: <code>PULL_REQUEST_TEMPLATE.md</code> on <code>main</code>, branch protection on <code>main</code> that requires one approving review, and one merged pull request from you. The trainer must also have created the branches <code>conflict-a</code> and <code>conflict-b</code>.</p>
+<p>Check each tool before you begin. Run the commands in Git Bash on Windows or on the lab Linux machine.</p>
+<ul>
+<li><strong>Git.</strong> Run <code>git --version</code>. Ready when it prints <code>git version</code> and a number.</li>
+<li><strong>GitHub CLI, <code>gh</code>.</strong> Run <code>gh auth status</code>. Ready when it says you are logged in to github.com.</li>
+<li><strong>ShellCheck.</strong> Run <code>shellcheck --version</code>. Ready when it prints a <code>version:</code> line. On the lab machine, install it with <code>sudo apt install shellcheck</code> if missing. On Git Bash, use the Docker route in step 3.</li>
+<li><strong>Clean repository on main.</strong> Run <code>git switch main</code> and then <code>git status</code>. Ready when it prints <code>nothing to commit, working tree clean</code>.</li>
+<li><strong>Conflict branches.</strong> Run <code>git fetch origin</code> and then <code>git branch -r</code>. Ready when the list includes <code>origin/conflict-a</code> and <code>origin/conflict-b</code>.</li>
+</ul>
+<p>In this guide, <code>&lt;name&gt;</code> means your own name in lower case, with no spaces, as your squad agreed.</p>
+<h3 id="words-you-need_1">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continuous integration (CI)</td>
+<td>Running checks automatically on every change.</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>A YAML file in <code>.github/workflows/</code> that says when GitHub Actions runs and what it does.</td>
+</tr>
+<tr>
+<td>YAML</td>
+<td>A text format for settings. Indent with spaces, never tabs.</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>The GitHub service that runs workflows on fresh machines.</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>The event that starts a workflow, such as <code>pull_request</code>.</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>One unit of work in a workflow. Its id, such as <code>shellcheck</code>, names its check.</td>
+</tr>
+<tr>
+<td>Step</td>
+<td>One action or command in a job. Steps run in order.</td>
+</tr>
+<tr>
+<td>Runner</td>
+<td>The fresh virtual machine that runs a job. It is discarded afterwards.</td>
+</tr>
+<tr>
+<td>Status check</td>
+<td>A pass or fail result that a job reports on a pull request.</td>
+</tr>
+<tr>
+<td>Required status check</td>
+<td>A check that branch protection says must pass before merging.</td>
+</tr>
+<tr>
+<td>Branch protection</td>
+<td>Rules on a branch such as <code>main</code> that block direct pushes and unapproved merges.</td>
+</tr>
+<tr>
+<td>Approving review</td>
+<td>A squad-mate clicking Approve on your pull request.</td>
+</tr>
+<tr>
+<td>Pull request (PR)</td>
+<td>A request to merge one branch into another, with checks and reviews attached.</td>
+</tr>
+<tr>
+<td>Draft pull request</td>
+<td>A pull request marked not ready to merge. You use it as evidence, then close it.</td>
+</tr>
+<tr>
+<td>Linter</td>
+<td>A tool that reads code without running it and reports likely bugs.</td>
+</tr>
+<tr>
+<td>ShellCheck</td>
+<td>A linter for shell scripts. It prints a line number and a code for each finding.</td>
+</tr>
+<tr>
+<td>SC2086</td>
+<td>ShellCheck's code for an unquoted variable.</td>
+</tr>
+<tr>
+<td>Unquoted variable</td>
+<td>A variable written as <code>$OUT</code> instead of <code>"$OUT"</code>. Its value can split at spaces.</td>
+</tr>
+<tr>
+<td>Glob</td>
+<td>A pattern with <code>*</code> that matches file names, such as <code>scripts/*.sh</code>.</td>
+</tr>
+<tr>
+<td>Exit code</td>
+<td>The number a program returns. <code>0</code> means success.</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>One saved set of changes in Git, with a message.</td>
+</tr>
+<tr>
+<td>Remote, <code>origin</code></td>
+<td>The copy of the repository on GitHub.</td>
+</tr>
+<tr>
+<td>Fetch</td>
+<td>Downloading remote branches without changing your files.</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>Combining the changes of one branch into another.</td>
+</tr>
+<tr>
+<td>Merge conflict</td>
+<td>A merge that stops because two branches changed the same lines.</td>
+</tr>
+<tr>
+<td>Conflict markers</td>
+<td>The lines <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> that Git writes into a conflicting file.</td>
+</tr>
+<tr>
+<td>Rebase</td>
+<td>Replaying your commits on a new starting point. It rewrites them.</td>
+</tr>
+<tr>
+<td>Push</td>
+<td>Sending your commits to GitHub.</td>
+</tr>
+<tr>
+<td><code>gh</code></td>
+<td>The GitHub command line tool.</td>
+</tr>
+<tr>
+<td><code>gh api</code></td>
+<td>A <code>gh</code> command that reads a GitHub web address and prints the answer.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>A text format for structured data. <code>gh</code> can print its output as JSON.</td>
+</tr>
+<tr>
+<td>jq</td>
+<td>A tool that picks fields out of JSON. <code>gh</code> uses it for its <code>--jq</code> option.</td>
+</tr>
+<tr>
+<td>Squad, trainer, Tech Lead</td>
+<td>Your team of about five, the course teacher who judges the ticket, and the student who sets repository rules.</td>
+</tr>
+<tr>
+<td>Cold-call</td>
+<td>A question asked to you in front of the class without warning.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_1">How your trainer checks it</h3>
+<p>The five acceptance criteria are covered as follows. Criteria 1 and 2 are shown by TC1 and TC2. Criterion 3 is TC3. Criterion 4 is TC4. Criterion 5 is answered in the cold-call (Y2-T09.7). TC5 tests criterion 1 again, by trying to merge bad code.</p>
+<p><strong>TC1: the workflow file.</strong> Run from the root of the squad repository:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;cat .github/workflows/lint.yml&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;on:&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;  pull_request:&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;...&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;        run: |&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;          ls scripts/*.sh&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;          shellcheck scripts/*.sh&quot;}]}"></div>
+
+<ul>
+<li><code>cat</code> prints a file. The path must be exactly <code>.github/workflows/lint.yml</code>.</li>
+<li>Passing means there is a <code>pull_request</code> trigger and a step that runs <code>shellcheck scripts/*.sh</code>.</li>
+<li>Failing usually means the file is in the wrong folder. <code>cat</code> then prints <code>No such file or directory</code>.</li>
+</ul>
+<p><strong>TC2: the checks history.</strong> The trainer runs two commands. The first lists the checks on your red-green pull request:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>pr<span class="w"> </span>checks<span class="w"> </span>&lt;red-green<span class="w"> </span>PR<span class="w"> </span>number&gt;
+</code></pre></div>
+
+<ul>
+<li><code>gh pr checks</code> lists the checks on one pull request. Replace the placeholder, including the angle brackets, with the number <code>gh</code> printed when you opened it.</li>
+<li>Passing means the <code>shellcheck</code> line shows <code>pass</code>.</li>
+</ul>
+<p>The second lists the workflow runs on the branch:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>run<span class="w"> </span>list<span class="w"> </span>--workflow<span class="w"> </span>lint.yml<span class="w"> </span>--branch<span class="w"> </span>ci/red-green-demo<span class="w"> </span>--json<span class="w"> </span>conclusion<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.[].conclusion&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh run list</code> lists runs, newest first.</li>
+<li><code>--workflow lint.yml</code> and <code>--branch ci/red-green-demo</code> filter the runs.</li>
+<li><code>--json conclusion</code> asks for each run's result. <code>--jq '.[].conclusion'</code> prints that field, one per line.</li>
+</ul>
+<p>Passing output has a <code>failure</code> and a <code>success</code>:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh run list --workflow lint.yml --branch ci/red-green-demo --json conclusion --jq &#x27;.[].conclusion&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;success&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;failure&quot;}]}"></div>
+
+<p>Failing output has only <code>success</code>, meaning you never made the check go red, or only <code>failure</code>, meaning the fix was never pushed. The <code>success</code> must come from a later commit than the <code>failure</code>.</p>
+<p><strong>TC3: branch protection.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>repos/citypulse-y2/citypulse-&lt;squad&gt;/branches/main/protection<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.required_status_checks.contexts, .required_pull_request_reviews.required_approving_review_count&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh api</code> calls the GitHub address that follows, which holds the protection rules for <code>main</code>.</li>
+<li>The two jq fields are separated by a comma, so each prints as its own output: first the list, such as <code>["shellcheck"]</code>, then the number.</li>
+<li>Passing shows <code>shellcheck</code> in the list, then a number of <code>1</code> or more.</li>
+<li>Failing shows <code>Branch not protected</code>, meaning no rule exists, or an empty list, meaning the status check is missing. Reading this address may need admin rights.</li>
+</ul>
+<p><strong>TC4: the five git-log files.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>docs/git-log/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span>%an<span class="w"> </span>--<span class="w"> </span>docs/git-log/&lt;name&gt;.md<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u
+</code></pre></div>
+
+<ul>
+<li><code>ls</code> lists the folder. <code>&amp;&amp;</code> runs the second command only if the first succeeds.</li>
+<li><code>git log --format=%an -- &lt;file&gt;</code> prints the author of each commit that changed the file. <code>--</code> separates options from the path.</li>
+<li><code>sort -u</code> sorts the names and removes repeats.</li>
+<li>Passing lists five files, each authored by its student. The name must match what <code>git config user.name</code> prints on your machine, so set it before you commit.</li>
+</ul>
+<p><strong>TC5: the blocked merge.</strong> The trainer opens a throwaway pull request that adds <code>echo $UNQUOTED</code> to a script. Passing means the <code>shellcheck</code> check fails and the merge button is blocked.</p>
+<p><strong>The cold-call (criterion 5).</strong> Each student must say that rebase rewrites commits and must not be used on a shared branch.</p>
+<h3 id="split-the-work_1">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T09.1</td>
+<td>Every student</td>
+<td>Resolve the planned conflict on <code>resolve-&lt;name&gt;</code>, test, push, and open a draft PR as evidence.</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T09.2</td>
+<td>Every student</td>
+<td>Write <code>docs/git-log/&lt;name&gt;.md</code> and merge it through a PR.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T09.3</td>
+<td>QA/DevOps</td>
+<td>Fix ShellCheck findings on <code>ci/lint</code> and add <code>lint.yml</code> with job <code>shellcheck</code>.</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Y2-T09.4</td>
+<td>Backend</td>
+<td>Open the red-green demo PR, see it fail, fix it, see it pass.</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Y2-T09.5</td>
+<td>Tech Lead</td>
+<td>Require <code>shellcheck</code> and one approval on <code>main</code>, then test a direct push.</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Y2-T09.6</td>
+<td>Scrum/Docs</td>
+<td>Post the links and the protection screenshot on the LMS.</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Y2-T09.7</td>
+<td>Every student</td>
+<td>Prepare the two-sentence rebase-versus-merge answer.</td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which piece to own.</strong> Every student owns T09.1, T09.2 and T09.7, so your conflict and your git-log file are your own evidence. Then take one team piece end to end: T09.3 for QA/DevOps, or T09.4 for Backend. A student who only reviews others' work shows little in the commit history.</p>
+<p><strong>Branch names.</strong> <code>resolve-&lt;name&gt;</code> for T09.1, <code>docs/git-log-&lt;name&gt;</code> for T09.2, <code>ci/lint</code> for T09.3, <code>ci/red-green-demo</code> for T09.4.</p>
+<p><strong>Commit messages, in the order you would make them.</strong> These are patterns. Write your own words.</p>
+<ol>
+<li><code>Merge conflict-b into resolve-&lt;name&gt;: keep &lt;what both sides wanted&gt;</code></li>
+<li><code>Add docs/git-log/&lt;name&gt;.md for the fetch_once conflict</code></li>
+<li><code>Add shellcheck workflow lint.yml with job shellcheck</code></li>
+<li><code>Quote variables that ShellCheck flags in scripts</code></li>
+<li><code>Add red-green demo script with an unquoted variable</code></li>
+<li><code>Quote $OUT in the red-green demo so ShellCheck passes</code></li>
+</ol>
+<h3 id="do-it-step-by-step_1">Do it, step by step</h3>
+<h4 id="1-resolve-the-planned-conflict-t091">1. Resolve the planned conflict (T09.1)</h4>
+<p><strong>The goal.</strong> Merge two branches that changed the same lines, resolve the conflict by hand, test it, and push.</p>
+<p><strong>Practise on a scratch repository first.</strong> Git marks a conflict with three marker lines. Make a throwaway repository and cause one:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>conflict-practice<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>conflict-practice
+git<span class="w"> </span>init<span class="w"> </span>-q
+<span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;LIMIT=10\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>config.sh
+git<span class="w"> </span>add<span class="w"> </span>config.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-qm<span class="w"> </span><span class="s2">&quot;start&quot;</span>
+git<span class="w"> </span>switch<span class="w"> </span>-q<span class="w"> </span>-c<span class="w"> </span>left<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;LIMIT=20\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>config.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-qam<span class="w"> </span><span class="s2">&quot;left&quot;</span>
+git<span class="w"> </span>switch<span class="w"> </span>-q<span class="w"> </span>-<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;LIMIT=30\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>config.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-qam<span class="w"> </span><span class="s2">&quot;right&quot;</span>
+git<span class="w"> </span>merge<span class="w"> </span>left
+</code></pre></div>
+
+<ul>
+<li><code>git switch -q -c left</code> creates a branch called <code>left</code> and moves onto it. <code>-c</code> means create.</li>
+<li><code>git switch -q -</code> returns to the previous branch.</li>
+<li>The last command changes the same line on both branches, so the merge stops.</li>
+</ul>
+<p>Run <code>cat config.sh</code>. You see:</p>
+<div class="hl"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+LIMIT=30
+=======
+LIMIT=20
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; left
+</code></pre></div>
+
+<p>The lines between <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> and <code>=======</code> are your version. The lines between <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; left</code> are the other version. To resolve it, edit the file to hold the final value, delete all three marker lines, then run <code>git add config.sh</code> and <code>git commit -m "Resolve LIMIT: keep 30"</code>. The <code>git add</code> marks the conflict resolved, and the commit completes the merge. If you get stuck, <code>git merge --abort</code> returns you to the state before the merge.</p>
+<p><strong>The real conflict.</strong> In your squad repository:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>resolve-&lt;name&gt;<span class="w"> </span>origin/conflict-a
+git<span class="w"> </span>merge<span class="w"> </span>origin/conflict-b
+git<span class="w"> </span>status<span class="w"> </span>--short
+</code></pre></div>
+
+<ul>
+<li><code>git switch -c resolve-&lt;name&gt; origin/conflict-a</code> creates your branch from the trainer's <code>conflict-a</code>.</li>
+<li><code>git merge origin/conflict-b</code> stops with a conflict in <code>scripts/fetch_once.sh</code>. The ticket says the trainer or your pair prepared both branches on the same lines of that file. If your merge reports a different file, or no conflict, ask your trainer which branches and file to use.</li>
+<li><code>UU</code> in front of a file in <code>git status --short</code> means it has an unresolved conflict.</li>
+</ul>
+<p>Open <code>scripts/fetch_once.sh</code>, read both sides, and write the version that keeps both intentions. Then check it:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;^(&lt;&lt;&lt;&lt;&lt;&lt;&lt;|=======|&gt;&gt;&gt;&gt;&gt;&gt;&gt;)&#39;</span><span class="w"> </span>scripts/fetch_once.sh<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;no markers left&quot;</span>
+bash<span class="w"> </span>-n<span class="w"> </span>scripts/fetch_once.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;syntax ok&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>grep -nE</code> prints the line number of any line that starts with a marker. The <code>^</code> anchors the match to the start of the line.</li>
+<li><code>|| echo</code> runs only if <code>grep</code> found nothing. Expected output: <code>no markers left</code>.</li>
+<li><code>bash -n</code> checks the syntax without running the script. Expected output: <code>syntax ok</code>.</li>
+</ul>
+<p>Run the script the way Y2-T06 taught you, and confirm it exits with 0. Then commit and push:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts/fetch_once.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Merge conflict-b: keep both sides&#39; changes in fetch_once.sh&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>resolve-&lt;name&gt;
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--draft<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>resolve-&lt;name&gt;<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Evidence: resolve conflict-b (&lt;name&gt;)&quot;</span><span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;Evidence only. Closed after review.&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>-u</code> links the local branch to the remote one.</li>
+<li><code>--draft</code> marks the pull request as not ready to merge. You close it after the trainer has seen it, with <code>gh pr close &lt;number&gt;</code>.</li>
+</ul>
+<p><strong>Test this stage.</strong> <code>no markers left</code>, then <code>syntax ok</code>, then exit code 0.</p>
+<h4 id="2-write-your-conflict-log-t092">2. Write your conflict log (T09.2)</h4>
+<p><strong>The goal.</strong> Write <code>docs/git-log/&lt;name&gt;.md</code> with five headings, and merge it through a pull request.</p>
+<div class="hl"><pre><span></span><code><span class="gu">## Files and lines in conflict</span>
+<span class="gu">## Cause</span>
+<span class="gu">## Resolution and why</span>
+<span class="gu">## Verification</span>
+<span class="gu">## Rebase or merge</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Files and lines in conflict.</strong> The files and line numbers that Git marked.</li>
+<li><strong>Cause.</strong> Why the two branches changed the same lines.</li>
+<li><strong>Resolution and why.</strong> What the final version keeps from each side.</li>
+<li><strong>Verification.</strong> The exact command you ran and the result it printed.</li>
+<li><strong>Rebase or merge.</strong> One sentence in your own words.</li>
+</ul>
+<p>A fictional example, about a different project, to show the style only: a recipe app had two branches that both changed a serving count. The writer kept the larger value, because the other branch added a test that expected it. Verified with <code>npm test</code>, which printed <code>12 passed</code>.</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>docs/git-log
+git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>docs/git-log-&lt;name&gt;
+</code></pre></div>
+
+<ul>
+<li><code>mkdir -p</code> creates the folder and does not fail if it exists.</li>
+<li><code>git pull</code> brings <code>main</code> up to date before you branch.</li>
+</ul>
+<p>Create the file, then commit, push and open a pull request with <code>gh pr create --base main --fill</code>. <code>--fill</code> takes the title and body from your commit. A squad-mate must approve it before you merge.</p>
+<p><strong>Test this stage.</strong> <code>grep -c '^## ' docs/git-log/&lt;name&gt;.md</code> prints <code>5</code>.</p>
+<h4 id="3-add-the-shellcheck-workflow-on-cilint-t093">3. Add the ShellCheck workflow on <code>ci/lint</code> (T09.3)</h4>
+<p><strong>The goal.</strong> Fix every ShellCheck finding, then add a workflow that runs ShellCheck on each pull request.</p>
+<p><strong>A small example first.</strong> Run ShellCheck on your scripts:</p>
+<div class="hl"><pre><span></span><code>shellcheck<span class="w"> </span>scripts/*.sh<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;exit=</span><span class="nv">$?</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>scripts/*.sh</code> is expanded by the shell to every <code>.sh</code> file before ShellCheck starts.</li>
+<li><code>; echo "exit=$?"</code> prints the exit code. <code>1</code> means a problem was found.</li>
+</ul>
+<p>A finding looks like this. The layout varies by version and the line shown is only an example, but the code and line number are reported the same way:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;shellcheck scripts/*.sh; echo \&quot;exit=$?\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;In scripts/fetch_once.sh line 12:&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;wc -l $OUT&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;       ^--^ SC2086 (info): Double quote to prevent globbing and word splitting.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;exit=1&quot;}]}"></div>
+
+<p>The fix is double quotes around the variable. Without them, a value with a space is split into two words. If ShellCheck is missing on Git Bash, run it in Docker: <code>docker run --rm -v "$PWD:/mnt" koalaman/shellcheck scripts/*.sh</code>. The <code>-v</code> option shares your folder with the container.</p>
+<p><strong>Fix the findings.</strong> Create the branch, then fix each flagged line, for example <code>wc -l "$OUT"</code>. Run ShellCheck again until the last line is <code>exit=0</code>. Do not add a disable comment just to turn it green. A disable comment needs a written reason.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>ci/lint
+</code></pre></div>
+
+<p><strong>Stage A: the file and trigger.</strong> Run <code>mkdir -p .github/workflows</code>, then create <code>.github/workflows/lint.yml</code> with these first lines:</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+</code></pre></div>
+
+<ul>
+<li><code>name: lint</code> is the label in the Actions tab.</li>
+<li><code>on:</code> starts the list of triggers. <code>pull_request:</code> runs the workflow for each pull request.</li>
+</ul>
+<p><strong>Stage B: the job.</strong> Add under the trigger lines:</p>
+<div class="hl"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">shellcheck</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+</code></pre></div>
+
+<ul>
+<li><code>shellcheck:</code> is the job id. Branch protection uses it as the check name, so do not rename it later.</li>
+<li><code>runs-on: ubuntu-latest</code> gives a fresh Ubuntu runner, which already has ShellCheck.</li>
+</ul>
+<p><strong>Stage C: the steps.</strong> Add under <code>steps:</code>, with the dash indented six spaces:</p>
+<div class="hl"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ShellCheck scripts/</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">ls scripts/*.sh</span>
+<span class="w">          </span><span class="no">shellcheck scripts/*.sh</span>
+</code></pre></div>
+
+<ul>
+<li><code>actions/checkout@v4</code> copies your repository onto the empty runner.</li>
+<li><code>ls scripts/*.sh</code> prints the files checked, so the log proves coverage.</li>
+<li><code>shellcheck scripts/*.sh</code> fails the step if it finds a problem.</li>
+</ul>
+<p><strong>Stage D: check the YAML.</strong></p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import yaml;d=yaml.safe_load(open(&#39;.github/workflows/lint.yml&#39;));print(list(d[&#39;jobs&#39;]))&quot;</span>
+</code></pre></div>
+
+<p>This needs Python with the PyYAML package; if <code>import yaml</code> fails, skip this check and read the file for tabs and indentation instead. Expected output: <code>['shellcheck']</code>. A parse error usually means a tab. Replace it with spaces.</p>
+<p>Commit, push and open the pull request:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts<span class="w"> </span>.github/workflows/lint.yml
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add shellcheck workflow lint.yml with job shellcheck&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>ci/lint
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--fill
+</code></pre></div>
+
+<p>Once a squad-mate approves and the pull request merges, the check is in place on <code>main</code>.</p>
+<p><strong>Test this stage.</strong> The local ShellCheck run ends with <code>exit=0</code>, and the YAML check prints <code>['shellcheck']</code>.</p>
+<p>The animation below shows what happens once the workflow file is on a pull request.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One pull request, one ShellCheck run&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Fresh runner&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;gh pr create&quot;, &quot;note&quot;: &quot;Your branch and its commits reach GitHub.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;start job shellcheck&quot;, &quot;note&quot;: &quot;GitHub reads lint.yml and gives the job to a fresh runner.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 2, &quot;label&quot;: &quot;checkout and ls&quot;, &quot;note&quot;: &quot;The runner copies the repository and lists the scripts.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;shellcheck result&quot;, &quot;note&quot;: &quot;The step passes with exit 0, or fails with exit 1.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;check on the PR&quot;, &quot;note&quot;: &quot;GitHub shows the result on the pull request.&quot;}]}"></div>
+
+<h4 id="4-make-the-check-go-red-then-green-t094">4. Make the check go red, then green (T09.4)</h4>
+<p><strong>The goal.</strong> Show a failing run, then a passing run on a later commit, on the same branch.</p>
+<p>Start from <code>ci/lint</code>, which holds the workflow, and create a new branch:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>ci/lint
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>ci/red-green-demo
+</code></pre></div>
+
+<p>Create <code>scripts/red_green_demo.sh</code>:</p>
+<div class="hl"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">OUT</span><span class="o">=</span><span class="s2">&quot;report.csv&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$OUT</span>
+</code></pre></div>
+
+<p>The unquoted <code>$OUT</code> on the last line is the SC2086 mistake. CI only reads this script, it never runs it.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts/red_green_demo.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add red-green demo script with an unquoted variable&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>ci/red-green-demo
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--head<span class="w"> </span>ci/red-green-demo<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Red-green demo: SC2086&quot;</span><span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;Demo pull request. Do not merge.&quot;</span>
+gh<span class="w"> </span>pr<span class="w"> </span>checks<span class="w"> </span>--watch
+<span class="nv">RUN_ID</span><span class="o">=</span><span class="k">$(</span>gh<span class="w"> </span>run<span class="w"> </span>list<span class="w"> </span>--branch<span class="w"> </span>ci/red-green-demo<span class="w"> </span>--limit<span class="w"> </span><span class="m">1</span><span class="w"> </span>--json<span class="w"> </span>databaseId<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.[0].databaseId&#39;</span><span class="k">)</span>
+gh<span class="w"> </span>run<span class="w"> </span>view<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RUN_ID</span><span class="s2">&quot;</span><span class="w"> </span>--log-failed<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>SC2086
+</code></pre></div>
+
+<ul>
+<li><code>gh pr checks --watch</code> waits for the run to finish. If it says no checks are reported yet, wait a few seconds and run it again.</li>
+<li><code>gh run list ... --limit 1</code> finds the newest run on the branch, and <code>--jq '.[0].databaseId'</code> keeps only its id.</li>
+<li><code>gh run view "$RUN_ID" --log-failed</code> prints only the failed steps. <code>grep SC2086</code> keeps the line with the code.</li>
+</ul>
+<p>Now fix it. Change the line to <code>echo "$OUT"</code>, then:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts/red_green_demo.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Quote \$OUT in the red-green demo so ShellCheck passes&quot;</span>
+git<span class="w"> </span>push
+gh<span class="w"> </span>pr<span class="w"> </span>checks<span class="w"> </span>--watch
+</code></pre></div>
+
+<p>The second run is on a later commit and should pass. Check the history with the TC2 command. The output is <code>success</code>, then <code>failure</code>, newest first. Leave the pull request open until the trainer has seen it.</p>
+<p><strong>Test this stage.</strong> The history contains both words, and the newest run is <code>success</code>.</p>
+<h4 id="5-protect-main-t095-tech-lead">5. Protect <code>main</code> (T09.5, Tech Lead)</h4>
+<p><strong>The goal.</strong> Make <code>main</code> accept a change only after one approval and a passing <code>shellcheck</code> check.</p>
+<p>Open the repository on GitHub, go to Settings, then Branches, and add a rule for <code>main</code>. Newer GitHub versions show the same options under rulesets. Turn on two settings:</p>
+<ul>
+<li><strong>Require a pull request before merging</strong>, with <strong>Require approvals</strong> set to 1.</li>
+<li><strong>Require status checks to pass before merging</strong>, with <code>shellcheck</code> added.</li>
+</ul>
+<p>GitHub offers a check in that list only after it has run at least once. Also tick <strong>Do not allow bypassing the above settings</strong> (called <strong>Include administrators</strong> in the older Branches page). Without it, a repository admin can still push straight to <code>main</code>, and your test below would wrongly succeed.</p>
+<p><strong>Test the rule.</strong> Make an empty commit on <code>main</code> and try to push it:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Test direct push&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p>The push should be rejected because the branch is protected. Then remove the test commit from your laptop only, with <code>git reset --hard origin/main</code>. That discards local commits, so run it only on the test commit.</p>
+<h4 id="6-post-the-links-t096-scrumdocs">6. Post the links (T09.6, Scrum/Docs)</h4>
+<p>Get each pull request's address with <code>gh pr view &lt;number&gt; --json url --jq .url</code>. The <code>--jq .url</code> prints only the web address. Take a screenshot of the protection page, then post the red-green link, a green pull request link and the screenshot on the LMS.</p>
+<h4 id="7-prepare-the-cold-call-answer-t097">7. Prepare the cold-call answer (T09.7)</h4>
+<p>Prepare one answer of two sentences that compares rebase with merge and says why not to rebase a branch others have pulled. Use this structure and write your own words:</p>
+<ul>
+<li>Sentence one: merge adds a new commit that joins two lines of work. Rebase replays your commits on a new base, which gives them new identities.</li>
+<li>Sentence two: on a shared branch, rebase makes other people's copies disagree with yours, so they must repair their history.</li>
+</ul>
+<h3 id="prove-it-before-review_1">Prove it before review</h3>
+<p>Run every test case yourself, in order, before you ask for review.</p>
+<ol>
+<li><strong>TC1.</strong> <code>cat .github/workflows/lint.yml</code> on <code>main</code>. Check for <code>pull_request</code> and the ShellCheck step.</li>
+<li><strong>TC2.</strong> <code>gh pr checks &lt;number&gt;</code>, then the <code>gh run list</code> command. Check for both words.</li>
+<li><strong>TC3.</strong> The <code>gh api</code> command. Check that <code>shellcheck</code> is listed and the count is 1 or more.</li>
+<li><strong>TC4.</strong> <code>ls docs/git-log/</code> and the <code>git log</code> command. Check for five files, each with its author.</li>
+<li><strong>TC5.</strong> Open a throwaway pull request that adds <code>echo $UNQUOTED</code> to a script. Check that the check fails and the merge is blocked. Close it and delete its branch.</li>
+</ol>
+<p>Your pull request description uses these headings:</p>
+<div class="hl"><pre><span></span><code><span class="gu">## What</span>
+<span class="gu">## Why</span>
+<span class="gu">## How to test</span>
+<span class="gu">## Evidence</span>
+<span class="gu">## Checklist</span>
+</code></pre></div>
+
+<ul>
+<li><strong>What.</strong> One sentence on the change.</li>
+<li><strong>Why.</strong> The acceptance criterion it meets.</li>
+<li><strong>How to test.</strong> The commands a reviewer runs.</li>
+<li><strong>Evidence.</strong> Paste real output: the <code>gh run list</code> lines, the <code>grep SC2086</code> line from the failed log, and the protection screenshot.</li>
+<li><strong>Checklist.</strong> One <code>- [ ]</code> item for each definition-of-done item below.</li>
+</ul>
+<h3 id="definition-of-done_1">Definition of done</h3>
+<ul>
+<li>[ ] <code>lint.yml</code> is merged through an approved pull request, and every script passes ShellCheck. Known when <code>shellcheck scripts/*.sh; echo "exit=$?"</code> ends with <code>exit=0</code> on <code>main</code>.</li>
+<li>[ ] The red-green pull request link is recorded. Known when its checks history shows a <code>failure</code> and a later <code>success</code>.</li>
+<li>[ ] <code>main</code> requires one review and the <code>shellcheck</code> check. Known when TC3 prints <code>shellcheck</code> and a count of 1 or more.</li>
+<li>[ ] Your conflict is resolved and <code>docs/git-log/&lt;name&gt;.md</code> is merged. Known when <code>grep -c '^## ' docs/git-log/&lt;name&gt;.md</code> prints 5 on <code>main</code>.</li>
+<li>[ ] You can answer the rebase-versus-merge cold-call. Known when you say your two sentences without notes.</li>
+</ul>
+<h3 id="what-goes-wrong_1">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No <code>shellcheck</code> check appears on the pull request.</td>
+<td>The workflow is in the wrong folder, or its name does not end in <code>.yml</code>.</td>
+<td>Move it to <code>.github/workflows/lint.yml</code> at the top of the repository.</td>
+</tr>
+<tr>
+<td>Branch protection cannot find <code>shellcheck</code> in its list.</td>
+<td>The check has never run, or the job id was changed.</td>
+<td>Run the workflow once on a pull request, and keep the job id <code>shellcheck</code>.</td>
+</tr>
+<tr>
+<td>The run fails with <code>SC2086</code> on a line you did not touch.</td>
+<td>Another script matched <code>scripts/*.sh</code> and has an unquoted variable.</td>
+<td>Run <code>shellcheck scripts/*.sh</code> locally and fix every listed line.</td>
+</tr>
+<tr>
+<td>The run history shows only <code>success</code>.</td>
+<td>The bad commit was never pushed, or the fix was pushed first.</td>
+<td>Push the unquoted version, wait for the failure, then push the fix.</td>
+</tr>
+<tr>
+<td><code>grep</code> still finds a marker line.</td>
+<td>A marker was left in the file.</td>
+<td>Delete every line that starts with a marker, then run <code>grep</code> again.</td>
+</tr>
+<tr>
+<td>The YAML check prints a parse error.</td>
+<td>A tab character is in the file.</td>
+<td>Replace the tabs with spaces.</td>
+</tr>
+<tr>
+<td><code>git push origin main</code> is rejected.</td>
+<td>Branch protection is working.</td>
+<td>This is the expected result of the T09.5 test. Use a pull request.</td>
+</tr>
+<tr>
+<td><code>gh api</code> prints <code>Branch not protected</code>.</td>
+<td>The rule for <code>main</code> was never saved.</td>
+<td>Ask the Tech Lead to add it in Settings, then Branches.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_1">Defend it in the viva</h3>
+<p><strong>1. Why does the check gate the merge button instead of only reporting a result?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A report that people can ignore protects nothing. A required check blocks the merge until it passes, so a broken script cannot reach the scheduled job. The gate is the whole point of the check.</p></details>
+
+<p><strong>2. Why use merge for the conflict branches rather than rebase?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Merge keeps the history exactly as it happened and adds one commit that joins the branches. The cost is a messier graph. Rebase gives a straight line, but it rewrites commits, and on a branch others have pulled that makes their copies disagree with yours. The trade-off is clean history against safety on shared work, and this squad chooses safety.</p></details>
+
+<p><strong>3. Which piece did you own, and how do you show it works?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Name the piece you owned, the command that proves it, and where the evidence is posted. For example, a student who owned the workflow file would say which job and step they wrote, and that the run history shows a failure followed by a success. Write your answer from your own commits, because the trainer checks the history against what you say.</p></details>
+
+<p><strong>4. Why is an unquoted variable dangerous in a script that runs unattended?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The shell splits an unquoted value at spaces and expands wildcards into file names. A value with a space becomes two words, so the command may act on the wrong files or fail. Nobody is watching a 3 a.m. run, so the damage can go unnoticed. Double quotes keep the value as one word, which is why ShellCheck reports SC2086.</p></details>
+
+<p><strong>5. What happens if someone renames the job <code>shellcheck</code>?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The check gets a new name, but the required check still waits for the old one. Every pull request then waits forever for a check that never reports. The fix is to restore the job id, or to change the rule and the job name in one step.</p></details>
+
+<h3 id="check-yourself_1">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your ShellCheck run prints SC2086 on the line echo $OUT. What is the correct fix?&quot;, &quot;opts&quot;: [&quot;Add a comment that disables SC2086 at the top of the file.&quot;, &quot;Delete the echo line, because the variable is not needed.&quot;, &quot;Put double quotes around the variable, so the line reads echo \&quot;$OUT\&quot;.&quot;, &quot;Rename the variable to a name with no letters in it.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Double quotes keep the value as one word. A disable comment hides the warning without fixing the code, and the course allows it only with a written reason. The most tempting wrong option is the disable comment, because it turns the check green quickly.&quot;}, {&quot;q&quot;: &quot;A workflow&#x27;s job is named shellcheck, but branch protection requires a check named lint-shellcheck. What happens to pull requests?&quot;, &quot;opts&quot;: [&quot;They merge as normal, because the rule is only a suggestion.&quot;, &quot;The check runs twice, once under each name.&quot;, &quot;GitHub renames the job automatically to match the rule.&quot;, &quot;Every pull request waits, because no check named lint-shellcheck ever reports.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A required check must match the name the workflow reports. A name that never reports leaves the pull request waiting, and GitHub gives no warning. The most tempting wrong option is that GitHub fixes the name for you.&quot;}, {&quot;q&quot;: &quot;Which command shows the run history on your branch, so the trainer can see a failure followed by a success?&quot;, &quot;opts&quot;: [&quot;gh pr create --draft&quot;, &quot;gh run list --workflow lint.yml --branch ci/red-green-demo --json conclusion --jq &#x27;.[].conclusion&#x27;&quot;, &quot;git log --format=%an&quot;, &quot;shellcheck scripts/*.sh; echo \&quot;exit=$?\&quot;&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The gh run list command with --json and --jq prints the result of each run on the branch, newest first. The local ShellCheck run checks your files now and says nothing about past runs on GitHub. The most tempting wrong option is the local run, because it also prints exit=0 when everything is fixed.&quot;}]}"></div>
+
+<h2 id="y2-t10-p2d01-github-profile-release-v020-peer-audit-start-fetchpy">Y2-T10 · P2/D01: GitHub profile, release v0.2.0, peer audit, start fetch.py</h2>
+<p><em>Session 10 · phase E2 · 5 points</em></p>
+<h3 id="the-ticket-in-plain-words_2">The ticket in plain words</h3>
+<p>CityPulse is a platform that collects city data for Bengaluru. Your squad builds it together in one shared GitHub repository. This ticket is the checkpoint where the team shows that it works like a professional engineering team, and where you show the same thing on your own GitHub profile.</p>
+<p>The ticket asks for five things. Your profile must look like an engineer's profile, because hiring partners read it as a CV. Your squad repository must show the rules a real team uses: an owner for each folder, issue forms for people who report problems, a changelog that says what changed, and a tagged release called <code>v0.2.0</code> whose notes match the changelog. You must audit another squad's repository from a fresh copy, which means downloading it into an empty folder and following only its README, so you find what a stranger would find. Finally, you start the real code: a small Python script, <code>fetch.py</code>, that does the same job as the Bash script <code>fetch_once.sh</code> and writes a file with the same first line.</p>
+<p>Why does this matter? A team that cannot show its rules cannot be trusted with city data. Owners, reviews and tags make every change traceable. Pinned versions matter for the same reason. In 2016 a tiny JavaScript package called left-pad was removed from a public registry, and many builds that depended on it broke at once. A pinned version stops that kind of surprise.</p>
+<h3 id="before-you-start_2">Before you start</h3>
+<p>These tickets must already be merged, as the spec says:</p>
+<ul>
+<li><strong>Y2-T07:</strong> the P1 demo, with a health check, log rotation, a second data source and tag <code>v0.1-p1</code>.</li>
+<li><strong>Y2-T08:</strong> your first pull request, two peer reviews, and protection on <code>main</code> that refuses direct pushes.</li>
+<li><strong>Y2-T09:</strong> the <code>lint.yml</code> workflow that runs <code>shellcheck</code> on each pull request, and one resolved merge conflict each.</li>
+</ul>
+<p>You need these tools and accounts:</p>
+<ul>
+<li><strong>Git.</strong> On your laptop, use Git Bash. The lab machine is Linux and also has Git.</li>
+<li><strong>GitHub CLI (<code>gh</code>).</strong> A command-line tool for GitHub. Sign in once.</li>
+<li><strong>Python 3</strong> with <code>pip</code> and <code>venv</code>.</li>
+<li><strong>A GitHub account</strong> that is a member of the <code>citypulse-y2</code> organisation, with read access to your peer's repository.</li>
+<li><strong>Your squad repository</strong> cloned on your laptop.</li>
+</ul>
+<p>Run each check below in Git Bash, in your squad repository folder, and compare with the last column.</p>
+<table>
+<thead>
+<tr>
+<th>Check command</th>
+<th>Ready when you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git switch main &amp;&amp; git pull --ff-only</code></td>
+<td><code>Already up to date.</code> or a list of downloaded commits</td>
+</tr>
+<tr>
+<td><code>git tag --list 'v0.1-p1'</code></td>
+<td><code>v0.1-p1</code></td>
+</tr>
+<tr>
+<td><code>ls .github/workflows/lint.yml</code></td>
+<td>The path printed back, with no error</td>
+</tr>
+<tr>
+<td><code>gh auth status</code></td>
+<td>A line saying you are logged in to github.com</td>
+</tr>
+<tr>
+<td><code>python --version</code></td>
+<td><code>Python 3.</code> followed by a version number. If Windows opens the Microsoft Store instead, try <code>py --version</code></td>
+</tr>
+</tbody>
+</table>
+<p>Commands in this guide are for Git Bash on Windows unless a line says otherwise. The <code>source</code> line for the virtual environment is the one that differs between Windows and Linux, and the text tells you which to use.</p>
+<h3 id="words-you-need_2">Words you need</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub profile</td>
+<td>Your public page on GitHub. It shows a profile README, a bio, a photo and pinned repositories.</td>
+</tr>
+<tr>
+<td>Profile README</td>
+<td>A file called <code>README.md</code> in a repository named after your username. GitHub shows it at the top of your profile.</td>
+</tr>
+<tr>
+<td>Pinned repository</td>
+<td>A repository chosen to appear first on your profile.</td>
+</tr>
+<tr>
+<td>Repository (repo)</td>
+<td>A folder that Git tracks, with its full history.</td>
+</tr>
+<tr>
+<td>Organisation</td>
+<td>A GitHub account that groups repositories and members. <code>citypulse-y2</code> is the course organisation.</td>
+</tr>
+<tr>
+<td>Squad</td>
+<td>The team of about five students who share one CityPulse repository.</td>
+</tr>
+<tr>
+<td>CODEOWNERS</td>
+<td>A file that names the people or teams who must review changes to each path.</td>
+</tr>
+<tr>
+<td>Path pattern</td>
+<td>The folder or file that a CODEOWNERS line matches, such as <code>docs/</code>.</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>A GitHub login or team, written with an <code>@</code> sign, such as <code>@your-login</code>.</td>
+</tr>
+<tr>
+<td>Issue form</td>
+<td>A YAML file in <code>.github/ISSUE_TEMPLATE/</code> that builds the form people fill in when they open an Issue.</td>
+</tr>
+<tr>
+<td>YAML</td>
+<td>A plain text format made of <code>key: value</code> lines and indented lists.</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>A ticket on GitHub that describes a task, bug or question. Each has a number.</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>A coloured tag that you attach to an Issue or pull request.</td>
+</tr>
+<tr>
+<td>Milestone</td>
+<td>A named goal, with an optional due date, that groups Issues.</td>
+</tr>
+<tr>
+<td>CHANGELOG</td>
+<td>A file that lists what changed in each version.</td>
+</tr>
+<tr>
+<td>Keep a Changelog</td>
+<td>A standard layout for a CHANGELOG file, with one section per version.</td>
+</tr>
+<tr>
+<td>Semantic version</td>
+<td>A version number in the form MAJOR.MINOR.PATCH.</td>
+</tr>
+<tr>
+<td>Annotated tag</td>
+<td>A permanent name on one commit that stores an author, a date and a message.</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>A published version on GitHub, built from a tag, with notes.</td>
+</tr>
+<tr>
+<td>Release notes</td>
+<td>The text on a release page that describes what changed.</td>
+</tr>
+<tr>
+<td>Branch protection</td>
+<td>A GitHub setting that refuses direct pushes to a branch and requires conditions before merge.</td>
+</tr>
+<tr>
+<td>Required status check</td>
+<td>An automated check, such as the <code>shellcheck</code> job, that must pass before a merge.</td>
+</tr>
+<tr>
+<td>shellcheck</td>
+<td>A program that finds mistakes in shell scripts.</td>
+</tr>
+<tr>
+<td>Clone</td>
+<td>A download of a repository to your computer.</td>
+</tr>
+<tr>
+<td>Fresh clone</td>
+<td>A new clone into an empty folder, with no leftover files from your own work.</td>
+</tr>
+<tr>
+<td>Peer audit</td>
+<td>Your review of another squad's repository against a checklist.</td>
+</tr>
+<tr>
+<td>Finding</td>
+<td>One problem you found during an audit, with evidence and a severity.</td>
+</tr>
+<tr>
+<td>Evidence path</td>
+<td>The file or command output that proves a finding.</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>How serious a finding is. This ticket uses High, Medium and Low.</td>
+</tr>
+<tr>
+<td>Reference file</td>
+<td>The CSV that <code>fetch_once.sh</code> writes. You compare your output with it.</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Comma-separated values: a plain text table with one record per line.</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>The first line of a CSV file, which holds the column names.</td>
+</tr>
+<tr>
+<td>Column order</td>
+<td>The sequence in which the columns appear, left to right.</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>The web address that your program asks for data.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>A text format for structured data, often sent by web services.</td>
+</tr>
+<tr>
+<td>Library</td>
+<td>Ready-made Python code that you install. <code>requests</code> is one.</td>
+</tr>
+<tr>
+<td>requests</td>
+<td>A Python library that sends web requests and returns the replies.</td>
+</tr>
+<tr>
+<td>pip</td>
+<td>Python's installer for libraries.</td>
+</tr>
+<tr>
+<td>Virtual environment (venv)</td>
+<td>A private folder of libraries for one project, so projects do not interfere.</td>
+</tr>
+<tr>
+<td>requirements.txt</td>
+<td>A file that lists the libraries a project needs, with versions.</td>
+</tr>
+<tr>
+<td>Pin</td>
+<td>To fix a library to one exact version.</td>
+</tr>
+<tr>
+<td><code>pip freeze</code></td>
+<td>Prints every installed library with its exact version.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>The set of web addresses that a service offers so programs can read or change its data.</td>
+</tr>
+<tr>
+<td>Flag</td>
+<td>An option that changes how a command behaves, such as <code>--repo</code>.</td>
+</tr>
+<tr>
+<td>Line ending</td>
+<td>The invisible characters that end a line. Windows uses CRLF, and Linux uses LF.</td>
+</tr>
+<tr>
+<td>CRLF</td>
+<td>A carriage return followed by a line feed.</td>
+</tr>
+<tr>
+<td><code>diff</code></td>
+<td>Compares two files and prints the lines that differ. It prints nothing when they match.</td>
+</tr>
+<tr>
+<td><code>head -1</code></td>
+<td>Prints the first line of a file.</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>The number of seconds a request may wait before it gives up.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-your-trainer-checks-it_2">How your trainer checks it</h3>
+<p>The trainer checks five acceptance criteria. Each one maps to test cases:</p>
+<ul>
+<li><strong>Profile score.</strong> The trainer scores your profile against the D01 rubric. This is test case TC1.</li>
+<li><strong>Squad repository.</strong> <code>main</code> is protected, <code>.github/CODEOWNERS</code> and at least two issue forms exist, and <code>CHANGELOG.md</code> has a <code>[0.2.0]</code> section. This is TC2, plus a protection check that you run yourself.</li>
+<li><strong>Release.</strong> <code>v0.2.0</code> exists as an annotated tag with a GitHub Release whose notes match the changelog section. This is TC3.</li>
+<li><strong>Peer audit.</strong> The audit file has at least five findings, each with an evidence path and a severity, plus a fresh-clone run result. Every High or Medium finding has a matching Issue on the peer repository. This is TC4.</li>
+<li><strong>fetch.py.</strong> Running <code>python src/citypulse/fetch.py</code> in the virtual environment writes rows with the same header and column order as <code>fetch_once.sh</code>. This is TC5.</li>
+</ul>
+<p><strong>TC1. Profile score.</strong> The trainer opens <code>https://github.com/&lt;username&gt;</code> and scores your profile against the D01 rubric. The rubric belongs to the trainer. Ask for a copy before you start if you do not have one. This is not a command.</p>
+<ul>
+<li><em>Passing:</em> the score is 3, 4 or 5 out of 5, and the trainer records one specific fix for you.</li>
+<li><em>Failing:</em> the score is below 3. The usual cause is a missing profile README, an empty bio or a pinned repository that is not the CityPulse one. Apply the trainer's fix by 15:30.</li>
+</ul>
+<p><strong>TC2. Squad repository files.</strong> The trainer runs this command from the squad repository:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ls .github/CODEOWNERS .github/ISSUE_TEMPLATE/ &amp;&amp; grep -n &#x27;## \\[0.2.0\\]&#x27; CHANGELOG.md&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;.github/CODEOWNERS&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;.github/ISSUE_TEMPLATE/:&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;bug.yml  feature.yml  question.yml&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;14:## [0.2.0] - &lt;date&gt;&quot;}]}"></div>
+
+<p>The command has four parts, and each one matters:</p>
+<ul>
+<li><code>ls</code> lists files. Given two paths, it lists each one. A file is printed by name, and a folder is printed with its contents.</li>
+<li><code>.github/CODEOWNERS</code> and <code>.github/ISSUE_TEMPLATE/</code> are the two paths. The trailing slash marks the second as a folder. The names of your three issue files will differ from the example.</li>
+<li><code>&amp;&amp;</code> runs the next command only if <code>ls</code> succeeded.</li>
+<li><code>grep -n</code> searches a file for a pattern and prints the matching line with its number. The pattern <code>'## \[0.2.0\]'</code> is in single quotes, so the shell does not touch the backslashes. <code>##</code> and a space match the start of a heading. <code>\[</code> and <code>\]</code> match literal square brackets. <code>0.2.0</code> matches the digits, and each dot matches any character, which is harmless here.</li>
+</ul>
+<p>Passing looks like the example above. The output shows your CODEOWNERS file, a folder with at least two issue forms, and a line number followed by the <code>[0.2.0]</code> heading.</p>
+<p>Failing comes in two forms. If you see <code>ls: cannot access '.github/CODEOWNERS': No such file or directory</code>, the file is in the wrong place or misspelled. Because of <code>&amp;&amp;</code>, <code>grep</code> does not run at all. If <code>ls</code> works but <code>grep</code> prints nothing, the heading is missing or written differently, such as <code>## [v0.2.0]</code> or <code>### [0.2.0]</code>. Make the heading match the pattern exactly.</p>
+<p><strong>TC3. GitHub Release.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>release<span class="w"> </span>view<span class="w"> </span>v0.2.0<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;squad&gt;<span class="w"> </span>--json<span class="w"> </span>tagName,body
+</code></pre></div>
+
+<ul>
+<li><code>gh release view v0.2.0</code> shows the release that uses tag <code>v0.2.0</code>.</li>
+<li><code>--repo citypulse-y2/citypulse-&lt;squad&gt;</code> names the repository, so the command works from any folder. Replace <code>&lt;squad&gt;</code> with your squad's name.</li>
+<li><code>--json tagName,body</code> asks for two fields only, the tag name and the notes text, and prints them as JSON.</li>
+</ul>
+<p>Passing output is a JSON object with <code>"tagName": "v0.2.0"</code> and a <code>body</code> that holds the changelog text. The trainer also compares the body with your <code>[0.2.0]</code> section by eye.</p>
+<p>Failing: <code>release not found</code> means the tag was not pushed, the release is still a draft, or the repository name is wrong. An empty <code>body</code> means the release was created without notes. Notes that do not match the changelog usually came from another source, such as a one-line tag message.</p>
+<p><strong>TC4. Issues on the peer repository.</strong> The trainer runs:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;peer&gt;<span class="w"> </span>--author<span class="w"> </span>&lt;auditor<span class="w"> </span>logins&gt;<span class="w"> </span>--state<span class="w"> </span>all
+</code></pre></div>
+
+<ul>
+<li><code>gh issue list</code> lists Issues in a repository.</li>
+<li><code>--repo</code> names the peer repository, which is the one you audited.</li>
+<li><code>--author</code> keeps only Issues opened by one login. It takes a single value, so if several of you filed Issues, run the command once per login. Use real GitHub logins.</li>
+<li><code>--state all</code> includes closed Issues. The default shows open ones only.</li>
+</ul>
+<p>Passing output has one row per High or Medium finding in your audit file, with the Issue number and title. Failing output is <code>no issues match your search</code>. The usual causes are a wrong login in <code>--author</code>, Issues filed in your own squad repository by mistake, or a missing <code>--state all</code> if you have closed some Issues.</p>
+<p><strong>TC5. fetch.py header.</strong> The trainer runs your script in the virtual environment, then compares the first line of its output with the first line of <code>fetch_once.sh</code>'s output:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>src/citypulse/fetch.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span>&lt;output<span class="w"> </span>csv&gt;
+head<span class="w"> </span>-1<span class="w"> </span>data/raw/&lt;date&gt;.csv
+</code></pre></div>
+
+<ul>
+<li><code>python src/citypulse/fetch.py</code> runs your script. The path is relative to the squad repository folder.</li>
+<li><code>&amp;&amp;</code> runs <code>head</code> only if the script succeeded.</li>
+<li><code>head -1</code> prints the first line of a file, which is the header.</li>
+<li><code>&lt;output csv&gt;</code> is the file your script writes. Your code decides its name, so use the path your script prints or writes.</li>
+<li><code>data/raw/&lt;date&gt;.csv</code> is the file from <code>fetch_once.sh</code>, with <code>&lt;date&gt;</code> replaced by its date.</li>
+</ul>
+<p>Here is how the two header lines travel from your script to the check:</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;From one endpoint to a header check&quot;, &quot;nodes&quot;: [&quot;Data source&quot;, &quot;fetch.py&quot;, &quot;Your CSV&quot;, &quot;diff check&quot;, &quot;Reference CSV&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;JSON reply&quot;, &quot;note&quot;: &quot;The endpoint answers the one request that fetch.py makes.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;header and rows&quot;, &quot;note&quot;: &quot;fetch.py writes the column names first, then one line per record.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;head -1&quot;, &quot;note&quot;: &quot;The first line of your file reaches the check.&quot;}, {&quot;from&quot;: 4, &quot;to&quot;: 3, &quot;label&quot;: &quot;head -1&quot;, &quot;note&quot;: &quot;The first line of the reference file, made by fetch_once.sh, reaches the same check.&quot;}]}"></div>
+
+<p>Passing: the two header lines are identical, and <code>diff</code> prints nothing. Failing takes three common forms:</p>
+<ul>
+<li><code>ModuleNotFoundError: No module named 'requests'</code> means the virtual environment is not active, so Python uses the system copy.</li>
+<li>The two lines contain the same names in a different order. Your column list is wrong. Copy the order from the reference header.</li>
+<li>The lines look the same, but <code>diff</code> marks every line. Run <code>cat -A</code> on both files. A <code>^M</code> before each line end shows Windows line endings, which differ from the reference file's endings.</li>
+</ul>
+<h3 id="split-the-work_2">Split the work</h3>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Owner role</th>
+<th>What it means</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Y2-T10.1</td>
+<td>Every student</td>
+<td>Profile README, bio, photo and pinned CityPulse repository. Apply the trainer's fix by 15:30.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T10.2</td>
+<td>QA/DevOps</td>
+<td>CODEOWNERS (<code>scripts/</code> to QA/DevOps, <code>docs/</code> to Scrum/Docs, <code>*</code> to Tech Lead) and three issue forms, merged by a pull request.</td>
+<td>30m</td>
+</tr>
+<tr>
+<td>Y2-T10.3</td>
+<td>Scrum/Docs</td>
+<td>Eight to twelve labels, the milestone <code>P3 Data pipeline</code> due 2026-12-12, and the <code>[0.2.0]</code> section of <code>CHANGELOG.md</code>.</td>
+<td>30m</td>
+</tr>
+<tr>
+<td>Y2-T10.4</td>
+<td>Tech Lead</td>
+<td>Annotated tag <code>v0.2.0</code> on up-to-date main, pushed, then the GitHub Release.</td>
+<td>10m</td>
+</tr>
+<tr>
+<td>Y2-T10.5</td>
+<td>Squad</td>
+<td>Fresh-clone audit of your assigned peer repository, following its README.</td>
+<td>45m</td>
+</tr>
+<tr>
+<td>Y2-T10.6</td>
+<td>Data</td>
+<td>Audit report at <code>docs/audits/&lt;peer&gt;-audit.md</code>, and one Issue on the peer repository for each High or Medium finding.</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>Y2-T10.7</td>
+<td>Every student</td>
+<td>Branch <code>feat/&lt;name&gt;-fetch-py</code>: virtual environment, <code>requests</code>, <code>requirements.txt</code>, <code>fetch.py</code> v0, and a pull request.</td>
+<td>60m</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which piece to own.</strong> Two pieces are individual work, so your own commits show your contribution no matter what your role is. Own <strong>Y2-T10.1</strong> for your profile and <strong>Y2-T10.7</strong> for your <code>fetch.py</code> pull request. Then agree with your squad to lead one role piece that matches your role, and say so in the squad board. The Git history shows who made each commit, so keep your commits small and in your own name.</p>
+<p><strong>Branch names.</strong> The fetch work uses <code>feat/&lt;name&gt;-fetch-py</code>, as the ticket says. For the other pieces, use one branch per piece with a short name, such as <code>docs/changelog-0-2-0</code>. The names here are examples, so choose your own.</p>
+<p><strong>Example commit messages</strong>, in the order you might make them for your fetch work and the squad pieces. Write your own messages, but keep the same style: a short title in the imperative.</p>
+<ol>
+<li><code>Add CODEOWNERS with default, scripts and docs owners</code></li>
+<li><code>Add issue forms for bug reports and feature requests</code></li>
+<li><code>Add 0.2.0 section to CHANGELOG</code></li>
+<li><code>Pin requests in requirements.txt</code></li>
+<li><code>Add fetch.py v0 that fetches one endpoint</code></li>
+<li><code>Add peer audit report for citypulse-&lt;peer&gt;</code></li>
+</ol>
+<h3 id="do-it-step-by-step_2">Do it, step by step</h3>
+<p>Commands below run in Git Bash on your laptop, in your squad repository folder, unless a stage says otherwise. Every stage ends with a test. Do not move on until the test passes.</p>
+<h4 id="y2-t101-polish-your-profile">Y2-T10.1 Polish your profile</h4>
+<p><strong>Goal.</strong> A hiring manager should judge you in 60 seconds from your profile alone.</p>
+<p>This subtask is done in the browser, not the terminal.</p>
+<ol>
+<li><strong>Profile README.</strong> Create a public repository named exactly like your username, and add a <code>README.md</code> to it. GitHub shows that file at the top of your profile. Write a short paragraph about what you study and what you build. Keep it factual.</li>
+<li><strong>Bio and photo.</strong> Add a one-line bio in your profile settings. Use a clear, recent photo, or leave the photo empty if you prefer.</li>
+<li><strong>Pinned repository.</strong> Open your profile, choose the option to customise the pins, and pin the CityPulse repository.</li>
+<li><strong>Trainer's fix.</strong> Apply the one specific fix that your trainer gives you, before 15:30.</li>
+</ol>
+<p><strong>Test.</strong> Open your profile in a private browser window, which is logged out. Read it as a stranger would. If you cannot tell in 60 seconds what you do and what CityPulse is, your README needs work.</p>
+<h4 id="y2-t102-add-codeowners-and-issue-forms">Y2-T10.2 Add CODEOWNERS and issue forms</h4>
+<p><strong>Goal.</strong> Changes to each folder need the right reviewer, and people who report problems use a form.</p>
+<p><strong>Stage 1. Create the folders.</strong> Start from up-to-date main on a new branch:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>docs/codeowners-issue-forms
+mkdir<span class="w"> </span>-p<span class="w"> </span>.github/ISSUE_TEMPLATE
+</code></pre></div>
+
+<ul>
+<li><code>git switch -c</code> creates the branch from the commit you are on, which is now the latest main.</li>
+<li><code>mkdir -p</code> creates a folder and any missing parents. <code>-p</code> stops it from failing if the folder exists.</li>
+</ul>
+<p><strong>Stage 2. Write CODEOWNERS.</strong> CODEOWNERS is a text file at <code>.github/CODEOWNERS</code>. Each line is a path pattern and then one or more owners. GitHub uses the last matching line, so put the general default first and the specific folders after it. One line has this shape:</p>
+<div class="hl"><pre><span></span><code>docs/   @your-login
+</code></pre></div>
+
+<ul>
+<li><code>docs/</code> is the path pattern. A trailing slash matches the folder and everything in it.</li>
+<li><code>@your-login</code> is the owner. Use a real GitHub login. The owner must be a member of the organisation or a collaborator.</li>
+</ul>
+<p>Add the other lines yourself, in the order the ticket gives: <code>*</code> for the Tech Lead, <code>scripts/</code> for QA/DevOps and <code>docs/</code> for Scrum/Docs. Put <code>*</code> first.</p>
+<p><strong>Test.</strong> Open the file and check that each owner is a real login. After you push the branch, GitHub shows the owners on the file page. Later, a pull request that changes <code>scripts/</code> lists the QA owner as a required reviewer.</p>
+<p><strong>Stage 3. Write one issue form.</strong> An issue form is a YAML file in <code>.github/ISSUE_TEMPLATE/</code>. The file has three top-level keys. The skeleton below has placeholders, and you write the rest:</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;name shown in the New issue menu&gt;</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;one line about when to use this form&gt;</span>
+<span class="nt">body</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">textarea</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;question the reporter answers&gt;</span>
+</code></pre></div>
+
+<ul>
+<li><code>name:</code> and <code>description:</code> set what people see in the New issue menu.</li>
+<li><code>body:</code> is a list. Each item is one field on the form. The <code>- type:</code> line starts an item, and the lines indented under it describe it.</li>
+<li><code>attributes:</code> holds the settings for the field, such as its <code>label:</code>.</li>
+</ul>
+<p>Write at least two forms, for example a bug report and a feature request, as the ticket asks for three files in total.</p>
+<p><strong>Test.</strong> After you push, open the repository on GitHub, choose Issues, then New issue. Each form should appear in the list. If it does not, the file is in the wrong folder or its YAML is broken. Check the indentation first. YAML uses spaces, not tabs.</p>
+<p><strong>Stage 4. Commit and open the pull request.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.github/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add CODEOWNERS and issue forms&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Owners per folder and forms for bugs and features.&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>docs/codeowners-issue-forms
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Add CODEOWNERS and issue forms&quot;</span><span class="w"> </span>--fill
+</code></pre></div>
+
+<ul>
+<li><code>git add .github/</code> stages every change in that folder, and nothing outside it.</li>
+<li>The two <code>-m</code> flags make a title and a body paragraph.</li>
+<li><code>git push -u origin</code> uploads the branch and links it to origin.</li>
+<li><code>gh pr create --fill</code> builds the body from your commit messages. The pull request is created at once, so open it on GitHub afterwards and check the text.</li>
+</ul>
+<p><strong>Test.</strong> Run <code>git show --stat HEAD</code>. It should list only files under <code>.github/</code>.</p>
+<h4 id="y2-t103-add-labels-a-milestone-and-the-changelog-section">Y2-T10.3 Add labels, a milestone and the CHANGELOG section</h4>
+<p><strong>Goal.</strong> Issues can be sorted, the next milestone exists, and the changelog says what P2 delivered.</p>
+<p><strong>Stage 1. See the existing labels.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>label<span class="w"> </span>list
+</code></pre></div>
+
+<p><code>gh label list</code> prints the labels already in the repository. Use this list to avoid duplicates. You need eight to twelve labels in total, so create the missing ones.</p>
+<p><strong>Stage 2. Create a label.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>label<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;data-quality&quot;</span><span class="w"> </span>--color<span class="w"> </span><span class="s2">&quot;B60205&quot;</span><span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Problems with the data itself&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh label create</code> makes one label. The name is in quotes because it is one argument.</li>
+<li><code>--color</code> takes six hexadecimal digits without a <code>#</code>. <code>B60205</code> is a dark red.</li>
+<li><code>--description</code> shows under the label name.</li>
+</ul>
+<p>Repeat the command for each label your squad agrees, changing the name, colour and description each time.</p>
+<p><strong>Stage 3. Create the milestone.</strong> GitHub's command-line tool has no milestone command, so you call the API directly. An API is the set of web addresses a service offers for reading or changing data.</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/milestones<span class="w"> </span>-f<span class="w"> </span><span class="nv">title</span><span class="o">=</span><span class="s1">&#39;P3 Data pipeline&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">due_on</span><span class="o">=</span><span class="s1">&#39;2026-12-12T23:59:59Z&#39;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh api</code> sends a request to GitHub.</li>
+<li><code>-X POST</code> sets the request method to POST, which creates something.</li>
+<li><code>repos/{owner}/{repo}/milestones</code> is the address for milestones. <code>gh</code> fills <code>{owner}</code> and <code>{repo}</code> from the folder you are in.</li>
+<li><code>-f title=...</code> and <code>-f due_on=...</code> add two text fields. <code>due_on</code> is a timestamp in ISO format, with a <code>T</code> between the date and the time.</li>
+</ul>
+<p><strong>Test.</strong> List the milestones:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/milestones<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.[].title&#39;</span>
+</code></pre></div>
+
+<p><code>--jq</code> picks the value out of the JSON response. You should see <code>P3 Data pipeline</code>.</p>
+<p><strong>Stage 4. Write the CHANGELOG section.</strong> Open <code>CHANGELOG.md</code>. A Keep a Changelog file starts with a title and an <code>## [Unreleased]</code> section, followed by one section per version, newest first. The version heading has a fixed shape:</p>
+<div class="hl"><pre><span></span><code><span class="gu">## [0.2.0] - &lt;date&gt;</span>
+<span class="gu">### Added</span>
+<span class="k">-</span><span class="w"> </span>&lt;one line per merged piece of work, with its PR number&gt;
+</code></pre></div>
+
+<ul>
+<li><code>## [0.2.0]</code> must match exactly, because TC2 searches for it.</li>
+<li><code>- &lt;date&gt;</code> is the date of the release, in YYYY-MM-DD form.</li>
+<li><code>### Added</code>, <code>### Changed</code>, <code>### Fixed</code> and the other Keep a Changelog headings group the lines.</li>
+</ul>
+<p>Write one line for each merged piece of work from P2, with its pull request number. Do not paste whole commit messages.</p>
+<p><strong>Test.</strong> List the headings and check the order:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;^## &#39;</span><span class="w"> </span>CHANGELOG.md
+</code></pre></div>
+
+<p>The <code>[0.2.0]</code> heading should appear, with the newest version above the older ones.</p>
+<h4 id="y2-t104-tag-v020-and-publish-the-release">Y2-T10.4 Tag v0.2.0 and publish the release</h4>
+<p><strong>Goal.</strong> A permanent tag marks the exact commit that closes P2, and the GitHub Release shows its notes.</p>
+<p>This subtask belongs to the Tech Lead. Everyone should still read it, because the notes check in TC3 depends on it.</p>
+<p><strong>Stage 1. Tag the latest main.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v0.2.0<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;P2: team workflow&#39;</span>
+git<span class="w"> </span>show<span class="w"> </span>--no-patch<span class="w"> </span>v0.2.0
+</code></pre></div>
+
+<ul>
+<li><code>git pull --ff-only</code> makes sure you tag the latest main, not an old copy.</li>
+<li><code>git tag -a v0.2.0</code> creates an annotated tag. <code>-a</code> stores the author, date and message.</li>
+<li><code>git show --no-patch v0.2.0</code> prints the tag details without the file diff, so you can see that it is annotated and names the right commit.</li>
+</ul>
+<p><strong>Stage 2. Push the tag.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.2.0
+git<span class="w"> </span>ls-remote<span class="w"> </span>--tags<span class="w"> </span>origin<span class="w"> </span>v0.2.0
+</code></pre></div>
+
+<p><code>git push</code> does not send tags unless you name them, so the tag name is required. <code>git ls-remote --tags origin v0.2.0</code> asks origin for the tag and prints its ID. If it prints nothing, the push did not arrive.</p>
+<p><strong>Stage 3. Extract the notes and publish.</strong> The release notes should match the changelog section, so take the text from the file:</p>
+<div class="hl"><pre><span></span><code>awk<span class="w"> </span><span class="s1">&#39;/^## \[0.2.0\]/{f=1; next} /^## \[/{f=0} f&#39;</span><span class="w"> </span>CHANGELOG.md<span class="w"> </span>&gt;<span class="w"> </span>/tmp/notes-0.2.0.md
+gh<span class="w"> </span>release<span class="w"> </span>create<span class="w"> </span>v0.2.0<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;v0.2.0&quot;</span><span class="w"> </span>--notes-file<span class="w"> </span>/tmp/notes-0.2.0.md
+</code></pre></div>
+
+<ul>
+<li><code>awk</code> reads the file line by line. The first rule switches a flag on at the <code>[0.2.0]</code> heading and skips that line. The second rule switches it off at the next heading. The last part prints lines while the flag is on.</li>
+<li><code>&gt; /tmp/notes-0.2.0.md</code> writes the result to a file. On Git Bash, <code>/tmp</code> points to a temporary folder, which works for this purpose.</li>
+<li><code>gh release create v0.2.0</code> makes the release for the tag. <code>--notes-file</code> fills its notes from the file you made.</li>
+</ul>
+<p>The ticket also allows <code>--notes-from-tag</code>. That option reads the tag's own message, which here is only <code>P2: team workflow</code>, so the notes would not match the changelog. Use the file.</p>
+<p><strong>Test.</strong> Run <code>gh release view v0.2.0</code> and check that the notes match your changelog section. TC3 checks the same thing.</p>
+<h4 id="y2-t105-audit-a-peer-repository-from-a-fresh-clone">Y2-T10.5 Audit a peer repository from a fresh clone</h4>
+<p><strong>Goal.</strong> Find what a stranger would find, using only the peer's repository and its README.</p>
+<p>Do not push to the peer repository, and do not change its files. You only read it and open Issues.</p>
+<p><strong>Stage 1. Make a fresh clone.</strong> Put the clone in an empty folder outside your squad repository:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/audit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/audit
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/citypulse-y2/citypulse-&lt;peer&gt;.git
+<span class="nb">cd</span><span class="w"> </span>citypulse-&lt;peer&gt;
+</code></pre></div>
+
+<ul>
+<li><code>mkdir -p ~/audit</code> creates a folder in your home directory. <code>~</code> means your home folder.</li>
+<li><code>git clone</code> downloads the whole repository, including its history, into a new folder with the repository's name.</li>
+<li>The clone is "fresh" because nothing in it came from your own work.</li>
+</ul>
+<p><strong>Stage 2. Check the protection.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span><span class="s1">&#39;repos/citypulse-y2/citypulse-&lt;peer&gt;/branches/main/protection&#39;</span><span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.required_pull_request_reviews.required_approving_review_count&#39;</span>
+gh<span class="w"> </span>api<span class="w"> </span><span class="s1">&#39;repos/citypulse-y2/citypulse-&lt;peer&gt;/branches/main/protection&#39;</span><span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.required_status_checks.contexts&#39;</span>
+</code></pre></div>
+
+<p>The first command should print <code>1</code>, which is the number of approving reviews required. The second lists the required checks, which should include the <code>shellcheck</code> job. The job name comes from <code>lint.yml</code>. A <code>404</code> error that says the branch is not protected is a finding. Be careful: reading protection rules normally needs admin rights, so with read-only access you may get a <code>404</code> or <code>403</code> even when protection exists. If so, do not record it as High yet. Ask the peer squad for a screenshot of their branch protection settings, or test it by looking at a merged pull request for a review.</p>
+<p><strong>Stage 3. Check the CI runs.</strong></p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>run<span class="w"> </span>list<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;peer&gt;<span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+
+<p><code>gh run list</code> shows recent workflow runs. Check that the latest run on main passed. A failing run is a finding.</p>
+<p><strong>Stage 4. Check the templates, CODEOWNERS and release.</strong></p>
+<div class="hl"><pre><span></span><code>ls<span class="w"> </span>.github/<span class="w"> </span>.github/ISSUE_TEMPLATE/
+cat<span class="w"> </span>.github/CODEOWNERS
+gh<span class="w"> </span>release<span class="w"> </span>list<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;peer&gt;
+</code></pre></div>
+
+<ul>
+<li><code>ls</code> lists the folders. Check that the issue forms and CODEOWNERS exist.</li>
+<li><code>cat</code> prints a file. Read the owners and check that each one is a real login.</li>
+<li><code>gh release list</code> shows the releases and their tags.</li>
+</ul>
+<p><strong>Stage 5. Follow the README alone.</strong> Open the README. Follow only its steps, in order, to run the script. The ticket says <code>fetch_once.sh</code>. Do not fix anything on the way. Each step the README leaves out, each command that fails and each unclear instruction is a finding. Copy the exact error text into your notes.</p>
+<p><strong>Test.</strong> Before you write the report, check that every finding has a path or command output to show it. A finding without evidence cannot be reviewed.</p>
+<h4 id="y2-t106-write-the-audit-report-and-file-issues">Y2-T10.6 Write the audit report and file Issues</h4>
+<p><strong>Goal.</strong> A committed report, and one Issue on the peer repository for each High or Medium finding.</p>
+<p><strong>Stage 1. Write the table.</strong> Create the report at <code>docs/audits/&lt;peer&gt;-audit.md</code>. The table has one row per finding:</p>
+<div class="hl"><pre><span></span><code>| # | Area | Finding | Evidence path | Fix | Severity |
+|---|---|---|---|---|---|
+| 1 | &lt;area of the repo&gt; | &lt;what you saw, in one sentence&gt; | &lt;path or command output&gt; | &lt;the change you suggest&gt; | High |
+</code></pre></div>
+
+<ul>
+<li><code>#</code> numbers each finding from 1.</li>
+<li><code>Area</code> names the checklist item, such as protection, CI, templates, CODEOWNERS, release or README.</li>
+<li><code>Evidence path</code> is where a reviewer can see the proof. Use the file path or the command you ran.</li>
+<li><code>Severity</code> is High, Medium or Low. Use the same meaning for every row.</li>
+</ul>
+<p>Write at least five rows. Add the fresh-clone run result below the table, in one paragraph: which README steps you ran, and what happened.</p>
+<p>Commit the report in your own squad repository, on a branch, through a pull request like any other change: <code>git add docs/audits/&lt;peer&gt;-audit.md</code>, then <code>git commit</code>, <code>git push -u origin &lt;branch&gt;</code> and <code>gh pr create</code>.</p>
+<p><strong>Stage 2. File the Issues.</strong> For each High or Medium row, open an Issue on the peer repository. Write the body in a file first, so it can be long:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--repo<span class="w"> </span>citypulse-y2/citypulse-&lt;peer&gt;<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;&lt;short finding title&gt;&quot;</span><span class="w"> </span>--body-file<span class="w"> </span>/tmp/issue-1.md<span class="w"> </span>--label<span class="w"> </span><span class="s2">&quot;&lt;label that exists&gt;&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>gh issue create</code> opens an Issue.</li>
+<li><code>--repo</code> names the peer repository. The Issue must go there, not to your squad repository.</li>
+<li><code>--body-file</code> reads the body from a file. <code>/tmp/issue-1.md</code> is a path you choose.</li>
+<li><code>--label</code> attaches a label. The label must already exist in the peer repository, or the command fails.</li>
+</ul>
+<p><strong>Test.</strong> Run TC4 yourself, with your own login in <code>--author</code>. The number of Issues should match the number of High and Medium rows.</p>
+<h4 id="y2-t107-start-fetchpy">Y2-T10.7 Start fetch.py</h4>
+<p><strong>Goal.</strong> A short Python script that fetches one endpoint and writes a CSV with the same header and column order as <code>fetch_once.sh</code>.</p>
+<p>Read <code>fetch_once.sh</code> first, because you need the column order. Do not copy another student's code.</p>
+<p><strong>Stage 1. Make a branch and a virtual environment.</strong> A virtual environment keeps the libraries for this project in one folder:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--ff-only
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/&lt;name&gt;-fetch-py
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/Scripts/activate
+pip<span class="w"> </span>install<span class="w"> </span>requests
+pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<ul>
+<li><code>python -m venv .venv</code> creates the folder <code>.venv</code> with its own Python.</li>
+<li><code>source .venv/Scripts/activate</code> turns the environment on in Git Bash on Windows. On the Linux lab machine, use <code>source .venv/bin/activate</code> instead. Your prompt shows <code>(.venv)</code> when it is on.</li>
+<li><code>pip install requests</code> installs the <code>requests</code> library into the environment.</li>
+<li><code>pip freeze &gt; requirements.txt</code> writes every installed library with its exact version, and the <code>&gt;</code> sends the output to the file. This is the pin.</li>
+</ul>
+<p>Check that <code>.venv/</code> is ignored by Git, so it does not get committed:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;venv&#39;</span><span class="w"> </span>.gitignore
+</code></pre></div>
+
+<p>Check the library works:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import requests; print(requests.__version__)&quot;</span>
+</code></pre></div>
+
+<p>The output is a version number. If you see <code>ModuleNotFoundError</code>, the environment is not active.</p>
+<p><strong>Stage 2. Read the reference output.</strong> Look at the first line of the reference file:</p>
+<div class="hl"><pre><span></span><code>head<span class="w"> </span>-1<span class="w"> </span>data/raw/&lt;date&gt;.csv
+</code></pre></div>
+
+<p>Write the column names down in this order. This is your target. Do not reorder them to suit your code.</p>
+<p><strong>Stage 3. Learn to write a CSV with a fixed order.</strong> Try this small example in a scratch folder, not in the repository:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;station&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;demo.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lineterminator</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
+</code></pre></div>
+
+<ul>
+<li><code>import csv</code> loads the standard CSV library.</li>
+<li><code>columns = [...]</code> is the header, in the order you need.</li>
+<li><code>open("demo.csv", "w", newline="")</code> opens the file for writing. <code>newline=""</code> stops Python from translating line endings on Windows, which would otherwise give blank lines or doubled carriage returns.</li>
+<li><code>csv.writer(f, lineterminator="\n")</code> makes a writer for that file. Without <code>lineterminator</code>, the csv module ends every line with CRLF, which is the cause of the <code>^M</code> problem in the checks below. <code>"\n"</code> gives plain LF, like a file made by a Bash script.</li>
+<li><code>writer.writerow(...)</code> writes one line, with commas between the values.</li>
+</ul>
+<p>Save the code as <code>demo.py</code> in the scratch folder and run <code>python demo.py</code>. You should get <code>demo.csv</code> with two lines. Delete the demo file with <code>rm demo.csv</code> afterwards.</p>
+<p>This trace shows why the column order must be set by you, not by the dictionary a record happens to arrive in:</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Writing values in the column order&quot;, &quot;code&quot;: [&quot;columns = [\&quot;station\&quot;, \&quot;value\&quot;]&quot;, &quot;row = {\&quot;value\&quot;: 42, \&quot;station\&quot;: \&quot;S1\&quot;}&quot;, &quot;line = []&quot;, &quot;for name in columns:&quot;, &quot;    line.append(row[name])&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;columns&quot;, &quot;[\&quot;station\&quot;, \&quot;value\&quot;]&quot;]], &quot;note&quot;: &quot;You set the column order once, by hand. It must match the header of fetch_once.sh.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;columns&quot;, &quot;[\&quot;station\&quot;, \&quot;value\&quot;]&quot;], [&quot;row&quot;, &quot;{\&quot;value\&quot;: 42, \&quot;station\&quot;: \&quot;S1\&quot;}&quot;]], &quot;note&quot;: &quot;The row is a dictionary, so the order its keys were written in does not matter.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;columns&quot;, &quot;[\&quot;station\&quot;, \&quot;value\&quot;]&quot;], [&quot;row&quot;, &quot;{\&quot;value\&quot;: 42, \&quot;station\&quot;: \&quot;S1\&quot;}&quot;], [&quot;line&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The output list starts empty.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;station\&quot;&quot;], [&quot;line&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first column name from columns.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;station\&quot;&quot;], [&quot;line&quot;, &quot;[\&quot;S1\&quot;]&quot;]], &quot;note&quot;: &quot;The value for that name is looked up in the row and added.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;value\&quot;&quot;], [&quot;line&quot;, &quot;[\&quot;S1\&quot;]&quot;]], &quot;note&quot;: &quot;The loop moves to the next column name.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;name&quot;, &quot;\&quot;value\&quot;&quot;], [&quot;line&quot;, &quot;[\&quot;S1\&quot;, 42]&quot;]], &quot;note&quot;: &quot;The line now follows the column order, whatever order the row used.&quot;}]}"></div>
+
+<p><strong>Stage 4. Make one request.</strong> In <code>src/citypulse/fetch.py</code>, the first version should make one request to one endpoint. Choose the endpoint from your squad's data source. Here is the request part alone, with the address left for you to fill in:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;&lt;your endpoint&gt;&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+</code></pre></div>
+
+<ul>
+<li><code>import requests</code> loads the library you installed.</li>
+<li><code>URL = "..."</code> holds the address. Put your own endpoint there.</li>
+<li><code>requests.get(URL, timeout=10)</code> sends a GET request, which asks for data. <code>timeout=10</code> stops the program waiting for more than 10 seconds.</li>
+<li><code>response.raise_for_status()</code> raises an error if the server replied with a failure code, such as 404. Without it, a failed request could write an empty file without any error.</li>
+</ul>
+<p><strong>Test.</strong> Run the file and check the status:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import requests; r = requests.get(&#39;&lt;your endpoint&gt;&#39;, timeout=10); print(r.status_code)&quot;</span>
+</code></pre></div>
+
+<p>The output should be <code>200</code>. Replace the placeholder with your endpoint and keep the single quotes.</p>
+<p><strong>Stage 5. Write the rows.</strong> Turn the reply into records, then write them in your column order. The parsing depends on your data source, so this skeleton leaves the field names to you:</p>
+<div class="hl"><pre><span></span><code><span class="n">rows</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="c1"># list the fields in the order from the reference header</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="o">...</span><span class="p">])</span>
+</code></pre></div>
+
+<ul>
+<li><code>response.json()</code> turns a JSON reply into Python lists and dictionaries. Check the shape of the reply first, because some endpoints wrap the records in another object.</li>
+<li><code>for item in rows:</code> runs the next line once per record.</li>
+<li><code>writer.writerow([...])</code> writes one line. Fill the list with the fields in the order from Stage 2.</li>
+</ul>
+<p>Write the header with <code>writer.writerow(columns)</code> before the loop, as in the Stage 3 example.</p>
+<p><strong>Stage 6. Name the output file.</strong> Use the same folder and date pattern as <code>fetch_once.sh</code>, which is <code>data/raw/&lt;date&gt;.csv</code>. Get today's date in the same form with <code>datetime.date.today().isoformat()</code>. Do not change the date logic now. Making it UTC belongs to Y2-T11.</p>
+<p><strong>Test.</strong> Run the script, then compare the headers:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>src/citypulse/fetch.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>diff<span class="w"> </span>&lt;<span class="o">(</span>head<span class="w"> </span>-1<span class="w"> </span>&lt;output<span class="w"> </span>csv&gt;<span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span>head<span class="w"> </span>-1<span class="w"> </span>data/raw/&lt;date&gt;.csv<span class="o">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;headers match&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>diff</code> compares two inputs and prints the lines that differ. Nothing printed means no difference.</li>
+<li><code>&lt;(...)</code> is process substitution. It gives <code>diff</code> the output of a command as if it were a file. It works in Git Bash and Linux bash, but not in plain <code>sh</code>.</li>
+<li><code>echo "headers match"</code> runs only when <code>diff</code> succeeded, so the message is an honest pass.</li>
+</ul>
+<p>Once it passes, commit <code>requirements.txt</code> and <code>fetch.py</code>, push, and open the pull request. Use the exact title from the ticket:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>requirements.txt<span class="w"> </span>src/citypulse/fetch.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add fetch.py v0 that fetches one endpoint&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Writes the same header and column order as fetch_once.sh.&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/&lt;name&gt;-fetch-py
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--base<span class="w"> </span>main<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;fetch.py v0 (one endpoint)&quot;</span><span class="w"> </span>--fill<span class="w"> </span>--reviewer<span class="w"> </span>&lt;login&gt;
+</code></pre></div>
+
+<p>Commit <code>.venv/</code> never. The <code>git add</code> line names only the two files, which is deliberate.</p>
+<h3 id="prove-it-before-review_2">Prove it before review</h3>
+<p>Run every test case yourself, in order, before you ask for a review. Keep the output of each, because you will paste it into the pull request.</p>
+<ol>
+<li><strong>TC1.</strong> Open your profile logged out and score it against the rubric. Note the score and the fix.</li>
+<li><strong>TC2.</strong> Run the <code>ls</code> and <code>grep</code> command from the trainer's list in your squad repository.</li>
+<li><strong>TC3.</strong> Run <code>gh release view v0.2.0</code> with the <code>--repo</code> flag and <code>--json tagName,body</code>.</li>
+<li><strong>TC4.</strong> Run <code>gh issue list</code> on the peer repository with your login.</li>
+<li><strong>TC5.</strong> Run <code>python src/citypulse/fetch.py</code> in the active environment, then the <code>diff</code> test.</li>
+</ol>
+<p>Then open the pull request for <code>fetch.py</code> with a description that has these five headings. The template gives the structure only. Write your own words in each part.</p>
+<div class="hl"><pre><span></span><code><span class="gu">## What</span>
+&lt;one sentence: what this pull request changes&gt;
+
+<span class="gu">## Why</span>
+&lt;the ticket it serves, and why CityPulse needs it&gt;
+
+<span class="gu">## How to test</span>
+&lt;the commands a reviewer runs, in order, from a clean venv&gt;
+
+<span class="gu">## Evidence</span>
+&lt;paste the outputs of TC2 to TC5 here, in code blocks&gt;
+
+<span class="gu">## Checklist</span>
+<span class="k">- [ ]</span> requirements.txt is pinned with pip freeze
+<span class="k">- [ ]</span> .venv is not committed
+<span class="k">- [ ]</span> The header matches fetch_once.sh
+</code></pre></div>
+
+<p>Good evidence is a command and its output, a short log excerpt, or a screenshot of a page. A pasted sentence such as "it works" is not evidence.</p>
+<h3 id="definition-of-done_2">Definition of done</h3>
+<ul>
+<li>[ ] D01 scored at least 3 out of 5, and the trainer's fix is applied.</li>
+<li><em>How you know:</em> the trainer has recorded the score and the fix, and your profile shows the change.</li>
+<li>[ ] CODEOWNERS, issue forms, labels and the milestone are merged or created.</li>
+<li><em>How you know:</em> TC2 finds the files on <code>main</code>, <code>gh label list</code> shows the labels, and the milestone query prints <code>P3 Data pipeline</code>.</li>
+<li>[ ] CHANGELOG <code>[0.2.0]</code>, the tag <code>v0.2.0</code> and the GitHub Release are published.</li>
+<li><em>How you know:</em> <code>git ls-remote --tags origin v0.2.0</code> prints an ID, and TC3 shows the notes.</li>
+<li>[ ] The peer-audit report is committed, and Issues are filed on the peer repository.</li>
+<li><em>How you know:</em> TC4 lists one Issue for each High or Medium row.</li>
+<li>[ ] Your <code>fetch.py</code> v0 pull request is open, with pinned requirements.</li>
+<li><em>How you know:</em> <code>gh pr view</code> shows the open pull request, and <code>requirements.txt</code> lists <code>requests</code> with a version number.</li>
+</ul>
+<h3 id="what-goes-wrong_2">What goes wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git push origin v0.2.0</code> succeeds, but the tag points at an older commit</td>
+<td>Your local main was behind origin when you tagged</td>
+<td>Run <code>git pull --ff-only</code> first. If the tag is already pushed, do not move it yourself. Ask the trainer.</td>
+</tr>
+<tr>
+<td>TC2 <code>grep</code> prints nothing</td>
+<td>The heading is missing or spelled <code>## [v0.2.0]</code> or <code>### [0.2.0]</code></td>
+<td>Make the heading exactly <code>## [0.2.0] - &lt;date&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>gh release view</code> says <code>release not found</code></td>
+<td>The tag was not pushed, the release is still a draft, or the <code>--repo</code> name is wrong</td>
+<td>Run <code>git ls-remote --tags origin v0.2.0</code>, check the draft setting on the release page, and check the repository name.</td>
+</tr>
+<tr>
+<td>Release notes do not match the changelog</td>
+<td>The notes came from <code>--notes-from-tag</code>, which reads the one-line tag message</td>
+<td>Fix the existing release with <code>gh release edit v0.2.0 --notes-file /tmp/notes-0.2.0.md</code> after making the <code>awk</code> extract.</td>
+</tr>
+<tr>
+<td><code>gh issue create</code> says the label does not exist</td>
+<td>The label was never created in the peer repository</td>
+<td>Remove the <code>--label</code> flag, or ask the peer squad to create the label first.</td>
+</tr>
+<tr>
+<td>TC4 prints <code>no issues match your search</code></td>
+<td>Wrong login in <code>--author</code>, Issues filed on your own repository, or closed Issues hidden</td>
+<td>Check the login, check <code>--repo</code>, and add <code>--state all</code>.</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'requests'</code></td>
+<td>The virtual environment is not active, so the system Python runs</td>
+<td>Run <code>source .venv/Scripts/activate</code> again and check that the prompt shows <code>(.venv)</code>.</td>
+</tr>
+<tr>
+<td><code>source: .venv/bin/activate: No such file</code> on Git Bash</td>
+<td>You used the Linux path on Windows</td>
+<td>Use <code>.venv/Scripts/activate</code> on Git Bash.</td>
+</tr>
+<tr>
+<td>The script hangs and never ends</td>
+<td>The request has no timeout</td>
+<td>Add <code>timeout=10</code> to <code>requests.get</code>.</td>
+</tr>
+<tr>
+<td><code>diff</code> marks every line, and <code>cat -A</code> shows <code>^M</code> at each line end</td>
+<td>Windows line endings differ from the reference file</td>
+<td>Open the file with <code>newline=""</code> and create the writer with <code>lineterminator="\n"</code> (the csv module defaults to CRLF), then check with <code>cat -A</code> again.</td>
+</tr>
+<tr>
+<td>The header has the same names in a different order</td>
+<td>Your column list does not match the reference header</td>
+<td>Copy the order from <code>head -1 data/raw/&lt;date&gt;.csv</code> into your code.</td>
+</tr>
+<tr>
+<td>CODEOWNERS has no effect on a pull request</td>
+<td>The file is not at <code>.github/CODEOWNERS</code>, or an owner is not a member or collaborator</td>
+<td>Move the file to the right path and check each owner's login.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defend-it-in-the-viva_2">Defend it in the viva</h3>
+<p><strong>1. Why does the release note have to match the CHANGELOG section, and not a one-line tag message?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The changelog is the record that a reader of the release can check. A tag message is a single line that marks a commit, so it cannot tell a reader what changed. If the release notes come from the changelog section, anyone can compare the two and see the same list of changes. The notes are extracted from the file with <code>awk</code>, then passed to <code>gh release create</code> with <code>--notes-file</code>. That keeps one source of truth, so the two cannot drift apart.</p></details>
+
+<p><strong>2. What is the trade-off in pinning requirements with <code>pip freeze</code>, compared with always installing the newest version?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Pinning gives you repeatable runs. Your script behaves the same on your laptop, on the lab machine and in a month's time. The cost is that you must update the pins on purpose, and an old pinned version may miss a security fix. Always installing the newest version gets fixes automatically, but a library can change under you, and a run that worked yesterday can fail today. For a data pipeline that the team must trust, repeatable runs matter more, so you pin and update on purpose.</p></details>
+
+<p><strong>3. What did you personally do in this ticket, and how would someone else check it?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Answer with the piece you owned, the commits and the pull request that show it, and the test output you can point to. For example, you might say you wrote the request part of <code>fetch.py</code>, that your commits are the ones under your name on the feature branch, and that TC5 passed with the output you pasted. Your trainer can check this in the Git history and in the pull request. Keep to what your commits show. Do not describe work you did not do, because the history will show it.</p></details>
+
+<p><strong>4. Why compare your header with the output of <code>fetch_once.sh</code>, rather than trusting your own column list?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>The reference output is the agreed contract. Later steps, and your trainer's TC5, may read the file by column position, so a column in the wrong place can break them without an error message. Your list is a guess until it matches the reference. Comparing with <code>diff</code> gives an objective result: either the two header lines are identical or they are not. It also catches small differences such as line endings, which a visual check would miss.</p></details>
+
+<p><strong>5. How do you prove that <code>main</code> is protected, and what does the required check add to the review rule?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Query the protection rule with <code>gh api</code> and read the fields. The review count shows how many approvals a pull request needs. The required status check shows which automated job, here <code>shellcheck</code>, must pass before a merge. The review rule depends on people, and the check depends on code, so they catch different problems. A protection that refuses a direct push is the strongest proof, because the server enforces it.</p></details>
+
+<h3 id="check-yourself_2">Check yourself</h3>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A CODEOWNERS file has * @tech-lead on the first line and scripts/ @qa-lead later. Who must review a change to scripts/fetch.sh?&quot;, &quot;opts&quot;: [&quot;@tech-lead, because the first line is always used&quot;, &quot;Both owners, because every matching line adds an owner&quot;, &quot;@qa-lead, because the last matching line takes precedence&quot;, &quot;Nobody, because scripts/ is not in the root folder&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;GitHub uses the last matching pattern in CODEOWNERS, so the more specific line below the default wins. The \&quot;both owners\&quot; answer is tempting, but matching lines do not stack.&quot;}, {&quot;q&quot;: &quot;Your tag annotation is one line, P2: team workflow. What should you do so that the GitHub Release notes match the CHANGELOG section?&quot;, &quot;opts&quot;: [&quot;Nothing, because GitHub reads the release body from the tag&quot;, &quot;Rename the tag to v0.2.0-notes so that GitHub reads the notes from its name&quot;, &quot;Extract the 0.2.0 section with awk and pass the file to gh release create with --notes-file&quot;, &quot;Delete the CHANGELOG and write the notes inside the release page by hand&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The release body comes only from what you pass to the command, and a tag message is one line. Extracting the section and using --notes-file keeps a single source of truth. The \&quot;nothing\&quot; answer is tempting but wrong.&quot;}, {&quot;q&quot;: &quot;Your fetch.py header matches fetch_once.sh word for word, yet diff marks every line. cat -A shows a ^M before each line end. What is the likely cause?&quot;, &quot;opts&quot;: [&quot;The column names differ in capital letters&quot;, &quot;Git Bash cannot read CSV files at all&quot;, &quot;The virtual environment is still active&quot;, &quot;The two files use different line endings, Windows CRLF against LF&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;CRLF ends a line with a carriage return and a line feed, while LF ends it with a line feed only. Both headers can have the same words and still differ in their endings, so diff reports every line. The capital-letter answer would show a difference in the words themselves.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="K02.html"><small>Previous</small>Capstone tickets T04–T07: setup, fetching and scheduling data</a><a class="nx" href="K04.html"><small>Next</small>Capstone tickets T11–T12: the Python fetch and clean stages</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

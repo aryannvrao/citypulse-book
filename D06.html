@@ -1,0 +1,1166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 6 — Continuous integration with GitHub Actions · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D06" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 3 · Days 6–10 · Python, data and SQL</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a class="cur" href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 3 · Days 6–10 · Python, data and SQL</p><h1>Day 6 — Continuous integration with GitHub Actions</h1><p class="sub">You will be able to write a GitHub Actions workflow that runs your tests and a linter on every change, read a failed run&#x27;s log, and explain each part of the setup out loud.</p><p class="meta">90 min read · practice quiz · 8 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D06.mp4?v=1794465138"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Every change to CityPulse code should be checked before a person reviews it, and the check should run the same way every time. Today you hand that job to a robot. GitHub starts a fresh computer in the cloud for each change, copies your code onto it, runs your tests and reports the result on the pull request as a green tick or a red cross. Think of it as a robot reviewer who checks every change in exactly the same way and never forgets a step.</p>
+<p>By the end of the day you will be able to write the workflow file, run the same checks on your own laptop first, and find the broken line when a run goes red.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>Every term below is used in this chapter. Skim the ones you already know.</p>
+<p><strong>Terminal.</strong> A text window where you type commands and read the replies. Everything in this chapter is typed into a terminal.</p>
+<p><strong>Command.</strong> One line you type that asks the computer to do something. <code>ls</code> is a command that lists the files in the current folder. A command can take <strong>arguments</strong>, which are extra words that change what it does. In <code>pytest -q</code>, <code>pytest</code> is the command and <code>-q</code> is an argument.</p>
+<p><strong>Flag.</strong> An argument that starts with a dash, such as <code>-q</code>. Flags change how a command behaves. <code>-q</code> asks for quiet output.</p>
+<p><strong>File and folder.</strong> A file holds text or data. A folder (also called a directory) holds files and other folders. A folder whose name starts with a dot, such as <code>.github</code>, is hidden in many file browsers but still exists.</p>
+<p><strong>Variable.</strong> A name that holds a value. In Python, <code>total = 5</code> stores 5 under the name <code>total</code>. In a shell script, <code>OUT="report.csv"</code> stores the text <code>report.csv</code> under the name <code>OUT</code>.</p>
+<p><strong>Function.</strong> A named block of code that you can run by name with brackets, such as <code>normalise("pm2.5")</code>. The text inside the brackets is the <strong>argument</strong> passed to the function. The function may send back a <strong>return value</strong>, which is the answer it produces.</p>
+<p><strong>Script.</strong> A file of commands or code that the computer runs from top to bottom. A Python script ends in <code>.py</code>. A shell script ends in <code>.sh</code> and holds terminal commands.</p>
+<p><strong>Shell and Bash.</strong> The shell is the program that reads your terminal commands. Bash is the most common shell, and most course scripts use it.</p>
+<p><strong>Exit code.</strong> Every program finishes with a number. <code>0</code> means success. Any other number means something failed. After running a command in Bash, <code>echo "exit=$?"</code> prints the exit code of that command. The <code>$?</code> is the Bash way of asking for the last exit code.</p>
+<p><strong>Server.</strong> A computer that runs programs for other people, all day. GitHub runs your repository on servers, and it also runs your workflows on servers.</p>
+<p><strong>Repository (repo).</strong> A project folder that Git is tracking. The CityPulse project is one repository.</p>
+<p><strong>Git.</strong> A tool that records the history of changes to files. Each saved set of changes is a <strong>commit</strong>.</p>
+<p><strong>Branch.</strong> A separate line of work inside a repository. Your work goes on a branch, such as <code>feature/clean-readings</code>, and the main line is called <code>main</code>.</p>
+<p><strong>Push.</strong> Sending your local commits to GitHub, where other people can see them. <code>git push</code> does this.</p>
+<p><strong>Pull request (PR).</strong> A request on GitHub to merge the commits from one branch into another, usually into <code>main</code>. Other people review it there, and checks such as tests appear on it.</p>
+<p><strong>Merge.</strong> Combining the changes from one branch into another. A <strong>merge conflict</strong> happens when two branches changed the same lines and Git cannot decide which version to keep.</p>
+<p><strong>YAML.</strong> Short for YAML Ain't Markup Language. It is a text format for settings, where indentation shows structure. Use spaces for indentation, never tabs. GitHub Actions workflows are written in YAML.</p>
+<p><strong>Test.</strong> A small piece of code that calls another piece of code and checks that the answer is right. A test passes or fails.</p>
+<p><strong>pytest.</strong> A Python tool that finds test functions in files and runs them. The lab uses it. A test function uses the word <code>assert</code>, which checks a condition and stops the test with an error if the condition is false.</p>
+<p><strong>pip and requirements.txt.</strong> <code>pip</code> is the Python package installer. A package is a library of code someone else wrote, such as <code>pytest</code>. A file named <code>requirements.txt</code> lists the packages a project needs, and <code>pip install -r requirements.txt</code> installs everything listed in it. The <code>-r</code> flag means "read the list from this file".</p>
+<p><strong>Linter.</strong> A tool that reads code without running it and reports likely bugs or risky patterns.</p>
+<p><strong>Continuous integration (CI).</strong> Running checks such as tests and linters automatically on every change, rather than when someone remembers.</p>
+<p><strong>Runner.</strong> The computer that runs a GitHub Actions job. GitHub provides them, and each job gets a fresh one.</p>
+<p><strong>Virtual machine (VM).</strong> A computer that exists as software inside another computer. Runners are virtual machines, and they are thrown away after each job.</p>
+<h2 id="the-tools">The tools</h2>
+<p>The course slides and the Technology in Action page cover slightly different examples, and you need to know which is which. The slides build a workflow called <code>lint.yml</code> that runs <strong>ShellCheck</strong>, a linter for shell scripts. The Technology in Action page builds a workflow called <code>ci.yml</code> that runs <strong>pytest</strong> on Python code. The hands-on lab in this chapter follows the Technology in Action page. The ticket Y2-T09 asks for the ShellCheck workflow, so the ShellCheck section below matters for your ticket.</p>
+<div class="box box-tip"><div class="box-h">Tip: Which example to follow</div><p>The lab and the Python skills in this chapter use <code>ci.yml</code> and pytest. The ticket Y2-T09 needs <code>lint.yml</code> with a job called <code>shellcheck</code>, a red-to-green pull request, a required check and a merge conflict resolution. Read all three technology sections before you start the ticket.</p></div>
+
+<h3 id="github-actions-workflows">GitHub Actions workflows</h3>
+<p><strong>What it is.</strong> GitHub Actions runs <strong>workflows</strong>. A workflow is a YAML file in the folder <code>.github/workflows/</code> of your repository. The file says when the workflow starts (its <strong>triggers</strong>) and what it does (its <strong>jobs</strong>). Each job runs its <strong>steps</strong> on a fresh runner, and the result of the job appears on the pull request as a <strong>status check</strong>.</p>
+<p><strong>Why CityPulse uses it.</strong> Every change to <code>fetch.sh</code> and the cleaning code is checked before review. You do not have to remember to run the checks, and a status check can make the merge button unavailable while the check is red. The slides list three alternatives:</p>
+<table>
+<thead>
+<tr>
+<th>Alternative</th>
+<th>When you would pick it</th>
+<th>Why CityPulse did not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jenkins</td>
+<td>Very flexible, and you run your own servers</td>
+<td>It needs a server to run and maintain.</td>
+</tr>
+<tr>
+<td>GitLab CI</td>
+<td>Similar YAML model</td>
+<td>Our repositories and branch protection live on GitHub.</td>
+</tr>
+<tr>
+<td>Local pre-commit hooks</td>
+<td>Fast feedback on your own machine</td>
+<td>Each developer can skip them. CI cannot be skipped.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How it works.</strong> When a pull request is opened, or a commit is pushed to it, GitHub looks at every workflow whose <code>on:</code> block matches the event. Each job starts a clean runner, checks out the code and runs its steps in order. If any step exits with a non-zero code, the job fails, and so does the check. The animation below shows one run.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;One CI run from push to green tick&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Fresh ubuntu runner&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push&quot;, &quot;note&quot;: &quot;Your new commits travel to GitHub.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;start job test&quot;, &quot;note&quot;: &quot;GitHub reads ci.yml and gives the job to a fresh runner.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;step results&quot;, &quot;note&quot;: &quot;The runner reports each step, and the job passes or fails.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;check status&quot;, &quot;note&quot;: &quot;GitHub shows the result on the pull request.&quot;}]}"></div>
+
+<p><strong>The slide code, line by line.</strong> This is <code>.github/workflows/lint.yml</code> from the slides, with the indentation restored:</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">shellcheck</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ShellCheck scripts/</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">ls scripts/*.sh</span>
+<span class="w">          </span><span class="no">shellcheck scripts/*.sh</span>
+</code></pre></div>
+
+<ul>
+<li><code>name: lint</code> gives the workflow a name. It is the label shown in the Actions tab.</li>
+<li><code>on:</code> starts the trigger list. Each key under it is an event.</li>
+<li><code>pull_request:</code> runs the workflow when a pull request is opened or updated. The colon with nothing after it means "use the default settings".</li>
+<li><code>push:</code> runs the workflow when someone pushes commits.</li>
+<li><code>branches: [main]</code> limits the <code>push</code> trigger to the <code>main</code> branch. The square brackets make a list, so you could add more branch names separated by commas.</li>
+<li><code>jobs:</code> starts the list of jobs. Each job has an id, and here the id is <code>shellcheck</code>.</li>
+<li><code>runs-on: ubuntu-latest</code> asks for a runner using the latest Ubuntu Linux image. ShellCheck is already installed on that image, so the workflow needs no install step.</li>
+<li><code>steps:</code> starts the ordered list of steps. Each step starts with a dash.</li>
+<li><code>- uses: actions/checkout@v4</code> runs a ready-made action called <code>checkout</code>, version 4. It copies your repository onto the runner. The <code>@v4</code> pins the version.</li>
+<li><code>- name: ShellCheck scripts/</code> gives this step a readable label.</li>
+<li><code>run: |</code> starts a block of shell commands. The vertical bar means "the lines below, as one block".</li>
+<li><code>ls scripts/*.sh</code> lists every shell script in <code>scripts/</code>. The <code>*</code> is a wildcard that matches any name. The line proves the glob found files. If it finds none, <code>ls</code> reports an error and the step stops, so the log shows it.</li>
+<li><code>shellcheck scripts/*.sh</code> runs ShellCheck on every <code>.sh</code> file. If ShellCheck finds a problem, it exits non-zero and the step fails.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Wrong folder, wrong extension</div><p>A workflow must be a <code>.yml</code> or <code>.yaml</code> file inside <code>.github/workflows/</code>, at the top of the repository. A file in <code>scripts/workflows/</code> or <code>workflows/</code> is ignored, and nothing runs. Nothing warns you.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Tabs in YAML</div><p>YAML does not accept tab characters for indentation. A tab causes a parse error, and the Actions page shows the error line. Indent with spaces, and keep each level consistent.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Renaming the job</div><p>The job id, here <code>shellcheck</code>, is the name that branch protection uses for the required check. If you rename it, the required check name changes too, and pull requests then wait forever for a check with the old name.</p></div>
+
+<p><strong>The pytest workflow, line by line.</strong> The lab uses this <code>ci.yml</code> file, which you will type in the lab:</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+</code></pre></div>
+
+<ul>
+<li><code>on: [push, pull_request]</code> is the same triggers written in short form. The square brackets list both events, with no branch filter. A push to a branch that has an open pull request starts the workflow twice, once for each event.</li>
+<li><code>test:</code> is the job id. The check on the pull request is named after the workflow and the job, which is why the Technology in Action page shows <code>CI / test (pull_request)</code>.</li>
+<li><code>- uses: actions/setup-python@v5</code> installs a Python version on the runner.</li>
+<li><code>with:</code> gives the action its settings. Here it has one, <code>python-version</code>.</li>
+<li><code>"3.11"</code> is the Python version. The quotes are needed (see the trap below).</li>
+<li><code>- run: pip install -r requirements.txt</code> installs the packages listed in the file.</li>
+<li><code>- run: pytest -q</code> runs the tests. <code>-q</code> makes the output short. The step passes only if pytest exits with 0.</li>
+</ul>
+<div class="box box-trap"><div class="box-h">Trap: Unquoted version numbers</div><p>In YAML, <code>python-version: 3.10</code> without quotes is read as the number 3.1, because the trailing zero disappears in a number. The runner then installs the wrong Python. Always write the version in quotes, such as <code>"3.10"</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: The word on</div><p>Some YAML readers, including the PyYAML library used in Python, read a bare word <code>on</code> as the value <code>True</code>. Scripts that check the file may then not find the <code>on</code> key. GitHub itself reads the key correctly. If your own checking script cannot find <code>on</code>, this is the likely reason.</p></div>
+
+<p><strong>What pytest does.</strong> The Technology in Action page runs <code>pytest -q</code> and shows the result below. Each dot means one test passed. The last line gives the total and the time.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;..... 5 passed in 1.84s&quot;}]}"></div>
+
+<p>The animation below shows how one test drives a small function. The function <code>normalise</code> is in the file <code>clean.py</code>, and the test calls it with the text <code>"pm2.5"</code>.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Calling normalise with \&quot;pm2.5\&quot;&quot;, &quot;code&quot;: [&quot;ALIASES = {\&quot;pm2.5\&quot;: \&quot;PM25\&quot;, \&quot;no2\&quot;: \&quot;NO2\&quot;}&quot;, &quot;def normalise(code):&quot;, &quot;    c = code.strip().lower()&quot;, &quot;    return ALIASES.get(c, code.strip().upper())&quot;, &quot;result = normalise(\&quot;pm2.5\&quot;)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;ALIASES&quot;, &quot;{\&quot;pm2.5\&quot;: \&quot;PM25\&quot;, \&quot;no2\&quot;: \&quot;NO2\&quot;}&quot;]], &quot;note&quot;: &quot;The alias table is built once, when the file is loaded.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;ALIASES&quot;, &quot;{\&quot;pm2.5\&quot;: \&quot;PM25\&quot;, \&quot;no2\&quot;: \&quot;NO2\&quot;}&quot;], [&quot;normalise&quot;, &quot;&lt;function&gt;&quot;]], &quot;note&quot;: &quot;The def line stores the function. Nothing inside it runs yet.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;ALIASES&quot;, &quot;{\&quot;pm2.5\&quot;: \&quot;PM25\&quot;, \&quot;no2\&quot;: \&quot;NO2\&quot;}&quot;], [&quot;normalise&quot;, &quot;&lt;function&gt;&quot;]], &quot;note&quot;: &quot;The call starts. Python runs the function body with code set to \&quot;pm2.5\&quot;.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;code&quot;, &quot;\&quot;pm2.5\&quot;&quot;]], &quot;note&quot;: &quot;Python enters the function, and the parameter code now holds \&quot;pm2.5\&quot;.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;code&quot;, &quot;\&quot;pm2.5\&quot;&quot;], [&quot;c&quot;, &quot;\&quot;pm2.5\&quot;&quot;]], &quot;note&quot;: &quot;strip() removes spaces at the ends, and lower() makes the text lowercase.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;code&quot;, &quot;\&quot;pm2.5\&quot;&quot;], [&quot;c&quot;, &quot;\&quot;pm2.5\&quot;&quot;]], &quot;note&quot;: &quot;ALIASES.get finds the key and returns \&quot;PM25\&quot;. The upper() part is never used.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;result&quot;, &quot;\&quot;PM25\&quot;&quot;]], &quot;note&quot;: &quot;The function returns, and the value is stored in result.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A passing test is not proof</div><p>Tests check only the cases you wrote. If there is no test for a rule, the rule can break and CI stays green. Each rule in the cleaning code should have at least one test that would fail if the rule broke.</p></div>
+
+<h3 id="shellcheck-linting">ShellCheck linting</h3>
+<p><strong>What it is.</strong> ShellCheck reads a shell script without running it. It reports bugs and risky patterns, each with a line number and a code such as <code>SC2086</code>. It exits with a non-zero code when it finds problems, which makes it a usable gate in CI.</p>
+<p><strong>Why CityPulse uses it.</strong> The scripts <code>fetch.sh</code> and <code>healthcheck.sh</code> run unattended, so a path bug fails at 3 a.m. with nobody watching. <code>SC2086</code>, the unquoted variable, is the most common bug in student scripts such as <code>fetch_once.sh</code>. Each ShellCheck finding links to a wiki page explaining the fix, so you learn the rule instead of guessing. The alternatives are <code>bash -n</code>, which checks syntax only and misses quoting problems, and manual review, which wastes reviewer time on mechanical issues.</p>
+<p><strong>How it works.</strong> ShellCheck parses each script, looks for patterns it knows are risky, and prints the line and the code. You fix the code, usually by adding quotes around a variable. Alternatively you add a disable comment with a reason. Then you run it again until it exits with 0, and that is what turns the CI check green.</p>
+<p>The animation below is a typed session. The command runs ShellCheck and then prints its exit code. The message text is the one from the slides. Your output layout may differ slightly, depending on the ShellCheck version, but the code and the message are the same.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;shellcheck scripts/*.sh; echo \&quot;exit=$?\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;In scripts/fetch_once.sh: SC2086: Double quote to prevent globbing and word splitting.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;exit=1&quot;}]}"></div>
+
+<p><strong>The mistake and the fix.</strong> Suppose someone appends a line to <code>fetch_once.sh</code>:</p>
+<div class="hl"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;wc -l $OUT&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>scripts/fetch_once.sh
+</code></pre></div>
+
+<ul>
+<li><code>echo</code> prints its text. Here it prints into the file, not the screen.</li>
+<li>The single quotes stop the shell from changing <code>$OUT</code> at the time you run <code>echo</code>, so the file gets the literal text <code>$OUT</code>.</li>
+<li><code>&gt;&gt;</code> appends the output to the end of <code>scripts/fetch_once.sh</code>. A single <code>&gt;</code> would overwrite the file, which is much worse.</li>
+</ul>
+<p>When the script runs later, the shell replaces <code>$OUT</code> with the value of the variable. The line that ShellCheck flags is <code>wc -l $OUT</code>. The fix is to put double quotes around the variable:</p>
+<div class="hl"><pre><span></span><code>wc<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>The quotes keep the value as one word. Without them, a value that contains a space or a wildcard character such as <code>*</code> is split into several words, or it is expanded to match file names. A path with a space in it then breaks the command.</p>
+<p>The slides fix the line with <code>sed</code>, a tool that edits text in a stream or file:</p>
+<div class="hl"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/wc -l \$OUT/wc -l &quot;$OUT&quot;/&#39;</span><span class="w"> </span>scripts/fetch_once.sh
+</code></pre></div>
+
+<ul>
+<li><code>sed</code> runs the editor. <code>-i</code> edits the file in place, so the result is written back to the same file.</li>
+<li><code>s/.../.../</code> means "substitute the text between the first pair of slashes with the text between the second pair".</li>
+<li><code>wc -l \$OUT</code> is the text to find. The single quotes already stop the shell from expanding <code>$OUT</code>, and the backslash tells <code>sed</code> to match a literal dollar sign.</li>
+<li><code>wc -l "$OUT"</code> is the replacement text.</li>
+</ul>
+<p>You can also open the file in an editor and make the change by hand. The result must be the same.</p>
+<div class="box box-trap"><div class="box-h">Trap: Disabling a warning to get green</div><p>Do not add a disable comment just to turn the check green. Fix the code. A disable comment is allowed only when you can explain in a comment why the warning does not apply. ShellCheck reads a comment such as <code># shellcheck disable=SC2086</code> placed on the line above.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Sourcing a file</div><p>When a script uses <code>source .env</code>, ShellCheck reports <code>SC1091</code> because it cannot read the file. Put <code># shellcheck source=/dev/null</code> on the line above the <code>source</code> command to tell it that you know the file is not checked. Use this only when the file is not part of the check.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: An empty wildcard</div><p>If <code>scripts/*.sh</code> matches nothing, the command receives the literal text <code>scripts/*.sh</code>, and no real file is checked. The <code>ls scripts/*.sh</code> line in the workflow prints the file list in the log, so you can prove which files were checked.</p></div>
+
+<h3 id="merge-conflict-resolution">Merge-conflict resolution</h3>
+<p><strong>What it is.</strong> A merge conflict happens when two branches changed the same lines, and Git cannot choose one. Git stops the merge, marks the file, and waits for you. Git marks the conflicting part like this:</p>
+<div class="hl"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+the lines from your branch
+=======
+the lines from the other branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/conflict-b
+</code></pre></div>
+
+<p>The three marker lines start with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. You edit the file so that it contains the correct final lines, delete all three marker lines, test the script, and commit.</p>
+<p><strong>Why CityPulse uses it.</strong> Several students edit <code>scripts/fetch_once.sh</code>, so conflicts on the same lines will happen. The planned <code>conflict-a</code> and <code>conflict-b</code> branches let you practise the resolution safely before a real deadline. The file <code>docs/git-log/&lt;name&gt;.md</code> records the cause, the resolution and the verification as evidence for marking. The alternatives are the GitHub web conflict editor, which is fine for small text conflicts but does not let you run the script before committing, and <code>git checkout --theirs</code>, which throws away one side silently.</p>
+<p><strong>How it works.</strong> The commands in the slides, with a short explanation of each:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>resolve-asha<span class="w"> </span>origin/conflict-a
+git<span class="w"> </span>merge<span class="w"> </span>origin/conflict-b
+git<span class="w"> </span>status<span class="w"> </span>--short
+git<span class="w"> </span>diff
+</code></pre></div>
+
+<ul>
+<li><code>git fetch origin</code> downloads the latest branches from GitHub without changing your files.</li>
+<li><code>git switch -c resolve-asha origin/conflict-a</code> creates a new branch called <code>resolve-asha</code> that starts at the remote branch <code>origin/conflict-a</code>. <code>-c</code> means "create". Replace <code>asha</code> with your own name.</li>
+<li><code>git merge origin/conflict-b</code> tries to combine <code>conflict-b</code> into your branch. It stops and reports a conflict in <code>scripts/fetch_once.sh</code>.</li>
+<li><code>git status --short</code> lists changed files, one per line. <code>UU</code> in front of a file name means that the file has an unresolved conflict.</li>
+<li><code>git diff</code> shows the differences, including the marker blocks, so you can read both sides.</li>
+</ul>
+<p>Then you edit the file, keep the correct lines, and delete the three marker lines. Check that none are left, check the syntax, and run the script:</p>
+<div class="hl"><pre><span></span><code>grep<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;^(&lt;&lt;&lt;&lt;&lt;&lt;&lt;|=======|&gt;&gt;&gt;&gt;&gt;&gt;&gt;)&#39;</span><span class="w"> </span>scripts/fetch_once.sh<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;no markers left&quot;</span>
+bash<span class="w"> </span>-n<span class="w"> </span>scripts/fetch_once.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./scripts/fetch_once.sh
+</code></pre></div>
+
+<ul>
+<li><code>grep</code> searches for text. <code>-n</code> prints the line number of each match, and <code>-E</code> turns on extended patterns.</li>
+<li>The pattern <code>^(&lt;&lt;&lt;&lt;&lt;&lt;&lt;|=======|&gt;&gt;&gt;&gt;&gt;&gt;&gt;)</code> matches a line that starts (<code>^</code>) with any of the three markers.</li>
+<li><code>|| echo "no markers left"</code> runs the <code>echo</code> only if <code>grep</code> found nothing. <code>||</code> means "or, if the first command failed".</li>
+<li><code>bash -n</code> reads the script and checks its syntax without running it.</li>
+<li><code>&amp;&amp;</code> runs the second command only if the first succeeded. So the script runs only after the syntax check passes.</li>
+<li><code>./scripts/fetch_once.sh</code> runs the script. The <code>./</code> says "in this folder".</li>
+</ul>
+<p>Finally, stage the file, commit the merge and push:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>scripts/fetch_once.sh
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Merge conflict-b: keep env-driven LOC and pm10 column&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>resolve-asha
+</code></pre></div>
+
+<p><code>git add</code> marks the file as resolved for Git. <code>git commit -m</code> completes the merge with the message in quotes. <code>-u</code> on the push links the local branch to the remote branch, so later pushes need no extra words.</p>
+<div class="box box-trap"><div class="box-h">Trap: Committing leftover markers</div><p>If a line <code>=======</code> remains in the file, the script breaks, and the commit records the broken file. Always run the <code>grep</code> line before <code>git add</code>.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Keeping one side by habit</div><p>Choosing one side without reading it loses a teammate's work. Read both sides first, then write the version that has both intentions.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Rebase on shared branches</div><p>Rebase rewrites commits, so it changes history that other people may already have. On a branch that others share, a rebase forces them to repair their own copies. Use merge on shared branches, as the slides do.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p><strong>Goal.</strong> Prove that the test suite protects the cleaning code. You will break <code>normalise</code> on purpose, watch the suite fail, and then restore it. This is the same demonstration as step 6 on the Technology in Action page.</p>
+<p><strong>The code.</strong> The cleaning code is <code>clean.py</code>, with the indentation restored:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## clean.py - CityPulse reading cleaning</span>
+<span class="n">VALID</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;PM25&quot;</span><span class="p">,</span> <span class="s2">&quot;PM10&quot;</span><span class="p">,</span> <span class="s2">&quot;NO2&quot;</span><span class="p">,</span> <span class="s2">&quot;O3&quot;</span><span class="p">}</span>
+<span class="n">ALIASES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pm2.5&quot;</span><span class="p">:</span> <span class="s2">&quot;PM25&quot;</span><span class="p">,</span> <span class="s2">&quot;no2&quot;</span><span class="p">:</span> <span class="s2">&quot;NO2&quot;</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalise</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ALIASES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">normalise</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;pollutant&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID</span><span class="p">:</span>
+            <span class="k">continue</span>  <span class="c1"># drop unknown</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>  <span class="c1"># drop bad value</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="o">**</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;pollutant&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>
+
+<ul>
+<li><code>VALID</code> is a <strong>set</strong>, written in braces, of the pollutant codes the project accepts. A set holds each item once, and checking <code>in</code> a set is fast.</li>
+<li><code>ALIASES</code> is a <strong>dictionary</strong>, written in braces with <code>key: value</code> pairs. It maps spelling variants to canonical codes. <code>"pm2.5"</code> maps to <code>"PM25"</code>.</li>
+<li><code>def normalise(code):</code> defines a function that takes one argument, called <code>code</code>.</li>
+<li><code>c = code.strip().lower()</code> makes a new value, <code>c</code>. <code>strip()</code> removes spaces at both ends, and <code>lower()</code> makes every letter lowercase.</li>
+<li><code>return ALIASES.get(c, code.strip().upper())</code> looks up <code>c</code> in the dictionary. <code>get</code> returns the value for the key, or the second argument if the key is missing. If there is no alias, the function returns the text in capitals.</li>
+<li><code>def clean(rows):</code> takes a list of readings. Each reading is a dictionary with the keys <code>station_id</code>, <code>pollutant</code> and <code>value</code>.</li>
+<li><code>out = []</code> creates an empty list. The loop adds good rows to it.</li>
+<li><code>for r in rows:</code> takes one reading at a time.</li>
+<li><code>if code not in VALID:</code> and <code>continue</code> skip the rest of the loop body for this reading. <code>continue</code> means "go to the next reading".</li>
+<li><code>if r["value"] is None or r["value"] &lt; 0:</code> drops a reading with no value or a negative value.</li>
+<li><code>out.append({**r, "pollutant": code})</code> adds a copy of the reading with the cleaned pollutant code. <code>{**r, ...}</code> copies every key from <code>r</code> and then replaces <code>pollutant</code>.</li>
+<li><code>return out</code> returns the list after the loop finishes.</li>
+</ul>
+<p><strong>The tests.</strong> The test file is <code>test_clean.py</code>. It contains five test functions:</p>
+<div class="hl"><pre><span></span><code><span class="c1">## test_clean.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">clean</span><span class="w"> </span><span class="kn">import</span> <span class="n">normalise</span><span class="p">,</span> <span class="n">clean</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_normalise_alias</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">normalise</span><span class="p">(</span><span class="s2">&quot;pm2.5&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;PM25&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_normalise_upper</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">normalise</span><span class="p">(</span><span class="s2">&quot; no2 &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;NO2&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_clean_drops_unknown_pollutant</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">clean</span><span class="p">([{</span><span class="s2">&quot;station_id&quot;</span><span class="p">:</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;pollutant&quot;</span><span class="p">:</span> <span class="s2">&quot;XYZ&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_clean_drops_negative_value</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">clean</span><span class="p">([{</span><span class="s2">&quot;station_id&quot;</span><span class="p">:</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;pollutant&quot;</span><span class="p">:</span> <span class="s2">&quot;PM25&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}])</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_clean_keeps_good_row</span><span class="p">():</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;station_id&quot;</span><span class="p">:</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;pollutant&quot;</span><span class="p">:</span> <span class="s2">&quot;pm2.5&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}]</span>
+    <span class="k">assert</span> <span class="n">clean</span><span class="p">(</span><span class="n">r</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;pollutant&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;PM25&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>from clean import normalise, clean</code> loads the two functions from the file <code>clean.py</code>. The file name without <code>.py</code> is the module name.</li>
+<li>Each function whose name starts with <code>test_</code> is found and run by pytest.</li>
+<li>Each <code>assert</code> line checks one expected result. If the two sides are not equal, pytest reports a failure.</li>
+<li><code>== []</code> checks that the result is an empty list.</li>
+</ul>
+<p><strong>Step 1: run the suite.</strong> Run <code>pytest -q</code> in the folder that contains both files:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;..... 5 passed in 0.01s&quot;}]}"></div>
+
+<p>Five dots and <code>5 passed</code> means the five tests passed.</p>
+<p><strong>Step 2: break the code on purpose.</strong> Empty the alias table, so that <code>pm2.5</code> no longer maps to <code>PM25</code>:</p>
+<div class="hl"><pre><span></span><code><span class="n">ALIASES</span> <span class="o">=</span> <span class="p">{}</span>   <span class="c1"># was {&quot;pm2.5&quot;: &quot;PM25&quot;, &quot;no2&quot;: &quot;NO2&quot;}</span>
+</code></pre></div>
+
+<p>With the table empty, <code>normalise("pm2.5")</code> returns <code>PM2.5</code>, because the fallback is only the text in capitals. The dot stays in the text.</p>
+<p><strong>Step 3: run the suite again.</strong></p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;=========== short test summary info ===========&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;FAILED test_clean.py::test_normalise_alias&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;- AssertionError: assert &#x27;PM2.5&#x27; == &#x27;PM25&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;FAILED test_clean.py::test_clean_keeps_good_row&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;- IndexError: list index out of range&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;2 failed, 3 passed in 0.03s&quot;}]}"></div>
+
+<ul>
+<li>The summary names each failing test and the file it is in.</li>
+<li><code>AssertionError</code> is the error an <code>assert</code> raises when its condition is false.</li>
+<li>The text after it shows the two sides of the failed comparison: the value the code produced, then the value the test expected. In the second failure, <code>clean</code> dropped the row because <code>PM2.5</code> is not in <code>VALID</code>, so <code>clean(r)[0]</code> raises <code>IndexError</code> on an empty list.</li>
+<li><code>2 failed, 3 passed</code> is the total count. The tests about upper-casing and about dropping bad rows still pass, because they do not depend on the alias table.</li>
+</ul>
+<p><strong>Step 4: restore the table and run again.</strong> Put back <code>ALIASES = {"pm2.5": "PM25", "no2": "NO2"}</code>, then run <code>pytest -q</code>. The output returns to <code>5 passed</code>.</p>
+<p><strong>What this proves.</strong> On the pull request, the same run would show <code>CI / test (pull_request) failed</code>, and a required check would block the merge. The bug never reaches <code>main</code>. The steps you just followed are the same ones the robot follows, only on a clean runner in the cloud.</p>
+<div class="box box-key"><div class="box-h">Key fact: Reading a failure</div><p>A failed test prints the name of the test, the file, the expected value and the actual value. Start from the first <code>FAILED</code> line. The line number of the failure, if shown, tells you where the <code>assert</code> was.</p></div>
+
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Run the commands in a terminal that understands Bash syntax. The course examples use Bash. On Windows, Git Bash is the usual choice. Before the lab, check that Git is installed with <code>git --version</code>, and that the GitHub command line tool <code>gh</code> is installed and logged in with <code>gh auth status</code>. <code>gh</code> is a program that talks to GitHub from the terminal.</p>
+<p>Work inside a folder that is a Git repository, for example your CityPulse project. Use a new branch for all of the lab, so that <code>main</code> is never changed directly.</p>
+<h3 id="1-add-a-test-the-ci-will-run">1. Add a test the CI will run</h3>
+<p><strong>What you do.</strong> Create the cleaning code and the tests from the worked example. Create the branch first, with <code>git switch -c feature/clean-readings</code>. The <code>-c</code> flag creates the branch and switches to it.</p>
+<p><strong>What you type.</strong> Create <code>clean.py</code> and <code>test_clean.py</code> with the code from the worked example, with the alias table restored to <code>{"pm2.5": "PM25", "no2": "NO2"}</code>.</p>
+<p><strong>What you should see.</strong> Running <code>pytest -q</code> shows five dots and <code>5 passed</code>.</p>
+<p><strong>How you know it worked.</strong> The count is five, and no test has the word <code>FAILED</code> next to it.</p>
+<h3 id="2-pin-dependencies">2. Pin dependencies</h3>
+<p><strong>What you do.</strong> Create <code>requirements.txt</code> in the same folder. Pinning a version means writing the exact version you tested with. A fresh runner has no packages installed, so this file tells it what to install.</p>
+<p><strong>What you type.</strong> Create <code>requirements.txt</code> with one line:</p>
+<div class="hl"><pre><span></span><code>pytest==9.1.1
+</code></pre></div>
+
+<p>The <code>==</code> means "exactly this version". A line with just <code>pytest</code> would install whatever the newest release is, and a green run today could turn red next month for reasons that have nothing to do with your code.</p>
+<p>Then run the install and the tests together:</p>
+<div class="hl"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pytest<span class="w"> </span>-q
+</code></pre></div>
+
+<ul>
+<li><code>pip install -r requirements.txt</code> installs the packages listed in the file.</li>
+<li><code>&amp;&amp;</code> runs <code>pytest -q</code> only if the install succeeded.</li>
+</ul>
+<p><strong>What you should see.</strong> The line <code>Requirement already satisfied: pytest==9.1.1</code> if pytest is already installed, then <code>5 passed</code>.</p>
+<p><strong>How you know it worked.</strong> The <code>pytest==9.1.1</code> version is in the output, and the test count is still five.</p>
+<h3 id="3-create-the-workflow-file">3. Create the workflow file</h3>
+<p><strong>What you do.</strong> Create the folder <code>.github/workflows</code> and the file <code>ci.yml</code> inside it.</p>
+<p><strong>What you type.</strong> Run this in the repository root:</p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>.github/workflows
+</code></pre></div>
+
+<ul>
+<li><code>mkdir</code> makes a folder.</li>
+<li><code>-p</code> creates the parent folder <code>.github</code> too if it is missing, and does not complain if the folder already exists.</li>
+</ul>
+<p>Then create <code>.github/workflows/ci.yml</code> in your editor with the content from the section above, the pytest workflow. Read the earlier section for what each line means.</p>
+<p><strong>What you should see.</strong> The file appears at <code>.github/workflows/ci.yml</code>, and the folder is hidden in some file browsers.</p>
+<p><strong>How you know it worked.</strong> Run <code>ls .github/workflows</code>. The output is <code>ci.yml</code>. To check that the YAML is readable, run this Python command, which reads the file and prints a summary:</p>
+<div class="hl"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import yaml;d=yaml.safe_load(open(&#39;.github/workflows/ci.yml&#39;));print(d[&#39;name&#39;],&#39;/&#39;,list(d[&#39;jobs&#39;]),&#39;/&#39;,len(d[&#39;jobs&#39;][&#39;test&#39;][&#39;steps&#39;]),&#39;steps&#39;)&quot;</span>
+</code></pre></div>
+
+<ul>
+<li><code>python3 -c</code> runs a line of Python typed after <code>-c</code>.</li>
+<li><code>import yaml</code> loads the YAML library. It must be installed. If it is not, install it with <code>pip install pyyaml</code>.</li>
+<li><code>yaml.safe_load(open(...))</code> opens the file and turns it into Python data.</li>
+<li><code>d['jobs']</code> looks up the <code>jobs</code> key, and <code>list(...)</code> turns its keys into a list.</li>
+<li><code>len(d['jobs']['test']['steps'])</code> counts the steps in the <code>test</code> job.</li>
+</ul>
+<p>Expected output: <code>CI / ['test'] / 4 steps</code>. If the file has a tab or a missing colon, this command stops with an error that names the line.</p>
+<h3 id="4-declare-the-triggers">4. Declare the triggers</h3>
+<p><strong>What you do.</strong> Check that the <code>on:</code> block runs the workflow on pushes and on pull requests.</p>
+<p><strong>What you type.</strong> The top of <code>ci.yml</code> must have:</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>This runs the workflow when anyone pushes commits to any branch, and when a pull request is opened or updated. The block form is also valid, for example to run on pushes to <code>main</code> only:</p>
+<div class="hl"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p><strong>What you should see.</strong> Nothing is printed on your machine. The effect is seen on GitHub after the push in step 7.</p>
+<p><strong>How you know it worked.</strong> The Actions tab shows a run whose event is <code>push</code> or <code>pull_request</code> after you push. If no run appears, the file is probably in the wrong folder.</p>
+<h3 id="5-define-the-job-and-steps">5. Define the job and steps</h3>
+<p><strong>What you do.</strong> Check that the <code>test</code> job has the four steps in the correct order: checkout, set up Python, install, test.</p>
+<p><strong>What you type.</strong> The <code>jobs:</code> part of <code>ci.yml</code>:</p>
+<div class="hl"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+</code></pre></div>
+
+<p>Each line has a job in it with a purpose:</p>
+<ul>
+<li><code>runs-on: ubuntu-latest</code> chooses the operating system of the runner.</li>
+<li><code>actions/checkout@v4</code> copies your repository. Without it, the runner has an empty folder and <code>pytest</code> finds no files.</li>
+<li><code>actions/setup-python@v5</code> installs Python 3.11, in quotes as required.</li>
+<li><code>pip install -r requirements.txt</code> installs the pinned packages on the fresh runner.</li>
+<li><code>pytest -q</code> runs the tests, and the job passes only if pytest exits with 0.</li>
+</ul>
+<p>Order matters. The install step needs the code checked out first, because the file it reads is in the repository.</p>
+<p><strong>What you should see.</strong> The YAML check in step 3 prints <code>CI / ['test'] / 4 steps</code>.</p>
+<p><strong>How you know it worked.</strong> The four steps appear in the order above on the job page after the run in step 7. Each one has a green tick when it passes.</p>
+<h3 id="6-run-the-suite-locally-first">6. Run the suite locally first</h3>
+<p><strong>What you do.</strong> Replay on your own machine exactly what the runner will do. The suite must be green here before the cloud sees it. A test author who cannot make the suite pass locally would only be outsourcing the debugging to a slower machine.</p>
+<p><strong>What you type.</strong> Run the two commands in the same folder:</p>
+<div class="hl"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pytest<span class="w"> </span>-q
+</code></pre></div>
+
+<p>The Technology in Action page also shows a file called <code>run_ci_locally.sh</code> that contains these two commands. It is optional. Two commands typed by hand are enough.</p>
+<p><strong>What you should see.</strong> <code>5 passed in ...</code> at the end.</p>
+<p><strong>How you know it worked.</strong> The exit code is 0. Check with <code>pytest -q; echo "exit=$?"</code>, which prints <code>exit=0</code> after the test output.</p>
+<h3 id="7-commit-push-and-watch-ci">7. Commit, push and watch CI</h3>
+<p><strong>What you do.</strong> Save your work as a commit, send the branch to GitHub, and watch the run.</p>
+<p><strong>What you type.</strong> Run these commands in the repository:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add clean.py tests and CI workflow&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/clean-readings
+gh<span class="w"> </span>run<span class="w"> </span>watch
+</code></pre></div>
+
+<ul>
+<li><code>git add .</code> stages every changed file in the current folder and below. The dot means "here".</li>
+<li><code>git commit -m "..."</code> saves the staged files as one commit with the message in quotes.</li>
+<li><code>git push origin feature/clean-readings</code> sends the branch to the remote named <code>origin</code>.</li>
+<li><code>gh run watch</code> follows the latest workflow run and prints each step as it finishes.</li>
+</ul>
+<p>The output shows each step, then the result:</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh run watch&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* test Set up job&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* test Run actions/checkout@v4&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* test Run actions/setup-python@v5&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* test pip install -r requirements.txt&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;* test pytest -q&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;5 passed in 1.73s&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;\u2713 CI / test (pull_request) succeeded in 24s&quot;}]}"></div>
+
+<p><strong>What you should see.</strong> A green tick next to <code>CI / test (pull_request)</code> once the run has finished. The tick appears on the pull request after you open one.</p>
+<p><strong>How you know it worked.</strong> The result is green, and the log shows <code>5 passed</code> from the runner, not from your laptop. If the check is red, open the failed step in the Actions tab, find the first line marked as failing, and fix that line before pushing again.</p>
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"Order the CI jobs DAG / detect a cycle (GitHub Actions)" (medium), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Topological order with alphabetical tie-break</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A valid DAG has no cycle</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>A-&gt;B-&gt;C-&gt;A is a cycle</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>With lint done, test and build become ready</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 62 of the 100 points. The other 38 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K03.html#y2-t09-add-shellcheck-ci-gate-on-prs-resolve-and-log-one-conflict-each">Y2-T09 · Add shellcheck CI gate on PRs; resolve and log one conflict each</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz for this day has 10 case-study multiple-choice questions. There is one question for each topic in this section, asked in the same order. Each question gives you a short scenario about a CityPulse team, then asks what to do, what happened or what is true. The pass mark is 70%. Your first attempt is the one that your skill score keeps, so a second attempt will not replace it. Treat the first attempt as the real test, and work slowly through each scenario before you choose.</p>
+<p>Use the same method for every case-study question. First, read the last line of the question. It tells you what is being asked, such as "What happens?" or "Which step fixes this?". Second, go back to the scenario and underline the facts that matter: the file path, the trigger, the version number, the error message. Third, eliminate options that are true in general but do not fix this scenario. A wrong option is often a correct statement about something else. Fourth, watch the small words. "Most" asks for the likeliest cause, "first" asks for the earliest step that goes wrong, and "best" asks for the option that fixes the cause without side effects.</p>
+<p>The practice questions below are original. They cover the same topics as the real quiz, but they are not the platform's questions. Each topic starts with what the idea is, then a scenario, then the trap an examiner would set. The three questions after each topic give you practice, and each one ends with a WHY line that explains the right answer and the wrong option that tempts most people. Do the quick self-test at the end only after you have read the topics.</p>
+<h3 id="where-a-workflow-file-must-live">Where a workflow file must live</h3>
+<p><strong>What it is.</strong> A GitHub Actions workflow is a YAML file. It must have the extension <code>.yml</code> or <code>.yaml</code>, and it must sit in the folder <code>.github/workflows/</code> at the top of the repository. GitHub reads only that folder, and it does not search the rest of the project. A file in any other place is ignored. GitHub gives no error and no warning, so the Actions tab simply stays empty.</p>
+<p>For example, the repository layout below runs a workflow. The second layout runs nothing, even though the file content is identical.</p>
+<div class="hl"><pre><span></span><code>citypulse/
+  .github/workflows/ci.yml     &lt;- read by GitHub
+  scripts/ci.yml               &lt;- ignored
+</code></pre></div>
+
+<p>The output you see on the Actions page is the first workflow, named by its <code>name:</code> line. The second file produces no output at all, because no run is ever created from it.</p>
+<p><strong>How it shows up in a case study.</strong> A teammate writes a correct workflow and saves it as <code>scripts/workflows/lint.yml</code>. The pull request shows no checks. The reasoning is short: GitHub looks for workflows only under <code>.github/workflows/</code>, so the path is the first thing to check. The fix is to move the file, not to rewrite its content, and the next pull request then shows the check.</p>
+<div class="box box-trap"><div class="box-h">Trap: Right folder name, wrong place</div><p>A folder called <code>workflows</code> is not enough. The path must be exactly <code>.github/workflows/</code>, starting at the repository root. Nothing warns you when the path is wrong.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate saves a correct workflow as workflows/ci.yml at the top of the repository and pushes it. The Actions tab stays empty. Which statement explains this?&quot;, &quot;opts&quot;: [&quot;The file must have a .json extension, because YAML is not accepted in workflows.&quot;, &quot;The workflow needs a push trigger in the Actions tab before it appears.&quot;, &quot;GitHub reads workflows only from .github/workflows/, so a top-level workflows folder is ignored.&quot;, &quot;The folder is fine, but the file must be renamed to workflow.yml before GitHub reads it.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;GitHub reads workflows only from the exact path .github/workflows/, and the dot in the folder name is part of that path. The tempting wrong option is that only the file name is at fault, but a top-level workflows folder is never read, whatever the file is called.&quot;}, {&quot;q&quot;: &quot;A student places a correct workflow at scripts/workflows/lint.yml and commits it. The teacher asks whether the workflow will run on the next pull request. Which answer is right?&quot;, &quot;opts&quot;: [&quot;No. GitHub reads workflows only from .github/workflows/ at the repository root, and it gives no warning for other folders.&quot;, &quot;Yes, because GitHub searches every folder that has the word workflows in its name.&quot;, &quot;Yes, but only after an administrator approves the file in the settings.&quot;, &quot;No, because lint.yml is not allowed as a file name, and the file must be JSON.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The path is the only thing that matters, so the file never runs from scripts/workflows/. The tempting wrong option is the search through every folder, which GitHub does not do.&quot;}, {&quot;q&quot;: &quot;Your colleague names the file .github/workflows/ci.txt and says the content is correct. The workflow never appears in the Actions tab. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;GitHub needs the file to be named main.yml before it reads any other name.&quot;, &quot;The file needs a blank line at the top before the name: line.&quot;, &quot;Actions lists workflows only after a release tag has been created.&quot;, &quot;The extension must be .yml or .yaml, so a .txt file is ignored.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A file with the wrong extension is never read. The folder is correct, so the tempting wrong answer is that the content or the name is at fault, but the extension alone decides it.&quot;}]}"></div>
+
+<h3 id="choosing-when-a-workflow-runs">Choosing when a workflow runs</h3>
+<p><strong>What it is.</strong> The <code>on:</code> block lists the events that start a workflow. An event is something that happens in the repository, such as a push of commits or the opening of a pull request. <code>pull_request</code> starts the workflow for a pull request. <code>push</code> starts it for a push of commits. Adding <code>branches: [main]</code> under <code>push</code> limits that trigger to pushes to the branch <code>main</code>.</p>
+<p>For example, the block below runs on every pull request, and on pushes to <code>main</code> only.</p>
+<div class="hl"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>A direct push to <code>feature/login</code> does not match the <code>push</code> trigger, because the branch filter excludes it. Nothing runs for that push. A pull request from <code>feature/login</code> into <code>main</code> does start the workflow, because the <code>pull_request</code> trigger is listed.</p>
+<p><strong>How it shows up in a case study.</strong> A workflow contains only <code>on: pull_request</code>. A developer pushes a commit straight to <code>main</code> without opening a pull request. Nothing starts, because the trigger is about pull request events, and a direct push creates none. The reasoning is to match the event in the scenario against the event in the <code>on:</code> block, one line at a time.</p>
+<div class="box box-trap"><div class="box-h">Trap: Two events, two runs</div><p>A workflow with <code>on: [push, pull_request]</code> and no branch filter runs twice when a branch with an open pull request receives a commit: once for the push and once for the pull request. Count the events, not the commits.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A workflow has only on: pull_request. A developer pushes a commit straight to main and opens no pull request. Does the workflow run?&quot;, &quot;opts&quot;: [&quot;Yes, because every push to any branch starts every workflow in the repository.&quot;, &quot;No, because a pull_request trigger fires only for pull request events, and this push creates none.&quot;, &quot;Yes, but only after the next pull request is opened on any branch.&quot;, &quot;No, because main cannot run any workflow at all.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The trigger names an event, and a direct push is a different event. The tempting wrong option is that all pushes start workflows, which is true only when push is listed.&quot;}, {&quot;q&quot;: &quot;A branch that already has an open pull request receives one new commit. The workflow lists on: [push, pull_request] with no branch filter. How many runs start, and why?&quot;, &quot;opts&quot;: [&quot;One run, because GitHub merges the push and the pull request into a single event.&quot;, &quot;Zero runs, because a pull request is already open for the branch.&quot;, &quot;Three runs, one for every pull request and push that exist in the repository.&quot;, &quot;Two runs, one for the push event and one for the pull_request event.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each listed event that matches starts its own run. The tempting wrong option is the single run, which seems natural for one commit, but the two events are counted separately.&quot;}, {&quot;q&quot;: &quot;A workflow is written with on: push and branches: [main, release]. A commit is pushed to the branch release. Does the workflow start?&quot;, &quot;opts&quot;: [&quot;Yes, because release is in the branch list, so the push trigger matches it.&quot;, &quot;No, because the branch filter allows only the branch named main.&quot;, &quot;No, because pushes never start workflows unless a pull request exists.&quot;, &quot;Yes, but only for pull requests, because branch filters apply to pull requests.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A branch list accepts every name in it, so release matches. The tempting wrong option is the belief that only main is ever allowed, which ignores the second name in the list.&quot;}]}"></div>
+
+<h3 id="copying-your-code-with-checkout">Copying your code with checkout</h3>
+<p><strong>What it is.</strong> Every job starts on a fresh runner, which is a clean virtual machine. Before a job starts its steps, the runner's working folder is empty. The step <code>actions/checkout@v4</code> copies the repository onto the runner, so the later steps can read your files. The <code>@v4</code> at the end pins the version of the action.</p>
+<p>For example, a job that runs <code>pytest -q</code> without a checkout step looks like this:</p>
+<div class="hl"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+</code></pre></div>
+
+<p>The output on the runner is an error such as "no tests ran" or "file not found", because there are no files to read. Adding <code>- uses: actions/checkout@v4</code> as the first step makes the same <code>pytest -q</code> line find <code>test_clean.py</code>.</p>
+<p><strong>How it shows up in a case study.</strong> A job runs <code>pytest -q</code>, and the log says it collected no tests, even though the repository holds <code>test_clean.py</code>. The reasoning starts with the runner. A fresh runner does not remember the repository, so the first question is whether the job copied the code. The missing step is the checkout, and it must come before any step that reads a file.</p>
+<div class="box box-trap"><div class="box-h">Trap: Checkout after the test</div><p>Moving checkout to the last step does not help. Steps run in the order written, so pytest runs on the empty folder before checkout copies anything.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A job&#x27;s only meaningful step is pytest -q. The log says that no tests were collected, but test_clean.py is in the repository. What is the most likely missing step?&quot;, &quot;opts&quot;: [&quot;A cache step, because the runner has to remember the tests from last time.&quot;, &quot;An upload step, because the tests must be sent to the runner first.&quot;, &quot;An actions/checkout step, because the runner starts with an empty workspace.&quot;, &quot;A setup step that installs Python 3.11, because pytest needs a version number.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A runner has no copy of the repository until checkout runs. A Python version is needed for pytest to run, but it does not supply the test files. The tempting wrong option is the Python setup, which fails differently and does not explain the empty list.&quot;}, {&quot;q&quot;: &quot;A step reads a config file you committed on your laptop, but the step cannot find the file on the runner. The job&#x27;s first step is actions/checkout@v4. What should you check first?&quot;, &quot;opts&quot;: [&quot;Whether the file is committed and pushed, because checkout copies only what is in the repository.&quot;, &quot;Whether the Python version in setup-python is quoted, because a number changes the path.&quot;, &quot;Whether a secret with the same name exists in the repository settings.&quot;, &quot;Whether the cache key changed, because a changed key deletes files.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Checkout copies the commit that was pushed, not the files on your laptop. An uncommitted or untracked file is absent from the runner. The tempting wrong options blame the Python version or the cache, but the checkout worked, and the file was never in the commit.&quot;}, {&quot;q&quot;: &quot;A job runs three steps: install packages, run pytest, and then checkout. Someone asks why the job fails. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The job fails only if the install step is missing, because checkout runs first by default.&quot;, &quot;pytest runs before checkout copies the code, so it finds no test files and fails.&quot;, &quot;Checkout runs twice, once at the start and once at the end, so the job fails on the second copy.&quot;, &quot;The job is skipped without an error, because checkout must always be the last step.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Steps run in the order they are written, and a step cannot read files that a later step copies. The tempting wrong option is that GitHub reorders the steps, which it does not do.&quot;}]}"></div>
+
+<h3 id="installing-a-python-version">Installing a Python version</h3>
+<p><strong>What it is.</strong> The step <code>actions/setup-python@v5</code> installs the Python version you name in its <code>with:</code> block. The <code>with:</code> keyword passes settings to an action. The version is text, so it must be in quotes. YAML reads an unquoted number such as <code>3.10</code> as the number 3.1, because a trailing zero in a number disappears. The action then asks for the wrong version, and the step usually fails with a "version not found" message.</p>
+<p>For example:</p>
+<div class="hl"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+</code></pre></div>
+
+<p>With the quotes, the text <code>3.10</code> reaches the action unchanged, and the runner installs Python 3.10. Without them, the value becomes 3.1, which is a different version.</p>
+<p><strong>How it shows up in a case study.</strong> A team's workflow asks for Python 3.10, but the log shows that version 3.1 was requested, and the setup step fails. The reasoning goes back to the file. The value in the file is unquoted, so YAML changed it before the action saw it. Quoting the version fixes the cause, and the team does not need to change the runner or the packages.</p>
+<div class="box box-trap"><div class="box-h">Trap: Quotes that look optional</div><p>Quotes around a version look like decoration, but here they change the meaning. The unquoted value is a number, and the quoted value is text. Always quote every version.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A workflow has python-version: 3.10 with no quotes, and the log shows that Python 3.1 was requested. Which statement explains the cause?&quot;, &quot;opts&quot;: [&quot;setup-python ignores the python-version key when the value is written without quotes.&quot;, &quot;The runner reads 3.10 as text that has no meaning, so it installs the default version.&quot;, &quot;Python 3.9 is always chosen when the job name contains the word test.&quot;, &quot;YAML reads 3.10 as the number 3.1 before setup-python sees it, so the wrong version is requested.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;YAML converts unquoted numbers before any action runs. The tempting wrong option is the belief that the action ignores the key, but the action receives the wrong number and installs it.&quot;}, {&quot;q&quot;: &quot;A team needs Python 3.12 on the runner. Which with: block is correct?&quot;, &quot;opts&quot;: [&quot;with: python: 3.12&quot;, &quot;with: python-version: \&quot;3.12\&quot;&quot;, &quot;with: version: 3.12, with the number left unquoted&quot;, &quot;with: python-version=3.12 on a line of its own&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The setting name is python-version, its value is text in quotes, and the key sits under with:. The tempting wrong options use the wrong setting name (python, version) or the wrong syntax (=). Quoting also matters for versions such as 3.10, so make it a habit.&quot;}, {&quot;q&quot;: &quot;A job runs pip install -r requirements.txt, and then a setup-python step that asks for Python 3.11 follows it. Why is this order a problem?&quot;, &quot;opts&quot;: [&quot;It is not a problem, because pip works with any Python version.&quot;, &quot;It causes a YAML error, so the whole workflow file is rejected.&quot;, &quot;The install runs before the requested version is in place, so pip may use a different Python.&quot;, &quot;It makes the job run twice, once for each Python version.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Steps run in order, and the install step uses whatever Python is available at that moment. The tempting wrong option is that pip ignores the interpreter, but pip installs packages for the Python that runs it.&quot;}]}"></div>
+
+<h3 id="keeping-tokens-out-of-the-code-secrets">Keeping tokens out of the code (secrets)</h3>
+<p><strong>What it is.</strong> A secret is a value stored in the repository settings, such as an API token or a deploy key. It is kept out of the workflow file, so it never enters the history of a commit. A step reads it with the expression <code>${{ secrets.NAME }}</code>. GitHub hides the value in the log, so a printed secret shows as <code>***</code>. An expression in double curly braces is GitHub's way of inserting a value into the workflow at run time.</p>
+<p>For example, this step gives the token to a deploy script without writing it into the file:</p>
+<div class="hl"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./deploy.sh</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">API_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DEPLOY_TOKEN }}</span>
+</code></pre></div>
+
+<p>The file itself contains only the name <code>DEPLOY_TOKEN</code>. The real value stays in the repository settings.</p>
+<p><strong>How it shows up in a case study.</strong> A student wants to save time and pastes the token into the workflow file, so that it is easy to find. The reasoning follows the history. Every commit that holds the file keeps the token, even after a later edit removes it, so the token must be treated as leaked and replaced. The correct design uses a secret, and the token is then changed only in the settings.</p>
+<div class="box box-trap"><div class="box-h">Trap: A private repository is still a shared history</div><p>Making the repository private does not protect a token written into a file. Anyone with access, and every clone, keeps the old commits with the token in them.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A deploy step needs an API token. A developer wants to paste the token into the workflow file, so the value is easy to find later. What should you advise instead?&quot;, &quot;opts&quot;: [&quot;Store the token as a repository secret and read it with ${{ secrets.NAME }}, so the value stays out of the file and is masked in logs.&quot;, &quot;Paste the token into the file, because only maintainers can read a private repository.&quot;, &quot;Commit a file named secrets.txt next to the workflow, so the token is versioned with the code.&quot;, &quot;Put the token in the README, so that every contributor can run the deploy step.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A secret stays in the repository settings and is masked in logs, so it never enters a commit. The tempting wrong option is the private repository, which still keeps every commit with the token in it.&quot;}, {&quot;q&quot;: &quot;A pull request comes from a fork, and its workflow reads ${{ secrets.DEPLOY_KEY }}. The step receives an empty value. What is the most likely reason?&quot;, &quot;opts&quot;: [&quot;The secret name contains an underscore, which is not allowed in expressions.&quot;, &quot;The runner stores secrets only in its cache, which is cleared after each run.&quot;, &quot;Secrets are not passed to workflows that a pull request from a fork triggers, by default.&quot;, &quot;The workflow must use the word secret twice before the name.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The default rule protects secrets from code that someone outside the team wrote. The tempting wrong option is the naming rule, but the name is valid, and the value is withheld by design.&quot;}, {&quot;q&quot;: &quot;Which way of using a stored secret named PYPI_TOKEN is correct in a step?&quot;, &quot;opts&quot;: [&quot;Write the word PYPI_TOKEN in the run line, and GitHub replaces it with the value.&quot;, &quot;Paste the token between double quotes directly into the run line.&quot;, &quot;Pass ${{ secrets.PYPI_TOKEN }} into an env: or with: setting of the step.&quot;, &quot;Read the value with a Python line in a file that is committed to the repository.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The expression is the supported way to pass a secret into a step, and the value stays masked. The tempting wrong option is the plain word in the run line, which GitHub never replaces.&quot;}]}"></div>
+
+<h3 id="running-one-job-for-many-versions-matrix">Running one job for many versions (matrix)</h3>
+<p><strong>What it is.</strong> A <code>strategy: matrix:</code> block runs the same job once for each combination of values in its lists. The keyword <code>matrix</code> names the lists, and <code>${{ matrix.python-version }}</code> reads the value that the current job uses. Each combination is one job. Each job runs all of its steps, and by default the jobs run in parallel on separate runners.</p>
+<p>For example:</p>
+<div class="hl"><pre><span></span><code><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;3.10&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>This block starts three jobs, one for each version. A second list, such as an <code>os:</code> list with two values, would multiply the count: two operating systems and three versions give six jobs.</p>
+<p><strong>How it shows up in a case study.</strong> A team wants the tests to run on three Python versions. They write one job with a loop in its shell script, and the run is slow and hides which version failed. The reasoning favours the matrix. One job per version gives a separate result for each version on the pull request, and a failure names the version that broke.</p>
+<div class="box box-trap"><div class="box-h">Trap: Counting the wrong thing</div><p>A matrix does not loop inside one job. Count the combinations: each combination is one job, and the number of jobs is the product of the list lengths.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A matrix lists python-version: [\&quot;3.10\&quot;, \&quot;3.11\&quot;, \&quot;3.12\&quot;], and the job has one test step. How many job runs start, and how do they run?&quot;, &quot;opts&quot;: [&quot;One job, which loops through the three versions in its shell script.&quot;, &quot;Two jobs, because the first version is used only to install the others.&quot;, &quot;Three jobs that run one after another, in the order written.&quot;, &quot;Three jobs, one for each value, running in parallel by default.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A matrix creates one job per value, and the default is parallel. The tempting wrong option is the single job with a loop, which is a different design and hides the failing version.&quot;}, {&quot;q&quot;: &quot;A matrix has os: [ubuntu-latest, windows-latest] and python-version: [\&quot;3.11\&quot;, \&quot;3.12\&quot;, \&quot;3.13\&quot;]. How many jobs start?&quot;, &quot;opts&quot;: [&quot;Six, one for each combination of an operating system and a Python version.&quot;, &quot;Five, because the matrix adds the lengths of the two lists.&quot;, &quot;Two, one for each operating system, and the Python versions are shared.&quot;, &quot;Three, because the matrix uses the longer list only.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Two values times three values give six combinations, and each combination is one job. The tempting wrong option is adding the list lengths to get five, but a matrix combines the lists instead of adding them.&quot;}, {&quot;q&quot;: &quot;Inside a matrix job, a step must install the Python version for its own run. Which expression reads the current value?&quot;, &quot;opts&quot;: [&quot;${{ secrets.python-version }}&quot;, &quot;${{ runner.python }}&quot;, &quot;${{ matrix.python-version }}&quot;, &quot;${{ job.python }}&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The matrix context holds the value for the current job. The tempting wrong option is the secrets context, which holds stored secrets, not the matrix values.&quot;}]}"></div>
+
+<h3 id="making-one-job-wait-for-another-needs">Making one job wait for another (needs)</h3>
+<p><strong>What it is.</strong> The <code>needs:</code> keyword makes a job wait for one or more other jobs. If a job named in <code>needs</code> does not succeed, the job that depends on it is skipped, not run. Jobs with no <code>needs:</code> start at the same time, as soon as a runner is free.</p>
+<p>For example:</p>
+<div class="hl"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;linting&quot;</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;testing&quot;</span>
+</code></pre></div>
+
+<p>If <code>lint</code> fails, the job <code>test</code> is shown as skipped. If <code>lint</code> passes, <code>test</code> starts. Without the <code>needs:</code> line, both jobs would start together.</p>
+<p><strong>How it shows up in a case study.</strong> A workflow has a <code>lint</code> job, a <code>test</code> job that needs <code>lint</code>, and a <code>deploy</code> job that needs <code>test</code>. Lint fails. The reasoning follows the chain of needs. <code>test</code> is skipped because lint failed, and <code>deploy</code> is skipped because <code>test</code> did not run successfully. The reader must not expect <code>deploy</code> to run on its own, because the chain carries the skip forward.</p>
+<div class="box box-trap"><div class="box-h">Trap: Skipped is not passed</div><p>A skipped job is not a green job. If the release depends on a skipped job, the release is skipped too. Do not read a skipped job as a passing check.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The job build has needs: lint, and the job deploy has needs: build. The lint job fails. What happens to build and deploy?&quot;, &quot;opts&quot;: [&quot;Both run, because needs only sets the order of the log, and does not stop anything.&quot;, &quot;build is skipped, and deploy is skipped as well, because the job it needs did not succeed.&quot;, &quot;build runs, but deploy runs anyway, because deploy depends on build only and not on lint.&quot;, &quot;Only lint is shown in the log, and the other two jobs are removed from the workflow.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A skip passes forward through the chain of needs. The tempting wrong option is that deploy runs because it does not name lint, but its own dependency was skipped.&quot;}, {&quot;q&quot;: &quot;Jobs unit and lint have no needs: line. A third job, release, has needs: [unit, lint]. The unit job fails and lint passes. Does release run?&quot;, &quot;opts&quot;: [&quot;Yes, because release runs whenever at least one of its needed jobs passed.&quot;, &quot;Yes, but only after unit has been run again on the same commit.&quot;, &quot;Yes, because needs waits only for the last job named in the list.&quot;, &quot;No, because unit did not succeed, so release is skipped.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Every job named in needs must succeed for the dependent job to run. The tempting wrong option is that one passing job is enough, which is not the rule.&quot;}, {&quot;q&quot;: &quot;A team wants two independent test jobs to run at the same time, to save waiting. Which design does this?&quot;, &quot;opts&quot;: [&quot;Leave out needs: on both jobs, so that jobs with no dependencies start at the same time.&quot;, &quot;Add needs: between the two jobs, which makes them start together.&quot;, &quot;Use a matrix with one value, which makes the jobs run together.&quot;, &quot;Put both test commands into one job, which runs them in parallel.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Jobs with no needs start in parallel. The tempting wrong option is needs, which is the keyword that forces the order, not the one that creates parallel work.&quot;}]}"></div>
+
+<h3 id="keeping-files-after-a-run-upload-artifact">Keeping files after a run (upload-artifact)</h3>
+<p><strong>What it is.</strong> A runner is removed when its job ends, so any file left on it is lost. The action <code>actions/upload-artifact@v4</code> saves chosen files with the run, so that you can download them from the run page afterwards. A later job can fetch the same files with <code>actions/download-artifact</code>, because each job gets its own runner. The <code>path:</code> value is a pattern, such as <code>reports/*.html</code>, that names the files to save.</p>
+<p>For example:</p>
+<div class="hl"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage.xml</span>
+</code></pre></div>
+
+<p>The file <code>coverage.xml</code> appears in the run's artifacts list. Without this step, the file is gone when the job finishes.</p>
+<p><strong>How it shows up in a case study.</strong> A test job writes a coverage report, and a reviewer cannot find it after the run. The reasoning starts from the runner's life. The runner is deleted at the end of the job, so the file must be uploaded during the job. The fix is to add the upload step after the file exists, and to check that the pattern matches it.</p>
+<div class="box box-trap"><div class="box-h">Trap: A pattern that matches nothing</div><p>If <code>path:</code> matches no file, the default behaviour is to warn and carry on. The job can then pass with no artifact at all. Read the log of the upload step to confirm that a file was found.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A test job writes coverage.xml, and the job ends. A reviewer wants to open that file after the run is finished. What should the job do?&quot;, &quot;opts&quot;: [&quot;Nothing, because files stay on the runner until GitHub deletes the repository.&quot;, &quot;Email the file from the runner to the reviewer at the end of the job.&quot;, &quot;Commit the file to main from the runner, so that it is always in the repository.&quot;, &quot;Use actions/upload-artifact to keep coverage.xml, because the runner is removed when the job ends.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Artifacts keep files after the runner is gone. The tempting wrong option is committing the file to main, which changes the repository and is not what a report needs.&quot;}, {&quot;q&quot;: &quot;An upload step has path: reports/*.html. The step shows a warning and no artifact appears. What is the most likely reason?&quot;, &quot;opts&quot;: [&quot;No file matched the pattern, so nothing was uploaded, and the default behaviour only warns.&quot;, &quot;The upload action needs the version 3 pin, and version 4 always uploads nothing.&quot;, &quot;The upload step must be placed before checkout, because checkout deletes the reports.&quot;, &quot;Artifacts are uploaded only for pull requests from forks, so this branch is excluded.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A pattern that matches no file uploads nothing, and the default is a warning. The tempting wrong option is the version, but the action is correct and the pattern is the cause.&quot;}, {&quot;q&quot;: &quot;The first job builds a package, and a later deploy job in the same workflow must install that package. Which design works?&quot;, &quot;opts&quot;: [&quot;The deploy job reads the disk of the first job&#x27;s runner, which keeps its files.&quot;, &quot;Use a secret to share the package, because artifacts cannot be read by other jobs.&quot;, &quot;Give both jobs the same name, so that they run on one shared runner.&quot;, &quot;Upload the package in the first job and download it in the deploy job, because each job has its own runner.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each job gets a separate runner, so files move between jobs only through artifacts. The tempting wrong option is the shared disk, which does not exist between jobs.&quot;}]}"></div>
+
+<h3 id="speeding-up-installs-with-a-cache">Speeding up installs with a cache</h3>
+<p><strong>What it is.</strong> A cache keeps downloaded files between runs, so a later run can reuse them instead of downloading again. The <code>actions/setup-python@v5</code> step can cache pip downloads with the line <code>cache: pip</code>. A cache is found by its key. If a run finds a cache with the same key, it restores the saved files. The key must change when the dependencies change. A hash is a short fingerprint of a file's content, and it changes whenever the content changes, so a key built from the hash of <code>requirements.txt</code> is a good key.</p>
+<p>For example, <code>cache: pip</code> in the setup step uses a key derived from <code>requirements.txt</code> for you. Without that setting, a fixed key such as <code>pip-v1</code> never changes, so the old packages keep coming back.</p>
+<p><strong>How it shows up in a case study.</strong> A team upgrades pytest in <code>requirements.txt</code>, but the run still uses the old version. The reasoning goes to the key. The key is fixed, so the run restores the cache from before the upgrade and installs nothing new. The fix is to make the key depend on the file content, so a change in the file gives a new key.</p>
+<div class="box box-trap"><div class="box-h">Trap: Speed that hides the truth</div><p>A cache makes runs faster, but a stale cache can make a green run test the wrong packages. A faster run is useful only when the key changes with the dependencies.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A team upgraded pytest in requirements.txt, but the run still shows the old version. Their cache step uses the fixed key pip-v1. What is the most likely cause?&quot;, &quot;opts&quot;: [&quot;The runner keeps a second copy of pytest on its disk, which takes priority.&quot;, &quot;The cache restores old packages because the key never changes when requirements.txt changes.&quot;, &quot;The setup-python step cannot read requirements.txt, so it ignores the file.&quot;, &quot;Pinning a version forbids upgrades, so the upgrade is silently refused.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A key that never changes restores the same cache forever. The tempting wrong option is the idea that a second copy of pytest exists, but the stale files come from the cache, not the disk.&quot;}, {&quot;q&quot;: &quot;Which cache key refreshes when requirements.txt changes?&quot;, &quot;opts&quot;: [&quot;A key built from the runner&#x27;s name, which is different on every run.&quot;, &quot;A key that holds a fixed date, which is updated each week by hand.&quot;, &quot;A key that holds only the Python version, which never changes with the packages.&quot;, &quot;A key built from a hash of the requirements.txt file, which changes whenever its content changes.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A hash changes with the content, so the key changes with the file. The tempting wrong option is the Python version, which stays the same when a package is upgraded.&quot;}, {&quot;q&quot;: &quot;A team turns on caching and says the results cannot change, because the code is the same. Which risk did they overlook?&quot;, &quot;opts&quot;: [&quot;Old packages can be restored when the dependency list changes, so the run tests against the wrong versions.&quot;, &quot;The cache deletes the repository from the runner after each run.&quot;, &quot;The cache stores the team&#x27;s passwords in the log, where anyone can read them.&quot;, &quot;The cache makes every job fail, because a restored file always conflicts.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The cache holds packages, not code, so a stale key gives stale packages and a misleading green result. The tempting wrong option is the belief that caching affects only speed, which is true only with a correct key.&quot;}]}"></div>
+
+<h3 id="required-checks-and-re-running-a-job">Required checks and re-running a job</h3>
+<p><strong>What it is.</strong> A required status check is a rule in the branch protection settings for <code>main</code>. It names a check, and the pull request cannot merge until that check reports success. The name must match the check the workflow reports, which is the job's name (its <code>name:</code> line, or the job id if there is none). A check that never runs leaves the pull request waiting. To run a failed job again on the same commit, use the Re-run failed jobs button on the run page. Re-running uses the same commit, so it cannot fix a bug in the code. A bug needs a new commit.</p>
+<p>For example, a job with the id <code>shellcheck</code> and no <code>name:</code> line reports a check called <code>shellcheck</code>, and that is the name the branch rule must use.</p>
+<p><strong>How it shows up in a case study.</strong> A pull request waits forever for a check called <code>shellcheck</code>, but the workflow job is named <code>lint-shell</code>. The reasoning starts with the name. The rule and the job name do not match, so the check never appears and the merge stays blocked. The fix is to rename the job id to match the rule, or to update the rule, and then push a new commit to see the check run.</p>
+<div class="box box-trap"><div class="box-h">Trap: Turning the gate off</div><p>Removing the required check makes the waiting stop, but it also removes the protection. Fix the name or the code instead.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A pull request shows \&quot;Expected: waiting for status check shellcheck\&quot; and never changes. The workflow&#x27;s job is named lint-shell. What is the cause?&quot;, &quot;opts&quot;: [&quot;ShellCheck is not installed on the runner, so the check cannot start at all.&quot;, &quot;The pull request has no reviewer, so the check is never requested.&quot;, &quot;The required check name is shellcheck, but the workflow reports lint-shell, so the names do not match.&quot;, &quot;The repository is private, so the check is hidden from the pull request.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A required check waits for the exact name it was given. The tempting wrong option is that ShellCheck is missing, but a missing tool would make a check fail, not leave it waiting; this check never appears because the name differs.&quot;}, {&quot;q&quot;: &quot;A check failed because a network download timed out. The commit itself is fine. You want the same job to run again without pushing anything. What should you do?&quot;, &quot;opts&quot;: [&quot;Use Re-run failed jobs on the workflow run in the Actions tab.&quot;, &quot;Delete the branch and create it again, so that the checks start from nothing.&quot;, &quot;Turn off the required check in the branch protection rule, until the network recovers.&quot;, &quot;Rewrite the commit history with a rebase, so that the run starts again.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Re-running uses the same commit and tries the failed job again, without changing any code. The tempting wrong option is turning off the required check, which hides the gate instead of using it.&quot;}, {&quot;q&quot;: &quot;A required check is red because clean.py has a real bug. Which statement about fixing it is correct?&quot;, &quot;opts&quot;: [&quot;Re-run the job until it turns green, because the bug will eventually go away.&quot;, &quot;Remove the required check, so the pull request can merge and the bug is fixed later.&quot;, &quot;Add a disable comment to the job, so that the failure is not reported any more.&quot;, &quot;Push a new commit with the fix, because a re-run uses the old commit and cannot change the code.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A bug is in the code, so only a new commit changes the result. The tempting wrong option is the re-run, which tests the same bad code again and turns red again.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>Ten mixed questions, one per topic, in the same order as the topics above. They are harder than the ones in each topic.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A repository has a file .github/workflow/ci.yml (workflow, singular) and a copy of the same content at .github/workflows/ci.yaml. Which of them can start a run?&quot;, &quot;opts&quot;: [&quot;Both, because GitHub reads every folder under .github.&quot;, &quot;Only .github/workflow/ci.yml, because .yml is the only valid extension.&quot;, &quot;Only .github/workflows/ci.yaml, because the folder name is exact and .yaml is a valid extension.&quot;, &quot;Neither, because two copies of a workflow cancel each other.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The folder must be exactly .github/workflows/, and both .yml and .yaml are accepted. The tempting wrong option is the singular folder with .yml, which has a valid extension but the wrong folder.&quot;}, {&quot;q&quot;: &quot;A workflow has on: push with branches: [main] and nothing else. A developer pushes a commit to feature/x, which has an open pull request into main. Later the pull request is merged into main. How many runs start from these two events?&quot;, &quot;opts&quot;: [&quot;One, because the push to feature/x matches no branch, and the merge is a push to main.&quot;, &quot;Zero, because merging a pull request is not a push.&quot;, &quot;Two, because the push to feature/x also counts while a pull request is open.&quot;, &quot;Two, because the merge creates a push event and a pull_request event.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Only push is listed, and the branch filter allows main alone, so only the merge push matches. The tempting wrong option is that the open pull request makes the first push count, but no pull_request trigger is listed.&quot;}, {&quot;q&quot;: &quot;A job has these steps in order: actions/setup-python@v5 with cache: pip, then actions/checkout@v4, then pytest. The setup step fails and says it found no requirements file to hash. Which change fixes the cause?&quot;, &quot;opts&quot;: [&quot;Quote the Python version, because the cache needs text.&quot;, &quot;Remove cache: pip for good, because caching and checkout cannot be used together.&quot;, &quot;Upload requirements.txt as an artifact before the setup step.&quot;, &quot;Move actions/checkout before setup-python, because the cache step looks for requirements.txt in a workspace that is still empty.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Steps run in order, and the cache step needs the repository files to build its key. Removing the cache hides the symptom, but caching and checkout work together once checkout comes first.&quot;}, {&quot;q&quot;: &quot;A matrix lists python-version: [3.9, 3.10, 3.11] with no quotes. The job for the middle entry fails to set up Python. What is the explanation?&quot;, &quot;opts&quot;: [&quot;The runner has no Python 3.10, because it is too new.&quot;, &quot;YAML reads 3.10 as the number 3.1, so that job requests version 3.1.&quot;, &quot;A matrix cannot hold more than two versions.&quot;, &quot;Matrix values are always sorted, so the job runs in the wrong order.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Unquoted 3.10 becomes 3.1 in YAML, and 3.9 and 3.11 survive unchanged. The tempting wrong option is that Python 3.10 is unavailable, but the value was altered before the action saw it.&quot;}, {&quot;q&quot;: &quot;A step runs echo \&quot;${{ secrets.TOKEN }}\&quot; and the log shows ***. A colleague says a secret can never appear in a log. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;The colleague is right, because masking covers every transformation of the value.&quot;, &quot;The colleague is wrong, because masking is applied only on pull requests.&quot;, &quot;The colleague is wrong, because masking matches the exact value, so an encoded or altered copy can appear in clear.&quot;, &quot;The colleague is wrong, because *** means the secret was written into the workflow file.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Masking looks for the exact stored text. The tempting wrong option is that all forms are hidden, but a changed copy such as a reversed or encoded value is not recognised.&quot;}, {&quot;q&quot;: &quot;A matrix lists three Python versions. The job for 3.10 fails within a minute, and the jobs for 3.11 and 3.12 are shown as cancelled. What explains the cancelled jobs?&quot;, &quot;opts&quot;: [&quot;The 3.11 and 3.12 jobs need the 3.10 job, because matrix jobs form a chain.&quot;, &quot;The runner ran out of memory and removed the other jobs.&quot;, &quot;The matrix reuses one runner, so a failure stops the next entry.&quot;, &quot;The matrix option fail-fast is true by default, so one failure cancels the matrix jobs still in progress.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;With fail-fast on, GitHub cancels the remaining matrix jobs after one fails. The tempting wrong option is a chain through needs, but matrix jobs run in parallel and do not need each other.&quot;}, {&quot;q&quot;: &quot;Job a has no needs and takes 2 minutes. Jobs b and c each have needs: a, and take 5 and 1 minutes. Job d has needs: [b, c] and takes 1 minute. Assuming free runners, about how long until d finishes?&quot;, &quot;opts&quot;: [&quot;9 minutes, because every job runs one after another.&quot;, &quot;8 minutes: a takes 2, then b and c run together and b takes 5, then d takes 1.&quot;, &quot;4 minutes, because b, c and d all start together.&quot;, &quot;4 minutes, because d starts when the first of b and c ends.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;d waits for both b and c, so the slower b sets the pace. The tempting wrong option is adding every job, which ignores that b and c run together.&quot;}, {&quot;q&quot;: &quot;A build job creates dist/app.whl, which is not committed. A deploy job with needs: build runs pip install dist/app.whl and fails with file not found, even though both jobs start with checkout. What fixes it?&quot;, &quot;opts&quot;: [&quot;Add a cache step to the deploy job, so the file is restored from the build job&#x27;s disk.&quot;, &quot;Give both jobs the same runs-on value, so that they share one disk.&quot;, &quot;Commit dist/app.whl to the repository on every run.&quot;, &quot;Upload dist/app.whl in the build job and download it in the deploy job.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Each job has its own runner, and checkout copies only committed files, so artifacts carry the file between jobs. The tempting wrong option is the same runs-on value, which names a type of machine, not one shared machine.&quot;}, {&quot;q&quot;: &quot;A team caches with the key pip-${{ hashFiles(&#x27;requirements.txt&#x27;) }}, but they also install from requirements-dev.txt. They edit only requirements-dev.txt and see old packages. What is the best fix?&quot;, &quot;opts&quot;: [&quot;Include requirements-dev.txt in the hashFiles call, so that the key changes when either file changes.&quot;, &quot;Change the key to a fixed text, so that the cache is always renewed.&quot;, &quot;Move the dev packages into the workflow file.&quot;, &quot;Delete the cache step, because a hash key cannot work with two files.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The key changes only when a hashed file changes, so the second file must be included. The tempting wrong option is a fixed key, which makes the problem worse because it never changes.&quot;}, {&quot;q&quot;: &quot;The branch rule requires a check called test. The workflow&#x27;s job has the id test and the line name: Unit tests. The pull request shows a green check called Unit tests, but the merge stays blocked waiting for test. What is the best fix?&quot;, &quot;opts&quot;: [&quot;Use Re-run failed jobs, because the check was never started.&quot;, &quot;Remove the required check, so that the merge is allowed.&quot;, &quot;Change the rule to require Unit tests, because the check is reported under the job&#x27;s name: value.&quot;, &quot;Push an empty commit, because a new commit renames the check.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The check is reported under the name: line, so the rule must use that name or the line must be removed. The tempting wrong option is the re-run, which repeats the same job and reports the same name.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab is a Python problem with a fixed statement. You write three functions, the platform runs visible tests, and then it runs hidden tests that you cannot see. This section explains the task in plain words, teaches the Python ideas you need for it with small examples that have nothing to do with the lab's data, lists the rules that careless solutions break, and then works through a different problem from start to finish. The worked problem is for practice only. It does not solve the graded lab.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p><strong>The scenario.</strong> A CityPulse GitHub Actions workflow connects its jobs with <code>needs:</code>. Before a run starts, the scheduler must put the jobs in a valid order, and it must refuse a workflow whose <code>needs</code> form a loop. A workflow is modelled as a dictionary. Each key is a job name, and each value is the list of jobs that the key needs. For example, <code>{'lint': [], 'test': ['lint'], 'build': ['lint'], 'deploy': ['test', 'build']}</code> says that <code>test</code> and <code>build</code> both need <code>lint</code>, and <code>deploy</code> needs both <code>test</code> and <code>build</code>.</p>
+<p><strong>The three functions and their rules.</strong></p>
+<ul>
+<li><code>run_order(jobs)</code> takes the dictionary and returns a list of job names. It must return a deterministic topological order, using Kahn's algorithm.</li>
+<li>A job is ready when every job it needs is already in the order. When several jobs are ready at the same time, take them in alphabetical order.</li>
+<li>If the graph has a cycle, <code>run_order</code> returns an empty list.</li>
+<li>If any name in a <code>needs</code> list is not a defined job, <code>run_order</code> returns an empty list.</li>
+<li><code>has_cycle(jobs)</code> returns <code>True</code> if a non-empty workflow cannot be fully ordered, and <code>False</code> otherwise. The statement's wording makes an empty workflow not a cycle. The statement does not say what <code>has_cycle</code> should return when a <code>needs</code> name is not defined (only <code>run_order</code> is told to return <code>[]</code> there), so this is unclear in the course itself. Ask your trainer which answer the hidden tests expect, and do not guess silently.</li>
+<li><code>ready_jobs(jobs, completed)</code> takes the dictionary and a list of finished job names. It returns a sorted list of the jobs whose every dependency is in <code>completed</code>, and which are not themselves in <code>completed</code>.</li>
+<li>The statement gives an example. <code>run_order</code> on the dictionary above returns <code>['lint', 'build', 'test', 'deploy']</code>, and <code>ready_jobs</code> with <code>['lint']</code> as completed returns <code>['build', 'test']</code>.</li>
+</ul>
+<p><strong>The limits.</strong> The program may use 30 seconds of run time and 128 MB of memory. The platform checks your functions only; you do not need to read files or print anything.</p>
+<p><strong>The scoring.</strong> There are four visible tests worth 62 points in total. They are: topological order with the alphabetical tie-break (20 points), a valid graph has no cycle (12 points), A to B to C back to A is a cycle (14 points), and with lint done, test and build become ready (16 points). There are also 3 hidden tests worth 38 points in total.</p>
+<p><strong>What hidden tests are and why they decide the top marks.</strong> A hidden test is a check you cannot read. It runs your functions on inputs that the platform has chosen, and it reports only pass or fail. The visible tests use a few cases that are easy to guess. The hidden tests use the cases that careless solutions get wrong, such as an empty workflow, a missing job name, a tie between two jobs, or a graph in which the loop is not the whole graph. A solution that passes only the visible tests can reach 62 points. The 38 hidden points are what separate a correct solution from a fragile one, so you must check the edge cases yourself before you submit.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example. The examples use fruit, numbers and words, not the lab's job names, so you can see the idea without copying a solution.</p>
+<p><strong>Dictionary lookups with a default.</strong> <code>dict.get(key, default)</code> returns the value for the key, or the default if the key is missing. Here, <code>stock = {"apple": 3}</code> and <code>stock.get("pear", 0)</code> returns <code>0</code>, and <code>stock.get("apple", 0)</code> returns <code>3</code>. Use this form when a name may not be a key, so that a missing key does not stop the program with an error.</p>
+<p><strong>Building a dictionary from a list.</strong> A dictionary comprehension builds one in a line. <code>{fruit: 0 for fruit in ["fig", "plum"]}</code> returns <code>{'fig': 0, 'plum': 0}</code>. This pattern gives every name a starting count, which you can then change as you go.</p>
+<p><strong>Sorting with a key.</strong> <code>sorted(words, key=len)</code> returns the words ordered by length, and <code>sorted(words)</code> orders them by letters. For <code>["banana", "fig", "kiwi"]</code>, <code>sorted(words, key=len)</code> returns <code>['fig', 'kiwi', 'banana']</code>. The original list is not changed; <code>sorted</code> returns a new list.</p>
+<p><strong>A smallest-first queue.</strong> The module <code>heapq</code> keeps a list in heap order, so the smallest item comes out first. <code>heapq.heapify(words)</code> arranges a list of <code>["sun", "moon", "star"]</code> into heap order, and <code>heapq.heappop(words)</code> returns <code>'moon'</code>, because <code>m</code> comes before <code>s</code>. <code>heapq.heappush(words, "ash")</code> adds a new item and keeps the order. This is how you take the alphabetically first ready job each time.</p>
+<p><strong>Membership in a set.</strong> A set holds each item once, and <code>in</code> checks membership quickly. <code>done = {"tea", "milk"}</code> and <code>"tea" in done</code> returns <code>True</code>. Use a set for the list of finished names, so each check is fast and a repeated name does not matter.</p>
+<p><strong>The <code>all</code> function.</strong> <code>all(items)</code> returns <code>True</code> only when every item is true. <code>all(x &gt; 0 for x in [2, 5])</code> returns <code>True</code>, and <code>all(x &gt; 0 for x in [])</code> also returns <code>True</code>, because nothing is false. A job with no needs therefore passes the check that every need is done.</p>
+<p><strong>Comparing with <code>is</code> and <code>==</code>.</strong> Use <code>==</code> to compare values and <code>is</code> to ask whether two names refer to the same object. <code>[] == []</code> is <code>True</code>, but <code>[] is []</code> is <code>False</code>, because each <code>[]</code> makes a new list. For the answer to <code>None</code> or to a boolean, use <code>is</code>, as in <code>result is None</code>.</p>
+<p><strong>Returning booleans.</strong> <code>has_cycle</code> must return <code>True</code> or <code>False</code>. A comparison such as <code>len(order) &lt; total</code> already gives a boolean, so you can return it directly rather than writing <code>if ... return True</code>.</p>
+<p><strong>Checking the length of an answer.</strong> <code>len(order)</code> counts the items in a list. If a topological order has fewer items than the number of jobs, some jobs were never added, and that tells you a loop exists. This is the idea behind Kahn's check.</p>
+<p><strong>Kahn's algorithm in words.</strong> Repeat this: find every item whose needs are all already placed, pick one by your tie-break rule, place it, and look again. When nothing is ready, stop. If every item was placed, the order is complete. If some items are left, each of them waits for another item that is also left, so they form a loop or depend on one. Work out how to code this yourself, using the tools above.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table below uses only the rules in the statement. Each row names one rule, the mistake a careless solution makes, and a check you can run yourself. Read it before the method below, and come back to it before you submit.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Several jobs are ready at once, take them alphabetically</td>
+<td>Takes them in the order the dictionary lists them</td>
+<td>Give a dictionary whose keys are in reverse alphabetical order and assert the output is alphabetical</td>
+</tr>
+<tr>
+<td><code>run_order</code> returns <code>[]</code> if the graph has a cycle</td>
+<td>Returns the jobs it could order, or <code>None</code></td>
+<td>Add a free job next to a two-job loop; the result must be <code>[]</code>, not the free job alone</td>
+</tr>
+<tr>
+<td><code>run_order</code> returns <code>[]</code> if a <code>needs</code> name is not defined</td>
+<td>Treats the missing name as finished, or raises an error</td>
+<td>Assert <code>run_order({'a': ['zz']}) == []</code></td>
+</tr>
+<tr>
+<td><code>has_cycle</code> is <code>True</code> for a non-empty cycle</td>
+<td>Returns <code>[]</code> or <code>None</code> instead of a boolean</td>
+<td>Assert <code>has_cycle({'a': ['a']}) is True</code></td>
+</tr>
+<tr>
+<td><code>has_cycle</code> is about non-empty workflows</td>
+<td>Returns <code>True</code> for an empty dictionary</td>
+<td>Assert <code>has_cycle({}) is False</code></td>
+</tr>
+<tr>
+<td>A self-loop is a cycle</td>
+<td>Ignores a job that needs itself</td>
+<td>Assert that a job needing its own name gives <code>True</code></td>
+</tr>
+<tr>
+<td><code>ready_jobs</code> lists jobs whose every dependency is completed</td>
+<td>Lists a job when only one of its dependencies is completed</td>
+<td>Use a job with two needs and only one of them completed; it must not appear</td>
+</tr>
+<tr>
+<td><code>ready_jobs</code> excludes jobs already completed</td>
+<td>Lists finished jobs again</td>
+<td>Pass every job name as completed; the result must be <code>[]</code></td>
+</tr>
+<tr>
+<td><code>ready_jobs</code> returns a sorted list</td>
+<td>Returns the dictionary order</td>
+<td>Give keys in reverse order and assert the result is sorted</td>
+</tr>
+<tr>
+<td>Inputs are only read, never changed</td>
+<td>Removes names from the dictionary or lists it was given, so a second call differs</td>
+<td>Copy the dictionary with <code>copy.deepcopy</code>, call the function, and assert the original still equals the copy</td>
+</tr>
+<tr>
+<td><code>run_order</code> is deterministic</td>
+<td>Gives a different order on each run for the same input</td>
+<td>Call it twice and compare the two results</td>
+</tr>
+<tr>
+<td>Rounding</td>
+<td>This task has no rounding and no scores are computed</td>
+<td>The rounding check does not apply to this lab</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the starter file, and note the names and the order of the functions. Do not edit the names.</li>
+<li>Copy the examples from the statement into <code>assert</code> lines first. The assert line is a sentence in code: "this input must give this output". If an example is wrong for your reading of the rules, you find out now.</li>
+<li>Add your own <code>assert</code> lines for every row of the rules table above. Write the expected value by hand before you run anything.</li>
+<li>Implement one function at a time. After each function, run the asserts. Leave the other functions alone until the first one passes.</li>
+<li>Check the types and any rounding last. Make sure a boolean function returns <code>True</code> or <code>False</code>, and that a list function returns a list, not <code>None</code>.</li>
+<li>Run the visible tests. If one fails, read its message and go back to the assert that matches it.</li>
+<li>Submit once. A submission is scored, so make it only when every assert you wrote passes.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>This problem is a different domain: a spreadsheet, where each cell holds a formula that refers to other cells. It needs the same skills of ordering, loop detection and the ready set, but its output is a list of rounds rather than one flat order, so it is a different task.</p>
+<p><strong>The task.</strong> A spreadsheet is a dictionary. Each key is a cell name, and each value is the list of cells that the formula in that cell refers to. Write three functions.</p>
+<ul>
+<li><code>calc_layers(cells)</code> returns a list of lists. The first list holds every cell with no references. Each later list holds every cell whose references are all in the earlier lists. Each list is sorted alphabetically. Return <code>[]</code> for an empty dictionary. Return <code>None</code> if any reference names a cell that is not defined, or if the cells contain a loop.</li>
+<li><code>is_circular(cells)</code> returns <code>True</code> if some defined cell can never be calculated, because it is in a loop or depends on one. References to undefined cells are ignored by this function. Return <code>False</code> for an empty dictionary.</li>
+<li><code>missing_refs(cells)</code> returns a sorted list of the names that are referred to but not defined, each name once.</li>
+</ul>
+<p>Examples: <code>{"A1": [], "B1": ["A1"], "C1": ["A1", "B1"]}</code> gives <code>[["A1"], ["B1"], ["C1"]]</code> from <code>calc_layers</code>. The dictionary <code>{"Z": ["Q"]}</code> gives <code>None</code> from <code>calc_layers</code>, and <code>["Q"]</code> from <code>missing_refs</code>.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_layers</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+    <span class="n">placed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">remaining</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">ready</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">remaining</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">d</span> <span class="ow">in</span> <span class="n">placed</span> <span class="ow">or</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cells</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ready</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ready</span><span class="p">)</span>
+        <span class="n">placed</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ready</span><span class="p">)</span>
+        <span class="n">remaining</span> <span class="o">-=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ready</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">layers</span><span class="p">,</span> <span class="n">remaining</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">missing_refs</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">deps</span> <span class="ow">in</span> <span class="n">cells</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deps</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_layers</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">missing_refs</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">layers</span><span class="p">,</span> <span class="n">remaining</span> <span class="o">=</span> <span class="n">_layers</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">remaining</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">layers</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_circular</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">remaining</span> <span class="o">=</span> <span class="n">_layers</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">remaining</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({})</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;A1&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="p">[[</span><span class="s2">&quot;A1&quot;</span><span class="p">]]</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A1&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;B1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">],</span> <span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="o">==</span> <span class="p">[[</span><span class="s2">&quot;A1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;B1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;C1&quot;</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="p">[[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span>
+    <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="s2">&quot;Costs&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Sales&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Units&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Costs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Units&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Units&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">})</span> <span class="o">==</span> <span class="p">[[</span><span class="s2">&quot;Units&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Costs&quot;</span><span class="p">,</span> <span class="s2">&quot;Sales&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="p">[[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">missing_refs</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">missing_refs</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">missing_refs</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">calc_layers</span><span class="p">({</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">],</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;P&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">],</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;P&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({})</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_circular</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]})</span> <span class="ow">is</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p><strong>Line by line.</strong> The code has four functions. Read <code>_layers</code> first, because the other two depend on it.</p>
+<ul>
+<li><code>_layers(cells)</code> builds the rounds. <code>placed</code> is the set of cells already in an earlier round. <code>layers</code> is the list of rounds. <code>remaining</code> starts as every cell name, and it shrinks as cells are placed.</li>
+<li><code>while True:</code> repeats one round at a time. The loop ends with <code>break</code> when no cell is ready.</li>
+<li>The <code>ready</code> line is the core of the function. A cell is ready when every name it refers to is either placed already, or is not a defined cell at all. The second condition is what lets <code>is_circular</code> ignore undefined names. <code>sorted(...)</code> makes each round alphabetical.</li>
+<li><code>if not ready: break</code> stops the loop when a round finds nothing. An empty list is false in Python, so <code>not ready</code> is <code>True</code>.</li>
+<li><code>layers.append(ready)</code> saves the round. <code>placed.update(ready)</code> marks its cells as placed. <code>remaining -= set(ready)</code> removes them from the waiting set.</li>
+<li><code>return layers, remaining</code> gives back both the rounds and the cells that could not be placed. The leftover set is the key to the cycle check.</li>
+<li><code>missing_refs</code> collects every name that appears in any list into one set, which removes duplicates. It keeps only the names that are not keys, and returns them sorted.</li>
+<li><code>calc_layers</code> first checks for undefined names, and returns <code>None</code> if there are any. It then calls <code>_layers</code>, and returns <code>None</code> if anything was left over. Otherwise it returns the rounds. For an empty dictionary the rounds are empty, so the result is <code>[]</code>.</li>
+<li><code>is_circular</code> ignores the rounds and returns <code>True</code> only if the leftover set is not empty. The <code>len(remaining) &gt; 0</code> form gives a boolean directly.</li>
+</ul>
+<p>If you run the asserts, all of them pass, and the build prints nothing else. A failed assert would stop the program at that line with an <code>AssertionError</code>.</p>
+<p><strong>Trace of <code>_layers</code>.</strong> Press play to see how the rounds are built for the dictionary <code>{"B": ["A"], "A": []}</code>.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Building rounds for B needs A&quot;, &quot;code&quot;: [&quot;def _layers(cells):&quot;, &quot;    placed = set()&quot;, &quot;    layers = []&quot;, &quot;    remaining = set(cells)&quot;, &quot;    while True:&quot;, &quot;        ready = sorted(c for c in remaining if all(d in placed or d not in cells for d in cells[c]))&quot;, &quot;        if not ready:&quot;, &quot;            break&quot;, &quot;        layers.append(ready)&quot;, &quot;        placed.update(ready)&quot;, &quot;        remaining -= set(ready)&quot;, &quot;    return layers, remaining&quot;], &quot;steps&quot;: [{&quot;line&quot;: 2, &quot;state&quot;: [[&quot;placed&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;placed starts as an empty set, with nothing finished yet.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;placed&quot;, &quot;set()&quot;], [&quot;layers&quot;, &quot;[]&quot;], [&quot;remaining&quot;, &quot;{\&quot;A\&quot;, \&quot;B\&quot;}&quot;]], &quot;note&quot;: &quot;remaining starts with every cell name in the dictionary.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;ready&quot;, &quot;[\&quot;A\&quot;]&quot;], [&quot;placed&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;A refers to nothing, so it is ready. B waits, because A is not placed yet.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;]]&quot;], [&quot;ready&quot;, &quot;[\&quot;A\&quot;]&quot;]], &quot;note&quot;: &quot;The first round is saved.&quot;}, {&quot;line&quot;: 10, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;]]&quot;], [&quot;placed&quot;, &quot;{\&quot;A\&quot;}&quot;]], &quot;note&quot;: &quot;A is now placed.&quot;}, {&quot;line&quot;: 11, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;]]&quot;], [&quot;remaining&quot;, &quot;{\&quot;B\&quot;}&quot;]], &quot;note&quot;: &quot;A leaves the set of waiting cells.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;ready&quot;, &quot;[\&quot;B\&quot;]&quot;], [&quot;placed&quot;, &quot;{\&quot;A\&quot;}&quot;]], &quot;note&quot;: &quot;The next round: A is placed, so B is ready.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;], [\&quot;B\&quot;]]&quot;], [&quot;ready&quot;, &quot;[\&quot;B\&quot;]&quot;]], &quot;note&quot;: &quot;The second round is saved.&quot;}, {&quot;line&quot;: 10, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;], [\&quot;B\&quot;]]&quot;], [&quot;placed&quot;, &quot;{\&quot;A\&quot;, \&quot;B\&quot;}&quot;]], &quot;note&quot;: &quot;B is now placed too.&quot;}, {&quot;line&quot;: 11, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;], [\&quot;B\&quot;]]&quot;], [&quot;remaining&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;B leaves the set, so nothing is left waiting.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;ready&quot;, &quot;[]&quot;], [&quot;remaining&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The next round finds nothing ready.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;ready&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;not ready is True, because an empty list counts as false.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;ready&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop stops because the round was empty.&quot;}, {&quot;line&quot;: 12, &quot;state&quot;: [[&quot;layers&quot;, &quot;[[\&quot;A\&quot;], [\&quot;B\&quot;]]&quot;], [&quot;remaining&quot;, &quot;set()&quot;]], &quot;note&quot;: &quot;The function returns the rounds and an empty leftover set.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>Write <code>longest_chain(plan)</code> for a plan of tasks. Each key is a task, and each value is the list of tasks that must be finished before it. The longest chain is the largest number of tasks in one line of dependencies, counting the task itself. A task with no needs has a chain of 1. An empty plan has a chain of 0. If the plan contains a loop, the function returns <code>-1</code>. A task named in a list but not defined as a key counts as having no needs.</p>
+<p>Make these asserts pass:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({})</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">],</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><div class="hl"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">_Loop</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">longest_chain</span><span class="p">(</span><span class="n">plan</span><span class="p">):</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">busy</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">visit</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">depth</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">depth</span><span class="p">[</span><span class="n">task</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">busy</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">_Loop</span><span class="p">()</span>
+        <span class="n">busy</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">visit</span><span class="p">(</span><span class="n">dep</span><span class="p">))</span>
+        <span class="n">busy</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">depth</span><span class="p">[</span><span class="n">task</span><span class="p">]</span> <span class="o">=</span> <span class="n">best</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">depth</span><span class="p">[</span><span class="n">task</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">((</span><span class="n">visit</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">_Loop</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({})</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;P&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">],</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="p">[]})</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">assert</span> <span class="n">longest_chain</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]})</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+
+<p>The function <code>visit</code> works out the depth of one task, and remembers it in <code>depth</code>. It asks the depth of each task it needs first, then adds one for itself. A <code>busy</code> set holds the tasks on the current path. If a task is met again while it is still busy, the path has looped back, so the code raises <code>_Loop</code> and the outer call returns <code>-1</code>. The class <code>_Loop</code> is a small error type made for this purpose. The <code>max(..., default=0)</code> line returns <code>0</code> for an empty plan, because an empty sequence has no largest value. The <code>try</code> and <code>except</code> lines catch the loop error, so that a loop gives <code>-1</code> instead of a crash. Note that <code>busy.discard(task)</code> removes the task from the path before the depth is stored, so later paths can use it again.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Run the visible tests one more time after your last edit, and check that every assert you wrote still passes.</li>
+<li>Check that <code>run_order</code> returns an empty list, not <code>None</code>, for a cycle and for an undefined job name.</li>
+<li>Check that <code>has_cycle</code> returns <code>True</code> or <code>False</code>, and that it returns <code>False</code> for an empty dictionary.</li>
+<li>Check that <code>ready_jobs</code> returns a sorted list, and that it leaves out jobs already in <code>completed</code>.</li>
+<li>Check that a job is ready only when every one of its needs is in <code>completed</code>, not just one of them.</li>
+<li>Check that a job with no needs appears in <code>ready_jobs</code> when it is not yet completed.</li>
+<li>Check the alphabetical tie-break in <code>run_order</code> with two ready jobs that the dictionary lists in reverse order.</li>
+<li>Check that no function changes the dictionary it receives, so a second call gives the same answer.</li>
+<li>Check that you did not rename any function, and that the names match the starter file exactly.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p><strong>1. What is continuous integration, and why does it run on a fresh machine?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Continuous integration runs checks such as tests and linters automatically on every change. It runs on a fresh runner because a fresh machine has nothing installed and no leftover files from earlier work. A pass therefore means the code works from the repository alone, not only on a developer's machine. This removes the excuse that the code worked on my laptop.</p></details>
+
+<p><strong>2. Why do you pin versions in requirements.txt and quote the Python version?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Pinning makes a green run mean the same thing next month as it does today. Without a pin, the runner installs the newest release, which can change behaviour without any change to your code. Quoting the Python version stops YAML from reading 3.10 as the number 3.1. Both steps protect against a failure that has nothing to do with your code.</p></details>
+
+<p><strong>3. What does a required status check change about merging?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>A required status check is a rule in the branch protection settings for <code>main</code>. It stops a pull request from merging until the named check reports success. The name must match the check the workflow reports, so a renamed job breaks the rule. Approvals are a separate requirement, and the course asks for both: the check and one approval.</p></details>
+
+<p><strong>4. A CI run failed. How do you find out why?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Open the run in the Actions tab, and find the first failing step. Read the log of that step from the first line marked as failing, not from the bottom. For a test, the summary names the test and the expected and actual values. For ShellCheck, the output names the line and the code, such as SC2086, and the code tells you the fix.</p></details>
+
+<p><strong>5. How do you resolve a merge conflict, and what do you check before committing?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Git marks the conflicting lines with three marker lines. You edit the file so that the correct final lines remain, and you delete all three markers. Before committing, you search for leftover markers with grep, check the syntax with <code>bash -n</code>, and run the script. Only then do you run <code>git add</code> and commit, which completes the merge.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+<th>Where you meet it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.github/workflows/*.yml</code></td>
+<td>Folder and file pattern GitHub reads for workflows</td>
+<td>Lab step 3</td>
+</tr>
+<tr>
+<td><code>on:</code></td>
+<td>Lists the events that start a workflow</td>
+<td>Lab step 4</td>
+</tr>
+<tr>
+<td><code>on: [push, pull_request]</code></td>
+<td>Short form: run on any push and on pull requests</td>
+<td>Lab step 4</td>
+</tr>
+<tr>
+<td><code>branches: [main]</code></td>
+<td>Limits the <code>push</code> trigger to one branch</td>
+<td>Lint workflow</td>
+</tr>
+<tr>
+<td><code>jobs:</code> and job id</td>
+<td>Lists jobs; the id names the check</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>runs-on: ubuntu-latest</code></td>
+<td>Chooses the runner's operating system</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>steps:</code></td>
+<td>Ordered list of steps in a job</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>uses:</code></td>
+<td>Runs a ready-made action</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>run:</code></td>
+<td>Runs shell commands</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>actions/checkout@v4</code></td>
+<td>Copies the repository onto the runner</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>actions/setup-python@v5</code></td>
+<td>Installs the Python version in <code>with:</code></td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>python-version: "3.11"</code></td>
+<td>Python version, quoted</td>
+<td>Lab step 5</td>
+</tr>
+<tr>
+<td><code>needs:</code></td>
+<td>Makes a job wait for another job</td>
+<td>Quiz</td>
+</tr>
+<tr>
+<td><code>strategy: matrix:</code></td>
+<td>One job per value in a list</td>
+<td>Quiz</td>
+</tr>
+<tr>
+<td><code>${{ secrets.NAME }}</code></td>
+<td>Reads a stored secret</td>
+<td>Quiz</td>
+</tr>
+<tr>
+<td><code>actions/upload-artifact@v4</code></td>
+<td>Keeps files from a run</td>
+<td>Quiz</td>
+</tr>
+<tr>
+<td><code>cache: pip</code></td>
+<td>Caches pip downloads</td>
+<td>Quiz</td>
+</tr>
+<tr>
+<td><code>pip install -r requirements.txt</code></td>
+<td>Installs packages from a file</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>pytest==9.1.1</code></td>
+<td>Exact pinned version of pytest</td>
+<td>Lab step 2</td>
+</tr>
+<tr>
+<td><code>pytest -q</code></td>
+<td>Runs tests with short output</td>
+<td>Lab step 6</td>
+</tr>
+<tr>
+<td><code>assert</code></td>
+<td>Fails the test when the condition is false</td>
+<td>Worked example</td>
+</tr>
+<tr>
+<td><code>shellcheck scripts/*.sh</code></td>
+<td>Lints every shell script</td>
+<td>ShellCheck section</td>
+</tr>
+<tr>
+<td><code>SC2086</code></td>
+<td>Unquoted variable; fix by quoting</td>
+<td>ShellCheck section</td>
+</tr>
+<tr>
+<td><code>echo "exit=$?"</code></td>
+<td>Prints the exit code of the last command</td>
+<td>ShellCheck section</td>
+</tr>
+<tr>
+<td><code>wc -l "$OUT"</code></td>
+<td>Quoted variable, safe for spaces</td>
+<td>ShellCheck section</td>
+</tr>
+<tr>
+<td><code>sed -i 's/old/new/' file</code></td>
+<td>Replaces text in a file in place</td>
+<td>ShellCheck section</td>
+</tr>
+<tr>
+<td><code>git switch -c name</code></td>
+<td>Creates and switches to a branch</td>
+<td>Lab step 1</td>
+</tr>
+<tr>
+<td><code>git push -u origin name</code></td>
+<td>Pushes a branch and links it</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>git fetch origin</code></td>
+<td>Downloads remote branches</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>git merge other</code></td>
+<td>Combines another branch</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>git status --short</code></td>
+<td>Lists changed files; <code>UU</code> marks a conflict</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>git add file</code></td>
+<td>Marks a file as resolved or staged</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>grep -nE '^(...)' file</code></td>
+<td>Finds marker lines with line numbers</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>bash -n script.sh</code></td>
+<td>Checks syntax without running</td>
+<td>Merge section</td>
+</tr>
+<tr>
+<td><code>gh run watch</code></td>
+<td>Follows the latest run in the terminal</td>
+<td>Lab step 7</td>
+</tr>
+<tr>
+<td><code>course_order(prereqs)</code></td>
+<td>Topological order, or <code>None</code> for a cycle</td>
+<td>Graded lab</td>
+</tr>
+<tr>
+<td><code>has_cycle(prereqs)</code></td>
+<td><code>True</code> if the prerequisites loop</td>
+<td>Graded lab</td>
+</tr>
+<tr>
+<td><code>next_courses(prereqs, passed)</code></td>
+<td>Sorted list of courses ready to take</td>
+<td>Graded lab</td>
+</tr>
+</tbody>
+</table>
+<p>Rules to remember:</p>
+<ul>
+<li>A workflow must be in <code>.github/workflows/</code> with a <code>.yml</code> or <code>.yaml</code> extension.</li>
+<li>Quote every version number in YAML.</li>
+<li>Never write a secret into a file. Store it in the repository settings.</li>
+<li>A job's id is the name of its check. Renaming it breaks the required check.</li>
+<li>Fix the code. Disable a warning only with a comment that explains why.</li>
+<li>Always check for merge markers before <code>git add</code>.</li>
+<li>Run the same tests locally before you push.</li>
+</ul>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;Where must a workflow file live?&quot;, &quot;a&quot;: &quot;In .github/workflows/ at the repository root, with a .yml or .yaml extension.&quot;}, {&quot;q&quot;: &quot;What does on: [push, pull_request] do?&quot;, &quot;a&quot;: &quot;Starts the workflow on any push and on every pull request event.&quot;}, {&quot;q&quot;: &quot;Why does a job need actions/checkout?&quot;, &quot;a&quot;: &quot;The runner starts empty, and checkout copies the repository onto it.&quot;}, {&quot;q&quot;: &quot;Why quote \&quot;3.10\&quot; in YAML?&quot;, &quot;a&quot;: &quot;Unquoted, YAML reads it as the number 3.1 and the wrong Python is installed.&quot;}, {&quot;q&quot;: &quot;What is a required status check?&quot;, &quot;a&quot;: &quot;A branch protection rule that blocks merging until the named check reports success.&quot;}, {&quot;q&quot;: &quot;What does needs: do?&quot;, &quot;a&quot;: &quot;Makes a job wait for another job; if that job fails, this one is skipped.&quot;}, {&quot;q&quot;: &quot;What does a matrix create?&quot;, &quot;a&quot;: &quot;One job for each combination of values in the matrix list.&quot;}, {&quot;q&quot;: &quot;Where are secrets stored?&quot;, &quot;a&quot;: &quot;In the repository&#x27;s Actions secrets, read with ${{ secrets.NAME }}.&quot;}, {&quot;q&quot;: &quot;What is SC2086?&quot;, &quot;a&quot;: &quot;ShellCheck&#x27;s warning for an unquoted variable; fix it by putting double quotes around the variable.&quot;}, {&quot;q&quot;: &quot;What does grep -nE &#x27;^(&lt;&lt;&lt;&lt;&lt;&lt;&lt;|=======|&gt;&gt;&gt;&gt;&gt;&gt;&gt;)&#x27; check?&quot;, &quot;a&quot;: &quot;That no conflict marker lines remain in the file, with line numbers if any do.&quot;}, {&quot;q&quot;: &quot;What does Kahn&#x27;s algorithm use to find cycles?&quot;, &quot;a&quot;: &quot;The in-degree count: courses in a cycle never reach zero, so the output comes out short.&quot;}, {&quot;q&quot;: &quot;What does a heap give the graded lab?&quot;, &quot;a&quot;: &quot;The smallest ready course first, which makes ties come out alphabetically.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="P1.html"><small>Previous</small>Project 1 — Air-Quality Monitor</a><a class="nx" href="D07.html"><small>Next</small>Day 7: Python for engineers</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

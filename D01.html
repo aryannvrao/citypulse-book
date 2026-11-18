@@ -1,0 +1,982 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 — Git, GitHub and secure accounts · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="D01" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 2 · Days 1–5 · Tools and teamwork</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a class="cur" href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 2 · Days 1–5 · Tools and teamwork</p><h1>Day 1 — Git, GitHub and secure accounts</h1><p class="sub">You will be able to create a Git repository, push it to a private GitHub repository over SSH, recover from a committed secret, and explain each step out loud.</p><p class="meta">87 min read · practice quiz · 11 animations · 2 tested solutions</p><video class="vid" controls preload="metadata" src="videos/D01.mp4?v=1794463609"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#the-idea-in-one-minute">The idea in one minute</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#the-tools">The tools</a></li><li><a href="#the-worked-example">The worked example</a></li><li><a href="#the-hands-on-lab-step-by-step">The hands-on lab, step by step</a></li><li><a href="#how-today-is-scored">How today is scored</a></li><li><a href="#what-the-quiz-tests">What the quiz tests</a></li><li><a href="#the-graded-lab">The graded lab</a></li><li><a href="#say-it-out-loud">Say it out loud</a></li><li><a href="#cheat-sheet">Cheat sheet</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="the-idea-in-one-minute">The idea in one minute</h2>
+<p>Git keeps your project as a series of saved snapshots called commits. Each commit records what changed, who made the change, when, and a short message saying why. GitHub is a website that holds a shared copy of the repository so your team can work on it together. Two protections keep that copy safe: an SSH key, which proves that the computer pushing the code is yours, and two-factor authentication (2FA), which asks for a code from your phone as well as your password.</p>
+<p>Git is a lab notebook where every page is dated and signed, and no page can be silently torn out.</p>
+<p>Today you will set up your identity, create a repository, publish it privately, protect the main line of work, and undo a secret that was saved by mistake.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p>This section defines every technical word the day uses. Read it once before the tools section, and come back to it when a word stops making sense.</p>
+<h3 id="the-terminal-and-commands">The terminal and commands</h3>
+<p>A <strong>terminal</strong> is a window where you type text instructions and the computer answers with text. An instruction typed into the terminal is a <strong>command</strong>. For example, <code>ls</code> is a command that lists the files in the current folder. The terminal is also called the <strong>command line</strong>, and tools that run there are called <strong>CLI</strong> tools (command-line interface).</p>
+<p>On Windows, install Git for Windows. It includes <strong>Git Bash</strong>, a terminal that accepts the same commands as Linux and macOS. Every command in this book is written for that kind of terminal.</p>
+<p>In this book, a line that starts with <code>$</code> shows something you type. The <code>$</code> itself is not part of the command. When you see <code>$ git status</code>, type <code>git status</code> and press Enter.</p>
+<h3 id="files-folders-and-paths">Files, folders and paths</h3>
+<p>A <strong>file</strong> holds data, such as text or code. A <strong>folder</strong> (also called a <strong>directory</strong>) holds files and other folders. A <strong>path</strong> is the address of a file. The path <code>src/app.py</code> means the file <code>app.py</code> inside the folder <code>src</code>.</p>
+<p>Your terminal always works inside one folder, called the <strong>current directory</strong>. The command <code>pwd</code> prints its path. The command <code>cd</code> changes it: <code>cd src</code> moves you into <code>src</code>, and <code>cd ..</code> moves you back up one level.</p>
+<p>A <strong>text editor</strong> is a program for writing files that contain plain text, such as Visual Studio Code or Notepad. A <strong>variable</strong> is a name that holds a value. In <code>rows = 5</code>, the name <code>rows</code> holds the number 5. A <strong>function</strong> is a named block of code that you can call by its name, such as <code>load(path)</code>, to run it with a value you supply.</p>
+<p>A <strong>server</strong> is a computer that provides a service to other computers over a network. GitHub runs servers that store your repository. Your laptop is a client: it asks those servers for things and sends them changes.</p>
+<h3 id="version-control-repository-and-commit">Version control, repository and commit</h3>
+<p><strong>Version control</strong> is a system that records every change to a set of files. <strong>Git</strong> is the most widely used version control system. It stores its records in a hidden folder called <code>.git</code> inside your project.</p>
+<p>A <strong>repository</strong> (or <strong>repo</strong>) is a project folder that Git is tracking, together with its <code>.git</code> history folder.</p>
+<p>A <strong>commit</strong> is a saved snapshot of the project with a message attached. Every commit gets an identifier called a <strong>hash</strong>, such as <code>05a9471</code>. You only need the first seven characters to refer to a commit.</p>
+<h3 id="branch-remote-clone-push-and-pull">Branch, remote, clone, push and pull</h3>
+<p>A <strong>branch</strong> is a separate line of commits. The default main line is called <code>main</code>. You create a branch when you want to work on something without touching <code>main</code>.</p>
+<p>A <strong>remote</strong> is a copy of the repository on another server, usually GitHub. By convention the main remote is named <code>origin</code>. A <strong>clone</strong> is a copy of a remote repository made on your computer. A <strong>push</strong> sends your new commits to a remote. A <strong>pull</strong> fetches new commits from a remote and merges them into your current branch.</p>
+<h3 id="passwords-ssh-keys-and-2fa">Passwords, SSH keys and 2FA</h3>
+<p><strong>Authentication</strong> means proving who you are. A password is a secret you type. An <strong>SSH key</strong> is a different method: it is a pair of files. The <strong>private key</strong> stays on your computer and must never be shared. The <strong>public key</strong> ends in <code>.pub</code> and can be given to anyone, including GitHub. SSH stands for <strong>Secure Shell</strong>, a protocol for connecting to another computer securely. When you push, GitHub sends a challenge that only the holder of the private key can answer.</p>
+<p><strong>Two-factor authentication (2FA)</strong> asks for a second proof in addition to your password. The usual second proof is a short code from an <strong>authenticator app</strong>, which is a program on your phone that creates a new code every 30 seconds.</p>
+<div class="box box-key"><div class="box-h">Key fact: Private and public keys</div><p>Give the <code>.pub</code> file to GitHub. Never give the file without <code>.pub</code>. That file is the private key, and anyone who has it can act as you.</p></div>
+
+<h2 id="the-tools">The tools</h2>
+<h3 id="git">Git</h3>
+<p><strong>What it is.</strong> Git is a distributed version control system. Distributed means that every clone holds the full history, so you can compare, revert and audit changes without asking a server every time.</p>
+<p><strong>Why CityPulse uses it.</strong> Every CityPulse ticket is scored from commit evidence, so the authorship of each change must be real and traceable. Git gives every commit an author name, a time and a message. The course's CHARTER check also depends on Git: it counts distinct authors for a file, which only works when each person commits with their own identity.</p>
+<p>The course compares Git with two alternatives. A shared Google Drive folder is easy for documents, but it has no line-by-line history, no branches and no reviewable diffs for code. Subversion (SVN) is centralised and simpler, but most current teams do not use it, and it needs the server for most operations.</p>
+<p><strong>How it works.</strong> Git tracks files in three places. The <strong>working tree</strong> is the set of files you can see and edit. The <strong>staging area</strong>, also called the <strong>index</strong>, is a holding area where you choose which changes go into the next commit. The <strong>repository</strong> is the history of commits.</p>
+<p>The sequence is: edit files in the working tree, use <code>git add</code> to move chosen changes into the staging area, then use <code>git commit</code> to record them as a commit. <code>git push</code> then copies the new commits to the remote.</p>
+<div class="box box-key"><div class="box-h">Key fact: Commit identity</div><p>Git stamps every commit with the name and email stored in its settings. Git does not check these values against your GitHub account. They are a label you set yourself, which is why the course also requires SSH and 2FA for pushing.</p></div>
+
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;What happens when you push&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Teammate&#x27;s laptop&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push origin main&quot;, &quot;note&quot;: &quot;Your new commits travel over SSH to the GitHub repository.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;git pull&quot;, &quot;note&quot;: &quot;Your teammate asks GitHub for the commits they do not have yet.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;git push origin main&quot;, &quot;note&quot;: &quot;The teammate&#x27;s own commits are sent back the same way.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;git pull&quot;, &quot;note&quot;: &quot;GitHub sends you any commits your teammate has added.&quot;}]}"></div>
+
+<p>The flow above shows the basic cycle. Node 1 is your laptop, node 2 is GitHub, and node 3 is a teammate's laptop. Each step is one movement, and the label on the arrow is the command that starts it. Read the arrows in order: first you push, then your teammate pulls, pushes and pulls back. The message never travels to a teammate directly; GitHub is always in the middle.</p>
+<p>Now watch the commands that make a commit. In the terminal below, a new file <code>notes.txt</code> goes from untracked to committed.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git status --short&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;?? notes.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git add notes.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git status --short&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;A  notes.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m \&quot;Add notes\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[main 3f2a9c1] Add notes&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; 1 file changed, 1 insertion(+)&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; create mode 100644 notes.txt&quot;}]}"></div>
+
+<p>The first line runs <code>git status --short</code>. The <code>--short</code> flag shortens the output to one line per file. The <code>??</code> in front of <code>notes.txt</code> means Git can see the file but is not tracking it. The second line stages the file with <code>git add</code>. The third command shows <code>A  notes.txt</code>, where <code>A</code> means the file is added to the staging area. The <code>git commit -m "Add notes"</code> line creates the commit. The <code>-m</code> flag gives the message in the same command, so Git does not open an editor. The output line <code>[main 3f2a9c1]</code> shows the branch and the new hash. The remaining lines say that one file changed and that the file was created.</p>
+<p>The course's slide commands show how to set up identity and create the first commit:</p>
+<div class="hl"><pre><span></span><code><span class="nv">SQUAD</span><span class="o">=</span>squad3<span class="w">   </span><span class="c1"># your squad name</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/citypulse-y2/citypulse-<span class="nv">$SQUAD</span>.git
+<span class="nb">cd</span><span class="w"> </span>citypulse-<span class="nv">$SQUAD</span>
+git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Asha Rao&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;asha.rao@example.com&quot;</span><span class="w">   </span><span class="c1"># email on your GitHub account</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>src<span class="w"> </span>data<span class="w"> </span>docs<span class="w"> </span>tests
+touch<span class="w"> </span>src/.gitkeep<span class="w"> </span>data/.gitkeep<span class="w"> </span>docs/.gitkeep<span class="w"> </span>tests/.gitkeep
+<span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;data/*\n!data/.gitkeep\n.env\n__pycache__/\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>status<span class="w"> </span>--short
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add folder layout and .gitignore&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;%h %an %s&#39;</span><span class="w"> </span>-3
+</code></pre></div>
+
+<p>Line by line, the commands do the following. <code>SQUAD=squad3</code> stores the text <code>squad3</code> in a variable called <code>SQUAD</code>. The <code># your squad name</code> part is a comment, which the shell ignores. The <code>$SQUAD</code> in the next line puts the variable's value into the address. <code>git clone</code> copies the remote repository to your laptop, and <code>cd</code> moves into the new folder. <code>git config user.name</code> and <code>git config user.email</code> store your identity. Use the same email as your GitHub account, and replace the example name with your own.</p>
+<p><code>mkdir -p src data docs tests</code> creates four folders. The <code>-p</code> flag creates parent folders if needed and does not complain if a folder exists already. <code>touch</code> creates empty files. Git does not track empty folders, so each folder gets an empty file named <code>.gitkeep</code> to keep it in the repository. The <code>.gitkeep</code> name is a convention, not something Git enforces.</p>
+<p><code>printf</code> writes text into a file. The <code>\n</code> symbols mean a new line. The <code>&gt;</code> sign writes into <code>.gitignore</code>, replacing whatever was there. The four lines are the rules for ignored files. <code>data/*</code> ignores everything in <code>data/</code>. <code>!data/.gitkeep</code> is an exception that brings back the <code>.gitkeep</code> file. <code>.env</code> and <code>__pycache__/</code> ignore a secrets file and Python's cache folder.</p>
+<p><code>git add .</code> stages every change that is not ignored. The dot means the current folder. <code>git status --short</code> shows the result. <code>git commit</code> records it. <code>git push origin main</code> sends <code>main</code> to the remote called <code>origin</code>. The last command, <code>git log --format='%h %an %s' -3</code>, prints the last three commits. <code>%h</code> is the short hash, <code>%an</code> is the author's name and <code>%s</code> is the message.</p>
+<p>You should see the <code>git log</code> output list three lines, each with a hash, a name and a message. If the name is not yours, your identity was not set before the commit.</p>
+<div class="box box-trap"><div class="box-h">Trap: Committing with someone else&#x27;s identity</div><p>A commit made on a shared laptop, or after copying a teammate's settings, carries the wrong name. Check with <code>git config user.name</code> before every session that matters. The course counts authorship from these names.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Ignoring a whole folder</div><p>Writing <code>data/</code> in <code>.gitignore</code> hides <code>data/.gitkeep</code> too, so the folder disappears from the repository. Use <code>data/*</code> followed by <code>!data/.gitkeep</code> instead.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: git commit -am and new files</div><p>The <code>-a</code> flag stages changes to files Git already tracks. It does not add a brand-new file. If you create <code>.gitignore</code> and run <code>git commit -am</code>, the new file is left out. Run <code>git add .gitignore</code> first. The TIA example in the course shows <code>git commit -am</code> for a new <code>.gitignore</code>, which only works when the file was already tracked.</p></div>
+
+<h3 id="github-organisations-and-2fa">GitHub, organisations and 2FA</h3>
+<p><strong>What it is.</strong> GitHub hosts Git repositories on the internet. It also adds issues, projects, pull requests and access control. An <strong>organisation</strong> groups people and repositories under one owner. The course uses one organisation, <code>citypulse-y2</code>, where every squad repository lives.</p>
+<p><strong>Why CityPulse uses it.</strong> The course compares GitHub with GitLab and with personal repositories shared with collaborators. GitLab has strong built-in CI and can be self-hosted, but the course's programme, workflows and command-line tools are built around GitHub. Personal repositories are quick to set up, but they give no central member list, no 2FA enforcement and no team-wide audit. With an organisation, trainers can see every repository and member in one place. They can also list members who have 2FA disabled.</p>
+<p><strong>How it works.</strong> Your GitHub account is your identity for the whole course. You protect it with 2FA before anything else. Access to a repository comes from membership in the organisation. The course sends you an invitation, and you accept it before the organisation grants access to your squad's repository.</p>
+<p>The course recommends an authenticator app for 2FA. It warns against SMS codes, and it warns you to download your recovery codes before logging out. Without recovery codes, a lost phone can lock you out.</p>
+<p>The course's verification commands use the GitHub command-line tool <code>gh</code>:</p>
+<div class="hl"><pre><span></span><code>gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--hostname<span class="w"> </span>github.com<span class="w"> </span>--git-protocol<span class="w"> </span>https<span class="w"> </span>--web
+gh<span class="w"> </span>auth<span class="w"> </span>status
+gh<span class="w"> </span>api<span class="w"> </span>user<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.login, .name, .two_factor_authentication&#39;</span>
+gh<span class="w"> </span>api<span class="w"> </span>user/memberships/orgs/citypulse-y2<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.state&#39;</span>
+gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>PATCH<span class="w"> </span>user/memberships/orgs/citypulse-y2<span class="w"> </span>-f<span class="w"> </span><span class="nv">state</span><span class="o">=</span>active<span class="w"> </span>--jq<span class="w"> </span><span class="s1">&#39;.state&#39;</span>
+gh<span class="w"> </span>repo<span class="w"> </span>list<span class="w"> </span>citypulse-y2<span class="w"> </span>--limit<span class="w"> </span><span class="m">20</span>
+</code></pre></div>
+
+<p><code>gh auth login</code> starts the login. <code>--hostname github.com</code> names the GitHub website. <code>--git-protocol https</code> tells <code>gh</code> to use HTTPS for Git operations. <code>--web</code> opens a browser for the sign-in. The output of a successful login says you are logged in.</p>
+<p><code>gh auth status</code> prints the account that is logged in. <code>gh api user</code> asks GitHub for information about your account. <code>--jq</code> filters the answer with a small query language, so only the three fields you need are printed: the username, the display name, and whether 2FA is on. The value you want is <code>true</code>.</p>
+<p><code>gh api user/memberships/orgs/citypulse-y2</code> asks for your membership state in the organisation. It should print <code>pending</code> until you accept the invitation, and <code>active</code> afterwards. The next command, with <code>-X PATCH</code>, changes the membership. The <code>-X</code> flag sets the HTTP method, which is the kind of request being sent. <code>-f state=active</code> sends the field <code>state</code> with the value <code>active</code>. The last command lists repositories in the organisation.</p>
+<p>You should see <code>true</code> on the 2FA line and <code>active</code> once the invitation is accepted. If <code>two_factor_authentication</code> is <code>false</code>, go back to your security settings before you continue.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;Logging in with 2FA&quot;, &quot;nodes&quot;: [&quot;Your laptop&quot;, &quot;GitHub&quot;, &quot;Authenticator app&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;password&quot;, &quot;note&quot;: &quot;Your laptop sends your username and password to GitHub.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 0, &quot;label&quot;: &quot;second step required&quot;, &quot;note&quot;: &quot;GitHub will not finish the login until a second proof arrives.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 0, &quot;label&quot;: &quot;current code&quot;, &quot;note&quot;: &quot;The code shown by the app is typed into the login page.&quot;}]}"></div>
+
+<p>The flow shows that a password alone is not enough. GitHub stops after the first step and waits for the second. The authenticator app does not connect to GitHub at all. It shows a code, and you type that code yourself. Because the code changes every 30 seconds, a copy stolen from a shoulder or a leaked password does not help an attacker for long.</p>
+<div class="box box-trap"><div class="box-h">Trap: Recovery codes</div><p>If you do not save recovery codes when you enable 2FA, a lost phone can lock you out of your account. Download them before you log out, and store them somewhere other than the phone that holds the authenticator app.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: SMS as a second factor</div><p>Text-message codes are weaker than an authenticator app. The course asks you to use an app such as Google Authenticator. Follow the ticket's instructions for the exact setup.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A second account</div><p>If you accept the organisation invitation with a second GitHub account, the membership is attached to the wrong login. The course requires the account that matches your onboarding form.</p></div>
+
+<h3 id="markdown">Markdown</h3>
+<p><strong>What it is.</strong> Markdown is a lightweight syntax for headings, lists, links, tables and code blocks, written in plain text. A file with the extension <code>.md</code> is a Markdown file. GitHub renders <code>.md</code> files as formatted pages, so the text you write becomes a document.</p>
+<p><strong>Why CityPulse uses it.</strong> The course uses Markdown for <code>README.md</code>, which is the first page an auditor reads, and for <code>CHARTER.md</code>, which holds the squad's success metric and signatures. Word and Google Docs offer richer formatting, but their files live outside the repository, so they cannot be compared line by line in a pull request. reStructuredText is powerful for documentation websites, but its syntax is heavier than a squad needs.</p>
+<p><strong>How it works.</strong> You write a heading with <code>#</code>, a second-level heading with <code>##</code>, a list with <code>-</code> and a checklist with <code>- [ ]</code>. Because each line is plain text, a later change shows up as a readable line diff. Here is the charter from the course, with its signature lines removed:</p>
+<div class="hl"><pre><span></span><code>## CityPulse squad3 Charter
+## Success metric
+At least 95% of hourly PM2.5 readings for Bengaluru captured per week by 2026-12-12.
+## Process controls
+- [ ] No direct deletes on shared data without a second person present
+- [ ] Backups are restored and checked, not only taken
+</code></pre></div>
+
+<p>The first line is a level-one heading, which is the title of the document. The second line starts a level-two heading. The metric line is one sentence, with a number, a unit (PM2.5 readings in micrograms per cubic metre are measured per hour), a time window (per week) and a target date. The <code>- [ ]</code> lines are checklist items. GitHub draws an empty box for each one. The course's rule for the metric is to always state a number, a unit and a target date.</p>
+<p>The course's signature line format is <code>Signed: &lt;name&gt; (@&lt;username&gt;), &lt;date&gt;</code>. Each member adds their own line in their own commit, so <code>git log</code> can show who signed.</p>
+<div class="box box-trap"><div class="box-h">Trap: Writing a line that starts with &gt;</div><p>In Markdown, a line that starts with <code>&gt;</code> becomes a quotation. A line that starts with <code>&gt;=</code> is therefore not shown as written. Write the symbol ≥ or the words "At least" instead.</p></div>
+
+<div class="box box-trap"><div class="box-h">Trap: A missing blank line</div><p>A list or heading needs a blank line before it. Without one, GitHub joins the list into the paragraph above and shows plain text.</p></div>
+
+<h2 id="the-worked-example">The worked example</h2>
+<p>The course's example follows one small project through its history: the <code>ingest.py</code> script that reads a CSV file of air-quality readings. The goal is to create a repository, add a secrets rule, review a change, work on a feature in a branch, push, and read the history.</p>
+<p>Here is the script at the start. The course writes it on one line in the slides, but the layout below is the same code with each statement on its own line.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ingested </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2"> readings&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line: <code>import csv</code> and <code>import sys</code> bring in two standard Python modules. <code>csv</code> reads comma-separated files, and <code>sys</code> gives access to the command-line arguments. <code>def load(path):</code> defines a function called <code>load</code> that takes one argument, the file path. The <code>with open(path) as f:</code> line opens the file, and <code>as f</code> gives it the name <code>f</code> for the block below. <code>csv.DictReader(f)</code> reads each line as a dictionary whose keys come from the header row. The list comprehension <code>[r for r in ...]</code> collects those rows into a list. The <code>if __name__ == "__main__":</code> line means the lines below run only when you start this file directly, not when another file imports it. <code>sys.argv[1]</code> is the first argument typed after the script name. The final <code>print</code> shows how many rows were read.</p>
+<p>To run it, you would type <code>python ingest.py readings.csv</code>, where <code>readings.csv</code> is a file you have on disk. The output would be a line such as <code>ingested 24 readings</code>. The number depends on your file.</p>
+<p>The first commit records this file:</p>
+<div class="hl"><pre><span></span><code>$ git init -b main &amp;&amp; git add ingest.py &amp;&amp; git commit -m &#39;Add CSV ingest script&#39;
+Initialized empty Git repository in /home/priya/citypulse/.git/
+[main (root-commit) 05a9471] Add CSV ingest script
+ 1 file changed, 12 insertions(+)
+ create mode 100644 ingest.py
+</code></pre></div>
+
+<p><code>git init -b main</code> creates the <code>.git</code> folder and names the first branch <code>main</code>. The <code>&amp;&amp;</code> between commands means run the next command only if the previous one succeeded. <code>git commit</code> records the file. The label <code>root-commit</code> means this is the first commit in the repository.</p>
+<p>Next, the course adds a <code>.gitignore</code> so that secrets and local data stay out of the repository, and it checks the result with <code>git status --ignored --short</code>. The <code>--ignored</code> flag adds files that are being ignored. Lines starting with <code>!!</code> are ignored, and lines starting with <code>??</code> are untracked but not ignored. The private key <code>id_city</code> shows as <code>!!</code>, which means it cannot be pushed by accident.</p>
+<p>Then the script changes. The change drops negative sensor readings. The <code>git diff ingest.py</code> command shows the change before it is committed:</p>
+<div class="hl"><pre><span></span><code>@@ -4,4 +4,5 @@ def load(path):
+ if __name__ == &quot;__main__&quot;: rows = load(sys.argv[1])
+-    print(f&quot;ingested {len(rows)} readings&quot;)
++    rows = [r for r in rows if float(r[&quot;value&quot;]) &gt;= 0]
++    print(f&quot;ingested {len(rows)} valid readings&quot;)
+</code></pre></div>
+
+<p>The <code>@@</code> line is a hunk header: it says the change starts near line 4 of the file. A line that starts with <code>-</code> was removed, and a line starting with <code>+</code> was added. Lines with no sign are unchanged context. The new line keeps only rows whose <code>value</code> field is zero or greater. The commit is <code>git commit -am 'Drop negative sensor readings on ingest'</code>, which works here because <code>ingest.py</code> is already tracked.</p>
+<p>The commit output is <code>[main aa76664] Drop negative sensor readings on ingest</code>. Each commit gets its own hash.</p>
+<p>The feature step creates a branch for a station filter, so <code>main</code> stays releasable:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/station-filter
+git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s1">&#39;Scaffold station allowlist filter&#39;</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>feature/station-filter<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Merge station-filter feature&#39;</span>
+</code></pre></div>
+
+<p><code>git checkout -b feature/station-filter</code> creates a new branch and switches to it. The <code>-b</code> flag means create. The slash in the name is allowed, and it groups related branches. <code>git checkout main</code> switches back. <code>git merge --no-ff</code> joins the feature into <code>main</code>. The <code>--no-ff</code> flag, short for no fast-forward, forces a merge commit even when Git could simply move the pointer. That leaves a visible record that a feature existed.</p>
+<p>The output says <code>Merge made by the 'ort' strategy</code>. Your version of Git may use a different merge strategy name, but the commit is the same kind of record.</p>
+<p>Then the course pushes and reads the history:</p>
+<div class="hl"><pre><span></span><code>$ git push -u origin main
+branch &#39;main&#39; set up to track &#39;origin/main&#39;.
+$ git log --oneline --graph --decorate
+* 2a661c5 (HEAD -&gt; main, origin/main) Merge station-filter feature
+|\
+| * b94777d (feature/station-filter) Scaffold station allowlist filter
+|/
+* aa76664 Drop negative sensor readings on ingest
+* 4329bc9 Ignore secrets and local sensor dumps
+* 05a9471 Add CSV ingest script
+</code></pre></div>
+
+<p>The <code>-u</code> flag on <code>git push</code> sets <code>origin/main</code> as the place that <code>main</code> tracks, so later <code>git push</code> and <code>git pull</code> need no extra words. <code>git log --oneline</code> shows one line per commit. <code>--graph</code> draws the branch lines, and <code>--decorate</code> shows branch names. <code>HEAD</code> is the commit you currently have checked out. <code>origin/main</code> is what GitHub has. In this output they point to the same commit, so your local main and GitHub's main agree.</p>
+<p>Read the graph from the bottom up. The first commit is at the bottom, and the merge is at the top. Every line is a snapshot you can return to with <code>git checkout &lt;hash&gt; -- ingest.py</code> to restore one file, or undo with <code>git revert &lt;hash&gt;</code>.</p>
+<h2 id="the-hands-on-lab-step-by-step">The hands-on lab, step by step</h2>
+<p>Your course ticket may name a slightly different sequence, and it may use <code>gh auth login</code> over HTTPS rather than SSH. Follow the ticket where it differs. The steps below cover the same skills and are the ones the graded checks rely on.</p>
+<h3 id="step-1-tell-git-who-you-are">Step 1 — Tell Git who you are</h3>
+<p><strong>What you do.</strong> Store your name and email in Git's global settings. These values go into every commit you make.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span>--show-origin
+</code></pre></div>
+
+<p><code>git config --global</code> writes the setting for your whole user account, not a single project. <code>user.name</code> and <code>user.email</code> are the keys. The last command lists every setting and the file it comes from.</p>
+<p><strong>What you should see.</strong> The list includes a line starting with <code>file:</code> that ends with <code>user.name=Your Name</code> and another with <code>user.email=you@example.com</code>.</p>
+<p><strong>How you know it worked.</strong> Both lines appear, and the email matches the one on your GitHub account.</p>
+<h3 id="step-2-create-the-repository-and-your-first-commit">Step 2 — Create the repository and your first commit</h3>
+<p><strong>What you do.</strong> Make a new folder, start a repository in it, add a script, and commit it. Then add a <code>.gitignore</code> and commit that separately.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>mkdir<span class="w"> </span>citypulse-practice
+<span class="nb">cd</span><span class="w"> </span>citypulse-practice
+git<span class="w"> </span>init<span class="w"> </span>-b<span class="w"> </span>main
+</code></pre></div>
+
+<p>Open a text editor, paste the <code>ingest.py</code> code from the worked example, and save it as <code>ingest.py</code> inside <code>citypulse-practice</code>. Then continue in the terminal:</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>ingest.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add CSV ingest script&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;.env\n*.key\nid_city\n__pycache__/\ndata/*.csv\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>add<span class="w"> </span>.gitignore
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ignore secrets and local sensor dumps&quot;</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline
+</code></pre></div>
+
+<p><code>mkdir</code> creates the folder and <code>cd</code> moves into it. <code>git init -b main</code> creates the repository with <code>main</code> as the first branch. <code>git add</code> stages the file and <code>git commit -m</code> records it. The <code>printf</code> line writes five ignore rules into <code>.gitignore</code>. <code>*.key</code> ignores any file ending in <code>.key</code>, and <code>id_city</code> is an example name for a private key file that must never be committed. Then <code>.gitignore</code> is added and committed on its own. The last command prints one line per commit.</p>
+<p><strong>What you should see.</strong> <code>git init</code> prints <code>Initialized empty Git repository</code>. Each commit prints a line starting with <code>[main</code> and a hash. <code>git log --oneline</code> shows two commits, each with its hash and message.</p>
+<p><strong>How you know it worked.</strong> <code>git status</code> reports <code>nothing to commit, working tree clean</code>. The <code>.gitignore</code> file is listed in <code>git log</code> as its own commit.</p>
+<h3 id="step-3-authenticate-to-github-over-ssh">Step 3 — Authenticate to GitHub over SSH</h3>
+<p><strong>What you do.</strong> Create an SSH key pair, give the public half to GitHub, and check that GitHub accepts the connection.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</code></pre></div>
+
+<p><code>ssh-keygen</code> creates the key pair. <code>-t ed25519</code> chooses the modern Ed25519 algorithm. <code>-C</code> attaches a label, which is usually your email, so you can recognise the key later. The tool asks where to save the key. Press Enter to accept the default. It also asks for a passphrase. Choose one on a laptop, because the passphrase protects the private key if the laptop is stolen. The <code>~</code> symbol means your home folder. <code>cat</code> prints a file, so <code>cat ~/.ssh/id_ed25519.pub</code> shows the public key. <code>ssh -T git@github.com</code> tests the connection without opening a shell.</p>
+<p>Copy the single line printed by <code>cat</code>. In GitHub, go to Settings, then SSH and GPG keys, choose New SSH key, paste the line, and save. Then run the <code>ssh -T</code> command again.</p>
+<p><strong>What you should see.</strong> The first time, SSH asks whether you want to continue connecting. Type <code>yes</code>. The final message reads <code>Hi &lt;your-username&gt;! You've successfully authenticated, but GitHub does not provide shell access.</code></p>
+<p><strong>How you know it worked.</strong> The message includes your username. If you see <code>Permission denied (publickey)</code>, the key is not on GitHub or you pasted the wrong file.</p>
+<h3 id="step-4-create-a-private-remote-and-push">Step 4 — Create a private remote and push</h3>
+<p><strong>What you do.</strong> Create an empty private repository on GitHub, connect your folder to it, and push <code>main</code>.</p>
+<p><strong>What you do on GitHub.</strong> Choose New repository, name it <code>citypulse-practice</code>, set the visibility to Private, and do not tick any option to add a README or <code>.gitignore</code>. Those files already exist in your folder, and adding them on GitHub would create a conflict.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YOUR-USERNAME/citypulse-practice.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>--json<span class="w"> </span>visibility
+</code></pre></div>
+
+<p><code>git remote add origin</code> saves the address of the remote under the name <code>origin</code>. The address <code>git@github.com:...</code> is an SSH address, so the push uses your key. Replace <code>YOUR-USERNAME</code> with your GitHub username. <code>git push -u origin main</code> sends the commits and sets the upstream. <code>gh repo view --json visibility</code> asks GitHub for the visibility of the repository.</p>
+<p><strong>What you should see.</strong> The push prints a line with <code>* [new branch]</code> and <code>main -&gt; main</code>, then <code>branch 'main' set up to track 'origin/main'.</code> The last command prints <code>{"visibility":"PRIVATE"}</code>.</p>
+<p><strong>How you know it worked.</strong> The repository page on GitHub shows your commits, and the Private label is visible on the page.</p>
+<h3 id="step-5-branch-change-and-open-a-pull-request">Step 5 — Branch, change, and open a pull request</h3>
+<p><strong>What you do.</strong> Make a branch, add a README, push the branch and open a pull request. A pull request is a request to merge one branch into another, with a page where people can review the changes.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/add-readme
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# CityPulse practice&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add README&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature/add-readme
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--fill
+</code></pre></div>
+
+<p><code>git checkout -b feature/add-readme</code> creates the branch and switches to it. <code>echo "..." &gt; README.md</code> writes one line of text into a new file. Then the file is staged and committed. <code>git push -u origin feature/add-readme</code> pushes the branch. <code>gh pr create --fill</code> opens a pull request, and <code>--fill</code> copies the title and description from the commit message.</p>
+<p><strong>What you should see.</strong> The push output includes a link to create a pull request. <code>gh pr create</code> prints the URL of the new pull request.</p>
+<p><strong>How you know it worked.</strong> Opening the URL shows the pull request with the README in the changed files.</p>
+<h3 id="step-6-protect-main-and-prove-it-works">Step 6 — Protect main and prove it works</h3>
+<p><strong>What you do.</strong> Ask GitHub to refuse direct pushes to <code>main</code>, and then try one to see the refusal.</p>
+<p><strong>What you do on GitHub.</strong> Open the repository's Settings, choose Branches, and add a branch protection rule for the pattern <code>main</code>. Tick the option that requires a pull request before merging. The exact labels may vary, so follow the ticket if they differ. If your plan does not offer branch protection for private repositories, ask your trainer.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Test direct push&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/main
+</code></pre></div>
+
+<p><code>git switch main</code> changes to <code>main</code>. <code>git commit --allow-empty</code> records a commit that changes no files, which is enough to test the push. <code>git push origin main</code> tries to send it. The final command, <code>git reset --hard origin/main</code>, moves your local <code>main</code> back to match GitHub and removes the test commit. This is safe only because the test commit holds nothing else. The <code>--hard</code> flag throws away local changes, so never use it when you have uncommitted work you want to keep.</p>
+<p><strong>What you should see.</strong> The push is rejected, and the message mentions a protected branch. After the reset, <code>git log --oneline -1</code> no longer shows <code>Test direct push</code>.</p>
+<p><strong>How you know it worked.</strong> The rejection appears, and the test commit is gone from your local history.</p>
+<h3 id="step-7-recover-from-a-committed-secret">Step 7 — Recover from a committed secret</h3>
+<p><strong>What you do.</strong> Commit a fake secret on purpose, then remove it from the project and stop it being tracked. This practice uses a fake value. A real secret needs one more step, covered in the trap box below.</p>
+<p><strong>What you type.</strong></p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>feature/add-readme
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;API_KEY=test-123&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>.env
+git<span class="w"> </span>add<span class="w"> </span>-f<span class="w"> </span>.env
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add config&quot;</span>
+git<span class="w"> </span>push
+git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>.env
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;.env&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>add<span class="w"> </span>.gitignore
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Stop tracking .env&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+
+<p><code>git switch feature/add-readme</code> returns to the branch you used in step 5. <code>echo ... &gt; .env</code> creates a file called <code>.env</code> with a fake key. <code>git add -f .env</code> forces Git to stage a file that is ignored, because the <code>-f</code> flag overrides the ignore rule. The commit and push record the mistake. Then <code>git rm --cached .env</code> removes the file from the repository and keeps it on your disk. The <code>--cached</code> flag is what makes this safe. <code>echo ".env" &gt;&gt; .gitignore</code> adds <code>.env</code> to the end of the ignore file. The <code>&gt;&gt;</code> sign appends instead of overwriting. The last commit and push record the fix.</p>
+<p><strong>What you should see.</strong> <code>git rm --cached .env</code> prints <code>rm '.env'</code>, and the file stays on your disk. After the second push, GitHub shows <code>.env</code> no longer in the latest commit.</p>
+<p><strong>How you know it worked.</strong> Running <code>git status --ignored --short</code> shows <code>!! .env</code>, which means the file exists locally and Git ignores it.</p>
+<div class="box box-trap"><div class="box-h">Trap: A real secret needs more than a commit</div><p>Removing a secret in a new commit does not remove it from history. The old commit still holds the value, and anyone who cloned the repository already has a copy. For a real key, first revoke it or create a new one in the service that issued it. Then clean the history with a tool such as git-filter-repo, which rewrites commits and needs a force push. That is a team decision, so ask your trainer before doing it.</p></div>
+
+<h2 id="how-today-is-scored">How today is scored</h2>
+<p>These facts come from the course site itself (the learner view of your batch, checked on 17 November 2026).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>How it counts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slides and the Technology in Action workbook</td>
+<td>Reading</td>
+<td>Not marked</td>
+</tr>
+<tr>
+<td>Hands-on lab</td>
+<td>The guided seven-step lab</td>
+<td>Practice for the quiz, the graded lab and the tickets</td>
+</tr>
+<tr>
+<td>Day Quiz (case study)</td>
+<td>10 multiple-choice questions, one per topic in the next section</td>
+<td>Pass mark 70%, so 7 of 10</td>
+</tr>
+<tr>
+<td>Graded Lab</td>
+<td>"CityPulse repo hygiene: git log &amp; .gitignore (Git)" (easy), written in Python</td>
+<td>Automatic tests, 100 points</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The quiz.</strong> You may retake a quiz up to 10 times, but your batch records skill scores from your <strong>first attempt</strong>. Treat the first attempt as the exam: finish this chapter, do the practice questions, then sit it once.</p>
+<p><strong>The graded lab.</strong> Your code is run against two sets of tests. You can see and run the visible tests before you submit. The hidden tests you never see; they check the rules the task statement describes that the examples do not show (empty input, ties, wrong types, boundaries). Each run has 30 seconds and 128 MB.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What it checks</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible test</td>
+<td>Parses 3 oneline commits into (hash, subject) tuples in order</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Empty log yields an empty list</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Exact basename match on a nested path</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Visible test</td>
+<td>Glob matches .env by basename</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Hidden tests (3)</td>
+<td>Not shown to you</td>
+<td>46</td>
+</tr>
+</tbody>
+</table>
+<div class="box box-key"><div class="box-h">Key fact: Passing every visible test is not full marks</div><p>The visible tests are worth 54 of the 100 points. The other 46 come from tests you cannot see, so read every rule in the task statement and test it yourself before you press Submit. The section "The graded lab" below shows how.</p></div>
+
+<p><strong>The capstone tickets that use today's material.</strong> These are graded by your trainer on the capstone board (see the ticket chapters):</p>
+<ul>
+<li><a href="K01.html#y2-t01-onboard-github-with-2fa-org-invite-lab-access-start-t0">Y2-T01 · Onboard: GitHub with 2FA, org invite, lab access, start T0</a></li>
+<li><a href="K01.html#y2-t03-p0-create-repo-with-readme-signed-chartermd-10-issue-board">Y2-T03 · P0: create repo with README, signed CHARTER.md, 10-issue board</a></li>
+</ul>
+<h2 id="what-the-quiz-tests">What the quiz tests</h2>
+<p>The Day Quiz has ten case-study multiple-choice questions, one for each topic listed in this section, in the same order. Each question gives you a short scenario from a CityPulse squad and then asks what the team should do, or what a command will show. The pass mark is 70%. Your skill score keeps the result of your first attempt, so a second attempt helps you learn but does not change the score that counts.</p>
+<p>Use the same method on every case-study question. First, read the last line of the question, because it tells you what is being asked: the cause, the next command, the safest action or the reason. Second, underline the facts in the scenario that matter, such as whether a file is tracked, whether a secret has reached GitHub, or whether a teammate has already pulled. Third, eliminate options that are true in general but do not fix this scenario. Many wrong options are correct statements about Git that answer a different question. Fourth, watch the words "most", "first" and "best". "First" often means that one step must come before the others, such as revoking a secret before you clean history. "Best" means the option that solves the stated problem with the least damage.</p>
+<p>Each topic below has a trap box. The trap is the tempting wrong answer, and it is usually a plausible sentence about Git. Once you can say why the trap fails, the real question becomes much easier to answer.</p>
+<h3 id="reading-the-status-codes">Reading the status codes</h3>
+<p><strong>What it is.</strong> <code>git status --short</code> prints one line for each file that differs from the last commit, or that Git cannot yet track. Each line starts with two characters, then a space, then the path. The first character describes the staging area, which Git also calls the index. The second character describes the working tree, which is the set of files you can see and edit. A space means that nothing has changed in that place.</p>
+<div class="hl"><pre><span></span><code>$ git status --short
+ M src/app.py
+M  data/readings.csv
+MM ingest.py
+?? notes.txt
+!! debug.log
+</code></pre></div>
+
+<p>Read each line as a pair. <code>M</code> means the file is modified in the working tree and not staged. <code>M</code> means a change is staged and the file has not been edited since. <code>MM</code> means a change was staged, and then the file was edited again, so the next commit holds the staged version and the working tree holds a newer one. <code>??</code> means Git can see the file but does not track it. <code>!!</code> means an ignore rule matches the file. The <code>!!</code> code appears only when you add <code>--ignored</code>.</p>
+<p><strong>How it shows up in a case study.</strong> Ravi ran <code>git add src/parser.py</code>, kept editing, and then ran <code>git commit -m "Add readings parser"</code>. He now says his last edits are missing from the commit, and he remembers that his status showed <code>MM src/parser.py</code> just before committing. The first letter was a staged change, so the commit holds the version from the moment <code>git add</code> ran. The second letter showed the later edit. The right decision is to check <code>git status</code>, stage the newer edit with <code>git add src/parser.py</code> and commit again. Forcing a push does not help, because the commit never contained the newer lines.</p>
+<div class="box box-trap"><div class="box-h">Trap: Reading ?? as added</div><p><code>??</code> means untracked. A file that has been added with <code>git add</code> shows <code>A</code> in the first column. A file that never reached <code>git add</code> still shows <code>??</code>.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your teammate shows you git status --short with the line MM ingest.py. She is sure she changed the parser, but the commit she made an hour ago does not contain the newest lines. Which statement explains the two letters?&quot;, &quot;opts&quot;: [&quot;The first M means the file is untracked, and the second M means it is ignored&quot;, &quot;The first M is a change staged for the next commit, and the second M is a newer edit that is not staged&quot;, &quot;Both letters mean the file was pushed and then edited on GitHub&quot;, &quot;The file is staged twice, so the commit will include both copies&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The first column describes the staging area and the second describes the working tree. The commit holds the staged version, so the newer edit is missing. The tempting wrong answer treats MM as a double stage, which Git does not do.&quot;}, {&quot;q&quot;: &quot;A new file report.txt was created today, and nobody has run any Git command on it yet. The squad lead runs git status --short and wants to know which line the file should show before anyone adds it. Which line is correct?&quot;, &quot;opts&quot;: [&quot;A report.txt&quot;, &quot;!! report.txt&quot;, &quot;M report.txt&quot;, &quot;?? report.txt&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;?? means Git can see the file but is not tracking it. A would appear only after git add, and !! would require an ignore rule that matches the file.&quot;}, {&quot;q&quot;: &quot;The squad adds *.log to .gitignore and then runs git status --ignored --short. A file debug.log in the project root was never committed. Which line should appear for it?&quot;, &quot;opts&quot;: [&quot;!! debug.log&quot;, &quot;?? debug.log&quot;, &quot;A  debug.log&quot;, &quot;M  debug.log&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;!! marks a file that an ignore rule matches. Without --ignored the file would be hidden entirely. The tempting wrong answer is ??, but an ignored file is not an untracked file that Git is waiting to add.&quot;}]}"></div>
+
+<h3 id="untracking-a-file-that-is-already-committed">Untracking a file that is already committed</h3>
+<p><strong>What it is.</strong> A <code>.gitignore</code> rule only affects files that Git does not yet track. Git starts tracking a file when you add it and commit it. If you later add the file's name to <code>.gitignore</code>, Git keeps tracking it, and every change to it still shows as <code>M</code>. To stop tracking, you remove the file from the index with <code>git rm --cached</code>. That command keeps the file on your disk. You then commit the removal so that the change reaches the repository.</p>
+<div class="hl"><pre><span></span><code>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>.env
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Stop tracking .env&quot;</span>
+git<span class="w"> </span>status<span class="w"> </span>--ignored<span class="w"> </span>--short
+</code></pre></div>
+
+<p>The first command prints <code>rm '.env'</code> and leaves the file on your disk. The commit records the removal. The status command then shows <code>!! .env</code>, because the file exists and the rule now ignores it. Without <code>--cached</code>, <code>git rm</code> would also delete the file from your disk. Past commits still hold the old content, so removing the file from the latest version does not remove it from history.</p>
+<p><strong>How it shows up in a case study.</strong> Priya's team committed <code>config/local.env</code> by mistake two days ago. On Tuesday someone added the same name to <code>.gitignore</code>, but every edit to the file still appears as <code>M</code> in <code>git status</code>. The team reads the symptom and sees that the rule was added after the file was already tracked. The correct sequence is <code>git rm --cached config/local.env</code>, a commit and a push. The disk copy stays, so nobody loses local settings. The team also checks whether the stored value was a real secret, because the old commits still hold it.</p>
+<div class="box box-trap"><div class="box-h">Trap: Believing the ignore rule erased history</div><p>Adding a rule does not touch past commits or files that are already tracked. Only <code>git rm --cached</code> followed by a commit stops the tracking. A plain <code>git rm</code> also deletes the file from disk.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A squad member added .env to .gitignore last week, but git status --short still shows M .env after each edit. Which explanation is correct?&quot;, &quot;opts&quot;: [&quot;The ignore rule is broken and must be reinstalled&quot;, &quot;GitHub holds a copy of .env that overrides the local rule&quot;, &quot;The file was already tracked when the rule was added, so the rule does not apply to it&quot;, &quot;Ignore rules only take effect after the next git push&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;An ignore rule never applies to a file that is already tracked. The tempting wrong answer blames the rule itself, but the rule is working as designed for untracked files.&quot;}, {&quot;q&quot;: &quot;The team wants to stop tracking secrets/api.key, but the file must stay on each laptop. Which command removes it from the index and keeps it on disk?&quot;, &quot;opts&quot;: [&quot;git rm secrets/api.key&quot;, &quot;git rm --cached secrets/api.key&quot;, &quot;git clean -f secrets/api.key&quot;, &quot;git reset --hard secrets/api.key&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The --cached flag removes the file from the index and leaves the disk copy alone. git rm alone deletes the disk copy too, and git clean and git reset --hard both discard local content.&quot;}, {&quot;q&quot;: &quot;After git rm --cached .env and a commit, a new teammate clones the repository. Which statement describes what the teammate can see?&quot;, &quot;opts&quot;: [&quot;.env in the latest files, because the ignore rule restores it automatically&quot;, &quot;.env in the latest files, because the removal rewrote every older commit&quot;, &quot;.env in the latest files and in every older commit, because the commit kept it&quot;, &quot;No .env in the latest files, but older commits still contain the old content&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Removing a file in a new commit changes only the latest snapshot. Older commits still hold the value, which is why a real secret needs revoking as well.&quot;}]}"></div>
+
+<h3 id="recording-a-commit">Recording a commit</h3>
+<p><strong>What it is.</strong> A commit records the contents of the staging area as one snapshot. It stores the author name and email from your Git settings, a timestamp, a message and a hash. <code>git commit -m "message"</code> gives the message on the command line, so Git does not open an editor. A commit exists only on your computer until you push it. The flag <code>-a</code> stages changes to files that Git already tracks before it commits. It never adds a new file.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git config user.name&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Asha Rao&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git add ingest.py&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m \&quot;Drop negative readings\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[main 9c01e4d] Drop negative readings&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; 1 file changed, 2 insertions(+)&quot;}]}"></div>
+
+<p>The first command prints the name that Git will stamp on your commits. The <code>git add</code> line stages <code>ingest.py</code>. The commit line prints the branch and the short hash. Nothing has reached GitHub at this point, because no push has run.</p>
+<p><strong>How it shows up in a case study.</strong> Ana's squad lead says the sprint's work is safe, because "everyone committed". The lead looks at the history on her own laptop and sees the commits, but the team's GitHub page shows none of them. The commits are local until someone runs <code>git push</code>. Before pushing, the team checks <code>git log --format='%h %an %s' -3</code>, to make sure that the author names are correct, since the names are stamped at commit time and a push does not change them.</p>
+<div class="box box-trap"><div class="box-h">Trap: Committing means sending</div><p>A commit is saved on your computer. Your teammates see it only after <code>git push</code>. A commit made with the wrong identity keeps the wrong name even after you push, so check <code>git config user.name</code> before you commit.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Your squad believes the feature is saved for the whole team, because you ran git commit -m \&quot;Add export\&quot; an hour ago. The lead can see nothing on GitHub. Which explanation fits the evidence?&quot;, &quot;opts&quot;: [&quot;The commit is local, and it reaches GitHub only after git push&quot;, &quot;The commit was pushed automatically when the message was written&quot;, &quot;The commit is on GitHub but hidden until the next pull&quot;, &quot;The commit reached GitHub, but the lead is looking at an old cached page&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;git commit saves the snapshot on your machine only. The tempting wrong answer assumes that committing and sending are one step, but they are two separate commands.&quot;}, {&quot;q&quot;: &quot;You created a brand-new file parser.py that you never added, and then you ran git commit -am \&quot;Add parser\&quot; with changes to a tracked file. Which files are in the commit?&quot;, &quot;opts&quot;: [&quot;parser.py and all the other changes in the working tree&quot;, &quot;Only the new file parser.py&quot;, &quot;The changes to files Git already tracks, but not parser.py&quot;, &quot;Nothing, because git commit -am always fails when a file is new&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The -a flag stages changes to tracked files only. A new file needs git add before it can be committed. The tempting wrong answer assumes that -a covers every file in the folder.&quot;}, {&quot;q&quot;: &quot;Which command records a commit with the message \&quot;Add export\&quot; without opening an editor?&quot;, &quot;opts&quot;: [&quot;git commit --edit&quot;, &quot;git commit -m \&quot;Add export\&quot;&quot;, &quot;git commit --amend only&quot;, &quot;git commit -S&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;-m supplies the message on the command line, so no editor opens. --edit forces an editor, --amend rewrites the last commit, and -S signs the commit but says nothing about the message.&quot;}]}"></div>
+
+<h3 id="proving-who-you-are-with-ssh-keys">Proving who you are with SSH keys</h3>
+<p><strong>What it is.</strong> SSH authentication uses two files. The private key stays on your computer and must never be shared. The public key ends in <code>.pub</code> and can be given to GitHub. When you push over SSH, GitHub sends a challenge, and your computer answers it using the private key. GitHub checks the answer against the public key on your account. Your password is never sent in this exchange.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ssh-keygen -t ed25519 -C \&quot;you@example.com\&quot;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;cat ~/.ssh/id_ed25519.pub&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;ssh-ed25519 AAAAC3...example you@example.com&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;ssh -T git@github.com&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Hi your-username! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.&quot;}]}"></div>
+
+<p>The <code>-t ed25519</code> flag chooses the algorithm. The <code>cat</code> command prints the public key, which is the only line you copy into GitHub. The last command tests the connection. The address in a push that starts with <code>git@github.com:</code> is an SSH address, so Git uses the key. A message from GitHub that includes your username shows that the key works.</p>
+<p><strong>How it shows up in a case study.</strong> Joel has a new laptop. He copies his teammate's <code>id_ed25519</code> file "to save time", and then his push fails with <code>Permission denied (publickey)</code>. The team sees two problems. The key on Joel's laptop is his teammate's private key, so the teammate's identity is now in two places. The public key on GitHub belongs to the teammate's account, so it cannot prove Joel's identity. The right fix is a new key pair on Joel's laptop, with only its <code>.pub</code> line added to Joel's own GitHub account.</p>
+<div class="box box-trap"><div class="box-h">Trap: Uploading the private key</div><p>GitHub needs only the <code>.pub</code> file. A private key file, without <code>.pub</code>, is the secret that proves your identity. Anyone who holds it can push as you.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A developer sends the file id_ed25519, which has no .pub ending, to a shared chat channel so that a teammate can \&quot;check the key\&quot;. Which risk is the most serious?&quot;, &quot;opts&quot;: [&quot;The chat stores the account password in plain text&quot;, &quot;Only the repository name is exposed to the teammate&quot;, &quot;GitHub asks the developer to change the username&quot;, &quot;Anyone who gets that file can act as the developer, so the key must be replaced&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The file without .pub is the private key. Possession of it is the proof of identity, so the key must be replaced. The tempting wrong answer is about the password, but SSH never sends the password.&quot;}, {&quot;q&quot;: &quot;You run git push over SSH and it succeeds without a password prompt. Which fact does GitHub&#x27;s check establish?&quot;, &quot;opts&quot;: [&quot;That your computer holds the private key that matches a public key on your account&quot;, &quot;That your password is correct&quot;, &quot;That the repository is private&quot;, &quot;That two-factor authentication is switched on&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The challenge proves possession of the private key. It says nothing about the password, the repository&#x27;s visibility or 2FA. The tempting wrong answer is the password.&quot;}, {&quot;q&quot;: &quot;A teammate says, \&quot;SSH is set up, so my password does not matter when I push.\&quot; Which statement is accurate?&quot;, &quot;opts&quot;: [&quot;Pushes fall back to the password whenever the key is wrong&quot;, &quot;The password is checked as well, but a wrong password only slows the push&quot;, &quot;Pushes over SSH do not send the password, so the password is not what GitHub checks&quot;, &quot;SSH keys are used only for downloads, and pushing always needs the password&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Over SSH, the proof is the key, and the password is not part of that exchange. The tempting wrong answer assumes a password fallback that does not exist for SSH pushes.&quot;}]}"></div>
+
+<h3 id="signed-commits">Signed commits</h3>
+<p><strong>What it is.</strong> The author name on a commit is a label. Anyone can set it with <code>git config user.name</code>, so a name alone does not prove who made a commit. A signature is extra data that proves the commit was made by someone who holds a particular private key. You sign a commit with <code>git commit -S</code> once a signing key is configured in Git. GitHub shows a "Verified" badge when the signature matches a key registered on the account. A signature proves who signed the commit. It does not prove that the code works or that the message is accurate.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -S -m \&quot;Add station filter\&quot;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;[main 7d3b210] Add station filter&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git log --show-signature -1&quot;}]}"></div>
+
+<p>The <code>-S</code> flag asks Git to sign the new commit. The <code>--show-signature</code> flag on <code>git log</code> prints the signature check for the latest commit, so you can see whether the signature is valid.</p>
+<p><strong>How it shows up in a case study.</strong> The course's CHARTER check counts distinct authors with <code>git log</code>. Sam has set <code>user.name</code> to "Ravi Kumar" on his own laptop, and his commits now show Ravi's name. The team notices that Ravi's commits carry a Verified badge on GitHub, while Sam's do not. The correct conclusion is that the name alone is not evidence. The team asks Sam to correct his identity, to sign future commits and to check his own signature line in the CHARTER.</p>
+<div class="box box-trap"><div class="box-h">Trap: A verified commit is a correct commit</div><p>"Verified" means the signature matches a registered key. A verified commit can still contain a bug, a leaked password or a wrong message.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The CHARTER check counts authors with git log. One commit shows the name Ravi Kumar, but the commit is not signed, and the commit&#x27;s author email is not Ravi&#x27;s. What can you conclude?&quot;, &quot;opts&quot;: [&quot;The commit must have been made by Ravi, because the name is correct&quot;, &quot;The name is only a label, so the commit could have been made by anyone who set that name&quot;, &quot;Git has already checked the name against GitHub and found it correct&quot;, &quot;The commit is not valid until someone signs it&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;An author name is set on the local machine and is not checked. The tempting wrong answer assumes Git verifies the name, which it does not.&quot;}, {&quot;q&quot;: &quot;A commit shows a Verified badge on GitHub. A reviewer asks whether the feature works. Which answer is best?&quot;, &quot;opts&quot;: [&quot;Yes, because the signature proves that the tests passed&quot;, &quot;Yes, because GitHub runs every test on verified commits&quot;, &quot;Only if the commit message says that the tests passed&quot;, &quot;The signature shows who made the commit, not whether the code is correct, so tests and review still decide&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A signature answers a question about authorship. Tests and review answer questions about correctness. The tempting wrong answer mixes the two.&quot;}, {&quot;q&quot;: &quot;Which statement describes what git commit -S adds to a commit?&quot;, &quot;opts&quot;: [&quot;A signature made with a configured signing key, so the commit can be checked against that key&quot;, &quot;A second copy of the commit stored on GitHub&quot;, &quot;A check that the commit message is written in English&quot;, &quot;A rule that stops anyone else from pushing to the branch&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The -S flag adds a signature. It does not copy the commit, check the message or change branch permissions. The tempting wrong answer confuses signing with protection.&quot;}]}"></div>
+
+<h3 id="responding-to-a-leaked-secret">Responding to a leaked secret</h3>
+<p><strong>What it is.</strong> A secret is any value that proves identity or grants access: a password, an API key, a token or a private key. Once a secret reaches a repository, treat it as known. Automated scanners search public code for keys, and any clone or fork already holds a copy of the value. The response has a fixed order. First, revoke or rotate the secret in the service that issued it, so the old value stops working. Second, remove the file from the project and stop tracking it, as in the untracking topic above. Third, decide with your team whether to rewrite the history, which needs a force push and affects everyone who has cloned the repository.</p>
+<div class="hl"><pre><span></span><code>1. Revoke or rotate the key in the service that issued it.
+2. Remove the file with git rm --cached, add it to .gitignore and commit.
+3. Ask the team whether to rewrite history.
+</code></pre></div>
+
+<p><strong>How it shows up in a case study.</strong> Amal pushes a commit that contains <code>API_KEY=...</code> in <code>config.py</code>. Ten minutes later the squad lead wants to run a history rewrite and force push, because the commit looks untidy. You are asked for the first step. The secret is already in the repository, and copies may exist, so the first action is to revoke the key in the provider's dashboard and issue a new one. The history rewrite can follow once the team agrees. It does not make the old key stop working, and it does not reach copies that were already made.</p>
+<div class="box box-trap"><div class="box-h">Trap: Cleaning history first</div><p>Rewriting history leaves the secret valid. Anyone who already cloned or forked the repository still has the value. Revoke it first.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A developer&#x27;s push included a cloud access key 15 minutes ago. The repository is private, but three teammates have already cloned it. What should the developer do first?&quot;, &quot;opts&quot;: [&quot;Force-push a rewritten history that removes the key&quot;, &quot;Delete the repository and create a new one with the same name&quot;, &quot;Revoke the key in the issuing service and create a replacement&quot;, &quot;Add the file to .gitignore and wait for the next push&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Revoking stops misuse at once, even though copies exist. The tempting wrong answer starts with the history, which does not reach the clones that already hold the key.&quot;}, {&quot;q&quot;: &quot;After the key is revoked, the team asks whether they still need to remove the file from the project. Which answer is correct?&quot;, &quot;opts&quot;: [&quot;No, revoking the key also removes the file from history&quot;, &quot;Yes, remove the file from the current project so it is not committed again, and decide about history as a separate question&quot;, &quot;No, the ignore rule removes the file from every commit&quot;, &quot;Yes, but the only way is to delete the whole repository&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Revoking makes the value useless, and removing the file stops it being committed again. Neither step rewrites history by itself. The tempting wrong answer treats the ignore rule as a history cleaner.&quot;}, {&quot;q&quot;: &quot;Which step must the team decide together, rather than the developer deciding alone?&quot;, &quot;opts&quot;: [&quot;Revoking the leaked key&quot;, &quot;Adding the file to .gitignore&quot;, &quot;Running git rm --cached on the file&quot;, &quot;Rewriting history with a force push that affects every clone&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A force push changes the shared history, so everyone who cloned must update. That is a team decision. The other three steps are local and safe to take at once.&quot;}]}"></div>
+
+<h3 id="pulling-changes-from-github">Pulling changes from GitHub</h3>
+<p><strong>What it is.</strong> <code>git pull</code> fetches commits from the remote and then combines them with your current branch. By default it merges them. If you have configured it to rebase, it places your commits on top instead. The fetch step downloads new commits and updates the remote-tracking name, such as <code>origin/main</code>. A conflict happens when the same lines were changed in two different ways. Git stops and marks the file, and you must edit it, stage it and commit before the work can continue.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git pull&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;remote: Enumerating objects: 5, done.&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Updating 2a661c5..d4e8f10&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;Fast-forward&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; src/ingest.py | 3 ++-&quot;}]}"></div>
+
+<p><code>git pull</code> never sends your own commits. That is the job of <code>git push</code>, which runs in the opposite direction.</p>
+<p><strong>How it shows up in a case study.</strong> Two squad members edit <code>src/ingest.py</code> on the same afternoon. Lina pushes first. Omar runs <code>git pull</code> and sees a conflict in the same function, because both of them changed the same line. The team asks whether Omar's pull uploaded his changes. It did not. The pull brought Lina's commits down and then stopped at the conflict. Omar edits the file, keeps the correct lines, runs <code>git add src/ingest.py</code> and commits. Only then does <code>git push</code> send the result to GitHub.</p>
+<div class="box box-trap"><div class="box-h">Trap: Pull as an upload</div><p><code>git pull</code> brings commits down and <code>git push</code> sends them up. A pull that stops with a conflict sends nothing until the merge is committed and pushed.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A teammate asks you to \&quot;pull your work up to GitHub\&quot; before the deadline. Which command actually uploads your commits to the remote?&quot;, &quot;opts&quot;: [&quot;git push&quot;, &quot;git pull&quot;, &quot;git fetch&quot;, &quot;git clone&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Only git push sends commits to the remote. git pull and git fetch bring commits down, and git clone makes a new copy on your computer. The tempting wrong answer is git pull, because both commands talk to GitHub.&quot;}, {&quot;q&quot;: &quot;You run git pull and it stops with a conflict in notes.md. Which statement is accurate?&quot;, &quot;opts&quot;: [&quot;The pull has already uploaded your changes to GitHub&quot;, &quot;Git has deleted your local changes and replaced them with the remote copy&quot;, &quot;The two versions of the same lines must be resolved, then the file added and committed, before you push&quot;, &quot;The conflict means the remote repository is broken and must be recreated&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A conflict is a merge that needs a human decision. Nothing is uploaded until the merge is complete. The tempting wrong answer says the pull has already sent your work.&quot;}, {&quot;q&quot;: &quot;What two steps does git pull combine by default?&quot;, &quot;opts&quot;: [&quot;A push followed by a tag&quot;, &quot;A fetch of remote commits followed by a merge into your current branch&quot;, &quot;A clone followed by a checkout&quot;, &quot;A stash followed by a reset&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;By default, git pull is a fetch followed by a merge. Stash, reset, clone and tag are different commands with different jobs.&quot;}]}"></div>
+
+<h3 id="tagging-a-release">Tagging a release</h3>
+<p><strong>What it is.</strong> A tag is a name attached to one commit. A tag does not move when new commits arrive, so it marks a fixed point such as a release. An annotated tag, created with <code>git tag -a</code>, stores a message and the name of the person who made it. A lightweight tag stores only the name. Git does not push tags with a normal <code>git push</code>, so you send one tag with a command that names it.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git tag -a v1.0 -m \&quot;First release\&quot;&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git push origin v1.0&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot; * [new tag]         v1.0 -&gt; v1.0&quot;}]}"></div>
+
+<p>The <code>-a</code> flag makes the tag annotated, and <code>-m</code> supplies its message. The push command sends that one tag to <code>origin</code>. Later commits on <code>main</code> leave <code>v1.0</code> pointing at the commit that you tagged.</p>
+<p><strong>How it shows up in a case study.</strong> The squad wants the Week 6 version of the ingest pipeline to be easy to find for the trainer. Chidi suggests creating a branch named <code>release-w6</code> and leaving it alone. Two days later the branch shows three commits from the next sprint, because people kept working on it. The team replaces the branch with an annotated tag, <code>v0.6</code>, on the correct commit. The tag stays on that commit, so the trainer can check out exactly what was released.</p>
+<div class="box box-trap"><div class="box-h">Trap: A branch as a release marker</div><p>A branch moves whenever someone commits to it. A tag stays on one commit, so use a tag to mark a release.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;Which command creates an annotated tag named v0.6 with a message for the current commit?&quot;, &quot;opts&quot;: [&quot;git branch v0.6 -m \&quot;Release\&quot;&quot;, &quot;git commit --tag v0.6&quot;, &quot;git stash v0.6&quot;, &quot;git tag -a v0.6 -m \&quot;Release\&quot;&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;git tag -a creates an annotated tag with a message. The other three commands either create a branch, try to commit with a tag option that does not exist, or stash changes.&quot;}, {&quot;q&quot;: &quot;A squad keeps a release marker as a branch named release-w6. A week later, the branch has three new commits that were not part of the release. What is the explanation?&quot;, &quot;opts&quot;: [&quot;A branch moves when new commits are made on it, so it does not mark a fixed point&quot;, &quot;Branches are locked automatically after a release&quot;, &quot;The commits were copied into the branch by git tag&quot;, &quot;The branch was deleted and recreated by GitHub&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A branch is a pointer that moves with each new commit. The tempting wrong answer is that a branch is locked after a release, which Git never does by itself.&quot;}, {&quot;q&quot;: &quot;Which statement about tags is true?&quot;, &quot;opts&quot;: [&quot;Tags are pushed automatically with every git push&quot;, &quot;An annotated tag stores only the commit hash and nothing else&quot;, &quot;A tag names one commit, and it stays on that commit when new commits arrive&quot;, &quot;A tag can be moved by git commit&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A tag names one commit and stays put. Tags are not pushed by default, and git commit never moves them. The tempting wrong answer says that tags are pushed automatically.&quot;}]}"></div>
+
+<h3 id="what-the-staging-area-holds">What the staging area holds</h3>
+<p><strong>What it is.</strong> The staging area, also called the index, holds a copy of each file's content at the moment you run <code>git add</code>. It is not a link to the file on disk. When you edit the file again, the working tree changes, but the staging area keeps the older copy until you run <code>git add</code> again. <code>git commit</code> records exactly what is in the staging area. <code>git diff</code> compares the working tree with the staging area, and <code>git diff --staged</code> compares the staging area with the last commit.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo \&quot;v1\&quot; &gt; report.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git add report.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;echo \&quot;v2\&quot; &gt;&gt; report.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git status --short&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;AM report.txt&quot;}, {&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;git commit -m \&quot;Add report\&quot;&quot;}]}"></div>
+
+<p>The first <code>echo</code> writes <code>v1</code> into the file, and <code>git add</code> copies that content into the staging area. The second <code>echo</code> appends <code>v2</code> to the file on disk. The status shows <code>AM</code>, because the file is new in the staging area (<code>A</code>) and the working copy now differs from the staged copy (<code>M</code>). For a file that was already tracked, the same steps would show <code>MM</code>. The commit records only the staged copy, which holds <code>v1</code>.</p>
+<p><strong>How it shows up in a case study.</strong> Priya fixes a bug in <code>parser.py</code>, runs <code>git add parser.py</code>, and then corrects a typo in a comment. Her teammate asks why the commit would lack the typo fix. Before committing, the status shows <code>MM</code>. The answer is that the commit would hold the version staged before the typo fix. Priya runs <code>git add parser.py</code> again, which updates the staging area, and then commits. She does not need to revert anything.</p>
+<div class="box box-trap"><div class="box-h">Trap: Expecting the newest edit in the commit</div><p>Editing a file after <code>git add</code> does not update the staging area. The commit holds the staged copy until you add the file again.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;You ran git add config.yaml, then changed one value in config.yaml, and then ran git commit -m \&quot;Update config\&quot;. Which version of the file does the commit record?&quot;, &quot;opts&quot;: [&quot;The edited version with the new value&quot;, &quot;The version as it was when git add ran, without the later change&quot;, &quot;Both versions, as two separate commits&quot;, &quot;Neither, because the file is no longer staged after an edit&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The staging area keeps the content from the moment of git add. The tempting wrong answer is the newest version, which stays in the working tree until you add it again.&quot;}, {&quot;q&quot;: &quot;Your git status --short shows MM for tests/test_ingest.py. Which command shows the content that the next commit will record?&quot;, &quot;opts&quot;: [&quot;git diff&quot;, &quot;git log --stat&quot;, &quot;git status --ignored&quot;, &quot;git diff --staged&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;git diff --staged compares the staging area with the last commit, which is exactly what the next commit records. Plain git diff compares the working tree with the staging area, so it shows the later edit instead.&quot;}, {&quot;q&quot;: &quot;A squad member says, \&quot;I added the file an hour ago, so my latest edits are safe in the commit.\&quot; Which statement corrects this?&quot;, &quot;opts&quot;: [&quot;The commit holds the content from the last git add, so the latest edits need another git add&quot;, &quot;The staging area updates each time the file is saved on disk&quot;, &quot;Commits automatically include every edit made to tracked files&quot;, &quot;The later edits are merged into the commit by git push&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Only git add updates what the next commit will hold. Saving a file does not update the staging area, and pushing sends commits without changing them.&quot;}]}"></div>
+
+<h3 id="two-factor-authentication-on-github">Two-factor authentication on GitHub</h3>
+<p><strong>What it is.</strong> Two-factor authentication (2FA) asks for a second proof at login, in addition to your password. The usual second proof is a six-digit code from an authenticator app on your phone. The app creates a new code every 30 seconds, and it does not connect to GitHub. You read the code and type it into the login page. Recovery codes are one-time backup codes that you download when you turn 2FA on, so that you can sign in if you lose the phone. Codes sent by text message are a weaker second factor than an app.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;gh api user --jq &#x27;.two_factor_authentication&#x27;&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;true&quot;}]}"></div>
+
+<p>The value <code>true</code> means that 2FA is switched on for the account. If the value is <code>false</code>, go back to your security settings before you continue.</p>
+<p><strong>How it shows up in a case study.</strong> A trainer checks the organisation and finds one member with 2FA disabled. Hadi's password appeared in a website breach last week. The team asks whether an attacker can now push to the squad repository. With 2FA on, the attacker still needs the current code from Hadi's phone, so the login stops at the second step. The trainer asks Hadi to enable an authenticator app, save his recovery codes and change his password.</p>
+<div class="box box-trap"><div class="box-h">Trap: Treating SMS and an app as equal</div><p>A text-message code is easier to intercept than a code from an app. The course asks you to use an authenticator app, and to download recovery codes before you log out.</p></div>
+
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A member&#x27;s password has leaked, and the organisation enforces 2FA. The member&#x27;s phone is still in their hand. What must an attacker still have to log in?&quot;, &quot;opts&quot;: [&quot;The organisation&#x27;s invitation link&quot;, &quot;The member&#x27;s SSH public key only&quot;, &quot;The current code from the member&#x27;s authenticator app&quot;, &quot;A copy of the repository&#x27;s history&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;2FA asks for a second proof that the password does not supply. The tempting wrong answer is the public key, which is not secret and is not a login code.&quot;}, {&quot;q&quot;: &quot;Hadi lost his phone and cannot get the authenticator code. He did not save recovery codes. What is the most likely result?&quot;, &quot;opts&quot;: [&quot;GitHub sends the code to the organisation&#x27;s trainer&quot;, &quot;He may be locked out of his account, which is why recovery codes should be saved before you log out&quot;, &quot;He can still push with SSH, so 2FA no longer applies to him&quot;, &quot;The account is closed for one day and then reopened automatically&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;Recovery codes exist for exactly this case. Without them a lost phone can lock you out. The tempting wrong answer points to SSH, but an SSH key only covers Git pushes; it does not let him sign in to the account or recover it.&quot;}, {&quot;q&quot;: &quot;For this course, which second factor is the weakest of the four options?&quot;, &quot;opts&quot;: [&quot;A code from an authenticator app enrolled on your phone&quot;, &quot;A recovery code kept somewhere other than the phone&quot;, &quot;A hardware security key that you plug in&quot;, &quot;A code sent to your phone by text message&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;The course warns that text-message codes are weaker than an authenticator app, because a text can be intercepted. An app, a hardware key and a stored recovery code do not travel by text.&quot;}]}"></div>
+
+<h3 id="quick-self-test">Quick self-test</h3>
+<p>Answer these without looking back at the topics above. Each one mixes a single idea from a different topic, and each is harder than the questions in the topic sections.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A new file notes.md was staged with git add, then edited, and then edited again. Which two-letter code does git status --short show for it?&quot;, &quot;opts&quot;: [&quot;AM notes.md&quot;, &quot;MM notes.md&quot;, &quot;?? notes.md&quot;, &quot;A  notes.md&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;The first letter is A because the file is new in the staging area. The second is M because the working tree differs from the staging area. MM would describe a file that was already tracked, which this one is not.&quot;}, {&quot;q&quot;: &quot;The file secrets.json was committed last month. You now want it kept on disk and out of future commits, and the team does not want history rewritten. Which sequence is correct?&quot;, &quot;opts&quot;: [&quot;Delete the file, add it to .gitignore and push&quot;, &quot;git rm secrets.json, then commit&quot;, &quot;git rm --cached secrets.json, add secrets.json to .gitignore, then commit and push&quot;, &quot;git add -f secrets.json, then commit&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The --cached flag keeps the disk copy, the ignore rule prevents it being added again, and the commit records the removal. The tempting wrong answer deletes the disk copy, which the team wants to keep.&quot;}, {&quot;q&quot;: &quot;You ran git add src/app.py and then git commit -m \&quot;Fix\&quot;. A teammate asks why the commit does not include notes.txt, which you created earlier. Which answer is accurate?&quot;, &quot;opts&quot;: [&quot;git commit always includes new files in the working tree&quot;, &quot;notes.txt was never staged, so it is not in the commit&quot;, &quot;The commit includes notes.txt, but the file is hidden until the push&quot;, &quot;Git adds notes.txt during the next pull&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A commit records only what is staged. A new file needs git add before a commit can include it, whatever else is in the folder.&quot;}, {&quot;q&quot;: &quot;A developer set up SSH correctly. Later they clone the repository over HTTPS and type their account password, and GitHub refuses it. Which explanation fits best?&quot;, &quot;opts&quot;: [&quot;SSH keys are deleted when a repository is cloned over HTTPS&quot;, &quot;The SSH key has expired and must be renewed every 30 seconds&quot;, &quot;Passwords stop working whenever an SSH key is in use&quot;, &quot;GitHub accepts a token rather than an account password for Git over HTTPS, so the SSH key does not cover that connection&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;SSH and HTTPS are two separate connections with their own credentials. The tempting wrong answer assumes one credential covers both, which it does not.&quot;}, {&quot;q&quot;: &quot;A commit shows the author Ravi Kumar and carries a Verified badge on GitHub. Which conclusion is safest?&quot;, &quot;opts&quot;: [&quot;The signature matches a key registered on GitHub, but the code may still contain bugs&quot;, &quot;The code passed every test in the repository&quot;, &quot;The commit was made at the time shown, and the message is accurate&quot;, &quot;The branch is protected against direct pushes&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;A verified signature proves the key match, and nothing more. The other options claim tests, timing or branch rules, which a signature does not prove.&quot;}, {&quot;q&quot;: &quot;A password was pushed in a commit to a private repository, and ten collaborators already have clones. Which action should the team take first?&quot;, &quot;opts&quot;: [&quot;Force-push a rewritten history&quot;, &quot;Ask the collaborators to delete their clones&quot;, &quot;Change the password in the service that issued it&quot;, &quot;Make the repository public so that the leak is easier to find&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Changing the password stops misuse at once. Histories and clones can be handled afterwards, and making the repository public only spreads the value.&quot;}, {&quot;q&quot;: &quot;You are on main with an uncommitted edit to report.py. You run git pull, and the remote has new commits that touch other files. What happens?&quot;, &quot;opts&quot;: [&quot;Your edit is uploaded to the remote&quot;, &quot;The remote commits are fetched and merged, and your edit stays in the working tree unless it conflicts&quot;, &quot;The uncommitted edit is discarded by the pull&quot;, &quot;The pull always fails when any local change exists&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;A pull keeps your uncommitted work unless the incoming change touches the same lines, which would make Git refuse to merge until you commit or stash your edit. The tempting wrong answer says the pull always fails, which is false.&quot;}, {&quot;q&quot;: &quot;Which statement about annotated tags is correct?&quot;, &quot;opts&quot;: [&quot;They are pushed by every git push&quot;, &quot;They move to the newest commit automatically when you commit&quot;, &quot;They store only the name, so a message is not possible&quot;, &quot;They store a message and the tagger, and they stay on the commit they name&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;An annotated tag stores a message and the tagger, and it stays on its commit. The other three options describe branches, unpushed tags or wrong behaviour.&quot;}, {&quot;q&quot;: &quot;You ran git add data.csv, then edited data.csv again, and then ran git diff. The output shows the newer edit. What does git diff compare here?&quot;, &quot;opts&quot;: [&quot;The working tree with the staging area, so the newer edit appears&quot;, &quot;The staged version with the last commit&quot;, &quot;The last commit with the remote copy on GitHub&quot;, &quot;Nothing, because staged files are excluded from git diff&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Plain git diff compares the working tree with the staging area. The newer edit is in the working tree only, so it appears. The staged version would appear with git diff --staged.&quot;}, {&quot;q&quot;: &quot;An organisation wants to find members who have two-factor authentication turned off. Which fact makes this check possible?&quot;, &quot;opts&quot;: [&quot;Each member receives a password reset email that reports the setting&quot;, &quot;Each member&#x27;s SSH public key lists the 2FA status&quot;, &quot;Organisation owners can see which members have 2FA disabled, as the course&#x27;s check does&quot;, &quot;Members&#x27; repository lists are hidden from the organisation&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The organisation view shows the 2FA status of each member to its owners. The tempting wrong answer assumes the public key carries that information, which it does not.&quot;}]}"></div>
+
+<h2 id="the-graded-lab">The graded lab</h2>
+<p>The graded lab asks you to write three small Python functions and then runs hidden tests against them. This section restates the task, explains the ideas you need, and shows a method. It does not give you a solution to the real task. The worked example and the practice problem use a different domain, so that you can practise the same skills on data you have not seen.</p>
+<h3 id="the-task-in-plain-words">The task in plain words</h3>
+<p>The scenario is that you are tidying the CityPulse <code>citypulse</code> repository. You must audit its commit history and confirm that secrets never get committed. You do that by writing three module-level functions in the starter file. The starter already imports <code>fnmatch</code>, the standard module that matches glob patterns.</p>
+<p>The three functions are these:</p>
+<ul>
+<li><code>parse_oneline(text)</code> takes the raw text of <code>git log --oneline</code>. It returns a list of <code>(short_hash, subject)</code> tuples, in the order the lines appear in the text.</li>
+<li><code>is_ignored(patterns, path)</code> takes a list of <code>.gitignore</code>-style patterns and one path. It returns <code>True</code> if the path is covered by any pattern, and <code>False</code> otherwise.</li>
+<li><code>count_covered(patterns, paths)</code> takes the same kind of pattern list and a list of paths. It returns one integer: how many entries of <code>paths</code> are ignored.</li>
+</ul>
+<p>The rules for <code>parse_oneline</code> are these:</p>
+<ul>
+<li>Each line is the short hash, then a single space, then the commit subject.</li>
+<li>The subject is everything after that one space, and it may contain more spaces.</li>
+<li>Blank lines are skipped.</li>
+<li>The output keeps the order of the input.</li>
+<li>An empty string gives an empty list.</li>
+</ul>
+<p>The rules for <code>is_ignored</code> are these:</p>
+<ul>
+<li>A pattern can be an exact name or a full path. A path it matches is covered.</li>
+<li>A pattern with <code>*</code> or <code>?</code> is a glob. It is matched against the file's basename, which is the last part of the path. The pattern <code>*.env</code> covers <code>ingest/.env</code>, because the basename is <code>.env</code>.</li>
+<li>A pattern that ends in <code>/</code>, such as <code>__pycache__/</code>, covers any file whose path contains that directory.</li>
+<li>A line that is blank, or that starts with <code>#</code>, is not a pattern and is ignored.</li>
+<li>The function returns <code>True</code> when at least one pattern covers the path.</li>
+</ul>
+<p>The rules for <code>count_covered</code> are these:</p>
+<ul>
+<li>It returns an integer, not a list.</li>
+<li>The integer is the number of entries in <code>paths</code> that <code>is_ignored</code> reports as covered.</li>
+</ul>
+<p>The limits are 30 seconds and 128 MB for each run.</p>
+<p>The scoring table is below. The visible tests are the four you can run yourself, and their points add up to 54.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Kind</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parses 3 oneline commits into (hash, subject) tuples in order</td>
+<td>Visible</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Empty log yields an empty list</td>
+<td>Visible</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Exact basename match on a nested path</td>
+<td>Visible</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Glob matches .env by basename</td>
+<td>Visible</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Three hidden tests</td>
+<td>Hidden</td>
+<td>46 in total</td>
+</tr>
+</tbody>
+</table>
+<p>The hidden tests are three checks that you cannot read. They run your three functions on inputs you have not seen, and they are worth 46 of the 100 points. They decide the top marks, because a solution that passes only the four visible tests scores at most 54. The visible tests show you the shape of the work. The hidden tests check whether you handled the rules in the statement in general, including the cases the examples do not show. That is why the table of rules later in this section matters.</p>
+<p>This statement says nothing about rounding or tie-breaking. This lab has no rounding to check, so do not invent a rule for it.</p>
+<h3 id="what-each-function-needs">What each function needs</h3>
+<p>Each idea below is taught with a small example that has nothing to do with the lab's data. Try each one in a Python shell before you use it in the lab.</p>
+<p><strong>Splitting text into lines.</strong> <code>str.splitlines</code> cuts a string at each line break and returns a list of lines. A line that is empty or only spaces is blank.</p>
+<div class="hl"><pre><span></span><code><span class="n">poem</span> <span class="o">=</span> <span class="s2">&quot;red</span><span class="se">\n\n</span><span class="s2">blue&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">poem</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The first line prints <code>['red', '', 'blue']</code>. The empty string in the middle is a blank line. The second line prints <code>True</code>, because <code>strip()</code> removes spaces at both ends, and an empty result means the line had nothing in it. The test <code>if not line.strip():</code> uses the same idea. An empty string is false in Python, so <code>not</code> turns it into <code>True</code>.</p>
+<p><strong>Splitting once.</strong> <code>str.split(sep, 1)</code> cuts a string at most once. The result has at most two pieces, which is useful when the second piece may contain the separator.</p>
+<div class="hl"><pre><span></span><code><span class="n">drink</span> <span class="o">=</span> <span class="s2">&quot;Tea with milk&quot;</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">drink</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">rest</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>Tea | with milk</code>. Without the <code>1</code>, the same line would split into three pieces and the two-name unpacking would fail. The number is the maximum number of cuts, not the number of pieces you get back.</p>
+<p><strong>Building a list of tuples.</strong> A tuple is a fixed group of values in round brackets. You can append tuples to a list in order.</p>
+<div class="hl"><pre><span></span><code><span class="n">pairs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;Tea&quot;</span><span class="p">,</span> <span class="s2">&quot;hot&quot;</span><span class="p">))</span>
+<span class="n">pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;Juice&quot;</span><span class="p">,</span> <span class="s2">&quot;cold&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>[('Tea', 'hot'), ('Juice', 'cold')]</code>. The list keeps the order in which you appended the tuples, which is the order the statement requires.</p>
+<p><strong>Checking the start, the end or the inside of a string.</strong> <code>startswith</code> and <code>endswith</code> test the beginning and the end. The <code>in</code> operator tests whether one string appears anywhere inside another.</p>
+<div class="hl"><pre><span></span><code><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;# keep this line&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;chapter-3.md&quot;</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rock&quot;</span> <span class="ow">in</span> <span class="s2">&quot;rockabilly/song.mp3&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output is <code>True</code>, <code>True</code> and <code>True</code>. The last line shows a trap. The text <code>rock</code> appears inside <code>rockabilly</code>, so <code>in</code> says yes even though <code>rock</code> is not a folder. To test whole folder names, split the path on <code>/</code> first, and leave out the last part, which is the file name.</p>
+<div class="hl"><pre><span></span><code><span class="n">parts</span> <span class="o">=</span> <span class="s2">&quot;rockabilly/song.mp3&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rock&quot;</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The output is <code>['rockabilly', 'song.mp3']</code> and then <code>False</code>. The slice <code>parts[:-1]</code> means every part except the last one. Now <code>rock</code> is compared with whole folder names only.</p>
+<p><strong>Getting the last part of a path.</strong> <code>rsplit</code> cuts from the right. With <code>"/"</code> and a limit of <code>1</code>, it separates the final part from everything before it.</p>
+<div class="hl"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;music/rock/song.mp3&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;notes.txt&quot;</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The first line prints <code>song.mp3</code>. The second prints <code>notes.txt</code>, because a name with no slash is its own last part. The index <code>[-1]</code> means the last item of a list.</p>
+<p><strong>Glob matching with fnmatch.</strong> <code>fnmatch.fnmatchcase(name, pattern)</code> returns <code>True</code> when the name matches the pattern. <code>*</code> matches any run of characters, and <code>?</code> matches exactly one character. The <code>case</code> version is case-sensitive, which is what you want for predictable results.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fnmatch</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatchcase</span><span class="p">(</span><span class="s2">&quot;photo.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatchcase</span><span class="p">(</span><span class="s2">&quot;a1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a?.txt&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatchcase</span><span class="p">(</span><span class="s2">&quot;a10.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a?.txt&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>True</code>, <code>True</code> and <code>False</code>. The third line is <code>False</code> because <code>?</code> matches only one character, and <code>10</code> is two characters. Note that <code>*</code> also matches a slash, so <code>fnmatch</code> does not understand folders on its own.</p>
+<p><strong>Counting, and why <code>True</code> is a number.</strong> In Python, <code>bool</code> is a subclass of <code>int</code>. That means <code>True</code> behaves as <code>1</code> and <code>False</code> behaves as <code>0</code> in arithmetic, and <code>isinstance(True, int)</code> is <code>True</code>. You can use this to count.</p>
+<div class="hl"><pre><span></span><code><span class="n">votes</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">votes</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The output is <code>2</code>, then <code>True</code>, then <code>2</code>. The first line works because <code>sum</code> adds <code>True</code> as <code>1</code>. The third line is the clearer way to count matches, because it adds <code>1</code> only for each item that passes the test. Use it for <code>count_covered</code>, and remember that the result must be an <code>int</code>, not a list.</p>
+<h3 id="the-rules-people-miss">The rules people miss</h3>
+<p>The table below lists the rules from the statement, one row for each rule a hidden test could check. The middle column is the careless solution, and the last column is a check you can run yourself. Keep this table beside you when you write your asserts.</p>
+<table>
+<thead>
+<tr>
+<th>Rule in the statement</th>
+<th>What a careless solution does</th>
+<th>How to check yours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each line is a short hash, one space, then the subject</td>
+<td>Splits on every space, so a subject with spaces is cut short</td>
+<td>Use a line whose subject has two or more spaces and check that the whole subject comes back</td>
+</tr>
+<tr>
+<td>Blank lines are skipped</td>
+<td>Adds an empty tuple for a blank line, or crashes on it</td>
+<td>Put a blank line between two commits and check that the count is 2, not 3</td>
+</tr>
+<tr>
+<td>The output keeps the input order</td>
+<td>Sorts the list by hash or by subject</td>
+<td>Check that the first tuple matches the first line of the text, and that the last tuple matches the last</td>
+</tr>
+<tr>
+<td>An empty string gives an empty list</td>
+<td>Returns <code>None</code>, or raises an error on empty input</td>
+<td>Call the function with <code>""</code> and check for <code>[]</code></td>
+</tr>
+<tr>
+<td>An exact name or full path is covered</td>
+<td>Compares only part of the path, such as the folder</td>
+<td>Check a name in a nested folder and a full path with the same folder</td>
+</tr>
+<tr>
+<td><code>*</code> and <code>?</code> are matched against the basename</td>
+<td>Matches the glob against the whole path, so <code>a?.txt</code> fails on <code>docs/a1.txt</code></td>
+<td>Check a glob on a nested path, and check that it still matches the file name</td>
+</tr>
+<tr>
+<td>A pattern ending in <code>/</code> covers files whose path contains that folder</td>
+<td>Uses equality, so <code>__pycache__/</code> never matches <code>src/__pycache__/x.pyc</code>; or only looks at the first folder</td>
+<td>Check a nested folder such as <code>src/__pycache__/x.pyc</code>, and a path with no such folder</td>
+</tr>
+<tr>
+<td>Blank lines and lines starting with <code>#</code> are not patterns</td>
+<td>Treats <code># note</code> as a file name, or treats a blank pattern as a folder rule that covers everything</td>
+<td>Pass <code>["# note", ""]</code> and check that <code>a.py</code> is not covered</td>
+</tr>
+<tr>
+<td><code>is_ignored</code> returns <code>True</code> or <code>False</code></td>
+<td>Returns the matching pattern, a string, or any truthy value</td>
+<td>Assert with <code>is True</code> and <code>is False</code>, not with <code>==</code> alone</td>
+</tr>
+<tr>
+<td><code>count_covered</code> returns an integer</td>
+<td>Returns the list of covered paths instead of its length</td>
+<td>Check the result with <code>isinstance(result, int)</code> as well as the value</td>
+</tr>
+<tr>
+<td>The count is over entries of <code>paths</code></td>
+<td>Counts a path once for each pattern that covers it</td>
+<td>Give one path two patterns that both cover it, and check that it is counted once</td>
+</tr>
+</tbody>
+</table>
+<p>This statement says nothing about rounding, ties or sorting by any key. Do not add those rules to your code.</p>
+<h3 id="a-method-that-works-for-every-graded-lab">A method that works for every graded lab</h3>
+<ol>
+<li>Read the whole starter file from top to bottom. Note the names, the import and any code that is already there.</li>
+<li>Write the examples from the statement as <code>assert</code> lines before you write any function. The statement's example gives you the first lines.</li>
+<li>Add your own <code>assert</code> lines for every row of the table above. Each one should check a single rule, so that a failure tells you which rule you broke.</li>
+<li>Implement one function at a time. After each function, run only its asserts. Do not move on until they pass.</li>
+<li>Check types and results last. Look for a <code>True</code> that is really <code>1</code>, a list where you need an integer, and a string where you need a tuple.</li>
+<li>Run the visible tests, and then run your own asserts once more.</li>
+<li>Submit once. Treat your first submission as the one that counts, so run everything locally before you press the button.</li>
+</ol>
+<h3 id="worked-twin-problem">Worked twin problem</h3>
+<p>This is a different domain that needs the same skills: splitting text into lines, building tuples, glob matching and counting.</p>
+<p><strong>Bike-share station report.</strong> A city bike-share team stores a report as text, with one line for each station. Each line holds the station name, one space, and the number of free bikes. Write three functions. <code>parse_report(text)</code> returns a list of <code>(name, count)</code> tuples, in order, where <code>count</code> is an integer. Blank lines are skipped, and an empty string gives an empty list. <code>is_flagged(rules, name)</code> returns <code>True</code> if the station name matches any rule. A rule is a glob matched against the whole name with <code>fnmatchcase</code>, so matching is case-sensitive. A rule that is blank, or that starts with <code>#</code>, is ignored. <code>count_flagged(rules, report)</code> returns the number of <code>(name, count)</code> entries whose name is flagged. Each entry is counted once.</p>
+<p>The solution is written as a test block. It runs when the book is built, so it must pass.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fnmatch</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_report</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="k">return</span> <span class="n">rows</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_flagged</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rules</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rule</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="n">rule</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatchcase</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_flagged</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">report</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">report</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_flagged</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Indiranagar-2 14</span><span class="se">\n\n</span><span class="s2">Koramangala-1 0</span><span class="se">\n</span><span class="s2">Jayanagar 7</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">parse_report</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">report</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Indiranagar-2&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Koramangala-1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_report</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">parse_report</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_flagged</span><span class="p">([</span><span class="s2">&quot;Indiranagar*&quot;</span><span class="p">],</span> <span class="s2">&quot;Indiranagar-2&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_flagged</span><span class="p">([</span><span class="s2">&quot;*-1&quot;</span><span class="p">],</span> <span class="s2">&quot;Koramangala-1&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">is_flagged</span><span class="p">([</span><span class="s2">&quot;*-1&quot;</span><span class="p">],</span> <span class="s2">&quot;Koramangala-10&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_flagged</span><span class="p">([</span><span class="s2">&quot;# note&quot;</span><span class="p">,</span> <span class="s2">&quot;  &quot;</span><span class="p">],</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_flagged</span><span class="p">([</span><span class="s2">&quot;jayanagar&quot;</span><span class="p">],</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="k">assert</span> <span class="n">count_flagged</span><span class="p">([</span><span class="s2">&quot;Indiranagar*&quot;</span><span class="p">,</span> <span class="s2">&quot;*-1&quot;</span><span class="p">],</span> <span class="n">report</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">count_flagged</span><span class="p">([],</span> <span class="n">report</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">count_flagged</span><span class="p">([</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">],</span> <span class="p">[])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The first line imports <code>fnmatch</code>, which provides the glob matching. <code>parse_report</code> starts with an empty list. The loop reads each line from <code>text.splitlines()</code>. The <code>if not line.strip()</code> check skips blank lines, including lines that hold only spaces. <code>line.split()</code> with no arguments cuts the line at any run of spaces, so <code>parts[0]</code> is the name and <code>parts[1]</code> is the count. <code>int(parts[1])</code> turns the text <code>"14"</code> into the number <code>14</code>, and the tuple is added to <code>rows</code>.</p>
+<p><code>is_flagged</code> loops over the rules. A rule that is blank, or that starts with <code>#</code>, is skipped by the <code>continue</code> line. <code>fnmatch.fnmatchcase(name, rule)</code> returns <code>True</code> when the name matches. The function returns <code>True</code> as soon as one rule matches, and <code>False</code> after the loop ends with no match. <code>count_flagged</code> starts <code>total</code> at zero, then adds one for each entry whose name is flagged. The function returns the total, which is an integer.</p>
+<p>The asserts check the normal case, the blank input, the <code>#</code> rule, the case sensitivity and the counting. <code>"Koramangala-10"</code> does not match <code>"*-1"</code>, because the name must end in <code>-1</code>. The final <code>print</code> only shows that the file ran to the end. A failed assert stops the build, and the hidden tests in the real lab stop your code in the same way.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Reading the bike-share report one line at a time&quot;, &quot;code&quot;: [&quot;text = \&quot;Jayanagar 7\\n\\nKoramangala-1 0\&quot;&quot;, &quot;rows = []&quot;, &quot;for line in text.splitlines():&quot;, &quot;    if not line.strip():&quot;, &quot;        continue&quot;, &quot;    parts = line.split()&quot;, &quot;    rows.append((parts[0], int(parts[1])))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;text&quot;, &quot;\&quot;Jayanagar 7\\n\\nKoramangala-1 0\&quot;&quot;]], &quot;note&quot;: &quot;The text is stored. Each \\n marks the end of one line, and the middle line is empty.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;text&quot;, &quot;\&quot;Jayanagar 7\\n\\nKoramangala-1 0\&quot;&quot;], [&quot;rows&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Start with an empty list of results.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;Jayanagar 7\&quot;&quot;], [&quot;rows&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The loop takes the first line.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;Jayanagar 7\&quot;&quot;], [&quot;rows&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;The line is not blank, so the test is False and nothing is skipped.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;Jayanagar 7\&quot;&quot;], [&quot;parts&quot;, &quot;[\&quot;Jayanagar\&quot;, \&quot;7\&quot;]&quot;]], &quot;note&quot;: &quot;split() cuts the line at the space.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;parts&quot;, &quot;[\&quot;Jayanagar\&quot;, \&quot;7\&quot;]&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7)]&quot;]], &quot;note&quot;: &quot;int(\&quot;7\&quot;) gives the number 7, and the tuple is added.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;\&quot;&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7)]&quot;]], &quot;note&quot;: &quot;The second line is empty.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;\&quot;&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7)]&quot;]], &quot;note&quot;: &quot;strip() leaves nothing, so the test is True.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;\&quot;&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7)]&quot;]], &quot;note&quot;: &quot;continue moves on, so nothing is added for the blank line.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;Koramangala-1 0\&quot;&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7)]&quot;]], &quot;note&quot;: &quot;The loop takes the last line.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;line&quot;, &quot;\&quot;Koramangala-1 0\&quot;&quot;], [&quot;parts&quot;, &quot;[\&quot;Koramangala-1\&quot;, \&quot;0\&quot;]&quot;]], &quot;note&quot;: &quot;The name and the count are split apart.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;parts&quot;, &quot;[\&quot;Koramangala-1\&quot;, \&quot;0\&quot;]&quot;], [&quot;rows&quot;, &quot;[(\&quot;Jayanagar\&quot;, 7), (\&quot;Koramangala-1\&quot;, 0)]&quot;]], &quot;note&quot;: &quot;Zero bikes is a valid count, so the tuple is added.&quot;}]}"></div>
+
+<h3 id="your-turn">Your turn</h3>
+<p>This is a new twin problem. Read it as you would read a lab statement, and write the solution yourself before you open the answer.</p>
+<p><strong>Library fines.</strong> Each line of the text holds a book title, one space, and the number of days the book is overdue. The title may contain spaces, and the number of days is always the last word on the line. Write <code>parse_fines(text)</code>. It returns a list of <code>(title, fine)</code> tuples in the order of the lines, where <code>fine</code> is the days multiplied by <code>0.25</code>, rounded to two decimal places. Blank lines are skipped, and an empty string gives an empty list. Write <code>total_fines(rows)</code>. It takes the list that <code>parse_fines</code> returns, adds up the fines, and rounds the sum to two decimal places once, at the end. An empty list gives <code>0</code>.</p>
+<p>Make these asserts pass:</p>
+<div class="hl"><pre><span></span><code><span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Dune 12</span><span class="se">\n</span><span class="s2">Emma 3</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;The Hobbit 5&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;The Hobbit&quot;</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Ulysses 0</span><span class="se">\n\n</span><span class="s2">Dune 4&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">(</span><span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Dune 12</span><span class="se">\n</span><span class="s2">Emma 3</span><span class="se">\n</span><span class="s2">Ulysses 0&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mf">3.75</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)])</span> <span class="o">==</span> <span class="mf">0.3</span>
+</code></pre></div>
+
+<details class="box box-answer"><summary>Show a solution</summary><p>Try the task first. The solution below runs when the book is built, and every assert in it must pass.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_fines</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">title</span><span class="p">,</span> <span class="n">days</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">days</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">rows</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_fines</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">fine</span> <span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">fine</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Dune 12</span><span class="se">\n</span><span class="s2">Emma 3</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Emma&quot;</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;The Hobbit 5&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;The Hobbit&quot;</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Ulysses 0</span><span class="se">\n\n</span><span class="s2">Dune 4&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">&quot;Ulysses&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Dune&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">(</span><span class="n">parse_fines</span><span class="p">(</span><span class="s2">&quot;Dune 12</span><span class="se">\n</span><span class="s2">Emma 3</span><span class="se">\n</span><span class="s2">Ulysses 0&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mf">3.75</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">total_fines</span><span class="p">([(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)])</span> <span class="o">==</span> <span class="mf">0.3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all checks passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>parse_fines</code> uses <code>text.splitlines()</code> and skips blank lines in the same way as before. The call <code>line.rsplit(" ", 1)</code> cuts from the right, so the last word becomes <code>days</code> and everything before it stays together as the title. That is why <code>"The Hobbit 5"</code> gives the title <code>The Hobbit</code>. <code>int(days) * 0.25</code> gives the fine, and <code>round(..., 2)</code> rounds it. <code>total_fines</code> uses a generator to add the fines, then rounds the sum once at the end. Rounding the sum once at the end is what keeps <code>0.1 + 0.2</code> from showing as <code>0.30000000000000004</code>.</p></details>
+
+<h3 id="before-you-press-submit">Before you press Submit</h3>
+<ul>
+<li>Run each function's asserts separately, and make sure each one passes before you move on.</li>
+<li>Check the four visible cases by hand, and write down the expected value before you run the code.</li>
+<li>Check that <code>parse_oneline("")</code> returns an empty list, not <code>None</code>.</li>
+<li>Check that blank lines in the text are skipped, including a blank line at the very end.</li>
+<li>Check that <code>is_ignored</code> returns <code>True</code> or <code>False</code>, and not a pattern or a string.</li>
+<li>Check that a folder pattern such as <code>__pycache__/</code> covers a nested path such as <code>src/__pycache__/x.pyc</code>, and does not cover a path with no such folder.</li>
+<li>Check that <code>count_covered</code> returns an integer, and that a path matched by two patterns is counted once.</li>
+<li>Check that you have not changed the names of the three functions, and that the starter's import is still at the top of the file.</li>
+<li>Check that your file has no leftover prints or test code that could fail on the platform.</li>
+<li>Run the visible tests one more time.</li>
+</ul>
+<h2 id="say-it-out-loud">Say it out loud</h2>
+<p>Your viva examiner or an interviewer may ask these questions. Answer them in your own words, and use the model answer to check that you covered the same points.</p>
+<p><strong>Why does CityPulse use Git rather than a shared folder?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A shared folder keeps only the latest copy of each file, so it cannot show who changed a line or why. Git records every change as a commit with an author, a time and a message. Each commit can be compared, reverted and audited, and the history is kept on every clone. That is what lets trainers score each ticket from the work itself.</p></details>
+
+<p><strong>What is the difference between git add and git commit?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p><code>git add</code> copies the chosen changes into the staging area, which is a holding area for the next commit. <code>git commit</code> takes what is in the staging area and records it as one snapshot with a message. Nothing is saved to history until you commit, and changes made after <code>git add</code> are not included until you add them again. Pushing comes after both steps and sends the commits to GitHub.</p></details>
+
+<p><strong>How can you tell who made a commit?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>Each commit stores the author name and email from the Git settings on the machine that made it. You can see them with <code>git log --format='%h %an %s'</code>. The name is a label that you set yourself, so it is not proof on its own. The course adds SSH keys and 2FA so that only the account owner can push under that identity.</p></details>
+
+<p><strong>What do you do when a secret is pushed to GitHub?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>I treat the secret as compromised. First I revoke or rotate it in the service that issued it, because copies may already exist. Then I remove the file from the project with <code>git rm --cached</code> and add it to <code>.gitignore</code>. Rewriting history to remove the secret is a team decision that needs a force push, and it does not undo any copy that was already taken. I tell the team and my trainer straight away.</p></details>
+
+<p><strong>Why use an SSH key and 2FA instead of a password?</strong></p>
+<details class="box box-answer"><summary>Model answer</summary><p>A password can be guessed, reused or leaked, and anyone who has it can act as you. An SSH key stays on your machine, and GitHub checks it with a challenge that only the private key can answer, so no password crosses the network. 2FA adds a second proof at login, so a stolen password alone is not enough. Together they mean a leaked password cannot push code to a squad repository.</p></details>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Command, flag or rule</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git config --global user.name "Name"</code></td>
+<td>Sets the author name for all commits on this machine.</td>
+</tr>
+<tr>
+<td><code>git config --global user.email "mail"</code></td>
+<td>Sets the author email for all commits on this machine.</td>
+</tr>
+<tr>
+<td><code>git config --list --show-origin</code></td>
+<td>Lists settings and the file each one comes from.</td>
+</tr>
+<tr>
+<td><code>git init -b main</code></td>
+<td>Starts a repository and names the first branch <code>main</code>.</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>Shows the state of every file.</td>
+</tr>
+<tr>
+<td><code>git status --short</code></td>
+<td>Shows one line per file, with a two-letter code.</td>
+</tr>
+<tr>
+<td><code>git status --ignored --short</code></td>
+<td>Also shows ignored files, marked <code>!!</code>.</td>
+</tr>
+<tr>
+<td><code>git add &lt;file&gt;</code></td>
+<td>Copies that file's current content into the staging area.</td>
+</tr>
+<tr>
+<td><code>git add -f &lt;file&gt;</code></td>
+<td>Stages a file even when an ignore rule matches it.</td>
+</tr>
+<tr>
+<td><code>git commit -m "message"</code></td>
+<td>Records the staging area as a commit with that message.</td>
+</tr>
+<tr>
+<td><code>git commit -am "message"</code></td>
+<td>Stages tracked changes and commits. New files are not added.</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>Shows unstaged changes.</td>
+</tr>
+<tr>
+<td><code>git diff --staged</code></td>
+<td>Shows changes that are staged for the next commit.</td>
+</tr>
+<tr>
+<td><code>git log --format='%h %an %s' -3</code></td>
+<td>Shows the last three commits: hash, author, message.</td>
+</tr>
+<tr>
+<td><code>git log --oneline --graph --decorate</code></td>
+<td>Shows the history as a graph with branch names.</td>
+</tr>
+<tr>
+<td><code>git checkout -b &lt;branch&gt;</code></td>
+<td>Creates a branch and switches to it.</td>
+</tr>
+<tr>
+<td><code>git merge --no-ff &lt;branch&gt;</code></td>
+<td>Merges a branch and always creates a merge commit.</td>
+</tr>
+<tr>
+<td><code>git remote add origin &lt;address&gt;</code></td>
+<td>Saves the remote address under the name <code>origin</code>.</td>
+</tr>
+<tr>
+<td><code>git push -u origin main</code></td>
+<td>Sends <code>main</code> to <code>origin</code> and sets it as the tracked branch.</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Fetches remote commits and merges them into your branch.</td>
+</tr>
+<tr>
+<td><code>git tag -a v1.0 -m "message"</code></td>
+<td>Creates an annotated tag, a fixed name for a commit.</td>
+</tr>
+<tr>
+<td><code>git rm --cached &lt;file&gt;</code></td>
+<td>Stops tracking a file but keeps it on disk.</td>
+</tr>
+<tr>
+<td><code>git reset --hard origin/main</code></td>
+<td>Moves your branch to match GitHub and discards local changes.</td>
+</tr>
+<tr>
+<td><code>git revert &lt;hash&gt;</code></td>
+<td>Creates a new commit that undoes one earlier commit.</td>
+</tr>
+<tr>
+<td><code>ssh-keygen -t ed25519 -C "label"</code></td>
+<td>Creates an SSH key pair.</td>
+</tr>
+<tr>
+<td><code>ssh -T git@github.com</code></td>
+<td>Tests the SSH connection to GitHub.</td>
+</tr>
+<tr>
+<td><code>gh auth login --web</code></td>
+<td>Signs the <code>gh</code> tool in through the browser.</td>
+</tr>
+<tr>
+<td><code>gh api user --jq '.login'</code></td>
+<td>Prints your username with <code>--jq</code> filtering.</td>
+</tr>
+<tr>
+<td><code>gh pr create --fill</code></td>
+<td>Opens a pull request, using the commit message as its title.</td>
+</tr>
+<tr>
+<td>Ignore rule <code>data/*</code> with <code>!data/.gitkeep</code></td>
+<td>Ignores a folder's contents but keeps one file.</td>
+</tr>
+<tr>
+<td><code>printf 'a\nb\n' &gt; file</code></td>
+<td>Writes lines of text into a file, replacing it.</td>
+</tr>
+<tr>
+<td><code>touch file</code></td>
+<td>Creates an empty file.</td>
+</tr>
+<tr>
+<td><code>mkdir -p a b</code></td>
+<td>Creates folders, including parents, without error if they exist.</td>
+</tr>
+<tr>
+<td><code>str.split(sep, 1)</code></td>
+<td>Splits a string at most once.</td>
+</tr>
+<tr>
+<td><code>fnmatch.fnmatchcase(name, pattern)</code></td>
+<td>Matches a glob pattern, case-sensitive.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;Working tree&quot;, &quot;a&quot;: &quot;The files you can see and edit in your project folder.&quot;}, {&quot;q&quot;: &quot;Staging area&quot;, &quot;a&quot;: &quot;The holding area where git add places the changes for the next commit.&quot;}, {&quot;q&quot;: &quot;Commit&quot;, &quot;a&quot;: &quot;A saved snapshot of the staged changes, with an author, a time and a message.&quot;}, {&quot;q&quot;: &quot;Hash&quot;, &quot;a&quot;: &quot;The long identifier of a commit, such as 05a9471. The first seven characters are enough to use.&quot;}, {&quot;q&quot;: &quot;git status --short ??&quot;, &quot;a&quot;: &quot;The file is untracked: Git sees it but is not tracking it yet.&quot;}, {&quot;q&quot;: &quot;git rm --cached&quot;, &quot;a&quot;: &quot;Stops tracking a file, but keeps it on your disk.&quot;}, {&quot;q&quot;: &quot;Public key&quot;, &quot;a&quot;: &quot;The .pub file you give to GitHub. Never share the private key file without .pub.&quot;}, {&quot;q&quot;: &quot;Two-factor authentication&quot;, &quot;a&quot;: &quot;A second proof, such as an authenticator app code, needed at login.&quot;}, {&quot;q&quot;: &quot;origin&quot;, &quot;a&quot;: &quot;The conventional name for the remote repository that you cloned or pushed to.&quot;}, {&quot;q&quot;: &quot;Protected branch&quot;, &quot;a&quot;: &quot;A branch that GitHub refuses direct pushes to, so changes go through a pull request.&quot;}, {&quot;q&quot;: &quot;Idempotent&quot;, &quot;a&quot;: &quot;Running it twice leaves the same result as running it once.&quot;}, {&quot;q&quot;: &quot;maxsplit&quot;, &quot;a&quot;: &quot;The second argument to str.split that limits how many cuts are made.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="F4.html"><small>Previous</small>Beating hidden tests and first-attempt marking</a><a class="nx" href="D02.html"><small>Next</small>Day 2 — Linux and the command line</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

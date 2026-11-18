@@ -1,0 +1,783 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project 5 — Containerised Air-Quality Platform · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="P5" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 6 · Days 21–25 · Models, APIs, containers</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a class="cur" href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 6 · Days 21–25 · Models, APIs, containers</p><h1>Project 5 — Containerised Air-Quality Platform</h1><p class="sub">You will be able to run, explain and defend a tested, containerised, two-service air-quality platform that a push to main builds and deploys.</p><p class="meta">56 min read · practice quiz · 3 animations</p><video class="vid" controls preload="metadata" src="videos/P5.mp4?v=1794465355"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#what-you-are-building">What you are building</a></li><li><a href="#how-this-project-is-really-assessed">How this project is really assessed</a></li><li><a href="#the-architecture">The architecture</a></li><li><a href="#starting-from-zero">Starting from zero</a></li><li><a href="#build-it-step-by-step">Build it, step by step</a></li><li><a href="#the-part-g-challenges">The Part G challenges</a></li><li><a href="#viva-preparation">Viva preparation</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#what-goes-wrong">What goes wrong</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="what-you-are-building">What you are building</h2>
+<p>You are building a small air-quality monitor for four sensor stations, ST-01 to ST-04. A person opens a web page in a browser and sees a table of each station's average PM2.5 reading. PM2.5 means very fine particles in the air, measured in micrograms per cubic metre (µg/m³). The person can also pick an hour of the day, type in the last reading, press a button and get a predicted value with a label such as Unhealthy.</p>
+<p>Two programs produce this. The first is an API (application programming interface), a program that answers requests from other programs over a network. The second is the dashboard, which is the web page itself. Each program runs in a container, a sealed package that holds the program and everything it needs, so it behaves the same on any machine. Every API request is written to a log as one line of structured data, and a health page at /metrics counts requests and errors. When you push code to the main branch of your Git repository, a robot run by GitHub Actions tests the code, builds the containers and deploys them. Nobody runs those steps by hand.</p>
+<h2 id="how-this-project-is-really-assessed">How this project is really assessed</h2>
+<p>This was checked on the course site (learner view, 17 November 2026), so it describes your batch, not projects in general.</p>
+<ul>
+<li><strong>The brief is a reading item.</strong> In the course outline this project appears as a slides item inside its milestone module. No separate graded submission is attached to it.</li>
+<li><strong>The work is assessed on the capstone board.</strong> Your squad works through 63 numbered tickets (Y2-T01 to Y2-T63). Each ticket has a user story, acceptance criteria written as Given/When/Then, test cases your trainer runs, a definition of done and a points value. Only a trainer can move a ticket to Done, and each ticket gets a gate score from 0 to 3.</li>
+<li><strong>Commits are the evidence.</strong> Every ticket is judged from what is in your squad's repository: your commits, your pull requests and your reviews. Commit every day; the platform says your daily commits are reviewed in your viva.</li>
+<li><strong>The viva.</strong> Each viva is scored 0 to 5 on four things, 20 in total: acceptance criteria met, technical depth, contribution and ownership, and your understanding.</li>
+<li><strong>The final capstone grade.</strong> The platform shows it as 60% your own contribution and 40% your team's score. Trainers can change that split for the batch.</li>
+</ul>
+<p>So the Part G challenges below are where this brief stretches you, and the tickets are where the same skills are marked. The tickets that build the same pieces as this project:</p>
+<ul>
+<li><a href="K11.html#y2-t38-build-api-v0-fastapi-v1health-and-v1stats-with-docsapimd">Y2-T38 · Build API v0: FastAPI /v1/health and /v1/stats with docs/api.md</a></li>
+<li><a href="K11.html#y2-t39-p7d05-pass-ml-repo-audit-70-and-ship-post-v1predict">Y2-T39 · P7/D05: pass ML repo audit (≥70%) and ship POST /v1/predict</a></li>
+<li><a href="K11.html#y2-t40-harden-v1predict-pydantic-constraints-error-envelope-json-logs">Y2-T40 · Harden /v1/predict: Pydantic constraints, error envelope, JSON logs</a></li>
+<li><a href="K11.html#y2-t41-add-10-api-tests-with-testclient-ci-coverage-60-blocks-merge">Y2-T41 · Add ≥10 API tests with TestClient; CI coverage ≥60% blocks merge</a></li>
+<li><a href="K12.html#y2-t42-p8-sign-off-api-with-tests-and-containerise-it-with-a-dockerfile">Y2-T42 · P8: sign off API with tests and containerise it with a Dockerfile</a></li>
+<li><a href="K12.html#y2-t43-harden-the-image-multi-stage-non-root-trivy-scan-compose-apidb">Y2-T43 · Harden the image: multi-stage, non-root, Trivy scan, compose API+DB</a></li>
+<li><a href="K12.html#y2-t44-ci-lint-test-build-and-push-sha-tagged-image-on-merge-to-main">Y2-T44 · CI: lint → test → build and push SHA-tagged image on merge to main</a></li>
+<li><a href="K12.html#y2-t45-deploy-v1-api-live-on-https-deploy-on-tag-smoke-test-rollback">Y2-T45 · Deploy v1: API live on HTTPS, deploy on tag, smoke test, rollback</a></li>
+<li><a href="K12.html#y2-t46-add-uptime-alert-5-min-saved-log-queries-and-one-measurable-slo">Y2-T46 · Add uptime alert (&lt;5 min), saved log queries and one measurable SLO</a></li>
+</ul>
+<h2 id="the-architecture">The architecture</h2>
+<p>Read the flow below as a story. Data and a trained model are read once when the API starts. The dashboard then asks the API for numbers, and the API replies in JSON, which is plain text in a structured layout that programs can read.</p>
+<div class="w w-flow" data-w="{&quot;title&quot;: &quot;How one prediction reaches your screen&quot;, &quot;nodes&quot;: [&quot;Data and model files&quot;, &quot;API service&quot;, &quot;Dashboard service&quot;, &quot;Your browser&quot;], &quot;steps&quot;: [{&quot;from&quot;: 0, &quot;to&quot;: 1, &quot;label&quot;: &quot;load at startup&quot;, &quot;note&quot;: &quot;When the API starts, it reads the cleaned readings and loads model.joblib, once.&quot;}, {&quot;from&quot;: 3, &quot;to&quot;: 2, &quot;label&quot;: &quot;open page&quot;, &quot;note&quot;: &quot;You type localhost:8501 into your browser.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 1, &quot;label&quot;: &quot;GET /stations, POST /predict&quot;, &quot;note&quot;: &quot;The dashboard asks the API for the station table and for a prediction.&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: 2, &quot;label&quot;: &quot;JSON reply&quot;, &quot;note&quot;: &quot;The API answers with JSON that the dashboard can turn into a table or a metric.&quot;}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;label&quot;: &quot;finished page&quot;, &quot;note&quot;: &quot;Streamlit sends the rendered page back to your browser.&quot;}]}"></div>
+
+<p>The project lives in one folder called citypulse. Each file has one job. The table lists them in the order you build them.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Built in step</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requirements.txt</td>
+<td>1</td>
+<td>The list of libraries to install, one per line</td>
+</tr>
+<tr>
+<td>make_data.py</td>
+<td>2</td>
+<td>Writes data/readings.csv with 675 rows, 3 of them faulty</td>
+</tr>
+<tr>
+<td>pipeline.py</td>
+<td>3, 5</td>
+<td>Loads, cleans and aggregates the readings</td>
+</tr>
+<tr>
+<td>dq_check.py</td>
+<td>4</td>
+<td>Assertions that stop the run if the data is wrong</td>
+</tr>
+<tr>
+<td>chart.py</td>
+<td>6</td>
+<td>Saves a chart as trend.png</td>
+</tr>
+<tr>
+<td>train.py</td>
+<td>7, 8</td>
+<td>Builds features, trains the model, saves model.joblib</td>
+</tr>
+<tr>
+<td>predict_demo.py</td>
+<td>9</td>
+<td>Reloads the saved model and predicts one value</td>
+</tr>
+<tr>
+<td>main.py</td>
+<td>10 to 13</td>
+<td>The FastAPI app: /health, /stations, /predict, logging, /metrics</td>
+</tr>
+<tr>
+<td>obs.py</td>
+<td>12, 13</td>
+<td>The JSON log formatter and the Metrics counters</td>
+</tr>
+<tr>
+<td>insight.py</td>
+<td>14</td>
+<td>Asks the free Qwen2.5 model for a one-sentence advisory</td>
+</tr>
+<tr>
+<td>dashboard.py</td>
+<td>15, 16</td>
+<td>The Streamlit web page</td>
+</tr>
+<tr>
+<td>test_app.py</td>
+<td>17</td>
+<td>The eight pytest tests</td>
+</tr>
+<tr>
+<td>Dockerfile</td>
+<td>18</td>
+<td>The recipe that builds the container image</td>
+</tr>
+<tr>
+<td>docker-compose.yml</td>
+<td>19</td>
+<td>Starts the api and ui services together</td>
+</tr>
+<tr>
+<td>.github/workflows/ci.yml</td>
+<td>20, 21</td>
+<td>The test job and the deploy job</td>
+</tr>
+<tr>
+<td>run_all.sh</td>
+<td>22</td>
+<td>The commands in order, written as a shell script</td>
+</tr>
+</tbody>
+</table>
+<p>Three files are generated, not written by you: data/readings.csv, model.joblib and trend.png. Your scripts create them, and you should not edit them by hand.</p>
+<h2 id="starting-from-zero">Starting from zero</h2>
+<p><strong>Python</strong> is the programming language used for everything in this project. A program is a text file of instructions, and Python runs those instructions line by line from top to bottom. You will write the code in editors and run it from a terminal, which is a window where you type commands. The Day chapter on Python for engineers covers the language in depth.</p>
+<p><strong>pandas</strong> is a library for tables of data. A library is code written by someone else that you can import and call. In pandas, a table is a DataFrame, with named columns and numbered rows. Steps 2 to 5 use it to read the CSV file, filter rows and group them. The earlier Day chapter on pandas covers it in depth.</p>
+<p><strong>scikit-learn</strong> is a library of standard machine-learning methods. Machine learning means fitting a model to examples so that it can predict something for new inputs. This project uses a LinearRegression, which draws the straight line through the examples that fits them best. The model is small, fast and free to run. The Day chapter on scikit-learn covers the method in depth.</p>
+<p><strong>matplotlib</strong> draws charts. You use it in step 6 to save a PNG image. It is set to the "Agg" mode, which draws to a file rather than a window, so it works on a server with no screen.</p>
+<p><strong>joblib</strong> saves a Python object, such as a trained model, to a file and loads it back later. The file model.joblib is the link between training and serving. The API never trains a model, it only loads this file.</p>
+<p><strong>FastAPI</strong> is a framework for building APIs in Python. A framework is a set of ready-made parts that you fill in. In FastAPI, you write a Python function and decorate it with a route such as @app.get("/health"). The decorator tells FastAPI which web address calls the function. <strong>Pydantic</strong> is the library FastAPI uses to check incoming data against types and limits, such as "hour must be a whole number from 0 to 23". The FastAPI chapter covers routes and Pydantic in depth.</p>
+<p><strong>JSON</strong> is a text format for structured data, built from key and value pairs in braces, for example {"status": "ok"}. Programs exchange JSON, and logs written as JSON can be searched by machines. In step 12 each log entry is one JSON object on one line.</p>
+<p><strong>Streamlit</strong> turns a Python script into a web page. You call functions such as st.title and st.dataframe, and Streamlit draws the page. You do not write any HTML. The page reruns from the top every time a user changes a control.</p>
+<p><strong>transformers, torch and Qwen2.5</strong> are the libraries and the model used for the advisory in step 14. The transformers library downloads a language model and runs it. torch is the engine that does the arithmetic. Qwen2.5-0.5B-Instruct is a small language model, with about half a billion parameters, that can run on a normal CPU, which is the main processor of a computer. It is free and needs no API key.</p>
+<p><strong>Docker</strong> packages a program and its environment into an image. An image is a read-only template. When you start an image, Docker creates a running container from it. A Dockerfile is a text file of instructions that builds an image, and docker-compose is a tool that starts several containers from one file called docker-compose.yml. The Docker chapters cover both in depth.</p>
+<p><strong>pytest</strong> runs tests. A test is a function that calls your code and checks a result with assert, which stops the test with an error when a statement is false. pytest reports how many tests passed. You will meet it in step 17.</p>
+<p><strong>GitHub Actions</strong> runs a list of commands on a fresh machine every time something happens in your repository, such as a push. The list is written in a YAML file, a text format that uses indentation to show structure. Each list of commands is a job.</p>
+<p><strong>curl</strong> sends a web request from the terminal, and <strong>jq</strong> formats and filters JSON text. You use them to check the API without a browser. The pipe symbol | sends the output of one command into the next.</p>
+<h2 id="build-it-step-by-step">Build it, step by step</h2>
+<h3 id="part-a-data-engineering">Part A — Data engineering</h3>
+<p><strong>Step 1 — Scaffold the multi-service project</strong></p>
+<p><em>What you are doing:</em> creating one repository with a file per concern, and one requirements file, so the same libraries install in CI, in Docker and on your laptop.</p>
+<div class="hl"><pre><span></span><code>pandas
+scikit-learn
+matplotlib
+fastapi
+uvicorn[standard]
+streamlit
+transformers
+torch
+joblib
+pytest
+httpx
+requests
+</code></pre></div>
+
+<p>Each line names one library. pip reads the file and installs each library. uvicorn[standard] means "install uvicorn, and also its optional extras", which square brackets always mean in this format. httpx is needed by FastAPI's test client in step 17.</p>
+<p>The slide says to pin every dependency, which means fixing each one to an exact version. The extract shows only names. Pin them by writing the versions your own install reports, for example fastapi==0.115 and pandas==2.2, so that a later install gives the same libraries.</p>
+<div class="hl"><pre><span></span><code>$ pip install -r requirements.txt
+</code></pre></div>
+
+<p><code>pip</code> is Python's package installer. <code>install</code> is the action. <code>-r requirements.txt</code> means "read the list of packages from this file", where <code>-r</code> stands for "requirements" and the file name is the last word.</p>
+<p><em>Expected output:</em> a line starting "Successfully installed", listing fastapi, pandas, scikit-learn, streamlit, uvicorn and about twelve packages in total.</p>
+<p><em>What it proves:</em> the whole stack installs from one command, which is what the container and CI will also do.</p>
+<p><strong>Step 2 — Ingest the raw readings</strong></p>
+<p><em>What you are doing:</em> generating a week of hourly PM2.5 readings for four stations, with three deliberately bad rows so that the cleaner has something to catch.</p>
+<div class="hl"><pre><span></span><code><span class="n">STATIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ST-01&quot;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s2">&quot;ST-02&quot;</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span>
+            <span class="s2">&quot;ST-03&quot;</span><span class="p">:</span><span class="mi">38</span><span class="p">,</span><span class="s2">&quot;ST-04&quot;</span><span class="p">:</span><span class="mi">61</span><span class="p">}</span>   <span class="c1"># baselines</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">168</span><span class="p">):</span>                 <span class="c1"># 7 days, hourly</span>
+    <span class="n">rush</span> <span class="o">=</span> <span class="mf">1.3</span> <span class="k">if</span> <span class="n">h</span><span class="o">%</span><span class="mi">24</span> <span class="ow">in</span> <span class="n">RUSH</span> <span class="k">else</span> <span class="mf">0.8</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">base</span> <span class="ow">in</span> <span class="n">STATIONS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">gauss</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">.2</span><span class="p">)</span><span class="o">*</span><span class="n">rush</span> <span class="o">+</span> <span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s2">&quot;pm25&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="n">rows</span> <span class="o">+=</span> <span class="p">[[</span><span class="s2">&quot;ST-02&quot;</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ST-09&quot;</span><span class="p">,</span><span class="o">...</span><span class="p">],</span>
+         <span class="p">[</span><span class="s2">&quot;ST-01&quot;</span><span class="p">,</span><span class="s2">&quot;bad-ts&quot;</span><span class="p">,</span><span class="o">...</span><span class="p">]]</span>   <span class="c1"># 3 planted faults</span>
+</code></pre></div>
+
+<p>The extract omits some lines: the imports, the definition of RUSH (the set of rush-hour hours), the creation of the rows list, and the line that builds ts. The <code>...</code> marks parts the extract leaves out. The full file is in the course workbook, so copy the missing lines from there rather than guessing them.</p>
+<p><code>STATIONS</code> is a dictionary, a set of key and value pairs. Each key is a station id and each value is that station's typical reading, its baseline. <code>range(168)</code> gives the numbers 0 to 167, which is 7 days times 24 hours. <code>h%24</code> is the remainder when h is divided by 24, so it gives the hour of the day. <code>gauss(1, .2)</code> draws a random number from a bell-shaped distribution with mean 1 and spread 0.2, from Python's standard random module. Each reading is the baseline, plus 8 times a random factor and the rush-hour multiplier, plus a small random noise. <code>rows.append</code> adds one row to the list. <code>round(val,1)</code> keeps one decimal place. The last line adds three faults on purpose: a negative value, a station that does not exist (ST-09), and a timestamp that is not a date.</p>
+<p><em>Expected output:</em> <code>wrote data/readings.csv: 675 rows</code>.</p>
+<p><em>What it proves:</em> 4 stations times 168 hours gives 672 good rows, and 672 plus 3 faults gives 675. The file has exactly the rows you planned.</p>
+<p><strong>Step 3 — Clean and validate</strong></p>
+<p><em>What you are doing:</em> loading the CSV, turning the timestamps into real dates, and removing unknown stations, impossible values and duplicates.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;data/readings.csv&quot;</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">],</span>
+                              <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">station_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">STATIONS</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span>
+            <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;clean: </span><span class="si">{</span><span class="n">before</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
+
+<p>The extract omits one line. The print statement uses <code>before</code>, which must be set straight after the CSV is read, as <code>before = len(df)</code>, so that the message shows the row count before cleaning. The line is needed for the output shown below.</p>
+<p><code>def load(path=...)</code> defines a function called load. A function is a named block of code you can call with inputs and that gives back a result. The path has a default value, so you can call load() with no argument. <code>pd.read_csv(path)</code> reads the file into a DataFrame. <code>pd.to_datetime(..., errors="coerce")</code> turns text into dates, and any value it cannot read becomes NaT, pandas' "not a time", instead of crashing. <code>df.station_id.isin(STATIONS)</code> gives True for rows whose station is in the dictionary, and <code>df[...]</code> keeps only those rows. <code>df.value.between(0, 500)</code> keeps values from 0 to 500 inclusive. <code>dropna(subset=["ts"])</code> removes rows whose timestamp is NaT. <code>drop_duplicates(["station_id","ts"])</code> keeps the first row for each station and time pair. The brackets around the two lines let you split one chain across lines. The f-string in print puts variable values into the text inside braces.</p>
+<p><em>Expected output:</em> <code>clean: 675 -&gt; 672 rows (3 dropped)</code>.</p>
+<p><em>What it proves:</em> exactly the three planted faults are removed. This is the function the model, the API and the dashboard all depend on.</p>
+<div class="w w-term" data-w="{&quot;lines&quot;: [{&quot;t&quot;: &quot;cmd&quot;, &quot;s&quot;: &quot;python pipeline.py&quot;}, {&quot;t&quot;: &quot;out&quot;, &quot;s&quot;: &quot;clean: 675 -&gt; 672 rows (3 dropped)&quot;}]}"></div>
+
+<p>This is the step to watch slowly. The trace below shows the same filtering logic on a short list, so that you can see the variables change. It uses a plain Python list instead of a DataFrame, so each reading is visible.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Filtering three readings&quot;, &quot;code&quot;: [&quot;rows = [(\&quot;ST-01\&quot;, \&quot;08:00\&quot;, 50.7), (\&quot;ST-09\&quot;, \&quot;08:00\&quot;, 40.0), (\&quot;ST-02\&quot;, \&quot;08:00\&quot;, -3.0)]&quot;, &quot;STATIONS = {\&quot;ST-01\&quot;: 42, \&quot;ST-02\&quot;: 55}&quot;, &quot;kept = []&quot;, &quot;for station, ts, value in rows:&quot;, &quot;    if station not in STATIONS:&quot;, &quot;        continue&quot;, &quot;    if not (0 &lt;= value &lt;= 500):&quot;, &quot;        continue&quot;, &quot;    kept.append((station, ts, value))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;rows&quot;, &quot;3 readings&quot;]], &quot;note&quot;: &quot;The three readings are stored in a list.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;rows&quot;, &quot;3 readings&quot;], [&quot;STATIONS&quot;, &quot;{\&quot;ST-01\&quot;: 42, \&quot;ST-02\&quot;: 55}&quot;]], &quot;note&quot;: &quot;The known station ids are stored in a dictionary.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;rows&quot;, &quot;3 readings&quot;], [&quot;STATIONS&quot;, &quot;{\&quot;ST-01\&quot;: 42, \&quot;ST-02\&quot;: 55}&quot;], [&quot;kept&quot;, &quot;[]&quot;]], &quot;note&quot;: &quot;Nothing has been kept yet.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-01\&quot;&quot;], [&quot;value&quot;, &quot;50.7&quot;]], &quot;note&quot;: &quot;The loop takes the first reading.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-01\&quot;&quot;], [&quot;value&quot;, &quot;50.7&quot;]], &quot;note&quot;: &quot;ST-01 is known, so the test is False and the code moves on.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-01\&quot;&quot;], [&quot;value&quot;, &quot;50.7&quot;]], &quot;note&quot;: &quot;50.7 is between 0 and 500, so the test is False.&quot;}, {&quot;line&quot;: 9, &quot;state&quot;: [[&quot;kept&quot;, &quot;[(\&quot;ST-01\&quot;, \&quot;08:00\&quot;, 50.7)]&quot;]], &quot;note&quot;: &quot;The first reading is kept.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-09\&quot;&quot;], [&quot;value&quot;, &quot;40.0&quot;]], &quot;note&quot;: &quot;The second reading.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-09\&quot;&quot;], [&quot;value&quot;, &quot;40.0&quot;]], &quot;note&quot;: &quot;ST-09 is not known, so the next line runs.&quot;}, {&quot;line&quot;: 6, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-09\&quot;&quot;], [&quot;value&quot;, &quot;40.0&quot;]], &quot;note&quot;: &quot;continue skips the rest of the loop body.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-02\&quot;&quot;], [&quot;value&quot;, &quot;-3.0&quot;]], &quot;note&quot;: &quot;The third reading.&quot;}, {&quot;line&quot;: 7, &quot;state&quot;: [[&quot;station&quot;, &quot;\&quot;ST-02\&quot;&quot;], [&quot;value&quot;, &quot;-3.0&quot;]], &quot;note&quot;: &quot;-3.0 is below 0, so the test is True and the next line runs.&quot;}, {&quot;line&quot;: 8, &quot;state&quot;: [[&quot;kept&quot;, &quot;[(\&quot;ST-01\&quot;, \&quot;08:00\&quot;, 50.7)]&quot;]], &quot;note&quot;: &quot;continue skips the append, so the bad reading is dropped.&quot;}]}"></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Checking the wrong list</div><p>A common error is to test <code>value &gt;= 0</code> but forget the upper limit of 500. The extract checks both ends with <code>between(0, 500)</code>. Keep both, because an impossible value above 500 is as wrong as a negative one.</p></div>
+
+<p><strong>Step 4 — Guard it with a data-quality gate</strong></p>
+<p><em>What you are doing:</em> writing assertions that stop the run when the data breaks an assumption.</p>
+<div class="hl"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span>   <span class="s2">&quot;negative reading&quot;</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;out of range&quot;</span>
+<span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span> \
+         <span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">&quot;duplicate&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data-quality checks: 3 passed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>df = load()</code> runs the cleaner from step 3. Each <code>assert</code> line has a condition and a message after the comma. If the condition is False, Python stops with an AssertionError and shows the message. <code>df.value.min()</code> finds the smallest value in the column. The backslash at the end of the third line joins it to the next line, so the statement continues. <code>groupby(...).size()</code> counts rows per station and time pair, and <code>.max() == 1</code> checks that no pair appears twice.</p>
+<p><em>Expected output:</em> the cleaner message, then <code>data-quality checks: 3 passed</code>.</p>
+<p><em>What it proves:</em> the assumptions are now code. If a future feed contains a negative value, the script fails with the message "negative reading", and the bad data never reaches the model.</p>
+<p><strong>Step 5 — Aggregate per station</strong></p>
+<p><em>What you are doing:</em> summarising the clean readings into one row per station, which is the shape the API will serve.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">per_station</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">])</span>
+              <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>groupby("station_id")</code> splits the rows into one group per station. <code>["value"]</code> selects the value column inside each group. <code>.agg(["count", "mean", "max"])</code> computes three summaries for each group: the number of rows, the average and the highest value. <code>.round(1)</code> rounds all results to one decimal place for display.</p>
+<p><em>Expected output:</em></p>
+<div class="hl"><pre><span></span><code>            count  mean   max
+station_id
+ST-01         168  50.3  62.9
+ST-02         168  63.2  74.9
+ST-03         168  46.4  61.3
+ST-04         168  68.8  82.0
+</code></pre></div>
+
+<p><em>What it proves:</em> each station has 168 readings, one per hour for a week. ST-04 has the highest mean, 68.8 µg/m³, so it is the dirtiest station in this data.</p>
+<h3 id="part-b-visualise-and-model">Part B — Visualise and model</h3>
+<p><strong>Step 6 — Chart the trends</strong></p>
+<p><em>What you are doing:</em> drawing a three-hour rolling average for each station and saving it as trend.png.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="p">;</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;ts&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">sid</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;3h&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">sid</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;µg/m³&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;trend.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">110</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>matplotlib.use("Agg")</code> must run before pyplot is imported, and it chooses the drawing mode that writes to a file. <code>set_index("ts")</code> makes the timestamp the row label, which pandas needs for time-based resampling. <code>plt.subplots</code> creates a figure, the whole picture, and one axes, the area with the axis lines. The loop draws one line per station. <code>resample("3h").mean()</code> groups the hourly values into three-hour blocks and averages each block. <code>label=sid</code> names the line for the legend. <code>ax.legend(ncol=4)</code> places the legend in four columns. <code>savefig</code> writes the picture; <code>dpi=110</code> sets the resolution in dots per inch.</p>
+<p><em>Expected output:</em> <code>wrote trend.png</code>, and a file of about 77 KB.</p>
+<p><em>What it proves:</em> the rush-hour peaks are visible in the picture, and the image is saved without any screen.</p>
+<p><strong>Step 7 — Engineer features</strong></p>
+<p><em>What you are doing:</em> adding two columns the model can learn from: the hour of the day and the previous reading at the same station.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;station_id&quot;</span><span class="p">,</span><span class="s2">&quot;ts&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ts</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;prev&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># lag-1</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;prev&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>A feature is an input column the model uses. <code>sort_values</code> puts each station's rows in time order, which matters because the lag depends on order. <code>.copy()</code> makes a new table, so the original is not changed. <code>df.ts.dt.hour</code> reads the hour from each timestamp. <code>shift(1)</code> moves each value down one row inside its group, so each row gets the previous reading. The group is needed so that the first reading of one station does not take the last reading of another. <code>dropna(subset=["prev"])</code> removes the first row of each station, which has no previous reading.</p>
+<div class="hl"><pre><span></span><code>$ python -c &quot;from train import *; print(features(load()).head())&quot;
+</code></pre></div>
+
+<p><code>python -c</code> runs a line of Python typed on the command line. <code>from train import *</code> imports everything from train.py. <code>head()</code> prints the first five rows.</p>
+<p><em>Expected output:</em> a table with columns station_id, hour, prev and value, with rows such as ST-01 at hour 1 with prev 50.1 and value 50.7.</p>
+<p><em>What it proves:</em> each row now carries an hour and the previous reading, which are the two inputs of the model.</p>
+<p><strong>Step 8 — Train, evaluate and persist</strong></p>
+<p><em>What you are doing:</em> fitting a linear model, testing it on rows it has not seen, and saving it.</p>
+<div class="hl"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span><span class="s2">&quot;prev&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<span class="n">Xtr</span><span class="p">,</span><span class="n">Xte</span><span class="p">,</span><span class="n">ytr</span><span class="p">,</span><span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;   R2 </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">&quot;model.joblib&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>X</code> holds the inputs and <code>y</code> holds the answer the model should predict. <code>train_test_split</code> shuffles the rows and sets 20 percent aside as the test set, so <code>test_size=.2</code>. <code>random_state=42</code> fixes the shuffle, so the same split happens every run. <code>fit</code> learns the best straight-line relation from the training rows. <code>predict</code> produces values for the test rows. MAE is the mean absolute error, the average size of the miss in µg/m³. R2 is the coefficient of determination, a score where 1 is perfect and 0 means no better than guessing the average. <code>joblib.dump</code> writes the fitted model to model.joblib.</p>
+<p>The imports at the top of train.py are needed: train_test_split comes from sklearn.model_selection, LinearRegression from sklearn.linear_model, and the two metrics from sklearn.metrics. The extract does not show them.</p>
+<p><em>Expected output:</em></p>
+<div class="hl"><pre><span></span><code>$ python train.py
+clean: 675 -&gt; 672 rows (3 dropped)
+MAE 4.89 µg/m³   R2 0.653
+saved model.joblib
+</code></pre></div>
+
+<p><em>What it proves:</em> the average error is 4.89 µg/m³, which the course treats as a useful baseline. The saved file, about 857 bytes, is the contract between training and serving.</p>
+<p><strong>Step 9 — Reload and predict</strong></p>
+<p><em>What you are doing:</em> checking that the saved file works on its own, outside the app.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;model.joblib&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;prev&quot;</span><span class="p">:</span> <span class="mf">55.0</span><span class="p">}])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span>
+      <span class="s2">&quot;ug/m3&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>joblib.load</code> reads the file back into a working model. <code>pd.DataFrame([{...}])</code> builds a one-row table with the same column names the model was trained on, and the names must match exactly. <code>model.predict(x)</code> returns an array with one value, <code>[0]</code> takes that value, and <code>float</code> turns it into an ordinary number. <code>round(..., 1)</code> rounds it.</p>
+<p><em>Expected output:</em> <code>reloaded model.joblib;</code> followed by <code>predict(hour=8, prev=55) -&gt; 55.2 ug/m3</code>.</p>
+<p><em>What it proves:</em> the API in part C can use the same file in the same way.</p>
+<h3 id="part-c-serve-it-observably">Part C — Serve it, observably</h3>
+<p><strong>Step 10 — API skeleton and station stats</strong></p>
+<p><em>What you are doing:</em> wrapping the pipeline and the model in FastAPI, and serving a health check and the station table.</p>
+<div class="hl"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;CityPulse&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+<span class="n">_df</span> <span class="o">=</span> <span class="n">load</span><span class="p">()</span>
+<span class="n">_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;model.joblib&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">version</span><span class="p">}</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/stations&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stations</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">per_station</span><span class="p">(</span><span class="n">_df</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+              <span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>app = FastAPI(...)</code> creates the application object. <code>_df = load()</code> and <code>_model = joblib.load(...)</code> run once, when the module is imported at startup. Every request then reuses them, so no request waits for training or file reading. The leading underscore is a convention meaning "private to this file". <code>@app.get("/health")</code> registers the function below it for GET requests to that address. A GET request asks for data, and a POST request, used later, sends data. <code>reset_index()</code> turns the station name from a row label into an ordinary column. <code>to_dict("records")</code> turns the table into a list of dictionaries, one per station, which FastAPI converts to JSON.</p>
+<div class="hl"><pre><span></span><code>$ curl -s localhost:8000/stations | jq &#39;.[0]&#39;
+</code></pre></div>
+
+<p><code>curl -s</code> fetches the address and <code>-s</code> hides the progress meter. The pipe passes the JSON to <code>jq</code>, and <code>'.[0]'</code> selects the first item of the list.</p>
+<p><em>Expected output:</em> a JSON object with station_id "ST-01", count 168, mean 50.3 and max 62.9.</p>
+<p><em>What it proves:</em> the service is running, and /stations returns the aggregate in a form the dashboard can render.</p>
+<p><strong>Step 11 — Predict, with validation</strong></p>
+<p><em>What you are doing:</em> accepting an hour and the last reading, returning a prediction and a category, and rejecting impossible input.</p>
+<div class="hl"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PredictIn</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hour</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+    <span class="n">prev</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">PredictIn</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;hour&quot;</span><span class="p">:</span><span class="n">p</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span><span class="s2">&quot;prev&quot;</span><span class="p">:</span><span class="n">p</span><span class="o">.</span><span class="n">prev</span><span class="p">}])</span>
+    <span class="n">pm25</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="n">pm25</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">(</span><span class="n">pm25</span><span class="p">)}</span>
+</code></pre></div>
+
+<p><code>class PredictIn(BaseModel)</code> defines the shape of an incoming request. <code>hour: int</code> means the value must be a whole number. <code>Field(ge=0, le=23)</code> adds the limits: "greater than or equal to 0" and "less than or equal to 23". If a request breaks these rules, FastAPI replies with status 422 and an explanation, before your function runs. <code>@app.post</code> handles POST requests, which carry data in the body. The parameter <code>p: PredictIn</code> tells FastAPI to parse and check the body against the class.</p>
+<p>The function <code>category</code> is used but the extract does not show it. It turns a number into a label such as Unhealthy. The course file defines its bands. Copy them from the course material rather than inventing your own, because the expected output below depends on them.</p>
+<div class="hl"><pre><span></span><code>$ curl -s -XPOST localhost:8000/predict -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;hour&quot;:19,&quot;prev&quot;:70}&#39;
+</code></pre></div>
+
+<p><code>-XPOST</code> sets the request method to POST. <code>-H</code> adds a header that tells the server the body is JSON, which FastAPI needs. <code>-d</code> sends the text that follows as the body.</p>
+<p><em>Expected output:</em> <code>{"pm25": 67.3, "category": "Unhealthy"}</code>. With hour set to 99, the reply is status 422 and the message "Input should be less than or equal to 23".</p>
+<p><em>What it proves:</em> the endpoint returns a checked prediction, and bad input gets a clear error.</p>
+<p><strong>Step 12 — Structured JSON logging</strong></p>
+<p><em>What you are doing:</em> replacing print statements with JSON log lines, and adding one middleware that logs every request.</p>
+<div class="hl"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">JsonFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">levelname</span><span class="p">,</span>
+          <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">getMessage</span><span class="p">(),</span> <span class="o">**</span><span class="nb">vars</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+          <span class="s2">&quot;extra&quot;</span><span class="p">,</span> <span class="p">{})})</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">middleware</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">observe</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="n">ms</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;extra&quot;</span><span class="p">:{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span>
+      <span class="n">req</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span>
+      <span class="s2">&quot;ms&quot;</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span><span class="mi">1</span><span class="p">)}})</span>
+    <span class="k">return</span> <span class="n">resp</span>
+</code></pre></div>
+
+<p>A formatter controls how a log record becomes text. <code>class JsonFormatter(logging.Formatter)</code> creates a formatter that inherits from Python's built-in one, and <code>format</code> replaces its output. <code>json.dumps</code> turns a dictionary into a JSON string. <code>**vars(r).get("extra", {})</code> copies in any extra fields attached to the log record, using <code>**</code>, which unpacks a dictionary into the surrounding one.</p>
+<p>A middleware is code that runs around every request. <code>@app.middleware("http")</code> registers it. <code>t0 = time.time()</code> records the start time. <code>await call_next(req)</code> passes the request on to the route and waits for the response, which is why the keyword await appears. <code>ms</code> is the elapsed time in milliseconds. <code>log.info(...)</code> writes one log record, with the path, status code and latency in its extra field.</p>
+<p>The extract does not show how <code>log</code> is created or how JsonFormatter is attached to a handler. Standard practice is <code>log = logging.getLogger(__name__)</code> plus a handler that uses JsonFormatter. If your output is plain text rather than JSON, the handler is not using this formatter.</p>
+<div class="hl"><pre><span></span><code>$ curl -s localhost:8000/predict ...
+{&quot;level&quot;:&quot;INFO&quot;,&quot;msg&quot;:&quot;request&quot;,&quot;path&quot;:&quot;/predict&quot;,&quot;status&quot;:200,&quot;ms&quot;:1.5}
+{&quot;level&quot;:&quot;INFO&quot;,&quot;msg&quot;:&quot;request&quot;,&quot;path&quot;:&quot;/predict&quot;,&quot;status&quot;:422,&quot;ms&quot;:0.4}
+</code></pre></div>
+
+<p><em>Expected output:</em> one JSON line per request, with the status 200 for a good call and 422 for the rejected one.</p>
+<p><em>What it proves:</em> every request is now a structured event that a log tool can filter by status, path or latency.</p>
+<p><strong>Step 13 — A /metrics health view</strong></p>
+<p><em>What you are doing:</em> counting requests, errors and latency inside the process, and exposing the counts at /metrics.</p>
+<div class="hl"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Metrics</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">ms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requests</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">400</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latency_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">latency_ms</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;uptime_s&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;requests_total&quot;</span><span class="p">:</span>
+          <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+          <span class="s2">&quot;errors_total&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+          <span class="s2">&quot;p50_ms&quot;</span><span class="p">:</span> <span class="n">lat</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]}</span>
+</code></pre></div>
+
+<p>A class groups data and the functions that work on it. <code>self</code> refers to the object itself. <code>self.requests[path] += 1</code> adds one to a counter for that path. For this to work without errors, self.requests must start as a counter that gives 0 for a new key, such as collections.Counter or defaultdict(int). <code>status &gt;= 400</code> treats 4xx and 5xx responses as errors. <code>append</code> adds a latency value to a list. In <code>snapshot</code>, <code>sorted</code> puts the latencies in order, and <code>or [0]</code> supplies a default when the list is empty. <code>lat[len(lat)//2]</code> picks the middle value, which is the median, also called p50. The <code>//</code> operator divides and drops the remainder.</p>
+<p>The extract shows <code>"uptime_s": ...</code> without its calculation, and the example output includes a by_path field that the snapshot code does not build. Work out both from the course file, and make sure your snapshot returns every field the example shows.</p>
+<div class="hl"><pre><span></span><code>$ curl -s localhost:8000/metrics | jq
+</code></pre></div>
+
+<p><em>Expected output:</em> JSON with uptime_s, requests_total, errors_total, p50_ms and by_path. After four requests with one error, requests_total is 4 and errors_total is 1.</p>
+<p><em>What it proves:</em> the service reports its own health with real counters, which the dashboard and any alert can read.</p>
+<h3 id="part-d-plain-english-advice">Part D — Plain-English advice</h3>
+<p><strong>Step 14 — Advisory from a free CPU model</strong></p>
+<p><em>What you are doing:</em> asking a small language model for one sentence of health advice about a station's reading.</p>
+<div class="hl"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-0.5B-Instruct&quot;</span>
+<span class="n">tok</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">advisory</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">pm25</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+    <span class="n">msgs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span>
+             <span class="s2">&quot;Answer in ONE short sentence.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;PM2.5 at &quot;</span>
+             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">station</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">pm25</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">}]</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">tok</span><span class="p">(</span><span class="n">tok</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">msgs</span><span class="p">,</span>
+      <span class="n">tokenize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+      <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">ids</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tok</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ids</span><span class="o">.</span><span class="n">input_ids</span>
+      <span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>M</code> is the name of the model on the Hugging Face model hub, a public library of models. <code>AutoTokenizer</code> converts text into the numbers the model reads, and <code>AutoModelForCausalLM</code> loads a model that writes text one token at a time. A token is a word or a piece of a word. The <code>msgs</code> list is a chat: a system message sets the rule, and a user message holds the question. <code>apply_chat_template</code> wraps the chat in the layout this model was trained to expect. <code>return_tensors="pt"</code> asks for PyTorch arrays. <code>generate</code> writes new tokens, and <code>max_new_tokens=50</code> caps the reply at 50 tokens. The last line keeps only the new tokens, by skipping the length of the prompt, and turns them back into text.</p>
+<p>The model is not in the Dockerfile, so the first call downloads it from the hub. The container needs network access the first time it runs advisory().</p>
+<div class="hl"><pre><span></span><code>$ python insight.py
+ST-04 (68.8, Unhealthy): Residents should
+  reduce outdoor activities and use masks.
+</code></pre></div>
+
+<p><em>Expected output:</em> one sentence of advice for each station. The wording comes from the model, so it may vary from one run to another.</p>
+<p><em>What it proves:</em> the platform can give plain-language advice with no paid API, no key and no GPU, which is a graphics processor.</p>
+<h3 id="part-e-the-dashboard">Part E — The dashboard</h3>
+<p><strong>Step 15 — Build the Streamlit dashboard</strong></p>
+<p><em>What you are doing:</em> building the page with a title, a table and a chart, with the API address taken from the environment.</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="n">API</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;API_URL&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;http://api:8000&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CityPulse — Air-Quality Monitor&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/stations&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;station_id&quot;</span><span class="p">)[</span><span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p><code>os.environ</code> is the set of environment variables, named settings that a program reads from the operating system. <code>.get("API_URL", default)</code> reads API_URL, or uses the default if it is missing. The default <code>http://api:8000</code> uses the service name api, which only works inside the compose network. <code>requests.get(...)</code> sends a GET request, and <code>.json()</code> turns the reply into Python data. <code>st.title</code> draws the heading. <code>st.dataframe</code> shows a table, and <code>use_container_width=True</code> stretches it to the page width. <code>st.bar_chart</code> draws one bar per station, with the station ids as the index and the mean column as the bar heights.</p>
+<div class="hl"><pre><span></span><code>$ streamlit run dashboard.py
+  Local URL: http://localhost:8501
+</code></pre></div>
+
+<p><code>streamlit run</code> starts the server for the script. Port 8501 is the default Streamlit port.</p>
+<p><em>Expected output:</em> the page at http://localhost:8501 with a title, a table of four rows and a bar chart.</p>
+<p><em>What it proves:</em> the dashboard reads the API's data, and the same code works in the container once API_URL is set.</p>
+<p><strong>Step 16 — Wire in prediction and live health</strong></p>
+<p><em>What you are doing:</em> adding a form that calls /predict, and a sidebar that shows /metrics.</p>
+<div class="hl"><pre><span></span><code><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">form</span><span class="p">(</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;last pm2.5&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">70.0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;Predict next hour&quot;</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/predict&quot;</span><span class="p">,</span>
+          <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hour&quot;</span><span class="p">:</span><span class="n">hour</span><span class="p">,</span><span class="s2">&quot;prev&quot;</span><span class="p">:</span><span class="n">prev</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Predicted PM2.5&quot;</span><span class="p">,</span>
+                  <span class="n">r</span><span class="p">[</span><span class="s2">&quot;pm25&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">])</span>
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;Service health&quot;</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/metrics&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+
+<p><code>with st.form("predict"):</code> groups the widgets, so that they are sent together when the button is pressed, not on every change. <code>st.slider("hour", 0, 23, 19)</code> creates a slider from 0 to 23 starting at 19. <code>st.number_input</code> creates a number box with a starting value of 70.0. Inside the <code>if</code>, the button returns True only on the run where it was pressed. <code>requests.post(..., json=...)</code> sends the values as JSON in the body. <code>st.metric</code> shows a labelled number, here the predicted value, with the category as its change note. <code>with st.sidebar:</code> places the next block in the side panel, and <code>st.json</code> shows the JSON as a collapsible tree.</p>
+<div class="hl"><pre><span></span><code>$ # in the browser: Predict next hour
+Predicted PM2.5   67.3   Unhealthy
+</code></pre></div>
+
+<p>The first line is a comment, which Python and the shell ignore.</p>
+<p><em>Expected output:</em> after you press the button, a metric showing 67.3 with Unhealthy, and a sidebar with the request counts.</p>
+<p><em>What it proves:</em> one screen now shows the data, the forecast and the service's own health.</p>
+<h3 id="part-f-test-containerise-and-ship">Part F — Test, containerise and ship</h3>
+<p><strong>Step 17 — The full pytest suite</strong></p>
+<p><em>What you are doing:</em> testing the cleaner, the aggregate, the API, the validation and the metrics counter, with no running server.</p>
+<div class="hl"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_cleaner_drops_bad_rows</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">load</span><span class="p">();</span> <span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_metrics_counts_requests</span><span class="p">():</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/metrics&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;requests_total&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_predict_validation</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict&quot;</span><span class="p">,</span>
+      <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hour&quot;</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span><span class="s2">&quot;prev&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
+      <span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+</code></pre></div>
+
+<p><code>TestClient(main.app)</code> wraps the application so that tests can send requests to it directly, inside Python. The test file also needs <code>import main</code> and <code>from pipeline import load</code>, which the extract does not show. A test function's name starts with test_, which is how pytest finds it. Each function makes a claim with assert. <code>test_metrics_counts_requests</code> calls /health first, so that the counter is at least 1. <code>test_predict_validation</code> expects the status 422 for hour 99.</p>
+<div class="hl"><pre><span></span><code>$ pytest -q
+........                               [100%]
+8 passed in 1.67s
+</code></pre></div>
+
+<p><code>pytest</code> runs every test it finds. <code>-q</code> means quiet, so it shows one dot per test instead of the full names.</p>
+<p><em>Expected output:</em> eight dots and <code>8 passed</code>. The extract shows the three tests above; the other five cover the rest of the list in the slide, so write each one to the same pattern.</p>
+<p><em>What it proves:</em> the eight tests are the gate CI uses. Nothing ships unless the data, the API and the logging all still behave.</p>
+<p><strong>Step 18 — Containerise the app</strong></p>
+<p><em>What you are doing:</em> writing the recipe that builds one image holding the code, the data and the model.</p>
+<div class="hl"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>python<span class="w"> </span>make_data.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>train.py
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;uvicorn&quot;</span>,<span class="w"> </span><span class="s2">&quot;main:app&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;--host&quot;</span>,<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span>,<span class="w"> </span><span class="s2">&quot;--port&quot;</span>,<span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="o">]</span>
+</code></pre></div>
+
+<p><code>FROM python:3.11-slim</code> starts from an official image that already has Python 3.11 and little else. <code>WORKDIR /app</code> sets the folder for the next instructions. <code>COPY requirements.txt .</code> copies that one file first. Docker caches each step, so when only your code changes, the slow install below is reused. <code>RUN pip install --no-cache-dir ...</code> installs the libraries, and <code>--no-cache-dir</code> stops pip keeping download files, which keeps the image small. <code>COPY . .</code> copies the rest of the project in. <code>RUN python make_data.py &amp;&amp; python train.py</code> runs at build time, so the data and the model are saved inside the image. <code>&amp;&amp;</code> runs the second command only if the first succeeds. <code>EXPOSE 8000</code> documents the port the app uses, but does not publish it. <code>CMD</code> is the command the container runs when it starts. The list form runs uvicorn, a server for Python web apps, with main:app meaning "the app object in main.py". <code>--host 0.0.0.0</code> makes the server accept connections from outside the container.</p>
+<div class="hl"><pre><span></span><code>$ docker build -t citypulse:2.0 .
+</code></pre></div>
+
+<p><code>docker build</code> reads the Dockerfile in the current folder, which is the <code>.</code> at the end. <code>-t citypulse:2.0</code> gives the image a name and a tag, the version after the colon.</p>
+<p><em>Expected output:</em> the build steps, including <code>RUN python make_data &amp;&amp; train</code> printing <code>wrote data/readings.csv: 675 rows</code> and <code>MAE 4.89 µg/m³ R2 0.653</code>, then <code>naming to citypulse:2.0</code>.</p>
+<p><em>What it proves:</em> one portable image contains the data and the model, so it runs the same on any machine.</p>
+<div class="box box-trap"><div class="box-h">Trap: EXPOSE does not open the port</div><p>Many people think EXPOSE makes the app reachable from their laptop. It does not. The port is published to your machine by the <code>ports</code> line in docker-compose.yml in step 19.</p></div>
+
+<p><strong>Step 19 — Run both services with compose</strong></p>
+<p><em>What you are doing:</em> starting the API and the dashboard together, with the dashboard waiting until the API is healthy.</p>
+<div class="hl"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;8000:8000&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;python&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">             </span><span class="s">&quot;...urlopen(&#39;/health&#39;)&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">ui</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">citypulse:2.0</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streamlit run dashboard.py ...</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">API_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://api:8000&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;8501:8501&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">api</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="nv">service_healthy</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+
+<p><code>services:</code> lists the containers. Each one is indented under it. <code>build: .</code> builds the api image from the Dockerfile. <code>ports: ["8000:8000"]</code> means port 8000 on your machine goes to port 8000 in the container, with the host port first. <code>healthcheck</code> runs the command in <code>test</code> at intervals, and the container counts as healthy when it succeeds. The extract cuts off the command. It must make a request to http://localhost:8000/health and exit with an error if that request fails. <code>ui</code> runs the same image, through the <code>command</code> line. <code>environment</code> sets API_URL, so the dashboard calls http://api:8000. The name api is the service name, which compose makes resolve on its private network. <code>depends_on</code> with <code>condition: service_healthy</code> makes ui wait until the api healthcheck passes.</p>
+<div class="box box-trap"><div class="box-h">Trap: The image name for ui</div><p>The ui service asks for an image called citypulse:2.0. That image exists only if you built it with the tag in step 18. If compose says the image is not found, add <code>image: citypulse:2.0</code> to the api service too, so that both services share one tagged image, as the slide's note "api + ui from one image" describes.</p></div>
+
+<div class="hl"><pre><span></span><code>$ docker compose up
+ ✔  Container cp_d25-api-1  Healthy
+ ✔  Container cp_d25-ui-1   Started
+</code></pre></div>
+
+<p><code>docker compose up</code> starts all services in the file and shows their logs. The name cp_d25-api-1 is generated from the folder name and the service name, so it will differ on your machine.</p>
+<p><em>Expected output:</em> the api container reports Healthy before ui starts, and the logs show Uvicorn running on 0.0.0.0:8000 and the Streamlit local URL.</p>
+<p><em>What it proves:</em> two services start on one network, in the right order, with one command.</p>
+<p><strong>Step 20 — CI on every push</strong></p>
+<p><em>What you are doing:</em> writing the test job, which runs on a fresh machine every time code is pushed to main.</p>
+<div class="hl"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-cd</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> push</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python make_data.py &amp;&amp; python train.py</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+</code></pre></div>
+
+<p>The file is in <code>.github/workflows/</code>, which is the folder GitHub Actions reads. <code>name</code> is a label. <code>on: { push: { branches: [main] } }</code> says the workflow runs on pushes to the main branch. <code>jobs:</code> lists the jobs, and <code>test</code> is one of them. <code>runs-on: ubuntu-latest</code> picks a Linux machine supplied by GitHub. Each <code>- uses:</code> line runs a ready-made action. <code>actions/checkout@v4</code> downloads your code, and <code>@v4</code> is the version of the action. <code>actions/setup-python@v5</code> installs Python 3.11. Each <code>- run:</code> line runs a shell command. The three commands install the libraries, rebuild the data and model, and run the tests. A failing command stops the job, so the job fails.</p>
+<div class="hl"><pre><span></span><code>$ gh run watch
+test  pytest -q (8 passed) .... ✓
+✓  test succeeded in 1m18s
+</code></pre></div>
+
+<p><code>gh</code> is the GitHub command-line tool. <code>gh run watch</code> shows the progress of the latest run.</p>
+<p><em>Expected output:</em> a tick beside each step and "test succeeded".</p>
+<p><em>What it proves:</em> every push is tested on a clean machine, which matches the container.</p>
+<p><strong>Step 21 — CD: build, push and deploy</strong></p>
+<p><em>What you are doing:</em> adding a second job that runs only when the tests pass, and that builds and pushes the image to the GitHub container registry, ghcr.io.</p>
+<p>The extract writes this job in a compact style with braces on one line. The block below uses the same settings written one per line, which YAML reads in the same way. Quoting the tags value keeps YAML from treating the braces as structure.</p>
+<div class="hl"><pre><span></span><code><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">packages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/login-action@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.actor }}</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v6</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ghcr.io/${{</span><span class="nv"> </span><span class="s">github.repository</span><span class="nv"> </span><span class="s">}}:${{</span><span class="nv"> </span><span class="s">github.sha</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</code></pre></div>
+
+<p><code>needs: test</code> means this job starts only after the test job succeeds. <code>permissions: packages: write</code> lets the job publish to the package registry. <code>docker/login-action</code> signs in to ghcr.io. <code>github.actor</code> is the GitHub user who made the push. <code>secrets.GITHUB_TOKEN</code> is a temporary token that GitHub creates for each run. You never type it into the code, which is why the slide notes "no secrets in code". <code>docker/build-push-action</code> builds the image and pushes it. <code>github.repository</code> is the repository name, and <code>github.sha</code> is the commit id, so each image is tagged with the exact commit it came from.</p>
+<p>The extract shows no step that actually starts the new containers on a server, but its output reports "compose up api + ui live". Check the course file for that step before you rely on the deploy message.</p>
+<div class="hl"><pre><span></span><code>$ git push origin main
+test    8 passed ...................... ✓
+deploy  build citypulse:ab12c3 (44s) ... ✓
+deploy  push ghcr.io/org/citypulse ..... ✓
+</code></pre></div>
+
+<p><em>Expected output:</em> test passes, then deploy builds, pushes and reports the image name.</p>
+<p><em>What it proves:</em> a push is the only manual step, and the deploy waits for green tests.</p>
+<p><strong>Step 22 — Ship it, end to end</strong></p>
+<p><em>What you are doing:</em> putting the full flow in one script, so you can see the order of the commands.</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>make_data.py<span class="w">       </span><span class="c1"># data</span>
+python<span class="w"> </span>train.py<span class="w">           </span><span class="c1"># model</span>
+pytest<span class="w"> </span>-q<span class="w">                 </span><span class="c1"># 8 tests</span>
+docker<span class="w"> </span>compose<span class="w"> </span>build<span class="w">      </span><span class="c1"># package</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">      </span><span class="c1"># CI/CD deploys</span>
+</code></pre></div>
+
+<p>In a shell script, a line starting with <code>#</code> is a comment. Each other line is a command run in order. The script does not stop on errors unless you add <code>set -e</code> at the top, so check each result yourself. <code>docker compose build</code> builds the images from docker-compose.yml, and <code>git push origin main</code> sends your commit to the main branch, where CI/CD takes over.</p>
+<div class="hl"><pre><span></span><code>$ curl -s https://citypulse.example.app/metrics | jq &#39;.requests_total&#39;
+128
+</code></pre></div>
+
+<p>The address in the source is an example. Use the address of your own deployment.</p>
+<p><em>Expected output:</em> a single number, the total count of requests served.</p>
+<p><em>What it proves:</em> data, model, API, UI, logs, metrics and deployment all work as one platform.</p>
+<h2 id="the-part-g-challenges">The Part G challenges</h2>
+<p>These five challenges are assessed work. Each one builds on the code above. The sections below give you the requirement, the test it must pass, the ideas you need and a plan. They do not give finished code. Write your own version, keep the eight tests green and let CI check it.</p>
+<h3 id="challenge-1-persist-the-metrics-easy-data">Challenge 1 — Persist the metrics (easy, data)</h3>
+<p><strong>What is asked.</strong> Have the middleware append each request's path, status and latency as a row to a file called metrics.csv. Add a /metrics/history endpoint that returns the last 20 rows, read with pandas.</p>
+<p><strong>Done when:</strong> "GET /metrics/history returns the 20 most recent requests as JSON."</p>
+<p><strong>Ideas you need.</strong> Appending to a file, which opens it in a mode that adds at the end. Writing a header row only once. Reading a CSV with pandas, and selecting the last rows with tail. Converting a DataFrame to a list of records, as in step 10.</p>
+<p><strong>Plan of attack.</strong>
+1. Decide the column names: path, status and ms.
+2. In the middleware, after the response is ready, append one row to metrics.csv.
+3. Write the header only when the file does not exist yet.
+4. In the new endpoint, read metrics.csv with pandas, keep the last 20 rows and return them as JSON.
+5. Handle the case where the file has fewer than 20 rows, or does not exist yet, and return an empty list instead of an error.
+6. Add a test that calls /health a few times and then checks the history.</p>
+<p><strong>Mistakes that fail the test.</strong> Returning the first 20 rows instead of the last 20. Writing the header on every append, which puts text into the middle of the data. Forgetting that the file is lost when the container is rebuilt unless you store it somewhere that persists.</p>
+<h3 id="challenge-2-alert-on-model-drift-medium-model">Challenge 2 — Alert on model drift (medium, model)</h3>
+<p><strong>What is asked.</strong> In train.py, write the test MAE to a file called model_card.json. Add a check that fails the run with exit code 1 when MAE is above 6.0, so a bad retrain cannot be saved.</p>
+<p><strong>Done when:</strong> "A deliberately-degraded model exits non-zero and model.joblib is not overwritten."</p>
+<p><strong>Ideas you need.</strong> A JSON file is written with the json module. sys.exit(1) stops a script with a failure code. Exit codes are how a program tells the shell or CI that it failed. Order of steps matters: a save must come after a check.</p>
+<p><strong>Plan of attack.</strong>
+1. Compute the test MAE as in step 8, and write it to model_card.json.
+2. Move the joblib.dump line so that it runs only after the check passes.
+3. Add the check: if MAE is greater than 6.0, print a clear message and exit with code 1.
+4. Make a degraded model on purpose, for example by training on shuffled targets, and run train.py.
+5. Confirm the exit code with <code>echo $?</code> on the next line in bash, which shows the code of the last command.
+6. Confirm the old model.joblib still has its old timestamp.</p>
+<p><strong>Mistakes that fail the test.</strong> Saving the model before the check, so a bad model overwrites the good one. Calling sys.exit(0) on failure, which makes CI think the run passed. Checking R2 instead of the MAE the task names. Storing the threshold as text, so the comparison goes wrong.</p>
+<h3 id="challenge-3-readiness-versus-liveness-medium-api">Challenge 3 — Readiness versus liveness (medium, API)</h3>
+<p><strong>What is asked.</strong> Split /health into /livez, which always returns 200, and /readyz, which returns 200 only once the model is loaded. Point the compose healthcheck at /readyz.</p>
+<p><strong>Done when:</strong> "The UI starts only after /readyz returns 200; /livez answers during startup."</p>
+<p><strong>Ideas you need.</strong> Liveness means the process is running. Readiness means it can serve real requests. A healthcheck decides when a container counts as healthy. HTTP status codes, where 200 means success and 503 is the usual code for "not ready yet".</p>
+<p><strong>Plan of attack.</strong>
+1. Write /livez to return a success status unconditionally.
+2. Write /readyz to check that _model and _df exist and are usable, then return 200. Otherwise return 503.
+3. Keep /health working, or make it an alias, so that existing tests still pass.
+4. Change the compose healthcheck to call /readyz with the full URL.
+5. Start the stack with docker compose up and watch the order of the containers.
+6. Call /livez while the api is still starting, to confirm it answers.</p>
+<p><strong>Mistakes that fail the test.</strong> Making /readyz always return 200, which defeats the point. Loading the model lazily inside a request, which hides the not-ready state. Leaving the healthcheck on /health, so the UI starts before the model is loaded.</p>
+<h3 id="challenge-4-cache-the-llm-advisory-hard-llm">Challenge 4 — Cache the LLM advisory (hard, LLM)</h3>
+<p><strong>What is asked.</strong> Add GET /advisory/{station} that returns the Qwen2.5 advisory for the station's latest reading. Memoise the result per (station, category), so repeat calls skip generation and log a cache hit.</p>
+<p><strong>Done when:</strong> "A second call to /advisory/ST-04 logs cache_hit=true and returns instantly."</p>
+<p><strong>Ideas you need.</strong> A path parameter, written in braces in the route, is read into the function's argument. Memoising means remembering a result for a given input. A dictionary keyed by a tuple, such as (station, category), works well. The model is slow, so a cache hit should skip generate().</p>
+<p><strong>Plan of attack.</strong>
+1. Find the latest reading for the station in _df, and compute its category with the same function the predict endpoint uses.
+2. Build the cache key from the station and the category, as a tuple.
+3. If the key is in the cache, log cache_hit=true with the structured logger and return the stored text.
+4. If not, call advisory() from insight.py, store the result, log cache_hit=false and return it.
+5. Test it by calling the endpoint twice and reading the log lines.</p>
+<p><strong>Mistakes that fail the test.</strong> Using only the station as the key, which returns stale advice when the category changes. Using print instead of the structured logger, so the log line is not JSON. Importing insight.py in a way that loads the model when the test starts, which can make tests very slow. Forgetting that the first call is always slow, so the timing check applies only to the second call.</p>
+<h3 id="challenge-5-zero-downtime-rollout-hard-cicd">Challenge 5 — Zero-downtime rollout (hard, CI/CD)</h3>
+<p><strong>What is asked.</strong> Extend the deploy job so that it starts the new image, polls /readyz until it is healthy, switches traffic and stops the old container. If /readyz never passes, roll back automatically.</p>
+<p><strong>Done when:</strong> "A push with a failing /readyz leaves the previous version serving and the run is marked failed."</p>
+<p><strong>Ideas you need.</strong> A rollout starts the new version alongside the old one, so users are not left without a service. A poll is a loop that checks a condition until it passes or a timeout runs out. A shell step that exits non-zero marks the Actions run as failed.</p>
+<p><strong>Plan of attack.</strong>
+1. Start the new container on a different host port, while the old one keeps serving on 8000.
+2. Write a loop that calls /readyz on the new port every few seconds, with a total timeout.
+3. If the loop sees 200, switch traffic: stop the old container and make the new one answer on port 8000.
+4. If the timeout runs out, stop the new container, leave the old one running and exit with code 1.
+5. Test the failure path by making /readyz fail on purpose in a branch, and check that the old version still answers.</p>
+<p><strong>Mistakes that fail the test.</strong> Stopping the old container before the new one is ready, which causes downtime. A loop with no timeout, which hangs the job forever. Polling /health instead of /readyz. Rolling back without failing the run, so the workflow looks green while the new version never went live.</p>
+<h2 id="viva-preparation">Viva preparation</h2>
+<p>The capstone viva scores four things, each from 0 to 5. The first is acceptance criteria met: does the project do what the brief and the five challenges say, and does each Done when test pass? The second is technical depth: can you explain why each tool is used and what happens inside it, such as the data flow, the validation and the healthcheck order? The third is contribution and ownership: can you say which parts you wrote, which you changed, and which problems you solved yourself? The fourth is understanding: can you answer a question you have not seen before by reasoning from the design?</p>
+<p>Practise the eight questions below out loud. Each answer is a model. Use your own words, but keep the facts.</p>
+<p><strong>Q1. Walk me through what happens from a git push to a live service.</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>A push to main starts the GitHub Actions workflow. The test job checks out the code, installs the libraries from requirements.txt, rebuilds the data and model, and runs pytest. If any step fails, the job stops. If the tests pass, the deploy job starts, logs in to ghcr.io with the temporary GITHUB_TOKEN, builds the image tagged with the commit id, and pushes it. The rollout then starts both services from that image, and the UI waits until the API healthcheck passes.</p></details>
+
+<p><strong>Q2. Why does the API load model.joblib at startup rather than training when a request arrives?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Training takes time and needs the full data, but serving needs an answer in milliseconds. Loading the saved file once, at startup, makes every request fast. It also means the model that serves is exactly the file that was tested, so training and serving stay in sync. The file is the contract between the two halves.</p></details>
+
+<p><strong>Q3. How does the data-quality gate fail a run, and why use assertions rather than printed warnings?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Each assert checks a rule, such as no negative values or no duplicate station and time pairs. When a condition is False, Python raises an AssertionError, which stops the script with a non-zero exit code. A printed warning would let the pipeline continue, and the bad numbers would reach the model and the dashboard. The failure stops the pipeline before it can ship a wrong number.</p></details>
+
+<p><strong>Q4. What does depends_on with service_healthy guarantee, and what does it not guarantee?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>It guarantees that Compose starts the ui service only after the api healthcheck reports healthy. It does not guarantee that the API will stay healthy afterwards, and it does not check anything beyond what the healthcheck tests. If the healthcheck only tests that the process is up, the UI can still start before the model is ready. That is why readiness is a separate check.</p></details>
+
+<p><strong>Q5. Why does the UI use the address http://api:8000 rather than localhost?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>Each container has its own network namespace, so localhost inside the UI container means the UI container itself. Compose puts both services on a shared network and gives each service a name that resolves to its address. api is the name of the API service, so the UI reaches it by that name. The API_URL environment variable sets this address, so the same code works locally and in compose.</p></details>
+
+<p><strong>Q6. What does /metrics measure, and what are its limits?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>It counts requests and errors in the running process, and it reports the median latency from the stored times. Its limits are that the counters are kept in memory, so they reset when the process restarts, and that they cover only this one process. A real monitor would export them to a time-series store and keep history. The /metrics/history challenge is a first step towards keeping history.</p></details>
+
+<p><strong>Q7. Why does the deploy job depend on the test job, and what is GITHUB_TOKEN for?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>The deploy job uses needs: test, so it runs only after the tests have passed. Without needs, jobs run in parallel and a broken build could be pushed. GITHUB_TOKEN is a short-lived token that GitHub creates for each run, with the permissions the job asks for. It lets the job push to the package registry without a stored password in the code.</p></details>
+
+<p><strong>Q8. What would you change before this ran in production with real users?</strong></p>
+<details class="box box-answer"><summary>Model spoken answer</summary><p>I would pin every dependency to an exact version, add readiness and liveness checks, and store metrics outside the process. I would also make the rollout zero-downtime and add a rollback. I would move the model download out of the first request and check the model's error against a threshold before saving it. Each change maps to one of the five challenges.</p></details>
+
+<h2 id="check-yourself">Check yourself</h2>
+<p>Answer each question before you open the answer. Each has exactly one correct option, and the wrong ones are the mistakes examiners expect.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;A request sends hour=99 to /predict. Which part of the project rejects it with status 422?&quot;, &quot;opts&quot;: [&quot;The logging middleware in obs.py&quot;, &quot;The PredictIn model, whose Field(ge=0, le=23) limits hour&quot;, &quot;The Dockerfile CMD line&quot;, &quot;The healthcheck in docker-compose.yml&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The Pydantic model checks the value before your function runs and returns 422 with the reason. The middleware only writes log lines and does not check input, so it is the most tempting wrong answer.&quot;}, {&quot;q&quot;: &quot;The data-quality gate in dq_check.py must stop a bad feed. Which statement is correct?&quot;, &quot;opts&quot;: [&quot;It fixes bad rows by replacing them with averages.&quot;, &quot;It only prints a warning, so the pipeline keeps going.&quot;, &quot;It runs only on your laptop, not in CI.&quot;, &quot;A failing assert stops the script with an error, so a bad feed cannot pass silently.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;assert raises an error when its condition is False. The tempting wrong answer is the printed warning, which lets bad numbers through.&quot;}, {&quot;q&quot;: &quot;In train.py, test_size=.2 means which of these?&quot;, &quot;opts&quot;: [&quot;20 percent of the rows are held back to test the model, and 80 percent train it.&quot;, &quot;20 percent of the rows are deleted as bad data.&quot;, &quot;The model is trained on 20 percent and tested on 80 percent.&quot;, &quot;The model uses 20 input features.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;test_size is the fraction held out for testing. The tempting wrong answer reverses the two parts of the split.&quot;}, {&quot;q&quot;: &quot;Why does the ui service use the address http://api:8000 rather than http://localhost:8000?&quot;, &quot;opts&quot;: [&quot;Because api is a reserved port number.&quot;, &quot;Because Streamlit cannot call ports on the host machine.&quot;, &quot;Because localhost inside the UI container means the UI container itself, and Compose gives the api service a name on the shared network.&quot;, &quot;Because the API must be named api in the Python code.&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;Each container has its own localhost. Compose resolves the service name to the API container&#x27;s address, which is why the name works.&quot;}, {&quot;q&quot;: &quot;What is the difference between a RUN line and a CMD line in a Dockerfile?&quot;, &quot;opts&quot;: [&quot;RUN runs when the container starts, and CMD runs during the build.&quot;, &quot;RUN executes during the build and saves its results in the image, while CMD is the command the container runs when it starts.&quot;, &quot;Both run only when you type docker compose up.&quot;, &quot;RUN sets the port, and CMD sets the base image.&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The line RUN python make_data.py &amp;&amp; python train.py bakes the data and model into the image. The tempting wrong answer swaps the two.&quot;}, {&quot;q&quot;: &quot;Your deploy job runs even though the test job failed. What is the most likely missing setting?&quot;, &quot;opts&quot;: [&quot;The GITHUB_TOKEN secret.&quot;, &quot;The ports mapping.&quot;, &quot;The workflow file name.&quot;, &quot;needs: test on the deploy job.&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;Without needs, jobs run in parallel with no dependency. The tempting wrong answer is the token, which has nothing to do with ordering.&quot;}, {&quot;q&quot;: &quot;What does errors_total in /metrics count?&quot;, &quot;opts&quot;: [&quot;Requests whose status code is 400 or higher.&quot;, &quot;Every request that reaches the server.&quot;, &quot;Only Python exceptions raised inside train.py.&quot;, &quot;Requests that take longer than one second.&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;obs.py increments the error counter when status is 400 or more. The tempting wrong answer counts all requests, which is requests_total.&quot;}, {&quot;q&quot;: &quot;Which command runs the eight tests without starting the server?&quot;, &quot;opts&quot;: [&quot;curl -s localhost:8000/health&quot;, &quot;docker compose up&quot;, &quot;pytest -q&quot;, &quot;python dashboard.py&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;pytest finds the test functions, and the test client calls the app inside Python. The tempting wrong answer is curl, which needs a server already running.&quot;}]}"></div>
+
+<h2 id="what-goes-wrong">What goes wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running train.py only after the API starts</td>
+<td>The API fails at startup with FileNotFoundError for model.joblib</td>
+<td>Run make_data.py and train.py first, then start the API</td>
+</tr>
+<tr>
+<td>Using localhost in the dashboard container</td>
+<td>Connection refused on the station table</td>
+<td>Set API_URL to http://api:8000 in the ui service</td>
+</tr>
+<tr>
+<td>Port 8000 already in use</td>
+<td>"address already in use" when the API starts</td>
+<td>Stop the other program, or change the host side of the ports line</td>
+</tr>
+<tr>
+<td>Forgetting to push</td>
+<td>The Actions tab shows no new run</td>
+<td>Run git push origin main after committing</td>
+</tr>
+<tr>
+<td>Removing the healthcheck</td>
+<td>The UI starts before the API and shows errors</td>
+<td>Restore the healthcheck and the depends_on condition</td>
+</tr>
+<tr>
+<td>Editing the tests to pass</td>
+<td>Tests are green but the bug is still there</td>
+<td>Fix the code. A test states a rule, so keep it as it is</td>
+</tr>
+<tr>
+<td>Leaving dependencies unpinned</td>
+<td>The build works today and breaks next month</td>
+<td>Pin each library to the version you tested</td>
+</tr>
+<tr>
+<td>Putting a token in the code</td>
+<td>Push protection blocks the push or the token leaks</td>
+<td>Store the value as a GitHub secret and read it by name</td>
+</tr>
+<tr>
+<td>Saving the model before the drift check</td>
+<td>A bad model replaces the good one</td>
+<td>Save only after the check passes, as in challenge 2</td>
+</tr>
+<tr>
+<td>Mismatched column names in a request</td>
+<td>A 422 error or a wrong prediction</td>
+<td>Use hour and prev exactly, as the model was trained on them</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;API&quot;, &quot;a&quot;: &quot;A program that answers requests from other programs over a network.&quot;}, {&quot;q&quot;: &quot;Container&quot;, &quot;a&quot;: &quot;A sealed package holding a program and everything it needs, so it runs the same on any machine.&quot;}, {&quot;q&quot;: &quot;Image&quot;, &quot;a&quot;: &quot;A read-only template from which Docker starts a container.&quot;}, {&quot;q&quot;: &quot;DataFrame&quot;, &quot;a&quot;: &quot;A pandas table with named columns and numbered rows.&quot;}, {&quot;q&quot;: &quot;dropna and NaT&quot;, &quot;a&quot;: &quot;dropna removes rows with missing values; NaT is pandas&#x27; \&quot;not a time\&quot; value.&quot;}, {&quot;q&quot;: &quot;Assert&quot;, &quot;a&quot;: &quot;A statement that stops the program with an error when its condition is False.&quot;}, {&quot;q&quot;: &quot;Pydantic Field(ge=0, le=23)&quot;, &quot;a&quot;: &quot;A rule that rejects any value outside 0 to 23 with a 422 error before your code runs.&quot;}, {&quot;q&quot;: &quot;joblib.dump and joblib.load&quot;, &quot;a&quot;: &quot;Save a trained model to a file, and read it back.&quot;}, {&quot;q&quot;: &quot;MAE&quot;, &quot;a&quot;: &quot;Mean absolute error, the average size of the prediction miss in the same units as the data.&quot;}, {&quot;q&quot;: &quot;Healthcheck&quot;, &quot;a&quot;: &quot;A command that Compose runs regularly to decide whether a container counts as healthy.&quot;}, {&quot;q&quot;: &quot;depends_on with service_healthy&quot;, &quot;a&quot;: &quot;Starts a service only after the other service&#x27;s healthcheck passes.&quot;}, {&quot;q&quot;: &quot;needs: test&quot;, &quot;a&quot;: &quot;Makes an Actions job run only after the named job has succeeded.&quot;}, {&quot;q&quot;: &quot;GITHUB_TOKEN&quot;, &quot;a&quot;: &quot;A short-lived token GitHub creates for each run, so no password is stored in the code.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="D25.html"><small>Previous</small>Day 25 — Containers with Docker</a><a class="nx" href="D26.html"><small>Next</small>Day 26 — CI/CD and cloud deployment</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

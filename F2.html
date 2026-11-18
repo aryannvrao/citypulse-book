@@ -1,0 +1,678 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python from zero, part 2: lists, dictionaries and functions · CityPulse Mastery</title>
+<link rel="stylesheet" href="assets/book.css?v=1794446139"><link rel="stylesheet" href="assets/hl.css?v=1794446139">
+<script>(function(){var t;try{t=localStorage.getItem('cpm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+</head><body data-ch="F2" data-total="57">
+<div id="bar"></div>
+<header class="top"><button id="menu" aria-label="Contents">&#9776;</button>
+<a class="brand" href="index.html">CityPulse Mastery</a><span class="crumb">Part 1 · Foundations</span>
+<button id="theme" aria-label="Switch light and dark">&#9680;</button></header>
+<nav class="side" id="side"><div class="np">Start here</div><ul><li><a href="G0.html" data-id="G0">The game plan: how this course is scored and how to come first</a></li></ul><div class="np">Part 1 · Foundations</div><ul><li><a href="F1.html" data-id="F1">Python from zero, part 1: values, text, decisions and loops</a></li><li><a class="cur" href="F2.html" data-id="F2">Python from zero, part 2: lists, dictionaries and functions</a></li><li><a href="F3.html" data-id="F3">The graded-lab toolkit: the standard-library moves every lab uses</a></li><li><a href="F4.html" data-id="F4">Beating hidden tests and first-attempt marking</a></li></ul><div class="np">Part 2 · Days 1–5 · Tools and teamwork</div><ul><li><a href="D01.html" data-id="D01">Day 1 — Git, GitHub and secure accounts</a></li><li><a href="D02.html" data-id="D02">Day 2 — Linux and the command line</a></li><li><a href="D03.html" data-id="D03">Day 3 — Talking to APIs: HTTP, curl and jq</a></li><li><a href="D04.html" data-id="D04">Day 4 — Bash scripting and cron automation</a></li><li><a href="D05.html" data-id="D05">Day 5 — Team workflow: branches, pull requests and reviews</a></li><li><a href="P1.html" data-id="P1">Project 1 — Air-Quality Monitor</a></li></ul><div class="np">Part 3 · Days 6–10 · Python, data and SQL</div><ul><li><a href="D06.html" data-id="D06">Day 6 — Continuous integration with GitHub Actions</a></li><li><a href="D07.html" data-id="D07">Day 7: Python for engineers</a></li><li><a href="D08.html" data-id="D08">Day 8 — Data wrangling with pandas and Parquet</a></li><li><a href="D09.html" data-id="D09">Day 9: Relational modelling and SQL loading</a></li><li><a href="D10.html" data-id="D10">Day 10 — Analytical SQL</a></li><li><a href="P2.html" data-id="P2">Project 2 — Air-Quality Anomaly Detector</a></li></ul><div class="np">Part 4 · Days 11–15 · Pipelines and cloud</div><ul><li><a href="D11.html" data-id="D11">Day 11 — Data pipelines and data-quality checks</a></li><li><a href="D12.html" data-id="D12">Day 12 — Cloud fundamentals and IAM on AWS</a></li><li><a href="D13.html" data-id="D13">Day 13 — Object storage with S3 and boto3</a></li><li><a href="D14.html" data-id="D14">Day 14 — Virtual machines: EC2, SSH and hardening</a></li><li><a href="D15.html" data-id="D15">Day 15 — Serverless and cost awareness</a></li><li><a href="P3.html" data-id="P3">Project 3 — Serverless Ingest and Daily Brief</a></li></ul><div class="np">Part 5 · Days 16–20 · Algorithms, analysis, ML</div><ul><li><a href="D16.html" data-id="D16">Day 16 — DSA I: arrays, hashing, windows and stacks</a></li><li><a href="D17.html" data-id="D17">Day 17 — DSA II: recursion, search, trees, graphs and heaps</a></li><li><a href="D18.html" data-id="D18">Day 18 — Exploratory analysis and data visualisation</a></li><li><a href="D19.html" data-id="D19">Day 19 — Dashboards with Streamlit</a></li><li><a href="D20.html" data-id="D20">Day 20 — Machine learning foundations</a></li><li><a href="P4.html" data-id="P4">Project 4 — Air-Quality Forecaster</a></li></ul><div class="np">Part 6 · Days 21–25 · Models, APIs, containers</div><ul><li><a href="D21.html" data-id="D21">Day 21 — scikit-learn pipelines, features and tuning</a></li><li><a href="D22.html" data-id="D22">Day 22 — Ensembles, error analysis and model cards</a></li><li><a href="D23.html" data-id="D23">Day 23 — Building REST APIs with FastAPI</a></li><li><a href="D24.html" data-id="D24">Day 24 — Validation and testing: Pydantic and pytest</a></li><li><a href="D25.html" data-id="D25">Day 25 — Containers with Docker</a></li><li><a href="P5.html" data-id="P5">Project 5 — Containerised Air-Quality Platform</a></li></ul><div class="np">Part 7 · Days 26–29 · Shipping it</div><ul><li><a href="D26.html" data-id="D26">Day 26 — CI/CD and cloud deployment</a></li><li><a href="D27.html" data-id="D27">Day 27 — Observability: logs, uptime and SLOs</a></li><li><a href="D28.html" data-id="D28">Day 28 — Generative AI and LLM APIs</a></li><li><a href="D29.html" data-id="D29">Day 29 — Delivering an industry project</a></li><li><a href="P6.html" data-id="P6">Project 6 — CityPulse Capstone</a></li></ul><div class="np">Part 8 · The capstone tickets</div><ul><li><a href="K01.html" data-id="K01">Capstone tickets T01–T03: onboarding, squad and charter</a></li><li><a href="K02.html" data-id="K02">Capstone tickets T04–T07: setup, fetching and scheduling data</a></li><li><a href="K03.html" data-id="K03">Capstone tickets T08–T10: pull requests, CI gate and first release</a></li><li><a href="K04.html" data-id="K04">Capstone tickets T11–T12: the Python fetch and clean stages</a></li><li><a href="K05.html" data-id="K05">Capstone tickets T13–T16: warehouse, SQL views, pipeline and defence</a></li><li><a href="K06.html" data-id="K06">Capstone tickets T17–T19: IAM, S3 and a hardened VM</a></li><li><a href="K07.html" data-id="K07">Capstone tickets T20–T22: the DSA track, part 1</a></li><li><a href="K08.html" data-id="K08">Capstone tickets T23–T25: serverless, architecture and the cloud defence</a></li><li><a href="K09.html" data-id="K09">Capstone tickets T26–T30: charts, dashboard, report and framing ML</a></li><li><a href="K10.html" data-id="K10">Capstone tickets T31–T37: features, models, tuning and the model card</a></li><li><a href="K11.html" data-id="K11">Capstone tickets T38–T41: the API, validation and tests</a></li><li><a href="K12.html" data-id="K12">Capstone tickets T42–T46: containers, CI/CD, deployment and SLOs</a></li><li><a href="K13.html" data-id="K13">Capstone tickets T47–T48: the grounded GenAI bulletin and the live defence</a></li><li><a href="K14.html" data-id="K14">Capstone tickets T49–T54: the industry mini-project</a></li><li><a href="K15.html" data-id="K15">Capstone tickets T55–T63: CV, portfolio, interviews and hiring day</a></li></ul><div class="np">Part 9 · Getting the offer</div><ul><li><a href="O1.html" data-id="O1">Viva and interview mastery</a></li><li><a href="O2.html" data-id="O2">Evidence that ranks you first: commits, reviews, portfolio and CV</a></li></ul></nav>
+<main><article><p class="kicker">Part 1 · Foundations</p><h1>Python from zero, part 2: lists, dictionaries and functions</h1><p class="sub">By the end you will store collections of readings in lists and dictionaries, sort them by more than one field, and write functions that return values you can test.</p><p class="meta">33 min read · practice quiz · 3 animations · 10 tested solutions</p><video class="vid" controls preload="metadata" src="videos/F2.mp4?v=1794464067"></video><details class="toc"><summary>In this chapter</summary><ol><li><a href="#lists">Lists</a></li><li><a href="#tuples-and-unpacking">Tuples and unpacking</a></li><li><a href="#dictionaries">Dictionaries</a></li><li><a href="#sets">Sets</a></li><li><a href="#functions">Functions</a></li><li><a href="#sorting-properly">Sorting properly</a></li><li><a href="#comprehensions">Comprehensions</a></li><li><a href="#enumerate-and-zip">enumerate and zip</a></li><li><a href="#none-and-truthiness">None and truthiness</a></li><li><a href="#errors-you-can-catch">Errors you can catch</a></li><li><a href="#practise">Practise</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#flashcards">Flashcards</a></li></ol></details><h2 id="lists">Lists</h2>
+<p>A list is an ordered collection of values kept under one name. A value is any piece of data, such as a number or a piece of text. Ordered means each item has a position, and the position never changes unless you change the list.</p>
+<p>Lists are how CityPulse keeps a run of air-quality readings together. Here is a small one, using the Python programming language. Type it into a file called <code>example.py</code> and run it with <code>python example.py</code> in a terminal.</p>
+<div class="hl"><pre><span></span><code><span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="s2">&quot;Koramangala&quot;</span><span class="p">,</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stations</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>stations = [...]</code> creates a list of three text values and stores it under the name <code>stations</code>. The square brackets <code>[</code> and <code>]</code> mark a list, and the commas separate its items.</li>
+<li><code>stations[0]</code> is an index. An index is a position inside a list, and positions start at 0, not 1. So <code>stations[0]</code> is the first item.</li>
+<li><code>stations[-1]</code> uses a negative index. <code>-1</code> counts from the end, so this is the last item.</li>
+<li><code>stations[0:2]</code> is a slice. A slice takes a range of positions written as <code>start:stop</code>. The start is included and the stop is not, so this gives items 0 and 1.</li>
+<li><code>len(stations)</code> returns the length, which is the number of items. <code>len</code> is a built-in function, meaning a function that Python provides without you writing it.</li>
+<li><code>"Jayanagar" in stations</code> asks whether the text is one of the items. The answer is <code>True</code> or <code>False</code>. These two words are called booleans, a value that can only be true or false.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>MG Road
+Jayanagar
+[&#39;MG Road&#39;, &#39;Koramangala&#39;]
+3
+True
+</code></pre></div>
+
+<p>Notice that the slice prints with square brackets and quotes. That is how Python shows a list when you print it directly.</p>
+<h3 id="changing-a-list-with-methods">Changing a list with methods</h3>
+<p>A method is a function that belongs to a value. You call it with a dot after the name, such as <code>readings.append(52)</code>. The dot means "use this action on this list".</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+<span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">52</span><span class="p">)</span>
+<span class="n">readings</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>
+<span class="n">last</span> <span class="o">=</span> <span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>readings = [40, 65]</code> starts with two numbers.</li>
+<li><code>readings.append(52)</code> adds one item to the end of the list. Now it holds <code>40, 65, 52</code>.</li>
+<li><code>readings.extend([33, 70])</code> adds every item from the list you give it to the end. Now it holds <code>40, 65, 52, 33, 70</code>.</li>
+<li><code>readings.pop()</code> removes the last item and returns it, so the removed value is stored in <code>last</code>.</li>
+<li>The two <code>print</code> lines show what is left and what was removed.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[40, 65, 52, 33]
+70
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: append adds one item, even if that item is a list</div><p><code>readings.append([1, 2])</code> adds a single item that is itself a list, so the list gets one longer. If you want each number added separately, use <code>extend</code>.</p></div>
+
+<p>To go through every item, use a <code>for</code> loop. A loop is a block of code that repeats once for each item.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">pm</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The first line says "for each value, call it <code>pm</code>, and run the indented lines". The indented <code>print</code> runs once per item, so this prints each reading on its own line. Indentation, the spaces at the start of a line, is how Python knows which lines belong to the loop. Use four spaces per level.</p>
+<h3 id="sorting-a-list">Sorting a list</h3>
+<p><code>sorted</code> and <code>sort</code> both put a list in order, but they behave differently.</p>
+<div class="hl"><pre><span></span><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>sorted(nums)</code> returns a new list in ascending order. It does not change <code>nums</code>.</li>
+<li>The second <code>print</code> shows that <code>nums</code> is still in its original order.</li>
+<li><code>nums.sort()</code> changes the list itself, in place. It returns nothing.</li>
+<li>The last <code>print</code> shows the changed list.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[10, 20, 30]
+[30, 10, 20]
+[10, 20, 30]
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: sort returns None</div><p><code>nums = nums.sort()</code> sets <code>nums</code> to <code>None</code>, because <code>sort</code> returns nothing. Call <code>nums.sort()</code> on its own line, or write <code>nums = sorted(nums)</code>.</p></div>
+
+<h3 id="copying-versus-aliasing">Copying versus aliasing</h3>
+<p>When you write <code>b = a</code>, Python does not copy the list. It gives the list a second name. Both names now point at the same list. This is called aliasing. An alias is another name for the same object.</p>
+<div class="hl"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>b = a</code> makes <code>b</code> an alias for the list that <code>a</code> names.</li>
+<li><code>c = a.copy()</code> makes a real copy. <code>c</code> is a separate list with the same items.</li>
+<li><code>b.append(3)</code> changes the one shared list, so <code>a</code> changes too.</li>
+<li><code>c</code> was copied earlier, so it is unchanged.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[1, 2, 3]
+[1, 2]
+</code></pre></div>
+
+<p>A copy can also be made with <code>a[:]</code>, which is a slice from start to end. Both forms work. The <code>copy</code> method is easier to read.</p>
+<h2 id="tuples-and-unpacking">Tuples and unpacking</h2>
+<p>A tuple is like a list that cannot be changed after it is made. You write it with round brackets, and the commas make it a tuple. A tuple is useful for a fixed group of values, such as a latitude and longitude.</p>
+<div class="hl"><pre><span></span><code><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.97</span><span class="p">,</span> <span class="mf">77.59</span><span class="p">)</span>
+<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">point</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+<span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>point = (12.97, 77.59)</code> creates a tuple of two numbers. These are roughly the latitude and longitude of Bengaluru.</li>
+<li><code>lat, lon = point</code> is called unpacking. Python takes the first value and stores it in <code>lat</code>, and the second value goes to <code>lon</code>. The number of names must match the number of values.</li>
+<li>The two <code>print</code> lines show the values.</li>
+<li><code>point[0] = 5</code> tries to change the first value. This is not allowed for a tuple, so Python stops with an error.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>12.97
+77.59
+Traceback (most recent call last):
+  File &quot;example.py&quot;, line 5, in &lt;module&gt;
+    point[0] = 5
+TypeError: &#39;tuple&#39; object does not support item assignment
+</code></pre></div>
+
+<p>A traceback is the error report Python prints. The last line names the kind of error (<code>TypeError</code>) and explains it. The <code>line 5</code> part tells you where to look.</p>
+<p>Unpacking also gives a neat way to swap two values: <code>a, b = b, a</code>. A single item in brackets needs a comma too. <code>(5)</code> is just the number 5, but <code>(5,)</code> is a tuple.</p>
+<div class="box box-key"><div class="box-h">Key fact: Tuples are for fixed groups</div><p>Use a tuple when the number of items is fixed and the meaning of each position is clear, such as (name, score). Use a list when the number of items grows or changes.</p></div>
+
+<h2 id="dictionaries">Dictionaries</h2>
+<p>A dictionary stores pairs of a key and a value. The key is the name you look up with, and the value is the data you want back. You write a dictionary with curly braces, <code>{</code> and <code>}</code>, and each pair is written <code>key: value</code>.</p>
+<p>Keys must be values that do not change, such as text or numbers. Within one dictionary each key appears only once.</p>
+<div class="hl"><pre><span></span><code><span class="n">pm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;MG Road&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="p">[</span><span class="s2">&quot;MG Road&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Whitefield&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Whitefield&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">pm</span><span class="p">[</span><span class="s2">&quot;Whitefield&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Whitefield&quot;</span> <span class="ow">in</span> <span class="n">pm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pm</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>pm = {...}</code> creates a dictionary with two keys, <code>"MG Road"</code> and <code>"Jayanagar"</code>.</li>
+<li><code>pm["MG Road"]</code> looks up the value for that key. The result is 40.</li>
+<li><code>pm.get("Whitefield")</code> looks up a key that does not exist. <code>get</code> returns <code>None</code> in that case. <code>None</code> is Python's word for "no value".</li>
+<li><code>pm.get("Whitefield", 0)</code> does the same lookup, but if the key is missing it returns the second argument, <code>0</code>, instead.</li>
+<li><code>pm["Whitefield"] = 52</code> adds a new key and value, because the key was not there. Assigning to an existing key replaces its value in the same way.</li>
+<li><code>"Whitefield" in pm</code> checks whether the key exists. Dictionaries check keys, not values, when you use <code>in</code>.</li>
+<li><code>len(pm)</code> returns the number of pairs, which is now 3.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>40
+None
+0
+True
+3
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Reading with [] stops the program when the key is missing</div><p><code>pm["Hebbal"]</code> raises a <code>KeyError</code> if <code>Hebbal</code> is not a key. Use <code>pm.get("Hebbal")</code> or <code>pm.get("Hebbal", 0)</code> when a missing key is normal.</p></div>
+
+<p>To go through every pair, use <code>items()</code>. It gives you each key and value together.</p>
+<div class="hl"><pre><span></span><code><span class="k">for</span> <span class="n">station</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pm</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>MG Road 40
+Jayanagar 65
+Whitefield 52
+</code></pre></div>
+
+<p>Python keeps dictionary items in the order you added them. This has been guaranteed since Python 3.7, so the output order above is reliable.</p>
+<h3 id="the-counting-pattern">The counting pattern</h3>
+<p>Counting is one of the most common jobs with a dictionary. You want to know how many times each station appears in a list of readings. The method is: for each item, read the current count (or 0 if there is none), add one, and store the result. The next trace shows it happening one line at a time.</p>
+<div class="hl"><pre><span></span><code><span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="s2">&quot;S2&quot;</span><span class="p">,</span> <span class="s2">&quot;S1&quot;</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">sid</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">sid</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>stations = [...]</code> is the list of station ids you are counting.</li>
+<li><code>counts = {}</code> starts an empty dictionary. Empty braces make an empty dictionary, not an empty set.</li>
+<li><code>for sid in stations:</code> runs the indented line once for each id, and <code>sid</code> holds the current id.</li>
+<li><code>counts.get(sid, 0)</code> returns the count so far, or <code>0</code> for a new station. <code>+ 1</code> adds one.</li>
+<li><code>counts[sid] = ...</code> stores the new count under that station.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>{&#39;S1&#39;: 2, &#39;S2&#39;: 1}
+</code></pre></div>
+
+<p>Python shows text inside a dictionary with single quotes. That is only how Python displays it. The text itself is <code>S1</code>.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Counting readings with a dictionary&quot;, &quot;code&quot;: [&quot;stations = [\&quot;S1\&quot;, \&quot;S2\&quot;, \&quot;S1\&quot;]&quot;, &quot;counts = {}&quot;, &quot;for sid in stations:&quot;, &quot;    counts[sid] = counts.get(sid, 0) + 1&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;stations&quot;, &quot;[\&quot;S1\&quot;, \&quot;S2\&quot;, \&quot;S1\&quot;]&quot;]], &quot;note&quot;: &quot;Create the list of three station ids.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;stations&quot;, &quot;[\&quot;S1\&quot;, \&quot;S2\&quot;, \&quot;S1\&quot;]&quot;], [&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;Start with an empty dictionary.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{}&quot;]], &quot;note&quot;: &quot;The loop takes the first id.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1}&quot;]], &quot;note&quot;: &quot;S1 is not a key yet, so get returns 0. Then 0 + 1 is stored.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S2\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1}&quot;]], &quot;note&quot;: &quot;The loop takes the second id.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S2\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;S2 is new, so it starts at 1.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 1, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;The loop takes the third id, which is S1 again.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;sid&quot;, &quot;\&quot;S1\&quot;&quot;], [&quot;counts&quot;, &quot;{\&quot;S1\&quot;: 2, \&quot;S2\&quot;: 1}&quot;]], &quot;note&quot;: &quot;S1 is found, so get returns 1. The new count is 2.&quot;}]}"></div>
+
+<h3 id="the-grouping-pattern">The grouping pattern</h3>
+<p>Grouping is the same idea, except each key holds a list instead of a number. You want all the readings for each station, collected together.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="mi">44</span><span class="p">)]</span>
+<span class="n">by_station</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">station</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">readings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">station</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">by_station</span><span class="p">:</span>
+        <span class="n">by_station</span><span class="p">[</span><span class="n">station</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">by_station</span><span class="p">[</span><span class="n">station</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">by_station</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>readings</code> is a list of tuples. Each tuple holds a station name and a value.</li>
+<li><code>for station, value in readings:</code> unpacks each tuple into two names.</li>
+<li><code>if station not in by_station:</code> runs only the first time a station appears. It creates an empty list for that station.</li>
+<li><code>by_station[station].append(value)</code> adds the value to the list for that station. This line runs every time.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>{&#39;MG Road&#39;: [40, 44], &#39;Jayanagar&#39;: [65]}
+</code></pre></div>
+
+<p>Python also has a shorter form, <code>by_station.setdefault(station, []).append(value)</code>, which does the same job in one line. Learn the longer form first, because it shows what happens.</p>
+<h2 id="sets">Sets</h2>
+<p>A set is an unordered collection in which each value appears only once. Adding a value that is already there does nothing. Sets are useful for questions such as "which distinct stations are in this file?"</p>
+<div class="hl"><pre><span></span><code><span class="n">cities</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Pune&quot;</span><span class="p">,</span> <span class="s2">&quot;Delhi&quot;</span><span class="p">,</span> <span class="s2">&quot;Pune&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cities</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Delhi&quot;</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cities</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span> <span class="o">&amp;</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">})</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>cities = {...}</code> creates a set. The second <code>"Pune"</code> is ignored because it is a duplicate.</li>
+<li><code>len(cities)</code> counts the distinct values, which is 2.</li>
+<li><code>"Delhi" in cities</code> checks membership. Membership checks are fast, even for large sets.</li>
+<li><code>sorted(cities)</code> returns the values as a sorted list. A set has no order of its own, so you sort it when you need order.</li>
+<li><code>&amp;</code> means intersection. It returns the values that appear in both sets, which are 2 and 3.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>2
+True
+[&#39;Delhi&#39;, &#39;Pune&#39;]
+{2, 3}
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: {} is a dictionary, not a set</div><p>An empty set must be written <code>set()</code>. The text <code>{}</code> creates an empty dictionary.</p></div>
+
+<h2 id="functions">Functions</h2>
+<p>A function is a named block of code that you can run whenever you need it. You define one with the word <code>def</code>, followed by a name and brackets. The names in the brackets are the parameters, which are the inputs the function expects. When you call the function, the values you pass in are the arguments.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">pm_category</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return &#39;high&#39; if value is above limit, otherwise &#39;ok&#39;.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;high&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pm_category</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pm_category</span><span class="p">(</span><span class="mi">90</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pm_category</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>def pm_category(value, limit=60):</code> defines the function. <code>value</code> is required. <code>limit=60</code> is a default value, which is used when the caller does not pass a <code>limit</code>.</li>
+<li>The text in triple quotes is a docstring. It is a description of the function, and tools and people read it to learn what the function does.</li>
+<li><code>if value &gt; limit:</code> compares the two numbers.</li>
+<li><code>return "high"</code> ends the function and hands <code>"high"</code> back to whoever called it. The indented lines after <code>if</code> run only when the test is true.</li>
+<li><code>pm_category(40)</code> calls the function with 40 and uses the default limit of 60, so the answer is <code>"ok"</code>.</li>
+<li><code>pm_category(90, limit=100)</code> passes the limit by name, so the answer is <code>"ok"</code> again.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>ok
+high
+ok
+</code></pre></div>
+
+<h3 id="return-versus-print">Return versus print</h3>
+<p><code>print</code> and <code>return</code> look similar, but they do different jobs. <code>print</code> shows text on the screen and then forgets it. <code>return</code> gives a value back to the code that called the function, so you can store it and use it later.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">double_print</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">double_print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>8
+None
+</code></pre></div>
+
+<p>The function printed 8, but it did not return anything, so <code>x</code> holds <code>None</code>. If you want to use the result later, use <code>return</code>.</p>
+<h3 id="returning-several-values">Returning several values</h3>
+<p>A function can return more than one value at once. Python packs them into a tuple, and you unpack them at the other end.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">min_max</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">33</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>min</code> and <code>max</code> are built-in functions that return the smallest and largest value. The <code>return</code> line sends back a tuple <code>(33, 65)</code>, and <code>low, high = ...</code> unpacks it. The output is <code>33 65</code>.</p>
+<h3 id="default-values-and-the-mutable-default-trap">Default values and the mutable default trap</h3>
+<p>A default value is used when the caller leaves that argument out. Defaults make functions easier to use, as in <code>pm_category(40)</code>.</p>
+<p>There is one default value that causes a well-known problem. A default is created once, when Python reads the <code>def</code> line. If the default is a list or a dictionary, every call that uses the default shares the same object.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bag</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">bag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bag</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[&#39;a&#39;]
+[&#39;a&#39;, &#39;b&#39;]
+</code></pre></div>
+
+<p>The second call did not start with an empty bag. It reused the list that the first call had already changed. The fix is to use <code>None</code> as the default and create the list inside the function:</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bag</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">bag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bag</span>
+</code></pre></div>
+
+<p>Now each call without a <code>bag</code> gets a new empty list, and the output is <code>['a']</code> followed by <code>['b']</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: Never use a list or dictionary as a default</div><p>Write <code>bag=None</code>, then create the list inside the function when it is <code>None</code>. Numbers, text and tuples are safe as defaults because they cannot be changed in place.</p></div>
+
+<p>The next trace shows a function being called, running, and returning a value.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;A function call and return&quot;, &quot;code&quot;: [&quot;def add_tax(price, rate=0.25):&quot;, &quot;    total = price + price * rate&quot;, &quot;    return total&quot;, &quot;amount = add_tax(200)&quot;, &quot;print(amount)&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;add_tax&quot;, &quot;function&quot;]], &quot;note&quot;: &quot;The def line creates a function and stores it under the name add_tax. Nothing runs yet.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;add_tax&quot;, &quot;function&quot;], [&quot;price&quot;, &quot;200&quot;], [&quot;rate&quot;, &quot;0.25&quot;]], &quot;note&quot;: &quot;The call passes 200 as price. No rate was given, so rate takes its default of 0.25.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;price&quot;, &quot;200&quot;], [&quot;rate&quot;, &quot;0.25&quot;]], &quot;note&quot;: &quot;The function body runs next. It computes 200 + 200 * 0.25.&quot;}, {&quot;line&quot;: 3, &quot;state&quot;: [[&quot;price&quot;, &quot;200&quot;], [&quot;rate&quot;, &quot;0.25&quot;], [&quot;total&quot;, &quot;250.0&quot;]], &quot;note&quot;: &quot;The result is stored in total, and return hands it back to the caller.&quot;}, {&quot;line&quot;: 4, &quot;state&quot;: [[&quot;amount&quot;, &quot;250.0&quot;]], &quot;note&quot;: &quot;The returned value is stored in amount. The names price, rate and total belonged to the function and are gone.&quot;}, {&quot;line&quot;: 5, &quot;state&quot;: [[&quot;amount&quot;, &quot;250.0&quot;]], &quot;note&quot;: &quot;print shows the value on the screen.&quot;}]}"></div>
+
+<h2 id="sorting-properly">Sorting properly</h2>
+<p>Sorting a list of numbers is easy. Sorting a list of records, such as station readings, needs a rule for what to compare. You tell <code>sorted</code> the rule with a key function. A key function receives one item and returns the value that should be compared.</p>
+<p>A <code>lambda</code> is a short function written in one line, without a name. <code>lambda r: r[1]</code> means "a function that takes <code>r</code> and returns <code>r[1]</code>". It is the same as writing a <code>def</code> with one <code>return</code> line.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Hebbal&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+<span class="n">by_value</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">by_value</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>r[1]</code> is the second item of each tuple, the reading. The output is <code>[('MG Road', 40), ('Hebbal', 40), ('Jayanagar', 65)]</code>. The two 40s keep their original order, because Python's sort is stable.</p>
+<h3 id="several-fields-with-a-tuple-key">Several fields with a tuple key</h3>
+<p>To sort by more than one field, return a tuple from the key. Python compares tuples one item at a time: it compares the first items, and only if they are equal does it look at the second items.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Hebbal&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+<span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ranked</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The key is <code>(-r[1], r[0])</code>. The minus sign turns the reading into a negative number, so the largest reading becomes the smallest key and sorts first. The second item, <code>r[0]</code>, is the name, which breaks ties in alphabetical order.</p>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[(&#39;Jayanagar&#39;, 65), (&#39;Hebbal&#39;, 40), (&#39;MG Road&#39;, 40)]
+</code></pre></div>
+
+<p>The next trace shows the keys being compared.</p>
+<div class="w w-trace" data-w="{&quot;title&quot;: &quot;Sorting with a tuple key&quot;, &quot;code&quot;: [&quot;rows = [(\&quot;Asha\&quot;, 80), (\&quot;Ravi\&quot;, 95), (\&quot;Bina\&quot;, 80)]&quot;, &quot;ranked = sorted(rows, key=lambda r: (-r[1], r[0]))&quot;], &quot;steps&quot;: [{&quot;line&quot;: 1, &quot;state&quot;: [[&quot;rows&quot;, &quot;[(\&quot;Asha\&quot;, 80), (\&quot;Ravi\&quot;, 95), (\&quot;Bina\&quot;, 80)]&quot;]], &quot;note&quot;: &quot;Three records. Each one is a tuple of a name and a score.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;r&quot;, &quot;(\&quot;Asha\&quot;, 80)&quot;], [&quot;key&quot;, &quot;(-80, \&quot;Asha\&quot;)&quot;]], &quot;note&quot;: &quot;sorted calls the key function on the first row. The key is a tuple: the negative score first, then the name.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;r&quot;, &quot;(\&quot;Ravi\&quot;, 95)&quot;], [&quot;key&quot;, &quot;(-95, \&quot;Ravi\&quot;)&quot;]], &quot;note&quot;: &quot;The second row gives the key (-95, \&quot;Ravi\&quot;).&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;r&quot;, &quot;(\&quot;Bina\&quot;, 80)&quot;], [&quot;key&quot;, &quot;(-80, \&quot;Bina\&quot;)&quot;]], &quot;note&quot;: &quot;The third row gives the key (-80, \&quot;Bina\&quot;).&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;compare&quot;, &quot;(-95, \&quot;Ravi\&quot;) and (-80, \&quot;Asha\&quot;)&quot;]], &quot;note&quot;: &quot;Tuples are compared item by item. -95 is smaller than -80, so Ravi comes first.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;compare&quot;, &quot;(-80, \&quot;Asha\&quot;) and (-80, \&quot;Bina\&quot;)&quot;]], &quot;note&quot;: &quot;The scores tie, so the names decide. \&quot;Asha\&quot; is smaller than \&quot;Bina\&quot;, so Asha comes before Bina.&quot;}, {&quot;line&quot;: 2, &quot;state&quot;: [[&quot;ranked&quot;, &quot;[(\&quot;Ravi\&quot;, 95), (\&quot;Asha\&quot;, 80), (\&quot;Bina\&quot;, 80)]&quot;]], &quot;note&quot;: &quot;sorted returns a new list in that order. The original rows list is unchanged.&quot;}]}"></div>
+
+<h3 id="descending-numbers-ascending-names">Descending numbers, ascending names</h3>
+<p>A common request is "highest score first, and for equal scores, names in alphabetical order". The minus sign handles the numbers. Do not use <code>reverse=True</code> for this, because it reverses the names too.</p>
+<div class="hl"><pre><span></span><code><span class="n">readings</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Hebbal&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+<span class="n">wrong</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wrong</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[(&#39;Jayanagar&#39;, 65), (&#39;MG Road&#39;, 40), (&#39;Hebbal&#39;, 40)]
+</code></pre></div>
+
+<p>With <code>reverse=True</code>, the names sort from Z to A, so <code>MG Road</code> comes before <code>Hebbal</code>. The correct version is the one with <code>-r[1]</code> and no <code>reverse</code>.</p>
+<div class="box box-trap"><div class="box-h">Trap: reverse=True flips every field in the key</div><p><code>reverse=True</code> applies to the whole key tuple. If you need one field reversed and another not, negate the numeric field instead.</p></div>
+
+<h2 id="comprehensions">Comprehensions</h2>
+<p>A comprehension is a short way to build a list, set or dictionary from a loop. Read it from left to right: what goes in, where it comes from, and any condition for keeping it.</p>
+<div class="hl"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="n">evens</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Pune&quot;</span><span class="p">,</span> <span class="s2">&quot;Delhi&quot;</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evens</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>[n * n for n in range(5)]</code> loops over 0, 1, 2, 3 and 4 and stores each square in a new list. <code>range(5)</code> produces 0 to 4, and it stops before 5.</li>
+<li><code>[n for n in range(10) if n % 2 == 0]</code> keeps only the values where the remainder after division by 2 is 0. <code>%</code> is the remainder operator, so this keeps the even numbers.</li>
+<li><code>{name: len(name) for name in [...]}</code> builds a dictionary. Each name is the key and its length is the value. Curly braces with a <code>:</code> make it a dictionary.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>[0, 1, 4, 9, 16]
+[0, 2, 4, 6, 8]
+{&#39;Pune&#39;: 4, &#39;Delhi&#39;: 5}
+</code></pre></div>
+
+<div class="box box-trap"><div class="box-h">Trap: Do not build a comprehension with side effects</div><p>A comprehension is for making a new collection. If you only want to print each item or change other variables, a normal <code>for</code> loop is clearer.</p></div>
+
+<h2 id="enumerate-and-zip">enumerate and zip</h2>
+<p><code>enumerate</code> gives you each item together with its position. Without it, you would have to keep a counter yourself.</p>
+<div class="hl"><pre><span></span><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>enumerate(names, start=1)</code> counts from 1 instead of 0. The unpacking <code>i, name</code> takes each pair in turn. The output is:</p>
+<div class="hl"><pre><span></span><code>1 MG Road
+2 Jayanagar
+</code></pre></div>
+
+<p><code>zip</code> walks through two or more lists at the same time and pairs their items.</p>
+<div class="hl"><pre><span></span><code><span class="n">pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>zip</code> returns pairs, not a list, so <code>list(...)</code> turns the result into a list you can print. The output is <code>[('MG Road', 40), ('Jayanagar', 65)]</code>. If the lists have different lengths, <code>zip</code> stops at the shorter one, so an extra item in the longer list is dropped without any error. Keep that in mind when you check your data.</p>
+<h2 id="none-and-truthiness">None and truthiness</h2>
+<p><code>None</code> means "there is no value". A function that does not return anything gives back <code>None</code>, and so does <code>get</code> when a key is missing. To test for it, use <code>is None</code>.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_station</span><span class="p">(</span><span class="n">stations</span><span class="p">,</span> <span class="n">wanted</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="n">wanted</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">find_station</span><span class="p">([</span><span class="s2">&quot;MG Road&quot;</span><span class="p">],</span> <span class="s2">&quot;Hebbal&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not found&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">[]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;empty list is false&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li>The function returns the station name if it finds it, and falls through to <code>return None</code> if the loop ends without a match.</li>
+<li><code>result = find_station(...)</code> searches for <code>Hebbal</code>, which is not in the list, so <code>result</code> is <code>None</code>.</li>
+<li><code>if result is None:</code> is true, so the first message prints.</li>
+<li><code>not []</code> checks truthiness. Python treats some values as true and others as false when you use them in an <code>if</code>. An empty list is false, so <code>not []</code> is true, and the second message prints.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>not found
+empty list is false
+</code></pre></div>
+
+<p>The values that Python treats as false are <code>None</code>, <code>False</code>, <code>0</code>, <code>0.0</code>, the empty text <code>""</code>, and any empty collection such as <code>[]</code>, <code>{}</code> and <code>set()</code>. Everything else is true.</p>
+<div class="box box-trap"><div class="box-h">Trap: Use is None, not a truthiness test, when 0 is valid</div><p><code>if not count:</code> is also true when <code>count</code> is 0, which may be a real answer. Write <code>if count is None:</code> when you need to know whether a value is missing.</p></div>
+
+<h2 id="errors-you-can-catch">Errors you can catch</h2>
+<p>An error that stops a program is called an exception. Python reports it with a traceback and stops, unless your code catches it. You catch an exception with <code>try</code> and <code>except</code>. The code inside <code>try</code> runs first. If it raises an error, Python jumps to the <code>except</code> block instead of stopping.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_reading</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not a number:&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parse_reading</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parse_reading</span><span class="p">(</span><span class="s2">&quot;forty&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Line by line:</p>
+<ul>
+<li><code>int(text)</code> converts text such as <code>"42"</code> into the number 42. If the text is not a whole number, it raises <code>ValueError</code>.</li>
+<li><code>except ValueError:</code> names the error this block handles. Other errors are not caught here.</li>
+<li>The <code>print</code> inside <code>except</code> tells the user what went wrong, and <code>return None</code> gives the caller a clear missing value.</li>
+</ul>
+<p>Expected output:</p>
+<div class="hl"><pre><span></span><code>42
+not a number: forty
+None
+</code></pre></div>
+
+<p>You can also raise an error yourself with <code>raise</code>. This is useful when a value breaks a rule your program depends on.</p>
+<div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_pm25</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;PM2.5 cannot be negative&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="n">check_pm25</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Running this stops the program with a traceback. The last line is <code>ValueError: PM2.5 cannot be negative</code>. The text in brackets is the message you chose, and it is what a reader sees first when something goes wrong.</p>
+<p>Two other errors you will meet often are <code>KeyError</code>, from reading a missing dictionary key with <code>[]</code>, and <code>IndexError</code>, from asking for a list position that does not exist, such as <code>nums[10]</code> on a three-item list.</p>
+<div class="box box-key"><div class="box-h">Key fact: Catch the specific error</div><p>Write <code>except ValueError</code>, not a bare <code>except:</code>. A bare <code>except</code> also hides errors you did not expect, such as a typing mistake in your own code.</p></div>
+
+<h2 id="practise">Practise</h2>
+<p>Each problem below has a task, an example and a tested solution. Try it yourself first. Save your attempt in a file, and run the test block against it. The solution boxes are hidden until you open them.</p>
+<h3 id="problem-1-largest-value">Problem 1: largest value</h3>
+<p>Write <code>largest(numbers)</code>. It returns the largest number in the list. If the list is empty, it returns <code>None</code>.</p>
+<p>Example: <code>largest([3, 9, 2])</code> returns <code>9</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">largest</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+<span class="k">assert</span> <span class="n">largest</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">largest</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">largest</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="k">assert</span> <span class="n">largest</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">assert</span> <span class="n">largest</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div>
+
+<p>The function first handles the empty list, because <code>numbers[0]</code> would fail on an empty list. It starts with the first item as <code>best</code>, then compares every item against it. The <code>assert</code> lines are checks: each one stops the program with an error if the statement after it is false, so a passing run prints nothing.</p></details>
+
+<h3 id="problem-2-running-total">Problem 2: running total</h3>
+<p>Write <code>running_total(numbers)</code>. It returns a new list where each item is the sum of all the numbers up to that position.</p>
+<p>Example: <code>running_total([1, 2, 3])</code> returns <code>[1, 3, 6]</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">running_total</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">n</span>
+        <span class="n">totals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">totals</span>
+
+<span class="k">assert</span> <span class="n">running_total</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">running_total</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">running_total</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">running_total</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>total</code> carries the sum from one loop pass to the next, and each new sum is added to the list. An empty input gives an empty list without any special case, because the loop never runs.</p></details>
+
+<h3 id="problem-3-word-counts">Problem 3: word counts</h3>
+<p>Write <code>word_counts(words)</code>. It returns a dictionary that maps each word to the number of times it appears. The match is case-sensitive, so <code>"Pune"</code> and <code>"pune"</code> are different words.</p>
+<p>Example: <code>word_counts(["a", "b", "a"])</code> returns <code>{"a": 2, "b": 1}</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">word_counts</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counts</span>
+
+<span class="k">assert</span> <span class="n">word_counts</span><span class="p">([])</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">word_counts</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">word_counts</span><span class="p">([</span><span class="s2">&quot;Pune&quot;</span><span class="p">,</span> <span class="s2">&quot;pune&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Pune&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;pune&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</code></pre></div>
+
+<p>This is the counting pattern from earlier. <code>get</code> with a default of <code>0</code> handles the first time each word appears, and the dictionary keeps the words exactly as they were written.</p></details>
+
+<h3 id="problem-4-group-by-length">Problem 4: group by length</h3>
+<p>Write <code>group_by_length(words)</code>. It returns a dictionary where each key is a word length and each value is a list of the words with that length, in their original order.</p>
+<p>Example: <code>group_by_length(["aa", "b", "cc"])</code> returns <code>{2: ["aa", "cc"], 1: ["b"]}</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">group_by_length</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+            <span class="n">groups</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">groups</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">groups</span>
+
+<span class="k">assert</span> <span class="n">group_by_length</span><span class="p">([])</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">group_by_length</span><span class="p">([</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]}</span>
+<span class="k">assert</span> <span class="n">group_by_length</span><span class="p">([</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]}</span>
+</code></pre></div>
+
+<p>The grouping pattern from earlier, with the key being a number instead of text. Dictionary equality in <code>assert</code> does not depend on key order, but the list order inside each group does matter, and the loop keeps it.</p></details>
+
+<h3 id="problem-5-top-scorer">Problem 5: top scorer</h3>
+<p>Write <code>top_scorer(scores)</code>. The argument is a dictionary that maps a name to a score. Return the name with the highest score. If two names tie on the score, return the one that comes first alphabetically. If the dictionary is empty, return <code>None</code>.</p>
+<p>Example: <code>top_scorer({"Bina": 90, "Asha": 90, "Zed": 10})</code> returns <code>"Asha"</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">top_scorer</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">ranked</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">top_scorer</span><span class="p">({})</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">top_scorer</span><span class="p">({</span><span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;Ravi&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">})</span> <span class="o">==</span> <span class="s2">&quot;Ravi&quot;</span>
+<span class="k">assert</span> <span class="n">top_scorer</span><span class="p">({</span><span class="s2">&quot;Bina&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;Asha&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;Zed&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span> <span class="o">==</span> <span class="s2">&quot;Asha&quot;</span>
+</code></pre></div>
+
+<p><code>scores.items()</code> gives pairs of name and score. The key function is the same tuple key from the sorting section, so the first item in the sorted list is the highest score with the alphabetically first name. <code>ranked[0][0]</code> reads the name from the first pair.</p></details>
+
+<h3 id="problem-6-sort-readings">Problem 6: sort readings</h3>
+<p>Write <code>sort_readings(readings)</code>. Each reading is a dictionary with a <code>"station"</code> and a <code>"pm25"</code> value. Return a new list sorted by <code>pm25</code> from highest to lowest. For equal values, sort the station names from A to Z.</p>
+<p>Example: sorting a reading of 40 at <code>MG Road</code> and a reading of 65 at <code>Koramangala</code> puts <code>Koramangala</code> first.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sort_readings</span><span class="p">(</span><span class="n">readings</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">readings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;pm25&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;station&quot;</span><span class="p">]))</span>
+
+<span class="k">assert</span> <span class="n">sort_readings</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;station&quot;</span><span class="p">:</span> <span class="s2">&quot;MG Road&quot;</span><span class="p">,</span> <span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;station&quot;</span><span class="p">:</span> <span class="s2">&quot;Koramangala&quot;</span><span class="p">,</span> <span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;station&quot;</span><span class="p">:</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="s2">&quot;pm25&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sort_readings</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;station&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;Koramangala&quot;</span><span class="p">,</span> <span class="s2">&quot;Jayanagar&quot;</span><span class="p">,</span> <span class="s2">&quot;MG Road&quot;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;station&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MG Road&quot;</span>
+</code></pre></div>
+
+<p>The key uses the same negative-number trick as before. <code>r["pm25"]</code> reads a value from a dictionary, which is the way you read a field of a record. The last <code>assert</code> checks that <code>sorted</code> did not change the original list.</p></details>
+
+<h3 id="problem-7-average">Problem 7: average</h3>
+<p>Write <code>average(numbers)</code>. It returns the mean, which is the sum divided by the count. If the list is empty, return <code>None</code>, because there is no average to give.</p>
+<p>Example: <code>average([1, 2])</code> returns <code>1.5</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">average</span><span class="p">([])</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.5</span>
+<span class="k">assert</span> <span class="n">average</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span> <span class="o">==</span> <span class="mi">10</span>
+</code></pre></div>
+
+<p><code>/</code> always gives a decimal result in Python 3, even when the answer is whole, so <code>6 / 3</code> is <code>2.0</code>. That still equals <code>2</code> in an <code>assert</code>. The empty-list check comes first, because dividing by <code>len</code> of an empty list would divide by zero.</p></details>
+
+<h3 id="problem-8-pairs-from-two-lists">Problem 8: pairs from two lists</h3>
+<p>Write <code>make_pairs(keys, values)</code>. It returns a dictionary that pairs each key with the value in the same position. If the lists have different lengths, stop at the shorter one.</p>
+<p>Example: <code>make_pairs(["a", "b", "c"], [1, 2])</code> returns <code>{"a": 1, "b": 2}</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_pairs</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="n">make_pairs</span><span class="p">([],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="k">assert</span> <span class="n">make_pairs</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">make_pairs</span><span class="p">([</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+</code></pre></div>
+
+<p><code>zip</code> pairs the items and stops at the shorter list. <code>dict</code> turns a sequence of two-item pairs into a dictionary. This is the behaviour the example relies on, so the third line of the example is a check of the edge case, not a surprise.</p></details>
+
+<h3 id="problem-9-squares-of-every-number">Problem 9: squares of every number</h3>
+<p>Write <code>squares_of_all(rows)</code>. The argument is a list of lists of numbers. Return one flat list with the square of every number, in the same order.</p>
+<p>Example: <code>squares_of_all([[1, 2], [3]])</code> returns <code>[1, 4, 9]</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">squares_of_all</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">squares_of_all</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">squares_of_all</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">squares_of_all</span><span class="p">([[],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+
+<p>A comprehension with two <code>for</code> parts reads as two nested loops, outer first. The first <code>for</code> picks each inner list, and the second picks each number in it. An empty inner list adds nothing to the result, and a negative number squares to a positive one.</p></details>
+
+<h3 id="problem-10-parse-a-pm25-reading">Problem 10: parse a PM2.5 reading</h3>
+<p>Write <code>parse_pm25(text)</code>. It takes text typed by a user. Return the reading as an integer. Spaces around the number are allowed. Return <code>None</code> if the text is not a number, is empty, or is negative.</p>
+<p>Example: <code>parse_pm25(" 7 ")</code> returns <code>7</code>, and <code>parse_pm25("abc")</code> returns <code>None</code>.</p>
+<details class="box box-answer"><summary>Show the solution</summary><div class="hl"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_pm25</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="k">assert</span> <span class="n">parse_pm25</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">42</span>
+<span class="k">assert</span> <span class="n">parse_pm25</span><span class="p">(</span><span class="s2">&quot; 7 &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">assert</span> <span class="n">parse_pm25</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">parse_pm25</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">parse_pm25</span><span class="p">(</span><span class="s2">&quot;-3&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+</code></pre></div>
+
+<p><code>int</code> ignores spaces at both ends, which is why <code>" 7 "</code> works. An empty string raises <code>ValueError</code> too, so it is caught by the same <code>except</code>. The negative check is separate, because a negative number is a valid integer but not a valid reading.</p></details>
+
+<h2 id="check-yourself">Check yourself</h2>
+<p>Answer all ten questions without looking at the explanations. Each question has one correct option. Your first attempt is the one that counts on the course platform, so work through each question before you check.</p>
+<div class="w w-quiz" data-w="{&quot;qs&quot;: [{&quot;q&quot;: &quot;The list nums is [10, 20, 30, 40]. What does print(nums[1:3]) show?&quot;, &quot;opts&quot;: [&quot;[10, 20]&quot;, &quot;[20, 30, 40]&quot;, &quot;[20, 30]&quot;, &quot;[30, 40]&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;A slice includes its start and excludes its stop, so positions 1 and 2 are taken, giving 20 and 30. The trap is thinking the stop position is included, which would give [20, 30, 40] only if the stop were 4.&quot;}, {&quot;q&quot;: &quot;The list a is [1, 2]. After b = a and then b.append(3), what is a?&quot;, &quot;opts&quot;: [&quot;[1, 2, 3]&quot;, &quot;[1, 2]&quot;, &quot;[3]&quot;, &quot;An error, because two names cannot point at one list&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;b = a makes b an alias for the same list, so the append changes what a names too. The trap is believing assignment copies a list. A real copy needs a.copy() or a[:].&quot;}, {&quot;q&quot;: &quot;The dictionary scores has no key \&quot;Ravi\&quot;. What does scores.get(\&quot;Ravi\&quot;) return?&quot;, &quot;opts&quot;: [&quot;An error, a KeyError&quot;, &quot;The empty text \&quot;\&quot;&quot;, &quot;0&quot;, &quot;None&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;get returns None when a key is missing and no default is given. Reading scores[\&quot;Ravi\&quot;] with square brackets would raise a KeyError instead, which is the trap examiners set.&quot;}, {&quot;q&quot;: &quot;The dictionary counts holds counts per station, and sid holds the station id. Which line adds one to the count for sid?&quot;, &quot;opts&quot;: [&quot;counts[sid] + 1&quot;, &quot;counts[sid] = counts.get(sid, 0) + 1&quot;, &quot;counts.append(sid)&quot;, &quot;counts.get(sid) = 1&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;counts[sid] + 1 raises KeyError on the first visit and stores nothing. counts.append does not exist for a dictionary. counts.get(sid) = 1 is not valid Python, because you cannot assign to a call.&quot;}, {&quot;q&quot;: &quot;The set cities is {\&quot;Pune\&quot;, \&quot;Delhi\&quot;, \&quot;Pune\&quot;}. Which statement about sets is true?&quot;, &quot;opts&quot;: [&quot;A set keeps each value only once, so adding a duplicate changes nothing.&quot;, &quot;A set keeps items in the order they were added and allows duplicates.&quot;, &quot;The text {} creates an empty set.&quot;, &quot;You can read a set item with cities[0].&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;Sets store unique values and have no positions, so cities[0] is an error. The text {} creates an empty dictionary, and the empty set is written set().&quot;}, {&quot;q&quot;: &quot;The function is def f(x): print(x * 2). After y = f(3), what is y?&quot;, &quot;opts&quot;: [&quot;6&quot;, &quot;3&quot;, &quot;0&quot;, &quot;None&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;print shows 6 on the screen, but the function has no return line, so it gives back None. The trap is confusing what is shown with what is returned.&quot;}, {&quot;q&quot;: &quot;The function is def add(item, bag=[]) and it appends item to bag, then returns bag. After add(1) is called, what does add(2) return?&quot;, &quot;opts&quot;: [&quot;[2]&quot;, &quot;[1, 2]&quot;, &quot;[1]&quot;, &quot;An error&quot;], &quot;ans&quot;: 1, &quot;why&quot;: &quot;The default list is created once and shared by every call, so the second call adds to the list from the first. The fix is bag=None, with the list created inside the function when bag is None.&quot;}, {&quot;q&quot;: &quot;The list rows is [(\&quot;Bina\&quot;, 80), (\&quot;Asha\&quot;, 95), (\&quot;Chetan\&quot;, 80)]. What is the first item of sorted(rows, key=lambda r: (-r[1], r[0]))?&quot;, &quot;opts&quot;: [&quot;(\&quot;Bina\&quot;, 80)&quot;, &quot;(\&quot;Chetan\&quot;, 80)&quot;, &quot;(\&quot;Asha\&quot;, 95)&quot;, &quot;The list is returned unchanged&quot;], &quot;ans&quot;: 2, &quot;why&quot;: &quot;The key puts the highest score first, because -95 is the smallest key. sorted returns a new list, so the second part of the question is false, but the first item is what the question asks for. The trap is ordering the names instead of the scores.&quot;}, {&quot;q&quot;: &quot;What does this comprehension produce? [n for n in range(1, 7) if n % 2 == 1]&quot;, &quot;opts&quot;: [&quot;[1, 3, 5]&quot;, &quot;[2, 4, 6]&quot;, &quot;[1, 2, 3, 4, 5, 6]&quot;, &quot;[1, 3, 5, 7]&quot;], &quot;ans&quot;: 0, &quot;why&quot;: &quot;range(1, 7) gives 1 to 6, because the stop value 7 is excluded. The condition keeps the odd numbers, which are 1, 3 and 5. The trap is including 7 by reading the stop as inclusive.&quot;}, {&quot;q&quot;: &quot;A user types \&quot;abc\&quot; and your code calls int(\&quot;abc\&quot;) without a try block. What happens?&quot;, &quot;opts&quot;: [&quot;int returns 0 and the program carries on&quot;, &quot;int returns None and the program carries on&quot;, &quot;Python prints a warning and continues&quot;, &quot;Python raises ValueError and stops the program unless the error is caught&quot;], &quot;ans&quot;: 3, &quot;why&quot;: &quot;A text that is not a whole number makes int raise ValueError. Without a try and except around the call, the program stops with a traceback.&quot;}]}"></div>
+
+<h2 id="flashcards">Flashcards</h2>
+<div class="w w-cards" data-w="{&quot;cards&quot;: [{&quot;q&quot;: &quot;slice&quot;, &quot;a&quot;: &quot;A part of a list from a start position up to, but not including, a stop position, written list[start:stop].&quot;}, {&quot;q&quot;: &quot;alias&quot;, &quot;a&quot;: &quot;Two names that point at the same object, so a change made through one name is seen through the other.&quot;}, {&quot;q&quot;: &quot;tuple&quot;, &quot;a&quot;: &quot;An ordered collection that cannot be changed, written with round brackets or commas.&quot;}, {&quot;q&quot;: &quot;unpacking&quot;, &quot;a&quot;: &quot;Splitting a tuple or list into separate names in one line, such as lat, lon = point.&quot;}, {&quot;q&quot;: &quot;d.get(key, default)&quot;, &quot;a&quot;: &quot;Returns the value for a key, or the default when the key is missing, instead of raising KeyError.&quot;}, {&quot;q&quot;: &quot;sorted versus sort&quot;, &quot;a&quot;: &quot;sorted returns a new list and leaves the original alone. sort changes the list in place and returns None.&quot;}, {&quot;q&quot;: &quot;mutable default argument&quot;, &quot;a&quot;: &quot;A default list or dictionary is created once, when def runs, and every call that uses the default shares it.&quot;}, {&quot;q&quot;: &quot;key function&quot;, &quot;a&quot;: &quot;A function given to sorted that returns the value to compare, such as lambda r: (-r[1], r[0]).&quot;}, {&quot;q&quot;: &quot;falsy&quot;, &quot;a&quot;: &quot;A value that counts as False in an if test, such as 0, \&quot;\&quot;, [], {} or None.&quot;}, {&quot;q&quot;: &quot;enumerate&quot;, &quot;a&quot;: &quot;Gives each item its position as well as its value, as in for i, x in enumerate(items).&quot;}, {&quot;q&quot;: &quot;set&quot;, &quot;a&quot;: &quot;An unordered collection that stores each value once. The empty set is set(), not {}.&quot;}, {&quot;q&quot;: &quot;return versus print&quot;, &quot;a&quot;: &quot;print shows text on the screen. return gives a value back to the caller so it can be stored and used.&quot;}]}"></div><div class="done"><button id="done">Mark this chapter complete</button></div><div class="pn"><a href="F1.html"><small>Previous</small>Python from zero, part 1: values, text, decisions and loops</a><a class="nx" href="F3.html"><small>Next</small>The graded-lab toolkit: the standard-library moves every lab uses</a></div></article></main><script src="assets/book.js?v=1794446139"></script></body></html>

@@ -1,0 +1,14 @@
+# Course data pulled from the learner view and working files: kept on the owner's PC only
+_build/course_data.json
+_build/spec/
+_build/spec2/
+_build/audit/
+_build/graded/
+_build/tts/
+_build/frames/
+_build/*_results.json
+_build/doubt_batches.json
+_build/test_report.txt
+__pycache__/
+*.pyc
+videos/_*.mp4
